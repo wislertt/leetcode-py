@@ -1,0 +1,71 @@
+{
+    "problem_name": "reverse_nodes_in_k_group",
+    "solution_class_name": "Solution",
+    "problem_number": "25",
+    "problem_title": "Reverse Nodes In K Group",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Reverse Nodes In K Group goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_nodes_in_k_group",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "reverse_nodes_in_k_group",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_nodes_in_k_group, run_reverse_nodes_in_k_group\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseNodesInKGroup",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_nodes_in_k_group",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement reverse_nodes_in_k_group\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_nodes_in_k_group",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_reverse_nodes_in_k_group(Solution)\n        assert_reverse_nodes_in_k_group(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_nodes_in_k_group, assert_reverse_nodes_in_k_group\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_reverse_nodes_in_k_group(Solution)\nresult",
+    "playground_assert": "assert_reverse_nodes_in_k_group(result, None)  # TODO: Add expected result"
+}

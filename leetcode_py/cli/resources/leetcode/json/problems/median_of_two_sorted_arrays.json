@@ -1,0 +1,71 @@
+{
+    "problem_name": "median_of_two_sorted_arrays",
+    "solution_class_name": "Solution",
+    "problem_number": "4",
+    "problem_title": "Median of Two Sorted Arrays",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Median of Two Sorted Arrays goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "median_of_two_sorted_arrays",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "median_of_two_sorted_arrays",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_median_of_two_sorted_arrays, run_median_of_two_sorted_arrays\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MedianOfTwoSortedArrays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "median_of_two_sorted_arrays",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement median_of_two_sorted_arrays\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_median_of_two_sorted_arrays",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_median_of_two_sorted_arrays(Solution)\n        assert_median_of_two_sorted_arrays(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_median_of_two_sorted_arrays, assert_median_of_two_sorted_arrays\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_median_of_two_sorted_arrays(Solution)\nresult",
+    "playground_assert": "assert_median_of_two_sorted_arrays(result, None)  # TODO: Add expected result"
+}
