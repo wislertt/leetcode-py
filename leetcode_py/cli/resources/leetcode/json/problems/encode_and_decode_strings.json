@@ -1,0 +1,71 @@
+{
+    "problem_name": "encode_and_decode_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "271",
+    "problem_title": "Encode and Decode Strings",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Encode and Decode Strings goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "encode_and_decode_strings",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "encode_and_decode_strings",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_encode_and_decode_strings, run_encode_and_decode_strings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EncodeAndDecodeStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "encode_and_decode_strings",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement encode_and_decode_strings\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_encode_and_decode_strings",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_encode_and_decode_strings(Solution)\n        assert_encode_and_decode_strings(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_encode_and_decode_strings, assert_encode_and_decode_strings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_encode_and_decode_strings(Solution)\nresult",
+    "playground_assert": "assert_encode_and_decode_strings(result, None)  # TODO: Add expected result"
+}

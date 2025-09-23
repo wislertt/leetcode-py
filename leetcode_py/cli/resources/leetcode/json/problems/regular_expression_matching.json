@@ -1,0 +1,71 @@
+{
+    "problem_name": "regular_expression_matching",
+    "solution_class_name": "Solution",
+    "problem_number": "10",
+    "problem_title": "Regular Expression Matching",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Regular Expression Matching goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "regular_expression_matching",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "regular_expression_matching",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_regular_expression_matching, run_regular_expression_matching\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RegularExpressionMatching",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "regular_expression_matching",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement regular_expression_matching\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_regular_expression_matching",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_regular_expression_matching(Solution)\n        assert_regular_expression_matching(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_regular_expression_matching, assert_regular_expression_matching\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_regular_expression_matching(Solution)\nresult",
+    "playground_assert": "assert_regular_expression_matching(result, None)  # TODO: Add expected result"
+}

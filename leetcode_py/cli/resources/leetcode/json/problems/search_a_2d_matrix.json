@@ -1,0 +1,71 @@
+{
+    "problem_name": "search_a_2d_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "74",
+    "problem_title": "Search a 2D Matrix",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Search a 2D Matrix goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "search_a_2d_matrix",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "search_a_2d_matrix",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_search_a_2d_matrix, run_search_a_2d_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SearchA2dMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "search_a_2d_matrix",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement search_a_2d_matrix\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_search_a_2d_matrix",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_search_a_2d_matrix(Solution)\n        assert_search_a_2d_matrix(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_search_a_2d_matrix, assert_search_a_2d_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_search_a_2d_matrix(Solution)\nresult",
+    "playground_assert": "assert_search_a_2d_matrix(result, None)  # TODO: Add expected result"
+}
