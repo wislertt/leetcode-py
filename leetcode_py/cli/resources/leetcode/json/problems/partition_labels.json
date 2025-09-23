@@ -1,0 +1,71 @@
+{
+    "problem_name": "partition_labels",
+    "solution_class_name": "Solution",
+    "problem_number": "763",
+    "problem_title": "Partition Labels",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Partition Labels goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "partition_labels",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "partition_labels",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_partition_labels, run_partition_labels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PartitionLabels",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "partition_labels",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement partition_labels\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_partition_labels",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_partition_labels(Solution)\n        assert_partition_labels(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_partition_labels, assert_partition_labels\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_partition_labels(Solution)\nresult",
+    "playground_assert": "assert_partition_labels(result, None)  # TODO: Add expected result"
+}

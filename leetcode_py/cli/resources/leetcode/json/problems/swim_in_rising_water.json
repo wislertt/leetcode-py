@@ -1,0 +1,71 @@
+{
+    "problem_name": "swim_in_rising_water",
+    "solution_class_name": "Solution",
+    "problem_number": "778",
+    "problem_title": "Swim In Rising Water",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": [
+            "neetcode-150"
+        ]
+    },
+    "readme_description": "Problem description for Swim In Rising Water goes here.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \nOutput: \n```"
+            }
+        ]
+    },
+    "readme_constraints": "- Add constraints here",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "swim_in_rising_water",
+    "helpers_run_signature": "(solution_class: type)",
+    "helpers_run_body": "    implementation = solution_class()\n    # TODO: Add implementation call\n    return None",
+    "helpers_assert_name": "swim_in_rising_water",
+    "helpers_assert_signature": "(result, expected) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_swim_in_rising_water, run_swim_in_rising_water\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SwimInRisingWater",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "swim_in_rising_water",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Implement swim_in_rising_water\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_swim_in_rising_water",
+                "signature": "(self)",
+                "parametrize": "",
+                "test_cases": "[]",
+                "body": "        result = run_swim_in_rising_water(Solution)\n        assert_swim_in_rising_water(result, None)  # TODO: Add expected result"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_swim_in_rising_water, assert_swim_in_rising_water\nfrom solution import Solution",
+    "playground_setup": "# Example test case\n# TODO: Add test setup",
+    "playground_run": "result = run_swim_in_rising_water(Solution)\nresult",
+    "playground_assert": "assert_swim_in_rising_water(result, None)  # TODO: Add expected result"
+}
