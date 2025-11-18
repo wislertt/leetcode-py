@@ -46,7 +46,7 @@ jupytext = "^1.16.6"
 mypy = "^1.17.1"
 nbqa = "^1.9.1"
 pre-commit = "^4.3.0"
-pytest = "^8.4.1"
+pytest = "^9.0.0"
 pytest-cov = "^7.0.0"
 ruff = "^0.14.0"
 
