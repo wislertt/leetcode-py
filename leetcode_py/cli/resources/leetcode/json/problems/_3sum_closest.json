@@ -1,0 +1,50 @@
+{
+  "problem_name": "_3sum_closest",
+  "problem_number": "16",
+  "problem_title": "3Sum Closest",
+  "difficulty": "Medium",
+  "topics": "Array, Two Pointers, Sorting",
+  "readme_description": "Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.\n\nReturn the sum of the three integers.\n\nYou may assume that each input would have exactly one solution.\n\n&nbsp;\nExample 1:\n\n\nInput: nums = [-1,2,1,-4], target = 1\nOutput: 2\nExplanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).\n\n\nExample 2:\n\n\nInput: nums = [0,0,0], target = 1\nOutput: 0\nExplanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).\n\n\n&nbsp;\nConstraints:\n\n\n\t3 &lt;= nums.length &lt;= 500\n\t-1000 &lt;= nums[i] &lt;= 1000\n\t-104 &lt;= target &lt;= 104",
+  "readme_constraints": "- 3 &lt;= nums.length &lt;= 500\n- -1000 &lt;= nums[i] &lt;= 1000\n- -104 &lt;= target &lt;= 104",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: nums = [-1,2,1,-4], target = 1\nOutput: 2\nExplanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).\n\n\nExample 2:\n\n\nInput: nums = [0,0,0], target = 1\nOutput: 0\nExplanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0)."
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "three_sum_closest",
+        "signature": "(self, nums: List[int], target: int)-> int",
+        "body": "        # TODO: Implement three_sum_closest\n        return 0"
+      }
+    ]
+  },
+  "helpers_run_name": "three_sum_closest",
+  "helpers_run_signature": "(solution_class: type, nums: List[int], target: int)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.three_sum_closest(nums, target)",
+  "helpers_assert_name": "three_sum_closest",
+  "helpers_assert_signature": "(result: int, expected: int) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "3sumClosest",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_three_sum_closest",
+        "signature": "(self, nums: List[int], target: int, expected: int)",
+        "parametrize": "nums, target, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_three_sum_closest(Solution, nums, target)\n        assert_three_sum_closest(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_three_sum_closest, run_three_sum_closest\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

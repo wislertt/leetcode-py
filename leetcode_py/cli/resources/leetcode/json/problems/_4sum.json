@@ -1,0 +1,50 @@
+{
+  "problem_name": "_4sum",
+  "problem_number": "18",
+  "problem_title": "4Sum",
+  "difficulty": "Medium",
+  "topics": "Array, Two Pointers, Sorting",
+  "readme_description": "Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:\n\n\n\t0 &lt;= a, b, c, d&nbsp;&lt; n\n\ta, b, c, and d are distinct.\n\tnums[a] + nums[b] + nums[c] + nums[d] == target\n\n\nYou may return the answer in any order.\n\n&nbsp;\nExample 1:\n\n\nInput: nums = [1,0,-1,0,-2,2], target = 0\nOutput: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n\n\nExample 2:\n\n\nInput: nums = [2,2,2,2,2], target = 8\nOutput: [[2,2,2,2]]\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= nums.length &lt;= 200\n\t-109 &lt;= nums[i] &lt;= 109\n\t-109 &lt;= target &lt;= 109",
+  "readme_constraints": "- 1 &lt;= nums.length &lt;= 200\n- -109 &lt;= nums[i] &lt;= 109\n- -109 &lt;= target &lt;= 109",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: nums = [1,0,-1,0,-2,2], target = 0\nOutput: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]\n\n\nExample 2:\n\n\nInput: nums = [2,2,2,2,2], target = 8\nOutput: [[2,2,2,2]]"
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "four_sum",
+        "signature": "(self, nums: List[int], target: int)-> List[List[int]]",
+        "body": "        # TODO: Implement four_sum\n        return []"
+      }
+    ]
+  },
+  "helpers_run_name": "four_sum",
+  "helpers_run_signature": "(solution_class: type, nums: List[int], target: int)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.four_sum(nums, target)",
+  "helpers_assert_name": "four_sum",
+  "helpers_assert_signature": "(result: List[List[int]], expected: List[List[int]]) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "4sum",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_four_sum",
+        "signature": "(self, nums: List[int], target: int, expected: List[List[int]])",
+        "parametrize": "nums, target, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_four_sum(Solution, nums, target)\n        assert_four_sum(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_four_sum, run_four_sum\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

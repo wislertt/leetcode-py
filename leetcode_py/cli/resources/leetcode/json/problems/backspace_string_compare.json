@@ -1,0 +1,50 @@
+{
+  "problem_name": "backspace_string_compare",
+  "problem_number": "844",
+  "problem_title": "Backspace String Compare",
+  "difficulty": "Easy",
+  "topics": "Two Pointers, String, Stack, Simulation",
+  "readme_description": "Given two strings s and t, return true if they are equal when both are typed into empty text editors. &#39;#&#39; means a backspace character.\n\nNote that after backspacing an empty text, the text will continue empty.\n\n&nbsp;\nExample 1:\n\n\nInput: s = &quot;ab#c&quot;, t = &quot;ad#c&quot;\nOutput: true\nExplanation: Both s and t become &quot;ac&quot;.\n\n\nExample 2:\n\n\nInput: s = &quot;ab##&quot;, t = &quot;c#d#&quot;\nOutput: true\nExplanation: Both s and t become &quot;&quot;.\n\n\nExample 3:\n\n\nInput: s = &quot;a#c&quot;, t = &quot;b&quot;\nOutput: false\nExplanation: s becomes &quot;c&quot; while t becomes &quot;b&quot;.\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= s.length, t.length &lt;= 200\n\ts and t only contain lowercase letters and &#39;#&#39; characters.\n\n\n&nbsp;\nFollow up: Can you solve it in O(n) time and O(1) space?",
+  "readme_constraints": "- 1 &lt;= s.length, t.length &lt;= 200\n- s and t only contain lowercase letters and &#39;#&#39; characters.",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: s = &quot;ab#c&quot;, t = &quot;ad#c&quot;\nOutput: true\nExplanation: Both s and t become &quot;ac&quot;.\n\n\nExample 2:\n\n\nInput: s = &quot;ab##&quot;, t = &quot;c#d#&quot;\nOutput: true\nExplanation: Both s and t become &quot;&quot;.\n\n\nExample 3:\n\n\nInput: s = &quot;a#c&quot;, t = &quot;b&quot;\nOutput: false\nExplanation: s becomes &quot;c&quot; while t becomes &quot;b&quot;."
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "backspace_compare",
+        "signature": "(self, s: str, t: str)-> bool",
+        "body": "        # TODO: Implement backspace_compare\n        return False"
+      }
+    ]
+  },
+  "helpers_run_name": "backspace_compare",
+  "helpers_run_signature": "(solution_class: type, s: str, t: str)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.backspace_compare(s, t)",
+  "helpers_assert_name": "backspace_compare",
+  "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "BackspaceStringCompare",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_backspace_compare",
+        "signature": "(self, s: str, t: str, expected: bool)",
+        "parametrize": "s, t, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_backspace_compare(Solution, s, t)\n        assert_backspace_compare(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "",
+  "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_backspace_compare, run_backspace_compare\nfrom .solution import Solution",
+  "helpers_imports": ""
+}

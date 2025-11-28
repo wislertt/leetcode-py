@@ -1,0 +1,50 @@
+{
+  "problem_name": "asteroid_collision",
+  "problem_number": "735",
+  "problem_title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "topics": "Array, Stack, Simulation",
+  "readme_description": "We are given an array asteroids of integers representing asteroids in a row. The indices of the asteroid in the array represent their relative position in space.\n\nFor each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.\n\nFind out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.\n\n&nbsp;\nExample 1:\n\n\nInput: asteroids = [5,10,-5]\nOutput: [5,10]\nExplanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.\n\n\nExample 2:\n\n\nInput: asteroids = [8,-8]\nOutput: []\nExplanation: The 8 and -8 collide exploding each other.\n\n\nExample 3:\n\n\nInput: asteroids = [10,2,-5]\nOutput: [10]\nExplanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.\n\n\nExample 4:\n\n\nInput: asteroids = [3,5,-6,2,-1,4]\u200b\u200b\u200b\u200b\u200b\u200b\u200b\nOutput: [-6,2,4]\nExplanation: The asteroid -6 makes the asteroid 3 and 5 explode, and then continues going left. On the other side, the asteroid 2 makes the asteroid -1 explode and then continues going right, without reaching asteroid 4.\n\n\n&nbsp;\nConstraints:\n\n\n\t2 &lt;= asteroids.length &lt;= 104\n\t-1000 &lt;= asteroids[i] &lt;= 1000\n\tasteroids[i] != 0",
+  "readme_constraints": "- 2 &lt;= asteroids.length &lt;= 104\n- -1000 &lt;= asteroids[i] &lt;= 1000\n- asteroids[i] != 0",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: asteroids = [5,10,-5]\nOutput: [5,10]\nExplanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.\n\n\nExample 2:\n\n\nInput: asteroids = [8,-8]\nOutput: []\nExplanation: The 8 and -8 collide exploding each other.\n\n\nExample 3:\n\n\nInput: asteroids = [10,2,-5]\nOutput: [10]\nExplanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.\n\n\nExample 4:\n\n\nInput: asteroids = [3,5,-6,2,-1,4]\u200b\u200b\u200b\u200b\u200b\u200b\u200b\nOutput: [-6,2,4]\nExplanation: The asteroid -6 makes the asteroid 3 and 5 explode, and then continues going left. On the other side, the asteroid 2 makes the asteroid -1 explode and then continues going right, without reaching asteroid 4."
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "asteroid_collision",
+        "signature": "(self, asteroids: List[int])-> List[int]",
+        "body": "        # TODO: Implement asteroid_collision\n        return []"
+      }
+    ]
+  },
+  "helpers_run_name": "asteroid_collision",
+  "helpers_run_signature": "(solution_class: type, asteroids: List[int])",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.asteroid_collision(asteroids)",
+  "helpers_assert_name": "asteroid_collision",
+  "helpers_assert_signature": "(result: List[int], expected: List[int]) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "AsteroidCollision",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_asteroid_collision",
+        "signature": "(self, asteroids: List[int], expected: List[int])",
+        "parametrize": "asteroids, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_asteroid_collision(Solution, asteroids)\n        assert_asteroid_collision(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_asteroid_collision, run_asteroid_collision\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

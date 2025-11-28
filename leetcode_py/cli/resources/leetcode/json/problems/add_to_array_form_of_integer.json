@@ -1,0 +1,50 @@
+{
+  "problem_name": "add_to_array_form_of_integer",
+  "problem_number": "989",
+  "problem_title": "Add to Array-Form of Integer",
+  "difficulty": "Easy",
+  "topics": "Array, Math",
+  "readme_description": "The array-form of an integer num is an array representing its digits in left to right order.\n\n\n\tFor example, for num = 1321, the array form is [1,3,2,1].\n\n\nGiven num, the array-form of an integer, and an integer k, return the array-form of the integer num + k.\n\n&nbsp;\nExample 1:\n\n\nInput: num = [1,2,0,0], k = 34\nOutput: [1,2,3,4]\nExplanation: 1200 + 34 = 1234\n\n\nExample 2:\n\n\nInput: num = [2,7,4], k = 181\nOutput: [4,5,5]\nExplanation: 274 + 181 = 455\n\n\nExample 3:\n\n\nInput: num = [2,1,5], k = 806\nOutput: [1,0,2,1]\nExplanation: 215 + 806 = 1021\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= num.length &lt;= 104\n\t0 &lt;= num[i] &lt;= 9\n\tnum does not contain any leading zeros except for the zero itself.\n\t1 &lt;= k &lt;= 104",
+  "readme_constraints": "- 1 &lt;= num.length &lt;= 104\n- 0 &lt;= num[i] &lt;= 9\n- num does not contain any leading zeros except for the zero itself.\n- 1 &lt;= k &lt;= 104",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: num = [1,2,0,0], k = 34\nOutput: [1,2,3,4]\nExplanation: 1200 + 34 = 1234\n\n\nExample 2:\n\n\nInput: num = [2,7,4], k = 181\nOutput: [4,5,5]\nExplanation: 274 + 181 = 455\n\n\nExample 3:\n\n\nInput: num = [2,1,5], k = 806\nOutput: [1,0,2,1]\nExplanation: 215 + 806 = 1021"
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "add_to_array_form",
+        "signature": "(self, num: List[int], k: int)-> List[int]",
+        "body": "        # TODO: Implement add_to_array_form\n        return []"
+      }
+    ]
+  },
+  "helpers_run_name": "add_to_array_form",
+  "helpers_run_signature": "(solution_class: type, num: List[int], k: int)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.add_to_array_form(num, k)",
+  "helpers_assert_name": "add_to_array_form",
+  "helpers_assert_signature": "(result: List[int], expected: List[int]) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "AddToArrayFormOfInteger",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_add_to_array_form",
+        "signature": "(self, num: List[int], k: int, expected: List[int])",
+        "parametrize": "num, k, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_add_to_array_form(Solution, num, k)\n        assert_add_to_array_form(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_add_to_array_form, run_add_to_array_form\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

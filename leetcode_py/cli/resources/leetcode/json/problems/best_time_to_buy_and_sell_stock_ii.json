@@ -1,0 +1,50 @@
+{
+  "problem_name": "best_time_to_buy_and_sell_stock_ii",
+  "problem_number": "122",
+  "problem_title": "Best Time to Buy and Sell Stock II",
+  "difficulty": "Medium",
+  "topics": "Array, Dynamic Programming, Greedy",
+  "readme_description": "You are given an integer array prices where prices[i] is the price of a given stock on the ith day.\n\nOn each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can sell and buy the stock multiple times on the same day, ensuring you never hold more than one share of the stock.\n\nFind and return the maximum profit you can achieve.\n\n&nbsp;\nExample 1:\n\n\nInput: prices = [7,1,5,3,6,4]\nOutput: 7\nExplanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.\nThen buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.\nTotal profit is 4 + 3 = 7.\n\n\nExample 2:\n\n\nInput: prices = [1,2,3,4,5]\nOutput: 4\nExplanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.\nTotal profit is 4.\n\n\nExample 3:\n\n\nInput: prices = [7,6,4,3,1]\nOutput: 0\nExplanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= prices.length &lt;= 3 * 104\n\t0 &lt;= prices[i] &lt;= 104",
+  "readme_constraints": "- 1 &lt;= prices.length &lt;= 3 * 104\n- 0 &lt;= prices[i] &lt;= 104",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: prices = [7,1,5,3,6,4]\nOutput: 7\nExplanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.\nThen buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.\nTotal profit is 4 + 3 = 7.\n\n\nExample 2:\n\n\nInput: prices = [1,2,3,4,5]\nOutput: 4\nExplanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.\nTotal profit is 4.\n\n\nExample 3:\n\n\nInput: prices = [7,6,4,3,1]\nOutput: 0\nExplanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0."
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "max_profit",
+        "signature": "(self, prices: List[int])-> int",
+        "body": "        # TODO: Implement max_profit\n        return 0"
+      }
+    ]
+  },
+  "helpers_run_name": "max_profit",
+  "helpers_run_signature": "(solution_class: type, prices: List[int])",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_profit(prices)",
+  "helpers_assert_name": "max_profit",
+  "helpers_assert_signature": "(result: int, expected: int) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "BestTimeToBuyAndSellStockIi",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_max_profit",
+        "signature": "(self, prices: List[int], expected: int)",
+        "parametrize": "prices, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_max_profit(Solution, prices)\n        assert_max_profit(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_profit, run_max_profit\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

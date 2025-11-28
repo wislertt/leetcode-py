@@ -1,0 +1,50 @@
+{
+  "problem_name": "assign_cookies",
+  "problem_number": "455",
+  "problem_title": "Assign Cookies",
+  "difficulty": "Easy",
+  "topics": "Array, Two Pointers, Greedy, Sorting",
+  "readme_description": "Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie.\n\nEach child i has a greed factor g[i], which is the minimum size of a cookie that the child will be content with; and each cookie j has a size s[j]. If s[j] &gt;= g[i], we can assign the cookie j to the child i, and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.\n\n&nbsp;\nExample 1:\n\n\nInput: g = [1,2,3], s = [1,1]\nOutput: 1\nExplanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. \nAnd even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.\nYou need to output 1.\n\n\nExample 2:\n\n\nInput: g = [1,2], s = [1,2,3]\nOutput: 2\nExplanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. \nYou have 3 cookies and their sizes are big enough to gratify all of the children, \nYou need to output 2.\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= g.length &lt;= 3 * 104\n\t0 &lt;= s.length &lt;= 3 * 104\n\t1 &lt;= g[i], s[j] &lt;= 231 - 1\n\n\n&nbsp;\nNote: This question is the same as  2410: Maximum Matching of Players With Trainers.",
+  "readme_constraints": "- 1 &lt;= g.length &lt;= 3 * 104\n- 0 &lt;= s.length &lt;= 3 * 104\n- 1 &lt;= g[i], s[j] &lt;= 231 - 1",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: g = [1,2,3], s = [1,1]\nOutput: 1\nExplanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. \nAnd even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.\nYou need to output 1.\n\n\nExample 2:\n\n\nInput: g = [1,2], s = [1,2,3]\nOutput: 2\nExplanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2. \nYou have 3 cookies and their sizes are big enough to gratify all of the children, \nYou need to output 2."
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "find_content_children",
+        "signature": "(self, g: List[int], s: List[int])-> int",
+        "body": "        # TODO: Implement find_content_children\n        return 0"
+      }
+    ]
+  },
+  "helpers_run_name": "find_content_children",
+  "helpers_run_signature": "(solution_class: type, g: List[int], s: List[int])",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_content_children(g, s)",
+  "helpers_assert_name": "find_content_children",
+  "helpers_assert_signature": "(result: int, expected: int) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "AssignCookies",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_find_content_children",
+        "signature": "(self, g: List[int], s: List[int], expected: int)",
+        "parametrize": "g, s, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_find_content_children(Solution, g, s)\n        assert_find_content_children(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom typing import List\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_content_children, run_find_content_children\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}

@@ -1,0 +1,50 @@
+{
+  "problem_name": "add_strings",
+  "problem_number": "415",
+  "problem_title": "Add Strings",
+  "difficulty": "Easy",
+  "topics": "Math, String, Simulation",
+  "readme_description": "Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.\n\nYou must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.\n\n&nbsp;\nExample 1:\n\n\nInput: num1 = &quot;11&quot;, num2 = &quot;123&quot;\nOutput: &quot;134&quot;\n\n\nExample 2:\n\n\nInput: num1 = &quot;456&quot;, num2 = &quot;77&quot;\nOutput: &quot;533&quot;\n\n\nExample 3:\n\n\nInput: num1 = &quot;0&quot;, num2 = &quot;0&quot;\nOutput: &quot;0&quot;\n\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= num1.length, num2.length &lt;= 104\n\tnum1 and num2 consist of only digits.\n\tnum1 and num2 don&#39;t have any leading zeros except for the zero itself.",
+  "readme_constraints": "- 1 &lt;= num1.length, num2.length &lt;= 104\n- num1 and num2 consist of only digits.\n- num1 and num2 don&#39;t have any leading zeros except for the zero itself.",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: num1 = &quot;11&quot;, num2 = &quot;123&quot;\nOutput: &quot;134&quot;\n\n\nExample 2:\n\n\nInput: num1 = &quot;456&quot;, num2 = &quot;77&quot;\nOutput: &quot;533&quot;\n\n\nExample 3:\n\n\nInput: num1 = &quot;0&quot;, num2 = &quot;0&quot;\nOutput: &quot;0&quot;"
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "add_strings",
+        "signature": "(self, num1: str, num2: str)-> str",
+        "body": "        # TODO: Implement add_strings\n        return \"\""
+      }
+    ]
+  },
+  "helpers_run_name": "add_strings",
+  "helpers_run_signature": "(solution_class: type, num1: str, num2: str)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.add_strings(num1, num2)",
+  "helpers_assert_name": "add_strings",
+  "helpers_assert_signature": "(result: str, expected: str) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "AddStrings",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_add_strings",
+        "signature": "(self, num1: str, num2: str, expected: str)",
+        "parametrize": "num1, num2, expected",
+        "test_cases": {
+          "list": []
+        },
+        "body": "        result = run_add_strings(Solution, num1, num2)\n        assert_add_strings(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "",
+  "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_add_strings, run_add_strings\nfrom .solution import Solution",
+  "helpers_imports": ""
+}
