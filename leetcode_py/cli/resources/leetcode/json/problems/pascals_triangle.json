@@ -1,0 +1,52 @@
+{
+  "problem_name": "pascals_triangle",
+  "problem_number": "118",
+  "problem_title": "Pascal's Triangle",
+  "difficulty": "Easy",
+  "topics": "Array, Dynamic Programming",
+  "readme_description": "Given an integer numRows, return the first numRows of Pascal&#39;s triangle.\n\nIn Pascal&#39;s triangle, each number is the sum of the two numbers directly above it as shown:\n\n&nbsp;\nExample 1:\nInput: numRows = 5\nOutput: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]\nExample 2:\nInput: numRows = 1\nOutput: [[1]]\n\n&nbsp;\nConstraints:\n\n\n\t1 &lt;= numRows &lt;= 30",
+  "readme_constraints": "- 1 &lt;= numRows &lt;= 30",
+  "_readme_examples": {
+    "list": [
+      {
+        "content": "Input: numRows = 5\nOutput: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]\nExample 2:\nInput: numRows = 1\nOutput: [[1]]"
+      }
+    ]
+  },
+  "solution_class_name": "Solution",
+  "_solution_methods": {
+    "list": [
+      {
+        "name": "generate",
+        "signature": "(self, numRows: int)-> List[List[int]]",
+        "body": "        # TODO: Implement generate\n        return []"
+      }
+    ]
+  },
+  "helpers_run_name": "generate",
+  "helpers_run_signature": "(solution_class: type, numRows: int)",
+  "helpers_run_body": "    implementation = solution_class()\n    return implementation.generate(numRows)",
+  "helpers_assert_name": "generate",
+  "helpers_assert_signature": "(result: List[List[int]], expected: List[List[int]]) -> bool",
+  "helpers_assert_body": "    assert result == expected\n    return True",
+  "test_class_name": "PascalsTriangle",
+  "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+  "_test_methods": {
+    "list": [
+      {
+        "name": "test_generate",
+        "signature": "(self, numRows: int, expected: List[List[int]])",
+        "parametrize": "numRows, expected",
+        "test_cases": {
+          "list": [
+            "(5, 1)"
+          ]
+        },
+        "body": "        result = run_generate(Solution, numRows)\n        assert_generate(result, expected)"
+      }
+    ]
+  },
+  "solution_imports": "from typing import List",
+  "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom typing import List\nfrom .helpers import assert_generate, run_generate\nfrom .solution import Solution",
+  "helpers_imports": "from typing import List"
+}
