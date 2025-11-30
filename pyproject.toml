@@ -91,7 +91,7 @@ select = [
     "I",   # isort
     "N", # pep8-naming
 ]
-ignore = ["N806", "N803"]
+ignore = ["N806"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
