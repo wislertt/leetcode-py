@@ -58,7 +58,20 @@
                 "signature": "(self, s: str, expected: list[list[str]])",
                 "parametrize": "s, expected",
                 "test_cases": {
-                    "list": ["('aab', [['a', 'a', 'b'], ['aa', 'b']])", "('a', [['a']])"]
+                    "list": [
+                        "('aab', [['a', 'a', 'b'], ['aa', 'b']])",
+                        "('a', [['a']])",
+                        "('ab', [['a', 'b']])",
+                        "('aa', [['a', 'a'], ['aa']])",
+                        "('abc', [['a', 'b', 'c']])",
+                        "('aba', [['a', 'b', 'a'], ['aba']])",
+                        "('aaa', [['a', 'a', 'a'], ['a', 'aa'], ['aa', 'a'], ['aaa']])",
+                        "('abba', [['a', 'b', 'b', 'a'], ['a', 'bb', 'a'], ['abba']])",
+                        "('zz', [['z', 'z'], ['zz']])",
+                        "('efe', [['e', 'f', 'e'], ['efe']])",
+                        "('xyx', [['x', 'y', 'x'], ['xyx']])",
+                        "('noon', [['n', 'o', 'o', 'n'], ['n', 'oo', 'n'], ['noon']])"
+                    ]
                 },
                 "body": "        result = run_partition(Solution, s)\n        assert_partition(result, expected)"
             }
