@@ -25,7 +25,7 @@ class TestPalindromePartitioning:
             ("zz", [["z", "z"], ["zz"]]),
             ("efe", [["e", "f", "e"], ["efe"]]),
             ("xyx", [["x", "y", "x"], ["xyx"]]),
-            ("noon", [["n", "o", "o", 'n'], ['n', 'oo', 'n'], ['noon']]),
+            ("noon", [["n", "o", "o", "n"], ["n", "oo", "n"], ["noon"]]),
         ],
     )
     def test_partition(self, s: str, expected: list[list[str]]):
