@@ -1,0 +1,84 @@
+{
+    "problem_name": "palindrome_partitioning",
+    "solution_class_name": "Solution",
+    "problem_number": "131",
+    "problem_title": "Palindrome Partitioning",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Backtracking",
+    "readme_description": "Given a string `s`, partition `s` such that every substring of the partition is a **palindrome**. Return *all possible palindrome partitioning of `s`*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aab\"\nOutput: [[\"a\",\"a\",\"b\"],[\"aa\",\"b\"]]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"a\"\nOutput: [[\"a\"]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 16`\n- `s` contains only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "partition",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.partition(s)",
+    "helpers_assert_name": "partition",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    # Sort inner lists and outer list for comparison\n    # Note: Inner lists are partitions (lists of strings), order of partitions doesn't matter\n    # Order of strings within a partition DOES matter (it must reconstruct s)\n    # But wait, the problem says \"partition s\", so the order of substrings must match the order in s.\n    # So we only need to sort the outer list of partitions.\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_partition, run_partition\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromePartitioning",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "partition",
+                "signature": "(self, s: str) -> list[list[str]]",
+                "body": "        # TODO: Implement partition\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_partition",
+                "signature": "(self, s: str, expected: list[list[str]])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aab', [['a', 'a', 'b'], ['aa', 'b']])",
+                        "('a', [['a']])",
+                        "('ab', [['a', 'b']])",
+                        "('aa', [['a', 'a'], ['aa']])",
+                        "('abc', [['a', 'b', 'c']])",
+                        "('aba', [['a', 'b', 'a'], ['aba']])",
+                        "('aaa', [['a', 'a', 'a'], ['a', 'aa'], ['aa', 'a'], ['aaa']])",
+                        "('abba', [['a', 'b', 'b', 'a'], ['a', 'bb', 'a'], ['abba']])",
+                        "('zz', [['z', 'z'], ['zz']])",
+                        "('efe', [['e', 'f', 'e'], ['efe']])",
+                        "('xyx', [['x', 'y', 'x'], ['xyx']])",
+                        "('noon', [['n', 'o', 'o', 'n'], ['n', 'oo', 'n'], ['noon']])"
+                    ]
+                },
+                "body": "        result = run_partition(Solution, s)\n        assert_partition(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_partition, assert_partition\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aab'\nexpected = [['a', 'a', 'b'], ['aa', 'b']]",
+    "playground_run": "result = run_partition(Solution, s)\nresult",
+    "playground_assert": "assert_partition(result, expected)"
+}
