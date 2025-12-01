@@ -255,6 +255,7 @@
         "number_of_connected_components_in_an_undirected_graph",
         "number_of_islands",
         "pacific_atlantic_water_flow",
+        "palindrome_partitioning",
         "palindromic_substrings",
         "partition_equal_subset_sum",
         "permutations",
