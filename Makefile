@@ -1,4 +1,4 @@
-PYTHON_VERSION = 3.13
+PYTHON_VERSION = 3.14
 PROBLEM ?= number_of_connected_components_in_an_undirected_graph
 FORCE ?= 0
 COMMA := ,
