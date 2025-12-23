@@ -1,7 +1,5 @@
 name: cd
 
-# Note: Ensure CD pipeline is idempotent to safely handle re-runs from push,
-# workflow dispatch, and tag versioning triggers
 on:
     push:
         branches:
