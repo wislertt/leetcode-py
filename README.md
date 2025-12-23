@@ -1,6 +1,6 @@
 # LeetCode Practice Environment Generator 🚀
 
-[![tests](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/ci-test.yml?branch=main&label=tests&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/ci-test.yml)
+[![tests](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=tests&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
