@@ -1,9 +1,12 @@
 name: cd
 
+# Note: Ensure CD pipeline is idempotent to safely handle re-runs from push,
+# workflow dispatch, and tag versioning triggers
 on:
     push:
         branches:
             - main
+    workflow_dispatch:
 
 permissions:
     contents: write
@@ -11,85 +14,47 @@ permissions:
     pull-requests: write
 
 jobs:
-    versioning:
-        name: versioning
-        runs-on: ubuntu-latest
-        outputs:
-            new_release_version: ${{ steps.set-outputs.outputs.version }}
-            new_release_published: ${{ steps.set-outputs.outputs.published }}
-        steps:
-            - name: Checkout
-              uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-              with:
-                  fetch-depth: 0
+    # ====================================================
+    # Versioning and Release
+    # ====================================================
+    semantic-release:
+        name: semantic-release
+        uses: wislertt/zerv/.github/workflows/shared-semantic-release.yml@v0
+        with:
+            allowed_workflow_dispatch_branches: '["main"]'
+            fail_on_invalid_workflow_dispatch_ref: true
 
-            - name: Check existing release
-              id: check-release
-              run: |
-                  CURRENT_SHA=$(git rev-parse HEAD)
-                  EXISTING_TAG=$(git tag --points-at $CURRENT_SHA | grep '^v' | head -1)
-                  if [ -n "$EXISTING_TAG" ]; then
-                      echo "existing_tag=$EXISTING_TAG" >> $GITHUB_OUTPUT
-                      echo "existing_version=${EXISTING_TAG#v}" >> $GITHUB_OUTPUT
-                      echo "has_existing=true" >> $GITHUB_OUTPUT
-                  else
-                      echo "has_existing=false" >> $GITHUB_OUTPUT
-                  fi
+    zerv-versioning:
+        needs: semantic-release
+        if: needs.semantic-release.outputs.is_valid_semantic_release == 'true'
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@v0
 
-            - id: release
-              name: Release
-              if: steps.check-release.outputs.has_existing == 'false'
-              uses: cycjimmy/semantic-release-action@b12c8f6015dc215fe37bc154d4ad456dd3833c90 # v6.0.0
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    create-version-prefix-tags:
+        needs: zerv-versioning
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@v0
+        with:
+            tags: >-
+                [
+                  "${{ fromJson(needs.zerv-versioning.outputs.versions).v_major }}",
+                  "${{ fromJson(needs.zerv-versioning.outputs.versions).v_major_minor }}"
+                ]
 
-            - name: Set outputs
-              id: set-outputs
-              run: |
-                  if [ "${{ steps.check-release.outputs.has_existing }}" == "true" ]; then
-                      echo "version=${{ steps.check-release.outputs.existing_version }}" >> $GITHUB_OUTPUT
-                      echo "published=true" >> $GITHUB_OUTPUT
-                      echo "Using existing release: ${{ steps.check-release.outputs.existing_version }}"
-                  else
-                      echo "version=${{ steps.release.outputs.new_release_version }}" >> $GITHUB_OUTPUT
-                      echo "published=${{ steps.release.outputs.new_release_published }}" >> $GITHUB_OUTPUT
-                      echo "New release: ${{ steps.release.outputs.new_release_version }}"
-                  fi
+    # ====================================================
+    # Test and Lint
+    # ====================================================
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-    publish:
-        name: publish to pypi
-        runs-on: ubuntu-latest
-        needs: versioning
-        if: needs.versioning.outputs.new_release_published == 'true'
-        environment:
-            name: pypi
-            url: https://pypi.org/p/leetcode-py
-        permissions:
-            id-token: write
-        steps:
-            - name: Checkout
-              uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-
-            - name: Set up Python
-              uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
-              with:
-                  python-version: "3.14"
-
-            - name: Install Poetry
-              uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
-              with:
-                  version: latest
-                  virtualenvs-create: true
-                  virtualenvs-in-project: true
-
-            - name: Update version in pyproject.toml
-              run: |
-                  poetry version ${{ needs.versioning.outputs.new_release_version }}
-
-            - name: Build package
-              run: poetry build
-
-            - name: Publish to PyPI
-              uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
-              with:
-                  verbose: true
+    # ====================================================
+    # Deployment
+    # ====================================================
+    publish-pypi:
+        needs: zerv-versioning
+        uses: ./.github/workflows/publish.yml
+        with:
+            version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
+        secrets:
+            PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
