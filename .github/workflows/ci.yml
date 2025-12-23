@@ -1,0 +1,56 @@
+name: ci
+
+on:
+    # Rulesets for main branch
+    # - Require status checks to pass -> Require branches to be up to date before merging
+    pull_request:
+        types: [labeled, unlabeled, opened, synchronize, reopened]
+
+permissions:
+    contents: write
+    id-token: write
+
+jobs:
+    # ====================================================
+    # Versioning and Release
+    # ====================================================
+    check-pre-release:
+        name: check-pre-release
+        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@v0
+        with:
+            target_label: "pre-release"
+            branch_prefixes: '["release/"]'
+            branch_names: '["develop"]'
+
+    zerv-versioning:
+        name: zerv-versioning
+        needs: check-pre-release
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@v0
+        with:
+            schema: ${{ (needs.check-pre-release.outputs.is_valid == 'true' && 'standard-base-prerelease-post') || '' }}
+
+    tag-pre-release:
+        name: tag-pre-release
+        needs: [zerv-versioning, check-pre-release]
+        if: needs.check-pre-release.outputs.is_valid == 'true'
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@v0
+        with:
+            tags: '["${{ fromJson(needs.zerv-versioning.outputs.versions).v_semver }}"]'
+
+    # ====================================================
+    # Test and Lint
+    # ====================================================
+    test:
+        name: test
+        uses: ./.github/workflows/test.yml
+        secrets:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    test-reproducibility:
+        name: test-reproducibility
+        uses: ./.github/workflows/test-reproducibility.yml
+
+    pre-commit:
+        name: pre-commit
+        uses: ./.github/workflows/pre-commit.yml

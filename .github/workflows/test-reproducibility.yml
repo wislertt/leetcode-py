@@ -1,31 +1,25 @@
-name: ci
+name: test-reproducibility
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        types: [opened, synchronize, reopened]
-
-env:
-    TARGET_PYTHON_VERSION: "3.14"
+    workflow_call:
+        inputs:
+            python_version:
+                description: "Python version to use"
+                required: false
+                type: string
+                default: "3.14"
 
 jobs:
-    test:
+    test-reproducibility:
         runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
         steps:
             - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-              with:
-                  fetch-depth: 0
 
             - name: Set up Python
               uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
               with:
-                  python-version: ${{ matrix.python-version }}
+                  python-version: ${{ inputs.python_version }}
 
             - name: Install Poetry
               uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
@@ -39,12 +33,10 @@ jobs:
               uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
               with:
                   path: .venv
-                  key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+                  key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
             - name: Install dependencies
-              run: |
-                  poetry install --no-interaction --no-ansi
-                  poetry run pip install -e .
+              run: poetry install --no-interaction --no-ansi
 
             - name: Cache Graphviz installation
               id: cache-graphviz
@@ -72,19 +64,34 @@ jobs:
                       cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || true
                   fi
 
+            - name: Check test case count
+              run: poetry run python -m leetcode_py.tools.check_test_cases --threshold=10 --max=none
+
+            - name: Backup existing problems
+              run: |
+                  mkdir -p .cache
+                  cp -r leetcode .cache/
+
+            - name: Delete existing problems
+              run: rm -rf leetcode/*/
+
+            - name: Regenerate all problems from templates
+              run: make gen-all-problems FORCE=1
+              env:
+                  # Skip interactive confirmation
+                  CI: true
+
+            - name: Run linting to verify reproducibility
+              run: make lint
+
+            - name: Copy solution files from backup
+              run: |
+                  for problem in .cache/leetcode/*/; do
+                      problem_name=$(basename "$problem")
+                      if [ -f "$problem/solution.py" ] && [ -d "leetcode/$problem_name" ]; then
+                          cp "$problem/solution.py" "leetcode/$problem_name/solution.py"
+                      fi
+                  done
+
             - name: Run tests
               run: make test
-
-            - name: SonarQube Scan
-              if: matrix.python-version == env.TARGET_PYTHON_VERSION && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
-              uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
-              env:
-                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-            - name: Upload coverage reports to Codecov
-              if: matrix.python-version == env.TARGET_PYTHON_VERSION && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
-              uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
-              with:
-                  fail_ci_if_error: true
-                  token: ${{ secrets.CODECOV_TOKEN }}
-                  verbose: true
