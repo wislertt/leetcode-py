@@ -18,7 +18,6 @@ on:
 
 jobs:
     publish:
-        name: publish-to-pypi
         runs-on: ubuntu-latest
 
         steps:
