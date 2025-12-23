@@ -8,9 +8,6 @@ on:
                 required: false
                 type: string
                 default: "3.14"
-        secrets:
-            GITHUB_TOKEN:
-                required: true
 
 jobs:
     pre-commit:

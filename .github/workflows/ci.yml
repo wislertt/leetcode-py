@@ -54,5 +54,3 @@ jobs:
     pre-commit:
         name: pre-commit
         uses: ./.github/workflows/pre-commit.yml
-        secrets:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
