@@ -1,13 +1,18 @@
-name: ci
+name: test
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        types: [opened, synchronize, reopened]
-
-env:
-    TARGET_PYTHON_VERSION: "3.14"
+    workflow_call:
+        inputs:
+            target_python_version:
+                description: "Target Python version for SonarQube and Codecov"
+                required: false
+                type: string
+                default: "3.14"
+        secrets:
+            SONAR_TOKEN:
+                required: false
+            CODECOV_TOKEN:
+                required: false
 
 jobs:
     test:
@@ -76,13 +81,13 @@ jobs:
               run: make test
 
             - name: SonarQube Scan
-              if: matrix.python-version == env.TARGET_PYTHON_VERSION && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+              if: matrix.python-version == inputs.target_python_version && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
               uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9 # v7.0.0
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
             - name: Upload coverage reports to Codecov
-              if: matrix.python-version == env.TARGET_PYTHON_VERSION && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+              if: matrix.python-version == inputs.target_python_version && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
               uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
               with:
                   fail_ci_if_error: true
