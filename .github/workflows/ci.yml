@@ -54,3 +54,17 @@ jobs:
     pre-commit:
         name: pre-commit
         uses: ./.github/workflows/pre-commit.yml
+
+    # ====================================================
+    # Deployment
+    # ====================================================
+    publish-test-pypi:
+        name: publish-to-test-pypi
+        if: needs.check-pre-release.outputs.is_valid == 'true'
+        needs: [zerv-versioning, check-pre-release]
+        uses: ./.github/workflows/publish.yml
+        with:
+            version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
+            repository_url: https://test.pypi.org/legacy/
+        secrets:
+            PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
