@@ -56,3 +56,12 @@ jobs:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
         secrets:
             PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+
+    publish-test-pypi:
+        needs: zerv-versioning
+        uses: ./.github/workflows/publish.yml
+        with:
+            version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
+            repository_url: https://test.pypi.org/legacy/
+        secrets:
+            PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
