@@ -46,6 +46,14 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
+    test-reproducibility:
+        name: test-reproducibility
+        uses: ./.github/workflows/test-reproducibility.yml
+
+    pre-commit:
+        name: pre-commit
+        uses: ./.github/workflows/pre-commit.yml
+
     # ====================================================
     # Deployment
     # ====================================================
