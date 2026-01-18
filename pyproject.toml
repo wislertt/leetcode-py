@@ -31,7 +31,7 @@ lcpy = "leetcode_py.cli.main:app"
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 anytree = "^2.13.0"
-black = "^25.1.0"
+black = "^26.0.0"
 cookiecutter = "^2.6.0"
 graphviz = "^0.21"
 json5 = "^0.13.0"
