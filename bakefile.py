@@ -13,7 +13,7 @@ class PythonSpace(_PythonSpace):
         )
         ctx.run("uv run ruff format --exit-non-zero-on-format .")
         ctx.run("uv run ruff check --fix --exit-non-zero-on-fix .")
-        # ctx.run("uv run ty check --error-on-warning --no-progress .")
+        ctx.run("uv run ty check --error-on-warning --no-progress .")
         # ctx.run("uv run deptry .")
 
     def test(self, ctx: Context) -> None:

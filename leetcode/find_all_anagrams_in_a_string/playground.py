@@ -24,7 +24,7 @@ expected = [0, 6]
 
 # %%
 result = run_find_anagrams(Solution, s, p)
-_ = result
+result
 
 # %%
 assert_find_anagrams(result, expected)

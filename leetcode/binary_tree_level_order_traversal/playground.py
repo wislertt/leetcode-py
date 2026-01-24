@@ -24,7 +24,7 @@ expected = [[3], [9, 20], [15, 7]]
 
 # %%
 result = run_level_order(Solution, root_list)
-_ = result
+result
 
 # %%
 assert_level_order(result, expected)

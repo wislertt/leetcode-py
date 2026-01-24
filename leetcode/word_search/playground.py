@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_exist(Solution, board, word)
-_ = result
+result
 
 # %%
 assert_exist(result, expected)

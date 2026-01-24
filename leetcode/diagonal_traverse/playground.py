@@ -23,7 +23,7 @@ expected = [1, 2, 4, 7, 5, 3, 6, 8, 9]
 
 # %%
 result = run_find_diagonal_order(Solution, mat)
-_ = result
+result
 
 # %%
 assert_find_diagonal_order(result, expected)

@@ -23,7 +23,7 @@ expected = 3
 
 # %%
 result = run_num_decodings(Solution, s)
-_ = result
+result
 
 # %%
 assert_num_decodings(result, expected)

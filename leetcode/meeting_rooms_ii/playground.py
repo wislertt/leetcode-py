@@ -23,7 +23,7 @@ expected = 2
 
 # %%
 result = run_min_meeting_rooms(Solution, intervals)
-_ = result
+result
 
 # %%
 assert_min_meeting_rooms(result, expected)

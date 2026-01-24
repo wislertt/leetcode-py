@@ -24,7 +24,7 @@ expected = 5
 
 # %%
 result = run_max_profit(Solution, prices)
-_ = result
+result
 
 # %%
 assert_max_profit(result, expected)

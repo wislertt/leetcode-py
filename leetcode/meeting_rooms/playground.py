@@ -23,7 +23,7 @@ expected = False
 
 # %%
 result = run_can_attend_meetings(Solution, intervals)
-_ = result
+result
 
 # %%
 assert_can_attend_meetings(result, expected)

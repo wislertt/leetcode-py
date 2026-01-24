@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_is_valid(Solution, s)
-_ = result
+result
 
 # %%
 assert_is_valid(result, expected)

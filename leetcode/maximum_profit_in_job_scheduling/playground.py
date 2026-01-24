@@ -26,7 +26,7 @@ expected = 120
 
 # %%
 result = run_job_scheduling(Solution, start_time, end_time, profit)
-_ = result
+result
 
 # %%
 assert_job_scheduling(result, expected)

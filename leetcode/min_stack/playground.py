@@ -25,7 +25,7 @@ expected = [None, None, None, None, -3, None, 0, -2]
 
 # %%
 result = run_min_stack_operations(MinStack, operations, inputs)
-_ = result
+result
 
 # %%
 assert_min_stack_operations(result, expected)

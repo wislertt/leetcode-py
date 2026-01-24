@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_is_same_tree(Solution, p_list, q_list)
-_ = result
+result
 
 # %%
 assert_is_same_tree(result, expected)

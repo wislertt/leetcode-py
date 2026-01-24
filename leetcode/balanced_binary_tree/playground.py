@@ -25,11 +25,11 @@ expected = True
 
 # %%
 result = run_is_balanced(Solution, root_list)
-_ = result
+result
 
 # %%
 root = TreeNode.from_list(root_list)
-_ = root
+root
 
 # %%
 assert_is_balanced(result, expected)

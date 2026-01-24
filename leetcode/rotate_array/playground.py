@@ -24,7 +24,7 @@ expected = [5, 6, 7, 1, 2, 3, 4]
 
 # %%
 result = run_rotate(Solution, nums, k)
-_ = result
+result
 
 # %%
 assert_rotate(result, expected)

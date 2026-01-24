@@ -24,7 +24,7 @@ expected_list: list[int | None] = [4, 7, 2, 9, 6, 3, 1]
 
 # %%
 result = run_invert_tree(Solution, root_list)
-_ = result
+result
 
 # %%
 assert_invert_tree(result, expected_list)

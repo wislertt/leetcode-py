@@ -23,7 +23,7 @@ expected = [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
 
 # %%
 result = run_rotate(Solution, matrix)
-_ = result
+result
 
 # %%
 assert_rotate(result, expected)

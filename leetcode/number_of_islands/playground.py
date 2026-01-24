@@ -29,7 +29,7 @@ expected = 1
 
 # %%
 result = run_num_islands(Solution, grid)
-_ = result
+result
 
 # %%
 assert_num_islands(result, expected)

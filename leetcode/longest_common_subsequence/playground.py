@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_longest_common_subsequence(Solution, text1, text2)
-_ = result
+result
 
 # %%
 assert_longest_common_subsequence(result, expected)

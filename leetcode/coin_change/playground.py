@@ -25,7 +25,7 @@ expected = 3
 
 # %%
 result = run_coin_change(Solution, coins, amount)
-_ = result
+result
 
 # %%
 assert_coin_change(result, expected)

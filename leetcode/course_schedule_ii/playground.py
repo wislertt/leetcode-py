@@ -24,7 +24,7 @@ expected = [0, 2, 1, 3]
 
 # %%
 result = run_find_order(Solution, num_courses, prerequisites)
-_ = result
+result
 
 # %%
 assert_find_order(result, expected)

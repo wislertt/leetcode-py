@@ -23,7 +23,7 @@ expected = [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
 
 # %%
 result = run_pacific_atlantic(Solution, heights)
-_ = result
+result
 
 # %%
 assert_pacific_atlantic(result, expected)

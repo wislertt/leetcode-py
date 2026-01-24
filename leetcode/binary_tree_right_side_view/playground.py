@@ -26,11 +26,11 @@ expected = [1, 3, 4]
 
 # %%
 root = TreeNode.from_list(root_list)
-_ = root
+root
 
 # %%
 result = run_right_side_view(Solution, root_list)
-_ = result
+result
 
 # %%
 assert_right_side_view(result, expected)

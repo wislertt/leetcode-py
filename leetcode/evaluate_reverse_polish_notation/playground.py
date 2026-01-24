@@ -24,7 +24,7 @@ expected = 9
 
 # %%
 result = run_eval_rpn(Solution, tokens)
-_ = result
+result
 
 # %%
 assert_eval_rpn(result, expected)

@@ -23,7 +23,7 @@ expected = 4
 
 # %%
 result = run_length_of_lis(Solution, nums)
-_ = result
+result
 
 # %%
 assert_length_of_lis(result, expected)

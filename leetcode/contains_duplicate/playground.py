@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_contains_duplicate(Solution, nums)
-_ = result
+result
 
 # %%
 assert_contains_duplicate(result, expected)

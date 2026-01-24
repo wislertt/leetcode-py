@@ -32,6 +32,7 @@ class TestDictTree:
         result = self.tree._render_dict_tree({})
         assert result == ""
 
+    @pytest.mark.filterwarnings("ignore:Visual rendering failed.*:UserWarning")
     def test_html_without_graphviz(self, monkeypatch):
         # Mock graphviz.Digraph to raise ImportError
         def mock_digraph(*_args, **_kwargs):

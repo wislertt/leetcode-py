@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_diameter_of_binary_tree(Solution, root_list)
-_ = result
+result
 
 # %%
 assert_diameter_of_binary_tree(result, expected)

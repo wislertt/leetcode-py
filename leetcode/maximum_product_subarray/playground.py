@@ -23,7 +23,7 @@ expected = 6
 
 # %%
 result = run_max_product(Solution, nums)
-_ = result
+result
 
 # %%
 assert_max_product(result, expected)

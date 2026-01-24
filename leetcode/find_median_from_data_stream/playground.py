@@ -26,7 +26,7 @@ expected = [None, None, None, 1.5, None, 2.0]
 # %%
 result, mf = run_median_finder(MedianFinder, operations, inputs)
 print(result)
-_ = mf
+mf
 
 # %%
 assert_median_finder(result, expected)

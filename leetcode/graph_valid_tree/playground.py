@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_valid_tree(Solution, n, edges)
-_ = result
+result
 
 # %%
 assert_valid_tree(result, expected)

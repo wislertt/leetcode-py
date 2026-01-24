@@ -23,7 +23,7 @@ expected = "aaabcbc"
 
 # %%
 result = run_decode_string(Solution, s)
-_ = result
+result
 
 # %%
 assert_decode_string(result, expected)

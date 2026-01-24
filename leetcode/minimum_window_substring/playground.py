@@ -25,7 +25,7 @@ expected = "BANC"
 
 # %%
 result = run_min_window(Solution, s, t)
-_ = result
+result
 
 # %%
 assert_min_window(result, expected)

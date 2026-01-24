@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from typing import Annotated
 
 import typer
 
@@ -108,25 +109,32 @@ def resolve_problems(
 
 
 def generate(
-    problem_nums: list[int] = typer.Option(  # noqa: B008
-        [], "-n", "--problem-num", help="Problem number(s) (use multiple -n flags)"
-    ),
-    problem_slugs: list[str] = typer.Option(  # noqa: B008
-        [], "-s", "--problem-slug", help="Problem slug(s) (use multiple -s flags)"
-    ),
-    problem_tag: str | None = typer.Option(
-        None,
-        "-t",
-        "--problem-tag",
-        help="Problem tag (bulk). Available tags: " + get_available_tags_help(),
-    ),
-    difficulty: str | None = typer.Option(
-        None, "-d", "--difficulty", help="Filter by difficulty (Easy/Medium/Hard)"
-    ),
-    all_problems: bool = typer.Option(False, "--all", help="Generate all problems"),
-    output: str = typer.Option(".", "-o", "--output", help="Output directory"),
-    force: bool = typer.Option(False, "--force", help="Force overwrite existing files"),
+    problem_nums: Annotated[
+        list[int] | None,
+        typer.Option("-n", "--problem-num", help="Problem number(s) (use multiple -n flags)"),
+    ] = None,
+    problem_slugs: Annotated[
+        list[str] | None,
+        typer.Option("-s", "--problem-slug", help="Problem slug(s) (use multiple -s flags)"),
+    ] = None,
+    problem_tag: Annotated[
+        str | None,
+        typer.Option(
+            "-t",
+            "--problem-tag",
+            help="Problem tag (bulk). Available tags: " + get_available_tags_help(),
+        ),
+    ] = None,
+    difficulty: Annotated[
+        str | None,
+        typer.Option("-d", "--difficulty", help="Filter by difficulty (Easy/Medium/Hard)"),
+    ] = None,
+    all_problems: Annotated[bool, typer.Option("--all", help="Generate all problems")] = False,
+    output: Annotated[str, typer.Option(".", "-o", "--output", help="Output directory")] = ".",
+    force: Annotated[bool, typer.Option("--force", help="Force overwrite existing files")] = False,
 ):
+    problem_nums = problem_nums if problem_nums is not None else []
+    problem_slugs = problem_slugs if problem_slugs is not None else []
     template_dir = get_template_path()
     output_dir = Path(output)
 

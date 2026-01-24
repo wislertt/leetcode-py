@@ -23,7 +23,7 @@ expected = [["a", "a", "b"], ["aa", "b"]]
 
 # %%
 result = run_partition(Solution, s)
-_ = result
+result
 
 # %%
 assert_partition(result, expected)

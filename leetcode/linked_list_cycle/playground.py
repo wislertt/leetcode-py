@@ -25,11 +25,11 @@ expected = True
 
 # %%
 head = create_cycle_list(values, pos)
-_ = head
+head
 
 # %%
 result = run_has_cycle(Solution, values, pos)
-_ = result
+result
 
 # %%
 assert_has_cycle(result, expected)

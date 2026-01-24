@@ -23,7 +23,7 @@ expected = [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
 
 # %%
 result = run_group_anagrams(Solution, strs)
-_ = result
+result
 
 # %%
 assert_group_anagrams(result, expected)

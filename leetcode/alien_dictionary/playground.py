@@ -23,7 +23,7 @@ expected = "wertf"
 
 # %%
 result = run_alien_order(Solution, words)
-_ = result
+result
 
 # %%
 assert_alien_order(result, expected)

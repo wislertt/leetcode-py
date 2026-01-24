@@ -24,7 +24,7 @@ expected: list[int] = [1, 2, 3, 5]
 
 # %%
 result = run_remove_nth_from_end(Solution, head_list, n)
-_ = result
+result
 
 # %%
 assert_remove_nth_from_end(result, expected)

@@ -23,7 +23,7 @@ expected = [2, 1, 4, 3]
 
 # %%
 result = run_swap_pairs(Solution, head_list)
-_ = result
+result
 
 # %%
 assert_swap_pairs(result, expected)

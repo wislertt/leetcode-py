@@ -24,7 +24,7 @@ expected = 28
 
 # %%
 result = run_unique_paths(Solution, m, n)
-_ = result
+result
 
 # %%
 assert_unique_paths(result, expected)

@@ -24,7 +24,7 @@ expected: list[str] = ["i", "love"]
 
 # %%
 result = run_top_k_frequent(Solution, words, k)
-_ = result
+result
 
 # %%
 assert_top_k_frequent(result, expected)

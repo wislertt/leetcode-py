@@ -191,6 +191,7 @@ class TestDoublyListNode:
         result = str(node)
         assert "<-> ... (long list)" in result
 
+    @pytest.mark.filterwarnings("ignore:Visual rendering failed.*:UserWarning")
     def test_repr_html_no_graphviz(self, monkeypatch) -> None:
         node = DoublyListNode.from_list([1, 2, 3])
         assert node is not None

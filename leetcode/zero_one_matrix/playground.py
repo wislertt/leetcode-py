@@ -24,7 +24,7 @@ expected = [[0, 0, 0], [0, 1, 0], [1, 2, 1]]
 
 # %%
 result = run_update_matrix(Solution, mat)
-_ = result
+result
 
 # %%
 assert_update_matrix(result, expected)

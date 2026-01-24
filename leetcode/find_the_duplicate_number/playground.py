@@ -23,7 +23,7 @@ expected = 2
 
 # %%
 result = run_find_duplicate(Solution, nums)
-_ = result
+result
 
 # %%
 assert_find_duplicate(result, expected)

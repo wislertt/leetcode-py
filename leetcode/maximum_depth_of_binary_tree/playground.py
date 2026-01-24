@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_max_depth(Solution, root_list)
-_ = result
+result
 
 # %%
 assert_max_depth(result, expected)

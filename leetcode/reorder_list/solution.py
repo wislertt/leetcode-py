@@ -51,5 +51,5 @@ class Solution:
             second_half.next = first_next
 
             # Move to next nodes
-            first_half = first_next  # type: ignore[assignment]
+            first_half = first_next
             second_half = second_next

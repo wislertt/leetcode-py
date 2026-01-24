@@ -24,7 +24,7 @@ expected = 42
 
 # %%
 result = run_my_atoi(Solution, s)
-_ = result
+result
 
 # %%
 assert_my_atoi(result, expected)

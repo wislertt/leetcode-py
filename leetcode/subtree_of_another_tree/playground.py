@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_is_subtree(Solution, root_list, sub_root_list)
-_ = result
+result
 
 # %%
 assert_is_subtree(result, expected)

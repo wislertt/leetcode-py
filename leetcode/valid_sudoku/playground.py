@@ -33,7 +33,7 @@ expected = True
 
 # %%
 result = run_is_valid_sudoku(Solution, board)
-_ = result
+result
 
 # %%
 assert_is_valid_sudoku(result, expected)

@@ -23,7 +23,7 @@ expected = 3
 
 # %%
 result = run_hamming_weight(Solution, n)
-_ = result
+result
 
 # %%
 assert_hamming_weight(result, expected)

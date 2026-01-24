@@ -24,7 +24,7 @@ expected = 2.0
 
 # %%
 result = run_find_median_sorted_arrays(Solution, nums1, nums2)
-_ = result
+result
 
 # %%
 assert_find_median_sorted_arrays(result, expected)

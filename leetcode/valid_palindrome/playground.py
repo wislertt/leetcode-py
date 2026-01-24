@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_is_palindrome(Solution, s)
-_ = result
+result
 
 # %%
 assert_is_palindrome(result, expected)

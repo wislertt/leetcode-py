@@ -27,7 +27,7 @@ expected = [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
 
 # %%
 result = run_flood_fill(Solution, image, sr, sc, color)
-_ = result
+result
 
 # %%
 assert_flood_fill(result, expected)

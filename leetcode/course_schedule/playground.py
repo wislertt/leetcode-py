@@ -25,7 +25,7 @@ expected = True
 
 # %%
 result = run_can_finish(Solution, num_courses, prerequisites)
-_ = result
+result
 
 # %%
 assert_can_finish(result, expected)

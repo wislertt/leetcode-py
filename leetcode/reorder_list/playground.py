@@ -23,7 +23,7 @@ expected: list[int] = [1, 4, 2, 3]
 
 # %%
 result = run_reorder_list(Solution, head_list)
-_ = result
+result
 
 # %%
 assert_reorder_list(result, expected)

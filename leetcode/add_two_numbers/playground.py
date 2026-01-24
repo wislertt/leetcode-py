@@ -24,7 +24,7 @@ expected_vals = [7, 0, 8]
 
 # %%
 result = run_add_two_numbers(Solution, l1_vals, l2_vals)
-_ = result
+result
 
 # %%
 assert_add_two_numbers(result, expected_vals)

@@ -23,7 +23,7 @@ adj_list = [[2, 4], [1, 3], [2, 4], [1, 3]]
 
 # %%
 result = run_clone_graph(Solution, adj_list)
-_ = result
+result
 
 # %%
 assert_clone_graph(result, adj_list)

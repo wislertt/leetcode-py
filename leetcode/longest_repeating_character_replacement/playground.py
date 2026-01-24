@@ -24,7 +24,7 @@ expected = 4
 
 # %%
 result = run_character_replacement(Solution, s, k)
-_ = result
+result
 
 # %%
 assert_character_replacement(result, expected)

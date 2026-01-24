@@ -25,7 +25,7 @@ expected = [0, 1]
 
 # %%
 result = run_two_sum(Solution, nums, target)
-_ = result
+result
 
 # %%
 assert_two_sum(result, expected)

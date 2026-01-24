@@ -25,7 +25,7 @@ expected = 4
 
 # %%
 result = run_first_bad_version(Solution, n, bad)
-_ = result
+result
 
 # %%
 assert_first_bad_version(result, expected)

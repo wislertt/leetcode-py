@@ -24,7 +24,7 @@ expected = [1, 2]
 
 # %%
 result = run_top_k_frequent(Solution, nums, k)
-_ = result
+result
 
 # %%
 assert_top_k_frequent(result, expected)

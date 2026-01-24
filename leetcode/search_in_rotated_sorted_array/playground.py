@@ -25,7 +25,7 @@ expected = 4
 
 # %%
 result = run_search(Solution, nums, target)
-_ = result
+result
 
 # %%
 assert_search(result, expected)

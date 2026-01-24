@@ -25,7 +25,7 @@ expected = [1]
 
 # %%
 result = run_find_min_height_trees(Solution, n, edges)
-_ = result
+result
 
 # %%
 assert_find_min_height_trees(result, expected)

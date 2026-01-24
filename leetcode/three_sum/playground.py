@@ -24,7 +24,7 @@ expected = [[-1, -1, 2], [-1, 0, 1]]
 
 # %%
 result = run_three_sum(Solution, nums)
-_ = result
+result
 
 # %%
 assert_three_sum(result, expected)

@@ -23,7 +23,7 @@ expected = 12
 
 # %%
 result = run_rob(Solution, nums)
-_ = result
+result
 
 # %%
 assert_rob(result, expected)

@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_can_complete_circuit(Solution, gas, cost)
-_ = result
+result
 
 # %%
 assert_can_complete_circuit(result, expected)
