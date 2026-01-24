@@ -32,21 +32,13 @@ class MyBakebook(PythonSpace):
         return problem_path
 
     @command("p-test", help="Run problem specific tests")
-    def problem_test(
-        self,
-        ctx: Context,
-        problem: Annotated[str, typer.Option("-p", "--problem")] = PROBLEM,
-    ):
+    def problem_test(self, ctx: Context, problem: problem_option = PROBLEM):
         problem_path = self.is_problem_exist(problem)
         tests_path = str(problem_path / "test_solution.py")
         self._test(ctx, tests_paths=tests_path, verbose=True, coverage_report=False)
 
     @command("p-lint", help="Run linter")
-    def problem_lint(
-        self,
-        ctx: Context,
-        problem: problem_option = PROBLEM,
-    ):
+    def problem_lint(self, ctx: Context, problem: problem_option = PROBLEM):
         # TODO: only for backward compat with current docs. prefer using `bake lint` instead.
         _ = problem
         self.lint(ctx)
@@ -59,7 +51,7 @@ class MyBakebook(PythonSpace):
         ctx.run(f"uv run lcpy gen -s {problem} -o leetcode {'--force' if force else ''}".strip())
 
     @command("p-del", help="Delete specific problem directory")
-    def problem_delete(self, problem: Annotated[str, typer.Option("-p", "--problem")] = PROBLEM):
+    def problem_delete(self, problem: problem_option = PROBLEM):
         problem_path = self.is_problem_exist(problem)
         shutil.rmtree(problem_path)
         console.echo(f"Deleted: {problem_path}")
@@ -97,10 +89,8 @@ class MyBakebook(PythonSpace):
 
         console.echo("Deleting existing problems...")
 
-        # Delete all problem directories in leetcode/
-        for problem_dir in Path("leetcode").iterdir():
-            if problem_dir.is_dir():
-                shutil.rmtree(problem_dir)
+        if Path("leetcode").exists():
+            shutil.rmtree(Path("leetcode"))
 
         console.echo("Generating all problems...")
         force_flag = "--force" if force else ""
