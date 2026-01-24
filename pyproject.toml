@@ -75,6 +75,10 @@ extend_exclude = [
   "src/leetcode_py/cli/resources"
 ]
 
+# Debug
+[tool.deptry.package_module_name_map]
+bakefile = ["bake", "bakelib"]
+
 [tool.pytest.ini_options]
 testpaths = ["leetcode", "tests"]
 norecursedirs = ["src/leetcode_py/cli/resources"]
@@ -125,3 +129,24 @@ exclude = [
 [tool.uv.build-backend]
 module-name = ["leetcode_py"]
 module-root = "src"
+
+# Debug
+[tool.uv.sources]
+bakefile = {workspace = true}
+
+# Debug
+[tool.uv.workspace]
+members = [".", "../bakefile"]
+
+# Debug with local bakefile in editable mode
+# # Debug
+# [tool.deptry.package_module_name_map]
+# bakefile = ["bake", "bakelib"]
+#
+# # Debug
+# [tool.uv.sources]
+# bakefile = {workspace = true}
+#
+# # Debug
+# [tool.uv.workspace]
+# members = [".", "../bakefile"]
