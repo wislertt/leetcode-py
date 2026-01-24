@@ -23,7 +23,7 @@ expected = 4
 
 # %%
 result = run_width_of_binary_tree(Solution, root_list)
-result
+_ = result
 
 # %%
 assert_width_of_binary_tree(result, expected)

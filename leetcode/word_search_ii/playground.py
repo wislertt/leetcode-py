@@ -24,7 +24,7 @@ expected = ["eat", "oath"]
 
 # %%
 result = run_find_words(Solution, board, words)
-result
+_ = result
 
 # %%
 assert_find_words(result, expected)

@@ -26,7 +26,7 @@ expected_val = 3
 
 # %%
 result = run_lowest_common_ancestor(Solution, root_list, p_val, q_val)
-result.val
+_ = result.val
 
 # %%
 assert_lowest_common_ancestor(result, expected_val)

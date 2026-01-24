@@ -23,7 +23,7 @@ root_list = [1, 2, 3, None, None, 4, 5]
 
 # %%
 result = run_serialize_deserialize(Codec, root_list)
-result
+_ = result
 
 # %%
 assert_serialize_deserialize(result, root_list)

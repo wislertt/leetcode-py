@@ -24,7 +24,7 @@ expected = 10
 
 # %%
 result = run_largest_rectangle_area(Solution, heights)
-result
+_ = result
 
 # %%
 assert_largest_rectangle_area(result, expected)

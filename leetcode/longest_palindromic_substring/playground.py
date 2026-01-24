@@ -24,7 +24,7 @@ expected = {"bab", "aba"}
 
 # %%
 result = run_longest_palindrome(Solution, s)
-result
+_ = result
 
 # %%
 assert_longest_palindrome(result, expected)

@@ -24,7 +24,7 @@ expected = [[5, 4, 11, 2], [5, 8, 4, 5]]
 
 # %%
 result = run_path_sum(Solution, root_list, target_sum)
-result
+_ = result
 
 # %%
 assert_path_sum(result, expected)

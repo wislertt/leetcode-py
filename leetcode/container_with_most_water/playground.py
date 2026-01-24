@@ -24,7 +24,7 @@ expected = 49
 
 # %%
 result = run_max_area(Solution, height)
-result
+_ = result
 
 # %%
 assert_max_area(result, expected)

@@ -22,7 +22,7 @@ def main():
 
     if unsorted_tags:
         print("❌ Found unsorted problem lists:")
-        for tag_name, current, expected in unsorted_tags:
+        for tag_name, _current, expected in unsorted_tags:
             print(f"\n{tag_name}:")
             print(f"  Expected: {expected}")
         sys.exit(1)

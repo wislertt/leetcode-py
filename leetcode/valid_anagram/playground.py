@@ -25,7 +25,7 @@ expected = True
 
 # %%
 result = run_is_anagram(Solution, s, t)
-result
+_ = result
 
 # %%
 assert_is_anagram(result, expected)

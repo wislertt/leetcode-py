@@ -23,7 +23,7 @@ expected = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
 # %%
 result = run_subsets(Solution, nums)
-result
+_ = result
 
 # %%
 assert_subsets(result, expected)

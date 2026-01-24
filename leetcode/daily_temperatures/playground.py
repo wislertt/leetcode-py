@@ -23,7 +23,7 @@ expected = [1, 1, 4, 2, 1, 1, 0, 0]
 
 # %%
 result = run_daily_temperatures(Solution, temperatures)
-result
+_ = result
 
 # %%
 assert_daily_temperatures(result, expected)

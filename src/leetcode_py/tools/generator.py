@@ -18,7 +18,7 @@ def load_json_data(json_path: Path) -> dict:
             return json.load(f)
     except (json.JSONDecodeError, OSError) as e:
         typer.echo(f"Error reading {json_path}: {e}", err=True)
-        raise typer.Exit(1)
+        raise typer.Exit(1) from None
 
 
 def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> None:
@@ -87,7 +87,7 @@ def generate_from_template(data: dict, template_dir: Path, output_dir: Path) -> 
         typer.echo(f"✅ Generated problem: {problem_name}")
     except Exception as e:
         typer.echo(f"Error generating template: {e}", err=True)
-        raise typer.Exit(1)
+        raise typer.Exit(1) from None
 
 
 def generate_problem(

@@ -26,7 +26,7 @@ expected = [None, None, True, False, True, None, True]
 # %%
 result, trie = run_trie_operations(Trie, operations, inputs)
 print(result)
-trie
+_ = trie
 
 # %%
 assert_trie_operations(result, expected)

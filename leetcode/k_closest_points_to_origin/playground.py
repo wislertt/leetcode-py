@@ -25,7 +25,7 @@ expected = [[-2, 2]]
 
 # %%
 result = run_k_closest(Solution, points, k)
-result
+_ = result
 
 # %%
 assert_k_closest(result, expected)

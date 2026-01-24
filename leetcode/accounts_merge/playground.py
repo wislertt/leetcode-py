@@ -32,7 +32,7 @@ expected = [
 
 # %%
 result = run_accounts_merge(Solution, accounts)
-result
+_ = result
 
 # %%
 assert_accounts_merge(result, expected)

@@ -2,7 +2,7 @@ class Solution:
     # Time: O(V + E) where V = num_courses, E = prerequisites
     # Space: O(V + E) for adjacency list and recursion stack
     def can_finish(self, num_courses: int, prerequisites: list[list[int]]) -> bool:
-        UNVISITED, VISITING, VISITED = 0, 1, 2
+        UNVISITED, VISITING, VISITED = 0, 1, 2  # noqa: N806
 
         graph: list[list[int]] = [[] for _ in range(num_courses)]
         for course, prereq in prerequisites:

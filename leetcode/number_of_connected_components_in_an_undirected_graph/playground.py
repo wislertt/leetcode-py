@@ -24,7 +24,7 @@ expected = 2
 
 # %%
 result = run_count_components(Solution, n, edges)
-result
+_ = result
 
 # %%
 assert_count_components(result, expected)

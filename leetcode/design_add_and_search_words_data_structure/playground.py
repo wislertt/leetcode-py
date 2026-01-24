@@ -33,7 +33,7 @@ expected = [None, None, None, None, False, True, True, True]
 
 # %%
 result = run_word_dictionary(WordDictionary, operations, inputs)
-result
+_ = result
 
 # %%
 assert_word_dictionary(result, expected)

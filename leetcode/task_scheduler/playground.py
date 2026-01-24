@@ -25,7 +25,7 @@ expected = 8
 
 # %%
 result = run_least_interval(Solution, tasks, n)
-result
+_ = result
 
 # %%
 assert_least_interval(result, expected)

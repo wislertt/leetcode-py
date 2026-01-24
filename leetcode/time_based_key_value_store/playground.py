@@ -25,7 +25,7 @@ expected = [None, None, "bar", "bar", None, "bar2", "bar2"]
 
 # %%
 result = run_time_map_operations(TimeMap, operations, inputs)
-result
+_ = result
 
 # %%
 assert_time_map_operations(result, expected)

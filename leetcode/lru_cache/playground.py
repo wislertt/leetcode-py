@@ -26,7 +26,7 @@ expected = [None, None, None, 1, None, -1, None, -1, 3, 4]
 # %%
 result, cache = run_lru_cache(LRUCache, operations, inputs)
 print(result)
-cache.cache
+_ = cache.cache
 
 # %%
 assert_lru_cache(result, expected)

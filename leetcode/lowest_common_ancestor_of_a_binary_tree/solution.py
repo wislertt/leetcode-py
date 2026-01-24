@@ -14,7 +14,7 @@ class Solution:
     def _lca(
         self, root: TreeNode[int] | None, p: TreeNode[int], q: TreeNode[int]
     ) -> TreeNode[int] | None:
-        if not root or root == p or root == q:
+        if root in (p, q) or not root:
             return root
 
         left = self._lca(root.left, p, q)

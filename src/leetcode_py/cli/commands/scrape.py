@@ -48,4 +48,4 @@ def scrape(
 
     except Exception as e:
         typer.echo(f"Error fetching problem: {e}", err=True)
-        raise typer.Exit(1)
+        raise typer.Exit(1) from None

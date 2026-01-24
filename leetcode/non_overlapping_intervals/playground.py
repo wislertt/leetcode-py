@@ -23,7 +23,7 @@ expected = 1
 
 # %%
 result = run_erase_overlap_intervals(Solution, intervals)
-result
+_ = result
 
 # %%
 assert_erase_overlap_intervals(result, expected)

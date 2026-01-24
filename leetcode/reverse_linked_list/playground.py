@@ -24,7 +24,7 @@ expected_list = [5, 4, 3, 2, 1]
 
 # %%
 result = run_reverse_list(Solution, head_list)
-result
+_ = result
 
 # %%
 assert_reverse_list(result, expected_list)

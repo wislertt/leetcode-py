@@ -24,7 +24,7 @@ expected = [0, 0, 1, 1, 2, 2]
 
 # %%
 result = run_sort_colors(Solution, nums)
-result
+_ = result
 
 # %%
 assert_sort_colors(result, expected)

@@ -77,10 +77,9 @@ class GraphNode:
             neighbors1 = sorted(node1.neighbors, key=lambda x: x.val)
             neighbors2 = sorted(node2.neighbors, key=lambda x: x.val)
 
-            for n1, n2 in zip(neighbors1, neighbors2):
-                if not dfs_check_identity(n1, n2):
-                    return False
-            return True
+            return all(
+                dfs_check_identity(n1, n2) for n1, n2 in zip(neighbors1, neighbors2, strict=False)
+            )
 
         return dfs_check_identity(self, other)
 

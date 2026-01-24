@@ -25,7 +25,7 @@ expected = 1
 
 # %%
 result = run_kth_smallest(Solution, root_list, k)
-result
+_ = result
 
 # %%
 assert_kth_smallest(result, expected)

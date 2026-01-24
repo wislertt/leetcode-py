@@ -5,7 +5,7 @@ def run_word_dictionary(solution_class: type, operations: list[str], inputs: lis
     wd: Any = None
     results: list[bool | None] = []
 
-    for op, args in zip(operations, inputs):
+    for op, args in zip(operations, inputs, strict=False):
         if op == "WordDictionary":
             wd = solution_class()
             results.append(None)

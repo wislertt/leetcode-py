@@ -23,7 +23,7 @@ expected = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
 
 # %%
 result = run_set_zeroes(Solution, matrix)
-result
+_ = result
 
 # %%
 assert_set_zeroes(result, expected)

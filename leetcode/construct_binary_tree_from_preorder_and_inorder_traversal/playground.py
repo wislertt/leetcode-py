@@ -24,7 +24,7 @@ expected_list = [3, 9, 20, None, None, 15, 7]
 
 # %%
 result = run_build_tree(Solution, preorder, inorder)
-result
+_ = result
 
 # %%
 assert_build_tree(result, expected_list)

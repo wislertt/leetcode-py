@@ -24,7 +24,7 @@ expected = "100"
 
 # %%
 result = run_add_binary(Solution, a, b)
-result
+_ = result
 
 # %%
 assert_add_binary(result, expected)

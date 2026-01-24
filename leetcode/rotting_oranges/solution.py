@@ -5,7 +5,7 @@ class Solution:
     # Time: O(m*n)
     # Space: O(m*n)
     def oranges_rotting(self, grid: list[list[int]]) -> int:
-        EMPTY, FRESH, ROTTEN = 0, 1, 2
+        EMPTY, FRESH, ROTTEN = 0, 1, 2  # noqa: N806
         _ = EMPTY
 
         m, n = len(grid), len(grid[0])

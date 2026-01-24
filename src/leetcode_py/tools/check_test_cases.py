@@ -68,7 +68,7 @@ def check_test_cases(
                 filtered_problems = filtered_problems[:max_count]
         except ValueError:
             typer.echo(f"Invalid max_results value: {max_results}", err=True)
-            raise typer.Exit(1)
+            raise typer.Exit(1) from None
 
     typer.echo(f"Problems with ≤{threshold} test cases ({len(filtered_problems)} total):")
     for problem_name, count in filtered_problems:

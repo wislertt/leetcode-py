@@ -23,7 +23,7 @@ expected: int = 6
 
 # %%
 result = run_max_path_sum(Solution, root_list)
-result
+_ = result
 
 # %%
 assert_max_path_sum(result, expected)

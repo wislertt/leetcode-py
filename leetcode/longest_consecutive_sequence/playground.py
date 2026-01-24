@@ -23,7 +23,7 @@ expected = 4
 
 # %%
 result = run_longest_consecutive(Solution, nums)
-result
+_ = result
 
 # %%
 assert_longest_consecutive(result, expected)

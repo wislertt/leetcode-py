@@ -24,7 +24,7 @@ expected = 6
 
 # %%
 result = run_max_sub_array(Solution, nums)
-result
+_ = result
 
 # %%
 assert_max_sub_array(result, expected)

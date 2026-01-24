@@ -24,7 +24,7 @@ expected = [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
 # %%
 result = run_permute(Solution, nums)
-result
+_ = result
 
 # %%
 assert_permute(result, expected)

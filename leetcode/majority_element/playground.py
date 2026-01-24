@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_majority_element(Solution, nums)
-result
+_ = result
 
 # %%
 assert_majority_element(result, expected)

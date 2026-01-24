@@ -1,5 +1,6 @@
 # Unscrapable Problems List
-# Problems that cannot be scraped due to being premium, having API issues, or other technical limitations
+# Problems that cannot be scraped due to being premium, API issues, or other
+# technical limitations.
 
 # Format: (problem_number, problem_name)
 UNSCRAPABLE_PROBLEMS = [

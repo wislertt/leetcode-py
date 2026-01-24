@@ -25,7 +25,7 @@ expected = [[2, 2, 3], [7]]
 
 # %%
 result = run_combination_sum(Solution, candidates, target)
-result
+_ = result
 
 # %%
 assert_combination_sum(result, expected)

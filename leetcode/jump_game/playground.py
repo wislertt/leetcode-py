@@ -23,7 +23,7 @@ expected = True
 
 # %%
 result = run_can_jump(Solution, nums)
-result
+_ = result
 
 # %%
 assert_can_jump(result, expected)

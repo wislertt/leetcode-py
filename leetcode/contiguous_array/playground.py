@@ -23,7 +23,7 @@ expected = 2
 
 # %%
 result = run_find_max_length(Solution, nums)
-result
+_ = result
 
 # %%
 assert_find_max_length(result, expected)

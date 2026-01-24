@@ -25,7 +25,7 @@ expected = [1, 2, 3, 4]
 
 # %%
 result = run_find_closest_elements(Solution, arr, k, x)
-result
+_ = result
 
 # %%
 assert_find_closest_elements(result, expected)

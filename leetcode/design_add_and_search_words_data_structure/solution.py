@@ -26,10 +26,7 @@ class WordDictionary:
 
             char = word[i]
             if char == ".":
-                for key in node:
-                    if key != "#" and dfs(i + 1, node[key]):
-                        return True
-                return False
+                return any(key != "#" and dfs(i + 1, node[key]) for key in node)
             else:
                 return char in node and dfs(i + 1, node[char])
 

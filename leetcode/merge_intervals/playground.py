@@ -24,7 +24,7 @@ expected = [[1, 6], [8, 10], [15, 18]]
 
 # %%
 result = run_merge(Solution, intervals)
-result
+_ = result
 
 # %%
 assert_merge(result, expected)

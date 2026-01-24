@@ -24,7 +24,7 @@ expected_vals = [2, 1, 4, 3, 5]
 
 # %%
 result = run_reverse_k_group(Solution, head_vals, k)
-result
+_ = result
 
 # %%
 assert_reverse_k_group(result, expected_vals)

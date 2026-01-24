@@ -23,7 +23,7 @@ expected = 2
 
 # %%
 result = run_missing_number(Solution, nums)
-result
+_ = result
 
 # %%
 assert_missing_number(result, expected)

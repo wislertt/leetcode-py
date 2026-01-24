@@ -23,7 +23,7 @@ expected = [0, 1, 1]
 
 # %%
 result = run_count_bits(Solution, n)
-result
+_ = result
 
 # %%
 assert_count_bits(result, expected)

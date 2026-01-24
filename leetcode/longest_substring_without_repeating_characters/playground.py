@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_length_of_longest_substring(Solution, s)
-result
+_ = result
 
 # %%
 assert_length_of_longest_substring(result, expected)

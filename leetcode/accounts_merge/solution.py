@@ -29,6 +29,6 @@ class Solution:
 
             emails: set[str] = set()
             dfs(i, emails)
-            result.append([accounts[i][0]] + sorted(emails))
+            result.append([accounts[i][0], *sorted(emails)])
 
         return result

@@ -40,7 +40,7 @@ def test_scrape_multiple_options():
 def test_scrape_success_real_api(
     args, expected_number, expected_title, expected_slug, expected_difficulty
 ):
-    result = runner.invoke(app, ["scrape"] + args)
+    result = runner.invoke(app, ["scrape", *args])
 
     assert result.exit_code == 0
 
@@ -70,7 +70,7 @@ def test_scrape_success_real_api(
     ],
 )
 def test_scrape_not_found_real_api(args, expected_error):
-    result = runner.invoke(app, ["scrape"] + args)
+    result = runner.invoke(app, ["scrape", *args])
 
     assert result.exit_code == 1
     assert expected_error in result.stderr

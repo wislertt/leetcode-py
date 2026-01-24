@@ -23,7 +23,7 @@ expected: int = 1
 
 # %%
 result = run_find_min(Solution, nums)
-result
+_ = result
 
 # %%
 assert_find_min(result, expected)

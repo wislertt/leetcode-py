@@ -25,7 +25,7 @@ expected = [[1, 5], [6, 9]]
 
 # %%
 result = run_insert(Solution, intervals, new_interval)
-result
+_ = result
 
 # %%
 assert_insert(result, expected)

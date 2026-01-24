@@ -58,12 +58,7 @@ class HTMLParser:
         current_case = []
 
         for line in lines:
-            if (
-                line.startswith("[")
-                or line.startswith('"')
-                or line.isdigit()
-                or line.startswith("-")
-            ):
+            if line.startswith(("[", '"', "-")) or line.isdigit():
                 current_case.append(line)
             else:
                 if current_case:

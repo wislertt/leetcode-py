@@ -10,5 +10,5 @@ def handle_graphviz_fallback(e: Exception, fallback_content: str) -> str:
         )
     else:
         msg = f"Visual rendering failed: Missing dependencies ({e!s}). Using text display instead."
-    warnings.warn(msg, UserWarning)
+    warnings.warn(msg, UserWarning, stacklevel=2)
     return f"<pre>{fallback_content}</pre>"

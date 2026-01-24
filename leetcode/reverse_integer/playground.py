@@ -23,7 +23,7 @@ expected = 321
 
 # %%
 result = run_reverse(Solution, x)
-result
+_ = result
 
 # %%
 assert_reverse(result, expected)

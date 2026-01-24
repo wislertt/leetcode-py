@@ -25,7 +25,7 @@ expected = True
 
 # %%
 result = run_word_break(Solution, s, word_dict)
-result
+_ = result
 
 # %%
 assert_word_break(result, expected)

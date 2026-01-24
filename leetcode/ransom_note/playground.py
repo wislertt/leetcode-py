@@ -25,7 +25,7 @@ expected = True
 
 # %%
 result = run_can_construct(Solution, ransom_note, magazine)
-result
+_ = result
 
 # %%
 assert_can_construct(result, expected)

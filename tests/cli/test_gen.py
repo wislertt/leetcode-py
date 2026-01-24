@@ -41,7 +41,7 @@ def test_gen_no_options():
     ],
 )
 def test_gen_multiple_options(args):
-    result = runner.invoke(app, ["gen"] + args)
+    result = runner.invoke(app, ["gen", *args])
     assert result.exit_code == 1
     assert (
         "Exactly one of --problem-num, --problem-slug, --problem-tag, or --all is required"
@@ -58,7 +58,7 @@ def test_gen_multiple_options(args):
 )
 def test_gen_by_numbers(args, expected_problems, expected_count):
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen"] + args + ["-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen", *args, "-o", temp_dir, "--force"])
         assert result.exit_code == 0
 
         for problem in expected_problems:
@@ -83,7 +83,7 @@ def test_gen_by_numbers(args, expected_problems, expected_count):
 )
 def test_gen_by_slugs(args, expected_problems, expected_count):
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen"] + args + ["-o", temp_dir, "--force"])
+        result = runner.invoke(app, ["gen", *args, "-o", temp_dir, "--force"])
         assert result.exit_code == 0
 
         for problem in expected_problems:
@@ -124,7 +124,7 @@ def test_gen_with_difficulty_filter():
     ],
 )
 def test_gen_invalid_inputs(args, expected_error):
-    result = runner.invoke(app, ["gen"] + args)
+    result = runner.invoke(app, ["gen", *args])
     assert result.exit_code == 1
     assert expected_error in result.stderr
 

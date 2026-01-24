@@ -23,7 +23,7 @@ expected = 3
 
 # %%
 result = run_count_substrings(Solution, s)
-result
+_ = result
 
 # %%
 assert_count_substrings(result, expected)

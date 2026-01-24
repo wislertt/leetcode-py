@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_is_valid_bst(Solution, root_list)
-result
+_ = result
 
 # %%
 assert_is_valid_bst(result, expected)

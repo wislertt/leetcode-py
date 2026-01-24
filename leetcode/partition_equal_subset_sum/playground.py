@@ -24,7 +24,7 @@ expected = True
 
 # %%
 result = run_can_partition(Solution, nums)
-result
+_ = result
 
 # %%
 assert_can_partition(result, expected)

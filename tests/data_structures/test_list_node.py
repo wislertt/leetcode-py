@@ -188,7 +188,7 @@ class TestListNode:
         assert node is not None
 
         # Mock graphviz.Digraph to raise ImportError
-        def mock_digraph(*args, **kwargs):
+        def mock_digraph(*_args, **_kwargs):
             raise ImportError("No module named 'graphviz'")
 
         monkeypatch.setattr("leetcode_py.data_structures.list_node.graphviz.Digraph", mock_digraph)

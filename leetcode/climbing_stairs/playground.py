@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_climb_stairs(Solution, n)
-result
+_ = result
 
 # %%
 assert_climb_stairs(result, expected)

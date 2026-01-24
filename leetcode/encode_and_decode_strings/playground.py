@@ -23,7 +23,7 @@ expected = strs
 
 # %%
 result = run_encode_decode(Solution, strs)
-result
+_ = result
 
 # %%
 assert_encode_decode(result, expected)

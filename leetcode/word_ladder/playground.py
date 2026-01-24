@@ -26,7 +26,7 @@ expected = 5
 
 # %%
 result = run_ladder_length(Solution, begin_word, end_word, word_list)
-result
+_ = result
 
 # %%
 assert_ladder_length(result, expected)

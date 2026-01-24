@@ -24,7 +24,7 @@ expected = [24, 12, 8, 6]
 
 # %%
 result = run_product_except_self(Solution, nums)
-result
+_ = result
 
 # %%
 assert_product_except_self(result, expected)

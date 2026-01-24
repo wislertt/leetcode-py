@@ -5,10 +5,10 @@ class Solution:
     # Time: O(n log n)
     # Space: O(n)
     def job_scheduling(self, start_time: list[int], end_time: list[int], profit: list[int]) -> int:
-        jobs = sorted(zip(end_time, start_time, profit))
+        jobs = sorted(zip(end_time, start_time, profit, strict=False))
         dp = [0] * len(jobs)
 
-        for i, (end, start, p) in enumerate(jobs):
+        for i, (_end, start, p) in enumerate(jobs):
             # Binary search for latest non-overlapping job
             j = bisect.bisect_right([job[0] for job in jobs[:i]], start) - 1
 

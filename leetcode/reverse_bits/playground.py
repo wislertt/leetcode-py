@@ -23,7 +23,7 @@ expected: int = 964176192
 
 # %%
 result = run_reverse_bits(Solution, n)
-result
+_ = result
 
 # %%
 assert_reverse_bits(result, expected)

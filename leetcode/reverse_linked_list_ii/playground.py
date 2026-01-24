@@ -25,7 +25,7 @@ expected_list = [1, 4, 3, 2, 5]
 
 # %%
 result = run_reverse_between(Solution, head_list, left, right)
-result
+_ = result
 
 # %%
 assert_reverse_between(result, expected_list)

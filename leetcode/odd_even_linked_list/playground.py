@@ -23,7 +23,7 @@ expected = [1, 3, 5, 2, 4]
 
 # %%
 result = run_odd_even_list(Solution, head_list)
-result
+_ = result
 
 # %%
 assert_odd_even_list(result, expected)

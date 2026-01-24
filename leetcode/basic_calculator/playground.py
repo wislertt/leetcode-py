@@ -24,7 +24,7 @@ expected = 23
 
 # %%
 result = run_calculate(Solution, s)
-result
+_ = result
 
 # %%
 assert_calculate(result, expected)

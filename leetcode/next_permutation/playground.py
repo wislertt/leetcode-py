@@ -23,7 +23,7 @@ expected = [1, 3, 2]
 
 # %%
 result = run_next_permutation(Solution, nums)
-result
+_ = result
 
 # %%
 assert_next_permutation(result, expected)

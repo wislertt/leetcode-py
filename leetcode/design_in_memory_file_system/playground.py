@@ -25,7 +25,7 @@ expected = [None, [], None, None, ["a"], "hello"]
 # %%
 result, fs = run_file_system(FileSystem, operations, inputs)
 print(result)
-fs
+_ = fs
 
 # %%
 assert_file_system(result, expected)

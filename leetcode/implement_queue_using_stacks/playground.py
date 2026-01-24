@@ -26,7 +26,7 @@ expected = [None, None, None, 1, 1, False]
 # %%
 result, queue = run_my_queue(MyQueue, operations, inputs)
 print(result)
-queue
+_ = queue
 
 # %%
 assert_my_queue(result, expected)

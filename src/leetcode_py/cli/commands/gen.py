@@ -45,7 +45,8 @@ def _validate_single_option(
 
     if options_count != 1:
         typer.echo(
-            "Error: Exactly one of --problem-num, --problem-slug, --problem-tag, or --all is required",
+            "Error: Exactly one of --problem-num, --problem-slug, "
+            "--problem-tag, or --all is required",
             err=True,
         )
         raise typer.Exit(1)
@@ -107,10 +108,10 @@ def resolve_problems(
 
 
 def generate(
-    problem_nums: list[int] = typer.Option(
+    problem_nums: list[int] = typer.Option(  # noqa: B008
         [], "-n", "--problem-num", help="Problem number(s) (use multiple -n flags)"
     ),
-    problem_slugs: list[str] = typer.Option(
+    problem_slugs: list[str] = typer.Option(  # noqa: B008
         [], "-s", "--problem-slug", help="Problem slug(s) (use multiple -s flags)"
     ),
     problem_tag: str | None = typer.Option(

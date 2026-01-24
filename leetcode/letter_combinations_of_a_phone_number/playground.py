@@ -23,7 +23,7 @@ expected = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
 
 # %%
 result = run_letter_combinations(Solution, digits)
-result
+_ = result
 
 # %%
 assert_letter_combinations(result, expected)

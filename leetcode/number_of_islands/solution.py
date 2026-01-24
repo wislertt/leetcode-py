@@ -4,8 +4,8 @@ class Solution:
     def num_islands(self, grid: list[list[str]]) -> int:
         if not grid or not grid[0]:
             return 0
-        VISITED = "0"
-        UNVISITED_ISLAND = "1"
+        VISITED = "0"  # noqa: N806
+        UNVISITED_ISLAND = "1"  # noqa: N806
 
         rows, cols = len(grid), len(grid[0])
         islands = 0

@@ -24,7 +24,7 @@ expected = 3
 
 # %%
 result = run_get_sum(Solution, a, b)
-result
+_ = result
 
 # %%
 assert_get_sum(result, expected)

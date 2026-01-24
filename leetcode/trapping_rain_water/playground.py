@@ -24,7 +24,7 @@ expected = 6
 
 # %%
 result = run_trap(Solution, height)
-result
+_ = result
 
 # %%
 assert_trap(result, expected)

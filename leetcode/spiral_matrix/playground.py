@@ -24,7 +24,7 @@ expected = [1, 2, 3, 6, 9, 8, 7, 4, 5]
 
 # %%
 result = run_spiral_order(Solution, matrix)
-result
+_ = result
 
 # %%
 assert_spiral_order(result, expected)

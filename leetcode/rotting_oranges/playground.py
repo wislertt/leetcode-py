@@ -24,7 +24,7 @@ expected = 4
 
 # %%
 result = run_oranges_rotting(Solution, grid)
-result
+_ = result
 
 # %%
 assert_oranges_rotting(result, expected)
