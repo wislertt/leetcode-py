@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n + e)
     # Space: O(n + e)
     def valid_tree(self, n: int, edges: list[list[int]]) -> bool:

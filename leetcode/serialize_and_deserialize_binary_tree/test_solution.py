@@ -7,7 +7,6 @@ from .solution import Codec
 
 
 class TestSerializeAndDeserializeBinaryTree:
-
     @logged_test
     @pytest.mark.parametrize(
         "root_list",

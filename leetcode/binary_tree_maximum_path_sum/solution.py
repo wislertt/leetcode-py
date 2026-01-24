@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(n) where n is the number of nodes
     # Space: O(h) where h is the height of the tree (recursion stack)
     def max_path_sum(self, root: TreeNode[int] | None) -> int:

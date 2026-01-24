@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(max(m, n))
     # Space: O(max(m, n))
     def add_two_numbers(

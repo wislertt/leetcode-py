@@ -2,7 +2,6 @@ from collections import deque
 
 
 class Solution:
-
     # Time: O(m*n)
     # Space: O(m*n)
     def oranges_rotting(self, grid: list[list[int]]) -> int:

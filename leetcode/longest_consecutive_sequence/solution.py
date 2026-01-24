@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n) - each number visited at most twice (once as start, once as continuation)
     # Space: O(n) - hash set storage
     def longest_consecutive(self, nums: list[int]) -> int:

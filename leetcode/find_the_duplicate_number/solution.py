@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def find_duplicate(self, nums: list[int]) -> int:

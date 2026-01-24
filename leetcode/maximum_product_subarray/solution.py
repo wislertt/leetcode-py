@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def max_product(self, nums: list[int]) -> int:

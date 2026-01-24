@@ -107,7 +107,9 @@ def test_gen_by_tag():
 
 def test_gen_with_difficulty_filter():
     with tempfile.TemporaryDirectory() as temp_dir:
-        result = runner.invoke(app, ["gen", "-t", "grind-75", "-d", "Easy", "-o", temp_dir, "--force"])
+        result = runner.invoke(
+            app, ["gen", "-t", "grind-75", "-d", "Easy", "-o", temp_dir, "--force"]
+        )
         assert result.exit_code == 0
         assert "Found" in result.stdout
         assert "Filtered to" in result.stdout

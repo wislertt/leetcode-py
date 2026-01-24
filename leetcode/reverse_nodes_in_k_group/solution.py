@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def reverse_k_group(self, head: ListNode[int] | None, k: int) -> ListNode[int] | None:

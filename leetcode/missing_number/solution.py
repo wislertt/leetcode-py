@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def missing_number(self, nums: list[int]) -> int:

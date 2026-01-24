@@ -132,6 +132,8 @@ class TestWordLadder:
             ("cold", "warm", ["cold", "cord", "word", "ward", "warm"], 5),
         ],
     )
-    def test_ladder_length(self, begin_word: str, end_word: str, word_list: list[str], expected: int):
+    def test_ladder_length(
+        self, begin_word: str, end_word: str, word_list: list[str], expected: int
+    ):
         result = run_ladder_length(Solution, begin_word, end_word, word_list)
         assert_ladder_length(result, expected)

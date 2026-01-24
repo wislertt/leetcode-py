@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n) - single pass through string
     # Space: O(1) - at most 26 characters in count dict
     def character_replacement(self, s: str, k: int) -> int:

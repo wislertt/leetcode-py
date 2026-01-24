@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n log n)
     # Space: O(n)
     def length_of_lis(self, nums: list[int]) -> int:

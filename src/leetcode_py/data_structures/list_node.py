@@ -37,7 +37,7 @@ class ListNode(Generic[T]):
 
     def to_list(self, max_length: int = 1000) -> list[T]:
         result: list[T] = []
-        current: "ListNode[T] | None" = self
+        current: ListNode[T] | None = self
         visited: set[int] = set()
 
         while current and len(result) < max_length:
@@ -53,7 +53,7 @@ class ListNode(Generic[T]):
         if self._has_cycle():
             # Show cycle with target value
             result: list[str] = []
-            current: "ListNode[T] | None" = self
+            current: ListNode[T] | None = self
             visited: dict[int, int] = {}
             position = 0
 
@@ -86,7 +86,7 @@ class ListNode(Generic[T]):
             dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightblue")
             dot.attr("edge", color="black")
 
-            current: "ListNode[T] | None" = self
+            current: ListNode[T] | None = self
             visited: dict[int, int] = {}
             node_id = 0
 

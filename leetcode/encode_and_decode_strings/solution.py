@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     def encode(self, strs: list[str]) -> str:

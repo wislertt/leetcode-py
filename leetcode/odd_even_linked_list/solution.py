@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(n) - single pass through list
     # Space: O(1) - only pointer manipulation
     def odd_even_list(self, head: ListNode[int] | None) -> ListNode[int] | None:

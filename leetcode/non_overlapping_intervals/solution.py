@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n log n) - sorting dominates
     # Space: O(1) - no extra space used
     def erase_overlap_intervals(self, intervals: list[list[int]]) -> int:

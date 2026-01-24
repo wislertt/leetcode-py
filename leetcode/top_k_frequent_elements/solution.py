@@ -1,10 +1,9 @@
 import heapq
 from collections import Counter
-from typing import List
 
 
 class Solution:
-    def top_k_frequent(self, nums: List[int], k: int) -> List[int]:
+    def top_k_frequent(self, nums: list[int], k: int) -> list[int]:
         """
         Optimized version using heap for O(n log k) time complexity.
 

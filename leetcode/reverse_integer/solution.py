@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(log(x))
     # Space: O(1)
     def reverse(self, x: int) -> int:

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def trap(self, height: list[int]) -> int:

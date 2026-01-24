@@ -7,7 +7,6 @@ from .solution import MyQueue
 
 
 class TestImplementQueueUsingStacks:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",
@@ -50,7 +49,19 @@ class TestImplementQueueUsingStacks:
                 [None, None, None, 9, 9, 9, 8],
             ),
             (
-                ["MyQueue", "push", "push", "push", "push", "push", "pop", "pop", "pop", "push", "peek"],
+                [
+                    "MyQueue",
+                    "push",
+                    "push",
+                    "push",
+                    "push",
+                    "push",
+                    "pop",
+                    "pop",
+                    "pop",
+                    "push",
+                    "peek",
+                ],
                 [[], [1], [2], [3], [4], [5], [], [], [], [6], []],
                 [None, None, None, None, None, None, 1, 2, 3, None, 4],
             ),

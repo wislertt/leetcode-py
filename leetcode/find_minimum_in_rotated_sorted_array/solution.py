@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(log n) - binary search
     # Space: O(1) - only using constant extra space
     def find_min(self, nums: list[int]) -> int:

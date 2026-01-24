@@ -36,6 +36,8 @@ class TestPathSumII:
             ([1, 2, 3, 4, 5, 6, 7], 8, [[1, 2, 5]]),
         ],
     )
-    def test_path_sum(self, root_list: list[int | None], target_sum: int, expected: list[list[int]]):
+    def test_path_sum(
+        self, root_list: list[int | None], target_sum: int, expected: list[list[int]]
+    ):
         result = run_path_sum(Solution, root_list, target_sum)
         assert_path_sum(result, expected)

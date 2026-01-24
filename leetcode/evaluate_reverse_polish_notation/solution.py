@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     def eval_rpn(self, tokens: list[str]) -> int:

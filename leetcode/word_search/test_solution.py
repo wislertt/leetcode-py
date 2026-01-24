@@ -23,7 +23,11 @@ class TestWordSearch:
             ([["A", "B"], ["C", "D"]], "ABDC", True),
             ([["A", "B"], ["C", "D"]], "ABCD", False),
             ([["C", "A", "A"], ["A", "A", "A"], ["B", "C", "D"]], "AAB", True),
-            ([["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]], "ABCESEEEFS", False),
+            (
+                [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]],
+                "ABCESEEEFS",
+                False,
+            ),
             (
                 [
                     ["A", "A", "A", "A", "A", "A"],

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(C) where C is total number of characters in all words
     # Space: O(1) since at most 26 characters in alphabet
     def alien_order(self, words: list[str]) -> str:

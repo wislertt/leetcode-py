@@ -7,7 +7,6 @@ from .solution import Trie
 
 
 class TestImplementTriePrefixTree:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",

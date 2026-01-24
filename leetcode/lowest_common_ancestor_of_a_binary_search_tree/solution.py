@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(log n) average, O(n) worst case
     # Space: O(1) iterative, O(log n) recursive
     def lowest_common_ancestor(

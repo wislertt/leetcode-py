@@ -1,6 +1,3 @@
-from typing import List
-
-
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -8,7 +5,7 @@ class TrieNode:
 
 
 class Solution:
-    def find_words(self, board: List[List[str]], words: List[str]) -> List[str]:
+    def find_words(self, board: list[list[str]], words: list[str]) -> list[str]:
         """
         Optimized version with early termination and word removal.
 

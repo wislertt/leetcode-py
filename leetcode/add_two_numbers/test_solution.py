@@ -169,6 +169,8 @@ class TestAddTwoNumbers:
             ([1, 2, 3, 4, 5], [6, 7, 8], [7, 9, 1, 5, 5]),
         ],
     )
-    def test_add_two_numbers(self, l1_vals: list[int], l2_vals: list[int], expected_vals: list[int]):
+    def test_add_two_numbers(
+        self, l1_vals: list[int], l2_vals: list[int], expected_vals: list[int]
+    ):
         result = run_add_two_numbers(Solution, l1_vals, l2_vals)
         assert_add_two_numbers(result, expected_vals)

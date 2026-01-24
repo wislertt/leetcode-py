@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(1) - always 32 iterations
     # Space: O(1) - only using constant extra space
     def reverse_bits(self, n: int) -> int:

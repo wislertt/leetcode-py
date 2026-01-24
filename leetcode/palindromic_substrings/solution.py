@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n^2) - expand around centers approach
     # Space: O(1) - no extra space used
     def count_substrings(self, s: str) -> int:

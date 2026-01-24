@@ -14,7 +14,7 @@ def _format_kwarg(k, v):
     """Format a keyword argument for logging."""
     if isinstance(v, type):
         return f"{k}={v.__name__}"
-    return f"{k}={repr(v)}"
+    return f"{k}={v!r}"
 
 
 def _parse_test_params(args, kwargs):

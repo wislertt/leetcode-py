@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rob(self, nums: list[int]) -> int:
         """
         Optimized version with better variable naming and edge case handling.
 

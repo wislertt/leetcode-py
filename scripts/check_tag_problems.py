@@ -7,8 +7,8 @@ import json5
 
 def main():
     # Load tags file
-    tags_file = Path("leetcode_py/cli/resources/leetcode/json/tags.json5")
-    problems_dir = Path("leetcode_py/cli/resources/leetcode/json/problems")
+    tags_file = Path("src/leetcode_py/cli/resources/leetcode/json/tags.json5")
+    problems_dir = Path("src/leetcode_py/cli/resources/leetcode/json/problems")
 
     with open(tags_file) as f:
         tags_data = json5.load(f)
@@ -19,11 +19,14 @@ def main():
     # Check each tag's problems
     missing_problems = []
     for tag_name, problems in tags_data.items():
-        if isinstance(problems, list):
-            for problem in problems:
-                if isinstance(problem, str):  # Skip dict entries like {"tag": "grind-75"}
-                    if problem not in existing_problems:
-                        missing_problems.append((tag_name, problem))
+        if not isinstance(problems, list):
+            continue
+        for problem in problems:
+            if (
+                isinstance(problem, str)  # Skip dict entries like {"tag": "grind-75"}
+                and problem not in existing_problems
+            ):
+                missing_problems.append((tag_name, problem))
 
     if missing_problems:
         print("❌ Found problems in tags that don't have JSON files:")

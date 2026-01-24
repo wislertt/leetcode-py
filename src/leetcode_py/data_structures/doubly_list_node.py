@@ -10,7 +10,10 @@ T = TypeVar("T")
 
 class DoublyListNode(Generic[T]):
     def __init__(
-        self, val: T, prev: "DoublyListNode[T] | None" = None, next: "DoublyListNode[T] | None" = None
+        self,
+        val: T,
+        prev: "DoublyListNode[T] | None" = None,
+        next: "DoublyListNode[T] | None" = None,
     ):
         self.val = val
         self.prev = prev
@@ -41,7 +44,7 @@ class DoublyListNode(Generic[T]):
 
     def to_list(self, max_length: int = 1000) -> list[T]:
         result: list[T] = []
-        current: "DoublyListNode[T] | None" = self
+        current: DoublyListNode[T] | None = self
         visited: set[int] = set()
 
         while current and len(result) < max_length:
@@ -55,7 +58,7 @@ class DoublyListNode(Generic[T]):
     def __str__(self) -> str:
         if self._has_cycle():
             result: list[str] = []
-            current: "DoublyListNode[T] | None" = self
+            current: DoublyListNode[T] | None = self
             visited: dict[int, int] = {}
             position = 0
 
@@ -88,7 +91,7 @@ class DoublyListNode(Generic[T]):
             dot.attr("node", shape="box", style="rounded,filled", fillcolor="lightgreen")
             dot.attr("edge", color="black")
 
-            current: "DoublyListNode[T] | None" = self
+            current: DoublyListNode[T] | None = self
             visited: dict[int, int] = {}
             node_id = 0
 

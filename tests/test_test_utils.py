@@ -26,7 +26,6 @@ class TestLoggedTest:
         @logged_test
         def sample_function():
             """Sample docstring"""
-            pass
 
         assert sample_function.__name__ == "sample_function"
         assert sample_function.__doc__ == "Sample docstring"

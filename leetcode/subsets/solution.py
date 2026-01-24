@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(2^n)
     # Space: O(2^n)
     def subsets(self, nums: list[int]) -> list[list[int]]:

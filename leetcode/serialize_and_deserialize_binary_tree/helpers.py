@@ -9,7 +9,9 @@ def run_serialize_deserialize(solution_class: type, root_list: list[int | None])
     return deserialized
 
 
-def assert_serialize_deserialize(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool:
+def assert_serialize_deserialize(
+    result: TreeNode[int] | None, expected_list: list[int | None]
+) -> bool:
     expected = TreeNode[int].from_list(expected_list) if expected_list else None
     if expected is None:
         assert result is None

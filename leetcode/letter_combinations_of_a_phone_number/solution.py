@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(4^n)
     # Space: O(4^n)
     def letter_combinations(self, digits: str) -> list[str]:

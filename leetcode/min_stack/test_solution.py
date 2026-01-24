@@ -7,7 +7,6 @@ from .solution import MinStack
 
 
 class TestTestMinStack:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",
@@ -34,7 +33,18 @@ class TestTestMinStack:
                 [None, None, None, 1, None, 0, None, 1],
             ),
             (
-                ["MinStack", "push", "push", "push", "top", "getMin", "pop", "pop", "top", "getMin"],
+                [
+                    "MinStack",
+                    "push",
+                    "push",
+                    "push",
+                    "top",
+                    "getMin",
+                    "pop",
+                    "pop",
+                    "top",
+                    "getMin",
+                ],
                 [[], [3], [1], [4], [], [], [], [], [], []],
                 [None, None, None, None, 4, 1, None, None, 3, 3],
             ),
@@ -109,6 +119,8 @@ class TestTestMinStack:
             ),
         ],
     )
-    def test_min_stack(self, operations: list[str], inputs: list[list[int]], expected: list[int | None]):
+    def test_min_stack(
+        self, operations: list[str], inputs: list[list[int]], expected: list[int | None]
+    ):
         result = run_min_stack_operations(MinStack, operations, inputs)
         assert_min_stack_operations(result, expected)

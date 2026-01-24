@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(1) - fixed 9x9 board
     # Space: O(1) - fixed size sets
     def is_valid_sudoku(self, board: list[list[str]]) -> bool:

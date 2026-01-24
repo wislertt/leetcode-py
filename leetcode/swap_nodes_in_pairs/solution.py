@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(n) - traverse each node once
     # Space: O(1) - constant extra space
     def swap_pairs(self, head: ListNode[int] | None) -> ListNode[int] | None:

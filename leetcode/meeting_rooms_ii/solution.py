@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n log n)
     # Space: O(n)
     def min_meeting_rooms(self, intervals: list[list[int]]) -> int:

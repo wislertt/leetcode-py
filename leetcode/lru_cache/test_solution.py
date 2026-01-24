@@ -7,7 +7,6 @@ from .solution import LRUCache, LRUCacheWithDoublyList
 
 
 class TestLRUCache:
-
     @logged_test
     @pytest.mark.parametrize("solution_class", [LRUCache, LRUCacheWithDoublyList])
     @pytest.mark.parametrize(

@@ -7,7 +7,6 @@ from .solution import TimeMap
 
 
 class TestTimeBasedKeyValueStore:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",
@@ -39,7 +38,15 @@ class TestTimeBasedKeyValueStore:
             ),
             (
                 ["TimeMap", "set", "set", "set", "get", "get", "get"],
-                [[], ["k", "a", 10], ["k", "b", 20], ["k", "c", 30], ["k", 15], ["k", 25], ["k", 35]],
+                [
+                    [],
+                    ["k", "a", 10],
+                    ["k", "b", 20],
+                    ["k", "c", 30],
+                    ["k", 15],
+                    ["k", 25],
+                    ["k", 35],
+                ],
                 [None, None, None, None, "a", "b", "c"],
             ),
             (

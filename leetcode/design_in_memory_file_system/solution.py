@@ -1,5 +1,4 @@
 class FileSystem:
-
     # Time: O(1)
     # Space: O(1)
     def __init__(self) -> None:

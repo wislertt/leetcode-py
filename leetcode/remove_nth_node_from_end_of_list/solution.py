@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(L) where L is the length of the list
     # Space: O(1)
     def remove_nth_from_end(self, head: ListNode[int] | None, n: int) -> ListNode[int] | None:

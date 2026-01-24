@@ -7,7 +7,6 @@ from .solution import MedianFinder, MedianFinderHybrid
 
 
 class TestFindMedianFromDataStream:
-
     @logged_test
     @pytest.mark.parametrize("solution_class", [MedianFinder, MedianFinderHybrid])
     @pytest.mark.parametrize(
@@ -30,7 +29,15 @@ class TestFindMedianFromDataStream:
                 [None, None, None, None, None, 2.5],
             ),
             (
-                ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "addNum", "findMedian"],
+                [
+                    "MedianFinder",
+                    "addNum",
+                    "addNum",
+                    "findMedian",
+                    "addNum",
+                    "addNum",
+                    "findMedian",
+                ],
                 [[], [-1], [0], [], [1], [2], []],
                 [None, None, None, -0.5, None, None, 0.5],
             ),
@@ -40,7 +47,15 @@ class TestFindMedianFromDataStream:
                 [None, None, None, None, None, None, 3.0],
             ),
             (
-                ["MedianFinder", "addNum", "findMedian", "addNum", "findMedian", "addNum", "findMedian"],
+                [
+                    "MedianFinder",
+                    "addNum",
+                    "findMedian",
+                    "addNum",
+                    "findMedian",
+                    "addNum",
+                    "findMedian",
+                ],
                 [[], [100000], [], [-100000], [], [0], []],
                 [None, None, 100000.0, None, 0.0, None, 0.0],
             ),

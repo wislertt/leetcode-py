@@ -139,7 +139,9 @@ def generate(
     for problem_name in problems:
         json_path = get_problem_json_path(problem_name)
         if not json_path.exists():
-            typer.echo(f"Warning: JSON file not found for problem '{problem_name}', skipping", err=True)
+            typer.echo(
+                f"Warning: JSON file not found for problem '{problem_name}', skipping", err=True
+            )
             failed_count += 1
             continue
 

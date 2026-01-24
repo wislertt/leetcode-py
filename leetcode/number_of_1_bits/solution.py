@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(1) - at most 32 iterations (number of bits in int)
     # Space: O(1) - only using constant extra space
     def hamming_weight(self, n: int) -> int:

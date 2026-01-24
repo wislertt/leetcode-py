@@ -2,11 +2,9 @@ from collections import Counter
 
 
 class Solution:
-
     # Time: O(m*n*4^L) where L is word length
     # Space: O(L)
     def exist(self, board: list[list[str]], word: str) -> bool:
-
         m, n = len(board), len(board[0])
 
         # Early pruning: check if board has enough characters

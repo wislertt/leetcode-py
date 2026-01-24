@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n! * n)
     # Space: O(n! * n) output + O(n) recursion
     def permute(self, nums: list[int]) -> list[list[int]]:

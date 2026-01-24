@@ -1,5 +1,4 @@
 class Solution:
-
     def __init__(self, first_bad: int = 1) -> None:
         self.is_bad_version = lambda version: version >= first_bad
 

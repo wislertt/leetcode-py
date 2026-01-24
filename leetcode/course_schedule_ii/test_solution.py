@@ -38,6 +38,8 @@ class TestCourseScheduleII:
             ),
         ],
     )
-    def test_find_order(self, num_courses: int, prerequisites: list[list[int]], expected: list[int]):
+    def test_find_order(
+        self, num_courses: int, prerequisites: list[list[int]], expected: list[int]
+    ):
         result = run_find_order(Solution, num_courses, prerequisites)
         assert_find_order(result, expected)

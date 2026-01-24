@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Inorder Recursive
     # Time: O(k)
     # Space: O(h)

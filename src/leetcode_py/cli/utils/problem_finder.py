@@ -46,7 +46,9 @@ def _build_problem_number_cache() -> dict[int, str]:
                 data = json.load(f)
                 problem_number = data.get("problem_number")
                 if problem_number and problem_number.isdigit():
-                    number_to_name_map[int(problem_number)] = data.get("problem_name", json_file.stem)
+                    number_to_name_map[int(problem_number)] = data.get(
+                        "problem_name", json_file.stem
+                    )
         except (json.JSONDecodeError, KeyError, OSError):
             continue
 
@@ -71,13 +73,17 @@ def _add_problem_to_tag_map(
     problem_tags_map[problem_name].append(tag_name)
 
 
-def _process_tag_reference(item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]) -> None:
+def _process_tag_reference(
+    item: dict, tag_name: str, problem_tags_map: dict[str, list[str]]
+) -> None:
     referenced_problems = find_problems_by_tag(item["tag"])
     for problem_name in referenced_problems:
         _add_problem_to_tag_map(problem_tags_map, problem_name, tag_name)
 
 
-def _process_tag_item(item: str | dict, tag_name: str, problem_tags_map: dict[str, list[str]]) -> None:
+def _process_tag_item(
+    item: str | dict, tag_name: str, problem_tags_map: dict[str, list[str]]
+) -> None:
     if isinstance(item, dict) and "tag" in item:
         _process_tag_reference(item, tag_name, problem_tags_map)
     elif isinstance(item, str):

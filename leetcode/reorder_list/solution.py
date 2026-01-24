@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(n) where n is the number of nodes
     # Space: O(1) - only using constant extra space
     def reorder_list(self, head: ListNode[int] | None) -> None:

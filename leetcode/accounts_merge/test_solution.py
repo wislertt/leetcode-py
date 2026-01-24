@@ -63,10 +63,21 @@ class TestAccountsMerge:
                 ],
                 [["A", "a@mail.com", "b@mail.com", "c@mail.com", "d@mail.com"]],
             ),
-            ([["David", "david@mail.com"], ["David", "david@mail.com"]], [["David", "david@mail.com"]]),
             (
-                [["Alex", "alex1@mail.com"], ["Bob", "bob1@mail.com"], ["Charlie", "charlie1@mail.com"]],
-                [["Alex", "alex1@mail.com"], ["Bob", "bob1@mail.com"], ["Charlie", "charlie1@mail.com"]],
+                [["David", "david@mail.com"], ["David", "david@mail.com"]],
+                [["David", "david@mail.com"]],
+            ),
+            (
+                [
+                    ["Alex", "alex1@mail.com"],
+                    ["Bob", "bob1@mail.com"],
+                    ["Charlie", "charlie1@mail.com"],
+                ],
+                [
+                    ["Alex", "alex1@mail.com"],
+                    ["Bob", "bob1@mail.com"],
+                    ["Charlie", "charlie1@mail.com"],
+                ],
             ),
             (
                 [

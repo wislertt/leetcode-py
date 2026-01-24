@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(n)
     # Space: O(h)
     def diameter_of_binary_tree(self, root: TreeNode[int] | None) -> int:

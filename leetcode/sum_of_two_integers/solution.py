@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(1) - constant time bit operations
     # Space: O(1) - no extra space used
     def get_sum(self, a: int, b: int) -> int:

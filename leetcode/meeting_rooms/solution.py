@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n log n)
     # Space: O(1)
     def can_attend_meetings(self, intervals: list[list[int]]) -> bool:

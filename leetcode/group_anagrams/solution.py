@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n * k) - when k > 26 use counting O(k), when k ≤ 26 use sorting O(k log k)
     # Space: O(n * k)
     def group_anagrams(self, strs: list[str]) -> list[list[str]]:

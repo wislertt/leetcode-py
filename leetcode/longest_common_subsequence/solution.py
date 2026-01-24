@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(m * n)
     # Space: O(m * n)
     def longest_common_subsequence(self, text1: str, text2: str) -> int:

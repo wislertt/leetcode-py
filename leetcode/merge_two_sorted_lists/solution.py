@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(m + n)
     # Space: O(1)
     def merge_two_lists(

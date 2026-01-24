@@ -13,7 +13,6 @@ class Solution:
 
 
 class SolutionMath:
-
     # Math solution: C(m+n-2, m-1) = (m+n-2)! / ((m-1)! * (n-1)!)
     # Time: O(min(m, n))
     # Space: O(1)

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     def two_sum(self, nums: list[int], target: int) -> list[int]:

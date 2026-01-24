@@ -5,7 +5,6 @@ from leetcode_py.data_structures import DictTree
 
 
 class TestDictTree:
-
     def setup_method(self):
         self.tree: DictTree[str] = DictTree()
 

@@ -2,7 +2,6 @@ from collections import deque
 
 
 class Solution:
-
     # TOPOLOGICAL SORT using Kahn's Algorithm (BFS-based)
     # Keywords: DAG, in-degree, adjacency list, cycle detection, dependency resolution
     # Time: O(V + E) where V = num_courses, E = len(prerequisites)

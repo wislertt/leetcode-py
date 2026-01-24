@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     def find_max_length(self, nums: list[int]) -> int:

@@ -7,7 +7,6 @@ from .solution import WordDictionary
 
 
 class TestDesignAddAndSearchWordsDataStructure:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",

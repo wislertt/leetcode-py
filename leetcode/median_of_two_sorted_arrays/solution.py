@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(log(min(m, n)))
     # Space: O(1)
     def find_median_sorted_arrays(self, nums1: list[int], nums2: list[int]) -> float:

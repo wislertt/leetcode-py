@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(n) - visit each node once
     # Space: O(h) - recursion depth + path storage, where h is tree height
     def path_sum(self, root: TreeNode[int] | None, target_sum: int) -> list[list[int]]:

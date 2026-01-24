@@ -2,7 +2,6 @@ from leetcode_py import ListNode
 
 
 class Solution:
-
     # Time: O(n log k) where n is total nodes, k is number of lists
     # Space: O(log k) for recursion stack
     def merge_k_lists(self, lists: list[ListNode[int] | None]) -> ListNode[int] | None:
@@ -21,7 +20,9 @@ class Solution:
         l2 = self._divide_conquer(lists, mid + 1, right)
         return self._merge_two(l1, l2)
 
-    def _merge_two(self, l1: ListNode[int] | None, l2: ListNode[int] | None) -> ListNode[int] | None:
+    def _merge_two(
+        self, l1: ListNode[int] | None, l2: ListNode[int] | None
+    ) -> ListNode[int] | None:
         dummy = ListNode(0)
         curr = dummy
 

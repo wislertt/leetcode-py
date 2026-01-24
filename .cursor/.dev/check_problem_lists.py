@@ -17,8 +17,8 @@ def check_problem_list(tag_name, problem_tuples, existing_problems):
 
     print(f"\n=== {tag_name.upper()} ===")
     print(f"Total problems: {len(problem_numbers)}")
-    print(f"Problems you have: {len(have)} ({len(have)/len(problem_numbers)*100:.1f}%)")
-    print(f"Problems missing: {len(missing)} ({len(missing)/len(problem_numbers)*100:.1f}%)")
+    print(f"Problems you have: {len(have)} ({len(have) / len(problem_numbers) * 100:.1f}%)")
+    print(f"Problems missing: {len(missing)} ({len(missing) / len(problem_numbers) * 100:.1f}%)")
 
     if missing:
         print(f"Missing problems: {sorted(missing)}")

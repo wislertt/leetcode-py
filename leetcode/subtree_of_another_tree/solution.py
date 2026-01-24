@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(m * n) - where m is nodes in root, n is nodes in sub_root
     # Space: O(h) - where h is height of root tree (recursion stack)
     def is_subtree(self, root: TreeNode[int] | None, sub_root: TreeNode[int] | None) -> bool:

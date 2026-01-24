@@ -11,7 +11,6 @@ from leetcode_py.tools.generator import check_problem_exists, generate_problem, 
 
 
 class TestGenerator:
-
     def test_load_json_data_success(self):
         with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=True) as f:
             json.dump({"problem_name": "test"}, f)
@@ -101,7 +100,9 @@ class TestGenerator:
             # Assert content is correct
             solution_content = (problem_dir / "solution.py").read_text()
             assert "class Solution:" in solution_content
-            assert "def two_sum(self, nums: list[int], target: int) -> list[int]:" in solution_content
+            assert (
+                "def two_sum(self, nums: list[int], target: int) -> list[int]:" in solution_content
+            )
 
             readme_content = (problem_dir / "README.md").read_text()
             assert "# Two Sum" in readme_content

@@ -1,8 +1,5 @@
-from typing import List
-
-
 class Solution:
-    def count_bits(self, n: int) -> List[int]:
+    def count_bits(self, n: int) -> list[int]:
         """
         Optimized version with better variable naming and comments.
 

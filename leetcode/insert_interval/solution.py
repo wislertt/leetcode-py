@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     def insert(self, intervals: list[list[int]], new_interval: list[int]) -> list[list[int]]:

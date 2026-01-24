@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(log(n-k))
     # Space: O(1)
     def find_closest_elements(self, arr: list[int], k: int, x: int) -> list[int]:

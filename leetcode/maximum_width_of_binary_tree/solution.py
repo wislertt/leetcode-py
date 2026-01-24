@@ -4,7 +4,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(n)
     # Space: O(w) where w is maximum width
     def width_of_binary_tree(self, root: TreeNode[int] | None) -> int:

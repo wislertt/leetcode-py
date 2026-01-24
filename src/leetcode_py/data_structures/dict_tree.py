@@ -1,4 +1,5 @@
-from typing import Any, Generic, Hashable, TypeAlias, TypeVar
+from collections.abc import Hashable
+from typing import Any, Generic, TypeAlias, TypeVar
 
 import graphviz
 
@@ -9,7 +10,6 @@ RecursiveDict: TypeAlias = dict[K, "RecursiveDict[K] | Any"]
 
 
 class DictTree(Generic[K]):
-
     def __init__(self) -> None:
         self.root: RecursiveDict[K] = {}
 

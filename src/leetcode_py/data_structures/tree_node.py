@@ -39,7 +39,9 @@ def add_nodes(dot: graphviz.Digraph, node: "TreeNode[Any] | None", node_id: int 
 
 
 class TreeNode(Generic[T]):
-    def __init__(self, val: T, left: "TreeNode[T] | None" = None, right: "TreeNode[T] | None" = None):
+    def __init__(
+        self, val: T, left: "TreeNode[T] | None" = None, right: "TreeNode[T] | None" = None
+    ):
         self.val = val
         self.left = left
         self.right = right

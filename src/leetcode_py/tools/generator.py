@@ -26,7 +26,8 @@ def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> No
         problem_dir = output_dir / problem_name
         if problem_dir.exists():
             typer.echo(
-                f"Error: Problem '{problem_name}' already exists. Use --force to overwrite.", err=True
+                f"Error: Problem '{problem_name}' already exists. Use --force to overwrite.",
+                err=True,
             )
             raise typer.Exit(1)
 
@@ -89,7 +90,9 @@ def generate_from_template(data: dict, template_dir: Path, output_dir: Path) -> 
         raise typer.Exit(1)
 
 
-def generate_problem(json_path: Path, template_dir: Path, output_dir: Path, force: bool = False) -> None:
+def generate_problem(
+    json_path: Path, template_dir: Path, output_dir: Path, force: bool = False
+) -> None:
     data = load_json_data(json_path)
     problem_name = data.get("problem_name", "unknown")
     check_problem_exists(problem_name, output_dir, force)

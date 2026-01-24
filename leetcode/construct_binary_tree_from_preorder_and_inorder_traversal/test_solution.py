@@ -36,6 +36,8 @@ class TestConstructBinaryTreeFromPreorderAndInorderTraversal:
             ([-3000, -2999, -2998], [-2998, -2999, -3000], [-3000, -2999, None, -2998]),
         ],
     )
-    def test_build_tree(self, preorder: list[int], inorder: list[int], expected_list: list[int | None]):
+    def test_build_tree(
+        self, preorder: list[int], inorder: list[int], expected_list: list[int | None]
+    ):
         result = run_build_tree(Solution, preorder, inorder)
         assert_build_tree(result, expected_list)

@@ -2,7 +2,6 @@ from typing import Any
 
 
 class WordDictionary:
-
     # Time: O(1)
     # Space: O(1)
     def __init__(self) -> None:

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n²)
     # Space: O(1)
     def rotate(self, matrix: list[list[int]]) -> None:

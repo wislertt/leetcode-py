@@ -13,7 +13,9 @@ class TestDoublyListNode:
             ("hello", "hello", None, None),
         ],
     )
-    def test_init(self, val: Any, expected_val: Any, expected_prev: Any, expected_next: Any) -> None:
+    def test_init(
+        self, val: Any, expected_val: Any, expected_prev: Any, expected_next: Any
+    ) -> None:
         node = DoublyListNode(val)
         assert node.val == expected_val
         assert node.prev == expected_prev

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(m * n)
     # Space: O(m * n)
     def pacific_atlantic(self, heights: list[list[int]]) -> list[list[int]]:

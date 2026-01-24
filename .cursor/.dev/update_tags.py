@@ -13,12 +13,14 @@ from leetcode_py.cli.utils.problem_finder import find_problems_by_tag
 
 def get_existing_problems():
     """Get problem numbers and names from existing JSON files."""
-    json_dir = Path(__file__).parent.parent.parent / "leetcode_py/cli/resources/leetcode/json/problems"
+    json_dir = (
+        Path(__file__).parent.parent.parent / "leetcode_py/cli/resources/leetcode/json/problems"
+    )
     existing_problems = {}
 
     for json_file in json_dir.glob("*.json"):
         try:
-            with open(json_file, "r") as f:
+            with open(json_file) as f:
                 data = json.load(f)
                 problem_number = int(data.get("problem_number", 0))
                 if problem_number > 0:

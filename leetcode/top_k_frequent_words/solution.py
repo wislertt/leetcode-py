@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n log k) - each word processed with O(log k) heap operations
     # Space: O(n + k) - Counter takes O(n), heap takes O(k)
     def top_k_frequent(self, words: list[str], k: int) -> list[str]:

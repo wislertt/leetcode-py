@@ -7,7 +7,6 @@ from .solution import FileSystem
 
 
 class TestDesignInMemoryFileSystem:
-
     @logged_test
     @pytest.mark.parametrize(
         "operations, inputs, expected",

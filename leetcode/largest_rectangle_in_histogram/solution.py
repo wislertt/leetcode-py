@@ -1,12 +1,10 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(n)
     # Monotonic stack approach
     # Stack stores indices of bars in increasing height order
     # When we find a shorter bar, we calculate area using previous bars
     def largest_rectangle_area(self, heights: list[int]) -> int:
-
         stack: list[int] = []  # Stack of indices
         max_area = 0
 

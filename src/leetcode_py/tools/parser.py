@@ -17,7 +17,9 @@ class HTMLParser:
         """Parse HTML content to extract description, examples, and constraints."""
         # Extract description (everything before first example)
         desc_match = re.search(
-            r'<p>(.*)(?=<p><strong class="example">|<p><strong>Constraints:|$)', html_content, re.DOTALL
+            r'<p>(.*)(?=<p><strong class="example">|<p><strong>Constraints:|$)',
+            html_content,
+            re.DOTALL,
         )
         description = HTMLParser.clean_html(desc_match.group(1)) if desc_match else ""
 
@@ -56,7 +58,12 @@ class HTMLParser:
         current_case = []
 
         for line in lines:
-            if line.startswith("[") or line.startswith('"') or line.isdigit() or line.startswith("-"):
+            if (
+                line.startswith("[")
+                or line.startswith('"')
+                or line.isdigit()
+                or line.startswith("-")
+            ):
                 current_case.append(line)
             else:
                 if current_case:

@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n) - single pass through string
     # Space: O(n) - stack storage for nested brackets
     def decode_string(self, s: str) -> str:

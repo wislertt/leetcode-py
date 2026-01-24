@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n) - three passes through array
     # Space: O(1) - in-place rotation using reversal
     def rotate(self, nums: list[int], k: int) -> None:

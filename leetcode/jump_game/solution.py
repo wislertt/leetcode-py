@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n)
     # Space: O(1)
     def can_jump(self, nums: list[int]) -> bool:

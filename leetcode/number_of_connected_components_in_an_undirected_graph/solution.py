@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n + e)
     # Space: O(n + e)
     def count_components(self, n: int, edges: list[list[int]]) -> int:

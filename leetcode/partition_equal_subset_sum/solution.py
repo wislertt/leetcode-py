@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n * sum)
     # Space: O(sum)
     def can_partition(self, nums: list[int]) -> bool:

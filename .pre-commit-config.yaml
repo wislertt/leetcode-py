@@ -35,6 +35,6 @@ repos:
             pass_filenames: false
           - id: lint
             name: lint
-            entry: make lint
+            entry: bake lint
             language: system
             pass_filenames: false

@@ -18,7 +18,16 @@ from solution import WordDictionary
 
 # %%
 # Example test case
-operations = ["WordDictionary", "addWord", "addWord", "addWord", "search", "search", "search", "search"]
+operations = [
+    "WordDictionary",
+    "addWord",
+    "addWord",
+    "addWord",
+    "search",
+    "search",
+    "search",
+    "search",
+]
 inputs = [[], ["bad"], ["dad"], ["mad"], ["pad"], ["bad"], [".ad"], ["b.."]]
 expected = [None, None, None, None, False, True, True, True]
 

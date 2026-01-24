@@ -1,5 +1,4 @@
 class Solution:
-
     # Time: O(n^2)
     # Space: O(1)
     def longest_palindrome(self, s: str) -> str:
@@ -31,7 +30,7 @@ class SolutionManacher:
     # Time: O(n)
     # Space: O(n)
     def longest_palindrome(self, s: str) -> str:
-        t = "#".join("^{}$".format(s))
+        t = "#".join(f"^{s}$")
         n = len(t)
         p = [0] * n
         center = right = 0

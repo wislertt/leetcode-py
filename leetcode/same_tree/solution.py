@@ -2,7 +2,6 @@ from leetcode_py import TreeNode
 
 
 class Solution:
-
     # Time: O(min(m, n)) where m and n are the number of nodes in the two trees
     # Space: O(min(m, n)) for the recursion stack
     def is_same_tree(self, p: TreeNode[int] | None, q: TreeNode[int] | None) -> bool:
