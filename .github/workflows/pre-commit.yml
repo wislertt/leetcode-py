@@ -19,35 +19,60 @@ jobs:
                   submodules: recursive
                   token: ${{ secrets.GITHUB_TOKEN }}
 
-            - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+            # - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
+            #   with:
+            #       python-version: ${{ inputs.python_version }}
+
+            # - name: Install Poetry
+            #   uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
+            #   with:
+            #       virtualenvs-create: true
+            #       virtualenvs-in-project: true
+            #       installer-parallel: true
+
+            # - name: Load cached venv
+            #   id: cached-poetry-dependencies
+            #   uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+            #   with:
+            #       path: .venv
+            #       key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+            # - name: Install dependencies
+            #   run: poetry install --no-interaction --no-ansi
+
+            - name: setup-uv
+              uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
               with:
-                  python-version: ${{ inputs.python_version }}
+                  version: "latest"
+                  enable-cache: true
+                  python-version: ${{ matrix.python-version }}
 
-            - name: Install Poetry
-              uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
+            - name: cache-uv
+              uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
               with:
-                  virtualenvs-create: true
-                  virtualenvs-in-project: true
-                  installer-parallel: true
+                  path: |
+                      ~/.local
+                      ${{ github.workspace }}/.venv
+                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}
+                  restore-keys: |
+                      uv-${{ runner.os }}-py${{ matrix.python-version }}-
+                      uv-${{ runner.os }}-
 
-            - name: Load cached venv
-              id: cached-poetry-dependencies
-              uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+            - name: install-bake
+              run: |
+                  uv tool install bakefile
+                  which bake
+                  bake --version
+
+            - name: install-dependencies
+              run: uv sync --all-extras --all-groups --frozen
+
+            - name: setup-bun
+              uses: oven-sh/setup-bun@3d267786b128fe76c2f16a390aa2448b815359f3 # v2.1.2
               with:
-                  path: .venv
-                  key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+                  bun-version: latest
 
-            - name: Install dependencies
-              run: poetry install --no-interaction --no-ansi
-
-            - name: Setup Node.js
-              uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
-              with:
-                  node-version: "latest"
-
-            - name: Install Prettier
-              run: npm install -g prettier
-
-            - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
+            - name: run-pre-commit
+              uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
               with:
                   extra_args: --all-files
