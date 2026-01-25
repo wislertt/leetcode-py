@@ -37,7 +37,7 @@ jobs:
 
             - name: install-bake
               run: |
-                  uv tool install bakefile
+                  uv tool install "bakefile[lib]"
                   uv tool upgrade --all
                   bake --version
 
