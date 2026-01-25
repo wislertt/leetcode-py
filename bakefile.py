@@ -71,8 +71,16 @@ class MyBakebook(PythonSpace):
     def check_test_cases(
         self,
         ctx: Context,
-        threshold: Annotated[int, typer.Option("-t", "--threshold")] = 10,
-        max: Annotated[int, typer.Option("-m", "--max")] = 1,
+        threshold: Annotated[
+            int,
+            typer.Option("-t", "--threshold", help="Show problems with test cases <= threshold"),
+        ] = 10,
+        max: Annotated[
+            str,
+            typer.Option(
+                "-m", "--max", help="Maximum number of results to show ('none' for no limit)"
+            ),
+        ] = "none",
     ):
         console.echo("Checking test case coverage...")
         ctx.run(

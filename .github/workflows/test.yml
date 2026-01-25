@@ -24,7 +24,8 @@ jobs:
                 python-version: ["3.14"]
 
         steps:
-            - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+            - name: checkout
+              uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
               with:
                   fetch-depth: 0
 
@@ -41,7 +42,7 @@ jobs:
                   path: |
                       ~/.local
                       ${{ github.workspace }}/.venv
-                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}
+                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
                   restore-keys: |
                       uv-${{ runner.os }}-py${{ matrix.python-version }}-
                       uv-${{ runner.os }}-
@@ -49,7 +50,6 @@ jobs:
             - name: install-bake
               run: |
                   uv tool install bakefile
-                  which bake
                   bake --version
 
             - name: cache-graphviz
