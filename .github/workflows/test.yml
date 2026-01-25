@@ -81,10 +81,6 @@ jobs:
             - name: install-dependencies
               run: uv sync --all-extras --all-groups --frozen
 
-            - name: debug
-              run: |
-                  uv pip list
-
             - name: run-tests
               run: bake test
 
