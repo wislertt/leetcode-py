@@ -75,10 +75,6 @@ extend_exclude = [
   "src/leetcode_py/cli/resources"
 ]
 
-# Debug
-[tool.deptry.package_module_name_map]
-bakefile = ["bake", "bakelib"]
-
 [tool.pytest.ini_options]
 testpaths = ["leetcode", "tests"]
 norecursedirs = ["src/leetcode_py/cli/resources"]
@@ -126,19 +122,46 @@ exclude = [
   "src/leetcode_py/cli/resources"
 ]
 
+# Debug
+[tool.uv]
+index-strategy = "unsafe-best-match"
+prerelease = "allow"
+
 [tool.uv.build-backend]
 module-name = ["leetcode_py"]
 module-root = "src"
 
 # Debug
-[tool.uv.sources]
-bakefile = {workspace = true}
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+explicit = true
 
 # Debug
-[tool.uv.workspace]
-members = [".", "../bakefile"]
+[tool.uv.sources]
+bakefile = {index = "testpypi"}
 
+# # Debug with bakefile from test pypi
+# =============================================
+# # Debug
+# [tool.uv]
+# index-strategy = "unsafe-best-match"
+# prerelease = "allow"
+#
+# # Debug
+# [[tool.uv.index]]
+# name = "testpypi"
+# url = "https://test.pypi.org/simple/"
+# explicit = true
+#
+# # Debug
+# [tool.uv.sources]
+# bakefile = {index = "testpypi"}
+# =============================================
+#
+#
 # Debug with local bakefile in editable mode
+# =============================================
 # # Debug
 # [tool.deptry.package_module_name_map]
 # bakefile = ["bake", "bakelib"]
@@ -150,3 +173,4 @@ members = [".", "../bakefile"]
 # # Debug
 # [tool.uv.workspace]
 # members = [".", "../bakefile"]
+# =============================================
