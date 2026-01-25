@@ -79,15 +79,15 @@ def batch_format_and_check(directories: list[Path]) -> None:
             check=False,
         )
 
-        # 3. ty check (ignore unresolved-import in playground files, ARG002 in solution files)
+        # 3. ty check (ignore unresolved-import)
         result_ty = subprocess.run(
             [
                 ty_bin,
                 "check",
                 "--error-on-warning",
                 "--no-progress",
-                "--exclude",
-                "**/playground.ipynb",
+                "--ignore",
+                "unresolved-import",
                 *dir_paths,
             ],
             check=False,
