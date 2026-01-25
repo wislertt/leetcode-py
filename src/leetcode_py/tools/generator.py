@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-import black
 import typer
 from cookiecutter.main import cookiecutter
 
@@ -32,19 +31,36 @@ def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> No
             raise typer.Exit(1)
 
 
-def format_python_files(problem_dir: Path) -> None:
-    if not problem_dir.exists():
+def batch_format_and_check(output_dir: Path) -> None:
+    """Batch format, lint, and type check all Python files in output_dir."""
+    import subprocess
+
+    from ruff.__main__ import find_ruff_bin
+    from ty.__main__ import find_ty_bin
+
+    if not output_dir.exists():
         return
 
-    py_files = list(problem_dir.glob("*.py"))
-    for py_file in py_files:
-        try:
-            content = py_file.read_text()
-            formatted = black.format_str(content, mode=black.FileMode())
-            py_file.write_text(formatted)
-        except Exception:
-            # Silently continue if formatting fails
-            pass
+    ruff_bin = find_ruff_bin()
+    ty_bin = find_ty_bin()
+
+    # 1. ruff format
+    subprocess.run(
+        [ruff_bin, "format", "--exit-non-zero-on-format", str(output_dir)],
+        check=False,
+    )
+
+    # 2. ruff check --fix
+    subprocess.run(
+        [ruff_bin, "check", "--fix", "--exit-non-zero-on-fix", str(output_dir)],
+        check=False,
+    )
+
+    # 3. ty check
+    subprocess.run(
+        [ty_bin, "check", "--error-on-warning", "--no-progress", str(output_dir)],
+        check=False,
+    )
 
 
 def merge_tags(data: dict) -> dict:
@@ -83,7 +99,6 @@ def generate_from_template(data: dict, template_dir: Path, output_dir: Path) -> 
             output_dir=str(output_dir),
         )
         problem_name = data.get("problem_name", "unknown")
-        format_python_files(output_dir / problem_name)
         typer.echo(f"✅ Generated problem: {problem_name}")
     except Exception as e:
         typer.echo(f"Error generating template: {e}", err=True)

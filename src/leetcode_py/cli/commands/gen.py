@@ -4,7 +4,7 @@ from typing import Annotated
 
 import typer
 
-from leetcode_py.tools.generator import generate_problem
+from leetcode_py.tools.generator import batch_format_and_check, generate_problem
 
 from ..utils.problem_finder import (
     find_problem_by_number,
@@ -168,3 +168,8 @@ def generate(
 
     if failed_count > 0:
         raise typer.Exit(1)
+
+    # Batch format, lint, and type check all generated files
+    if success_count > 0:
+        typer.echo("Running format and check...")
+        batch_format_and_check(output_dir)
