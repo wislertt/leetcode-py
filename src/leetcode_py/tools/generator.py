@@ -74,6 +74,8 @@ def batch_format_and_check(directories: list[Path]) -> None:
                 "**/playground.ipynb:B018",
                 "--fix",
                 "--exit-non-zero-on-fix",
+                "--line-length",
+                "100",
                 *dir_paths,
             ],
             check=False,
