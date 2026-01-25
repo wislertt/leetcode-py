@@ -40,14 +40,11 @@ jobs:
                   enable-cache: true
                   python-version: ${{ matrix.python-version }}
 
-            # - name: debug
-            #   run: |
-            #       which uv
-            #       uv --version
-            #       uv tool install bakefile
-            #       which bake
-            #       bake --version
-            #       bake -n test
+            - name: install-bake
+              run: |
+                  uv tool install bakefile
+                  which bake
+                  bake --version
 
             # - name: run-tests
             #   run: |
