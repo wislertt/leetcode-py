@@ -28,11 +28,6 @@ jobs:
               with:
                   fetch-depth: 0
 
-            # - name: Set up Python
-            #   uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6.1.0
-            #   with:
-            #       python-version: ${{ matrix.python-version }}
-
             - name: setup-uv
               uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
               with:
@@ -54,32 +49,9 @@ jobs:
             - name: install-bake
               run: |
                   uv tool install bakefile
+                  uv tool upgrade --all
                   which bake
                   bake --version
-
-            # - name: run-tests
-            #   run: |
-            #       bake test
-            # =====
-
-            # - name: Install Poetry
-            #   uses: snok/install-poetry@76e04a911780d5b312d89783f7b1cd627778900a # v1.4.1
-            #   with:
-            #       virtualenvs-create: true
-            #       virtualenvs-in-project: true
-            #       installer-parallel: true
-
-            # - name: Load cached venv
-            #   id: cached-poetry-dependencies
-            #   uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
-            #   with:
-            #       path: .venv
-            #       key: venv-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-            # - name: Install dependencies
-            #   run: |
-            #       poetry install --no-interaction --no-ansi
-            #       poetry run pip install -e .
 
             - name: cache-graphviz
               id: cache-graphviz
@@ -106,6 +78,9 @@ jobs:
                       cp -r /usr/lib/x86_64-linux-gnu/graphviz ~/graphviz-cache/lib/ 2>/dev/null || true
                       cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || true
                   fi
+
+            - name: install-dependencies
+              run: uv sync --all-extras --all-groups --frozen
 
             - name: run-tests
               run: bake test
