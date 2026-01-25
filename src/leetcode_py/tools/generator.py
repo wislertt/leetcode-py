@@ -1,8 +1,11 @@
 import json
+import subprocess
 from pathlib import Path
 
 import typer
 from cookiecutter.main import cookiecutter
+from ruff.__main__ import find_ruff_bin
+from ty.__main__ import find_ty_bin
 
 from leetcode_py.cli.utils.problem_finder import get_tags_for_problem
 
@@ -31,34 +34,59 @@ def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> No
             raise typer.Exit(1)
 
 
-def batch_format_and_check(output_dir: Path) -> None:
-    """Batch format, lint, and type check all Python files in output_dir."""
-    import subprocess
+def batch_format_and_check(directories: list[Path]) -> None:
+    if not directories:
+        return
 
-    from ruff.__main__ import find_ruff_bin
-    from ty.__main__ import find_ty_bin
-
-    if not output_dir.exists():
+    # Filter to only existing directories
+    existing_dirs = [d for d in directories if d.exists()]
+    if not existing_dirs:
         return
 
     ruff_bin = find_ruff_bin()
     ty_bin = find_ty_bin()
 
-    # 1. ruff format
+    # Convert paths to strings for subprocess
+    dir_paths = [str(d) for d in existing_dirs]
+
+    # Ruff rules to enforce (same as pyproject.toml)
+    ruff_rules = "ARG,B,C4,E,F,I,N,PGH,PIE,PYI,RUF,SIM,UP"
+
+    # 1. ruff format (all directories in one call)
     subprocess.run(
-        [ruff_bin, "format", "--exit-non-zero-on-format", str(output_dir)],
+        [ruff_bin, "format", "--exit-non-zero-on-format", *dir_paths],
         check=False,
     )
 
-    # 2. ruff check --fix
+    # 2. ruff check --fix (ignore ARG002 in solution.py, B018 in playground files)
     subprocess.run(
-        [ruff_bin, "check", "--fix", "--exit-non-zero-on-fix", str(output_dir)],
+        [
+            ruff_bin,
+            "check",
+            "--select",
+            ruff_rules,
+            "--per-file-ignores",
+            "**/solution.py:ARG002",
+            "--per-file-ignores",
+            "**/playground.ipynb:B018",
+            "--fix",
+            "--exit-non-zero-on-fix",
+            *dir_paths,
+        ],
         check=False,
     )
 
-    # 3. ty check
+    # 3. ty check (ignore unresolved-import in playground files, ARG002 in solution files)
     subprocess.run(
-        [ty_bin, "check", "--error-on-warning", "--no-progress", str(output_dir)],
+        [
+            ty_bin,
+            "check",
+            "--error-on-warning",
+            "--no-progress",
+            "--exclude",
+            "**/playground.ipynb",
+            *dir_paths,
+        ],
         check=False,
     )
 

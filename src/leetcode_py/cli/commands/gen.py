@@ -144,6 +144,7 @@ def generate(
     # Generate each problem
     success_count = 0
     failed_count = 0
+    created_dirs: list[Path] = []
 
     for problem_name in problems:
         json_path = get_problem_json_path(problem_name)
@@ -156,6 +157,7 @@ def generate(
 
         try:
             generate_problem(json_path, template_dir, output_dir, force)
+            created_dirs.append(output_dir / problem_name)
             success_count += 1
         except typer.Exit:
             # typer.Exit was already handled with proper error message
@@ -169,7 +171,7 @@ def generate(
     if failed_count > 0:
         raise typer.Exit(1)
 
-    # Batch format, lint, and type check all generated files
-    if success_count > 0:
+    # Batch format, lint, and type check only the newly created problem directories
+    if created_dirs:
         typer.echo("Running format and check...")
-        batch_format_and_check(output_dir)
+        batch_format_and_check(created_dirs)
