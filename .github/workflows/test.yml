@@ -45,7 +45,6 @@ jobs:
                   restore-keys: |
                       uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
                       uv-${{ runner.os }}-py${{ matrix.python-version }}-
-                      uv-${{ runner.os }}-
 
             - name: install-bake
               run: |

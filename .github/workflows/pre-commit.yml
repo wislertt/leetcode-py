@@ -33,10 +33,10 @@ jobs:
                   path: |
                       ~/.local
                       ${{ github.workspace }}/.venv
-                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}
+                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
                   restore-keys: |
+                      uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
                       uv-${{ runner.os }}-py${{ matrix.python-version }}-
-                      uv-${{ runner.os }}-
 
             - name: install-bake
               run: |
