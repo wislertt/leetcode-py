@@ -25,7 +25,7 @@ classifiers = [
 ]
 dependencies = [
   "anytree>=2.13.0",
-  "bakefile>=0.0.8",
+  "bakefile[lib]>=0.0.8",
   "cookiecutter>=2.6.0",
   "graphviz>=0.21",
   "json5>=0.13.0",

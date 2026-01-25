@@ -102,6 +102,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/54/98/badaeaec246621eb7b4c3fa2275a95a54ab9af5e139a631af5a2ae661e66/bakefile-0.0.9-py3-none-any.whl", hash = "sha256:5e8f585e55eb398291a090e7a4d12c9cdcaf8e40351441490131a34a78ac2186", size = 56442, upload-time = "2026-01-25T09:03:22.937Z" },
 ]
 
+[package.optional-dependencies]
+lib = [
+    { name = "pathspec" },
+]
+
 [[package]]
 name = "beautysh"
 version = "6.4.2"
@@ -848,7 +853,7 @@ version = "0.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "anytree" },
-    { name = "bakefile" },
+    { name = "bakefile", extra = ["lib"] },
     { name = "cookiecutter" },
     { name = "graphviz" },
     { name = "json5" },
@@ -878,7 +883,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "anytree", specifier = ">=2.13.0" },
-    { name = "bakefile", specifier = ">=0.0.8" },
+    { name = "bakefile", extras = ["lib"], specifier = ">=0.0.8" },
     { name = "cookiecutter", specifier = ">=2.6.0" },
     { name = "graphviz", specifier = ">=0.21" },
     { name = "json5", specifier = ">=0.13.0" },
