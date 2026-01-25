@@ -52,43 +52,54 @@ def batch_format_and_check(directories: list[Path]) -> None:
     # Ruff rules to enforce (same as pyproject.toml)
     ruff_rules = "ARG,B,C4,E,F,I,N,PGH,PIE,PYI,RUF,SIM,UP"
 
-    # 1. ruff format (all directories in one call)
-    subprocess.run(
-        [ruff_bin, "format", "--exit-non-zero-on-format", *dir_paths],
-        check=False,
-    )
+    max_retries = 2
 
-    # 2. ruff check --fix (ignore ARG002 in solution.py, B018 in playground files)
-    subprocess.run(
-        [
-            ruff_bin,
-            "check",
-            "--select",
-            ruff_rules,
-            "--per-file-ignores",
-            "**/solution.py:ARG002",
-            "--per-file-ignores",
-            "**/playground.ipynb:B018",
-            "--fix",
-            "--exit-non-zero-on-fix",
-            *dir_paths,
-        ],
-        check=False,
-    )
+    for _ in range(max_retries):
+        # 1. ruff format (all directories in one call)
+        result_format = subprocess.run(
+            [ruff_bin, "format", "--exit-non-zero-on-format", *dir_paths],
+            check=False,
+        )
 
-    # 3. ty check (ignore unresolved-import in playground files, ARG002 in solution files)
-    subprocess.run(
-        [
-            ty_bin,
-            "check",
-            "--error-on-warning",
-            "--no-progress",
-            "--exclude",
-            "**/playground.ipynb",
-            *dir_paths,
-        ],
-        check=False,
-    )
+        # 2. ruff check --fix (ignore ARG002 in solution.py, B018 in playground files)
+        result_check = subprocess.run(
+            [
+                ruff_bin,
+                "check",
+                "--select",
+                ruff_rules,
+                "--per-file-ignores",
+                "**/solution.py:ARG002",
+                "--per-file-ignores",
+                "**/playground.ipynb:B018",
+                "--fix",
+                "--exit-non-zero-on-fix",
+                *dir_paths,
+            ],
+            check=False,
+        )
+
+        # 3. ty check (ignore unresolved-import in playground files, ARG002 in solution files)
+        result_ty = subprocess.run(
+            [
+                ty_bin,
+                "check",
+                "--error-on-warning",
+                "--no-progress",
+                "--exclude",
+                "**/playground.ipynb",
+                *dir_paths,
+            ],
+            check=False,
+        )
+
+        # If all passed, break early
+        if (
+            result_format.returncode == 0
+            and result_check.returncode == 0
+            and result_ty.returncode == 0
+        ):
+            break
 
 
 def merge_tags(data: dict) -> dict:
