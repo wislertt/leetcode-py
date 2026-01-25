@@ -66,7 +66,12 @@ jobs:
                       cp -r /usr/share/graphviz ~/graphviz-cache/share/ 2>/dev/null || true
                   fi
 
-            - name: Check test case count
+            - name: setup-bun
+              uses: oven-sh/setup-bun@3d267786b128fe76c2f16a390aa2448b815359f3 # v2.1.2
+              with:
+                  bun-version: latest
+
+            - name: check-test-case-count
               run: bake check-test-cases
 
             - name: backup-existing-problems
