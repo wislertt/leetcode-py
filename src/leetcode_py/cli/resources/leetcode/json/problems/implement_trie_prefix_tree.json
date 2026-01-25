@@ -22,7 +22,7 @@
     "helpers_content": "",
     "helpers_run_name": "trie_operations",
     "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
-    "helpers_run_body": "    trie = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Trie':\n            trie = solution_class()\n            results.append(None)\n        elif op == 'insert' and trie is not None:\n            trie.insert(inputs[i][0])\n            results.append(None)\n        elif op == 'search' and trie is not None:\n            results.append(trie.search(inputs[i][0]))\n        elif op == 'starts_with' and trie is not None:\n            results.append(trie.starts_with(inputs[i][0]))\n        elif op == 'startsWith' and trie is not None:\n            results.append(trie.starts_with(inputs[i][0]))\n    return results, trie",
+    "helpers_run_body": "    trie = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Trie':\n            trie = solution_class()\n            results.append(None)\n        elif op == 'insert' and trie is not None:\n            trie.insert(inputs[i][0])\n            results.append(None)\n        elif op == 'search' and trie is not None:\n            results.append(trie.search(inputs[i][0]))\n        elif op in ('starts_with', 'startsWith') and trie is not None:\n            results.append(trie.starts_with(inputs[i][0]))\n    return results, trie",
     "helpers_assert_name": "trie_operations",
     "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",

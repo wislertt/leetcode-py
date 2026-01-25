@@ -25,7 +25,7 @@
     "helpers_run_body": "    implementation = solution_class()\n    return implementation.partition(s)",
     "helpers_assert_name": "partition",
     "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
-    "helpers_assert_body": "    # Sort inner lists and outer list for comparison\n    # Note: Inner lists are partitions (lists of strings), order of partitions doesn't matter\n    # Order of strings within a partition DOES matter (it must reconstruct s)\n    # But wait, the problem says \"partition s\", so the order of substrings must match the order in s.\n    # So we only need to sort the outer list of partitions.\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "helpers_assert_body": "    # Only sort the outer list. Inner lists maintain order since substrings must reconstruct s.\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",

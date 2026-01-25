@@ -21,7 +21,7 @@
     "helpers_content": "",
     "helpers_run_name": "word_dictionary",
     "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
-    "helpers_run_body": "    wd: Any = None\n    results: list[bool | None] = []\n    \n    for op, args in zip(operations, inputs):\n        if op == 'WordDictionary':\n            wd = solution_class()\n            results.append(None)\n        elif op == 'addWord':\n            assert wd is not None\n            wd.add_word(args[0])\n            results.append(None)\n        elif op == 'search':\n            assert wd is not None\n            results.append(wd.search(args[0]))\n    \n    return results",
+    "helpers_run_body": "    wd: Any = None\n    results: list[bool | None] = []\n    \n    for op, args in zip(operations, inputs, strict=False):\n        if op == 'WordDictionary':\n            wd = solution_class()\n            results.append(None)\n        elif op == 'addWord':\n            assert wd is not None\n            wd.add_word(args[0])\n            results.append(None)\n        elif op == 'search':\n            assert wd is not None\n            results.append(wd.search(args[0]))\n    \n    return results",
     "helpers_assert_name": "word_dictionary",
     "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
