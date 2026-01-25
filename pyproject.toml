@@ -124,24 +124,9 @@ exclude = [
   "src/leetcode_py/cli/resources"
 ]
 
-# Debug
-[tool.uv]
-index-strategy = "unsafe-best-match"
-prerelease = "allow"
-
 [tool.uv.build-backend]
 module-name = ["leetcode_py"]
 module-root = "src"
-
-# Debug
-[[tool.uv.index]]
-name = "testpypi"
-url = "https://test.pypi.org/simple/"
-explicit = true
-
-# Debug
-[tool.uv.sources]
-bakefile = {index = "testpypi"}
 
 # # Debug with bakefile from test pypi
 # =============================================

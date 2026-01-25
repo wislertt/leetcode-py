@@ -6,9 +6,6 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 
-[options]
-prerelease-mode = "allow"
-
 [[package]]
 name = "annotated-types"
 version = "0.7.0"
@@ -82,8 +79,8 @@ wheels = [
 
 [[package]]
 name = "bakefile"
-version = "0.0.9a90011.post5"
-source = { registry = "https://test.pypi.org/simple/" }
+version = "0.0.9"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautysh" },
     { name = "click" },
@@ -100,9 +97,9 @@ dependencies = [
     { name = "typer" },
     { name = "uv" },
 ]
-sdist = { url = "https://test-files.pythonhosted.org/packages/99/2b/c710447fa54444299473f97b11dad5ffbc05489d5f2117f598d34d9ce818/bakefile-0.0.9a90011.post5.tar.gz", hash = "sha256:29bfeecd9381f54c45d375ff365bf782148d168090cc6e636b8da2b7996c9c77", size = 36286, upload-time = "2026-01-25T07:11:12.11Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0b/35/2356d3f4c8b0117113bf252c9ab1fb2926859426db44ee760990d849a2bd/bakefile-0.0.9.tar.gz", hash = "sha256:496480324d80ad956632d85202ae992271fc8e4817a11a515efa80256bb84db9", size = 36280, upload-time = "2026-01-25T09:03:24.124Z" }
 wheels = [
-    { url = "https://test-files.pythonhosted.org/packages/8c/a6/30c736f163115278724ebb5fbe7dc4ccca9e3f8dfc5a1dcc0182461aa2d5/bakefile-0.0.9a90011.post5-py3-none-any.whl", hash = "sha256:495c72ec01b62ff167c3d6bbcff3c2393a6b859394e09decad83afde7007fb09", size = 56588, upload-time = "2026-01-25T07:11:11.084Z" },
+    { url = "https://files.pythonhosted.org/packages/54/98/badaeaec246621eb7b4c3fa2275a95a54ab9af5e139a631af5a2ae661e66/bakefile-0.0.9-py3-none-any.whl", hash = "sha256:5e8f585e55eb398291a090e7a4d12c9cdcaf8e40351441490131a34a78ac2186", size = 56442, upload-time = "2026-01-25T09:03:22.937Z" },
 ]
 
 [[package]]
@@ -645,7 +642,7 @@ wheels = [
 
 [[package]]
 name = "ipykernel"
-version = "7.2.0a0"
+version = "7.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appnope", marker = "sys_platform == 'darwin'" },
@@ -663,9 +660,9 @@ dependencies = [
     { name = "tornado" },
     { name = "traitlets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9f/26/0304d487e52ab71554ded44ee152151ddb7e9f5f34d2fe53ba96912a92a6/ipykernel-7.2.0a0.tar.gz", hash = "sha256:914085b822867126f659f55237f0b07a2eab50dfc647019f3c2dc287bafba1f0", size = 175604, upload-time = "2026-01-08T11:03:36.072Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/a4/4948be6eb88628505b83a1f2f40d90254cab66abf2043b3c40fa07dfce0f/ipykernel-7.1.0.tar.gz", hash = "sha256:58a3fc88533d5930c3546dc7eac66c6d288acde4f801e2001e65edc5dc9cf0db", size = 174579, upload-time = "2025-10-27T09:46:39.471Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/0e/f5/e0a5eb233141ab603461648117e9c6663be7a9d9188c2a9283684c25b1cb/ipykernel-7.2.0a0-py3-none-any.whl", hash = "sha256:5faaba2b9ffa4f0224ec1ad66efaa9656452f9da426c903185d8b03e3a64ad9c", size = 118776, upload-time = "2026-01-08T11:03:34.283Z" },
+    { url = "https://files.pythonhosted.org/packages/a3/17/20c2552266728ceba271967b87919664ecc0e33efca29c3efc6baf88c5f9/ipykernel-7.1.0-py3-none-any.whl", hash = "sha256:763b5ec6c5b7776f6a8d7ce09b267693b4e5ce75cb50ae696aaefb3c85e1ea4c", size = 117968, upload-time = "2025-10-27T09:46:37.805Z" },
 ]
 
 [[package]]
@@ -881,7 +878,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "anytree", specifier = ">=2.13.0" },
-    { name = "bakefile", specifier = ">=0.0.8", index = "https://test.pypi.org/simple/" },
+    { name = "bakefile", specifier = ">=0.0.8" },
     { name = "cookiecutter", specifier = ">=2.6.0" },
     { name = "graphviz", specifier = ">=0.21" },
     { name = "json5", specifier = ">=0.13.0" },
