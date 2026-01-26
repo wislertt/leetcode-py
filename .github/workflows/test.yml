@@ -57,6 +57,8 @@ jobs:
 
             - name: debug
               run: |
+                  echo rm .python-version ====
+                  rm .python-version
                   echo bf -vv find-python ====
                   bf -vv find-python
                   echo rm .python-version ====
