@@ -54,7 +54,12 @@ jobs:
 
             - name: debug
               run: |
-                  bf find-python
+                  echo bf -vv find-python ====
+                  bf -vv find-python
+                  echo rm .python-version ====
+                  rm .python-version
+                  echo bf -vv find-python ====
+                  bf -vv find-python
                   echo which bake =====
                   which bake
                   echo pwd ====
@@ -63,8 +68,6 @@ jobs:
                   ls
                   echo bake -vv --version ====
                   bake -vv --version
-                  echo rm .python-version ====
-                  rm .python-version
                   echo =======
 
             - name: cache-graphviz
