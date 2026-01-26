@@ -50,10 +50,11 @@ jobs:
               run: |
                   uv tool install "bakefile[lib]"
                   uv tool upgrade --all
-                  bake --version
+                  bake --version || echo fail
 
             - name: debug
               run: |
+                  bf find-python
                   echo which bake =====
                   which bake
                   echo pwd ====
@@ -62,6 +63,8 @@ jobs:
                   ls
                   echo bake -vv --version ====
                   bake -vv --version
+                  echo rm .python-version ====
+                  rm .python-version
                   echo =======
 
             - name: cache-graphviz
