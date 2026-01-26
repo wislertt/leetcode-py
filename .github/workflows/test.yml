@@ -28,8 +28,8 @@ jobs:
               with:
                   fetch-depth: 0
 
-            - name: update-python-version
-              run: echo "${{ matrix.python-version }}" > .python-version
+            # - name: update-python-version
+            #   run: echo "${{ matrix.python-version }}" > .python-version
 
             - name: setup-uv
               uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
@@ -53,25 +53,7 @@ jobs:
               run: |
                   uv tool install "bakefile[lib]"
                   uv tool upgrade --all
-                  bake --version || echo fail
-
-            - name: debug
-              run: |
-                  echo bf -vv find-python ====
-                  bf -vv find-python
-                  echo rm .python-version ====
-                  rm .python-version
-                  echo bf -vv find-python ====
-                  bf -vv find-python
-                  echo which bake =====
-                  which bake
-                  echo pwd ====
-                  pwd
-                  echo ls ====
-                  ls
-                  echo bake -vv --version ====
-                  bake -vv --version
-                  echo =======
+                  bake --version
 
             - name: cache-graphviz
               id: cache-graphviz
