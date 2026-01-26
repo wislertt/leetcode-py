@@ -14,7 +14,7 @@ from leetcode_py.cli.utils.problem_finder import find_problems_by_tag
 def get_existing_problems():
     """Get problem numbers and names from existing JSON files."""
     json_dir = (
-        Path(__file__).parent.parent.parent / "leetcode_py/cli/resources/leetcode/json/problems"
+        Path(__file__).parent.parent.parent / "src/leetcode_py/cli/resources/leetcode/json/problems"
     )
     existing_problems = {}
 

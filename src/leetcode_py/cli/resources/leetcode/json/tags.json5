@@ -225,6 +225,7 @@
         "insert_interval",
         "invert_binary_tree",
         "jump_game",
+        "jump_game_ii",
         "k_closest_points_to_origin",
         "kth_smallest_element_in_a_bst",
         "largest_rectangle_in_histogram",
