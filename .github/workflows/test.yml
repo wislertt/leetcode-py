@@ -28,6 +28,9 @@ jobs:
               with:
                   fetch-depth: 0
 
+            - name: update-python-version
+              run: echo "${{ matrix.python-version }}" > .python-version
+
             - name: setup-uv
               uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
               with:
