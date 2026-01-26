@@ -1,0 +1,93 @@
+{
+    "problem_name": "linked_list_cycle_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "142",
+    "problem_title": "Linked List Cycle II",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Linked List, Two Pointers",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png)\n\n```\nInput: head = [3,2,0,-4], pos = 1\nOutput: tail connects to node index 1\nExplanation: There is a cycle in the linked list, where tail connects to the second node.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png)\n\n```\nInput: head = [1,2], pos = 0\nOutput: tail connects to node index 0\nExplanation: There is a cycle in the linked list, where tail connects to the first node.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png)\n\n```\nInput: head = [1], pos = -1\nOutput: no cycle\nExplanation: There is no cycle in the linked list.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of the nodes in the list is in the range [0, 10^4].\n- -10^5 <= Node.val <= 10^5\n- pos is -1 or a valid index in the linked-list.",
+    "readme_additional": "**Follow up:** Can you solve it using O(1) (i.e. constant) memory?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "detect_cycle",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int], pos: int)",
+    "helpers_run_body": "    head = ListNode.from_list(head_vals)\n    # Keep reference to tail to break cycle later\n    tail = None\n    if head is not None:\n        tail = head\n        while tail.next is not None:\n            tail = tail.next\n    # Create cycle if pos is valid\n    if pos >= 0 and head is not None and tail is not None:\n        # Find the node at position pos\n        cycle_node = head\n        for _ in range(pos):\n            cycle_node = cycle_node.next\n        # Create cycle\n        tail.next = cycle_node\n    implementation = solution_class()\n    result = implementation.detect_cycle(head)\n    # Break the cycle to avoid infinite loop when finding index\n    if tail is not None:\n        tail.next = None\n    # Return the index of the cycle node, or -1 if no cycle\n    if result is None:\n        return -1\n    # Find index of result node\n    index = 0\n    current = head\n    while current is not None and current != result:\n        current = current.next\n        index += 1\n    return index if current is not None else -1",
+    "helpers_assert_name": "detect_cycle",
+    "helpers_assert_signature": "(result: int, pos: int) -> bool",
+    "helpers_assert_body": "    assert result == pos\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_detect_cycle, run_detect_cycle\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LinkedListCycleII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "detect_cycle",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement detect_cycle\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_detect_cycle",
+                "signature": "(self, head_vals: list[int], pos: int, expected: int)",
+                "parametrize": "head_vals, pos, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 2, 0, -4], 1, 1)",
+                        "([1, 2], 0, 0)",
+                        "([1], -1, -1)",
+                        "([], -1, -1)",
+                        "([1, 2, 3, 4], -1, -1)",
+                        "([1, 2, 3, 4], 3, 3)",
+                        "([1, 2, 3, 4, 5], 2, 2)",
+                        "([1, 2], 1, 1)",
+                        "([1, 2, 3], 0, 0)",
+                        "([1, 2, 3, 4, 5, 6], 5, 5)",
+                        "([1, 2, 3, 4, 5], 0, 0)",
+                        "([1, 2, 3], 2, 2)",
+                        "([1, 2, 3, 4], 1, 1)",
+                        "([1], 0, 0)",
+                        "([1, 2, 3, 4, 5, 6, 7], 3, 3)"
+                    ]
+                },
+                "body": "        result = run_detect_cycle(Solution, head_vals, pos)\n        assert_detect_cycle(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_detect_cycle, assert_detect_cycle\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals: list[int] = [3, 2, 0, -4]\npos: int = 1\nexpected: int = 1",
+    "playground_run": "result = run_detect_cycle(Solution, head_vals, pos)\nprint(f'Cycle starts at index: {result}')\nresult",
+    "playground_assert": "assert_detect_cycle(result, expected)"
+}

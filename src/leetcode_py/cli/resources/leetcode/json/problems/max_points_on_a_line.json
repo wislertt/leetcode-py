@@ -1,0 +1,90 @@
+{
+    "problem_name": "max_points_on_a_line",
+    "solution_class_name": "Solution",
+    "problem_number": "149",
+    "problem_title": "Max Points on a Line",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Math, Geometry",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given an array of `points` where `points[i] = [xi, yi]` represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/25/plane1.jpg)\n\n```\nInput: points = [[1,1],[2,2],[3,3]]\nOutput: 3\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/25/plane2.jpg)\n\n```\nInput: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]\nOutput: 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= points.length <= 300\n- points[i].length == 2\n- -10^4 <= xi, yi <= 10^4\n- All the points are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_points",
+    "helpers_run_signature": "(solution_class: type, points: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_points(points)",
+    "helpers_assert_name": "max_points",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_points, run_max_points\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaxPointsOnALine",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_points",
+                "signature": "(self, points: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_points\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_points",
+                "signature": "(self, points: list[list[int]], expected: int)",
+                "parametrize": "points, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1], [2, 2], [3, 3]], 3)",
+                        "([[1, 1], [3, 2], [5, 3], [4, 1], [2, 3], [1, 4]], 4)",
+                        "([[1, 1]], 1)",
+                        "([[1, 1], [1, 2], [1, 3]], 3)",
+                        "([[1, 1], [2, 1], [3, 1]], 3)",
+                        "([[0, 0], [1, 1], [2, 2], [3, 3], [3, 2]], 4)",
+                        "([[0, 0], [1, 0], [2, 0], [0, 1], [0, 2]], 3)",
+                        "([[1, 1], [2, 2], [3, 4], [4, 5], [5, 6], [7, 8]], 4)",
+                        "([[0, 0], [1, 1], [0, 1], [1, 0], [2, 2], [2, 0]], 3)",
+                        "([[1, 1], [1, 1], [1, 1]], 3)",
+                        "([[0, 0], [1, 1], [2, 4], [3, 9], [4, 16]], 2)",
+                        "([[1, 1], [2, 3], [3, 5], [4, 7]], 4)",
+                        "([[0, 0], [1, 2], [2, 4], [3, 6], [0, 1]], 4)",
+                        "([[1, 0], [2, 0], [3, 0], [0, 1], [0, 2], [0, 3]], 3)",
+                        "([[0, 0], [1, 1], [1, -1], [2, 2], [2, -2]], 3)"
+                    ]
+                },
+                "body": "        result = run_max_points(Solution, points)\n        assert_max_points(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_points, assert_max_points\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npoints: list[list[int]] = [[1, 1], [2, 2], [3, 3]]\nexpected: int = 3",
+    "playground_run": "result = run_max_points(Solution, points)\nprint(f'Max points on a line: {result}')\nresult",
+    "playground_assert": "assert_max_points(result, expected)"
+}

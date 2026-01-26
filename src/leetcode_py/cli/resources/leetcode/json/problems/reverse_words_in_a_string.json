@@ -1,0 +1,93 @@
+{
+    "problem_name": "reverse_words_in_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "151",
+    "problem_title": "Reverse Words in a String",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given an input string `s`, reverse the order of the words. A word is defined as a sequence of non-space characters. The words in `s` will be separated by at least one space. Return a string of the words in reverse order concatenated by a single space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"the sky is blue\"\nOutput: \"blue is sky the\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"  hello world  \"\nOutput: \"world hello\"\nExplanation: Your reversed string should not contain leading or trailing spaces.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"a good   example\"\nOutput: \"example good a\"\nExplanation: You need to reduce multiple spaces between two words to a single space in the reversed string.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^4\n- s contains English letters (upper-case and lower-case), digits, and spaces ' '.\n- There is at least one word in s.",
+    "readme_additional": "**Follow up:** If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_words",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_words(s)",
+    "helpers_assert_name": "reverse_words",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_words, run_reverse_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseWordsInAString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_words",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reverse_words\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_words",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('the sky is blue', 'blue is sky the')",
+                        "('  hello world  ', 'world hello')",
+                        "('a good   example', 'example good a')",
+                        "('hello', 'hello')",
+                        "('  hello', 'hello')",
+                        "('hello  ', 'hello')",
+                        "('a   b   c', 'c b a')",
+                        "('the', 'the')",
+                        "('  the   sky  is  blue  ', 'blue is sky the')",
+                        "('one', 'one')",
+                        "('two words', 'words two')",
+                        "('  multiple   spaces   here  ', 'here spaces multiple')",
+                        "('a b c d e', 'e d c b a')",
+                        "('  leading and trailing  ', 'trailing and leading')",
+                        "('word', 'word')"
+                    ]
+                },
+                "body": "        result = run_reverse_words(Solution, s)\n        assert_reverse_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_words, assert_reverse_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns: str = 'the sky is blue'\nexpected: str = 'blue is sky the'",
+    "playground_run": "result = run_reverse_words(Solution, s)\nprint(f'Reversed words: {result}')\nresult",
+    "playground_assert": "assert_reverse_words(result, expected)"
+}
