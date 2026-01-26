@@ -1,7 +1,9 @@
+import datetime as dt  # Test
 import shutil
 from pathlib import Path
 from typing import Annotated
 
+import polars as pl  # Test
 import typer
 from bake import Context, command, console
 from bakelib import PythonSpace
@@ -9,6 +11,21 @@ from bakelib import PythonSpace
 PROBLEM = "number_of_connected_components_in_an_undirected_graph"
 problem_option = Annotated[str, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
+
+# Test
+df = pl.DataFrame(
+    {
+        "name": ["Alice Archer", "Ben Brown", "Chloe Cooper", "Daniel Donovan"],
+        "birthdate": [
+            dt.date(1997, 1, 10),
+            dt.date(1985, 2, 15),
+            dt.date(1983, 3, 22),
+            dt.date(1981, 4, 30),
+        ],
+        "weight": [57.9, 72.5, 53.6, 83.1],  # (kg)
+        "height": [1.56, 1.77, 1.65, 1.75],  # (m)
+    }
+)
 
 
 class MyBakebook(PythonSpace):
@@ -106,3 +123,10 @@ class MyBakebook(PythonSpace):
 
 
 bakebook = MyBakebook()
+
+
+# Test
+@bakebook.command()
+def test_polars():
+    console.echo("Testing Polars DataFrame:")
+    console.echo(df)

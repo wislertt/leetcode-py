@@ -30,6 +30,7 @@ dependencies = [
   "graphviz>=0.21",
   "json5>=0.13.0",
   "loguru>=0.7.3",
+  "polars>=1.37.1",
   "requests>=2.32.5",
   "rich>=14.1.0",
   "ruff>=0.14.0",
