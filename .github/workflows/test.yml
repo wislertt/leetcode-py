@@ -37,6 +37,24 @@ jobs:
                   version: "latest"
                   enable-cache: true
                   python-version: ${{ matrix.python-version }}
+
+            # - name: cache-uv
+            #   uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
+            #   with:
+            #       path: |
+            #           ~/.local
+            #           ${{ github.workspace }}/.venv
+            #       key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
+            #       restore-keys: |
+            #           uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
+            #           uv-${{ runner.os }}-py${{ matrix.python-version }}-
+
+            - name: install-bake
+              run: |
+                  uv tool install "bakefile[lib]"
+                  uv tool upgrade --all
+                  bake --version
+
             - name: debug
               run: |
                   echo bf -vv find-python ====
@@ -54,23 +72,6 @@ jobs:
                   echo bake -vv --version ====
                   bake -vv --version
                   echo =======
-                  bake --version
-
-            - name: cache-uv
-              uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
-              with:
-                  path: |
-                      ~/.local
-                      ${{ github.workspace }}/.venv
-                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
-                  restore-keys: |
-                      uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
-                      uv-${{ runner.os }}-py${{ matrix.python-version }}-
-
-            - name: install-bake
-              run: |
-                  uv tool install "bakefile[lib]"
-                  uv tool upgrade --all
                   bake --version
 
             - name: cache-graphviz
