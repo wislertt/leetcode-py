@@ -28,8 +28,8 @@ jobs:
               with:
                   fetch-depth: 0
 
-            # - name: update-python-version
-            #   run: echo "${{ matrix.python-version }}" > .python-version
+            - name: update-python-version
+              run: echo "${{ matrix.python-version }}" > .python-version
 
             - name: setup-uv
               uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
@@ -37,17 +37,6 @@ jobs:
                   version: "latest"
                   enable-cache: true
                   python-version: ${{ matrix.python-version }}
-
-            # - name: cache-uv
-            #   uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
-            #   with:
-            #       path: |
-            #           ~/.local
-            #           ${{ github.workspace }}/.venv
-            #       key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
-            #       restore-keys: |
-            #           uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
-            #           uv-${{ runner.os }}-py${{ matrix.python-version }}-
 
             - name: install-bake
               run: |
