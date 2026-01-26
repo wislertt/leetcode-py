@@ -8,8 +8,8 @@ When user requests **batch creation of multiple problems**, the assistant will:
 2. **Loop through each problem** following the complete workflow
 3. **For each problem**:
     - Find next problem via `uv run python .claude/.dev/next_problem.py`
-    - Follow all steps from `.claude/commands/problem-creation.md`
-    - **MANDATORY**: Read and follow `.claude/commands/test-quality-assurance.md` for quality verification
+    - Follow all steps from @.claude/commands/problem-creation.md
+    - **MANDATORY**: Read and follow @.claude/commands/test-quality-assurance.md for quality verification
 4. **Provide batch summary** at the end
 
 **CRITICAL INSTRUCTION**: You MUST read the test-quality-assurance.md file before executing quality assurance for any problem. Do not rely on memory or assumptions about the workflow.
@@ -38,7 +38,7 @@ uv run python .claude/.dev/next_problem.py
 
 #### 2.2: Follow Problem Creation Workflow
 
-Execute complete workflow from `.claude/commands/problem-creation.md`:
+Execute complete workflow from @.claude/commands/problem-creation.md:
 
 1. **Scrape** problem data using `uv run lcpy scrape`
 2. **Transform** data into proper JSON template format
@@ -62,7 +62,7 @@ Execute complete workflow from `.claude/commands/problem-creation.md`:
 
 **REQUIRED ACTION**: Before proceeding with quality assurance, you MUST:
 
-1. **Read the file**: `read_file /Users/wisl/Desktop/vault/personal-repo/leetcode-py/.claude/commands/test-quality-assurance.md`
+1. **Read the file**: @.claude/commands/test-quality-assurance.md
 2. **Follow the exact 4-step process** described in that file
 3. **Execute each step** as specified in the test-quality-assurance.md workflow
 

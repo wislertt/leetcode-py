@@ -15,8 +15,9 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 4. **Create** JSON file in `leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json`
 5. **Update tags.json5** - If user specifies tags, manually add problem name to corresponding tag arrays in `leetcode_py/cli/resources/leetcode/json/tags.json5`
 6. **Generate** problem structure using `bake p-gen`
-7. **Verify** with `bake lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
-8. **Iterate** if JSON fixes: re-run `bake p-gen -p {problem_name} -f` and `bake lint` until passes to ensure reproducibility
+7. **Update @bakefile.py** - Set `PROBLEM = "{problem_name}"` to the newly created problem name for easier `bake` command usage
+8. **Verify** with `bake lint` - fix template issues in JSON if possible, or manually fix generated files if template limitations
+9. **Iterate** if JSON fixes: re-run `bake p-gen -p {problem_name} -f` and `bake lint` until passes to ensure reproducibility
 
 **If user does not specify a problem number or name/slug**, run:
 
@@ -359,12 +360,16 @@ bake p-gen -p {problem_name}
 # Force regenerate (if files exist)
 bake p-gen -p {problem_name} -f
 
-# Test specific problem
+# Test specific problem (uses PROBLEM variable from bakefile.py by default)
+bake p-test
+# Or specify problem explicitly:
 bake p-test -p {problem_name}
 
 # Lint entire project (faster with ty)
 bake lint
 ```
+
+**Note:** After creating a new problem, update the `PROBLEM` variable in @bakefile.py to use `bake` commands without specifying the problem name each time.
 
 ## Tags (Optional)
 
