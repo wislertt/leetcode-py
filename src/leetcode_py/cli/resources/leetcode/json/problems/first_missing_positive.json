@@ -1,0 +1,98 @@
+{
+    "problem_name": "first_missing_positive",
+    "solution_class_name": "Solution",
+    "problem_number": "41",
+    "problem_title": "First Missing Positive",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given an unsorted integer array `nums`. Return the smallest positive integer that is not present in `nums`.\n\nYou must implement an algorithm that runs in `O(n)` time and uses `O(1)` auxiliary space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,0]\nOutput: 3\nExplanation: The numbers in the range [1,2] are all in the array.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,4,-1,1]\nOutput: 2\nExplanation: 1 is in the array but 2 is missing.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [7,8,9,11,12]\nOutput: 1\nExplanation: The smallest positive integer 1 is missing.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `-2^31 <= nums[i] <= 2^31 - 1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "first_missing_positive",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.first_missing_positive(nums)",
+    "helpers_assert_name": "first_missing_positive",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_first_missing_positive, run_first_missing_positive\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FirstMissingPositive",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "first_missing_positive",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement first_missing_positive\n        return 1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_first_missing_positive",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 0], 3)",
+                        "([3, 4, -1, 1], 2)",
+                        "([7, 8, 9, 11, 12], 1)",
+                        "([1], 2)",
+                        "([2], 1)",
+                        "([1, 1], 2)",
+                        "([1, 2, 3], 4)",
+                        "([2, 3, 4], 1)",
+                        "([1, 2, 3, 4, 5], 6)",
+                        "([3, 4, 2, 1], 5)",
+                        "([-5, -3, -1], 1)",
+                        "([0], 1)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11)",
+                        "([2, 2, 2, 2], 1)",
+                        "([-1, -2, -3], 1)",
+                        "([1, 2, 3, 1, 2, 3], 4)",
+                        "([2, 1, 4, 3, 6, 5], 7)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 11], 10)",
+                        "([2], 1)",
+                        "([1000000], 1)"
+                    ]
+                },
+                "body": "        result = run_first_missing_positive(Solution, nums)\n        assert_first_missing_positive(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_first_missing_positive, assert_first_missing_positive\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums: list[int] = [1, 2, 0]\nexpected = 3",
+    "playground_run": "result = run_first_missing_positive(Solution, nums)\nresult",
+    "playground_assert": "assert_first_missing_positive(result, expected)"
+}

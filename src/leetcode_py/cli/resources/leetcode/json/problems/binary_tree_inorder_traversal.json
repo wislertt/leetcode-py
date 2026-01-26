@@ -1,0 +1,96 @@
+{
+    "problem_name": "binary_tree_inorder_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "94",
+    "problem_title": "Binary Tree Inorder Traversal",
+    "difficulty": "Easy",
+    "topics": "Stack, Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return the inorder traversal of its nodes' values.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/08/29/screenshot-2024-08-29-202743.png)\n\n```\nInput: root = [1,null,2,3]\nOutput: [1,3,2]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/08/29/tree_2.png)\n\n```\nInput: root = [1,2,3,4,5,null,8,null,null,6,7,9]\nOutput: [4,2,6,5,7,1,3,9,8]\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: root = [1]\nOutput: [1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 100]`\n- `-100 <= Node.val <= 100`",
+    "readme_additional": "**Follow up:** Recursive solution is trivial, could you do it iteratively?",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "inorder_traversal",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.inorder_traversal(root)",
+    "helpers_assert_name": "inorder_traversal",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_inorder_traversal, run_inorder_traversal\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeInorderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "inorder_traversal",
+                "signature": "(self, root: TreeNode[int] | None) -> list[int]",
+                "body": "        # TODO: Implement inorder_traversal\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_inorder_traversal",
+                "signature": "(self, root_list: list[int | None], expected: list[int])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, None, 2, 3], [1, 3, 2])",
+                        "([1, 2, 3, 4, 5, None, 8, None, None, 6, 7, 9], [4, 2, 6, 5, 7, 1, 3, 9, 8])",
+                        "([], [])",
+                        "([1], [1])",
+                        "([1, 2], [2, 1])",
+                        "([1, None, 2], [1, 2])",
+                        "([3, 1, 2], [1, 3, 2])",
+                        "([5, 3, 6, 2, 4, None, 7], [2, 3, 4, 5, 6, 7])",
+                        "([1, None, 2, None, 3], [1, 2, 3])",
+                        "([2, 1, 3], [1, 2, 3])",
+                        "([10, 5, 15, None, 8, 12, 20], [5, 8, 10, 12, 15, 20])",
+                        "([1, 2, None, 3], [3, 2, 1])",
+                        "([4, 2, 6, 1, 3, 5, 7], [1, 2, 3, 4, 5, 6, 7])",
+                        "([0], [0])",
+                        "([-1, -2, -3], [-2, -1, -3])"
+                    ]
+                },
+                "body": "        result = run_inorder_traversal(Solution, root_list)\n        assert_inorder_traversal(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_inorder_traversal, assert_inorder_traversal\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 2, None, None, 3]\nexpected = [1, 3, 2]",
+    "playground_run": "result = run_inorder_traversal(Solution, root_list)\nresult",
+    "playground_assert": "assert_inorder_traversal(result, expected)"
+}

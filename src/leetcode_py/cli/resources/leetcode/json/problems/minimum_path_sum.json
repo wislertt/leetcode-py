@@ -1,0 +1,94 @@
+{
+    "problem_name": "minimum_path_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "64",
+    "problem_title": "Minimum Path Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["algo-master-75"]
+    },
+    "readme_description": "Given a `m x n` `grid` filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.\n\n**Note:** You can only move either down or right at any point in time.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/05/minpath.jpg)\n\n```\nInput: grid = [[1,3,1],[1,5,1],[4,2,1]]\nOutput: 7\nExplanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,2,3],[4,5,6]]\nOutput: 12\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 200`\n- `0 <= grid[i][j] <= 200`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_path_sum",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_path_sum(grid)",
+    "helpers_assert_name": "min_path_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_path_sum, run_min_path_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumPathSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_path_sum",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_path_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_path_sum",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 3, 1], [1, 5, 1], [4, 2, 1]], 7)",
+                        "([[1, 2, 3], [4, 5, 6]], 12)",
+                        "([[1, 1], [1, 1]], 3)",
+                        "([[1]], 1)",
+                        "([[1, 2], [1, 1]], 3)",
+                        "([[1, 2, 5], [3, 2, 1]], 6)",
+                        "([[5, 1, 1], [1, 5, 1], [1, 1, 5]], 13)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[1, 3, 5, 9], [8, 1, 3, 4], [5, 0, 6, 1], [8, 8, 4, 0]], 12)",
+                        "([[1, 2], [5, 6], [1, 1]], 8)",
+                        "([[2]], 2)",
+                        "([[1, 4, 7], [2, 5, 8], [3, 6, 9]], 21)",
+                        "([[10, 20], [30, 40]], 70)",
+                        "([[1, 0], [0, 1]], 2)",
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 21)",
+                        "([[100]], 100)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 5)",
+                        "([[1, 2], [3, 4]], 7)",
+                        "([[9, 1, 4, 8]], 22)"
+                    ]
+                },
+                "body": "        result = run_min_path_sum(Solution, grid)\n        assert_min_path_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_path_sum, assert_min_path_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid: list[list[int]] = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]\nexpected = 7",
+    "playground_run": "result = run_min_path_sum(Solution, grid)\nresult",
+    "playground_assert": "assert_min_path_sum(result, expected)"
+}
