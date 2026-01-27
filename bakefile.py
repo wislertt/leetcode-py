@@ -132,11 +132,15 @@ class MyBakebook(PythonSpace):
         self,
         ctx: Context,
         index: Annotated[PublishIndex, typer.Option("--index", help="Publish index")] = "testpypi",
+        version: Annotated[str | None, typer.Option("--version", help="Version to publish")] = None,
     ):
         token = self.get_pypi_token(index)
-        with self.with_uv_version(
-            ctx, self.zerv_versioning(ctx, schema="standard-base-prerelease-post-dev")
-        ):
+        version_to_use = (
+            version
+            if version
+            else self.zerv_versioning(ctx, schema="standard-base-prerelease-post-dev")
+        )
+        with self.with_uv_version(ctx, version_to_use):
             ctx.run("uv build")
             index_flag = f"--index {index}" if index == "testpypi" else ""
             ctx.run(f"uv publish --dry-run {index_flag} --token {token}")
@@ -155,3 +159,5 @@ def print():
     console.error("test error message")
     console.warning("test error message")
     console.success("test error message")
+    console.out.print("::error::This is error message")
+    console.out.print("::warning::This is warning message")
