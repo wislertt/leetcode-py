@@ -84,6 +84,14 @@ jobs:
                   echo "The secret is: ${DUMMY_SECRET}"
                   echo "Now it should be masked in logs: ${DUMMY_SECRET}"
 
+            - name: debug-print
+              run: |
+                  bake print
+
+            - name: debug-publish
+              run: |
+                  bake publish
+
             - name: cache-graphviz
               id: cache-graphviz
               uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1

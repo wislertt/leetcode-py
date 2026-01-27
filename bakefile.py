@@ -17,6 +17,7 @@ PublishIndex = Literal["testpypi", "pypi"]
 
 class MyBakebook(PythonSpace):
     ci: bool = False
+    github_actions: bool = False
 
     def lint(self, ctx: Context) -> None:
         ctx.run("uv run python scripts/sort_tags.py")
@@ -145,3 +146,12 @@ class MyBakebook(PythonSpace):
 
 
 bakebook = MyBakebook()
+
+
+@bakebook.command()
+def print():
+    console.out.print(f"ci={bakebook.ci}")
+    console.out.print(f"github_actions={bakebook.github_actions}")
+    console.error("test error message")
+    console.warning("test error message")
+    console.success("test error message")
