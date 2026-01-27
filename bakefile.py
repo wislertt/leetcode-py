@@ -121,11 +121,11 @@ class MyBakebook(PythonSpace):
     def with_uv_version(self, ctx: Context, version: str):
         result = ctx.run("uv version", stream=False, dry_run=False, echo=False)
         original_version = strip_ansi(result.stdout.strip()).split()[-1]
-        ctx.run(f"uv version {version}")
+        ctx.run(f"uv version --no-progress {version}")
         try:
             yield
         finally:
-            ctx.run(f"uv version {original_version}")
+            ctx.run(f"uv version --no-progress {original_version}")
 
     @command("publish", help="Build and publish the package")
     def publish(
