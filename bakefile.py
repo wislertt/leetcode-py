@@ -1,14 +1,18 @@
 import shutil
+from contextlib import contextmanager
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
 
 import typer
 from bake import Context, command, console
+from bake.ui.logger import strip_ansi
 from bakelib import PythonSpace
 
 PROBLEM = "number_of_connected_components_in_an_undirected_graph"
 problem_option = Annotated[str, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
+
+PublishIndex = Literal["testpypi", "pypi"]
 
 
 class MyBakebook(PythonSpace):
@@ -103,6 +107,41 @@ class MyBakebook(PythonSpace):
         console.echo("Generating all problems...")
         force_flag = "--force" if force else ""
         ctx.run(f"uv run lcpy gen --all -o leetcode {force_flag}".strip())
+
+    def get_pypi_token(self, index: PublishIndex) -> str:
+        _ = index
+        return "xxx"
+
+    def zerv_versioning(self, ctx: Context, *, schema: str) -> str:
+        result = ctx.run(f"zerv flow --schema {schema}", dry_run=False)
+        return strip_ansi(result.stdout.strip())
+
+    @contextmanager
+    def with_uv_version(self, ctx: Context, version: str):
+        result = ctx.run("uv version", stream=False, dry_run=False, echo=False)
+        original_version = strip_ansi(result.stdout.strip()).split()[-1]
+        ctx.run(f"uv version {version}")
+        try:
+            yield
+        finally:
+            ctx.run(f"uv version {original_version}")
+
+    @command("publish", help="Build and publish the package")
+    def publish(
+        self,
+        ctx: Context,
+        index: Annotated[PublishIndex, typer.Option("--index", help="Publish index")] = "testpypi",
+    ):
+        token = self.get_pypi_token(index)
+        with self.with_uv_version(
+            ctx, self.zerv_versioning(ctx, schema="standard-base-prerelease-post-dev")
+        ):
+            ctx.run("uv build")
+            index_flag = f"--index {index}" if index == "testpypi" else ""
+            ctx.run(f"uv publish --dry-run {index_flag} --token {token}")
+
+            # todo implement run with echo override.
+            # get secret func
 
 
 bakebook = MyBakebook()

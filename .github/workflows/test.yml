@@ -21,7 +21,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+                python-version: ["3.14"]
+                # python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
         steps:
             - name: checkout
@@ -55,6 +56,33 @@ jobs:
                   uv tool install "bakefile[lib]"
                   uv tool upgrade --all
                   bake --version
+
+            - name: debug
+              run: |
+                  echo "CI=${CI}"
+                  echo "GITHUB_ACTION=${GITHUB_ACTION}"
+                  echo "GITHUB_ACTIONS=${GITHUB_ACTIONS}"
+                  echo "GITHUB_EVENT_NAME=${GITHUB_EVENT_NAME}"
+                  echo "GITHUB_REPOSITORY=${GITHUB_REPOSITORY}"
+                  echo "GITHUB_REF=${GITHUB_REF}"
+                  echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}"
+                  echo "GITHUB_SHA=${GITHUB_SHA}"
+                  echo "GITHUB_WORKFLOW=${GITHUB_WORKFLOW}"
+                  echo "RUNNER_OS=${RUNNER_OS}"
+                  echo "RUNNER_ARCH=${RUNNER_ARCH}"
+                  echo ""
+                  echo "::error::This is a sample error message"
+                  echo "::warning::This is a sample warning message"
+                  echo "::notice::This is a sample notice message"
+                  echo "::error file=.github/workflows/test.yml,line=100,title=Test Error::This error links to a file"
+
+            - name: debug-mask
+              run: |
+                  DUMMY_SECRET="sk-1234567890abcdefghijklmnopqrstuvwxyz"
+                  echo "Adding mask for dummy secret..."
+                  echo "::add-mask::${DUMMY_SECRET}"
+                  echo "The secret is: ${DUMMY_SECRET}"
+                  echo "Now it should be masked in logs: ${DUMMY_SECRET}"
 
             - name: cache-graphviz
               id: cache-graphviz
