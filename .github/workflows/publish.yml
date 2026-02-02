@@ -7,11 +7,15 @@ on:
                 required: true
                 type: string
                 description: "PEP440 version string"
-            repository_url:
+            index:
                 required: false
                 type: string
-                description: "PyPI repository URL (default: official PyPI)"
-                default: ""
+                description: "Publish index (pypi or testpypi)"
+                default: "testpypi"
+            python_version:
+                required: false
+                type: string
+                description: "Python version"
         secrets:
             PYPI_API_TOKEN:
                 required: true

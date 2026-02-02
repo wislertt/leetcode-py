@@ -1,6 +1,6 @@
 import shutil
 from pathlib import Path
-from typing import Annotated, Literal
+from typing import Annotated
 
 import typer
 from bake import Context, command, console
@@ -10,12 +10,9 @@ PROBLEM = "number_of_connected_components_in_an_undirected_graph"
 problem_option = Annotated[str, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
 
-PublishIndex = Literal["testpypi", "pypi"]
-
 
 class MyBakebook(PythonLibSpace):
     ci: bool = False
-    # github_actions: bool = False
 
     def lint(self, ctx: Context) -> None:
         ctx.run("uv run python scripts/sort_tags.py")
@@ -39,12 +36,6 @@ class MyBakebook(PythonLibSpace):
         problem_path = self.is_problem_exist(problem)
         tests_path = str(problem_path / "test_solution.py")
         self._test(ctx, tests_paths=tests_path, verbose=True, coverage_report=False)
-
-    @command("p-lint", help="Run linter")
-    def problem_lint(self, ctx: Context, problem: problem_option = PROBLEM):
-        # TODO: only for backward compat with current docs. prefer using `bake lint` instead.
-        _ = problem
-        self.lint(ctx)
 
     @command("p-gen", help="Generate specific problem")
     def problem_gen(
@@ -109,17 +100,3 @@ class MyBakebook(PythonLibSpace):
 
 
 bakebook = MyBakebook()
-
-
-@bakebook.command()
-def print(ctx: Context):
-    console.out.print(f"ci={bakebook.ci}")
-    # console.out.print(f"github_actions={bakebook.github_actions}")
-    console.error("test error message")
-    console.warning("test error message")
-    console.success("test error message")
-    console.out.print("::error::This is error message")
-    console.out.print("::warning::This is warning message")
-    console.github_action_add_mask("my-secret-token-123")
-    console.out.print("Token: my-secret-token-123")
-    ctx.run("echo hello", echo_cmd="echo hi")
