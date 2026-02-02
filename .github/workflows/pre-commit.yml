@@ -25,7 +25,7 @@ jobs:
               with:
                   version: "latest"
                   enable-cache: true
-                  python-version: ${{ inputs.python_versions }}
+                  python-version: ${{ inputs.python_version }}
 
             - name: cache-uv
               uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
@@ -33,10 +33,10 @@ jobs:
                   path: |
                       ~/.local
                       ${{ github.workspace }}/.venv
-                  key: uv-${{ runner.os }}-py${{ inputs.python_versions }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
+                  key: uv-${{ runner.os }}-py${{ inputs.python_version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
                   restore-keys: |
-                      uv-${{ runner.os }}-py${{ inputs.python_versions }}-${{ hashFiles('uv.lock') }}-
-                      uv-${{ runner.os }}-py${{ inputs.python_versions }}-
+                      uv-${{ runner.os }}-py${{ inputs.python_version }}-${{ hashFiles('uv.lock') }}-
+                      uv-${{ runner.os }}-py${{ inputs.python_version }}-
 
             - name: install-bake
               run: |
