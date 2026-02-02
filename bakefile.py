@@ -15,7 +15,7 @@ PublishIndex = Literal["testpypi", "pypi"]
 
 class MyBakebook(PythonLibSpace):
     ci: bool = False
-    github_actions: bool = False
+    # github_actions: bool = False
 
     def lint(self, ctx: Context) -> None:
         ctx.run("uv run python scripts/sort_tags.py")
@@ -107,46 +107,6 @@ class MyBakebook(PythonLibSpace):
         force_flag = "--force" if force else ""
         ctx.run(f"uv run lcpy gen --all -o leetcode {force_flag}".strip())
 
-    # def get_pypi_token(self, index: PublishIndex) -> str:
-    #     _ = index
-    #     return "xxx"
-
-    # def zerv_versioning(self, ctx: Context, *, schema: str) -> str:
-    #     result = ctx.run(f"zerv flow --schema {schema}", dry_run=False)
-    #     return strip_ansi(result.stdout.strip())
-
-    # @contextmanager
-    # def with_uv_version(self, ctx: Context, version: str):
-    #     result = ctx.run("uv version", stream=False, dry_run=False, echo=False)
-    #     original_version = strip_ansi(result.stdout.strip()).split()[-1]
-    #     ctx.run(f"uv version --no-progress {version}")
-    #     try:
-    #         yield
-    #     finally:
-    #         ctx.run(f"uv version --no-progress {original_version}")
-
-    # @command("publish", help="Build and publish the package")
-    # def publish(
-    #     self,
-    #     ctx: Context,
-    # index: Annotated[PublishIndex, typer.Option("--index", help="Publish index")] = "testpypi",
-    # version: Annotated[str | None, typer.Option("--version", help="Version to publish")] = None,
-    # ):
-    #     token = self.get_pypi_token(index)
-    #     version_to_use = (
-    #         version
-    #         if version
-    #         else self.zerv_versioning(ctx, schema="standard-base-prerelease-post-dev")
-    #     )
-    #     with self.with_uv_version(ctx, version_to_use):
-    #         ctx.run("uv build")
-    #         index_flag = f"--index {index}" if index == "testpypi" else ""
-    #         ctx.run(f"uv publish --dry-run {index_flag} --token {token}")
-
-    #         # todo implement run with echo override.
-    #         # get secret func
-    #         # print with github action.
-
 
 bakebook = MyBakebook()
 
@@ -154,12 +114,12 @@ bakebook = MyBakebook()
 @bakebook.command()
 def print(ctx: Context):
     console.out.print(f"ci={bakebook.ci}")
-    console.out.print(f"github_actions={bakebook.github_actions}")
+    # console.out.print(f"github_actions={bakebook.github_actions}")
     console.error("test error message")
     console.warning("test error message")
     console.success("test error message")
     console.out.print("::error::This is error message")
     console.out.print("::warning::This is warning message")
-    # console.github_action_add_mask("my-secret-token-123")
+    console.github_action_add_mask("my-secret-token-123")
     console.out.print("Token: my-secret-token-123")
     ctx.run("echo hello", echo_cmd="echo hi")

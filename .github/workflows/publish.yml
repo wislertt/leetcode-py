@@ -21,31 +21,25 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout
+            - name: checkout
               uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-            - name: Update version in pyproject.toml
-              run: |
-                  sed -i.bak 's/^version = .*/version = "${{ inputs.version }}"/' pyproject.toml
-                  grep '^version' pyproject.toml
-
-            - name: Set up Python
-              uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
-              with:
-                  python-version: "3.14"
-
-            - name: Install uv
+            - name: setup-uv
               uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
               with:
+                  python-version: ${{ inputs.python_version }}
                   version: "latest"
+                  enable-cache: true
 
-            - name: Build package
-              run: uv build
+            - name: install-bake
+              run: |
+                  uv tool install "bakefile[lib]"
+                  uv tool upgrade --all
+                  bake --version
 
-            - name: Publish to PyPI
-              uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
-              with:
-                  repository-url: ${{ inputs.repository_url || '' }}
-                  password: ${{ secrets.PYPI_API_TOKEN }}
-                  verbose: true
-                  skip-existing: true
+            - name: publish
+              run: |
+                  BAKE_PUBLISH_TOKEN=${{ secrets.PYPI_API_TOKEN }} \
+                  bake publish \
+                      --index "${{ inputs.index }}" \
+                      --version "${{ inputs.version }}"
