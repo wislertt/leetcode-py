@@ -45,5 +45,5 @@ jobs:
               run: |
                   BAKE_PUBLISH_TOKEN=${{ secrets.PYPI_API_TOKEN }} \
                   bake publish \
-                      --index "${{ inputs.index }}" \
+                      --registry "${{ inputs.index }}" \
                       --version "${{ inputs.version }}"
