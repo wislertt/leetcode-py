@@ -14,14 +14,14 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 class MyBakebook(PythonLibSpace):
     ci: bool = False
 
-    def lint(self, ctx: Context) -> None:
-        ctx.run("uv run python scripts/sort_tags.py")
-        ctx.run("uv run python scripts/check_tag_problems.py")
-        super().lint(ctx)
+    def lint(self) -> None:
+        self.ctx.run("uv run python scripts/sort_tags.py")
+        self.ctx.run("uv run python scripts/check_tag_problems.py")
+        super().lint()
 
-    def test(self, ctx: Context) -> None:
+    def test(self) -> None:
         tests_paths: list[str] = ["tests/", "leetcode/"]
-        self._test(ctx, tests_paths=tests_paths)
+        self._test(tests_paths=tests_paths)
 
     def is_problem_exist(self, problem: str) -> Path:
         problem_path = Path(f"leetcode/{problem}")
@@ -32,10 +32,10 @@ class MyBakebook(PythonLibSpace):
         return problem_path
 
     @command("p-test", help="Run problem specific tests")
-    def problem_test(self, ctx: Context, problem: problem_option = PROBLEM):
+    def problem_test(self, problem: problem_option = PROBLEM):
         problem_path = self.is_problem_exist(problem)
         tests_path = str(problem_path / "test_solution.py")
-        self._test(ctx, tests_paths=tests_path, verbose=True, coverage_report=False)
+        self._test(tests_paths=tests_path, verbose=True, coverage_report=False)
 
     @command("p-gen", help="Generate specific problem")
     def problem_gen(

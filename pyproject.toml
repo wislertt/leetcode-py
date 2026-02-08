@@ -25,7 +25,6 @@ classifiers = [
 ]
 dependencies = [
   "anytree>=2.13.0",
-  "bakefile[lib]>=0.0.8",
   "cookiecutter>=2.6.0",
   "graphviz>=0.21",
   "json5>=0.13.0",
@@ -46,6 +45,7 @@ Repository = "https://github.com/wislertt/leetcode-py"
 
 [dependency-groups]
 dev = [
+  "bakefile[lib]>=0.0.8",
   "deptry>=0.24.0",
   "ipykernel>=7.0.0",
   "isort>=7.0.0",
@@ -72,6 +72,7 @@ omit = [
 known_first_party = ["leetcode_py"]
 extend_exclude = [
   ".claude",
+  "bakefile.py",
   "leetcode",
   "src/leetcode_py/cli/resources"
 ]

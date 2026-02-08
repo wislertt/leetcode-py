@@ -55,9 +55,9 @@ def list_problems(
 
     # Sort by problem number (convert to int for proper numerical sorting)
     problem_list.sort(
-        key=lambda x: int(x[0].get("number", "999999"))
-        if x[0].get("number", "?").isdigit()
-        else 999999
+        key=lambda x: (
+            int(x[0].get("number", "999999")) if x[0].get("number", "?").isdigit() else 999999
+        )
     )
 
     # Update table title with count
