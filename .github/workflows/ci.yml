@@ -23,8 +23,7 @@ jobs:
     zerv-versioning:
         name: zerv-versioning
         needs: check-pre-release
-        uses: ./.github/workflows/shared-zerv-versioning.yml
-        # uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@v0
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@v0
         with:
             schema: >-
                 ${{ (needs.check-pre-release.outputs.is_valid == 'true'
