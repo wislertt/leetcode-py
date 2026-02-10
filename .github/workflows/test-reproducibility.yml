@@ -24,16 +24,20 @@ jobs:
                   enable-cache: true
                   python-version: ${{ matrix.python-version }}
 
-            - name: cache-uv
+            - name: cache-venv
+              env:
+                  CACHE_KEY_PREFIX: venv-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}-py${{ inputs.python_version }}
+                  CACHE_KEY_DEPS: ${{ hashFiles('uv.lock') }}
               uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
               with:
                   path: |
                       ~/.local
                       ${{ github.workspace }}/.venv
-                  key: uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}
+                  key: ${{ env.CACHE_KEY_PREFIX }}-${{ env.CACHE_KEY_DEPS }}-${{ github.run_id }}-${{ github.run_attempt }}
                   restore-keys: |
-                      uv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('uv.lock') }}-
-                      uv-${{ runner.os }}-py${{ matrix.python-version }}-
+                      ${{ env.CACHE_KEY_PREFIX }}-${{ env.CACHE_KEY_DEPS }}-${{ github.run_id }}-
+                      ${{ env.CACHE_KEY_PREFIX }}-${{ env.CACHE_KEY_DEPS }}-
+                      ${{ env.CACHE_KEY_PREFIX }}-
 
             - name: install-bake
               run: |
@@ -43,10 +47,15 @@ jobs:
 
             - name: cache-graphviz
               id: cache-graphviz
+              env:
+                  CACHE_KEY_PREFIX: graphviz-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}
               uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
               with:
                   path: ~/graphviz-cache
-                  key: graphviz-installed-${{ runner.os }}
+                  key: ${{ env.CACHE_KEY_PREFIX }}-${{ github.run_id }}-${{ github.run_attempt }}
+                  restore-keys: |
+                      ${{ env.CACHE_KEY_PREFIX }}-${{ github.run_id }}-
+                      ${{ env.CACHE_KEY_PREFIX }}-
 
             - name: install-graphviz
               run: |

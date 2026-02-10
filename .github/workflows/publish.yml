@@ -7,11 +7,11 @@ on:
                 required: true
                 type: string
                 description: "PEP440 version string"
-            index:
+            registry:
                 required: false
                 type: string
-                description: "Publish index (pypi or testpypi)"
-                default: "testpypi"
+                description: "Publish index (pypi or test-pypi)"
+                default: "test-pypi"
             python_version:
                 required: false
                 type: string
@@ -45,5 +45,5 @@ jobs:
               run: |
                   BAKE_PUBLISH_TOKEN=${{ secrets.PYPI_API_TOKEN }} \
                   bake publish \
-                      --registry "${{ inputs.index }}" \
+                      --registry "${{ inputs.registry }}" \
                       --version "${{ inputs.version }}"

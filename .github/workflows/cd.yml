@@ -62,7 +62,7 @@ jobs:
         uses: ./.github/workflows/publish.yml
         with:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
-            index: "pypi"
+            registry: "pypi"
             python_version: "3.14"
         secrets:
             PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
@@ -72,7 +72,7 @@ jobs:
         uses: ./.github/workflows/publish.yml
         with:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
-            index: "testpypi"
+            registryx: "test-pypi"
             python_version: "3.14"
         secrets:
             PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}

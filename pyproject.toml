@@ -130,7 +130,7 @@ module-name = ["leetcode_py"]
 module-root = "src"
 
 [[tool.uv.index]]
-name = "testpypi"
+name = "test-pypi"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
@@ -144,7 +144,7 @@ explicit = true
 #
 # # Debug
 # [tool.uv.sources]
-# bakefile = {index = "testpypi"}
+# bakefile = {index = "test-pypi"}
 # =============================================
 #
 #
