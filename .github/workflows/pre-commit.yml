@@ -2,12 +2,6 @@ name: pre-commit
 
 on:
     workflow_call:
-        inputs:
-            python_version:
-                description: "Python version to use"
-                required: false
-                type: string
-                default: "3.14"
 
 jobs:
     pre-commit:
@@ -20,24 +14,21 @@ jobs:
                   submodules: recursive
                   token: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: setup-uv
-              uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
-              with:
-                  version: "latest"
-                  enable-cache: true
-                  python-version: ${{ inputs.python_version }}
+            - name: setup-mise
+              uses: jdx/mise-action@6d1e696aa24c1aa1bcc1adea0212707c71ab78a8 # v3.6.1
 
             - name: cache-deps
               env:
-                  CACHE_KEY_PREFIX: deps-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}-py${{ inputs.python_version }}
-                  CACHE_KEY_DEPS: ${{ hashFiles('uv.lock') }}
+                  CACHE_KEY_PREFIX: deps-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}
+                  CACHE_KEY_DEPS: ${{ hashFiles('uv.lock', '.pre-commit-config.yaml') }}
               uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
               with:
                   path: |
                       ~/.cache/pre-commit
                       ~/.cache/ruff
                       ~/.bun/install/cache
-                      ~/.local
+                      ~/.local/share/uv
+                      ~/.cache/uv
                       ${{ github.workspace }}/.venv
                   key: ${{ env.CACHE_KEY_PREFIX }}-${{ env.CACHE_KEY_DEPS }}-${{ github.run_id }}-${{ github.run_attempt }}
                   restore-keys: |
@@ -45,22 +36,11 @@ jobs:
                       ${{ env.CACHE_KEY_PREFIX }}-${{ env.CACHE_KEY_DEPS }}-
                       ${{ env.CACHE_KEY_PREFIX }}-
 
-            - name: install-bake
-              run: |
-                  uv tool install "bakefile[lib]"
-                  uv tool upgrade --all
-                  bake --version
-
             - name: install-dependencies
               run: uv sync --all-extras --all-groups --frozen
 
             - name: setup-path
               run: echo "${{ github.workspace }}/.venv/bin" >> $GITHUB_PATH
-
-            - name: setup-bun
-              uses: oven-sh/setup-bun@3d267786b128fe76c2f16a390aa2448b815359f3 # v2.1.2
-              with:
-                  bun-version: latest
 
             - name: run-pre-commit
               run: uv run pre-commit run --all-files
