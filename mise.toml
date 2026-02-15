@@ -1,0 +1,10 @@
+[settings]
+pipx.uvx = true
+
+[tools]
+bun = "latest"
+"pipx:bakefile" = "latest"
+"pipx:toml-sort" = "latest"
+"pipx:zerv-version" = "latest"
+pre-commit = "latest"
+uv = "latest"
