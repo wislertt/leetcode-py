@@ -42,6 +42,7 @@ class Solution:
         # Step 3: Merge the two halves alternately
         first_half = head
         while second_half:
+            assert first_half is not None
             # Store next nodes
             first_next = first_half.next
             second_next = second_half.next

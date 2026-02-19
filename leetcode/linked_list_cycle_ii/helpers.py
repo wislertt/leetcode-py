@@ -14,6 +14,7 @@ def run_detect_cycle(solution_class: type, head_vals: list[int], pos: int):
         # Find the node at position pos
         cycle_node = head
         for _ in range(pos):
+            assert cycle_node is not None
             cycle_node = cycle_node.next
         # Create cycle
         tail.next = cycle_node
