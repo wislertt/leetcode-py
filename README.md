@@ -55,7 +55,7 @@ A Python package to generate professional LeetCode practice environments. Featur
 ### System Requirements
 
 - **Python 3.10+** - Python runtime
-- **Graphviz** - Graph visualization library ([install guide](https://graphviz.org/download/))
+- **Graphviz** - Required for data structure visualization. Install it before running the project ([install guide](https://graphviz.org/download/))
 
 ```bash
 # Install the package
