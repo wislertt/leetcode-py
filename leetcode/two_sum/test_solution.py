@@ -32,6 +32,10 @@ class TestTwoSum:
             ([1, 2], 5, []),
             ([3, 5, 7], 1, []),
             ([10, 20, 30], 15, []),
+            ([], 5, [])
+            ([1], 2, [])
+            ([0, 4, 3, 0], 0, [0, 3])
+            ([-3, 4, 3, 90], 0, [0, 2])
         ],
     )
     def test_two_sum(self, nums: list[int], target: int, expected: list[int]):
