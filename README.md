@@ -44,7 +44,7 @@ A Python package to generate professional LeetCode practice environments. Featur
 - **grind** - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
 - **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list ✅ Complete
 - **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set 🚧 Partial
-- **algo-master-75** - Curated algorithmic mastery problems 🚧 Partial
+- **algo-master-75** - Curated algorithmic mastery problems ✅ Complete
 
 **Coverage**: 130+ unique problems across all major coding interview topics and difficulty levels.
 
@@ -184,7 +184,7 @@ For working within this repository to generate additional LeetCode problems usin
 
 - **Python 3.10+** - Modern Python runtime with latest type system features
 - **uv** - Fast Python package manager
-- **Bake** - Modern task runner (uses typer for CLI)
+- [**Bake**](https://github.com/wislertt/bakefile) - Modern task runner (uses typer for CLI)
 - **Git** - Version control system
 - **Graphviz** - Graph visualization library ([install guide](https://graphviz.org/download/))
 

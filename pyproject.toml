@@ -25,6 +25,7 @@ classifiers = [
 ]
 dependencies = [
   "anytree>=2.13.0",
+  "chardet>=5.2.0,<6.0.0", # restricted by requests
   "cookiecutter>=2.6.0",
   "graphviz>=0.21",
   "json5>=0.13.0",
@@ -76,6 +77,7 @@ extend_exclude = [
   "leetcode",
   "src/leetcode_py/cli/resources"
 ]
+per_rule_ignores = {DEP002 = ["chardet"]}
 
 [tool.pytest.ini_options]
 testpaths = ["leetcode", "tests"]
