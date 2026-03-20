@@ -14,7 +14,7 @@ jobs:
     # ====================================================
     check-pre-release:
         name: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@v0
+        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@27570d5b52a04e0e970ae662464aec147e320e6d # v0.8.11
         with:
             target_label: "pre-release"
             branch_prefixes: '["release/"]'
@@ -23,7 +23,7 @@ jobs:
     zerv-versioning:
         name: zerv-versioning
         needs: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@v0
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@27570d5b52a04e0e970ae662464aec147e320e6d # v0.8.11
         with:
             schema: >-
                 ${{ (needs.check-pre-release.outputs.is_valid == 'true'
@@ -34,7 +34,7 @@ jobs:
         name: tag-pre-release
         needs: [zerv-versioning, check-pre-release]
         if: needs.check-pre-release.outputs.is_valid == 'true'
-        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@v0
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@27570d5b52a04e0e970ae662464aec147e320e6d # v0.8.11
         with:
             tags: '["${{ fromJson(needs.zerv-versioning.outputs.versions).v_semver }}"]'
 

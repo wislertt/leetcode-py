@@ -35,7 +35,7 @@ def get_next_problem(tag_names=None):
                 best_list = tag_name
                 missing_problems = sorted(missing)
 
-    if not missing_problems:
+    if not missing_problems or best_list is None:
         print("No missing problems found in any of the specified lists!")
         return None
 

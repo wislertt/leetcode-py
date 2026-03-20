@@ -4,14 +4,14 @@ from typing import Annotated
 
 import typer
 from bake import Context, command, console
-from bakelib import PythonLibSpace
+from bakelib import GitHubActionsTools, PythonLibSpace
 
 PROBLEM = "path_sum_iii"
 problem_option = Annotated[str, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 
-class MyBakebook(PythonLibSpace):
+class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
 
     def lint(self) -> None:
