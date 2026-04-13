@@ -39,7 +39,7 @@ jobs:
               env:
                   CACHE_KEY_PREFIX: venv-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}-py${{ matrix.python-version }}
                   CACHE_KEY_DEPS: ${{ hashFiles('uv.lock') }}
-              uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+              uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
               with:
                   path: |
                       ~/.local/share/uv
@@ -61,7 +61,7 @@ jobs:
               id: cache-graphviz
               env:
                   CACHE_KEY_PREFIX: graphviz-${{ github.workflow }}-${{ github.job }}-${{ runner.os }}
-              uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+              uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
               with:
                   path: ~/graphviz-cache
                   key: ${{ env.CACHE_KEY_PREFIX }}-${{ github.run_id }}-${{ github.run_attempt }}
