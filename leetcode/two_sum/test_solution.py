@@ -36,4 +36,4 @@ class TestTwoSum:
     )
     def test_two_sum(self, nums: list[int], target: int, expected: list[int]):
         result = run_two_sum(Solution, nums, target)
-        assert_two_sum(result, expected)
+        assert_two_sum(sorted(result), sorted(expected))
