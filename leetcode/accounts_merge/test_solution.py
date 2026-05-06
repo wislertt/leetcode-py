@@ -58,8 +58,8 @@ class TestAccountsMerge:
             (
                 [
                     ["A", "a@mail.com", "b@mail.com"],
-                    ["B", "b@mail.com", "c@mail.com"],
-                    ["C", "c@mail.com", "d@mail.com"],
+                    ["A", "b@mail.com", "c@mail.com"],
+                    ["A", "c@mail.com", "d@mail.com"],
                 ],
                 [["A", "a@mail.com", "b@mail.com", "c@mail.com", "d@mail.com"]],
             ),
