@@ -135,5 +135,5 @@ class TestFindMedianFromDataStreamExtra:
         inputs: list[list[int]],
         expected: list[float | None],
     ):
-        result = run_median_finder(solution_class, operations, inputs)
+        result, _ = run_median_finder(solution_class, operations, inputs)
         assert_median_finder(result, expected)

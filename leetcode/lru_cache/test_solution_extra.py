@@ -73,5 +73,5 @@ class TestLruCacheExtra:
         inputs: list[list[int]],
         expected: list[int | None],
     ):
-        result = run_lru_cache(solution_class, operations, inputs)
+        result, _ = run_lru_cache(solution_class, operations, inputs)
         assert_lru_cache(result, expected)
