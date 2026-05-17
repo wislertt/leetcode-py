@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, String, Greedy
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 409](https://leetcode.com/problems/longest-palindrome/description/)
 

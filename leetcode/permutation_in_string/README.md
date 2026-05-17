@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, Two Pointers, String, Sliding Window
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 567](https://leetcode.com/problems/permutation-in-string/description/)
 

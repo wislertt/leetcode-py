@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Binary Search, Dynamic Programming, Sorting
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 1235](https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/)
 

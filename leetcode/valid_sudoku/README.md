@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Matrix
-**Tags:** grind
+**Tags:** grind, neetcode-150
 
 **LeetCode:** [Problem 36](https://leetcode.com/problems/valid-sudoku/description/)
 

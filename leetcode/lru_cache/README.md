@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, Linked List, Design, Doubly-Linked List
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 146](https://leetcode.com/problems/lru-cache/description/)
 

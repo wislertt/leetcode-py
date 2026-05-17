@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 721](https://leetcode.com/problems/accounts-merge/description/)
 

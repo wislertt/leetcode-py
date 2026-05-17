@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Union Find, Graph
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 261](https://leetcode.com/problems/graph-valid-tree/description/)
 

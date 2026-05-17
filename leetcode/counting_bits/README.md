@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Dynamic Programming, Bit Manipulation
-**Tags:** blind-75
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 338](https://leetcode.com/problems/counting-bits/description/)
 

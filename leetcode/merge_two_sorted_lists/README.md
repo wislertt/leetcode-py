@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Linked List, Recursion
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 21](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 

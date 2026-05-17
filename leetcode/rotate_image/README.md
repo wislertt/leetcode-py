@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Matrix
-**Tags:** blind
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 48](https://leetcode.com/problems/rotate-image/description/)
 

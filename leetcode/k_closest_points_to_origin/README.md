@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Divide and Conquer, Geometry, Sorting, Heap (Priority Queue), Quickselect
-**Tags:** grind-75
+**Tags:** grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 973](https://leetcode.com/problems/k-closest-points-to-origin/description/)
 

@@ -3,12 +3,11 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_median_finder, run_median_finder
-from .solution import MedianFinder, MedianFinderHybrid
+from .solution import MedianFinder
 
 
 class TestFindMedianFromDataStream:
     @logged_test
-    @pytest.mark.parametrize("solution_class", [MedianFinder, MedianFinderHybrid])
     @pytest.mark.parametrize(
         "operations, inputs, expected",
         [
@@ -129,11 +128,7 @@ class TestFindMedianFromDataStream:
         ],
     )
     def test_median_finder(
-        self,
-        solution_class: type,
-        operations: list[str],
-        inputs: list[list[int]],
-        expected: list[float | None],
+        self, operations: list[str], inputs: list[list[int]], expected: list[float | None]
     ):
-        result, _ = run_median_finder(solution_class, operations, inputs)
+        result, _ = run_median_finder(MedianFinder, operations, inputs)
         assert_median_finder(result, expected)

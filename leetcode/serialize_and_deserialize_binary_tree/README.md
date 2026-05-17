@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Tree
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
 

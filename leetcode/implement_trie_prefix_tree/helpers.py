@@ -10,7 +10,7 @@ def run_trie_operations(solution_class: type, operations: list[str], inputs: lis
             results.append(None)
         elif op == "search" and trie is not None:
             results.append(trie.search(inputs[i][0]))
-        elif op == "starts_with" and trie is not None:
+        elif op in ("starts_with", "startsWith") and trie is not None:
             results.append(trie.starts_with(inputs[i][0]))
     return results, trie
 

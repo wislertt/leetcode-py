@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Breadth-First Search, Matrix
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 542](https://leetcode.com/problems/zero-one-matrix/description/)
 

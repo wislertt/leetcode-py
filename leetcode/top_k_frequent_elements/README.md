@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect
-**Tags:** blind-75
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 347](https://leetcode.com/problems/top-k-frequent-elements/description/)
 

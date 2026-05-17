@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Graph, Topological Sort
-**Tags:** grind
+**Tags:** algo-master-75, grind, neetcode-150
 
 **LeetCode:** [Problem 210](https://leetcode.com/problems/course-schedule-ii/description/)
 

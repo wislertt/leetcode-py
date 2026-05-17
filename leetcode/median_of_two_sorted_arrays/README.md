@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Binary Search, Divide and Conquer
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 4](https://leetcode.com/problems/median-of-two-sorted-arrays/description/)
 

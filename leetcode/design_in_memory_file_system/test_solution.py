@@ -12,14 +12,7 @@ class TestDesignInMemoryFileSystem:
         "operations, inputs, expected",
         [
             (
-                [
-                    "FileSystem",
-                    "ls",
-                    "mkdir",
-                    "addContentToFile",
-                    "ls",
-                    "readContentFromFile",
-                ],
+                ["FileSystem", "ls", "mkdir", "addContentToFile", "ls", "readContentFromFile"],
                 [[], ["/"], ["/a/b/c"], ["/a/b/c/d", "hello"], ["/"], ["/a/b/c/d"]],
                 [None, [], None, None, ["a"], "hello"],
             ),
@@ -29,13 +22,7 @@ class TestDesignInMemoryFileSystem:
                 [None, [], None, ["a"], None, ["a"]],
             ),
             (
-                [
-                    "FileSystem",
-                    "mkdir",
-                    "addContentToFile",
-                    "ls",
-                    "readContentFromFile",
-                ],
+                ["FileSystem", "mkdir", "addContentToFile", "ls", "readContentFromFile"],
                 [[], ["/x/y"], ["/x/y/z", "content"], ["/x/y"], ["/x/y/z"]],
                 [None, None, None, ["z"], "content"],
             ),
@@ -67,29 +54,12 @@ class TestDesignInMemoryFileSystem:
                 [None, None, ["file"], "data"],
             ),
             (
-                [
-                    "FileSystem",
-                    "mkdir",
-                    "addContentToFile",
-                    "ls",
-                    "readContentFromFile",
-                ],
-                [
-                    [],
-                    ["/folder"],
-                    ["/folder/doc", "text"],
-                    ["/folder"],
-                    ["/folder/doc"],
-                ],
+                ["FileSystem", "mkdir", "addContentToFile", "ls", "readContentFromFile"],
+                [[], ["/folder"], ["/folder/doc", "text"], ["/folder"], ["/folder/doc"]],
                 [None, None, None, ["doc"], "text"],
             ),
             (
-                [
-                    "FileSystem",
-                    "addContentToFile",
-                    "addContentToFile",
-                    "readContentFromFile",
-                ],
+                ["FileSystem", "addContentToFile", "addContentToFile", "readContentFromFile"],
                 [[], ["/log", "line1"], ["/log", "line2"], ["/log"]],
                 [None, None, None, "line1line2"],
             ),
@@ -120,10 +90,7 @@ class TestDesignInMemoryFileSystem:
         ],
     )
     def test_file_system(
-        self,
-        operations: list[str],
-        inputs: list[list],
-        expected: list[str | list[str] | None],
+        self, operations: list[str], inputs: list[list], expected: list[str | list[str] | None]
     ):
         result, _ = run_file_system(FileSystem, operations, inputs)
         assert_file_system(result, expected)

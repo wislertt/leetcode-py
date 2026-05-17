@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math, Dynamic Programming, Memoization
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 70](https://leetcode.com/problems/climbing-stairs/description/)
 

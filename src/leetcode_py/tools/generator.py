@@ -117,7 +117,7 @@ def merge_tags(data: dict) -> dict:
     existing_tags = data.get("_tags", {}).get("list", [])
 
     # Merge and deduplicate tags
-    all_tags = list(set(system_tags + existing_tags))
+    all_tags = sorted(set(system_tags + existing_tags))
 
     # Update data with merged tags
     if all_tags:

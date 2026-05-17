@@ -85,7 +85,7 @@
                         "([10, 20, 30], 15, [])"
                     ]
                 },
-                "body": "        result = run_two_sum(Solution, nums, target)\n        assert_two_sum(result, expected)"
+                "body": "        result = run_two_sum(Solution, nums, target)\n        assert_two_sum(sorted(result), sorted(expected))"
             }
         ]
     },

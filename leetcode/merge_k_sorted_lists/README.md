@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 23](https://leetcode.com/problems/merge-k-sorted-lists/description/)
 

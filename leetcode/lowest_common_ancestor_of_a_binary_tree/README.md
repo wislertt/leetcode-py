@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Depth-First Search, Binary Tree
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75
 
 **LeetCode:** [Problem 236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/)
 

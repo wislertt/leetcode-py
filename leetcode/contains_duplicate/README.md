@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Hash Table, Sorting
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 217](https://leetcode.com/problems/contains-duplicate/description/)
 

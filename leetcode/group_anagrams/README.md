@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, String, Sorting
-**Tags:** grind
+**Tags:** algo-master-75, blind-75, grind, neetcode-150
 
 **LeetCode:** [Problem 49](https://leetcode.com/problems/group-anagrams/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Design, Trie
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 208](https://leetcode.com/problems/implement-trie-prefix-tree/description/)
 

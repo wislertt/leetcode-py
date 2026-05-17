@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Two Pointers, Stack, Recursion
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 143](https://leetcode.com/problems/reorder-list/description/)
 

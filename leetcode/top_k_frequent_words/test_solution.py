@@ -32,17 +32,9 @@ class TestTopKFrequentWords:
             (["x", "y", "z", "x", "y", "x"], 2, ["x", "y"]),
             (["test"], 1, ["test"]),
             (["a", "b", "a", "c", "b", "a"], 3, ["a", "b", "c"]),
-            (
-                ["python", "java", "python", "cpp", "java", "python"],
-                3,
-                ["python", "java", "cpp"],
-            ),
+            (["python", "java", "python", "cpp", "java", "python"], 3, ["python", "java", "cpp"]),
             (["one", "two", "three", "one", "two", "one"], 2, ["one", "two"]),
-            (
-                ["red", "blue", "green", "red", "blue", "red"],
-                3,
-                ["red", "blue", "green"],
-            ),
+            (["red", "blue", "green", "red", "blue", "red"], 3, ["red", "blue", "green"]),
             (["same", "same", "same", "same"], 1, ["same"]),
         ],
     )

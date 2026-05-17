@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Sorting
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75
 
 **LeetCode:** [Problem 75](https://leetcode.com/problems/sort-colors/description/)
 

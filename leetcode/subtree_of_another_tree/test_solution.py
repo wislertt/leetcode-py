@@ -31,10 +31,7 @@ class TestSubtreeOfAnotherTree:
         ],
     )
     def test_is_subtree(
-        self,
-        root_list: list[int | None],
-        sub_root_list: list[int | None],
-        expected: bool,
+        self, root_list: list[int | None], sub_root_list: list[int | None], expected: bool
     ):
         result = run_is_subtree(Solution, root_list, sub_root_list)
         assert_is_subtree(result, expected)

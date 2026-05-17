@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Depth-First Search, Breadth-First Search, Matrix
-**Tags:** grind
+**Tags:** blind-75, grind, neetcode-150
 
 **LeetCode:** [Problem 417](https://leetcode.com/problems/pacific-atlantic-water-flow/description/)
 

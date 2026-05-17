@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 295](https://leetcode.com/problems/find-median-from-data-stream/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Backtracking
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 46](https://leetcode.com/problems/permutations/description/)
 

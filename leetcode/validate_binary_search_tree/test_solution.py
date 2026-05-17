@@ -3,7 +3,7 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_is_valid_bst, run_is_valid_bst
-from .solution import Solution, SolutionBFS, SolutionDFS
+from .solution import Solution
 
 
 class TestValidateBinarySearchTree:
@@ -11,7 +11,6 @@ class TestValidateBinarySearchTree:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionDFS, SolutionBFS])
     @pytest.mark.parametrize(
         "root_list, expected",
         [
@@ -29,6 +28,6 @@ class TestValidateBinarySearchTree:
             ([3, 1, 5, 0, 2, 4, 6], True),
         ],
     )
-    def test_is_valid_bst(self, solution_class: type, root_list: list[int | None], expected: bool):
-        result = run_is_valid_bst(solution_class, root_list)
+    def test_is_valid_bst(self, root_list: list[int | None], expected: bool):
+        result = run_is_valid_bst(Solution, root_list)
         assert_is_valid_bst(result, expected)

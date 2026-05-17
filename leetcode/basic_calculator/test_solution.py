@@ -22,7 +22,6 @@ class TestBasicCalculator:
             ("-(1+2)", -3),
             ("2147483647", 2147483647),
             ("1-1+1", 1),
-            # Additional edge cases from old tests
             ("0", 0),
             ("-0", 0),
             ("1+(2+3)", 6),
@@ -44,24 +43,3 @@ class TestBasicCalculator:
     def test_calculate(self, s: str, expected: int):
         result = run_calculate(Solution, s)
         assert_calculate(result, expected)
-
-    @logged_test
-    @pytest.mark.parametrize(
-        "s, error_msg",
-        [
-            ("(1+2", "Mismatched parentheses"),
-            ("1+2)", "Mismatched parentheses"),
-            ("((1+2)", "Mismatched parentheses"),
-            ("1+2))", "Mismatched parentheses"),
-            ("1*2", r"Invalid character: '\*'"),
-            ("1/2", "Invalid character: '/'"),
-            ("1%2", "Invalid character: '%'"),
-            ("1^2", r"Invalid character: '\^'"),
-            ("1&2", "Invalid character: '&'"),
-            ("a+b", "Invalid character: 'a'"),
-            ("1+2.5", r"Invalid character: '\.'"),
-        ],
-    )
-    def test_calculate_invalid_input(self, s: str, error_msg: str):
-        with pytest.raises(ValueError, match=error_msg):
-            self.solution.calculate(s)

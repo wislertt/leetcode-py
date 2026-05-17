@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting
-**Tags:** neetcode-150, blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 268](https://leetcode.com/problems/missing-number/description/)
 

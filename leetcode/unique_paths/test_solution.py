@@ -3,12 +3,14 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_unique_paths, run_unique_paths
-from .solution import Solution, SolutionMath
+from .solution import Solution
 
 
 class TestUniquePaths:
+    def setup_method(self):
+        self.solution = Solution()
+
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionMath])
     @pytest.mark.parametrize(
         "m, n, expected",
         [
@@ -29,6 +31,6 @@ class TestUniquePaths:
             (10, 10, 48620),
         ],
     )
-    def test_unique_paths(self, solution_class, m: int, n: int, expected: int):
-        result = run_unique_paths(solution_class, m, n)
+    def test_unique_paths(self, m: int, n: int, expected: int):
+        result = run_unique_paths(Solution, m, n)
         assert_unique_paths(result, expected)

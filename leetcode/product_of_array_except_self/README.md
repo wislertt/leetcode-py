@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Prefix Sum
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 238](https://leetcode.com/problems/product-of-array-except-self/description/)
 

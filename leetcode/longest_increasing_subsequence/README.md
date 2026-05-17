@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search, Dynamic Programming
-**Tags:** grind
+**Tags:** algo-master-75, blind-75, grind, neetcode-150
 
 **LeetCode:** [Problem 300](https://leetcode.com/problems/longest-increasing-subsequence/description/)
 

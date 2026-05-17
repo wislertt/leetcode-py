@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 57](https://leetcode.com/problems/insert-interval/description/)
 

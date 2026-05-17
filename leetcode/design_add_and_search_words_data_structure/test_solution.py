@@ -92,24 +92,8 @@ class TestDesignAddAndSearchWordsDataStructure:
                 [None, None, None, None, True, True, True, False],
             ),
             (
-                [
-                    "WordDictionary",
-                    "addWord",
-                    "addWord",
-                    "addWord",
-                    "search",
-                    "search",
-                    "search",
-                ],
-                [
-                    [],
-                    ["run"],
-                    ["runner"],
-                    ["running"],
-                    ["run"],
-                    ["run..."],
-                    ["run....."],
-                ],
+                ["WordDictionary", "addWord", "addWord", "addWord", "search", "search", "search"],
+                [[], ["run"], ["runner"], ["running"], ["run"], ["run..."], ["run....."]],
                 [None, None, None, None, True, True, False],
             ),
             (
@@ -120,10 +104,7 @@ class TestDesignAddAndSearchWordsDataStructure:
         ],
     )
     def test_word_dictionary(
-        self,
-        operations: list[str],
-        inputs: list[list[str]],
-        expected: list[bool | None],
+        self, operations: list[str], inputs: list[list[str]], expected: list[bool | None]
     ):
         result = run_word_dictionary(WordDictionary, operations, inputs)
         assert_word_dictionary(result, expected)

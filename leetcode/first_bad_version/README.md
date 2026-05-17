@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Binary Search, Interactive
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 278](https://leetcode.com/problems/first-bad-version/description/)
 

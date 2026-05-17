@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** blind-75
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 213](https://leetcode.com/problems/house-robber-ii/description/)
 
