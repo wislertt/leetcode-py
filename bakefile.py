@@ -123,12 +123,16 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
                 backup_path = Path(tmp) / "leetcode"
                 console.echo("Auto-backing up leetcode/...")
                 shutil.copytree(leetcode_path, backup_path)
+                console.echo("Deleting leetcode/...")
+                shutil.rmtree(leetcode_path)
                 console.echo("Regenerating all problems...")
                 self.ctx.run("uv run lcpy gen --all -o leetcode --force")
                 console.echo("Converting notebooks to .py...")
                 for notebook in leetcode_path.rglob("*.ipynb"):
                     self.ctx.run(f"uv run jupytext --to py:percent {notebook}")
                     notebook.unlink()
+                console.echo("Linting generated files...")
+                self.lint()
                 try:
                     self._run_consistency_check(leetcode_path, backup_path)
                 finally:
