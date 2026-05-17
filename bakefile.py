@@ -56,15 +56,15 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         shutil.rmtree(problem_path)
         console.echo(f"Deleted: {problem_path}")
 
+    def _convert_notebooks_to_python(self, base_dir: Path = Path("leetcode")) -> None:
+        self.ctx.run(f"uv run jupytext --to py:percent {base_dir}/**/*.ipynb")
+        for notebook in base_dir.rglob("*.ipynb"):
+            notebook.unlink()
+
     @command("nb-to-py", help="Convert all .ipynb to .py and delete .ipynb")
     def notebook_to_python(self):
         console.echo("Converting all .ipynb files in leetcode/ to .py files...")
-
-        # Find, convert, and delete all .ipynb files
-        for notebook in Path("leetcode").rglob("*.ipynb"):
-            self.ctx.run(f"uv run jupytext --to py:percent {notebook}")
-            notebook.unlink()
-
+        self._convert_notebooks_to_python()
         console.success("Conversion complete. All .ipynb files converted to .py and deleted.")
 
     @command("check-test-cases", help="Find problems with few test cases")
@@ -128,9 +128,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
                 console.echo("Regenerating all problems...")
                 self.ctx.run("uv run lcpy gen --all -o leetcode --force")
                 console.echo("Converting notebooks to .py...")
-                for notebook in leetcode_path.rglob("*.ipynb"):
-                    self.ctx.run(f"uv run jupytext --to py:percent {notebook}")
-                    notebook.unlink()
+                self._convert_notebooks_to_python(leetcode_path)
                 console.echo("Linting generated files...")
                 self.lint()
                 try:
