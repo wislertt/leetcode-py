@@ -6,6 +6,3 @@ def run_unique_paths(solution_class: type, m: int, n: int):
 def assert_unique_paths(result: int, expected: int) -> bool:
     assert result == expected
     return True
-
-
-# test
