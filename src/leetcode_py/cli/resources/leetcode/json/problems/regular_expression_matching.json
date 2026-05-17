@@ -1,0 +1,87 @@
+{
+    "problem_name": "regular_expression_matching",
+    "solution_class_name": "Solution",
+    "problem_number": "10",
+    "problem_title": "Regular Expression Matching",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming, Recursion",
+    "_tags": { "list": ["neetcode-150"] },
+    "readme_description": "Given an input string `s` and a pattern `p`, implement regular expression matching with support for `'.'` and `'*'` where:\n\n- `'.'` Matches any single character.\n- `'*'` Matches zero or more of the preceding element.\n\nReturn a boolean indicating whether the matching covers the entire input string (not partial).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aa\", p = \"a\"\nOutput: false\nExplanation: \"a\" does not match the entire string \"aa\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aa\", p = \"a*\"\nOutput: true\nExplanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes \"aa\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ab\", p = \".*\"\nOutput: true\nExplanation: \".*\" means \"zero or more (*) of any character (.)\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 20\n- 1 <= p.length <= 20\n- `s` contains only lowercase English letters.\n- `p` contains only lowercase English letters, `'.'`, and `'*'`.\n- It is guaranteed for each appearance of the character `'*'`, there will be a previous valid character to match.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_match",
+    "helpers_run_signature": "(solution_class: type, s: str, p: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_match(s, p)",
+    "helpers_assert_name": "is_match",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_match, run_is_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RegularExpressionMatching",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_match",
+                "signature": "(self, s: str, p: str) -> bool",
+                "body": "        # TODO: Implement is_match\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_match",
+                "signature": "(self, s: str, p: str, expected: bool)",
+                "parametrize": "s, p, expected",
+                "test_cases": {
+                    "list": [
+                        "('aa', 'a', False)",
+                        "('aa', 'a*', True)",
+                        "('ab', '.*', True)",
+                        "('aab', 'c*a*b', True)",
+                        "('mississippi', 'mis*is*p*.', False)",
+                        "('a', 'ab*', True)",
+                        "('', 'a*', True)",
+                        "('', '.*', True)",
+                        "('ab', '.*c', False)",
+                        "('aaa', 'a*a', True)",
+                        "('aaa', 'aaaa', False)",
+                        "('abc', 'a.c', True)",
+                        "('abc', 'a.*c', True)",
+                        "('a', '.', True)",
+                        "('abcdef', '.*', True)",
+                        "('abbbbc', 'ab*c', True)",
+                        "('abbbbc', 'ab*bc', True)"
+                    ]
+                },
+                "body": "        result = run_is_match(Solution, s, p)\n        assert_is_match(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_match, assert_is_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aa'\np = 'a*'\nexpected = True",
+    "playground_run": "result = run_is_match(Solution, s, p)\nresult",
+    "playground_assert": "assert_is_match(result, expected)"
+}

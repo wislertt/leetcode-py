@@ -1,0 +1,79 @@
+{
+    "problem_name": "multiply_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "43",
+    "problem_title": "Multiply Strings",
+    "difficulty": "Medium",
+    "topics": "Math, String, Simulation",
+    "_tags": { "list": ["neetcode-150"] },
+    "readme_description": "Given two non-negative integers `num1` and `num2` represented as strings, return the product of `num1` and `num2`, also represented as a string.\n\n**Note:** You must not use any built-in BigInteger library or convert the inputs to integer directly.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: num1 = \"2\", num2 = \"3\"\nOutput: \"6\"\n```" },
+            { "content": "```\nInput: num1 = \"123\", num2 = \"456\"\nOutput: \"56088\"\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= num1.length, num2.length <= 200\n- `num1` and `num2` consist of digits only.\n- Both `num1` and `num2` do not contain any leading zero, except the number `0` itself.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "multiply",
+    "helpers_run_signature": "(solution_class: type, num1: str, num2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.multiply(num1, num2)",
+    "helpers_assert_name": "multiply",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_multiply, run_multiply\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MultiplyStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "multiply",
+                "signature": "(self, num1: str, num2: str) -> str",
+                "body": "        # TODO: Implement multiply\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_multiply",
+                "signature": "(self, num1: str, num2: str, expected: str)",
+                "parametrize": "num1, num2, expected",
+                "test_cases": {
+                    "list": [
+                        "('2', '3', '6')",
+                        "('123', '456', '56088')",
+                        "('0', '0', '0')",
+                        "('0', '123', '0')",
+                        "('123', '0', '0')",
+                        "('1', '1', '1')",
+                        "('9', '9', '81')",
+                        "('99', '99', '9801')",
+                        "('999', '999', '998001')",
+                        "('123456789', '987654321', '121932631112635269')",
+                        "('2', '50', '100')",
+                        "('10', '10', '100')",
+                        "('100', '100', '10000')",
+                        "('5', '5', '25')",
+                        "('123', '1', '123')",
+                        "('1', '999', '999')"
+                    ]
+                },
+                "body": "        result = run_multiply(Solution, num1, num2)\n        assert_multiply(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_multiply, assert_multiply\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum1 = '123'\nnum2 = '456'\nexpected = '56088'",
+    "playground_run": "result = run_multiply(Solution, num1, num2)\nresult",
+    "playground_assert": "assert_multiply(result, expected)"
+}
