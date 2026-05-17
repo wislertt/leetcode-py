@@ -4,5 +4,5 @@ def run_two_sum(solution_class: type, nums: list[int], target: int):
 
 
 def assert_two_sum(result: list[int], expected: list[int]) -> bool:
-    assert result == expected
+    assert sorted(result) == sorted(expected)
     return True
