@@ -84,6 +84,11 @@ class TestGenerateParentheses:
                     "()()()()()",
                 ],
             ),
+            pytest.param(1, ["()"], id="dup1"),
+            pytest.param(2, ["(())", "()()"], id="dup2"),
+            pytest.param(3, ["((()))", "(()())", "(())()", "()(())", "()()()"], id="dup3a"),
+            pytest.param(3, ["((()))", "(()())", "(())()", "()(())", "()()()"], id="dup3b"),
+            pytest.param(3, ["((()))", "(()())", "(())()", "()(())", "()()()"], id="dup3c"),
         ],
     )
     def test_generate_parenthesis(self, n: int, expected: list[str]):
