@@ -88,7 +88,12 @@ def update_tags(tag_names=None):
     with open(output_file, "w") as f:
         json.dump(update_tags, f, indent=4)
 
+    tags_file = (
+        Path(__file__).parent.parent.parent
+        / "src/leetcode_py/cli/resources/leetcode/json/tags.json5"
+    )
     print(f"\nUpdate tags with missing problems written to {output_file}")
+    print(f"Target file to update: {tags_file}")
     print(f"Total tags with missing problems: {len(update_tags)}")
 
 
