@@ -174,7 +174,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
                     continue
 
                 if current_file.exists() != backup_file.exists():
-                    relative = f"{problem_name}/{filename}"
+                    relative = f"leetcode/{problem_name}/{filename}"
                     drifted_files.append(relative)
                     drifted_problems.add(problem_name)
                     status = "missing in backup" if backup_file.exists() else "missing in generated"
@@ -189,16 +189,18 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
                     backup_text = self._strip_jupytext_metadata(backup_text)
 
                 if current_text != backup_text:
-                    relative = f"{problem_name}/{filename}"
+                    relative = f"leetcode/{problem_name}/{filename}"
                     drifted_files.append(relative)
                     drifted_problems.add(problem_name)
                     diff = difflib.unified_diff(
                         backup_text.splitlines(),
                         current_text.splitlines(),
-                        fromfile=f"backup/{relative}",
+                        fromfile=f"committed/{relative}",
                         tofile=f"generated/{relative}",
                         lineterm="",
                     )
+                    console.error(f"\n{'─' * 60}")
+                    console.error(f"  Drift: {relative}")
                     console.error("\n".join(diff))
 
         if drifted_files:
