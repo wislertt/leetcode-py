@@ -8,6 +8,9 @@ from typing import Annotated
 import typer
 from bake import command, console
 from bakelib import GitHubActionsTools, PythonLibSpace
+from rich.panel import Panel
+from rich.syntax import Syntax
+from rich.text import Text
 
 problem_option = Annotated[str | None, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
@@ -103,6 +106,12 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         force_flag = "--force" if force else ""
         self.ctx.run(f"uv run lcpy gen --all -o leetcode {force_flag}".strip())
 
+    # leetcode/ is generated from JSON templates via `lcpy gen --all`:
+    #   src/leetcode_py/cli/resources/leetcode/json/problems/*.json (source of truth)
+    #   + src/.../leetcode/{{cookiecutter.problem_name}}/ (cookiecutter template)
+    #   → leetcode/<problem_name>/{solution.py, test_solution.py, helpers.py, ...}
+    #
+    # To fix drift: edit the JSON file in src/.../json/problems/, NOT the generated file.
     @command("check-consistency", help="Check leetcode/ consistency with JSON source of truth")
     def check_consistency(
         self,
@@ -199,15 +208,31 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
                         tofile=f"generated/{relative}",
                         lineterm="",
                     )
-                    console.error(f"\n{'─' * 60}")
-                    console.error(f"  Drift: {relative}")
-                    console.error("\n".join(diff))
+                    diff_text = "\n".join(diff)
+                    syntax = Syntax(diff_text, "diff", theme="monokai")
+                    console.err.print(
+                        Panel(
+                            syntax,
+                            title=f"[bold red]Drift:[/] {relative}",
+                            border_style="red",
+                            padding=(0, 1),
+                        )
+                    )
 
         if drifted_files:
+            console.echo("")
             console.error(
-                f"\nConsistency check FAILED: {len(drifted_problems)} problem(s) "
+                f"Consistency check FAILED: {len(drifted_problems)} problem(s) "
                 f"have drift across {len(drifted_files)} file(s)"
             )
+            fix_text = Text.from_markup(
+                "[bold]Fix:[/] update JSON or generated file so they stay consistent.\n\n"
+                "[dim]JSON:[/]     "
+                "src/leetcode_py/cli/resources/leetcode/json/problems/<problem>.json\n"
+                "[dim]Template:[/] "
+                "src/leetcode_py/cli/resources/leetcode/{{cookiecutter.problem_name}}/"
+            )
+            console.err.print(Panel(fix_text, border_style="yellow", padding=(0, 2)))
             raise typer.Exit(1)
 
         console.success("Consistency check PASSED: all files match JSON source of truth")
