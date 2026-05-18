@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Greedy
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 45](https://leetcode.com/problems/jump-game-ii/description/)
 

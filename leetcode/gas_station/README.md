@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Greedy
-**Tags:** grind
+**Tags:** grind, neetcode-150
 
 **LeetCode:** [Problem 134](https://leetcode.com/problems/gas-station/description/)
 

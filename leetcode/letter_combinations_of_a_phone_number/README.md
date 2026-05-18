@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Backtracking
-**Tags:** grind-75
+**Tags:** grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 17](https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/)
 

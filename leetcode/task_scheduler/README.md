@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting
-**Tags:** grind-75
+**Tags:** grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 621](https://leetcode.com/problems/task-scheduler/description/)
 

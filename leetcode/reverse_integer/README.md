@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 7](https://leetcode.com/problems/reverse-integer/description/)
 

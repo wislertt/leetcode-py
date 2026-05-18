@@ -31,7 +31,7 @@
     "helpers_run_body": "    implementation = solution_class()\n    return implementation.two_sum(nums, target)",
     "helpers_assert_name": "two_sum",
     "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
-    "helpers_assert_body": "    assert result == expected\n    return True",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
     "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",

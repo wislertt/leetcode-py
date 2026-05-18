@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, String, Sorting
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 242](https://leetcode.com/problems/valid-anagram/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Sorting
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 252](https://leetcode.com/problems/meeting-rooms/description/)
 

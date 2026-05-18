@@ -36,11 +36,7 @@ class TestImplementTriePrefixTree:
                 [[], ["a"], ["a"], ["a"]],
                 [None, None, True, True],
             ),
-            (
-                ["Trie", "search", "starts_with"],
-                [[], ["empty"], ["empty"]],
-                [None, False, False],
-            ),
+            (["Trie", "search", "starts_with"], [[], ["empty"], ["empty"]], [None, False, False]),
             (
                 ["Trie", "insert", "insert", "search", "search", "starts_with", "starts_with"],
                 [[], ["word"], ["world"], ["word"], ["world"], ["wor"], ["wo"]],

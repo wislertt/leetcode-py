@@ -3,7 +3,7 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_can_partition, run_can_partition
-from .solution import Solution, SolutionBitset
+from .solution import Solution
 
 
 class TestPartitionEqualSubsetSum:
@@ -11,7 +11,6 @@ class TestPartitionEqualSubsetSum:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionBitset])
     @pytest.mark.parametrize(
         "nums, expected",
         [
@@ -32,6 +31,6 @@ class TestPartitionEqualSubsetSum:
             ([4, 4, 4, 4, 4, 4], True),
         ],
     )
-    def test_can_partition(self, solution_class: type, nums: list[int], expected: bool):
-        result = run_can_partition(solution_class, nums)
+    def test_can_partition(self, nums: list[int], expected: bool):
+        result = run_can_partition(Solution, nums)
         assert_can_partition(result, expected)

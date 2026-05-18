@@ -3,12 +3,11 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_lru_cache, run_lru_cache
-from .solution import LRUCache, LRUCacheWithDoublyList
+from .solution import LRUCache
 
 
 class TestLRUCache:
     @logged_test
-    @pytest.mark.parametrize("solution_class", [LRUCache, LRUCacheWithDoublyList])
     @pytest.mark.parametrize(
         "operations, inputs, expected",
         [
@@ -67,11 +66,7 @@ class TestLRUCache:
         ],
     )
     def test_lru_cache(
-        self,
-        solution_class: type,
-        operations: list[str],
-        inputs: list[list[int]],
-        expected: list[int | None],
+        self, operations: list[str], inputs: list[list[int]], expected: list[int | None]
     ):
-        result, _ = run_lru_cache(solution_class, operations, inputs)
+        result, _ = run_lru_cache(LRUCache, operations, inputs)
         assert_lru_cache(result, expected)

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 8](https://leetcode.com/problems/string-to-integer-atoi/description/)
 

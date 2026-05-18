@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 416](https://leetcode.com/problems/partition-equal-subset-sum/description/)
 

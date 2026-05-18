@@ -1,12 +1,11 @@
 # ---
 # jupyter:
 #   jupytext:
-#     formats: ipynb,py:percent
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.17.3
+#       jupytext_version: 1.19.2
 #   kernelspec:
 #     display_name: leetcode-py-py3.13
 #     language: python
@@ -26,7 +25,7 @@ expected = [None, None, None, 1, None, -1, None, -1, 3, 4]
 # %%
 result, cache = run_lru_cache(LRUCache, operations, inputs)
 print(result)
-cache.cache
+cache
 
 # %%
 assert_lru_cache(result, expected)

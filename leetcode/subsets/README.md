@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Backtracking, Bit Manipulation
-**Tags:** grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 78](https://leetcode.com/problems/subsets/description/)
 

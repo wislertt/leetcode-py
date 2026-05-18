@@ -1,3 +1,8 @@
+---
+name: update-tags
+description: Updates .tags.json5 by running update_tags.py script, sorting output alphabetically, and cleaning up temp files. Use ONLY when user explicitly requests "update tags" or "/update-tags".
+---
+
 # Update Tags Command
 
 ## Description

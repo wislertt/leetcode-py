@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Two Pointers
-**Tags:** grind
+**Tags:** algo-master-75, blind-75, grind, neetcode-150
 
 **LeetCode:** [Problem 19](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
 

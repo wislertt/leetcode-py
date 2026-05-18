@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Greedy
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 55](https://leetcode.com/problems/jump-game/description/)
 

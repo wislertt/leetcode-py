@@ -1,3 +1,8 @@
+---
+name: problem-creation
+description: Guide for creating a single LeetCode problem scaffold - scrape, transform to JSON template, generate files, and verify. Use ONLY when user explicitly requests problem creation via /problem-creation command or provides a specific LeetCode problem number/name.
+---
+
 # Problem Creation Guide
 
 ## Assistant Workflow

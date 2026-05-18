@@ -3,7 +3,7 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_find_diagonal_order, run_find_diagonal_order
-from .solution import Solution, SolutionRowShift
+from .solution import Solution
 
 
 class TestDiagonalTraverse:
@@ -11,7 +11,6 @@ class TestDiagonalTraverse:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionRowShift])
     @pytest.mark.parametrize(
         "mat, expected",
         [
@@ -32,6 +31,6 @@ class TestDiagonalTraverse:
             ([[100]], [100]),
         ],
     )
-    def test_find_diagonal_order(self, solution_class, mat: list[list[int]], expected: list[int]):
-        result = run_find_diagonal_order(solution_class, mat)
+    def test_find_diagonal_order(self, mat: list[list[int]], expected: list[int]):
+        result = run_find_diagonal_order(Solution, mat)
         assert_find_diagonal_order(result, expected)

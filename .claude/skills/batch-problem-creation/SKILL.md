@@ -1,15 +1,21 @@
+---
+name: batch-problem-creation
+argument-hint: "[count]"
+description: Batch creation workflow for multiple LeetCode problems - loops through problem creation, solution implementation, and quality assurance for a specified count. Accepts optional count argument (e.g., /batch-problem-creation 10). Defaults to 5 if no argument. Use ONLY when user explicitly requests batch creation via /batch-problem-creation command.
+---
+
 # Batch Problem Creation Command
 
 ## Assistant Workflow
 
 When user requests **batch creation of multiple problems**, the assistant will:
 
-1. **Get count from user** (default: 5 problems)
+1. **Parse count**: Use `$ARGUMENTS` as count if provided (must be valid integer). Otherwise ask user (default: 5 problems)
 2. **Loop through each problem** following the complete workflow
 3. **For each problem**:
     - Find next problem via `uv run python .claude/.dev/next_problem.py`
-    - Follow all steps from @.claude/commands/problem-creation.md
-    - **MANDATORY**: Read and follow @.claude/commands/test-quality-assurance.md for quality verification
+    - Follow all steps from @.claude/skills/problem-creation.md
+    - **MANDATORY**: Read and follow @.claude/skills/test-quality-assurance.md for quality verification
 4. **Provide batch summary** at the end
 
 **CRITICAL INSTRUCTION**: You MUST read the test-quality-assurance.md file before executing quality assurance for any problem. Do not rely on memory or assumptions about the workflow.
@@ -38,7 +44,7 @@ uv run python .claude/.dev/next_problem.py
 
 #### 2.2: Follow Problem Creation Workflow
 
-Execute complete workflow from @.claude/commands/problem-creation.md:
+Execute complete workflow from @.claude/skills/problem-creation.md:
 
 1. **Scrape** problem data using `uv run lcpy scrape`
 2. **Transform** data into proper JSON template format
@@ -58,11 +64,11 @@ Execute complete workflow from @.claude/commands/problem-creation.md:
 
 #### 2.4: Quality Assurance & Reproducibility Verification
 
-**MANDATORY**: You MUST read and follow the complete workflow from `.claude/commands/test-quality-assurance.md` for EVERY problem.
+**MANDATORY**: You MUST read and follow the complete workflow from `.claude/skills/test-quality-assurance.md` for EVERY problem.
 
 **REQUIRED ACTION**: Before proceeding with quality assurance, you MUST:
 
-1. **Read the file**: @.claude/commands/test-quality-assurance.md
+1. **Read the file**: @.claude/skills/test-quality-assurance.md
 2. **Follow the exact 4-step process** described in that file
 3. **Execute each step** as specified in the test-quality-assurance.md workflow
 

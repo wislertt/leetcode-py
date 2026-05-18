@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Breadth-First Search
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 322](https://leetcode.com/problems/coin-change/description/)
 

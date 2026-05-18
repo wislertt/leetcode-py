@@ -1,3 +1,8 @@
+---
+name: test-quality-assurance
+description: Test quality assurance workflow for LeetCode problems - verifies reproducibility, fixes linting issues, and ensures test structure matches JSON templates. Use ONLY when user explicitly requests test quality assurance via /test-quality-assurance command.
+---
+
 # Test Quality Assurance Rules
 
 ## CRITICAL: Follow These Steps EXACTLY - No Deviations
@@ -33,20 +38,20 @@ rm -rf leetcode/{problem_name}_backup
 
 ### 3. What NOT to Do
 
-- ❌ **NEVER edit cookiecutter templates** (`{{cookiecutter.problem_name}}/` files)
-- ❌ **NEVER use `uv run python -m leetcode_py.cli.main gen`** - use `bake p-gen` instead
-- ❌ **NEVER modify helpers.py manually** - let regeneration handle it
-- ❌ **NEVER skip ty verification** - this is the main CI issue
-- ❌ **NEVER assume tests will pass** - they may fail if solution is incomplete
-- ❌ **NEVER use `null` in JSON templates** - use `None` for Python None values
+- **NEVER edit cookiecutter templates** (`{{cookiecutter.problem_name}}/` files)
+- **NEVER use `uv run python -m leetcode_py.cli.main gen`** - use `bake p-gen` instead
+- **NEVER modify helpers.py manually** - let regeneration handle it
+- **NEVER skip ty verification** - this is the main CI issue
+- **NEVER assume tests will pass** - they may fail if solution is incomplete
+- **NEVER use `null` in JSON templates** - use `None` for Python None values
 
 ### 4. What to Do
 
-- ✅ **ALWAYS use `bake p-gen -p {problem_name} -f`** for regeneration
-- ✅ **ALWAYS verify ty passes** before considering task complete
-- ✅ **ALWAYS restore original solution** after regeneration
-- ✅ **ALWAYS check JSON template** if ty fails (look for `assert_assert_` bugs)
-- ✅ **ALWAYS use `None` not `null` in JSON templates** for Python None values
+- **ALWAYS use `bake p-gen -p {problem_name} -f`** for regeneration
+- **ALWAYS verify ty passes** before considering task complete
+- **ALWAYS restore original solution** after regeneration
+- **ALWAYS check JSON template** if ty fails (look for `assert_assert_` bugs)
+- **ALWAYS use `None` not `null` in JSON templates** for Python None values
 
 ## Test Case Standards
 
@@ -99,42 +104,42 @@ bake p-gen -p {problem_name} -f
 
 ## Common Issues & Solutions
 
-### Issue: `assert_assert_missing_number` Error
+### Issue: \`assert_assert_missing_number\` Error
 
-**Cause**: JSON template has `helpers_assert_name: "assert_missing_number"` but template adds `assert_` prefix
-**Solution**: Change JSON to `helpers_assert_name: "missing_number"` so template generates `assert_missing_number`
+**Cause**: JSON template has \`helpers*assert_name: "assert_missing_number"\` but template adds \`assert*\` prefix
+**Solution**: Change JSON to \`helpers_assert_name: "missing_number"\` so template generates \`assert_missing_number\`
 
 ### Issue: ty Import Errors
 
 **Cause**: Regenerated helpers.py doesn't match test imports
-**Solution**: Use `bake p-gen` (not uv run) and verify JSON template is correct
+**Solution**: Use \`bake p-gen\` (not uv run) and verify JSON template is correct
 
 ### Issue: Tests Fail After Regeneration
 
 **Expected**: Tests may fail if solution is incomplete (returns 0 or placeholder)
 **Action**: This is normal - focus on ty passing, not test results
 
-### Issue: `null` vs `None` in JSON Templates
+### Issue: \`null\` vs \`None\` in JSON Templates
 
-**Cause**: JSON template uses `null` which causes linting errors in generated Python code
+**Cause**: JSON template uses \`null\` which causes linting errors in generated Python code
 
-- Error: `F821 Undefined name 'null'` from ruff/ty
-- Generated test files contain `null` which is not valid Python
+- Error: \`F821 Undefined name 'null'\` from ruff/ty
+- Generated test files contain \`null\` which is not valid Python
 
-**Solution**: Update JSON template to use `None` instead of `null`
+**Solution**: Update JSON template to use \`None\` instead of \`null\`
 
-- Change: `"([1, null, 2], 3, 1)"` → `"([1, None, 2], 3, 1)"`
-- This applies to `test_cases` list and `playground_setup` fields
-- After fixing JSON, regenerate with `bake p-gen -p {problem_name} -f`
+- Change: \`"([1, null, 2], 3, 1)"\` → \`"([1, None, 2], 3, 1)"\`
+- This applies to \`test_cases\` list and \`playground_setup\` fields
+- After fixing JSON, regenerate with \`bake p-gen -p {problem_name} -f\`
 - Generated code will now pass linting without manual edits
 
 ## Success Criteria
 
-- ✅ **ty passes** with no errors (CRITICAL for CI)
-- ✅ **Test structure matches JSON template** exactly
-- ✅ **Original solution preserved** (user's code intact)
-- ✅ **helpers.py generated correctly** (no `assert_assert_` bugs)
-- ✅ **Reproducibility verified** (can regenerate consistently)
+- **ty passes** with no errors (CRITICAL for CI)
+- **Test structure matches JSON template** exactly
+- **Original solution preserved** (user's code intact)
+- **helpers.py generated correctly** (no \`assert*assert*\` bugs)
+- **Reproducibility verified** (can regenerate consistently)
 
 ## When to Use This Workflow
 

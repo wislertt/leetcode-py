@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, String, Design
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 271](https://leetcode.com/problems/encode-and-decode-strings/description/)
 

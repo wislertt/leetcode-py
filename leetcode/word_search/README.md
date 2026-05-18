@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, String, Backtracking, Depth-First Search, Matrix
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 79](https://leetcode.com/problems/word-search/description/)
 

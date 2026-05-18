@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming
-**Tags:** blind-75
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 1143](https://leetcode.com/problems/longest-common-subsequence/description/)
 

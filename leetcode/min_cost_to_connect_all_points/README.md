@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Union-Find, Graph Theory, Minimum Spanning Tree
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 1584](https://leetcode.com/problems/min-cost-to-connect-all-points/description/)
 

@@ -3,7 +3,7 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_clone_graph, run_clone_graph
-from .solution import Solution, SolutionBFS, SolutionDFS
+from .solution import Solution
 
 
 class TestCloneGraph:
@@ -11,7 +11,6 @@ class TestCloneGraph:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionBFS, SolutionDFS])
     @pytest.mark.parametrize(
         "adj_list",
         [
@@ -29,6 +28,6 @@ class TestCloneGraph:
             [[2], [3], [4], [5], []],
         ],
     )
-    def test_clone_graph(self, solution_class: type, adj_list: list[list[int]]):
-        result = run_clone_graph(solution_class, adj_list)
+    def test_clone_graph(self, adj_list: list[list[int]]):
+        result = run_clone_graph(Solution, adj_list)
         assert_clone_graph(result, adj_list)

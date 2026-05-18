@@ -87,6 +87,15 @@ jobs:
             - name: run-linting-to-verify-reproducibility
               run: bake lint
 
+            - name: convert-notebooks-to-python
+              run: bake nb-to-py
+
+            - name: run-linting-to-verify-reproducibility-after-convert-nb-to-py
+              run: bake lint
+
+            - name: check-consistency-with-json
+              run: bake check-consistency --backup .cache/leetcode
+
             - name: copy-solution-files-from-backup
               run: |
                   for problem in .cache/leetcode/*/; do

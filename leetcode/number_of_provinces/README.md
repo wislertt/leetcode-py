@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Union-Find, Graph Theory
-**Tags:** grind-75, grind, algo-master-75, blind-75, neetcode-150
+**Tags:** algo-master-75
 
 **LeetCode:** [Problem 547](https://leetcode.com/problems/number-of-provinces/description/)
 

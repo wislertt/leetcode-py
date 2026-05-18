@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Linked List, Two Pointers
-**Tags:** grind-75
+**Tags:** grind, grind-75
 
 **LeetCode:** [Problem 876](https://leetcode.com/problems/middle-of-the-linked-list/description/)
 

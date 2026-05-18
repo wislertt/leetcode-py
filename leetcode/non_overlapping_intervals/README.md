@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Greedy, Sorting
-**Tags:** blind-75
+**Tags:** algo-master-75, blind-75, neetcode-150
 
 **LeetCode:** [Problem 435](https://leetcode.com/problems/non-overlapping-intervals/description/)
 

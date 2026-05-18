@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Union Find, Graph
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 323](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/description/)
 

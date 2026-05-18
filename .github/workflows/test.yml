@@ -101,6 +101,6 @@ jobs:
 
             - name: sonarqube-scan
               if: matrix.python-version == inputs.target_python_version && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
-              uses: SonarSource/sonarqube-scan-action@299e4b793aaa83bf2aba7c9c14bedbb485688ec4 # v7.1.0
+              uses: SonarSource/sonarqube-scan-action@59db25f34e16620e48ab4bb9e4a5dce155cb5432 # v8.0.0
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

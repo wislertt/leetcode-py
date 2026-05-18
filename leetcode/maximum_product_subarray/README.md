@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** grind
+**Tags:** blind-75, grind, neetcode-150
 
 **LeetCode:** [Problem 152](https://leetcode.com/problems/maximum-product-subarray/description/)
 

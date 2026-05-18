@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math, Dynamic Programming, Combinatorics
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 62](https://leetcode.com/problems/unique-paths/description/)
 

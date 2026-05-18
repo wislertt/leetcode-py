@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Sliding Window
-**Tags:** blind-75
+**Tags:** blind-75, neetcode-150
 
 **LeetCode:** [Problem 424](https://leetcode.com/problems/longest-repeating-character-replacement/description/)
 

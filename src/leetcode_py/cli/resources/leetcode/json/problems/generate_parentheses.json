@@ -1,0 +1,76 @@
+{
+    "problem_name": "generate_parentheses",
+    "solution_class_name": "Solution",
+    "problem_number": "22",
+    "problem_title": "Generate Parentheses",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Backtracking",
+    "_tags": { "list": ["neetcode-150"] },
+    "readme_description": "Given `n` pairs of parentheses, write a function to generate all combinations of well-formed parentheses.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3\nOutput: [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]\n```"
+            },
+            { "content": "```\nInput: n = 1\nOutput: [\"()\"]\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 8",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "generate_parenthesis",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return sorted(implementation.generate_parenthesis(n))",
+    "helpers_assert_name": "generate_parenthesis",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_generate_parenthesis, run_generate_parenthesis\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GenerateParentheses",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "generate_parenthesis",
+                "signature": "(self, n: int) -> list[str]",
+                "body": "        # TODO: Implement generate_parenthesis\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_generate_parenthesis",
+                "signature": "(self, n: int, expected: list[str])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, ['()'])",
+                        "(2, ['(())', '()()'])",
+                        "(3, ['((()))', '(()())', '(())()', '()(())', '()()()'])",
+                        "(4, ['(((())))', '((()()))', '((())())', '((()))()', '(()(()))', '(()()())', '(()())()', '(())(())', '(())()()', '()((()))', '()(()())', '()(())()', '()()(())', '()()()()'])",
+                        "(0, [''])",
+                        "(5, ['((((()))))', '(((()())))', '(((())()))', '(((()))())', '(((())))()', '((()(())))', '((()()()))', '((()())())', '((()()))()', '((())(()))', '((())()())', '((())())()', '((()))(())', '((()))()()', '(()((())))', '(()(()()))', '(()(())())', '(()(()))()', '(()()(()))', '(()()()())', '(()()())()', '(()())(())', '(()())()()', '(())((()))', '(())(()())', '(())(())()', '(())()(())', '(())()()()', '()(((())))', '()((()()))', '()((())())', '()((()))()', '()(()(()))', '()(()()())', '()(()())()', '()(())(())', '()(())()()', '()()((()))', '()()(()())', '()()(())()', '()()()(())', '()()()()()'])",
+                        "pytest.param(1, ['()'], id='dup1')",
+                        "pytest.param(2, ['(())', '()()'], id='dup2')",
+                        "pytest.param(3, ['((()))', '(()())', '(())()', '()(())', '()()()'], id='dup3a')",
+                        "pytest.param(3, ['((()))', '(()())', '(())()', '()(())', '()()()'], id='dup3b')",
+                        "pytest.param(3, ['((()))', '(()())', '(())()', '()(())', '()()()'], id='dup3c')"
+                    ]
+                },
+                "body": "        result = run_generate_parenthesis(Solution, n)\n        assert_generate_parenthesis(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_generate_parenthesis, assert_generate_parenthesis\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = ['((()))', '(()())', '(())()', '()(())', '()()()']",
+    "playground_run": "result = run_generate_parenthesis(Solution, n)\nresult",
+    "playground_assert": "assert_generate_parenthesis(result, expected)"
+}

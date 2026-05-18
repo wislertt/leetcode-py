@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-150
 
 **LeetCode:** [Problem 239](https://leetcode.com/problems/sliding-window-maximum/description/)
 

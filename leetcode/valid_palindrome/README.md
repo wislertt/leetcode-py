@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Two Pointers, String
-**Tags:** grind-75
+**Tags:** blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 125](https://leetcode.com/problems/valid-palindrome/description/)
 

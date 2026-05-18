@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Binary Search
-**Tags:** grind-75
+**Tags:** grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 704](https://leetcode.com/problems/binary-search/description/)
 

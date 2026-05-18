@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Divide and Conquer, Dynamic Programming
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 53](https://leetcode.com/problems/maximum-subarray/description/)
 

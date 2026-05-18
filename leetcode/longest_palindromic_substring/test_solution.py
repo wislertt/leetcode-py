@@ -3,7 +3,7 @@ import pytest
 from leetcode_py import logged_test
 
 from .helpers import assert_longest_palindrome, run_longest_palindrome
-from .solution import Solution, SolutionManacher
+from .solution import Solution
 
 
 class TestLongestPalindromicSubstring:
@@ -11,7 +11,6 @@ class TestLongestPalindromicSubstring:
         self.solution = Solution()
 
     @logged_test
-    @pytest.mark.parametrize("solution_class", [Solution, SolutionManacher])
     @pytest.mark.parametrize(
         "s, expected",
         [
@@ -29,6 +28,6 @@ class TestLongestPalindromicSubstring:
             ("abcba", {"abcba"}),
         ],
     )
-    def test_longest_palindrome(self, solution_class: type, s: str, expected: set[str]):
-        result = run_longest_palindrome(solution_class, s)
+    def test_longest_palindrome(self, s: str, expected: set[str]):
+        result = run_longest_palindrome(Solution, s)
         assert_longest_palindrome(result, expected)

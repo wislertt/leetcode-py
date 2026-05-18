@@ -72,6 +72,8 @@ def batch_format_and_check(directories: list[Path]) -> None:
                 "**/solution.py:ARG002",
                 "--per-file-ignores",
                 "**/playground.ipynb:B018",
+                "--per-file-ignores",
+                "**/playground.py:B018",
                 "--fix",
                 "--exit-non-zero-on-fix",
                 "--line-length",
@@ -117,7 +119,7 @@ def merge_tags(data: dict) -> dict:
     existing_tags = data.get("_tags", {}).get("list", [])
 
     # Merge and deduplicate tags
-    all_tags = list(set(system_tags + existing_tags))
+    all_tags = sorted(set(system_tags + existing_tags))
 
     # Update data with merged tags
     if all_tags:

@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** String, Stack
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 20](https://leetcode.com/problems/valid-parentheses/description/)
 

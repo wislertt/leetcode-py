@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search
-**Tags:** grind-75
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
 
 **LeetCode:** [Problem 33](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
 

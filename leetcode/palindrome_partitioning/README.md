@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming, Backtracking
-**Tags:** grind-75
+**Tags:** neetcode-150
 
 **LeetCode:** [Problem 131](https://leetcode.com/problems/palindrome-partitioning/description/)
 
