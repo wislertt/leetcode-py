@@ -1,0 +1,89 @@
+{
+    "problem_name": "edit_distance",
+    "solution_class_name": "Solution",
+    "problem_number": "72",
+    "problem_title": "Edit Distance",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Given two strings `word1` and `word2`, return *the minimum number of operations required to convert* `word1` *to* `word2`.\n\nYou have the following three operations permitted on a word:\n\n- Insert a character\n- Delete a character\n- Replace a character",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: word1 = \"horse\", word2 = \"ros\"\nOutput: 3\nExplanation:\nhorse -> rorse (replace 'h' with 'r')\nrorse -> rose (remove 'r')\nrose -> ros (remove 'e')\n```"
+            },
+            {
+                "content": "```\nInput: word1 = \"intention\", word2 = \"execution\"\nOutput: 5\nExplanation:\nintention -> inention (remove 't')\ninention -> enention (replace 'i' with 'e')\nenention -> exention (replace 'n' with 'x')\nexention -> exection (replace 'n' with 'c')\nexection -> execution (insert 'u')\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= word1.length, word2.length <= 500\n- word1 and word2 consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_distance",
+    "helpers_run_signature": "(solution_class: type, word1: str, word2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_distance(word1, word2)",
+    "helpers_assert_name": "min_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_distance, run_min_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EditDistance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_distance",
+                "signature": "(self, word1: str, word2: str) -> int",
+                "body": "        # TODO: Implement min_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_distance",
+                "signature": "(self, word1: str, word2: str, expected: int)",
+                "parametrize": "word1, word2, expected",
+                "test_cases": {
+                    "list": [
+                        "('horse', 'ros', 3)",
+                        "('intention', 'execution', 5)",
+                        "('', '', 0)",
+                        "('', 'a', 1)",
+                        "('a', '', 1)",
+                        "('a', 'a', 0)",
+                        "('ab', 'a', 1)",
+                        "('a', 'ab', 1)",
+                        "('ab', 'ba', 2)",
+                        "('abc', 'abc', 0)",
+                        "('abc', 'abd', 1)",
+                        "('kitten', 'sitting', 3)",
+                        "('saturday', 'sunday', 3)",
+                        "('', 'abc', 3)"
+                    ]
+                },
+                "body": "        result = run_min_distance(Solution, word1, word2)\n        assert_min_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_distance, assert_min_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword1 = 'horse'\nword2 = 'ros'\nexpected = 3",
+    "playground_run": "result = run_min_distance(Solution, word1, word2)\nresult",
+    "playground_assert": "assert_min_distance(result, expected)"
+}

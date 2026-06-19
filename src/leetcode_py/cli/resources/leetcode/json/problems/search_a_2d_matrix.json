@@ -1,0 +1,91 @@
+{
+    "problem_name": "search_a_2d_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "74",
+    "problem_title": "Search a 2D Matrix",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Matrix",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an `m x n` integer matrix `matrix` with the following two properties:\n\n- Each row is sorted in non-decreasing order.\n- The first integer of each row is greater than the last integer of the previous row.\n\nGiven an integer `target`, return `true` *if* `target` *is in* `matrix` *or* `false` *otherwise*.\n\nYou must write a solution in `O(log(m * n))` time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/05/mat.jpg)\n\n```\nInput: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/05/mat2.jpg)\n\n```\nInput: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 100\n- -10^4 <= matrix[i][j], target <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "search_matrix",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.search_matrix(matrix, target)",
+    "helpers_assert_name": "search_matrix",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_search_matrix, run_search_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SearchA2DMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "search_matrix",
+                "signature": "(self, matrix: list[list[int]], target: int) -> bool",
+                "body": "        # TODO: Implement search_matrix\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_search_matrix",
+                "signature": "(self, matrix: list[list[int]], target: int, expected: bool)",
+                "parametrize": "matrix, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 13, False)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 60, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 1, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 0, False)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 100, False)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 11, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 16, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 17, False)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 20, True)",
+                        "([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 23, True)",
+                        "([[1]], 1, True)",
+                        "([[1]], 2, False)",
+                        "([[1, 2, 3, 4, 5]], 3, True)",
+                        "([[1], [2], [3], [4]], 3, True)",
+                        "([[1], [2], [3], [4]], 5, False)"
+                    ]
+                },
+                "body": "        result = run_search_matrix(Solution, matrix, target)\n        assert_search_matrix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_search_matrix, assert_search_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]]\ntarget = 3\nexpected = True",
+    "playground_run": "result = run_search_matrix(Solution, matrix, target)\nresult",
+    "playground_assert": "assert_search_matrix(result, expected)"
+}

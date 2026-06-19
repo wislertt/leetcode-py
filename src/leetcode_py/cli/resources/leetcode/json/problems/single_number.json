@@ -1,0 +1,91 @@
+{
+    "problem_name": "single_number",
+    "solution_class_name": "Solution",
+    "problem_number": "136",
+    "problem_title": "Single Number",
+    "difficulty": "Easy",
+    "topics": "Array, Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Given a **non-empty** array of integers `nums`, every element appears *twice* except for one. Find that single one.\n\nYou must implement a solution with a linear runtime complexity and use only constant extra space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,2,1]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: nums = [4,1,2,1,2]\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 3 * 10^4\n- -3 * 10^4 <= nums[i] <= 3 * 10^4\n- Each element in the array appears twice except for one element which appears only once.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "single_number",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.single_number(nums)",
+    "helpers_assert_name": "single_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_single_number, run_single_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SingleNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "single_number",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement single_number\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_single_number",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 2, 1], 1)",
+                        "([4, 1, 2, 1, 2], 4)",
+                        "([1], 1)",
+                        "([1, 1, 2], 2)",
+                        "([-1, -1, -2], -2)",
+                        "([0, 0, 1], 1)",
+                        "([1, 2, 1, 2, 3], 3)",
+                        "([10], 10)",
+                        "([-3, -3, 5], 5)",
+                        "([0, 1, 0], 1)",
+                        "([100, 99, 100], 99)",
+                        "([2, 2, 3, 3, 5], 5)",
+                        "([6], 6)"
+                    ]
+                },
+                "body": "        result = run_single_number(Solution, nums)\n        assert_single_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_single_number, assert_single_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 2, 1]\nexpected = 1",
+    "playground_run": "result = run_single_number(Solution, nums)\nresult",
+    "playground_assert": "assert_single_number(result, expected)"
+}

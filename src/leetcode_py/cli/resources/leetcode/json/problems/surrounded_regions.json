@@ -1,0 +1,89 @@
+{
+    "problem_name": "surrounded_regions",
+    "solution_class_name": "Solution",
+    "problem_number": "130",
+    "problem_title": "Surrounded Regions",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an `m x n` matrix `board` containing letters `'X'` and `'O'`, capture regions that are surrounded:\n\n- **Connect**: A cell is connected to adjacent cells horizontally or vertically.\n- **Region**: To form a region connect every `'O'` cell.\n- **Surround**: A region is surrounded if none of the `'O'` cells in the region are on the edge of the `board`. Such regions are completely enclosed by `'X'` cells.\n\nTo capture a surrounded region, replace all `'O'`s with `'X'`s **in-place** within the original `board`. You do not need to return anything.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg)\n\n```\nInput: board = [[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"O\",\"X\"],[\"X\",\"X\",\"O\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]\nOutput: [[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"X\",\"X\",\"X\"],[\"X\",\"O\",\"X\",\"X\"]]\nExplanation: Notice that an 'O' should not be flipped if it is on the border of the board.\n```"
+            },
+            {
+                "content": "```\nInput: board = [[\"X\"]]\nOutput: [[\"X\"]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == board.length\n- n == board[i].length\n- 1 <= m, n <= 200\n- board[i][j] is 'X' or 'O'.",
+    "readme_additional": "",
+    "helpers_imports": "from collections import deque",
+    "helpers_content": "",
+    "helpers_run_name": "solve",
+    "helpers_run_signature": "(solution_class: type, board: list[list[str]])",
+    "helpers_run_body": "    implementation = solution_class()\n    work = [list(row) for row in board]\n    implementation.solve(work)\n    return work",
+    "helpers_assert_name": "solve",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_solve, run_solve\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SurroundedRegions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "solve",
+                "signature": "(self, board: list[list[str]]) -> None",
+                "body": "        # TODO: Implement solve\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_solve",
+                "signature": "(self, board: list[list[str]], expected: list[list[str]])",
+                "parametrize": "board, expected",
+                "test_cases": {
+                    "list": [
+                        "([['X', 'X', 'X', 'X'], ['X', 'O', 'O', 'X'], ['X', 'X', 'O', 'X'], ['X', 'O', 'X', 'X']], [['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'O', 'X', 'X']])",
+                        "([['X']], [['X']])",
+                        "([['O']], [['O']])",
+                        "([['O', 'O'], ['O', 'O']], [['O', 'O'], ['O', 'O']])",
+                        "([['X', 'X', 'X'], ['X', 'O', 'X'], ['X', 'X', 'X']], [['X', 'X', 'X'], ['X', 'X', 'X'], ['X', 'X', 'X']])",
+                        "([['X', 'O', 'X']], [['X', 'O', 'X']])",
+                        "([['O', 'X', 'O', 'X', 'O']], [['O', 'X', 'O', 'X', 'O']])",
+                        "([['X', 'X', 'X', 'X', 'X'], ['X', 'O', 'O', 'O', 'X'], ['X', 'O', 'X', 'O', 'X'], ['X', 'O', 'O', 'O', 'X'], ['X', 'X', 'X', 'X', 'X']], [['X', 'X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X', 'X']])",
+                        "([['X', 'O'], ['O', 'X']], [['X', 'O'], ['O', 'X']])",
+                        "([['O', 'X', 'X', 'X', 'X', 'X', 'O']], [['O', 'X', 'X', 'X', 'X', 'X', 'O']])",
+                        "([['O', 'X'], ['X', 'O']], [['O', 'X'], ['X', 'O']])",
+                        "([['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X']], [['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X']])",
+                        "([['O', 'O', 'O'], ['O', 'O', 'O'], ['O', 'O', 'O']], [['O', 'O', 'O'], ['O', 'O', 'O'], ['O', 'O', 'O']])",
+                        "([['O', 'X', 'X', 'O'], ['X', 'O', 'O', 'X'], ['X', 'O', 'O', 'X'], ['O', 'X', 'X', 'O']], [['O', 'X', 'X', 'O'], ['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['O', 'X', 'X', 'O']])"
+                    ]
+                },
+                "body": "        result = run_solve(Solution, board)\n        assert_solve(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_solve, assert_solve\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [['X', 'X', 'X', 'X'], ['X', 'O', 'O', 'X'], ['X', 'X', 'O', 'X'], ['X', 'O', 'X', 'X']]\nexpected = [['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'X', 'X', 'X'], ['X', 'O', 'X', 'X']]",
+    "playground_run": "result = run_solve(Solution, board)\nresult",
+    "playground_assert": "assert_solve(result, expected)"
+}

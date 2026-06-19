@@ -1,0 +1,90 @@
+{
+    "problem_name": "n_queens",
+    "solution_class_name": "Solution",
+    "problem_number": "51",
+    "problem_title": "N-Queens",
+    "difficulty": "Hard",
+    "topics": "Array, Backtracking",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "The **n-queens** puzzle is the problem of placing `n` queens on an `n x n` chessboard such that no two queens attack each other.\n\nGiven an integer `n`, return *all distinct solutions to the **n-queens puzzle***. You may return the answer in **any order**.\n\nEach solution contains a distinct board configuration of the n-queens' placement, where `'Q'` and `'.'` both indicate a queen and an empty space, respectively.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/13/queens.jpg)\n\n```\nInput: n = 4\nOutput: [[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"],[\"..Q.\",\"Q...\",\"...Q\",\".Q..\"]]\nExplanation: There exist two distinct solutions to the 4-queens puzzle as shown above\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: [[\"Q\"]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def assert_solve_n_queens_solution_count(result: list[list[str]], expected: int) -> bool:\n    assert len(result) == expected\n    return True",
+    "helpers_run_name": "solve_n_queens",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.solve_n_queens(n)",
+    "helpers_assert_name": "solve_n_queens",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_solve_n_queens, assert_solve_n_queens_solution_count, run_solve_n_queens\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NQueens",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "solve_n_queens",
+                "signature": "(self, n: int) -> list[list[str]]",
+                "body": "        # TODO: Implement solve_n_queens\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_solve_n_queens",
+                "signature": "(self, n: int, expected: list[list[str]])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, [['Q']])",
+                        "(2, [])",
+                        "(3, [])",
+                        "(4, [['..Q.', 'Q...', '...Q', '.Q..'], ['.Q..', '...Q', 'Q...', '..Q.']])",
+                        "(5, [['....Q', '..Q..', 'Q....', '...Q.', '.Q...'], ['....Q', '.Q...', '...Q.', 'Q....', '..Q..'], ['...Q.', '.Q...', '....Q', '..Q..', 'Q....'], ['...Q.', 'Q....', '..Q..', '....Q', '.Q...'], ['..Q..', '....Q', '.Q...', '...Q.', 'Q....'], ['..Q..', 'Q....', '...Q.', '.Q...', '....Q'], ['.Q...', '....Q', '..Q..', 'Q....', '...Q.'], ['.Q...', '...Q.', 'Q....', '..Q..', '....Q'], ['Q....', '...Q.', '.Q...', '....Q', '..Q..'], ['Q....', '..Q..', '....Q', '.Q...', '...Q.']])",
+                        "(6, [['....Q.', '..Q...', 'Q.....', '.....Q', '...Q..', '.Q....'], ['...Q..', 'Q.....', '....Q.', '.Q....', '.....Q', '..Q...'], ['..Q...', '.....Q', '.Q....', '....Q.', 'Q.....', '...Q..'], ['.Q....', '...Q..', '.....Q', 'Q.....', '..Q...', '....Q.']])"
+                    ]
+                },
+                "body": "        result = run_solve_n_queens(Solution, n)\n        assert_solve_n_queens(result, expected)"
+            },
+            {
+                "name": "test_solve_n_queens_solution_count",
+                "signature": "(self, n: int, expected_count: int)",
+                "parametrize": "n, expected_count",
+                "test_cases": {
+                    "list": ["(4, 2)", "(5, 10)", "(6, 4)", "(7, 40)", "(8, 92)", "(9, 352)"]
+                },
+                "body": "        result = run_solve_n_queens(Solution, n)\n        assert_solve_n_queens_solution_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_solve_n_queens, assert_solve_n_queens\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nexpected = [['..Q.', 'Q...', '...Q', '.Q..'], ['.Q..', '...Q', 'Q...', '..Q.']]",
+    "playground_run": "result = run_solve_n_queens(Solution, n)\nresult",
+    "playground_assert": "assert_solve_n_queens(result, expected)"
+}

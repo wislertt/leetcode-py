@@ -1,0 +1,96 @@
+{
+    "problem_name": "interleaving_string",
+    "solution_class_name": "Solution",
+    "problem_number": "97",
+    "problem_title": "Interleaving String",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Given strings `s1`, `s2`, and `s3`, find whether `s3` is formed by an **interleaving** of `s1` and `s2`.\n\nAn interleaving of two strings `s` and `t` is a configuration where `s` and `t` are divided into `n` and `m` substrings respectively, such that:\n\n- s = s1 + s2 + ... + sn\n- t = t1 + t2 + ... + tm\n- |n - m| <= 1\n- The interleaving is s1 + t1 + s2 + t2 + s3 + t3 + ... or t1 + s1 + t2 + s2 + t3 + s3 + ...\n\n**Note:** `a + b` is the concatenation of strings `a` and `b`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/02/interleave.jpg)\n\n```\nInput: s1 = \"aabcc\", s2 = \"dbbca\", s3 = \"aadbbcbcac\"\nOutput: true\nExplanation: One way to obtain s3 is:\nSplit s1 into s1 = \"aa\" + \"bc\" + \"c\", and s2 into s2 = \"dbbc\" + \"a\".\nInterleaving the two splits, we get \"aadbbcbcac\".\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"aabcc\", s2 = \"dbbca\", s3 = \"aadbbbaccc\"\nOutput: false\nExplanation: Notice how it is hard to find a viable interleaving because s3 must preserve the character order of s1 and s2.\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"\", s2 = \"\", s3 = \"\"\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= s1.length, s2.length <= 100\n- 0 <= s3.length <= 200\n- s1, s2, and s3 consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_interleave",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str, s3: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_interleave(s1, s2, s3)",
+    "helpers_assert_name": "is_interleave",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_interleave, run_is_interleave\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "InterleavingString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_interleave",
+                "signature": "(self, s1: str, s2: str, s3: str) -> bool",
+                "body": "        # TODO: Implement is_interleave\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_interleave",
+                "signature": "(self, s1: str, s2: str, s3: str, expected: bool)",
+                "parametrize": "s1, s2, s3, expected",
+                "test_cases": {
+                    "list": [
+                        "('aabcc', 'dbbca', 'aadbbcbcac', True)",
+                        "('aabcc', 'dbbca', 'aadbbbaccc', False)",
+                        "('', '', '', True)",
+                        "('', '', 'a', False)",
+                        "('a', '', 'a', True)",
+                        "('', 'b', 'b', True)",
+                        "('a', 'b', 'ab', True)",
+                        "('a', 'b', 'ba', True)",
+                        "('a', 'b', 'a', False)",
+                        "('ab', 'cd', 'acbd', True)",
+                        "('ab', 'cd', 'abcd', True)",
+                        "('ab', 'cd', 'cdab', True)",
+                        "('ab', 'cd', 'acdb', True)",
+                        "('aa', 'ab', 'aaab', True)",
+                        "('aa', 'ab', 'aaba', True)",
+                        "('abc', 'def', 'abcdef', True)",
+                        "('abc', 'def', 'adbecf', True)",
+                        "('abc', 'def', 'defabc', True)"
+                    ]
+                },
+                "body": "        result = run_is_interleave(Solution, s1, s2, s3)\n        assert_is_interleave(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_interleave, assert_is_interleave\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'aabcc'\ns2 = 'dbbca'\ns3 = 'aadbbcbcac'\nexpected = True",
+    "playground_run": "result = run_is_interleave(Solution, s1, s2, s3)\nresult",
+    "playground_assert": "assert_is_interleave(result, expected)"
+}

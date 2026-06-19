@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "powx_n"
+    problem: str = "copy_list_with_random_pointer"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")
