@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, Linked List
-**Tags:** blind-75, neetcode-150
+**Tags:** neetcode-150
 
 **LeetCode:** [Problem 138](https://leetcode.com/problems/copy-list-with-random-pointer/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search, Matrix
-**Tags:** blind-75, neetcode-150
+**Tags:** neetcode-150
 
 **LeetCode:** [Problem 74](https://leetcode.com/problems/search-a-2d-matrix/description/)
 

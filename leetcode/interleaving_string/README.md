@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming
-**Tags:** blind-75, neetcode-150
+**Tags:** neetcode-150
 
 **LeetCode:** [Problem 97](https://leetcode.com/problems/interleaving-string/description/)
 
