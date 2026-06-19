@@ -2,11 +2,18 @@
 
 import sys
 from pathlib import Path
+from typing import TypedDict
 
 # Import the problem lists
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from problem_lists import available_lists
 from problem_lists.utils import get_existing_problems
+
+
+class CheckResult(TypedDict):
+    have: set[int]
+    missing: set[int]
+    total: int
 
 
 def check_problem_list(tag_name, problem_tuples, existing_problems):
@@ -34,7 +41,7 @@ def check_problem_lists(tag_names=None):
     existing = get_existing_problems()
     print(f"Total existing problems in JSON: {len(existing)}")
 
-    results = {}
+    results: dict[str, CheckResult] = {}
 
     # Check each specified list
     for tag_name, problem_tuples in available_lists.items():
