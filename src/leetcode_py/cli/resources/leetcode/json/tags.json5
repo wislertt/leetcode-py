@@ -336,6 +336,7 @@
         "valid_parenthesis_string",
         "valid_sudoku",
         "validate_binary_search_tree",
+        "walls_and_gates",
         "word_break",
         "word_ladder",
         "word_search",

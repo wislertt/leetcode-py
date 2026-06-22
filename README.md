@@ -43,7 +43,7 @@ A Python package to generate professional LeetCode practice environments. Featur
 - **grind-75** - Essential coding interview questions from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
 - **grind** - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
 - **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list ✅ Complete
-- **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set 🚧 Partial
+- **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set ✅ Complete
 - **algo-master-75** - Curated algorithmic mastery problems ✅ Complete
 
 **Coverage**: 130+ unique problems across all major coding interview topics and difficulty levels.
