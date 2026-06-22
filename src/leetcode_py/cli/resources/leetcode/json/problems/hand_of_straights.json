@@ -1,0 +1,88 @@
+{
+    "problem_name": "hand_of_straights",
+    "solution_class_name": "Solution",
+    "problem_number": "846",
+    "problem_title": "Hand of Straights",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Alice has some number of cards and she wants to rearrange the cards into groups so that each group is of size `groupSize`, and consists of `groupSize` consecutive cards.\n\nGiven an integer array `hand` where `hand[i]` is the value written on the `i<sup>th</sup>` card and an integer `groupSize`, return `true` if she can rearrange the cards, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3\nOutput: true\nExplanation: Alice's hand can be rearranged as [1,2,3],[2,3,4],[6,7,8]\n```"
+            },
+            {
+                "content": "```\nInput: hand = [1,2,3,4,5], groupSize = 4\nOutput: false\nExplanation: Alice's hand can not be rearranged into groups of 4.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= hand.length <= 10<sup>4</sup>\n- 0 <= hand[i] <= 10<sup>9</sup>\n- 1 <= groupSize <= hand.length",
+    "readme_additional": "**Note:** This question is the same as 1296: https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_n_straight_hand",
+    "helpers_run_signature": "(solution_class: type, hand: list[int], group_size: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_n_straight_hand(hand, group_size)",
+    "helpers_assert_name": "is_n_straight_hand",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_n_straight_hand, run_is_n_straight_hand\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HandOfStraights",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_n_straight_hand",
+                "signature": "(self, hand: list[int], group_size: int) -> bool",
+                "body": "        # TODO: Implement is_n_straight_hand\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_n_straight_hand",
+                "signature": "(self, hand: list[int], group_size: int, expected: bool)",
+                "parametrize": "hand, group_size, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 6, 2, 3, 4, 7, 8], 3, True)",
+                        "([1, 2, 3, 4, 5], 4, False)",
+                        "([1], 1, True)",
+                        "([1, 2, 3], 1, True)",
+                        "([1, 2, 3, 4], 2, True)",
+                        "([1, 2, 3, 4], 4, True)",
+                        "([1, 2, 4], 3, False)",
+                        "([1, 1, 2, 2, 3, 3], 3, True)",
+                        "([1, 2, 3, 4, 5, 6], 3, True)",
+                        "([1, 2, 3, 4, 5], 1, True)",
+                        "([8, 8, 9, 7, 7, 9], 3, True)",
+                        "([1, 2, 3, 4, 6, 7, 8], 3, False)",
+                        "([1, 2, 3, 5], 4, False)"
+                    ]
+                },
+                "body": "        result = run_is_n_straight_hand(Solution, hand, group_size)\n        assert_is_n_straight_hand(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_n_straight_hand, assert_is_n_straight_hand\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nhand = [1, 2, 3, 6, 2, 3, 4, 7, 8]\ngroup_size = 3\nexpected = True",
+    "playground_run": "result = run_is_n_straight_hand(Solution, hand, group_size)\nresult",
+    "playground_assert": "assert_is_n_straight_hand(result, expected)"
+}

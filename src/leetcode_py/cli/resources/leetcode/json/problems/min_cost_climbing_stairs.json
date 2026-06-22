@@ -1,0 +1,88 @@
+{
+    "problem_name": "min_cost_climbing_stairs",
+    "solution_class_name": "Solution",
+    "problem_number": "746",
+    "problem_title": "Min Cost Climbing Stairs",
+    "difficulty": "Easy",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an integer array `cost` where `cost[i]` is the cost of `i<sup>th</sup>` step on a staircase. Once you pay the cost, you can either climb one or two steps.\n\nYou can either start from the step with index `0`, or the step with index `1`.\n\nReturn _the minimum cost to reach the top of the floor_.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: cost = [10,15,20]\nOutput: 15\nExplanation: You will start at index 1.\n- Pay 15 and climb two steps to reach the top.\nThe total cost is 15.\n```"
+            },
+            {
+                "content": "```\nInput: cost = [1,100,1,1,1,100,1,1,100,1]\nOutput: 6\nExplanation: You will start at index 0.\n- Pay 1 and climb two steps to reach index 2.\n- Pay 1 and climb two steps to reach index 4.\n- Pay 1 and climb two steps to reach index 6.\n- Pay 1 and climb one step to reach index 7.\n- Pay 1 and climb two steps to reach index 9.\n- Pay 1 and climb one step to reach the top.\nThe total cost is 6.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= cost.length <= 1000\n- 0 <= cost[i] <= 999",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_cost_climbing_stairs",
+    "helpers_run_signature": "(solution_class: type, cost: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_cost_climbing_stairs(cost)",
+    "helpers_assert_name": "min_cost_climbing_stairs",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_cost_climbing_stairs, run_min_cost_climbing_stairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinCostClimbingStairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_cost_climbing_stairs",
+                "signature": "(self, cost: list[int]) -> int",
+                "body": "        # TODO: Implement min_cost_climbing_stairs\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_cost_climbing_stairs",
+                "signature": "(self, cost: list[int], expected: int)",
+                "parametrize": "cost, expected",
+                "test_cases": {
+                    "list": [
+                        "([10, 15, 20], 15)",
+                        "([1, 100, 1, 1, 1, 100, 1, 1, 100, 1], 6)",
+                        "([1, 2], 1)",
+                        "([0, 0], 0)",
+                        "([999, 999], 999)",
+                        "([1, 2, 3], 2)",
+                        "([10, 1, 1, 10], 2)",
+                        "([0, 100, 0, 100, 0], 0)",
+                        "([5, 5, 5, 5, 5], 10)",
+                        "([3, 2, 1, 4], 3)",
+                        "([10, 5, 10, 5, 10], 10)",
+                        "([2, 3, 4, 5, 6], 8)",
+                        "([100, 100, 100, 100], 200)"
+                    ]
+                },
+                "body": "        result = run_min_cost_climbing_stairs(Solution, cost)\n        assert_min_cost_climbing_stairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_cost_climbing_stairs, assert_min_cost_climbing_stairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncost = [10, 15, 20]\nexpected = 15",
+    "playground_run": "result = run_min_cost_climbing_stairs(Solution, cost)\nresult",
+    "playground_assert": "assert_min_cost_climbing_stairs(result, expected)"
+}

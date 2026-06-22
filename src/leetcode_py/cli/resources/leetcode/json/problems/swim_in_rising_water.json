@@ -1,0 +1,88 @@
+{
+    "problem_name": "swim_in_rising_water",
+    "solution_class_name": "Solution",
+    "problem_number": "778",
+    "problem_title": "Swim in Rising Water",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Depth-First Search, Breadth-First Search, Union-Find, Heap (Priority Queue), Matrix",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an `n x n` integer matrix `grid` where each value `grid[i][j]` represents the elevation at that point `(i, j)`.\n\nIt starts raining, and water gradually rises over time. At time `t`, the water level is `t`, meaning **any** cell with elevation less than equal to `t` is submerged or reachable.\n\nYou can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most `t`. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim.\n\nReturn _the minimum time until you can reach the bottom right square_ `(n - 1, n - 1)` _if you start at the top left square_ `(0, 0)`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg)\n\n```\nInput: grid = [[0,2],[1,3]]\nOutput: 3\nExplanation:\nAt time 0, you are in grid location (0, 0).\nYou cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.\nYou cannot reach point (1, 1) until time 3.\nWhen the depth of water is 3, we can swim anywhere inside the grid.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg)\n\n```\nInput: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]\nOutput: 16\nExplanation: The final route is shown.\nWe need to wait until time 16 so that (0, 0) and (4, 4) are connected.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length\n- n == grid[i].length\n- 1 <= n <= 50\n- 0 <= grid[i][j] < n<sup>2</sup>\n- Each value grid[i][j] is **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "swim_in_water",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.swim_in_water(grid)",
+    "helpers_assert_name": "swim_in_water",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_swim_in_water, run_swim_in_water\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SwimInRisingWater",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "swim_in_water",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement swim_in_water\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_swim_in_water",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,2],[1,3]], 3)",
+                        "([[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]], 16)",
+                        "([[0]], 0)",
+                        "([[5]], 5)",
+                        "([[0,1],[2,3]], 3)",
+                        "([[3,2],[1,0]], 3)",
+                        "([[0,5],[5,1]], 5)",
+                        "([[8,1],[2,3]], 8)",
+                        "([[0,9],[9,1]], 9)",
+                        "([[1,4],[2,3]], 3)",
+                        "([[2,4],[3,1]], 3)",
+                        "([[0,4],[1,5]], 5)",
+                        "([[0,3],[2,1]], 2)"
+                    ]
+                },
+                "body": "        result = run_swim_in_water(Solution, grid)\n        assert_swim_in_water(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_swim_in_water, assert_swim_in_water\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0,2],[1,3]]\nexpected = 3",
+    "playground_run": "result = run_swim_in_water(Solution, grid)\nresult",
+    "playground_assert": "assert_swim_in_water(result, expected)"
+}

@@ -1,0 +1,91 @@
+{
+    "problem_name": "koko_eating_bananas",
+    "solution_class_name": "Solution",
+    "problem_number": "875",
+    "problem_title": "Koko Eating Bananas",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Koko loves to eat bananas. There are `n` piles of bananas, the `i<sup>th</sup>` pile has `piles[i]` bananas. The guards have gone and will come back in `h` hours.\n\nKoko can decide her bananas-per-hour eating speed of `k`. Each hour, she chooses some pile of bananas and eats `k` bananas from that pile. If the pile has less than `k` bananas, she eats all of them instead and will not eat any more bananas during this hour.\n\nKoko likes to eat slowly but still wants to finish eating all the bananas before the guards return.\n\nReturn _the minimum integer_ `k` _such that she can eat all the bananas within_ `h` _hours_.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: piles = [3,6,7,11], h = 8\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: piles = [30,11,23,4,20], h = 5\nOutput: 30\n```"
+            },
+            {
+                "content": "```\nInput: piles = [30,11,23,4,20], h = 6\nOutput: 23\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= piles.length <= 10<sup>4</sup>\n- piles.length <= h <= 10<sup>9</sup>\n- 1 <= piles[i] <= 10<sup>9</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_eating_speed",
+    "helpers_run_signature": "(solution_class: type, piles: list[int], h: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_eating_speed(piles, h)",
+    "helpers_assert_name": "min_eating_speed",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_eating_speed, run_min_eating_speed\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KokoEatingBananas",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_eating_speed",
+                "signature": "(self, piles: list[int], h: int) -> int",
+                "body": "        # TODO: Implement min_eating_speed\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_eating_speed",
+                "signature": "(self, piles: list[int], h: int, expected: int)",
+                "parametrize": "piles, h, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 6, 7, 11], 8, 4)",
+                        "([30, 11, 23, 4, 20], 5, 30)",
+                        "([30, 11, 23, 4, 20], 6, 23)",
+                        "([1], 1, 1)",
+                        "([5], 5, 1)",
+                        "([1000000000], 2, 500000000)",
+                        "([1, 1, 1, 1], 4, 1)",
+                        "([10], 3, 4)",
+                        "([2, 2, 2], 3, 2)",
+                        "([3, 6, 7, 11], 1000000000, 1)",
+                        "([100], 1, 100)",
+                        "([1, 2, 3, 4, 5], 5, 5)",
+                        "([8, 8, 8, 8], 8, 4)"
+                    ]
+                },
+                "body": "        result = run_min_eating_speed(Solution, piles, h)\n        assert_min_eating_speed(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_eating_speed, assert_min_eating_speed\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npiles = [3, 6, 7, 11]\nh = 8\nexpected = 4",
+    "playground_run": "result = run_min_eating_speed(Solution, piles, h)\nresult",
+    "playground_assert": "assert_min_eating_speed(result, expected)"
+}

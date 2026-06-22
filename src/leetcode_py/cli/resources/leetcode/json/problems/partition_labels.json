@@ -1,0 +1,88 @@
+{
+    "problem_name": "partition_labels",
+    "solution_class_name": "Solution",
+    "problem_number": "763",
+    "problem_title": "Partition Labels",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Two Pointers, String, Greedy",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given a string `s`. We want to partition the string into as many parts as possible so that each letter appears in at most one part. For example, the string `\"ababcc\"` can be partitioned into `[\"abab\", \"cc\"]`, but partitions such as `[\"aba\", \"bcc\"]` or `[\"ab\", \"ab\", \"cc\"]` are invalid.\n\nNote that the partition is done so that after concatenating all the parts in order, the resultant string should be `s`.\n\nReturn _a list of integers representing the size of these parts_.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ababcbacadefegdehijhklij\"\nOutput: [9,7,8]\nExplanation:\nThe partition is \"ababcbaca\", \"defegde\", \"hijhklij\".\nThis is a partition so that each letter appears in at most one part.\nA partition like \"ababcbacadefegde\", \"hijhklij\" is incorrect, because it splits s into less parts.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"eccbbbbdec\"\nOutput: [10]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 500\n- s consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "partition_labels",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.partition_labels(s)",
+    "helpers_assert_name": "partition_labels",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_partition_labels, run_partition_labels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PartitionLabels",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "partition_labels",
+                "signature": "(self, s: str) -> list[int]",
+                "body": "        # TODO: Implement partition_labels\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_partition_labels",
+                "signature": "(self, s: str, expected: list[int])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('ababcbacadefegdehijhklij', [9, 7, 8])",
+                        "('eccbbbbdec', [10])",
+                        "('a', [1])",
+                        "('ab', [1, 1])",
+                        "('aaa', [3])",
+                        "('abc', [1, 1, 1])",
+                        "('abac', [3, 1])",
+                        "('aab', [2, 1])",
+                        "('ababcc', [4, 2])",
+                        "('xxyxx', [5])",
+                        "('abba', [4])",
+                        "('z', [1])",
+                        "('aabbcc', [2, 2, 2])"
+                    ]
+                },
+                "body": "        result = run_partition_labels(Solution, s)\n        assert_partition_labels(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_partition_labels, assert_partition_labels\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ababcbacadefegdehijhklij'\nexpected = [9, 7, 8]",
+    "playground_run": "result = run_partition_labels(Solution, s)\nresult",
+    "playground_assert": "assert_partition_labels(result, expected)"
+}

@@ -1,0 +1,91 @@
+{
+    "problem_name": "network_delay_time",
+    "solution_class_name": "Solution",
+    "problem_number": "743",
+    "problem_title": "Network Delay Time",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Graph Theory, Heap (Priority Queue), Shortest Path",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given a network of `n` nodes, labeled from `1` to `n`. You are also given `times`, a list of travel times as directed edges `times[i] = (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>)`, where `u<sub>i</sub>` is the source node, `v<sub>i</sub>` is the target node, and `w<sub>i</sub>` is the time it takes for a signal to travel from source to target.\n\nWe will send a signal from a given node `k`. Return _the **minimum** time it takes for all the_ `n` _nodes to receive the signal_. If it is impossible for all the `n` nodes to receive the signal, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png)\n\n```\nInput: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: times = [[1,2,1]], n = 2, k = 1\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: times = [[1,2,1]], n = 2, k = 2\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= k <= n <= 100\n- 1 <= times.length <= 6000\n- times[i].length == 3\n- 1 <= u<sub>i</sub>, v<sub>i</sub> <= n\n- u<sub>i</sub> != v<sub>i</sub>\n- 0 <= w<sub>i</sub> <= 100\n- All the pairs (u<sub>i</sub>, v<sub>i</sub>) are **unique**. (i.e., no multiple edges.)",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "network_delay_time",
+    "helpers_run_signature": "(solution_class: type, times: list[list[int]], n: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.network_delay_time(times, n, k)",
+    "helpers_assert_name": "network_delay_time",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_network_delay_time, run_network_delay_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NetworkDelayTime",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "network_delay_time",
+                "signature": "(self, times: list[list[int]], n: int, k: int) -> int",
+                "body": "        # TODO: Implement network_delay_time\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_network_delay_time",
+                "signature": "(self, times: list[list[int]], n: int, k: int, expected: int)",
+                "parametrize": "times, n, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([[2,1,1],[2,3,1],[3,4,1]], 4, 2, 2)",
+                        "([[1,2,1]], 2, 1, 1)",
+                        "([[1,2,1]], 2, 2, -1)",
+                        "([], 1, 1, 0)",
+                        "([[1,2,1],[2,3,1],[3,4,1]], 4, 1, 3)",
+                        "([[1,2,1]], 3, 1, -1)",
+                        "([[1,2,5],[2,3,2],[1,3,10]], 3, 1, 7)",
+                        "([[1,2,1],[2,3,1],[3,1,1]], 3, 1, 2)",
+                        "([[1,2,1],[1,3,5],[2,3,1]], 3, 1, 2)",
+                        "([[2,1,1],[2,3,1],[3,4,1],[4,5,1]], 5, 2, 3)",
+                        "([[1,2,2]], 2, 1, 2)",
+                        "([[1,3,1],[3,2,1]], 3, 2, -1)",
+                        "([[1,2,0],[2,3,0]], 3, 1, 0)"
+                    ]
+                },
+                "body": "        result = run_network_delay_time(Solution, times, n, k)\n        assert_network_delay_time(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_network_delay_time, assert_network_delay_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntimes = [[2,1,1],[2,3,1],[3,4,1]]\nn = 4\nk = 2\nexpected = 2",
+    "playground_run": "result = run_network_delay_time(Solution, times, n, k)\nresult",
+    "playground_assert": "assert_network_delay_time(result, expected)"
+}

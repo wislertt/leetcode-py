@@ -1,0 +1,87 @@
+{
+    "problem_name": "kth_largest_element_in_a_stream",
+    "solution_class_name": "KthLargest",
+    "problem_number": "703",
+    "problem_title": "Kth Largest Element in a Stream",
+    "difficulty": "Easy",
+    "topics": "Tree, Design, Binary Search Tree, Heap (Priority Queue), Binary Tree, Data Stream",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are part of a university admissions office and need to keep track of the `kth` highest test score from applicants in real-time. This helps to determine cut-off marks for interviews and admissions dynamically as new applicants submit their scores.\n\nYou are tasked to implement a class which, for a given integer `k`, maintains a stream of test scores and continuously returns the `k`th highest test score **after** a new score has been submitted. More specifically, we are looking for the `k`th highest score in the sorted list of all scores.\n\nImplement the `KthLargest` class:\n\n- `KthLargest(int k, int[] nums)` Initializes the object with the integer `k` and the stream of test scores `nums`.\n- `int add(int val)` Adds a new test score `val` to the stream and returns the element representing the `k<sup>th</sup>` largest element in the pool of test scores so far.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"KthLargest\", \"add\", \"add\", \"add\", \"add\", \"add\"]\n[[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]\nOutput\n[null, 4, 5, 5, 8, 8]\n\nExplanation\nKthLargest kthLargest = new KthLargest(3, [4, 5, 8, 2]);\nkthLargest.add(3);   // return 4\nkthLargest.add(5);   // return 5\nkthLargest.add(10);  // return 5\nkthLargest.add(9);   // return 8\nkthLargest.add(4);   // return 8\n```"
+            },
+            {
+                "content": "```\nInput\n[\"KthLargest\", \"add\", \"add\", \"add\", \"add\"]\n[[4, [7, 7, 7, 7, 8, 3]], [2], [10], [9], [9]]\nOutput\n[null, 7, 7, 7, 8]\n\nExplanation\nKthLargest kthLargest = new KthLargest(4, [7, 7, 7, 7, 8, 3]);\nkthLargest.add(2);   // return 7\nkthLargest.add(10);  // return 7\nkthLargest.add(9);   // return 7\nkthLargest.add(9);   // return 8\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= nums.length <= 10<sup>4</sup>\n- 1 <= k <= nums.length + 1\n- -10<sup>4</sup> <= nums[i] <= 10<sup>4</sup>\n- -10<sup>4</sup> <= val <= 10<sup>4</sup>\n- At most 10<sup>4</sup> calls will be made to `add`.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "kth_largest",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[Any]])",
+    "helpers_run_body": "    kth: Any = None\n    results: list[Any] = []\n\n    for op, args in zip(operations, inputs, strict=False):\n        if op == 'KthLargest':\n            kth = solution_class(args[0], args[1])\n            results.append(None)\n        elif op == 'add':\n            assert kth is not None\n            results.append(kth.add(args[0]))\n\n    return results",
+    "helpers_assert_name": "kth_largest",
+    "helpers_assert_signature": "(result: list[Any], expected: list[Any]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "from typing import Any\n\nimport pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_kth_largest, run_kth_largest\nfrom .solution import KthLargest",
+    "test_content": "",
+    "test_class_name": "KthLargestElementInAStream",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, k: int, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize data structure\n        pass"
+            },
+            {
+                "name": "add",
+                "signature": "(self, val: int) -> int",
+                "body": "        # TODO: Implement add\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_kth_largest",
+                "signature": "(self, operations: list[str], inputs: list[list[Any]], expected: list[Any])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['KthLargest', 'add', 'add', 'add', 'add', 'add'], [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]], [None, 4, 5, 5, 8, 8])",
+                        "(['KthLargest', 'add', 'add', 'add', 'add'], [[4, [7, 7, 7, 7, 8, 3]], [2], [10], [9], [9]], [None, 7, 7, 7, 8])",
+                        "(['KthLargest', 'add', 'add', 'add'], [[1, [5]], [2], [3], [1]], [None, 5, 5, 5])",
+                        "(['KthLargest', 'add'], [[1, []], [3]], [None, 3])",
+                        "(['KthLargest', 'add'], [[3, [5, 6]], [7]], [None, 5])",
+                        "(['KthLargest', 'add', 'add'], [[2, [-3, -1, -2]], [-4], [-5]], [None, -2, -2])",
+                        "(['KthLargest', 'add'], [[3, [9, 9, 9]], [9]], [None, 9])",
+                        "(['KthLargest', 'add', 'add', 'add'], [[2, [3, 4]], [5], [6], [7]], [None, 4, 5, 6])",
+                        "(['KthLargest', 'add', 'add'], [[2, [0]], [1], [2]], [None, 0, 1])",
+                        "(['KthLargest', 'add'], [[3, [1, 2, 3, 4, 5]], [0]], [None, 3])",
+                        "(['KthLargest', 'add', 'add'], [[3, [5, 1, 2, 4, 3]], [6], [7]], [None, 4, 5])",
+                        "(['KthLargest', 'add', 'add', 'add'], [[2, [1, 1]], [1], [1], [1]], [None, 1, 1, 1])",
+                        "(['KthLargest', 'add', 'add', 'add', 'add'], [[3, [10, 20]], [15], [25], [5], [30]], [None, 10, 15, 15, 20])"
+                    ]
+                },
+                "body": "        result = run_kth_largest(KthLargest, operations, inputs)\n        assert_kth_largest(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_kth_largest, assert_kth_largest\nfrom solution import KthLargest",
+    "playground_setup": "# Example test case\noperations = ['KthLargest', 'add', 'add', 'add', 'add', 'add']\ninputs = [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]\nexpected = [None, 4, 5, 5, 8, 8]",
+    "playground_run": "result = run_kth_largest(KthLargest, operations, inputs)\nresult",
+    "playground_assert": "assert_kth_largest(result, expected)"
+}

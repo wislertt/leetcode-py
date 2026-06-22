@@ -1,0 +1,91 @@
+{
+    "problem_name": "car_fleet",
+    "solution_class_name": "Solution",
+    "problem_number": "853",
+    "problem_title": "Car Fleet",
+    "difficulty": "Medium",
+    "topics": "Array, Stack, Sorting, Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "There are `n` cars at given miles away from the starting mile 0, traveling to reach the mile `target`.\n\nYou are given two integer arrays `position` and `speed`, both of length `n`, where `position[i]` is the starting mile of the `i<sup>th</sup>` car and `speed[i]` is the speed of the `i<sup>th</sup>` car in miles per hour.\n\nA car cannot pass another car, but it can catch up and then travel next to it at the speed of the slower car.\n\nA **car fleet** is a single car or a group of cars driving next to each other. The speed of the car fleet is the **minimum** speed of any car in the fleet.\n\nIf a car catches up to a car fleet at the mile `target`, it will still be considered as part of the car fleet.\n\nReturn the number of car fleets that will arrive at the destination.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]\nOutput: 3\nExplanation:\n- The cars starting at 10 (speed 2) and 8 (speed 4) become a fleet, meeting each other at 12. The fleet forms at target.\n- The car starting at 0 (speed 1) does not catch up to any other car, so it is a fleet by itself.\n- The cars starting at 5 (speed 1) and 3 (speed 3) become a fleet, meeting each other at 6. The fleet moves at speed 1 until it reaches target.\n```"
+            },
+            {
+                "content": "```\nInput: target = 10, position = [3], speed = [3]\nOutput: 1\nExplanation: There is only one car, hence there is only one fleet.\n```"
+            },
+            {
+                "content": "```\nInput: target = 100, position = [0,2,4], speed = [4,2,1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == position.length == speed.length\n- 1 <= n <= 10<sup>5</sup>\n- 0 < target <= 10<sup>6</sup>\n- 0 <= position[i] < target\n- All the values of position are **unique**.\n- 0 < speed[i] <= 10<sup>6</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "car_fleet",
+    "helpers_run_signature": "(solution_class: type, target: int, position: list[int], speed: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.car_fleet(target, position, speed)",
+    "helpers_assert_name": "car_fleet",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_car_fleet, run_car_fleet\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CarFleet",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "car_fleet",
+                "signature": "(self, target: int, position: list[int], speed: list[int]) -> int",
+                "body": "        # TODO: Implement car_fleet\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_car_fleet",
+                "signature": "(self, target: int, position: list[int], speed: list[int], expected: int)",
+                "parametrize": "target, position, speed, expected",
+                "test_cases": {
+                    "list": [
+                        "(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3], 3)",
+                        "(10, [3], [3], 1)",
+                        "(100, [0, 2, 4], [4, 2, 1], 1)",
+                        "(10, [0], [1], 1)",
+                        "(20, [10, 15], [5, 1], 1)",
+                        "(100, [0, 1, 2], [1, 1, 1], 3)",
+                        "(10, [0, 2, 4, 6, 8], [1, 1, 1, 1, 1], 5)",
+                        "(10, [8, 6, 4, 2, 0], [2, 4, 6, 8, 10], 1)",
+                        "(15, [1, 5, 10], [4, 2, 1], 1)",
+                        "(20, [6, 10, 15], [2, 3, 1], 2)",
+                        "(5, [1, 3], [1, 2], 2)",
+                        "(20, [5, 10], [5, 5], 2)",
+                        "(50, [10, 20, 30, 40], [1, 1, 1, 1], 4)"
+                    ]
+                },
+                "body": "        result = run_car_fleet(Solution, target, position, speed)\n        assert_car_fleet(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_car_fleet, assert_car_fleet\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntarget = 12\nposition = [10, 8, 0, 5, 3]\nspeed = [2, 4, 1, 1, 3]\nexpected = 3",
+    "playground_run": "result = run_car_fleet(Solution, target, position, speed)\nresult",
+    "playground_assert": "assert_car_fleet(result, expected)"
+}
