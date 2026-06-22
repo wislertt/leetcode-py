@@ -1,0 +1,90 @@
+{
+    "problem_name": "detect_squares",
+    "solution_class_name": "DetectSquares",
+    "problem_number": "2013",
+    "problem_title": "Detect Squares",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Design, Counting, Data Stream",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given a stream of points on the X-Y plane. Design an algorithm that:\n\n- **Adds** new points from the stream into a data structure. **Duplicate** points are allowed and should be treated as different points.\n- Given a query point, **counts** the number of ways to choose three points from the data structure such that the three points and the query point form an **axis-aligned square** with **positive area**.\n\nAn **axis-aligned square** is a square whose edges are all the same length and are either parallel or perpendicular to the x-axis and y-axis.\n\nImplement the `DetectSquares` class:\n\n- `DetectSquares()` Initializes the object with an empty data structure.\n- `void add(int[] point)` Adds a new point `point = [x, y]` to the data structure.\n- `int count(int[] point)` Counts the number of ways to form **axis-aligned squares** with point `point = [x, y]` as described above.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/09/01/image.png)\n\n```\nInput\n[\"DetectSquares\", \"add\", \"add\", \"add\", \"count\", \"count\", \"add\", \"count\"]\n[[], [[3, 10]], [[11, 2]], [[3, 2]], [[11, 10]], [[14, 8]], [[11, 2]], [[11, 10]]]\nOutput\n[null, null, null, null, 1, 0, null, 2]\n\nExplanation\nDetectSquares detectSquares = new DetectSquares();\ndetectSquares.add([3, 10]);\ndetectSquares.add([11, 2]);\ndetectSquares.add([3, 2]);\ndetectSquares.count([11, 10]); // return 1.\ndetectSquares.count([14, 8]);  // return 0.\ndetectSquares.add([11, 2]);    // Adding duplicate points is allowed.\ndetectSquares.count([11, 10]); // return 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `point.length == 2`\n- 0 <= x, y <= 1000\n- At most `3000` calls in total will be made to `add` and `count`.",
+    "readme_additional": "",
+    "helpers_imports": "from collections import Counter\nfrom typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "detect_squares",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[Any])",
+    "helpers_run_body": "    squares: Any = None\n    results: list[Any] = []\n\n    for op, args in zip(operations, inputs, strict=False):\n        if op == 'DetectSquares':\n            squares = solution_class()\n            results.append(None)\n        elif op == 'add':\n            assert squares is not None\n            squares.add(args[0])\n            results.append(None)\n        elif op == 'count':\n            assert squares is not None\n            results.append(squares.count(args[0]))\n\n    return results",
+    "helpers_assert_name": "detect_squares",
+    "helpers_assert_signature": "(result: list[Any], expected: list[Any]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "from typing import Any\n\nimport pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_detect_squares, run_detect_squares\nfrom .solution import DetectSquares",
+    "test_content": "",
+    "test_class_name": "DetectSquares",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize data structure\n        pass"
+            },
+            {
+                "name": "add",
+                "signature": "(self, point: list[int]) -> None",
+                "body": "        # TODO: Implement add\n        pass"
+            },
+            {
+                "name": "count",
+                "signature": "(self, point: list[int]) -> int",
+                "body": "        # TODO: Implement count\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_detect_squares",
+                "signature": "(self, operations: list[str], inputs: list[Any], expected: list[Any])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['DetectSquares', 'add', 'add', 'add', 'count', 'count', 'add', 'count'], [[], [[3, 10]], [[11, 2]], [[3, 2]], [[11, 10]], [[14, 8]], [[11, 2]], [[11, 10]]], [None, None, None, None, 1, 0, None, 2])",
+                        "(['DetectSquares', 'add', 'count'], [[], [[0, 0]], [[0, 0]]], [None, None, 0])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[0, 2]], [[2, 0]], [[2, 2]]], [None, None, None, None, 1])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[0, 0]], [[0, 2]], [[2, 0]], [[2, 2]]], [None, None, None, None, None, 2])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[1, 1]], [[1, 3]], [[3, 1]], [[3, 3]]], [None, None, None, None, 1])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[1, 0]], [[2, 0]], [[0, 1]]], [None, None, None, None, 0])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[10, 10]], [[10, 20]], [[20, 10]], [[20, 20]]], [None, None, None, None, 1])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[2, 2]], [[0, 2]], [[2, 0]], [[0, 0]]], [None, None, None, None, None, 1])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'add', 'add', 'add', 'count', 'count'], [[], [[1, 1]], [[1, 3]], [[3, 1]], [[5, 5]], [[5, 7]], [[7, 5]], [[3, 3]], [[7, 7]]], [None, None, None, None, None, None, None, 1, 1])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'add', 'add', 'add', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[0, 0]], [[0, 0]], [[0, 2]], [[0, 2]], [[2, 0]], [[2, 0]], [[2, 0]], [[2, 0]], [[2, 2]]], [None, None, None, None, None, None, None, None, None, None, 24])",
+                        "(['DetectSquares', 'count'], [[], [[5, 5]]], [None, 0])",
+                        "(['DetectSquares', 'add', 'count'], [[], [[3, 3]], [[3, 3]]], [None, None, 0])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[0, 0]], [[0, 3]], [[5, 0]], [[5, 3]]], [None, None, None, None, 0])",
+                        "(['DetectSquares', 'add', 'add', 'add', 'count'], [[], [[2, 2]], [[2, 4]], [[4, 2]], [[4, 4]]], [None, None, None, None, 1])"
+                    ]
+                },
+                "body": "        result = run_detect_squares(DetectSquares, operations, inputs)\n        assert_detect_squares(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_detect_squares, assert_detect_squares\nfrom solution import DetectSquares",
+    "playground_setup": "# Example test case\noperations = ['DetectSquares', 'add', 'add', 'add', 'count', 'count', 'add', 'count']\ninputs = [[], [[3, 10]], [[11, 2]], [[3, 2]], [[11, 10]], [[14, 8]], [[11, 2]], [[11, 10]]]\nexpected = [None, None, None, None, 1, 0, None, 2]",
+    "playground_run": "result = run_detect_squares(DetectSquares, operations, inputs)\nresult",
+    "playground_assert": "assert_detect_squares(result, expected)"
+}

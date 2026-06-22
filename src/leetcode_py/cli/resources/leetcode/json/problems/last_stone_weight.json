@@ -1,0 +1,84 @@
+{
+    "problem_name": "last_stone_weight",
+    "solution_class_name": "Solution",
+    "problem_number": "1046",
+    "problem_title": "Last Stone Weight",
+    "difficulty": "Easy",
+    "topics": "Array, Heap (Priority Queue)",
+    "_tags": { "list": ["neetcode-150"] },
+    "readme_description": "You are given an array of integers `stones` where `stones[i]` is the weight of the `i^th` stone.\n\nWe are playing a game with the stones. On each turn, we choose the **heaviest two stones** and smash them together. Suppose the heaviest two stones have weights `x` and `y` with `x <= y`. The result of this smash is:\n\n- If `x == y`, both stones are destroyed, and\n- If `x != y`, the stone of weight `x` is destroyed, and the stone of weight `y` has new weight `y - x`.\n\nAt the end of the game, there is **at most one** stone left.\n\nReturn *the weight of the last remaining stone*. If there are no stones left, return `0`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: stones = [2,7,4,1,8,1]\nOutput: 1\nExplanation:\nWe combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,\nwe combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,\nwe combine 2 and 1 to get 1 so the array converts to [1,1,1] then,\nwe combine 1 and 1 to get 0 so the array converts to [1] then that's the value of the last stone.\n```"
+            },
+            {
+                "content": "```\nInput: stones = [1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= stones.length <= 30\n- 1 <= stones[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "last_stone_weight",
+    "helpers_run_signature": "(solution_class: type, stones: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.last_stone_weight(stones)",
+    "helpers_assert_name": "last_stone_weight",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_last_stone_weight, run_last_stone_weight\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LastStoneWeight",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "last_stone_weight",
+                "signature": "(self, stones: list[int]) -> int",
+                "body": "        # TODO: Implement last_stone_weight\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_last_stone_weight",
+                "signature": "(self, stones: list[int], expected: int)",
+                "parametrize": "stones, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 7, 4, 1, 8, 1], 1)",
+                        "([1], 1)",
+                        "([2, 2], 0)",
+                        "([3, 1], 2)",
+                        "([2, 2, 2], 2)",
+                        "([1, 1, 1, 1], 0)",
+                        "([9, 3, 2, 10], 0)",
+                        "([10], 10)",
+                        "([1000], 1000)",
+                        "([1000, 1000], 0)",
+                        "([5, 5, 5], 5)",
+                        "([31, 26, 33, 21, 40], 9)",
+                        "([7, 6, 7, 6, 9], 3)",
+                        "([1, 1000, 2, 999], 0)",
+                        "([4, 4, 4, 4, 4], 4)",
+                        "([9, 8, 7, 6, 5, 4], 1)",
+                        "([12, 4, 9, 11, 5], 1)"
+                    ]
+                },
+                "body": "        result = run_last_stone_weight(Solution, stones)\n        assert_last_stone_weight(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_last_stone_weight, assert_last_stone_weight\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstones = [2, 7, 4, 1, 8, 1]\nexpected = 1",
+    "playground_run": "result = run_last_stone_weight(Solution, stones)\nresult",
+    "playground_assert": "assert_last_stone_weight(result, expected)"
+}
