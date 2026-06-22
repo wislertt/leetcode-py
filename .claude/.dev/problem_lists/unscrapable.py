@@ -8,6 +8,7 @@ UNSCRAPABLE_PROBLEMS = [
     (253, "meeting-rooms-ii"),
     (261, "graph-valid-tree"),
     (271, "encode-and-decode-strings"),
+    (286, "walls-and-gates"),
     (323, "number-of-connected-components-in-an-undirected-graph"),
     (437, "path-sum-iii"),  # Causing issues with next_problem.py - prefer manual creation
     # Add more unscrapable problems as discovered

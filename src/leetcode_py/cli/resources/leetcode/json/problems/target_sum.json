@@ -1,0 +1,89 @@
+{
+    "problem_name": "target_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "494",
+    "problem_title": "Target Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Backtracking",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an integer array `nums` and an integer `target`.\n\nYou want to build an expression out of nums by adding one of the symbols `+` and `-` before each integer in nums and then concatenate all the integers.\n\n- For example, if `nums = [2, 1]`, you can add a `+` before `2` and a `-` before `1` and concatenate them to build the expression `+2-1`.\n\nReturn *the number of different expressions that you can build, which evaluates to* `target`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,1,1,1,1], target = 3\nOutput: 5\n```\n**Explanation:** There are 5 ways to assign symbols to make the sum of nums be target 3.\n-1 + 1 + 1 + 1 + 1 = 3\n+1 - 1 + 1 + 1 + 1 = 3\n+1 + 1 - 1 + 1 + 1 = 3\n+1 + 1 + 1 - 1 + 1 = 3\n+1 + 1 + 1 + 1 - 1 = 3"
+            },
+            {
+                "content": "```\nInput: nums = [1], target = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 20\n- 0 <= nums[i] <= 1000\n- 0 <= sum(nums[i]) <= 1000\n- -1000 <= target <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_target_sum_ways",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_target_sum_ways(nums, target)",
+    "helpers_assert_name": "find_target_sum_ways",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_target_sum_ways, run_find_target_sum_ways\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TargetSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_target_sum_ways",
+                "signature": "(self, nums: list[int], target: int) -> int",
+                "body": "        # TODO: Implement find_target_sum_ways\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_target_sum_ways",
+                "signature": "(self, nums: list[int], target: int, expected: int)",
+                "parametrize": "nums, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 1, 1, 1], 3, 5)",
+                        "([1], 1, 1)",
+                        "([1], 2, 0)",
+                        "([0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 512)",
+                        "([1000], -1000, 1)",
+                        "([0, 0, 1], 1, 4)",
+                        "([1, 2, 1], 0, 2)",
+                        "([2, 3, 5], 5, 0)",
+                        "([0], 0, 2)",
+                        "([0, 1, 0], 1, 4)",
+                        "([1000], 1000, 1)",
+                        "([1, 2, 3, 4, 5], 3, 3)",
+                        "([1, 1, 1], -1, 3)",
+                        "([9, 7, 0, 3, 9, 8, 6, 5, 7, 5], 0, 0)"
+                    ]
+                },
+                "body": "        result = run_find_target_sum_ways(Solution, nums, target)\n        assert_find_target_sum_ways(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_target_sum_ways, assert_find_target_sum_ways\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 1, 1, 1, 1]\ntarget = 3\nexpected = 5",
+    "playground_run": "result = run_find_target_sum_ways(Solution, nums, target)\nresult",
+    "playground_assert": "assert_find_target_sum_ways(result, expected)"
+}

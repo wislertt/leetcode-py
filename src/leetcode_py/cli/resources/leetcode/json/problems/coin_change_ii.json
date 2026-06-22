@@ -1,0 +1,92 @@
+{
+    "problem_name": "coin_change_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "518",
+    "problem_title": "Coin Change II",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money.\n\nReturn *the number of combinations that make up that amount*. If that amount of money cannot be made up by any combination of the coins, return `0`.\n\nYou may assume that you have an infinite number of each kind of coin.\n\nThe final answer is **guaranteed** to fit into a signed 32-bit integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: amount = 5, coins = [1,2,5]\nOutput: 4\n```\n**Explanation:** there are four ways to make up the amount:\n5=5\n5=2+2+1\n5=2+1+1+1\n5=1+1+1+1+1"
+            },
+            {
+                "content": "```\nInput: amount = 3, coins = [2]\nOutput: 0\n```\n**Explanation:** the amount of 3 cannot be made up just with coins of 2."
+            },
+            {
+                "content": "```\nInput: amount = 10, coins = [10]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= coins.length <= 300\n- 1 <= coins[i] <= 5000\n- All the values of `coins` are **unique**.\n- 0 <= amount <= 5000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "change",
+    "helpers_run_signature": "(solution_class: type, amount: int, coins: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.change(amount, coins)",
+    "helpers_assert_name": "change",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_change, run_change\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CoinChangeII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "change",
+                "signature": "(self, amount: int, coins: list[int]) -> int",
+                "body": "        # TODO: Implement change\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_change",
+                "signature": "(self, amount: int, coins: list[int], expected: int)",
+                "parametrize": "amount, coins, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [1, 2, 5], 4)",
+                        "(3, [2], 0)",
+                        "(10, [10], 1)",
+                        "(0, [1, 2, 5], 1)",
+                        "(4, [1, 2], 3)",
+                        "(5, [2], 0)",
+                        "(1, [2], 0)",
+                        "(3, [1, 2], 2)",
+                        "(6, [1, 2, 3], 7)",
+                        "(2, [1], 1)",
+                        "(100, [1, 2, 5], 541)",
+                        "(7, [2, 3, 6], 1)",
+                        "(8, [2, 3, 5], 3)",
+                        "(500, [3, 5, 7], 1227)"
+                    ]
+                },
+                "body": "        result = run_change(Solution, amount, coins)\n        assert_change(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_change, assert_change\nfrom solution import Solution",
+    "playground_setup": "# Example test case\namount = 5\ncoins = [1, 2, 5]\nexpected = 4",
+    "playground_run": "result = run_change(Solution, amount, coins)\nresult",
+    "playground_assert": "assert_change(result, expected)"
+}

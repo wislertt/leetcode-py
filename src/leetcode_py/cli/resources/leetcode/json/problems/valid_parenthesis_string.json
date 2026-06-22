@@ -1,0 +1,92 @@
+{
+    "problem_name": "valid_parenthesis_string",
+    "solution_class_name": "Solution",
+    "problem_number": "678",
+    "problem_title": "Valid Parenthesis String",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Stack, Greedy",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Given a string `s` containing only three types of characters: `'('`, `')'` and `'*'`, return `true` *if* `s` *is **valid***.\n\nThe following rules define a **valid** string:\n\n- Any left parenthesis `'('` must have a corresponding right parenthesis `')'`.\n- Any right parenthesis `')'` must have a corresponding left parenthesis `'('`.\n- Left parenthesis `'('` must go before the corresponding right parenthesis `')'`.\n- `'*'` could be treated as a single right parenthesis `')'` or a single left parenthesis `'('` or an empty string `\"\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"()\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(*)\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(*))\"\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 100\n- `s[i]` is `'('`, `')'` or `'*'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_valid_string",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_valid_string(s)",
+    "helpers_assert_name": "check_valid_string",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_valid_string, run_check_valid_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidParenthesisString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_valid_string",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement check_valid_string\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_valid_string",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('()', True)",
+                        "('(*)', True)",
+                        "('(*))', True)",
+                        "('(', False)",
+                        "(')', False)",
+                        "('*', True)",
+                        "('***', True)",
+                        "('((*)', True)",
+                        "('())', False)",
+                        "('(()', False)",
+                        "('(((******))', True)",
+                        "('(*()', True)",
+                        "(')*', False)",
+                        "('(()*', True)"
+                    ]
+                },
+                "body": "        result = run_check_valid_string(Solution, s)\n        assert_check_valid_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_valid_string, assert_check_valid_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '(*)'\nexpected = True",
+    "playground_run": "result = run_check_valid_string(Solution, s)\nresult",
+    "playground_assert": "assert_check_valid_string(result, expected)"
+}

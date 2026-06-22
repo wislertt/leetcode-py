@@ -1,0 +1,89 @@
+{
+    "problem_name": "best_time_to_buy_and_sell_stock_with_cooldown",
+    "solution_class_name": "Solution",
+    "problem_number": "309",
+    "problem_title": "Best Time to Buy and Sell Stock with Cooldown",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given an array `prices` where `prices[i]` is the price of a given stock on the `ith` day.\n\nFind the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:\n\n- After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).\n\n**Note:** You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: prices = [1,2,3,0,2]\nOutput: 3\n```\n**Explanation:** transactions = [buy, sell, cooldown, buy, sell]"
+            },
+            {
+                "content": "```\nInput: prices = [1]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= prices.length <= 5000\n- 0 <= prices[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_profit",
+    "helpers_run_signature": "(solution_class: type, prices: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_profit(prices)",
+    "helpers_assert_name": "max_profit",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_profit, run_max_profit\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BestTimeToBuyAndSellStockWithCooldown",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_profit",
+                "signature": "(self, prices: list[int]) -> int",
+                "body": "        # TODO: Implement max_profit\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_profit",
+                "signature": "(self, prices: list[int], expected: int)",
+                "parametrize": "prices, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 0, 2], 3)",
+                        "([1], 0)",
+                        "([1, 2], 1)",
+                        "([3, 2, 1], 0)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, 4], 3)",
+                        "([2, 4, 1], 2)",
+                        "([1, 4, 2], 3)",
+                        "([1, 2, 3, 0, 2, 5], 6)",
+                        "([6, 1, 6, 4, 2, 0, 1], 6)",
+                        "([5], 0)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([1, 3, 1, 4], 3)",
+                        "([2, 1], 0)"
+                    ]
+                },
+                "body": "        result = run_max_profit(Solution, prices)\n        assert_max_profit(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_profit, assert_max_profit\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nprices = [1, 2, 3, 0, 2]\nexpected = 3",
+    "playground_run": "result = run_max_profit(Solution, prices)\nresult",
+    "playground_assert": "assert_max_profit(result, expected)"
+}

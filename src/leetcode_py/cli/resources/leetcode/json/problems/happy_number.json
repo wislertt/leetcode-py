@@ -1,0 +1,89 @@
+{
+    "problem_name": "happy_number",
+    "solution_class_name": "Solution",
+    "problem_number": "202",
+    "problem_title": "Happy Number",
+    "difficulty": "Easy",
+    "topics": "Hash Table, Math, Two Pointers",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "Write an algorithm to determine if a number `n` is happy.\n\nA **happy number** is a number defined by the following process:\n\n- Starting with any positive integer, replace the number by the sum of the squares of its digits.\n- Repeat the process until the number equals 1 (where it will stay), or it **loops endlessly in a cycle** which does not include 1.\n- Those numbers for which this process **ends in 1** are happy.\n\nReturn `true` *if* `n` *is a happy number, and* `false` *if not*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 19\nOutput: true\n```\n**Explanation:**\n1^2 + 9^2 = 82\n8^2 + 2^2 = 68\n6^2 + 8^2 = 100\n1^2 + 0^2 + 0^2 = 1"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_happy",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_happy(n)",
+    "helpers_assert_name": "is_happy",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_happy, run_is_happy\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HappyNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_happy",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement is_happy\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_happy",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(19, True)",
+                        "(2, False)",
+                        "(1, True)",
+                        "(7, True)",
+                        "(10, True)",
+                        "(13, True)",
+                        "(4, False)",
+                        "(3, False)",
+                        "(20, False)",
+                        "(100, True)",
+                        "(82, True)",
+                        "(68, True)",
+                        "(5, False)",
+                        "(1111111, True)"
+                    ]
+                },
+                "body": "        result = run_is_happy(Solution, n)\n        assert_is_happy(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_happy, assert_is_happy\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 19\nexpected = True",
+    "playground_run": "result = run_is_happy(Solution, n)\nresult",
+    "playground_assert": "assert_is_happy(result, expected)"
+}

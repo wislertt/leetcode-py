@@ -1,0 +1,89 @@
+{
+    "problem_name": "reconstruct_itinerary",
+    "solution_class_name": "Solution",
+    "problem_number": "332",
+    "problem_title": "Reconstruct Itinerary",
+    "difficulty": "Hard",
+    "topics": "Array, String, Depth-First Search, Graph Theory, Sorting, Heap (Priority Queue), Eulerian Circuit",
+    "_tags": {
+        "list": ["neetcode-150"]
+    },
+    "readme_description": "You are given a list of airline `tickets` where `tickets[i] = [fromi, toi]` represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.\n\nAll of the tickets belong to a man who departs from `\"JFK\"`, thus, the itinerary must begin with `\"JFK\"`. If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.\n\n- For example, the itinerary `[\"JFK\", \"LGA\"]` has a smaller lexical order than `[\"JFK\", \"LGB\"]`.\n\nYou may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/14/itinerary1-graph.jpg)\n\n```\nInput: tickets = [[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]\nOutput: [\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/03/14/itinerary2-graph.jpg)\n\n```\nInput: tickets = [[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]\nOutput: [\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]\n```\n**Explanation:** Another possible reconstruction is [\"JFK\",\"SFO\",\"ATL\",\"JFK\",\"ATL\",\"SFO\"] but it is larger in lexical order."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= tickets.length <= 300\n- tickets[i].length == 2\n- fromi.length == 3\n- toi.length == 3\n- fromi and toi consist of uppercase English letters.\n- fromi != toi",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_itinerary",
+    "helpers_run_signature": "(solution_class: type, tickets: list[list[str]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_itinerary(tickets)",
+    "helpers_assert_name": "find_itinerary",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_itinerary, run_find_itinerary\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReconstructItinerary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_itinerary",
+                "signature": "(self, tickets: list[list[str]]) -> list[str]",
+                "body": "        # TODO: Implement find_itinerary\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_itinerary",
+                "signature": "(self, tickets: list[list[str]], expected: list[str])",
+                "parametrize": "tickets, expected",
+                "test_cases": {
+                    "list": [
+                        "([['MUC', 'LHR'], ['JFK', 'MUC'], ['SFO', 'SJC'], ['LHR', 'SFO']], ['JFK', 'MUC', 'LHR', 'SFO', 'SJC'])",
+                        "([['JFK', 'SFO'], ['JFK', 'ATL'], ['SFO', 'ATL'], ['ATL', 'JFK'], ['ATL', 'SFO']], ['JFK', 'ATL', 'JFK', 'SFO', 'ATL', 'SFO'])",
+                        "([['JFK', 'AAA'], ['AAA', 'JFK'], ['JFK', 'BBB'], ['BBB', 'JFK']], ['JFK', 'AAA', 'JFK', 'BBB', 'JFK'])",
+                        "([['JFK', 'LAX']], ['JFK', 'LAX'])",
+                        "([['JFK', 'KKK'], ['KKK', 'LLL']], ['JFK', 'KKK', 'LLL'])",
+                        "([['JFK', 'ATL'], ['ATL', 'JFK']], ['JFK', 'ATL', 'JFK'])",
+                        "([['JFK', 'SFO'], ['SFO', 'JFK']], ['JFK', 'SFO', 'JFK'])",
+                        "([['JFK', 'S'], ['JFK', 'T'], ['T', 'JFK']], ['JFK', 'T', 'JFK', 'S'])",
+                        "([['JFK', 'A'], ['A', 'B'], ['B', 'JFK'], ['JFK', 'C']], ['JFK', 'A', 'B', 'JFK', 'C'])",
+                        "([['JFK', 'Z'], ['JFK', 'A'], ['A', 'JFK'], ['JFK', 'B']], ['JFK', 'A', 'JFK', 'Z', 'B'])",
+                        "([['JFK', 'C'], ['C', 'JFK'], ['JFK', 'A'], ['A', 'JFK']], ['JFK', 'A', 'JFK', 'C', 'JFK'])",
+                        "([['JFK', 'D'], ['JFK', 'A'], ['A', 'JFK']], ['JFK', 'A', 'JFK', 'D'])",
+                        "([['JFK', 'A'], ['A', 'C'], ['A', 'B'], ['B', 'A']], ['JFK', 'A', 'B', 'A', 'C'])",
+                        "([['JFK', 'NRT'], ['JFK', 'PEK'], ['PEK', 'JFK']], ['JFK', 'PEK', 'JFK', 'NRT'])"
+                    ]
+                },
+                "body": "        result = run_find_itinerary(Solution, tickets)\n        assert_find_itinerary(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_itinerary, assert_find_itinerary\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntickets = [['MUC', 'LHR'], ['JFK', 'MUC'], ['SFO', 'SJC'], ['LHR', 'SFO']]\nexpected = ['JFK', 'MUC', 'LHR', 'SFO', 'SJC']",
+    "playground_run": "result = run_find_itinerary(Solution, tickets)\nresult",
+    "playground_assert": "assert_find_itinerary(result, expected)"
+}
