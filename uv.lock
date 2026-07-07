@@ -6,9 +6,6 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 
-[options]
-prerelease-mode = "explicit"
-
 [[package]]
 name = "annotated-doc"
 version = "0.0.4"
@@ -100,8 +97,8 @@ wheels = [
 
 [[package]]
 name = "bakefile"
-version = "0.0.58a94620.post6"
-source = { registry = "https://test.pypi.org/simple/" }
+version = "0.0.58"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautysh" },
     { name = "loguru" },
@@ -117,9 +114,9 @@ dependencies = [
     { name = "typer" },
     { name = "uv" },
 ]
-sdist = { url = "https://test-files.pythonhosted.org/packages/a1/f2/4682311eaabf7f59bedf677bb0041d53c13541da4fc6a3847e7170e44715/bakefile-0.0.58a94620.post6.tar.gz", hash = "sha256:c6ed934d0b76c105362ba61d03b7af06d0feeb41fff53f6f82572c192acb1a35", size = 71966, upload-time = "2026-07-07T02:19:17.313Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/fa/6a/b677f2efd713961842a6b8119d4f9d59f619477c3b02256aae98a6585a90/bakefile-0.0.58.tar.gz", hash = "sha256:9c2bcf636d3a18a2ed47e39456d88fcb075c22a6c7f66e3bae5447f4d2dc5527", size = 71924, upload-time = "2026-07-07T02:34:03.07Z" }
 wheels = [
-    { url = "https://test-files.pythonhosted.org/packages/7d/f9/27afd84cb39fd96a6ce0bd95268c9752d2803548e3f611fc7238dbb77aac/bakefile-0.0.58a94620.post6-py3-none-any.whl", hash = "sha256:d4a4e2ec8a9ab5c021f8bbda31bbb1bc0faabbb6280a125024c7c6f958b7c1ff", size = 105428, upload-time = "2026-07-07T02:19:16.078Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/21/7fd0bbe7d5d64ad5fa0f370ebc5f1819b13c019961dff3aa69e2b4913b6c/bakefile-0.0.58-py3-none-any.whl", hash = "sha256:c8020f24c5541a1bc2fd3cc7663372e0ba0b44cb68ec2a919c81af7296535624", size = 105254, upload-time = "2026-07-07T02:34:01.915Z" },
 ]
 
 [package.optional-dependencies]
@@ -1093,7 +1090,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "bakefile", extras = ["lib"], specifier = ">=0.0.57a0", index = "https://test.pypi.org/simple/" },
+    { name = "bakefile", extras = ["lib"], specifier = ">=0.0.57a0" },
     { name = "deptry", specifier = ">=0.24.0" },
     { name = "ipykernel", specifier = ">=7.0.0" },
     { name = "jupytext", specifier = ">=1.16.6" },
