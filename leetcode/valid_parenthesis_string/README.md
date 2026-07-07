@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Given a string `s` containing only three types of characters: `'('`, `')'` and `'*'`, return `true` _if_ `s` \*is **valid\***.
+Given a string `s` containing only three types of characters: `'('`, `')'` and `'*'`, return `true` _if_ `s` _is **valid**_.
 
 The following rules define a **valid** string:
 

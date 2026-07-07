@@ -14,7 +14,7 @@ To obtain `target`, you may apply the following operation on `triplets` **any nu
 
 - Choose two indices (**0-indexed**) `i` and `j` (`i != j`) and **update** `triplets[j]` to become `[max(a_i, a_j), max(b_i, b_j), max(c_i, c_j)]`.
 
-Return `true` _if it is possible to obtain the_ `target` _ **triplet** `[x, y, z]` as an **element** of_ `triplets`, or `false` otherwise.
+Return `true` _if it is possible to obtain the_ `target` * **triplet** `[x, y, z]` as an **element** of* `triplets`, or `false` otherwise.
 
 ## Examples
 

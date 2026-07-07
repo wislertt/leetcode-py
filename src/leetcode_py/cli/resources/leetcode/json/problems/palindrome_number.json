@@ -1,0 +1,94 @@
+{
+    "problem_name": "palindrome_number",
+    "solution_class_name": "Solution",
+    "problem_number": "9",
+    "problem_title": "Palindrome Number",
+    "difficulty": "Easy",
+    "topics": "Math",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Given an integer `x`, return `true` if `x` is a **palindrome**, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: x = 121\nOutput: true\nExplanation: 121 reads as 121 from left to right and from right to left.\n```"
+            },
+            {
+                "content": "```\nInput: x = -121\nOutput: false\nExplanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.\n```"
+            },
+            {
+                "content": "```\nInput: x = 10\nOutput: false\nExplanation: Reads 01 from right to left. Therefore it is not a palindrome.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= x <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you solve it without converting the integer to a string?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_palindrome",
+    "helpers_run_signature": "(solution_class: type, x: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_palindrome(x)",
+    "helpers_assert_name": "is_palindrome",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_palindrome, run_is_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromeNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_palindrome",
+                "signature": "(self, x: int) -> bool",
+                "body": "        # TODO: Implement is_palindrome\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_palindrome",
+                "signature": "(self, x: int, expected: bool)",
+                "parametrize": "x, expected",
+                "test_cases": {
+                    "list": [
+                        "(121, True)",
+                        "(-121, False)",
+                        "(10, False)",
+                        "(0, True)",
+                        "(1, True)",
+                        "(11, True)",
+                        "(12, False)",
+                        "(1001, True)",
+                        "(12321, True)",
+                        "(12345, False)",
+                        "(-1, False)",
+                        "(1000021, False)",
+                        "(1234321, True)",
+                        "(2147447412, True)",
+                        "(2147483647, False)",
+                        "(100, False)"
+                    ]
+                },
+                "body": "        result = run_is_palindrome(Solution, x)\n        assert_is_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_palindrome, assert_is_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 121\nexpected = True",
+    "playground_run": "result = run_is_palindrome(Solution, x)\nresult",
+    "playground_assert": "assert_is_palindrome(result, expected)"
+}

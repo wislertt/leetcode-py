@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Given an integer `n`, return _an array_ `ans` _of length_ `n + 1` _such that for each_ `i` _(0 <= i <= n),_ `ans[i]` \*is the **number of\*** `1`**\*'s** in the binary representation of\* `i`.
+Given an integer `n`, return _an array_ `ans` _of length_ `n + 1` _such that for each_ `i` _(0 <= i <= n),_ `ans[i]` _is the **number of**_ `1`_**'s** in the binary representation of_ `i`.
 
 ## Examples
 

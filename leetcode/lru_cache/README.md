@@ -47,4 +47,4 @@ lRUCache.get(4);    // return 4
 - 1 <= capacity <= 3000
 - 0 <= key <= 10^4
 - 0 <= value <= 10^5
-- At most 2 \* 10^5 calls will be made to get and put
+- At most 2 * 10^5 calls will be made to get and put

@@ -46,7 +46,7 @@ Repository = "https://github.com/wislertt/leetcode-py"
 
 [dependency-groups]
 dev = [
-  "bakefile[lib]>=0.0.8",
+  "bakefile[lib]>=0.0.57a0",
   "deptry>=0.24.0",
   "ipykernel>=7.0.0",
   "jupytext>=1.16.6",
@@ -125,6 +125,11 @@ exclude = [
   "src/leetcode_py/cli/resources"
 ]
 
+# Debug
+[tool.uv]
+index-strategy = "unsafe-best-match"
+prerelease = "explicit"
+
 [tool.uv.build-backend]
 module-name = ["leetcode_py"]
 module-root = "src"
@@ -134,6 +139,10 @@ name = "test-pypi"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
+
+# Debug
+[tool.uv.sources]
+bakefile = {index = "test-pypi"}
 
 # # Debug with bakefile from test pypi
 # =============================================

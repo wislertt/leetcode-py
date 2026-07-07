@@ -30,6 +30,6 @@ Output: 2
 
 ## Constraints
 
-- 1 <= nums.length <= 2 \* 10^4
+- 1 <= nums.length <= 2 * 10^4
 - -1000 <= nums[i] <= 1000
 - -10^7 <= k <= 10^7

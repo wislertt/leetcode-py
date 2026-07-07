@@ -38,7 +38,7 @@ Output: []
 - n == board[i].length
 - 1 <= m, n <= 12
 - board[i][j] is a lowercase English letter.
-- 1 <= words.length <= 3 \* 10^4
+- 1 <= words.length <= 3 * 10^4
 - 1 <= words[i].length <= 10
 - words[i] consists of lowercase English letters.
 - All the strings of words are unique.

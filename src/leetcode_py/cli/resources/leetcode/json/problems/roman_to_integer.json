@@ -1,0 +1,94 @@
+{
+    "problem_name": "roman_to_integer",
+    "solution_class_name": "Solution",
+    "problem_number": "13",
+    "problem_title": "Roman to Integer",
+    "difficulty": "Easy",
+    "topics": "Hash Table, Math, String",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D` and `M`.\n\n**Symbol**       **Value**\nI             1\nV             5\nX             10\nL             50\nC             100\nD             500\nM             1000\n\nFor example, `2` is written as `II` in Roman numeral, just two ones added together. `12` is written as `XII`, which is simply `X + II`. The number `27` is written as `XXVII`, which is `XX + V + II`.\n\nRoman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. There are six instances where subtraction is used:\n\n- `I` can be placed before `V` (5) and `X` (10) to make 4 and 9.\n- `X` can be placed before `L` (50) and `C` (100) to make 40 and 90.\n- `C` can be placed before `D` (500) and `M` (1000) to make 400 and 900.\n\nGiven a roman numeral, convert it to an integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"III\"\nOutput: 3\nExplanation: III = 3.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"LVIII\"\nOutput: 58\nExplanation: L = 50, V= 5, III = 3.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"MCMXCIV\"\nOutput: 1994\nExplanation: M = 1000, CM = 900, XC = 90 and IV = 4.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 15\n- `s` contains only the characters (`'I'`, `'V'`, `'X'`, `'L'`, `'C'`, `'D'`, `'M'`).\n- It is guaranteed that `s` is a valid roman numeral in the range `[1, 3999]`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "roman_to_int",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.roman_to_int(s)",
+    "helpers_assert_name": "roman_to_int",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_roman_to_int, run_roman_to_int\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RomanToInteger",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "roman_to_int",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement roman_to_int\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_roman_to_int",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('III', 3)",
+                        "('LVIII', 58)",
+                        "('MCMXCIV', 1994)",
+                        "('I', 1)",
+                        "('V', 5)",
+                        "('X', 10)",
+                        "('IV', 4)",
+                        "('IX', 9)",
+                        "('XL', 40)",
+                        "('XC', 90)",
+                        "('CD', 400)",
+                        "('CM', 900)",
+                        "('MMMCMXCIX', 3999)",
+                        "('MMMDCCCLXXXVIII', 3888)",
+                        "('DCXXI', 621)",
+                        "('MCMXC', 1990)"
+                    ]
+                },
+                "body": "        result = run_roman_to_int(Solution, s)\n        assert_roman_to_int(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_roman_to_int, assert_roman_to_int\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'MCMXCIV'\nexpected = 1994",
+    "playground_run": "result = run_roman_to_int(Solution, s)\nresult",
+    "playground_assert": "assert_roman_to_int(result, expected)"
+}

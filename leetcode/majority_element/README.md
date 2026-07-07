@@ -31,7 +31,7 @@ Output: 2
 ## Constraints
 
 - n == nums.length
-- 1 <= n <= 5 \* 10^4
+- 1 <= n <= 5 * 10^4
 - -10^9 <= nums[i] <= 10^9
 
 **Follow-up:** Could you solve the problem in linear time and in O(1) space?

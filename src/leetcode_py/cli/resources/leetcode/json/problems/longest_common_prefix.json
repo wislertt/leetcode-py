@@ -1,0 +1,91 @@
+{
+    "problem_name": "longest_common_prefix",
+    "solution_class_name": "Solution",
+    "problem_number": "14",
+    "problem_title": "Longest Common Prefix",
+    "difficulty": "Easy",
+    "topics": "Array, String, Trie",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Write a function to find the longest common prefix string amongst an array of strings.\n\nIf there is no common prefix, return an empty string `\"\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: strs = [\"flower\",\"flow\",\"flight\"]\nOutput: \"fl\"\n```"
+            },
+            {
+                "content": "```\nInput: strs = [\"dog\",\"racecar\",\"car\"]\nOutput: \"\"\nExplanation: There is no common prefix among the input strings.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= strs.length <= 200\n- 0 <= strs[i].length <= 200\n- `strs[i]` consists of only lowercase English letters if it is non-empty.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_common_prefix",
+    "helpers_run_signature": "(solution_class: type, strs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_common_prefix(strs)",
+    "helpers_assert_name": "longest_common_prefix",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_common_prefix, run_longest_common_prefix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestCommonPrefix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_common_prefix",
+                "signature": "(self, strs: list[str]) -> str",
+                "body": "        # TODO: Implement longest_common_prefix\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_common_prefix",
+                "signature": "(self, strs: list[str], expected: str)",
+                "parametrize": "strs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['flower', 'flow', 'flight'], 'fl')",
+                        "(['dog', 'racecar', 'car'], '')",
+                        "([''], '')",
+                        "(['a'], 'a')",
+                        "(['ab', 'a'], 'a')",
+                        "(['aaa', 'aa', 'aaa'], 'aa')",
+                        "(['abc', 'abc', 'abc'], 'abc')",
+                        "(['abc', 'def', 'ghi'], '')",
+                        "(['interspecies', 'interstellar', 'interstate'], 'inters')",
+                        "(['', ''], '')",
+                        "(['ab', 'ab', 'ab'], 'ab')",
+                        "(['a', 'a', 'a'], 'a')",
+                        "(['prefix', 'pre', 'pref'], 'pre')",
+                        "(['xyz', 'xyz', 'x'], 'x')",
+                        "(['abca', 'abcab', 'abcabc'], 'abca')",
+                        "(['cir', 'car'], 'c')"
+                    ]
+                },
+                "body": "        result = run_longest_common_prefix(Solution, strs)\n        assert_longest_common_prefix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_common_prefix, assert_longest_common_prefix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstrs = ['flower', 'flow', 'flight']\nexpected = 'fl'",
+    "playground_run": "result = run_longest_common_prefix(Solution, strs)\nresult",
+    "playground_assert": "assert_longest_common_prefix(result, expected)"
+}

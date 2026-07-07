@@ -14,7 +14,7 @@ A **province** is a group of directly or indirectly connected cities and no othe
 
 You are given an `n x n` matrix `isConnected` where `isConnected[i][j] = 1` if the `ith` city and the `jth` city are directly connected, and `isConnected[i][j] = 0` otherwise.
 
-Return \*the total number of **provinces\***.
+Return _the total number of **provinces**_.
 
 ## Examples
 

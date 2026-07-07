@@ -42,4 +42,4 @@ Explanation: You don't need to remove any of the intervals since they're already
 
 1 <= intervals.length <= 10^5
 intervals[i].length == 2
--5 _ 10^4 <= starti < endi <= 5 _ 10^4
+-5 * 10^4 <= starti < endi <= 5 * 10^4

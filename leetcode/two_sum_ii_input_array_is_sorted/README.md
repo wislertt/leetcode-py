@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Given a **1-indexed** array of integers `numbers` that is already **_sorted in non-decreasing order_**, find two numbers such that they add up to a specific `target` number. Let these two numbers be `numbers[index1]` and `numbers[index2]` where `1 <= index1 < index2 <= numbers.length`.
+Given a **1-indexed** array of integers `numbers` that is already _**sorted in non-decreasing order**_, find two numbers such that they add up to a specific `target` number. Let these two numbers be `numbers[index1]` and `numbers[index2]` where `1 <= index1 < index2 <= numbers.length`.
 
 Return _the indices of the two numbers_ `index1` _and_ `index2`_, **each incremented by one,** as an integer array_ `[index1, index2]` _of length 2._
 
@@ -47,7 +47,7 @@ Output: [1,2]
 
 ## Constraints
 
-- 2 <= numbers.length <= 3 \* 10^4
+- 2 <= numbers.length <= 3 * 10^4
 - -1000 <= numbers[i] <= 1000
 - `numbers` is sorted in **non-decreasing order**.
 - -1000 <= target <= 1000
