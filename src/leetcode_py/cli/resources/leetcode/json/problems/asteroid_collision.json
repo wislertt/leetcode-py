@@ -1,0 +1,88 @@
+{
+    "problem_name": "asteroid_collision",
+    "solution_class_name": "Solution",
+    "problem_number": "735",
+    "problem_title": "Asteroid Collision",
+    "difficulty": "Medium",
+    "topics": "Array, Stack, Simulation",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "We are given an array `asteroids` of integers representing asteroids in a row. The indices of the asteroid in the array represent their relative position in space.\n\nFor each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.\n\nFind out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction, or two moving away from each other, will never meet.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: asteroids = [5,10,-5]\nOutput: [5,10]\nExplanation: The 10 and -5 collide resulting in 10. The 5 and 10 never collide.\n```"
+            },
+            {
+                "content": "```\nInput: asteroids = [8,-8]\nOutput: []\nExplanation: The 8 and -8 collide exploding each other.\n```"
+            },
+            {
+                "content": "```\nInput: asteroids = [10,2,-5]\nOutput: [10]\nExplanation: The 2 and -5 collide resulting in -5. The 10 and -5 collide resulting in 10.\n```"
+            },
+            {
+                "content": "```\nInput: asteroids = [3,5,-6,2,-1,4]\nOutput: [-6,2,4]\nExplanation: The asteroid -6 makes the asteroid 3 and 5 explode, and then continues going left. On the other side, the asteroid 2 destroys -1. Since 2 and 4 are both moving right, they never collide.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= asteroids.length <= 10^4\n- -1000 <= asteroids[i] <= 1000\n- `asteroids[i] != 0`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "asteroid_collision",
+    "helpers_run_signature": "(solution_class: type, asteroids: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.asteroid_collision(asteroids)",
+    "helpers_assert_name": "asteroid_collision",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_asteroid_collision, run_asteroid_collision\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AsteroidCollision",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "asteroid_collision",
+                "signature": "(self, asteroids: list[int]) -> list[int]",
+                "body": "        # TODO: Implement asteroid_collision\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_asteroid_collision",
+                "signature": "(self, asteroids: list[int], expected: list[int])",
+                "parametrize": "asteroids, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 10, -5], [5, 10])",
+                        "([8, -8], [])",
+                        "([10, 2, -5], [10])",
+                        "([3, 5, -6, 2, -1, 4], [-6, 2, 4])",
+                        "([-2, -1, 1, 2], [-2, -1, 1, 2])",
+                        "([1, 2, 3, 4], [1, 2, 3, 4])",
+                        "([-1, -2, -3], [-1, -2, -3])",
+                        "([5, 5, -5], [5])",
+                        "([5, 10, -5, -10], [5])",
+                        "([10, 5, -5], [10])",
+                        "([-2, 2, -1, -2], [-2])",
+                        "([1, -2, -3], [-2, -3])",
+                        "([2, -1, -2], [])",
+                        "([5, -5], [])",
+                        "([-1, 5, -5, 1], [-1, 1])"
+                    ]
+                },
+                "body": "        result = run_asteroid_collision(Solution, asteroids)\n        assert_asteroid_collision(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_asteroid_collision, assert_asteroid_collision\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nasteroids = [5, 10, -5]\nexpected = [5, 10]",
+    "playground_run": "result = run_asteroid_collision(Solution, asteroids)\nresult",
+    "playground_assert": "assert_asteroid_collision(result, expected)"
+}

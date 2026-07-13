@@ -1,0 +1,91 @@
+{
+    "problem_name": "palindrome_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "234",
+    "problem_title": "Palindrome Linked List",
+    "difficulty": "Easy",
+    "topics": "Linked List, Two Pointers, Stack, Recursion",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Given the `head` of a singly linked list, return `true` if it is a palindrome or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/03/pal1linked-list.jpg)\n\n```\nInput: head = [1,2,2,1]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/03/03/pal2linked-list.jpg)\n\n```\nInput: head = [1,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range [1, 10^5].\n- 0 <= Node.val <= 9",
+    "readme_additional": "**Follow up:** Could you do it in `O(n)` time and `O(1)` space?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_palindrome",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.is_palindrome(head)",
+    "helpers_assert_name": "is_palindrome",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_palindrome, run_is_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromeLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_palindrome",
+                "signature": "(self, head: ListNode[int] | None) -> bool",
+                "body": "        # TODO: Implement is_palindrome\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_palindrome",
+                "signature": "(self, head_list: list[int], expected: bool)",
+                "parametrize": "head_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 2, 1], True)",
+                        "([1, 2], False)",
+                        "([1], True)",
+                        "([1, 1], True)",
+                        "([1, 2, 1], True)",
+                        "([1, 2, 3], False)",
+                        "([1, 2, 3, 2, 1], True)",
+                        "([1, 2, 3, 3, 2, 1], True)",
+                        "([1, 2, 3, 4, 2, 1], False)",
+                        "([0, 0], True)",
+                        "([9], True)",
+                        "([1, 2, 2, 2], False)",
+                        "([1, 0, 0, 1], True)",
+                        "([1, 2, 3, 4, 5, 6], False)",
+                        "([2, 2, 2, 2], True)",
+                        "([1, 2, 1, 2], False)"
+                    ]
+                },
+                "body": "        result = run_is_palindrome(Solution, head_list)\n        assert_is_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_palindrome, assert_is_palindrome\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 2, 2, 1]\nexpected = True",
+    "playground_run": "result = run_is_palindrome(Solution, head_list)\nresult",
+    "playground_assert": "assert_is_palindrome(result, expected)"
+}

@@ -1,0 +1,79 @@
+{
+    "problem_name": "squares_of_a_sorted_array",
+    "solution_class_name": "Solution",
+    "problem_number": "977",
+    "problem_title": "Squares of a Sorted Array",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Sorting",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an integer array `nums` sorted in non-decreasing order, return *an array of the squares of each number* sorted in non-decreasing order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [-4,-1,0,3,10]\nOutput: [0,1,9,16,100]\n\nExplanation: After squaring, the array becomes [16,1,0,9,100].\nAfter sorting, it becomes [0,1,9,16,100].\n```"
+            },
+            { "content": "```\nInput: nums = [-7,-3,2,3,11]\nOutput: [4,9,9,49,121]\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^4`\n- `-10^4 <= nums[i] <= 10^4`\n- `nums` is sorted in non-decreasing order.",
+    "readme_additional": "**Follow up:** Squaring each element and sorting the new array is very trivial, could you find an `O(n)` solution using a different approach?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sorted_squares",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sorted_squares(nums)",
+    "helpers_assert_name": "sorted_squares",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sorted_squares, run_sorted_squares\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSquaresOfASortedArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sorted_squares",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement sorted_squares\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_sorted_squares, assert_sorted_squares\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [-4, -1, 0, 3, 10]\nexpected = [0, 1, 9, 16, 100]",
+    "playground_run": "result = run_sorted_squares(Solution, nums)\nresult",
+    "playground_assert": "assert_sorted_squares(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sorted_squares",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([-4, -1, 0, 3, 10], [0, 1, 9, 16, 100])",
+                        "([-7, -3, 2, 3, 11], [4, 9, 9, 49, 121])",
+                        "([0], [0])",
+                        "([1], [1])",
+                        "([-1], [1])",
+                        "([1, 2, 3], [1, 4, 9])",
+                        "([-3, -2, -1], [1, 4, 9])",
+                        "([-5, 5], [25, 25])",
+                        "([], [])",
+                        "([-10000, 10000], [100000000, 100000000])",
+                        "([-2, 0, 2], [0, 4, 4])",
+                        "([-3, -1, 2, 4, 5], [1, 4, 9, 16, 25])",
+                        "([-10, -9, -8, -7], [49, 64, 81, 100])",
+                        "([0, 0, 0], [0, 0, 0])"
+                    ]
+                },
+                "body": "        result = run_sorted_squares(Solution, nums)\n        assert_sorted_squares(result, expected)"
+            }
+        ]
+    }
+}

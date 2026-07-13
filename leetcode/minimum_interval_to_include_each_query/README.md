@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Binary Search, Sweep Line, Sorting, Heap (Priority Queue)
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 1851](https://leetcode.com/problems/minimum-interval-to-include-each-query/description/)
 

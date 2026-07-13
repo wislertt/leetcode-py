@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Breadth-First Search, Matrix
-**Tags:** algo-master-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 994](https://leetcode.com/problems/rotting-oranges/description/)
 

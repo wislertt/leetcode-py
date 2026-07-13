@@ -1,0 +1,92 @@
+{
+    "problem_name": "design_hash_set",
+    "solution_class_name": "MyHashSet",
+    "problem_number": "705",
+    "problem_title": "Design HashSet",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Linked List, Design, Hash Function",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Design a HashSet without using any built-in hash table libraries.\n\nImplement the `MyHashSet` class:\n\n- `void add(key)` Inserts the value `key` into the HashSet.\n- `bool contains(key)` Returns whether the value `key` exists in the HashSet or not.\n- `void remove(key)` Removes the value `key` in the HashSet. If `key` does not exist in the HashSet, do nothing.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyHashSet\", \"add\", \"add\", \"contains\", \"contains\", \"add\", \"contains\", \"remove\", \"contains\"]\n[[], [1], [2], [1], [3], [2], [2], [2], [2]]\nOutput\n[null, null, null, true, false, null, true, null, false]\n\nExplanation\nMyHashSet myHashSet = new MyHashSet();\nmyHashSet.add(1);      // set = [1]\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(1); // return True\nmyHashSet.contains(3); // return False, (not found)\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(2); // return True\nmyHashSet.remove(2);   // set = [1]\nmyHashSet.contains(2); // return False, (already removed)\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= key <= 10^6\n- At most 10^4 calls will be made to `add`, `remove`, and `contains`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "hash_set",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    hash_set = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyHashSet':\n            hash_set = solution_class()\n            results.append(None)\n        elif op == 'add' and hash_set is not None:\n            hash_set.add(inputs[i][0])\n            results.append(None)\n        elif op == 'remove' and hash_set is not None:\n            hash_set.remove(inputs[i][0])\n            results.append(None)\n        elif op == 'contains' and hash_set is not None:\n            results.append(hash_set.contains(inputs[i][0]))\n    return results, hash_set",
+    "helpers_assert_name": "hash_set",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_hash_set, run_hash_set\nfrom .solution import MyHashSet",
+    "test_content": "",
+    "test_class_name": "DesignHashSet",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize hash set\n        pass"
+            },
+            {
+                "name": "add",
+                "signature": "(self, key: int) -> None",
+                "body": "        # TODO: Implement add\n        pass"
+            },
+            {
+                "name": "remove",
+                "signature": "(self, key: int) -> None",
+                "body": "        # TODO: Implement remove\n        pass"
+            },
+            {
+                "name": "contains",
+                "signature": "(self, key: int) -> bool",
+                "body": "        # TODO: Implement contains\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_hash_set",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyHashSet', 'add', 'add', 'contains', 'contains', 'add', 'contains', 'remove', 'contains'], [[], [1], [2], [1], [3], [2], [2], [2], [2]], [None, None, None, True, False, None, True, None, False])",
+                        "(['MyHashSet', 'add', 'add', 'add', 'remove', 'contains', 'add', 'add', 'add', 'remove', 'contains', 'add', 'add', 'add', 'remove', 'contains', 'add', 'add', 'add', 'remove', 'contains'], [[], [1], [10001], [1], [1], [1], [7], [10007], [7], [7], [7], [123], [10123], [123], [123], [123], [5000], [15000], [5000], [5000], [5000]], [None, None, None, None, None, False, None, None, None, None, False, None, None, None, None, False, None, None, None, None, False])",
+                        "(['MyHashSet', 'add', 'contains', 'remove', 'contains'], [[], [5], [5], [5], [5]], [None, None, True, None, False])",
+                        "(['MyHashSet', 'remove', 'contains'], [[], [99], [99]], [None, None, False])",
+                        "(['MyHashSet', 'add', 'remove', 'add', 'contains'], [[], [1], [1], [1], [1]], [None, None, None, None, True])",
+                        "(['MyHashSet', 'add', 'contains', 'add', 'contains'], [[], [0], [0], [0], [0]], [None, None, True, None, True])",
+                        "(['MyHashSet', 'add', 'contains', 'remove', 'contains'], [[], [1000000], [1000000], [1000000], [1000000]], [None, None, True, None, False])",
+                        "(['MyHashSet', 'add', 'add', 'add', 'contains', 'remove', 'contains', 'contains'], [[], [10], [20], [30], [20], [20], [20], [30]], [None, None, None, None, True, None, False, True])",
+                        "(['MyHashSet', 'add', 'add', 'add', 'remove', 'contains'], [[], [7], [7], [7], [7], [7]], [None, None, None, None, None, False])",
+                        "(['MyHashSet', 'contains', 'contains'], [[], [1], [2]], [None, False, False])",
+                        "(['MyHashSet', 'add', 'contains', 'add', 'contains', 'remove', 'contains', 'add', 'contains'], [[], [3], [3], [4], [4], [3], [3], [3], [3]], [None, None, True, None, True, None, False, None, True])",
+                        "(['MyHashSet', 'add', 'add', 'add', 'add', 'add', 'contains', 'remove', 'contains'], [[], [1], [2], [3], [4], [5], [3], [3], [3]], [None, None, None, None, None, None, True, None, False])",
+                        "(['MyHashSet', 'add', 'add', 'remove', 'remove', 'contains'], [[], [100], [200], [100], [200], [100]], [None, None, None, None, None, False])"
+                    ]
+                },
+                "body": "        result, _ = run_hash_set(MyHashSet, operations, inputs)\n        assert_hash_set(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_hash_set, assert_hash_set\nfrom solution import MyHashSet",
+    "playground_setup": "# Example test case\noperations = ['MyHashSet', 'add', 'add', 'contains', 'contains', 'add', 'contains', 'remove', 'contains']\ninputs = [[], [1], [2], [1], [3], [2], [2], [2], [2]]\nexpected = [None, None, None, True, False, None, True, None, False]",
+    "playground_run": "result, hash_set = run_hash_set(MyHashSet, operations, inputs)\nprint(result)\nhash_set",
+    "playground_assert": "assert_hash_set(result, expected)"
+}

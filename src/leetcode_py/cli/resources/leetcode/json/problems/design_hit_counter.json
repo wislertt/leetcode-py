@@ -1,0 +1,86 @@
+{
+    "problem_name": "design_hit_counter",
+    "solution_class_name": "HitCounter",
+    "problem_number": "362",
+    "problem_title": "Design Hit Counter",
+    "difficulty": "Medium",
+    "topics": "Design, Queue, Array, Binary Search, Data Stream",
+    "readme_description": "Design a hit counter which counts the number of hits received in the past `5` minutes (i.e., the past `300` seconds).\n\nYour system should accept a `timestamp` parameter (**in seconds** granularity), and you may assume that calls are being made to the system in chronological order (i.e., `timestamp` is monotonically increasing). Several hits may arrive roughly at the same time.\n\nImplement the `HitCounter` class:\n\n- `HitCounter()` Initializes the object of the hit counter system.\n- `void hit(int timestamp)` Records a hit that happened at `timestamp` (**in seconds**). Several hits may happen at the same `timestamp`.\n- `int getHits(int timestamp)` Returns the number of hits in the past 5 minutes from `timestamp` (i.e., the past `300` seconds).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"HitCounter\", \"hit\", \"hit\", \"hit\", \"getHits\", \"hit\", \"getHits\", \"getHits\"]\n[[], [1], [2], [3], [4], [300], [300], [301]]\nOutput\n[null, null, null, null, 3, null, 4, 3]\n\nExplanation\nHitCounter hitCounter = new HitCounter();\nhitCounter.hit(1);       // hit at timestamp 1.\nhitCounter.hit(2);       // hit at timestamp 2.\nhitCounter.hit(3);       // hit at timestamp 3.\nhitCounter.getHits(4);   // get hits at timestamp 4, return 3.\nhitCounter.hit(300);     // hit at timestamp 300.\nhitCounter.getHits(300); // get hits at timestamp 300, return 4.\nhitCounter.getHits(301); // get hits at timestamp 301, return 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= timestamp <= 2 * 10^9`\n- All the calls are being made to the system in chronological order (i.e., `timestamp` is monotonically increasing).\n- At most `300` calls will be made to `hit` and `getHits`.",
+    "readme_additional": "**Follow up:** What if the number of hits per second could be huge? Does your design scale?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "hit_counter",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    counter = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'HitCounter':\n            counter = solution_class()\n            results.append(None)\n        elif op == 'hit' and counter is not None:\n            counter.hit(inputs[i][0])\n            results.append(None)\n        elif op == 'get_hits' and counter is not None:\n            results.append(counter.get_hits(inputs[i][0]))\n    return results, counter",
+    "helpers_assert_name": "hit_counter",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_hit_counter, run_hit_counter\nfrom .solution import HitCounter",
+    "test_content": "",
+    "test_class_name": "DesignHitCounter",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize hit counter\n        pass"
+            },
+            {
+                "name": "hit",
+                "signature": "(self, timestamp: int) -> None",
+                "body": "        # TODO: Implement hit\n        pass"
+            },
+            {
+                "name": "get_hits",
+                "signature": "(self, timestamp: int) -> int",
+                "body": "        # TODO: Implement get_hits\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_hit_counter",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['HitCounter', 'hit', 'hit', 'hit', 'get_hits', 'hit', 'get_hits', 'get_hits'], [[], [1], [2], [3], [4], [300], [300], [301]], [None, None, None, None, 3, None, 4, 3])",
+                        "(['HitCounter', 'hit', 'get_hits'], [[], [1], [1]], [None, None, 1])",
+                        "(['HitCounter', 'hit', 'get_hits'], [[], [1], [301]], [None, None, 0])",
+                        "(['HitCounter', 'hit', 'get_hits'], [[], [1], [300]], [None, None, 1])",
+                        "(['HitCounter', 'hit', 'hit', 'hit', 'get_hits'], [[], [5], [5], [5], [5]], [None, None, None, None, 3])",
+                        "(['HitCounter', 'get_hits'], [[], [100]], [None, 0])",
+                        "(['HitCounter', 'hit', 'hit', 'get_hits', 'get_hits'], [[], [1], [300], [300], [301]], [None, None, None, 2, 1])",
+                        "(['HitCounter', 'hit', 'get_hits', 'hit', 'get_hits'], [[], [1], [10], [10], [10]], [None, None, 1, None, 2])",
+                        "(['HitCounter', 'hit', 'hit', 'hit', 'get_hits'], [[], [1], [2], [3], [3]], [None, None, None, None, 3])",
+                        "(['HitCounter', 'hit', 'get_hits', 'hit', 'get_hits'], [[], [1], [301], [301], [301]], [None, None, 0, None, 1])",
+                        "(['HitCounter', 'hit', 'get_hits'], [[], [1], [302]], [None, None, 0])",
+                        "(['HitCounter', 'hit', 'hit', 'get_hits'], [[], [299], [300], [300]], [None, None, None, 2])",
+                        "(['HitCounter', 'hit', 'get_hits', 'get_hits'], [[], [50], [349], [350]], [None, None, 1, 0])"
+                    ]
+                },
+                "body": "        result, _ = run_hit_counter(HitCounter, operations, inputs)\n        assert_hit_counter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_hit_counter, assert_hit_counter\nfrom solution import HitCounter",
+    "playground_setup": "# Example test case\noperations = ['HitCounter', 'hit', 'hit', 'hit', 'get_hits', 'hit', 'get_hits', 'get_hits']\ninputs = [[], [1], [2], [3], [4], [300], [300], [301]]\nexpected = [None, None, None, None, 3, None, 4, 3]",
+    "playground_run": "result, counter = run_hit_counter(HitCounter, operations, inputs)\nprint(result)\ncounter",
+    "playground_assert": "assert_hit_counter(result, expected)"
+}

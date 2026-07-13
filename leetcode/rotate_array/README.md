@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Two Pointers
-**Tags:** grind
+**Tags:** grind, neetcode-250
 
 **LeetCode:** [Problem 189](https://leetcode.com/problems/rotate-array/description/)
 

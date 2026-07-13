@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Matrix
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-250
 
 **LeetCode:** [Problem 64](https://leetcode.com/problems/minimum-path-sum/description/)
 

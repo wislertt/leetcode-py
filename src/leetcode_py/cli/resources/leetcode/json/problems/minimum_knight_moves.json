@@ -1,0 +1,91 @@
+{
+    "problem_name": "minimum_knight_moves",
+    "solution_class_name": "Solution",
+    "problem_number": "1197",
+    "problem_title": "Minimum Knight Moves",
+    "difficulty": "Medium",
+    "topics": "Breadth-First Search",
+    "readme_description": "In an **infinite** chess board with coordinates from `-infinity` to `+infinity`, you have a **knight** at square `[0, 0]`.\n\nA knight has 8 possible moves it can make, as illustrated below. Each move is two squares in a cardinal direction, then one square in an orthogonal direction.\n\nReturn _the minimum number of steps needed to move the knight to the square_ `[x, y]`. It is guaranteed the answer exists.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/12/knight.png)\n\n```\nInput: x = 2, y = 1\nOutput: 1\nExplanation: [0, 0] → [2, 1]\n```"
+            },
+            {
+                "content": "```\nInput: x = 5, y = 5\nOutput: 4\nExplanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `-300 <= x, y <= 300`\n- `0 <= |x| + |y| <= 300`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_knight_moves",
+    "helpers_run_signature": "(solution_class: type, x: int, y: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_knight_moves(x, y)",
+    "helpers_assert_name": "min_knight_moves",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_knight_moves, run_min_knight_moves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumKnightMoves",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_knight_moves",
+                "signature": "(self, x: int, y: int) -> int",
+                "body": "        # TODO: Implement min_knight_moves\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_knight_moves",
+                "signature": "(self, x: int, y: int, expected: int)",
+                "parametrize": "x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 0, 0)",
+                        "(2, 1, 1)",
+                        "(1, 2, 1)",
+                        "(-2, 1, 1)",
+                        "(1, 1, 2)",
+                        "(-1, -1, 2)",
+                        "(1, 0, 3)",
+                        "(0, 1, 3)",
+                        "(3, 0, 3)",
+                        "(2, 0, 2)",
+                        "(0, 2, 2)",
+                        "(3, 3, 2)",
+                        "(2, 2, 4)",
+                        "(2, 3, 3)",
+                        "(4, 4, 4)",
+                        "(6, 6, 4)",
+                        "(5, 5, 4)",
+                        "(7, 7, 6)",
+                        "(300, 300, 200)"
+                    ]
+                },
+                "body": "        result = run_min_knight_moves(Solution, x, y)\n        assert_min_knight_moves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_knight_moves, assert_min_knight_moves\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 2\ny = 1\nexpected = 1",
+    "playground_run": "result = run_min_knight_moves(Solution, x, y)\nresult",
+    "playground_assert": "assert_min_knight_moves(result, expected)"
+}

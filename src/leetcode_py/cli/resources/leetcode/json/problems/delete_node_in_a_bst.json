@@ -1,0 +1,85 @@
+{
+    "problem_name": "delete_node_in_a_bst",
+    "solution_class_name": "Solution",
+    "problem_number": "450",
+    "problem_title": "Delete Node in a BST",
+    "difficulty": "Medium",
+    "topics": "Tree, Binary Search Tree, Binary Tree",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return _the **root node reference** (possibly updated) of the BST_.\n\nBasically, the deletion can be divided into two stages:\n\n1. Search for a node to remove.\n2. If the node is found, delete the node.\n\nNote: When a node with two children is deleted, replacing it with either its inorder successor or predecessor is accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/04/del_node_1.jpg)\n\n```\nInput: root = [5,3,6,2,4,null,7], key = 3\nOutput: [5,4,6,2,null,null,7]\nExplanation: One valid answer is [5,4,6,2,null,null,7]; [5,2,6,null,4,null,7] is also accepted.\n```"
+            },
+            {
+                "content": "```\nInput: root = [5,3,6,2,4,null,7], key = 0\nOutput: [5,3,6,2,4,null,7]\nExplanation: The tree does not contain a node with value = 0.\n```"
+            },
+            {
+                "content": "```\nInput: root = [], key = 0\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 10^4].\n- -10^5 <= Node.val <= 10^5\n- Each node has a unique value.\n- `root` is a valid binary search tree.\n- -10^5 <= key <= 10^5",
+    "readme_additional": "**Follow up:** Could you solve it with time complexity O(height of tree)?",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "def _inorder(node: TreeNode[int] | None) -> list[int]:\n    \"\"\"Inorder traversal; for a valid BST this yields strictly increasing values.\"\"\"\n    values: list[int] = []\n    stack: list[TreeNode[int]] = []\n    current: TreeNode[int] | None = node\n    while stack or current is not None:\n        while current is not None:\n            stack.append(current)\n            current = current.left\n        current = stack.pop()\n        values.append(current.val)\n        current = current.right\n    return values",
+    "helpers_run_name": "delete_node",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], key: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    result = implementation.delete_node(root, key)\n    return _inorder(result)",
+    "helpers_assert_name": "delete_node",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Inorder of a BST must equal the sorted remaining values.\n    assert result == expected\n    assert result == sorted(result)\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_delete_node, run_delete_node\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DeleteNodeInABST",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "delete_node",
+                "signature": "(self, root: TreeNode[int] | None, key: int) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement delete_node\n        return root"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_delete_node",
+                "signature": "(self, root_list: list[int | None], key: int, expected: list[int])",
+                "parametrize": "root_list, key, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 3, 6, 2, 4, None, 7], 3, [2, 4, 5, 6, 7])",
+                        "([5, 3, 6, 2, 4, None, 7], 0, [2, 3, 4, 5, 6, 7])",
+                        "([], 0, [])",
+                        "([5], 5, [])",
+                        "([5], 3, [5])",
+                        "([2, 1, 3], 2, [1, 3])",
+                        "([5, 3, 6, 2, 4, None, 7], 5, [2, 3, 4, 6, 7])",
+                        "([5, 3, 6, 2, 4, None, 7], 7, [2, 3, 4, 5, 6])",
+                        "([5, 3, 6, 2, 4, None, 7], 2, [3, 4, 5, 6, 7])",
+                        "([1, None, 2], 1, [2])",
+                        "([2, 1], 2, [1])",
+                        "([3, 1, 4, None, 2], 3, [1, 2, 4])",
+                        "([5, 3, 7, 2, 4, 6, 8], 5, [2, 3, 4, 6, 7, 8])",
+                        "([5, 3, 7, 2, 4, 6, 8], 4, [2, 3, 5, 6, 7, 8])",
+                        "([5, 3, 7, 2, 4, 6, 8], 6, [2, 3, 4, 5, 7, 8])"
+                    ]
+                },
+                "body": "        result = run_delete_node(Solution, root_list, key)\n        assert_delete_node(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_delete_node, assert_delete_node\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [5, 3, 6, 2, 4, None, 7]\nkey = 3\nexpected = [2, 4, 5, 6, 7]",
+    "playground_run": "result = run_delete_node(Solution, root_list, key)\nresult",
+    "playground_assert": "assert_delete_node(result, expected)"
+}

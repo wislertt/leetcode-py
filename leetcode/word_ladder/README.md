@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Hash Table, String, Breadth-First Search
-**Tags:** algo-master-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 127](https://leetcode.com/problems/word-ladder/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect
-**Tags:** neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 215](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
 

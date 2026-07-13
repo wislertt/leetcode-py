@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 518](https://leetcode.com/problems/coin-change-ii/description/)
 

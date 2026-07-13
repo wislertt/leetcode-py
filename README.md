@@ -41,14 +41,13 @@ A Python package to generate professional LeetCode practice environments. Featur
 **Current Problem Sets**:
 
 - **grind-75** - Essential coding interview questions from [Grind 75](https://www.techinterviewhandbook.org/grind75/) ✅ Complete
-- **grind** - Extended Grind collection including all Grind 75 plus additional problems 🚧 Partial
+- **grind** - Extended Grind collection including all Grind 75 plus additional problems ✅ Complete
 - **blind-75** - Original [Blind 75](https://leetcode.com/problem-list/xi4ci4ig/) curated list ✅ Complete
 - **neetcode-150** - Comprehensive [NeetCode 150](https://neetcode.io/practice) problem set ✅ Complete
+- **neetcode-250** - Full [NeetCode 250](https://neetcode.io/practice) roadmap extending NeetCode 150 with 100 more problems ✅ Complete
 - **algo-master-75** - Curated algorithmic mastery problems ✅ Complete
 
-**Coverage**: 130+ unique problems across all major coding interview topics and difficulty levels.
-
-**Note**: Some problem sets are partially covered. We're actively working to complete all collections. [Contributions welcome!](https://github.com/wislertt/leetcode-py/blob/main/CONTRIBUTING.md)
+**Coverage**: 300+ unique problems across all major coding interview topics and difficulty levels. All problem sets are complete. [Contributions welcome!](https://github.com/wislertt/leetcode-py/blob/main/CONTRIBUTING.md)
 
 ## <a id="quick-start"></a>🚀 Quick Start
 
@@ -64,7 +63,7 @@ pip install leetcode-py-sdk
 # Generate problems anywhere
 lcpy gen -n 1                    # Generate Two Sum
 lcpy gen -t grind-75             # Generate all Grind 75 problems
-lcpy gen -t neetcode-150         # Generate NeetCode 150 problems
+lcpy gen -t neetcode-250         # Generate NeetCode 250 problems
 lcpy list -t grind-75            # List Grind 75 problems
 lcpy list -t blind-75            # List Blind 75 problems
 
@@ -78,7 +77,7 @@ python -m pytest test_solution.py  # Run tests
 
 ```bash
 lcpy gen --problem-tag grind-75 --output leetcode     # Generate all Grind 75 problems
-lcpy gen --problem-tag neetcode-150 --output leetcode   # Generate NeetCode 150 problems
+lcpy gen --problem-tag neetcode-250 --output leetcode   # Generate NeetCode 250 problems
 lcpy gen --problem-tag blind-75 --output leetcode       # Generate Blind 75 problems
 ```
 
@@ -268,7 +267,7 @@ uv run python -m leetcode_py.tools.check_test_cases --threshold=10
 lcpy gen -n 1                       # Single problem by number
 lcpy gen -s two-sum                 # Single problem by slug
 lcpy gen -t grind-75                # Bulk generation by tag
-lcpy gen -t neetcode-150            # Generate NeetCode 150 problems
+lcpy gen -t neetcode-250            # Generate NeetCode 250 problems
 lcpy gen -n 1 -n 2 -n 3            # Multiple problems
 lcpy gen -t grind-75 -d Easy       # Filter by difficulty
 lcpy gen -n 1 -o my-problems       # Custom output directory
@@ -277,7 +276,7 @@ lcpy gen -n 1 -o my-problems       # Custom output directory
 lcpy list                           # All available problems
 lcpy list -t grind-75               # Filter by Grind 75 tag
 lcpy list -t blind-75               # Filter by Blind 75 tag
-lcpy list -t neetcode-150           # Filter by NeetCode 150 tag
+lcpy list -t neetcode-250           # Filter by NeetCode 250 tag
 lcpy list -d Medium                 # Filter by difficulty
 
 # Scrape problem data

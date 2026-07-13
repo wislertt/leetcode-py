@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Divide and Conquer, Bit Manipulation
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 191](https://leetcode.com/problems/number-of-1-bits/description/)
 

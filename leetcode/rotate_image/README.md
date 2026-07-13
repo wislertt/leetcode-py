@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Matrix
-**Tags:** algo-master-75, blind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 48](https://leetcode.com/problems/rotate-image/description/)
 

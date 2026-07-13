@@ -1,0 +1,88 @@
+{
+    "problem_name": "verifying_an_alien_dictionary",
+    "solution_class_name": "Solution",
+    "problem_number": "953",
+    "problem_title": "Verifying an Alien Dictionary",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different `order`. The `order` of the alphabet is some permutation of lowercase letters.\n\nGiven a sequence of `words` written in the alien language, and the `order` of the alphabet, return `true` if and only if the given `words` are sorted lexicographically in this alien language.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"hello\",\"leetcode\"], order = \"hlabcdefgijkmnopqrstuvwxyz\"\nOutput: true\nExplanation: As 'h' comes before 'l' in this language, then the sequence is sorted.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"word\",\"world\",\"row\"], order = \"worldabcefghijkmnpqstuvxyz\"\nOutput: false\nExplanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"apple\",\"app\"], order = \"abcdefghijklmnopqrstuvwxyz\"\nOutput: false\nExplanation: The first three characters \"app\" match, and the second string is shorter (in size.) According to lexicographical rules \"apple\" > \"app\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 100\n- 1 <= words[i].length <= 20\n- `order.length == 26`\n- All characters in `words[i]` and `order` are English lowercase letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_alien_sorted",
+    "helpers_run_signature": "(solution_class: type, words: list[str], order: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_alien_sorted(words, order)",
+    "helpers_assert_name": "is_alien_sorted",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_alien_sorted, run_is_alien_sorted\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "VerifyingAnAlienDictionary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_alien_sorted",
+                "signature": "(self, words: list[str], order: str) -> bool",
+                "body": "        # TODO: Implement is_alien_sorted\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_alien_sorted",
+                "signature": "(self, words: list[str], order: str, expected: bool)",
+                "parametrize": "words, order, expected",
+                "test_cases": {
+                    "list": [
+                        "(['hello', 'leetcode'], 'hlabcdefgijkmnopqrstuvwxyz', True)",
+                        "(['word', 'world', 'row'], 'worldabcefghijkmnpqstuvxyz', False)",
+                        "(['apple', 'app'], 'abcdefghijklmnopqrstuvwxyz', False)",
+                        "(['a'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['a', 'a'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['a', 'b'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['b', 'a'], 'abcdefghijklmnopqrstuvwxyz', False)",
+                        "(['app', 'apple'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['abc', 'abc'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['zebra', 'apple'], 'zyxwvutsrqponmlkjihgfedcba', True)",
+                        "(['apple', 'zebra'], 'zyxwvutsrqponmlkjihgfedcba', False)",
+                        "(['ab', 'ac', 'ad'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['ad', 'ac', 'ab'], 'zyxwvutsrqponmlkjihgfedcba', True)",
+                        "(['hello', 'hello'], 'zyxwvutsrqponmlkjihgfedcba', True)",
+                        "(['cat', 'car'], 'abcdefghijklmnopqrstuvwxyz', False)",
+                        "(['car', 'cat'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['aa', 'ab', 'ba', 'bb'], 'abcdefghijklmnopqrstuvwxyz', True)",
+                        "(['bb', 'ba'], 'abcdefghijklmnopqrstuvwxyz', False)"
+                    ]
+                },
+                "body": "        result = run_is_alien_sorted(Solution, words, order)\n        assert_is_alien_sorted(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_alien_sorted, assert_is_alien_sorted\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['hello', 'leetcode']\norder = 'hlabcdefgijkmnopqrstuvwxyz'\nexpected = True",
+    "playground_run": "result = run_is_alien_sorted(Solution, words, order)\nresult",
+    "playground_assert": "assert_is_alien_sorted(result, expected)"
+}

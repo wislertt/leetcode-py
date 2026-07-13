@@ -1,0 +1,81 @@
+{
+    "problem_name": "house_robber_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "337",
+    "problem_title": "House Robber III",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming, Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "The thief has found himself a new place for his thievery again. There is only one entrance to this area, called `root`.\n\nBesides the `root`, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if **two directly-linked houses were broken into on the same night**.\n\nGiven the `root` of the binary tree, return *the maximum amount of money the thief can rob **without alerting the police***.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/10/rob1-tree.jpg)\n\n```\nInput: root = [3,2,3,null,3,null,1]\nOutput: 7\nExplanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/03/10/rob2-tree.jpg)\n\n```\nInput: root = [3,4,5,1,3,null,1]\nOutput: 9\nExplanation: Maximum amount of money the thief can rob = 4 + 5 = 9.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10^4].\n- 0 <= Node.val <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "rob",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.rob(root)",
+    "helpers_assert_name": "rob",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rob, run_rob\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HouseRobberIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rob",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement rob\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rob",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3,2,3,None,3,None,1], 7)",
+                        "([3,4,5,1,3,None,1], 9)",
+                        "([1], 1)",
+                        "([2,1,3,None,4], 7)",
+                        "([1,2,3], 5)",
+                        "([1,2], 2)",
+                        "([2,None,3], 3)",
+                        "([5,4,8,11,None,13,4,7,2,None,None,5,1], 35)",
+                        "([3], 3)",
+                        "([0], 0)",
+                        "([2,1,3,None,4,None,None], 7)",
+                        "([10,5,15,None,None,11,20], 41)",
+                        "([1,2,3,4], 7)",
+                        "([1,2,3,4,5], 12)"
+                    ]
+                },
+                "body": "        result = run_rob(Solution, root_list)\n        assert_rob(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rob, assert_rob\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3,2,3,None,3,None,1]\nexpected = 7",
+    "playground_run": "result = run_rob(Solution, root_list)\nresult",
+    "playground_assert": "assert_rob(result, expected)"
+}

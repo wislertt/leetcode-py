@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Sorting
-**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 56](https://leetcode.com/problems/merge-intervals/description/)
 

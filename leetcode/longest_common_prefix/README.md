@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, String, Trie
-**Tags:** grind
+**Tags:** grind, neetcode-250
 
 **LeetCode:** [Problem 14](https://leetcode.com/problems/longest-common-prefix/description/)
 

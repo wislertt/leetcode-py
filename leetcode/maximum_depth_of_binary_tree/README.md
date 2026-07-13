@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
-**Tags:** blind-75, grind, grind-75, neetcode-150
+**Tags:** blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 104](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/)
 

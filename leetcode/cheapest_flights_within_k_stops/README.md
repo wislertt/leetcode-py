@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Dynamic Programming, Depth-First Search, Breadth-First Search, Graph Theory, Heap (Priority Queue), Shortest Path
-**Tags:** algo-master-75, neetcode-150
+**Tags:** algo-master-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 787](https://leetcode.com/problems/cheapest-flights-within-k-stops/description/)
 

@@ -1,0 +1,82 @@
+{
+    "problem_name": "reverse_string",
+    "solution_class_name": "Solution",
+    "problem_number": "344",
+    "problem_title": "Reverse String",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Write a function that reverses a string. The input string is given as an array of characters `s`.\n\nYou must do this by modifying the input array [in-place](https://en.wikipedia.org/wiki/In-place_algorithm) with `O(1)` extra memory.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = [\"h\",\"e\",\"l\",\"l\",\"o\"]\nOutput: [\"o\",\"l\",\"l\",\"e\",\"h\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = [\"H\",\"a\",\"n\",\"n\",\"a\",\"h\"]\nOutput: [\"h\",\"a\",\"n\",\"n\",\"a\",\"H\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s[i] is a [printable ascii character](https://en.wikipedia.org/wiki/ASCII#Printable_characters).",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_string",
+    "helpers_run_signature": "(solution_class: type, s: list[str])",
+    "helpers_run_body": "    s_copy = s.copy()\n    implementation = solution_class()\n    implementation.reverse_string(s_copy)\n    return s_copy",
+    "helpers_assert_name": "reverse_string",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_string, run_reverse_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_string",
+                "signature": "(self, s: list[str]) -> None",
+                "body": "        # TODO: Implement reverse_string\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_string",
+                "signature": "(self, s: list[str], expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "(['h','e','l','l','o'], ['o','l','l','e','h'])",
+                        "(['H','a','n','n','a','h'], ['h','a','n','n','a','H'])",
+                        "(['a'], ['a'])",
+                        "(['a','b'], ['b','a'])",
+                        "(['a','b','c'], ['c','b','a'])",
+                        "(['1','2','3','4','5'], ['5','4','3','2','1'])",
+                        "(['x'], ['x'])",
+                        "(['A','B','C','D'], ['D','C','B','A'])",
+                        "([' '], [' '])",
+                        "(['!','@','#','$'], ['$','#','@','!'])",
+                        "(['p','a','l','i','n'], ['n','i','l','a','p'])",
+                        "(['z','y','x','w','v','u'], ['u','v','w','x','y','z'])",
+                        "(['a','a','a','a'], ['a','a','a','a'])",
+                        "(['T','e','s','t'], ['t','s','e','T'])",
+                        "(['1','2'], ['2','1'])"
+                    ]
+                },
+                "body": "        result = run_reverse_string(Solution, s)\n        assert_reverse_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_string, assert_reverse_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = ['h','e','l','l','o']\nexpected = ['o','l','l','e','h']",
+    "playground_run": "result = run_reverse_string(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_string(result, expected)"
+}

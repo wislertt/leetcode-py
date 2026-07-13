@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Binary Search, Depth-First Search, Breadth-First Search, Union-Find, Heap (Priority Queue), Matrix
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 778](https://leetcode.com/problems/swim-in-rising-water/description/)
 

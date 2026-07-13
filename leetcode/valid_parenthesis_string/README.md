@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming, Stack, Greedy
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 678](https://leetcode.com/problems/valid-parenthesis-string/description/)
 

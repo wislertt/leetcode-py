@@ -1,0 +1,85 @@
+{
+    "problem_name": "sort_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "912",
+    "problem_title": "Sort an Array",
+    "difficulty": "Medium",
+    "topics": "Array, Divide and Conquer, Sorting, Heap (Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given an array of integers `nums`, sort the array in ascending order and return it.\n\nYou must solve the problem **without using any built-in** functions in `O(nlog(n))` time complexity and with the smallest space complexity possible.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [5,2,3,1]\nOutput: [1,2,3,5]\nExplanation: After sorting the array, the positions of some numbers are not changed (for example, 2 and 3), while the positions of other numbers are changed (for example, 1 and 5).\n```"
+            },
+            {
+                "content": "```\nInput: nums = [5,1,1,2,0,0]\nOutput: [0,0,1,1,2,5]\nExplanation: Note that the values of nums are not necessarily unique.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 5 * 10^4\n- -5 * 10^4 <= nums[i] <= 5 * 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sort_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sort_array(nums)",
+    "helpers_assert_name": "sort_array",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sort_array, run_sort_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sort_array",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement sort_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sort_array",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 2, 3, 1], [1, 2, 3, 5])",
+                        "([5, 1, 1, 2, 0, 0], [0, 0, 1, 1, 2, 5])",
+                        "([1], [1])",
+                        "([2, 1], [1, 2])",
+                        "([1, 2], [1, 2])",
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])",
+                        "([5, 4, 3, 2, 1], [1, 2, 3, 4, 5])",
+                        "([3, 3, 3, 3], [3, 3, 3, 3])",
+                        "([-1, -3, -2, 0, 2, 1], [-3, -2, -1, 0, 1, 2])",
+                        "([0, 0, 0], [0, 0, 0])",
+                        "([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])",
+                        "([100, -100, 50, -50, 0], [-100, -50, 0, 50, 100])",
+                        "([1, 2, 1, 2, 1, 2], [1, 1, 1, 2, 2, 2])",
+                        "([42], [42])",
+                        "([-5, -10, 0, 5, 10], [-10, -5, 0, 5, 10])",
+                        "([9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3], [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "([1, 5, 2, 5, 3, 5, 4], [1, 2, 3, 4, 5, 5, 5])",
+                        "([500, -500, 250, -250, 0, 0, 125], [-500, -250, 0, 0, 125, 250, 500])"
+                    ]
+                },
+                "body": "        result = run_sort_array(Solution, nums)\n        assert_sort_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sort_array, assert_sort_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [5, 2, 3, 1]\nexpected = [1, 2, 3, 5]",
+    "playground_run": "result = run_sort_array(Solution, nums)\nresult",
+    "playground_assert": "assert_sort_array(result, expected)"
+}

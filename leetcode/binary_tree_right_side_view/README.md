@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
-**Tags:** algo-master-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 199](https://leetcode.com/problems/binary-tree-right-side-view/description/)
 

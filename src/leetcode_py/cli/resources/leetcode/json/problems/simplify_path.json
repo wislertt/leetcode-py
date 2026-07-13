@@ -1,0 +1,105 @@
+{
+    "problem_name": "simplify_path",
+    "solution_class_name": "Solution",
+    "problem_number": "71",
+    "problem_title": "Simplify Path",
+    "difficulty": "Medium",
+    "topics": "String, Stack",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "You are given an *absolute* path for a Unix-style file system, which always begins with a slash `/`. Your task is to transform this absolute path into its **simplified canonical path**.\n\nThe *rules* of a Unix-style file system are as follows:\n\n- A single period `'.'` represents the current directory.\n- A double period `'..'` represents the previous/parent directory.\n- Multiple consecutive slashes such as `'//'` and `'///'` are treated as a single slash `'/'`.\n- Any sequence of periods that does **not match** the rules above should be treated as a **valid directory or file name**. For example, `'...'` and `'....'` are valid directory or file names.\n\nThe simplified canonical path should follow these *rules*:\n\n- The path must start with a single slash `'/'`.\n- Directories within the path must be separated by exactly one slash `'/'`.\n- The path must not end with a slash `'/'`, unless it is the root directory.\n- The path must not have any single or double periods (`'.'` and `'..'`) used to denote current or parent directories.\n\nReturn the **simplified canonical path**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: path = \"/home/\"\nOutput: \"/home\"\n```\n**Explanation:**\n\nThe trailing slash should be removed."
+            },
+            {
+                "content": "```\nInput: path = \"/home//foo/\"\nOutput: \"/home/foo\"\n```\n**Explanation:**\n\nMultiple consecutive slashes are replaced by a single one."
+            },
+            {
+                "content": "```\nInput: path = \"/home/user/Documents/../Pictures\"\nOutput: \"/home/user/Pictures\"\n```\n**Explanation:**\n\nA double period `\"..\"` refers to the directory up a level (the parent directory)."
+            },
+            {
+                "content": "```\nInput: path = \"/../\"\nOutput: \"/\"\n```\n**Explanation:**\n\nGoing one level up from the root directory is not possible."
+            },
+            {
+                "content": "```\nInput: path = \"/.../a/../b/c/../d/./\"\nOutput: \"/.../b/d\"\n```\n**Explanation:**\n\n`\"...\"` is a valid name for a directory in this problem."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= path.length <= 3000\n- `path` consists of English letters, digits, period `'.'`, slash `'/'` or `'_'`.\n- `path` is a valid absolute Unix path.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "simplify_path",
+    "helpers_run_signature": "(solution_class: type, path: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.simplify_path(path)",
+    "helpers_assert_name": "simplify_path",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_simplify_path, run_simplify_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSimplifyPath",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "simplify_path",
+                "signature": "(self, path: str) -> str",
+                "body": "        # TODO: Implement simplify_path\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_simplify_path, assert_simplify_path\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npath = '/home/'\nexpected = '/home'",
+    "playground_run": "result = run_simplify_path(Solution, path)\nresult",
+    "playground_assert": "assert_simplify_path(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_simplify_path",
+                "signature": "(self, solution_class, path: str, expected: str)",
+                "parametrize": "solution_class, path, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, '/home/', '/home')",
+                        "(Solution, '/home//foo/', '/home/foo')",
+                        "(Solution, '/home/user/Documents/../Pictures', '/home/user/Pictures')",
+                        "(Solution, '/../', '/')",
+                        "(Solution, '/.../a/../b/c/../d/./', '/.../b/d')",
+                        "(Solution, '/', '/')",
+                        "(Solution, '/.', '/')",
+                        "(Solution, '/..', '/')",
+                        "(Solution, '/./', '/')",
+                        "(Solution, '/a/./b/../../../c/', '/c')",
+                        "(Solution, '/a//b////c/d//././/..', '/a/b/c')",
+                        "(Solution, '/.../', '/...')",
+                        "(Solution, '/....', '/....')",
+                        "(Solution, '/../..', '/')",
+                        "(Solution, '/a/b/c', '/a/b/c')",
+                        "(Solution, '/../a', '/a')",
+                        "(Solution, '/a/..', '/')",
+                        "(Solution, '/home/foo/./bar/', '/home/foo/bar')"
+                    ]
+                },
+                "body": "        result = run_simplify_path(solution_class, path)\n        assert_simplify_path(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "path = '/home/'",
+    "playground_execution": "result = run_simplify_path(Solution, path)",
+    "playground_assertion": "assert_simplify_path(result, '/home')"
+}

@@ -1,0 +1,83 @@
+{
+    "problem_name": "jump_game_vii",
+    "solution_class_name": "Solution",
+    "problem_number": "1871",
+    "problem_title": "Jump Game VII",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Sliding Window, Prefix Sum",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given a **0-indexed** binary string `s` and two integers `minJump` and `maxJump`. In the beginning, you are standing at index `0`, which is equal to `'0'`. You can move from index `i` to index `j` if the following conditions are fulfilled:\n\n- `i + minJump <= j <= min(i + maxJump, s.length - 1)`, and\n- `s[j] == '0'`.\n\nReturn `true` *if you can reach index* `s.length - 1` *in* `s`, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"011010\", minJump = 2, maxJump = 3\nOutput: true\nExplanation:\nIn the first step, move from index 0 to index 3.\nIn the second step, move from index 3 to index 5.\n```"
+            },
+            { "content": "```\nInput: s = \"01101110\", minJump = 2, maxJump = 3\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 2 <= s.length <= 10^5\n- s[i] is either '0' or '1'.\n- s[0] == '0'\n- 1 <= minJump <= maxJump < s.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_reach",
+    "helpers_run_signature": "(solution_class: type, s: str, min_jump: int, max_jump: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_reach(s, min_jump, max_jump)",
+    "helpers_assert_name": "can_reach",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_reach, run_can_reach\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestJumpGameVII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_reach",
+                "signature": "(self, s: str, min_jump: int, max_jump: int) -> bool",
+                "body": "        # TODO: Implement can_reach\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_can_reach, assert_can_reach\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '011010'\nmin_jump = 2\nmax_jump = 3\nexpected = True",
+    "playground_run": "result = run_can_reach(Solution, s, min_jump, max_jump)\nresult",
+    "playground_assert": "assert_can_reach(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_reach",
+                "signature": "(self, s: str, min_jump: int, max_jump: int, expected: bool)",
+                "parametrize": "s, min_jump, max_jump, expected",
+                "test_cases": {
+                    "list": [
+                        "('011010', 2, 3, True)",
+                        "('01101110', 2, 3, False)",
+                        "('00', 1, 1, True)",
+                        "('01', 1, 1, False)",
+                        "('000', 1, 2, True)",
+                        "('00000', 2, 3, True)",
+                        "('011110', 2, 5, True)",
+                        "('011110', 3, 4, False)",
+                        "('000000', 1, 1, True)",
+                        "('010', 2, 2, True)",
+                        "('010', 1, 2, True)",
+                        "('0110', 2, 2, False)",
+                        "('0000', 3, 3, True)",
+                        "('0001000', 1, 3, True)",
+                        "('001100', 2, 3, False)"
+                    ]
+                },
+                "body": "        result = run_can_reach(Solution, s, min_jump, max_jump)\n        assert_can_reach(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "s = '011010'\nmin_jump = 2\nmax_jump = 3",
+    "playground_execution": "result = run_can_reach(Solution, s, min_jump, max_jump)",
+    "playground_assertion": "assert_can_reach(result, True)"
+}

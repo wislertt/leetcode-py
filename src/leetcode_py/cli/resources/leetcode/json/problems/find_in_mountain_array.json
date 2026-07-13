@@ -1,0 +1,91 @@
+{
+    "problem_name": "find_in_mountain_array",
+    "solution_class_name": "Solution",
+    "problem_number": "1095",
+    "problem_title": "Find in Mountain Array",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Interactive",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "(This problem is an **interactive problem**.)\n\nYou may recall that an array `arr` is a **mountain array** if and only if:\n\n- `arr.length >= 3`\n- There exists some `i` with `0 < i < arr.length - 1` such that:\n    - `arr[0] < arr[1] < ... < arr[i - 1] < arr[i]`\n    - `arr[i] > arr[i + 1] > ... > arr[arr.length - 1]`\n\nGiven a mountain array `mountainArr`, return **the minimum** `index` such that `mountainArr.get(index) == target`. If such an `index` does not exist, return `-1`.\n\n**You cannot access the mountain array directly.** You may only access the array using a `MountainArray` interface:\n\n- `MountainArray.get(k)` returns the element of the array at index `k` (0-indexed).\n- `MountainArray.length()` returns the length of the array.\n\nSubmissions making more than `100` calls to `MountainArray.get` will be judged *Wrong Answer*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: mountainArr = [1,2,3,4,5,3,1], target = 3\nOutput: 2\nExplanation: 3 exists in the array, at index=2 and index=5. Return the minimum index, which is 2.\n```"
+            },
+            {
+                "content": "```\nInput: mountainArr = [0,1,2,4,2,1], target = 3\nOutput: -1\nExplanation: 3 does not exist in the array, so we return -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= mountainArr.length() <= 10^4`\n- `0 <= target <= 10^9`\n- `0 <= mountainArr.get(index) <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import MountainArray",
+    "helpers_content": "class _ListMountainArray(MountainArray):\n    def __init__(self, arr: list[int]) -> None:\n        self._arr = arr\n        self.calls = 0\n\n    def get(self, index: int) -> int:\n        self.calls += 1\n        if self.calls > 100:\n            raise RuntimeError(\"Exceeded 100 MountainArray.get() calls\")\n        return self._arr[index]\n\n    def length(self) -> int:\n        return len(self._arr)",
+    "helpers_run_name": "find_in_mountain_array",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], target: int)",
+    "helpers_run_body": "    mountain_arr = _ListMountainArray(arr)\n    implementation = solution_class()\n    return implementation.find_in_mountain_array(target, mountain_arr)",
+    "helpers_assert_name": "find_in_mountain_array",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class MountainArray:\n    def get(self, index: int) -> int:\n        raise NotImplementedError\n\n    def length(self) -> int:\n        raise NotImplementedError",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_in_mountain_array, run_find_in_mountain_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindInMountainArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_in_mountain_array",
+                "signature": "(self, target: int, mountain_arr: MountainArray) -> int",
+                "body": "        # TODO: Implement find_in_mountain_array\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_in_mountain_array",
+                "signature": "(self, arr: list[int], target: int, expected: int)",
+                "parametrize": "arr, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,4,5,3,1], 3, 2)",
+                        "([0,1,2,4,2,1], 3, -1)",
+                        "([1,2,3,4,5,3,1], 5, 4)",
+                        "([1,2,3,4,5,3,1], 1, 0)",
+                        "([1,2,3,4,5,3,1], 6, -1)",
+                        "([1,5,2], 5, 1)",
+                        "([1,5,2], 2, 2)",
+                        "([1,5,2], 0, -1)",
+                        "([0,5,3,1], 3, 2)",
+                        "([1,3,1], 1, 0)",
+                        "([1,3,1], 3, 1)",
+                        "([1,2,3,2,1], 2, 1)",
+                        "([1,2,3,4,5,6,5,4,3,2,1], 6, 5)",
+                        "([1,3,5,7,6,4,2], 7, 3)",
+                        "([1,3,5,7,6,4,2], 2, 6)",
+                        "([3,5,3,2,0], 2, 3)"
+                    ]
+                },
+                "body": "        result = run_find_in_mountain_array(Solution, arr, target)\n        assert_find_in_mountain_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_in_mountain_array, assert_find_in_mountain_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 2, 3, 4, 5, 3, 1]\ntarget = 3\nexpected = 2",
+    "playground_run": "result = run_find_in_mountain_array(Solution, arr, target)\nresult",
+    "playground_assert": "assert_find_in_mountain_array(result, expected)"
+}

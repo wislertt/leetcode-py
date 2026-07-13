@@ -1,0 +1,99 @@
+{
+    "problem_name": "bitwise_and_of_numbers_range",
+    "solution_class_name": "Solution",
+    "problem_number": "201",
+    "problem_title": "Bitwise AND of Numbers Range",
+    "difficulty": "Medium",
+    "topics": "Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given two integers `left` and `right` that represent the range `[left, right]`, return *the bitwise AND of all numbers in this range, inclusive*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: left = 5, right = 7\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: left = 0, right = 0\nOutput: 0\n```"
+            },
+            {
+                "content": "```\nInput: left = 1, right = 2147483647\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= left <= right <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "range_bitwise_and",
+    "helpers_run_signature": "(solution_class: type, left: int, right: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.range_bitwise_and(left, right)",
+    "helpers_assert_name": "range_bitwise_and",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_range_bitwise_and, run_range_bitwise_and\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestBitwiseANDOfNumbersRange",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "range_bitwise_and",
+                "signature": "(self, left: int, right: int) -> int",
+                "body": "        # TODO: Implement range_bitwise_and\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_range_bitwise_and, assert_range_bitwise_and\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nleft = 5\nright = 7\nexpected = 4",
+    "playground_run": "result = run_range_bitwise_and(Solution, left, right)\nresult",
+    "playground_assert": "assert_range_bitwise_and(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_range_bitwise_and",
+                "signature": "(self, solution_class, left: int, right: int, expected: int)",
+                "parametrize": "solution_class, left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 5, 7, 4)",
+                        "(Solution, 0, 0, 0)",
+                        "(Solution, 1, 2147483647, 0)",
+                        "(Solution, 1, 1, 1)",
+                        "(Solution, 2, 2, 2)",
+                        "(Solution, 1, 2, 0)",
+                        "(Solution, 4, 7, 4)",
+                        "(Solution, 10, 11, 10)",
+                        "(Solution, 0, 1, 0)",
+                        "(Solution, 7, 15, 0)",
+                        "(Solution, 8, 10, 8)",
+                        "(Solution, 16, 19, 16)",
+                        "(Solution, 6, 7, 6)",
+                        "(Solution, 3, 3, 3)",
+                        "(Solution, 100, 128, 0)",
+                        "(Solution, 2, 3, 2)",
+                        "(Solution, 1, 3, 0)",
+                        "(Solution, 1073741824, 2147483647, 1073741824)"
+                    ]
+                },
+                "body": "        result = run_range_bitwise_and(solution_class, left, right)\n        assert_range_bitwise_and(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "left = 5\nright = 7",
+    "playground_execution": "result = run_range_bitwise_and(Solution, left, right)",
+    "playground_assertion": "assert_range_bitwise_and(result, 4)"
+}

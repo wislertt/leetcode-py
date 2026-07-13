@@ -1,0 +1,93 @@
+{
+    "problem_name": "combinations",
+    "solution_class_name": "Solution",
+    "problem_number": "77",
+    "problem_title": "Combinations",
+    "difficulty": "Medium",
+    "topics": "Backtracking",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given two integers `n` and `k`, return *all possible combinations of* `k` *numbers chosen from the range* `[1, n]`.\n\nYou may return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4, k = 2\nOutput: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]\n```\n**Explanation:** There are 4 choose 2 = 6 total combinations.\nNote that combinations are unordered, i.e., `[1,2]` and `[2,1]` are considered to be the same combination."
+            },
+            {
+                "content": "```\nInput: n = 1, k = 1\nOutput: [[1]]\n```\n**Explanation:** There is 1 choose 1 = 1 total combination."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 20\n- 1 <= k <= n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "combine",
+    "helpers_run_signature": "(solution_class: type, n: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.combine(n, k)",
+    "helpers_assert_name": "combine",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert sorted([tuple(p) for p in result]) == sorted([tuple(p) for p in expected])\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_combine, run_combine\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestCombinations",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "combine",
+                "signature": "(self, n: int, k: int) -> list[list[int]]",
+                "body": "        # TODO: Implement combine\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_combine, assert_combine\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nk = 2\nexpected = [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]",
+    "playground_run": "result = run_combine(Solution, n, k)\nresult",
+    "playground_assert": "assert_combine(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_combine",
+                "signature": "(self, solution_class, n: int, k: int, expected: list[list[int]])",
+                "parametrize": "solution_class, n, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 4, 2, [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]])",
+                        "(Solution, 1, 1, [[1]])",
+                        "(Solution, 2, 1, [[1], [2]])",
+                        "(Solution, 3, 3, [[1, 2, 3]])",
+                        "(Solution, 5, 1, [[1], [2], [3], [4], [5]])",
+                        "(Solution, 3, 2, [[1, 2], [1, 3], [2, 3]])",
+                        "(Solution, 4, 1, [[1], [2], [3], [4]])",
+                        "(Solution, 4, 3, [[1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]])",
+                        "(Solution, 4, 4, [[1, 2, 3, 4]])",
+                        "(Solution, 5, 5, [[1, 2, 3, 4, 5]])",
+                        "(Solution, 5, 3, [[1, 2, 3], [1, 2, 4], [1, 2, 5], [1, 3, 4], [1, 3, 5], [1, 4, 5], [2, 3, 4], [2, 3, 5], [2, 4, 5], [3, 4, 5]])",
+                        "(Solution, 2, 2, [[1, 2]])",
+                        "(Solution, 6, 2, [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [2, 3], [2, 4], [2, 5], [2, 6], [3, 4], [3, 5], [3, 6], [4, 5], [4, 6], [5, 6]])",
+                        "(Solution, 5, 4, [[1, 2, 3, 4], [1, 2, 3, 5], [1, 2, 4, 5], [1, 3, 4, 5], [2, 3, 4, 5]])",
+                        "(Solution, 3, 1, [[1], [2], [3]])"
+                    ]
+                },
+                "body": "        result = run_combine(solution_class, n, k)\n        assert_combine(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "n = 4\nk = 2",
+    "playground_execution": "result = run_combine(Solution, n, k)",
+    "playground_assertion": "assert_combine(result, [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]])"
+}

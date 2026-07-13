@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, Math, Two Pointers
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 202](https://leetcode.com/problems/happy-number/description/)
 

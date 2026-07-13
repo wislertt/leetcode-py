@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Stack, Tree, Depth-First Search, Binary Tree
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode-250
 
 **LeetCode:** [Problem 145](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)
 

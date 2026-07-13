@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Heap (Priority Queue)
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 1046](https://leetcode.com/problems/last-stone-weight/description/)
 

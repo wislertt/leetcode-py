@@ -1,0 +1,93 @@
+{
+    "problem_name": "longest_happy_string",
+    "solution_class_name": "Solution",
+    "problem_number": "1405",
+    "problem_title": "Longest Happy String",
+    "difficulty": "Medium",
+    "topics": "String, Greedy, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "A string `s` is called **happy** if it satisfies the following conditions:\n\n- `s` only contains the letters `'a'`, `'b'`, and `'c'`.\n- `s` does not contain any of `\"aaa\"`, `\"bbb\"`, or `\"ccc\"` as a substring.\n- `s` contains **at most** `a` occurrences of the letter `'a'`.\n- `s` contains **at most** `b` occurrences of the letter `'b'`.\n- `s` contains **at most** `c` occurrences of the letter `'c'`.\n\nGiven three integers `a`, `b`, and `c`, return *the **longest possible happy** string*. If there are multiple longest happy strings, return *any of them*. If there is no such string, return *the empty string* `\"\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: a = 1, b = 1, c = 7\nOutput: \"ccaccbcc\"\nExplanation: \"ccbccacc\" would also be a correct answer.\n```"
+            },
+            {
+                "content": "```\nInput: a = 7, b = 1, c = 0\nOutput: \"aabaa\"\nExplanation: It is the only correct answer in this case.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= a, b, c <= 100`\n- `a + b + c > 0`",
+    "readme_additional": "",
+    "helpers_imports": "import heapq",
+    "helpers_content": "def _build_max_happy(a: int, b: int, c: int) -> str:\n    # Reference greedy: always place the most abundant legal char.\n    # Produces a max-length happy string (length is deterministic).\n    heap: list[tuple[int, str]] = []\n    for ch, count in ((\"a\", a), (\"b\", b), (\"c\", c)):\n        if count > 0:\n            heapq.heappush(heap, (-count, ch))\n    res: list[str] = []\n    while heap:\n        neg_cnt, ch = heapq.heappop(heap)\n        if len(res) >= 2 and res[-1] == res[-2] == ch:\n            if not heap:\n                break\n            neg2, ch2 = heapq.heappop(heap)\n            res.append(ch2)\n            if neg2 + 1 < 0:\n                heapq.heappush(heap, (neg2 + 1, ch2))\n            heapq.heappush(heap, (neg_cnt, ch))\n        else:\n            res.append(ch)\n            if neg_cnt + 1 < 0:\n                heapq.heappush(heap, (neg_cnt + 1, ch))\n    return \"\".join(res)",
+    "helpers_run_name": "longest_happy_string",
+    "helpers_run_signature": "(solution_class: type, a: int, b: int, c: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_happy_string(a, b, c)",
+    "helpers_assert_name": "longest_happy_string",
+    "helpers_assert_signature": "(result: str, a: int, b: int, c: int) -> bool",
+    "helpers_assert_body": "    # Any valid answer is accepted; verify happiness + maximality.\n    assert set(result) <= {\"a\", \"b\", \"c\"}\n    assert \"aaa\" not in result and \"bbb\" not in result and \"ccc\" not in result\n    assert result.count(\"a\") <= a\n    assert result.count(\"b\") <= b\n    assert result.count(\"c\") <= c\n    assert len(result) == len(_build_max_happy(a, b, c))\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_happy_string, run_longest_happy_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestHappyString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_happy_string",
+                "signature": "(self, a: int, b: int, c: int) -> str",
+                "body": "        # TODO: Implement longest_happy_string\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_happy_string",
+                "signature": "(self, a: int, b: int, c: int)",
+                "parametrize": "a, b, c",
+                "test_cases": {
+                    "list": [
+                        "(1, 1, 7)",
+                        "(7, 1, 0)",
+                        "(1, 1, 1)",
+                        "(0, 0, 7)",
+                        "(2, 2, 2)",
+                        "(0, 0, 1)",
+                        "(3, 3, 3)",
+                        "(100, 0, 0)",
+                        "(0, 5, 3)",
+                        "(1, 0, 0)",
+                        "(2, 0, 0)",
+                        "(4, 4, 0)",
+                        "(5, 5, 0)",
+                        "(10, 1, 0)",
+                        "(3, 3, 1)",
+                        "(0, 1, 1)",
+                        "(1, 2, 3)",
+                        "(0, 100, 100)"
+                    ]
+                },
+                "body": "        result = run_longest_happy_string(Solution, a, b, c)\n        assert_longest_happy_string(result, a, b, c)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_happy_string, assert_longest_happy_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = 1\nb = 1\nc = 7",
+    "playground_run": "result = run_longest_happy_string(Solution, a, b, c)\nresult",
+    "playground_assert": "assert_longest_happy_string(result, a, b, c)"
+}

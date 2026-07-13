@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort
-**Tags:** blind-75, grind, grind-75, neetcode-150
+**Tags:** blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 269](https://leetcode.com/problems/alien-dictionary/description/)
 

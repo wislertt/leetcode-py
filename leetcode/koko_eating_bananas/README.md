@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 875](https://leetcode.com/problems/koko-eating-bananas/description/)
 

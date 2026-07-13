@@ -1,0 +1,94 @@
+{
+    "problem_name": "insert_delete_getrandom_o1",
+    "solution_class_name": "RandomizedSet",
+    "problem_number": "380",
+    "problem_title": "Insert Delete GetRandom O(1)",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Design",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Implement the `RandomizedSet` class:\n\n- `RandomizedSet()` Initializes the `RandomizedSet` object.\n- `bool insert(int val)` Inserts an item `val` into the set if not present. Returns `true` if the item was not present, `false` otherwise.\n- `bool remove(int val)` Removes an item `val` from the set if present. Returns `true` if the item was present, `false` otherwise.\n- `int getRandom()` Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the **same probability** of being returned.\n\nYou must implement the functions of the class such that each function works in **average** `O(1)` time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"RandomizedSet\", \"insert\", \"remove\", \"insert\", \"getRandom\", \"remove\", \"insert\", \"getRandom\"]\n[[], [1], [2], [2], [], [1], [2], []]\n\nOutput\n[null, true, false, true, 2, true, false, 2]\n\nExplanation\nRandomizedSet randomizedSet = new RandomizedSet();\nrandomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.\nrandomizedSet.remove(2); // Returns false as 2 does not exist in the set.\nrandomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].\nrandomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.\nrandomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].\nrandomizedSet.insert(2); // 2 was already in the set, so return false.\nrandomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `-2^31 <= val <= 2^31 - 1`\n- At most `2 * 10^5` calls will be made to `insert`, `remove`, and `getRandom`.\n- There will be **at least one** element in the data structure when `getRandom` is called.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "randomized_set_operations",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    obj: Any = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'RandomizedSet':\n            obj = solution_class()\n            results.append(None)\n        elif op == 'insert' and obj is not None:\n            results.append(obj.insert(inputs[i][0]))\n        elif op == 'remove' and obj is not None:\n            results.append(obj.remove(inputs[i][0]))\n        elif op == 'getRandom' and obj is not None:\n            results.append(obj.get_random())\n    return results",
+    "helpers_assert_name": "randomized_set_operations",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import random",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_randomized_set_operations, run_randomized_set_operations\nfrom .solution import RandomizedSet",
+    "test_content": "",
+    "test_class_name": "TestInsertDeleteGetRandomO1",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize RandomizedSet\n        pass"
+            },
+            {
+                "name": "insert",
+                "signature": "(self, val: int) -> bool",
+                "body": "        # TODO: Implement insert\n        return False"
+            },
+            {
+                "name": "remove",
+                "signature": "(self, val: int) -> bool",
+                "body": "        # TODO: Implement remove\n        return False"
+            },
+            {
+                "name": "get_random",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement get_random\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_randomized_set",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['RandomizedSet', 'insert', 'getRandom'], [[], [5], []], [None, True, 5])",
+                        "(['RandomizedSet', 'insert', 'insert', 'remove', 'getRandom'], [[], [1], [2], [1], []], [None, True, True, True, 2])",
+                        "(['RandomizedSet', 'insert', 'insert', 'insert', 'remove', 'remove', 'getRandom'], [[], [1], [2], [3], [1], [2], []], [None, True, True, True, True, True, 3])",
+                        "(['RandomizedSet', 'insert', 'insert', 'getRandom'], [[], [7], [7], []], [None, True, False, 7])",
+                        "(['RandomizedSet', 'remove', 'insert', 'getRandom'], [[], [9], [9], []], [None, False, True, 9])",
+                        "(['RandomizedSet', 'insert', 'remove', 'insert', 'getRandom'], [[], [4], [4], [4], []], [None, True, True, True, 4])",
+                        "(['RandomizedSet', 'insert', 'insert', 'insert', 'insert', 'remove', 'remove', 'remove', 'getRandom'], [[], [10], [20], [30], [40], [10], [20], [30], []], [None, True, True, True, True, True, True, True, 40])",
+                        "(['RandomizedSet', 'insert', 'remove', 'insert', 'remove', 'insert', 'getRandom'], [[], [1], [1], [2], [2], [3], []], [None, True, True, True, True, True, 3])",
+                        "(['RandomizedSet', 'insert', 'getRandom'], [[], [-5], []], [None, True, -5])",
+                        "(['RandomizedSet', 'insert', 'insert', 'remove', 'remove', 'insert', 'getRandom'], [[], [1], [2], [1], [2], [8], []], [None, True, True, True, True, True, 8])",
+                        "(['RandomizedSet', 'insert', 'getRandom'], [[], [2147483647], []], [None, True, 2147483647])",
+                        "(['RandomizedSet', 'insert', 'insert', 'insert', 'remove', 'remove', 'getRandom'], [[], [100], [200], [300], [200], [300], []], [None, True, True, True, True, True, 100])",
+                        "(['RandomizedSet', 'insert', 'insert', 'remove', 'insert', 'remove', 'getRandom'], [[], [3], [5], [3], [6], [5], []], [None, True, True, True, True, True, 6])",
+                        "(['RandomizedSet', 'insert', 'insert', 'insert', 'remove', 'remove', 'remove', 'insert', 'getRandom'], [[], [1], [2], [3], [1], [2], [3], [9], []], [None, True, True, True, True, True, True, True, 9])",
+                        "(['RandomizedSet', 'insert', 'remove', 'remove', 'insert', 'getRandom'], [[], [2], [2], [5], [5], []], [None, True, True, False, True, 5])"
+                    ]
+                },
+                "body": "        result = run_randomized_set_operations(RandomizedSet, operations, inputs)\n        assert_randomized_set_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_randomized_set_operations, assert_randomized_set_operations\nfrom solution import RandomizedSet",
+    "playground_setup": "# Example test case\noperations = ['RandomizedSet', 'insert', 'getRandom']\ninputs = [[], [5], []]\nexpected = [None, True, 5]",
+    "playground_run": "result = run_randomized_set_operations(RandomizedSet, operations, inputs)\nresult",
+    "playground_assert": "assert_randomized_set_operations(result, expected)"
+}

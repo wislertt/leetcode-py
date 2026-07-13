@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 130](https://leetcode.com/problems/surrounded-regions/description/)
 

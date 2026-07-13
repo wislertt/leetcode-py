@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Binary Search, Design
-**Tags:** grind, grind-75, neetcode-150
+**Tags:** grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 981](https://leetcode.com/problems/time-based-key-value-store/description/)
 

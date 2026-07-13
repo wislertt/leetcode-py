@@ -1,0 +1,82 @@
+{
+    "problem_name": "construct_quad_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "427",
+    "problem_title": "Construct Quad Tree",
+    "difficulty": "Medium",
+    "topics": "Array, Divide and Conquer, Tree, Matrix",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a `n * n` matrix `grid` of `0's` and `1's` only. We want to represent `grid` with a Quad-Tree.\n\nReturn _the root of the Quad-Tree representing `grid`_.\n\nA Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:\n\n- `val`: True if the node represents a grid of 1's or False if the node represents a grid of 0's. Notice that you can assign the `val` to True or False when `isLeaf` is False, and both are accepted in the answer.\n- `isLeaf`: True if the node is a leaf node on the tree or False if the node has four children.\n\n```\nclass Node {\n    public boolean val;\n    public boolean isLeaf;\n    public Node topLeft;\n    public Node topRight;\n    public Node bottomLeft;\n    public Node bottomRight;\n}\n```\n\nWe can construct a Quad-Tree from a two-dimensional area using the following steps:\n\n1. If the current grid has the same value (i.e all `1's` or all `0's`) set `isLeaf` True and set `val` to the value of the grid and set the four children to Null and stop.\n2. If the current grid has different values, set `isLeaf` to False and set `val` to any value and divide the current grid into four sub-grids as shown in the photo.\n3. Recurse for each of the children with the proper sub-grid.\n\n**Quad-Tree format:** The output represents the serialized format of a Quad-Tree using level order traversal, where `null` signifies a path terminator where no node exists below. The node is represented as a list `[isLeaf, val]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/02/11/grid1.png)\n\n```\nInput: grid = [[0,1],[1,0]]\nOutput: [[0,1],[1,0],[1,1],[1,1],[1,0]]\nExplanation: The root is not a leaf. Its four children (top-left, top-right, bottom-left, bottom-right) are leaves.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/02/12/e2mat.png)\n\n```\nInput: grid = [[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]]\nOutput: [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length == grid[i].length\n- n == 2^x where 0 <= x <= 6",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import Node",
+    "helpers_content": "def _serialize_quad_tree(node: Node | None) -> list[list[int]]:\n    \"\"\"Preorder serialization: each node as [isLeaf, val].\"\"\"\n    if node is None:\n        return []\n    result: list[list[int]] = [[int(node.isLeaf), int(node.val)]]\n    if not node.isLeaf:\n        result.extend(_serialize_quad_tree(node.topLeft))\n        result.extend(_serialize_quad_tree(node.topRight))\n        result.extend(_serialize_quad_tree(node.bottomLeft))\n        result.extend(_serialize_quad_tree(node.bottomRight))\n    return result",
+    "helpers_run_name": "construct",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    root = implementation.construct(grid)\n    return _serialize_quad_tree(root)",
+    "helpers_assert_name": "construct",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "# ruff: noqa: N803\nclass Node:\n    def __init__(\n        self,\n        val: bool,\n        isLeaf: bool,\n        topLeft: Node | None = None,\n        topRight: Node | None = None,\n        bottomLeft: Node | None = None,\n        bottomRight: Node | None = None,\n    ) -> None:\n        self.val = val\n        self.isLeaf = isLeaf\n        self.topLeft = topLeft\n        self.topRight = topRight\n        self.bottomLeft = bottomLeft\n        self.bottomRight = bottomRight\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_construct, run_construct\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructQuadTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "construct",
+                "signature": "(self, grid: list[list[int]]) -> Node",
+                "body": "        # TODO: Implement construct\n        return Node(True, True)"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_construct",
+                "signature": "(self, grid: list[list[int]], expected: list[list[int]])",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1],[1,0]], [[0,1],[1,0],[1,1],[1,1],[1,0]])",
+                        "([[1]], [[1,1]])",
+                        "([[0]], [[1,0]])",
+                        "([[1,1],[1,1]], [[1,1]])",
+                        "([[0,0],[0,0]], [[1,0]])",
+                        "([[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]], [[1,1]])",
+                        "([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], [[1,0]])",
+                        "([[1,0],[0,1]], [[0,1],[1,1],[1,0],[1,0],[1,1]])",
+                        "([[1,1,0,0],[1,1,0,0],[0,0,0,0],[0,0,0,0]], [[0,1],[1,1],[1,0],[1,0],[1,0]])",
+                        "([[1,1,0,0],[1,1,0,0],[0,0,1,0],[0,0,0,1]], [[0,1],[1,1],[1,0],[1,0],[0,1],[1,1],[1,0],[1,0],[1,1]])",
+                        "([[1,0,1,0],[0,1,0,1],[1,0,1,0],[0,1,0,1]], [[0,1],[0,1],[1,1],[1,0],[1,0],[1,1],[0,1],[1,1],[1,0],[1,0],[1,1],[0,1],[1,1],[1,0],[1,0],[1,1],[0,1],[1,1],[1,0],[1,0],[1,1]])",
+                        "([[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0],[1,1,1,1,0,0,0,0]], [[0,1],[1,1],[0,1],[1,0],[1,0],[1,1],[1,1],[1,1],[1,0]])",
+                        "([[1,1],[1,0]], [[0,1],[1,1],[1,1],[1,1],[1,0]])",
+                        "([[1,1],[0,1]], [[0,1],[1,1],[1,1],[1,0],[1,1]])",
+                        "([[0,1,1,0],[1,0,0,1],[1,0,0,1],[0,1,1,0]], [[0,1],[0,1],[1,0],[1,1],[1,1],[1,0],[0,1],[1,1],[1,0],[1,0],[1,1],[0,1],[1,1],[1,0],[1,0],[1,1],[0,1],[1,0],[1,1],[1,1],[1,0]])"
+                    ]
+                },
+                "body": "        result = run_construct(Solution, grid)\n        assert_construct(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_construct, assert_construct\nfrom solution import Node, Solution",
+    "playground_setup": "# Example test case (each node serialized as [isLeaf, val])\ngrid = [[0, 1], [1, 0]]\nexpected = [[0, 1], [1, 0], [1, 1], [1, 1], [1, 0]]",
+    "playground_run": "result = run_construct(Solution, grid)\nresult",
+    "playground_assert": "assert_construct(result, expected)"
+}

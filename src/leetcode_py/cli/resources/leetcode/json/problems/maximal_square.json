@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximal_square",
+    "solution_class_name": "Solution",
+    "problem_number": "221",
+    "problem_title": "Maximal Square",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Given an `m x n` binary `matrix` filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/26/max1grid.jpg)\n\n```\nInput: matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]\nOutput: 4\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/11/26/max2grid.jpg)\n\n```\nInput: matrix = [[\"0\",\"1\"],[\"1\",\"0\"]]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: matrix = [[\"0\"]]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 300\n- matrix[i][j] is '0' or '1'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximal_square",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[str]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximal_square(matrix)",
+    "helpers_assert_name": "maximal_square",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximal_square, run_maximal_square\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximalSquare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximal_square",
+                "signature": "(self, matrix: list[list[str]]) -> int",
+                "body": "        # TODO: Implement maximal_square\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximal_square",
+                "signature": "(self, matrix: list[list[str]], expected: int)",
+                "parametrize": "matrix, expected",
+                "test_cases": {
+                    "list": [
+                        "([['1', '0', '1', '0', '0'], ['1', '0', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '0', '0', '1', '0']], 4)",
+                        "([['0', '1'], ['1', '0']], 1)",
+                        "([['0']], 0)",
+                        "([['1']], 1)",
+                        "([['1', '1'], ['1', '1']], 4)",
+                        "([['1', '1', '1'], ['1', '1', '1'], ['1', '1', '1']], 9)",
+                        "([['1', '0', '1'], ['1', '1', '1'], ['1', '1', '1']], 4)",
+                        "([['0', '0'], ['0', '0']], 0)",
+                        "([['1', '1'], ['1', '0']], 1)",
+                        "([['1', '1'], ['0', '1']], 1)",
+                        "([['1', '1', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '1', '1', '1', '1']], 25)",
+                        "([['1', '1', '1', '1'], ['1', '1', '1', '1'], ['1', '1', '1', '1']], 9)",
+                        "([['0', '1', '1'], ['1', '1', '1'], ['1', '1', '1']], 4)",
+                        "([['1', '1', '1', '0', '0'], ['1', '1', '1', '1', '1'], ['1', '1', '1', '1', '1']], 9)",
+                        "([['0', '1']], 1)"
+                    ]
+                },
+                "body": "        result = run_maximal_square(Solution, matrix)\n        assert_maximal_square(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximal_square, assert_maximal_square\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [['1', '0', '1', '0', '0'], ['1', '0', '1', '1', '1'], ['1', '1', '1', '1', '1'], ['1', '0', '0', '1', '0']]\nexpected = 4",
+    "playground_run": "result = run_maximal_square(Solution, matrix)\nresult",
+    "playground_assert": "assert_maximal_square(result, expected)"
+}

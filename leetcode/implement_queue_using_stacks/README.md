@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Stack, Design, Queue
-**Tags:** grind, grind-75
+**Tags:** grind, grind-75, neetcode-250
 
 **LeetCode:** [Problem 232](https://leetcode.com/problems/implement-queue-using-stacks/description/)
 

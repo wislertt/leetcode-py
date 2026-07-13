@@ -1,0 +1,91 @@
+{
+    "problem_name": "binary_tree_zigzag_level_order_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "103",
+    "problem_title": "Binary Tree Zigzag Level Order Traversal",
+    "difficulty": "Medium",
+    "topics": "Tree, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return *the zigzag level order traversal of its nodes' values*. (i.e., from left to right, then right to left for the next level and alternate between).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: [[3],[20,9],[15,7]]\n```"
+            },
+            {
+                "content": "```\nInput: root = [1]\nOutput: [[1]]\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 2000].\n- -100 <= Node.val <= 100",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "zigzag_level_order",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.zigzag_level_order(root)",
+    "helpers_assert_name": "zigzag_level_order",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_zigzag_level_order, run_zigzag_level_order\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeZigzagLevelOrderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "zigzag_level_order",
+                "signature": "(self, root: TreeNode[int] | None) -> list[list[int]]",
+                "body": "        # TODO: Implement zigzag_level_order\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_zigzag_level_order",
+                "signature": "(self, root_list: list[int | None], expected: list[list[int]])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], [[3], [20, 9], [15, 7]])",
+                        "([1], [[1]])",
+                        "([], [])",
+                        "([1, 2, 3], [[1], [3, 2]])",
+                        "([1, 2, 3, 4, 5, 6, 7], [[1], [3, 2], [4, 5, 6, 7]])",
+                        "([1, 2, 3, 4, None, None, 5], [[1], [3, 2], [4, 5]])",
+                        "([1, None, 2, None, 3], [[1], [2], [3]])",
+                        "([1, 2], [[1], [2]])",
+                        "([1, None, 2], [[1], [2]])",
+                        "([1, 2, 2, 3, 4, 4, 3], [[1], [2, 2], [3, 4, 4, 3]])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [[1], [3, 2], [4, 5, 6, 7], [15, 14, 13, 12, 11, 10, 9, 8]])",
+                        "([3, 9, 20, None, None, 15, 7, 1, 2], [[3], [20, 9], [15, 7], [2, 1]])",
+                        "([0, 2, 4, 1, None, 3, -1, 5, 1, None, 6, None, 8], [[0], [4, 2], [1, 3, -1], [8, 6, 1, 5]])"
+                    ]
+                },
+                "body": "        result = run_zigzag_level_order(Solution, root_list)\n        assert_zigzag_level_order(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_zigzag_level_order, assert_zigzag_level_order\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3, 9, 20, None, None, 15, 7]\nexpected = [[3], [20, 9], [15, 7]]",
+    "playground_run": "result = run_zigzag_level_order(Solution, root_list)\nresult",
+    "playground_assert": "assert_zigzag_level_order(result, expected)"
+}

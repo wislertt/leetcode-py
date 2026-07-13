@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 1448](https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/)
 

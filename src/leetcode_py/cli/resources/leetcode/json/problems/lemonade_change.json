@@ -1,0 +1,83 @@
+{
+    "problem_name": "lemonade_change",
+    "solution_class_name": "Solution",
+    "problem_number": "860",
+    "problem_title": "Lemonade Change",
+    "difficulty": "Easy",
+    "topics": "Array, Greedy",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "At a lemonade stand, each lemonade costs `$5`. Customers are standing in a queue to buy from you and order one at a time (in the order specified by `bills`). Each customer will only buy one lemonade and pay with either a `$5`, `$10`, or `$20` bill. You must provide the correct change to each customer so that the net transaction is that the customer pays `$5`.\n\nNote that you do not have any change in hand at first.\n\nGiven an integer array `bills` where `bills[i]` is the bill the `ith` customer pays, return `true` if you can provide every customer with the correct change, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: bills = [5,5,5,10,20]\nOutput: true\nExplanation:\nFrom the first 3 customers, we collect three $5 bills in order.\nFrom the fourth customer, we collect a $10 bill and give back a $5.\nFrom the fifth customer, we give a $10 bill and a $5 bill.\nSince all customers got correct change, we output true.\n```"
+            },
+            {
+                "content": "```\nInput: bills = [5,5,10,10,20]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= bills.length <= 10^5\n- `bills[i]` is either `5`, `10`, or `20`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "lemonade_change",
+    "helpers_run_signature": "(solution_class: type, bills: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.lemonade_change(bills)",
+    "helpers_assert_name": "lemonade_change",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_lemonade_change, run_lemonade_change\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LemonadeChange",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "lemonade_change",
+                "signature": "(self, bills: list[int]) -> bool",
+                "body": "        # TODO: Implement lemonade_change\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_lemonade_change",
+                "signature": "(self, bills: list[int], expected: bool)",
+                "parametrize": "bills, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 5, 5, 10, 20], True)",
+                        "([5, 5, 10, 10, 20], False)",
+                        "([5, 5, 5, 5, 5], True)",
+                        "([10], False)",
+                        "([5], True)",
+                        "([5, 10], True)",
+                        "([5, 10, 5], True)",
+                        "([5, 20], False)",
+                        "([5, 5, 5, 5, 20, 20], False)",
+                        "([5, 5, 10, 20], True)",
+                        "([5, 5, 5, 10, 5, 20], True)",
+                        "([20], False)",
+                        "([5, 5, 5, 5, 5, 5, 10, 10, 10, 20, 20, 20], True)",
+                        "([5, 10, 5, 20], True)",
+                        "([5, 5, 10, 20, 5, 5, 10, 20], True)",
+                        "([5, 5, 5, 5, 5, 10, 5, 10, 20, 20], True)"
+                    ]
+                },
+                "body": "        result = run_lemonade_change(Solution, bills)\n        assert_lemonade_change(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_lemonade_change, assert_lemonade_change\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbills = [5, 5, 5, 10, 20]\nexpected = True",
+    "playground_run": "result = run_lemonade_change(Solution, bills)\nresult",
+    "playground_assert": "assert_lemonade_change(result, expected)"
+}

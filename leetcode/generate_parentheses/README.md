@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming, Backtracking
-**Tags:** neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 22](https://leetcode.com/problems/generate-parentheses/description/)
 

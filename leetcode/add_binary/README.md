@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math, String, Bit Manipulation, Simulation
-**Tags:** grind, grind-75
+**Tags:** grind, grind-75, neetcode-250
 
 **LeetCode:** [Problem 67](https://leetcode.com/problems/add-binary/description/)
 

@@ -1,0 +1,85 @@
+{
+    "problem_name": "backspace_string_compare",
+    "solution_class_name": "Solution",
+    "problem_number": "844",
+    "problem_title": "Backspace String Compare",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String, Stack, Simulation",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given two strings `s` and `t`, return `true` if they are equal when both are typed into empty text editors. `'#'` means a backspace character.\n\nNote that after backspacing an empty text, the text will continue empty.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ab#c\", t = \"ad#c\"\nOutput: true\nExplanation: Both s and t become \"ac\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ab##\", t = \"c#d#\"\nOutput: true\nExplanation: Both s and t become \"\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"a#c\", t = \"b\"\nOutput: false\nExplanation: s becomes \"c\" while t becomes \"b\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length, t.length <= 200\n- `s` and `t` only contain lowercase letters and `'#'` characters.",
+    "readme_additional": "**Follow up:** Can you solve it in `O(n)` time and `O(1)` space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "backspace_compare",
+    "helpers_run_signature": "(solution_class: type, s: str, t: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.backspace_compare(s, t)",
+    "helpers_assert_name": "backspace_compare",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_backspace_compare, run_backspace_compare\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BackspaceStringCompare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "backspace_compare",
+                "signature": "(self, s: str, t: str) -> bool",
+                "body": "        # TODO: Implement backspace_compare\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_backspace_compare",
+                "signature": "(self, s: str, t: str, expected: bool)",
+                "parametrize": "s, t, expected",
+                "test_cases": {
+                    "list": [
+                        "('ab#c', 'ad#c', True)",
+                        "('ab##', 'c#d#', True)",
+                        "('a#c', 'b', False)",
+                        "('a', 'a', True)",
+                        "('#', '#', True)",
+                        "('a#', '', True)",
+                        "('a#b', 'b', True)",
+                        "('###', '', True)",
+                        "('a##c', '#a#c', True)",
+                        "('xywrrmp', 'xywrrmu#p', True)",
+                        "('c##vnvr', 'vnvr', True)",
+                        "('nzp#o', 'b#nzp#o', True)",
+                        "('abc', 'abc', True)",
+                        "('a', 'b', False)",
+                        "('ab#c', 'ad#d', False)"
+                    ]
+                },
+                "body": "        result = run_backspace_compare(Solution, s, t)\n        assert_backspace_compare(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_backspace_compare, assert_backspace_compare\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ab#c'\nt = 'ad#c'\nexpected = True",
+    "playground_run": "result = run_backspace_compare(Solution, s, t)\nresult",
+    "playground_assert": "assert_backspace_compare(result, expected)"
+}

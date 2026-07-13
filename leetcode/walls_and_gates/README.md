@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Breadth-First Search, Matrix
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 286](https://leetcode.com/problems/walls-and-gates/description/)
 

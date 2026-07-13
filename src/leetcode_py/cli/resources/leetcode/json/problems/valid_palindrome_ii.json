@@ -1,0 +1,84 @@
+{
+    "problem_name": "valid_palindrome_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "680",
+    "problem_title": "Valid Palindrome II",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String, Greedy",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a string `s`, return `true` if the `s` can be palindrome after deleting **at most one** character from it.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"aba\"\nOutput: true\n```" },
+            {
+                "content": "```\nInput: s = \"abca\"\nOutput: true\nExplanation: You could delete the character 'c'.\n```"
+            },
+            { "content": "```\nInput: s = \"abc\"\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- `s` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_palindrome",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_palindrome(s)",
+    "helpers_assert_name": "valid_palindrome",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_palindrome, run_valid_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidPalindromeII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_palindrome",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement valid_palindrome\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_palindrome",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aba', True)",
+                        "('abca', True)",
+                        "('abc', False)",
+                        "('a', True)",
+                        "('aa', True)",
+                        "('ab', True)",
+                        "('aba', True)",
+                        "('abccbda', True)",
+                        "('deeee', True)",
+                        "('racecar', True)",
+                        "('raceecar', True)",
+                        "('abcdef', False)",
+                        "('abcdedcba', True)",
+                        "('abcdxcba', True)",
+                        "('abcddcba', True)",
+                        "('lcupuucul', False)",
+                        "('lcupuupcul', False)",
+                        "('aguokepatgbnvfqmgmlcupuufxoohdfpgjfmysgvhmvffcnqxjjxqncffomhvoxymzgpfdohooxfuupuculmgmqfvnbgtapekouga', False)"
+                    ]
+                },
+                "body": "        result = run_valid_palindrome(Solution, s)\n        assert_valid_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_palindrome, assert_valid_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abca'\nexpected = True",
+    "playground_run": "result = run_valid_palindrome(Solution, s)\nresult",
+    "playground_assert": "assert_valid_palindrome(result, expected)"
+}

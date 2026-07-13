@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 153](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
 

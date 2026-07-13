@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Backtracking
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 40](https://leetcode.com/problems/combination-sum-ii/description/)
 

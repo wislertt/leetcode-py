@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math, Bit Manipulation
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 371](https://leetcode.com/problems/sum-of-two-integers/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Depth-First Search, Breadth-First Search, Union Find, Matrix
-**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 200](https://leetcode.com/problems/number-of-islands/description/)
 

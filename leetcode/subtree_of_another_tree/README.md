@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, String Matching, Binary Tree, Hash Function
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 572](https://leetcode.com/problems/subtree-of-another-tree/description/)
 

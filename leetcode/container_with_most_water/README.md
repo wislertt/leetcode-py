@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Greedy
-**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 11](https://leetcode.com/problems/container-with-most-water/description/)
 

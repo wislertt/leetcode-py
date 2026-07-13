@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Backtracking
-**Tags:** neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 51](https://leetcode.com/problems/n-queens/description/)
 

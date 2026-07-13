@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Stack
-**Tags:** grind, grind-75, neetcode-150
+**Tags:** grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 150](https://leetcode.com/problems/evaluate-reverse-polish-notation/description/)
 

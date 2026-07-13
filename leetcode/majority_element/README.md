@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Hash Table, Divide and Conquer, Sorting, Counting
-**Tags:** algo-master-75, grind, grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode-250
 
 **LeetCode:** [Problem 169](https://leetcode.com/problems/majority-element/description/)
 

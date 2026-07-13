@@ -1,0 +1,88 @@
+{
+    "problem_name": "path_with_minimum_effort",
+    "solution_class_name": "Solution",
+    "problem_number": "1631",
+    "problem_title": "Path With Minimum Effort",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Depth-First Search, Breadth-First Search, Union Find, Heap (Priority Queue), Matrix",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are a hiker preparing for an upcoming hike. You are given `heights`, a 2D array of size `rows x columns`, where `heights[row][col]` represents the height of cell `(row, col)`. You are situated in the top-left cell, `(0, 0)`, and you hope to travel to the bottom-right cell, `(rows-1, columns-1)` (i.e., **0-indexed**). You can move **up**, **down**, **left**, or **right**, and you wish to find a route that requires the minimum **effort**.\n\nA route's **effort** is the **maximum absolute difference** in heights between two consecutive cells of the route.\n\nReturn *the minimum **effort** required to travel from the top-left cell to the bottom-right cell.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/04/ex1.png)\n\n```\nInput: heights = [[1,2,2],[3,8,2],[5,3,5]]\nOutput: 2\nExplanation: The route of [1,3,5,3,5] has a maximum absolute difference of 2 in consecutive cells.\nThis is better than the route of [1,2,2,2,5], where the maximum absolute difference is 3.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/04/ex2.png)\n\n```\nInput: heights = [[1,2,3],[3,8,4],[5,3,5]]\nOutput: 1\nExplanation: The route of [1,2,3,4,5] has a maximum absolute difference of 1 in consecutive cells, which is better than route [1,3,5,3,5].\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2020/10/04/ex3.png)\n\n```\nInput: heights = [[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]]\nOutput: 0\nExplanation: This route does not require any effort.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- rows == heights.length\n- columns == heights[i].length\n- 1 <= rows, columns <= 100\n- 1 <= heights[i][j] <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_effort_path",
+    "helpers_run_signature": "(solution_class: type, heights: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_effort_path(heights)",
+    "helpers_assert_name": "minimum_effort_path",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_effort_path, run_minimum_effort_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestPathWithMinimumEffort",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_effort_path",
+                "signature": "(self, heights: list[list[int]]) -> int",
+                "body": "        # TODO: Implement minimum_effort_path\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_minimum_effort_path, assert_minimum_effort_path\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheights = [[1,2,2],[3,8,2],[5,3,5]]\nexpected = 2",
+    "playground_run": "result = run_minimum_effort_path(Solution, heights)\nresult",
+    "playground_assert": "assert_minimum_effort_path(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_effort_path",
+                "signature": "(self, heights: list[list[int]], expected: int)",
+                "parametrize": "heights, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,2,2],[3,8,2],[5,3,5]], 2)",
+                        "([[1,2,3],[3,8,4],[5,3,5]], 1)",
+                        "([[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]], 0)",
+                        "([[1]], 0)",
+                        "([[5]], 0)",
+                        "([[1,2,3]], 1)",
+                        "([[1],[2],[3]], 1)",
+                        "([[1,10],[2,3]], 1)",
+                        "([[1,2,3],[4,5,6]], 3)",
+                        "([[10,8,10],[8,0,8]], 2)",
+                        "([[1,100],[2,3]], 1)",
+                        "([[1,2],[4,3]], 1)",
+                        "([[1,2,2],[3,8,2]], 1)",
+                        "([[1,2,1],[6,1,1],[1,1,1]], 1)",
+                        "([[1,1,1],[10,10,1]], 0)"
+                    ]
+                },
+                "body": "        result = run_minimum_effort_path(Solution, heights)\n        assert_minimum_effort_path(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "heights = [[1,2,2],[3,8,2],[5,3,5]]",
+    "playground_execution": "result = run_minimum_effort_path(Solution, heights)",
+    "playground_assertion": "assert_minimum_effort_path(result, 2)"
+}

@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Dynamic Programming
-**Tags:** blind-75, grind, grind-75, neetcode-150
+**Tags:** blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 

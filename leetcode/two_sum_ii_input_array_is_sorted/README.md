@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Binary Search
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
 

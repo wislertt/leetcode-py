@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Depth-First Search, Design, Trie
-**Tags:** blind-75, grind, neetcode-150
+**Tags:** blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 211](https://leetcode.com/problems/design-add-and-search-words-data-structure/description/)
 

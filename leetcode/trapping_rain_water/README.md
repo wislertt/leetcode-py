@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack
-**Tags:** algo-master-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 42](https://leetcode.com/problems/trapping-rain-water/description/)
 

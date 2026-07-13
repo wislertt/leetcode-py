@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** String, Dynamic Programming
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 72](https://leetcode.com/problems/edit-distance/description/)
 

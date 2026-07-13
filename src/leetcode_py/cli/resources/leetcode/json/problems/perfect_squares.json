@@ -1,0 +1,84 @@
+{
+    "problem_name": "perfect_squares",
+    "solution_class_name": "Solution",
+    "problem_number": "279",
+    "problem_title": "Perfect Squares",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Breadth-First Search",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given an integer `n`, return *the least number of perfect square numbers that sum to* `n`.\n\nA **perfect square** is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, `1`, `4`, `9`, and `16` are perfect squares while `3` and `11` are not.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 12\nOutput: 3\nExplanation: 12 = 4 + 4 + 4.\n```"
+            },
+            {
+                "content": "```\nInput: n = 13\nOutput: 2\nExplanation: 13 = 4 + 9.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_squares",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_squares(n)",
+    "helpers_assert_name": "num_squares",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_squares, run_num_squares\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PerfectSquares",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_squares",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement num_squares\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_squares",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(12, 3)",
+                        "(13, 2)",
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 1)",
+                        "(5, 2)",
+                        "(9, 1)",
+                        "(16, 1)",
+                        "(18, 2)",
+                        "(25, 1)",
+                        "(50, 2)",
+                        "(7, 4)",
+                        "(100, 1)",
+                        "(43, 3)",
+                        "(8, 2)",
+                        "(11, 3)"
+                    ]
+                },
+                "body": "        result = run_num_squares(Solution, n)\n        assert_num_squares(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_squares, assert_num_squares\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 12\nexpected = 3",
+    "playground_run": "result = run_num_squares(Solution, n)\nresult",
+    "playground_assert": "assert_num_squares(result, expected)"
+}

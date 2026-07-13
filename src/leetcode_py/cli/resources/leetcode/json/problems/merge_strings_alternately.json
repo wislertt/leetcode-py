@@ -1,0 +1,86 @@
+{
+    "problem_name": "merge_strings_alternately",
+    "solution_class_name": "Solution",
+    "problem_number": "1768",
+    "problem_title": "Merge Strings Alternately",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given two strings `word1` and `word2`. Merge the strings by adding letters in alternating order, starting with `word1`. If a string is longer than the other, append the additional letters onto the end of the merged string.\n\nReturn *the merged string.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: word1 = \"abc\", word2 = \"pqr\"\nOutput: \"apbqcr\"\nExplanation: The merged string will be merged as so:\nword1:  a   b   c\nword2:    p   q   r\nmerged: a p b q c r\n```"
+            },
+            {
+                "content": "```\nInput: word1 = \"ab\", word2 = \"pqrs\"\nOutput: \"apbqrs\"\nExplanation: Notice that as word2 is longer, \"rs\" is appended to the end.\nword1:  a   b\nword2:    p   q   r   s\nmerged: a p b q   r   s\n```"
+            },
+            {
+                "content": "```\nInput: word1 = \"abcd\", word2 = \"pq\"\nOutput: \"apbqcd\"\nExplanation: Notice that as word1 is longer, \"cd\" is appended to the end.\nword1:  a   b   c   d\nword2:    p   q\nmerged: a p b q c   d\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= word1.length, word2.length <= 100\n- word1 and word2 consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "merge_alternately",
+    "helpers_run_signature": "(solution_class: type, word1: str, word2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.merge_alternately(word1, word2)",
+    "helpers_assert_name": "merge_alternately",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_merge_alternately, run_merge_alternately\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestMergeStringsAlternately",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "merge_alternately",
+                "signature": "(self, word1: str, word2: str) -> str",
+                "body": "        # TODO: Implement merge_alternately\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_merge_alternately, assert_merge_alternately\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword1 = 'abc'\nword2 = 'pqr'\nexpected = 'apbqcr'",
+    "playground_run": "result = run_merge_alternately(Solution, word1, word2)\nresult",
+    "playground_assert": "assert_merge_alternately(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_merge_alternately",
+                "signature": "(self, word1: str, word2: str, expected: str)",
+                "parametrize": "word1, word2, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', 'pqr', 'apbqcr')",
+                        "('ab', 'pqrs', 'apbqrs')",
+                        "('abcd', 'pq', 'apbqcd')",
+                        "('a', 'b', 'ab')",
+                        "('a', 'xyz', 'axyz')",
+                        "('abc', 'd', 'adbc')",
+                        "('hello', 'world', 'hweolrllod')",
+                        "('x', '', 'x')",
+                        "('', 'y', 'y')",
+                        "('ab', 'cd', 'acbd')",
+                        "('abc', 'defg', 'adbecfg')",
+                        "('abcde', 'fg', 'afbgcde')",
+                        "('12', '345', '13245')"
+                    ]
+                },
+                "body": "        result = run_merge_alternately(Solution, word1, word2)\n        assert_merge_alternately(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "word1 = 'abc'\nword2 = 'pqr'",
+    "playground_execution": "result = run_merge_alternately(Solution, word1, word2)",
+    "playground_assertion": "assert_merge_alternately(result, 'apbqcr')"
+}

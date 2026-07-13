@@ -251,4 +251,7 @@ problems_list = [
     (7, "Reverse Integer"),
     (201, "Bitwise AND of Numbers Range"),
     (3133, "Minimum Array End"),
+    (528, "Random Pick with Weight"),
+    (632, "Smallest Range Covering Elements from K Lists"),
+    (815, "Bus Routes"),
 ]

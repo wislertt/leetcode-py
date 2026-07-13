@@ -1,0 +1,77 @@
+{
+    "problem_name": "reorganize_string",
+    "solution_class_name": "Solution",
+    "problem_number": "767",
+    "problem_title": "Reorganize String",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a string `s`, rearrange the characters of `s` so that any two adjacent characters are not the same.\n\nReturn _any possible rearrangement of_ `s` _or return_ `\"\"` _if not possible_.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"aab\"\nOutput: \"aba\"\n```" },
+            { "content": "```\nInput: s = \"aaab\"\nOutput: \"\"\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 500\n- `s` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "from collections import Counter",
+    "helpers_content": "",
+    "helpers_run_name": "reorganize_string",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reorganize_string(s)",
+    "helpers_assert_name": "reorganize_string",
+    "helpers_assert_signature": "(result: str, s: str) -> bool",
+    "helpers_assert_body": "    # If no valid rearrangement exists, the only correct answer is the empty string.\n    max_count = max(Counter(s).values())\n    if max_count > (len(s) + 1) // 2:\n        assert result == \"\"\n    else:\n        assert sorted(result) == sorted(s)\n        assert all(result[i] != result[i + 1] for i in range(len(result) - 1))\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reorganize_string, run_reorganize_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReorganizeString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reorganize_string",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reorganize_string\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reorganize_string",
+                "signature": "(self, s: str)",
+                "parametrize": "s",
+                "test_cases": {
+                    "list": [
+                        "'aab'",
+                        "'aaab'",
+                        "'a'",
+                        "'aa'",
+                        "'ab'",
+                        "'aabb'",
+                        "'aabbcc'",
+                        "'aaaabbbb'",
+                        "'aaabbb'",
+                        "'vvvlo'",
+                        "'aaaaabbbb'",
+                        "'aaaaaab'",
+                        "'x'",
+                        "'abcabc'"
+                    ]
+                },
+                "body": "        result = run_reorganize_string(Solution, s)\n        assert_reorganize_string(result, s)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reorganize_string, assert_reorganize_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aab'\nexpected = 'aba'",
+    "playground_run": "result = run_reorganize_string(Solution, s)\nresult",
+    "playground_assert": "assert_reorganize_string(result, s)"
+}

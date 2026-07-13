@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Union Find
-**Tags:** algo-master-75, blind-75, grind, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 128](https://leetcode.com/problems/longest-consecutive-sequence/description/)
 

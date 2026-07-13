@@ -1,0 +1,90 @@
+{
+    "problem_name": "insert_greatest_common_divisors_in_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "2807",
+    "problem_title": "Insert Greatest Common Divisors in Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Math, Number Theory",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given the `head` of a linked list, return the list after inserting the **greatest common divisor** of each pair of adjacent nodes.\n\nBetween every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them.\n\nThe **greatest common divisor** of two numbers is the largest positive integer that evenly divides both numbers.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/07/18/ex1_copy.png)\n\n```\nInput: head = [18,6,10,3]\nOutput: [18,6,6,2,10,1,3]\nExplanation:\n- We insert the greatest common divisor of 18 and 6 = 6 between the 1st and the 2nd nodes.\n- We insert the greatest common divisor of 6 and 10 = 2 between the 2nd and the 3rd nodes.\n- We insert the greatest common divisor of 10 and 3 = 1 between the 3rd and the 4th nodes.\nThere are no more adjacent nodes, so we return the linked list.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2023/07/18/ex2_copy1.png)\n\n```\nInput: head = [7]\nOutput: [7]\nExplanation: The 1st diagram denotes the initial linked list and the 2nd diagram denotes the linked list after inserting the new nodes.\nThere are no pairs of adjacent nodes, so we return the initial linked list.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range `[1, 5000]`.\n- `1 <= Node.val <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "insert_greatest_common_divisors",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.insert_greatest_common_divisors(head)",
+    "helpers_assert_name": "insert_greatest_common_divisors",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_list: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_insert_greatest_common_divisors, run_insert_greatest_common_divisors\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "InsertGreatestCommonDivisorsInLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "insert_greatest_common_divisors",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement insert_greatest_common_divisors\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_insert_greatest_common_divisors",
+                "signature": "(self, head_list: list[int], expected_list: list[int])",
+                "parametrize": "head_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([18, 6, 10, 3], [18, 6, 6, 2, 10, 1, 3])",
+                        "([7], [7])",
+                        "([1], [1])",
+                        "([2, 2], [2, 2, 2])",
+                        "([4, 6], [4, 2, 6])",
+                        "([3, 5], [3, 1, 5])",
+                        "([12, 8], [12, 4, 8])",
+                        "([100, 10], [100, 10, 10])",
+                        "([1, 2, 3], [1, 1, 2, 1, 3])",
+                        "([2, 4, 8], [2, 2, 4, 4, 8])",
+                        "([6, 9, 12], [6, 3, 9, 3, 12])",
+                        "([10, 10, 10], [10, 10, 10, 10, 10])",
+                        "([1000, 500], [1000, 500, 500])",
+                        "([7, 13], [7, 1, 13])",
+                        "([5, 25, 125], [5, 5, 25, 25, 125])"
+                    ]
+                },
+                "body": "        result = run_insert_greatest_common_divisors(Solution, head_list)\n        assert_insert_greatest_common_divisors(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_insert_greatest_common_divisors, assert_insert_greatest_common_divisors\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [18, 6, 10, 3]\nexpected_list = [18, 6, 6, 2, 10, 1, 3]",
+    "playground_run": "result = run_insert_greatest_common_divisors(Solution, head_list)\nresult",
+    "playground_assert": "assert_insert_greatest_common_divisors(result, expected_list)"
+}

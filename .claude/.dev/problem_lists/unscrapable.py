@@ -8,9 +8,13 @@ UNSCRAPABLE_PROBLEMS = [
     (253, "meeting-rooms-ii"),
     (261, "graph-valid-tree"),
     (271, "encode-and-decode-strings"),
+    (285, "inorder-successor-in-bst"),  # TODO
+    (362, "design-hit-counter"),  # TODO
+    (759, "employee-free-time"),  # TODO
     (286, "walls-and-gates"),
     (323, "number-of-connected-components-in-an-undirected-graph"),
     (437, "path-sum-iii"),  # Causing issues with next_problem.py - prefer manual creation
+    (1197, "minimum-knight-moves"),  # TODO
     # Add more unscrapable problems as discovered
 ]
 

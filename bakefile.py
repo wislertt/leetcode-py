@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "longest_valid_parentheses"
+    problem: str = "minimum_knight_moves"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

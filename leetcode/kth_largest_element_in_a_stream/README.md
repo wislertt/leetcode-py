@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Tree, Design, Binary Search Tree, Heap (Priority Queue), Binary Tree, Data Stream
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 703](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)
 

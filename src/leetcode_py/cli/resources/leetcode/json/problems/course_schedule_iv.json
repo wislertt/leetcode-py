@@ -1,0 +1,94 @@
+{
+    "problem_name": "course_schedule_iv",
+    "solution_class_name": "Solution",
+    "problem_number": "1462",
+    "problem_title": "Course Schedule IV",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Graph Theory, Topological Sort",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "There are a total of `numCourses` courses you have to take, labeled from `0` to `numCourses - 1`. You are given an array `prerequisites` where `prerequisites[i] = [ai, bi]` indicates that you **must** take course `ai` first if you want to take course `bi`.\n\n- For example, the pair `[0, 1]` indicates that you have to take course `0` before you can take course `1`.\n\nPrerequisites can also be **indirect**. If course `a` is a prerequisite of course `b`, and course `b` is a prerequisite of course `c`, then course `a` is a prerequisite of course `c`.\n\nYou are also given an array `queries` where `queries[j] = [uj, vj]`. For the `jth` query, you should answer whether course `uj` is a prerequisite of course `vj` or not.\n\nReturn *a boolean array* `answer`, *where* `answer[j]` *is the answer to the* `jth` *query*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/01/courses4-1-graph.jpg)\n\n```\nInput: numCourses = 2, prerequisites = [[1,0]], queries = [[0,1],[1,0]]\nOutput: [false,true]\nExplanation: The pair [1, 0] indicates that you have to take course 1 before you can take course 0.\nCourse 0 is not a prerequisite of course 1, but the opposite is true.\n```"
+            },
+            {
+                "content": "```\nInput: numCourses = 2, prerequisites = [], queries = [[1,0],[0,1]]\nOutput: [false,false]\nExplanation: There are no prerequisites, and each course is independent.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/05/01/courses4-3-graph.jpg)\n\n```\nInput: numCourses = 3, prerequisites = [[1,2],[1,0],[2,0]], queries = [[1,0],[1,2]]\nOutput: [true,true]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= numCourses <= 100`\n- `0 <= prerequisites.length <= (numCourses * (numCourses - 1) / 2)`\n- `prerequisites[i].length == 2`\n- `0 <= ai, bi <= numCourses - 1`\n- `ai != bi`\n- All the pairs `[ai, bi]` are **unique**.\n- The prerequisites graph has no cycles.\n- `1 <= queries.length <= 10^4`\n- `0 <= ui, vi <= numCourses - 1`\n- `ui != vi`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_if_prerequisite",
+    "helpers_run_signature": "(solution_class: type, num_courses: int, prerequisites: list[list[int]], queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_if_prerequisite(num_courses, prerequisites, queries)",
+    "helpers_assert_name": "check_if_prerequisite",
+    "helpers_assert_signature": "(result: list[bool], expected: list[bool]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_if_prerequisite, run_check_if_prerequisite\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CourseScheduleIV",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_if_prerequisite",
+                "signature": "(self, num_courses: int, prerequisites: list[list[int]], queries: list[list[int]]) -> list[bool]",
+                "body": "        # TODO: Implement check_if_prerequisite\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_if_prerequisite",
+                "signature": "(self, num_courses: int, prerequisites: list[list[int]], queries: list[list[int]], expected: list[bool])",
+                "parametrize": "num_courses, prerequisites, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, [[1,0]], [[0,1],[1,0]], [False, True])",
+                        "(2, [], [[1,0],[0,1]], [False, False])",
+                        "(3, [[1,2],[1,0],[2,0]], [[1,0],[1,2]], [True, True])",
+                        "(4, [[0,1],[1,2],[2,3]], [[0,3],[3,0],[0,2],[1,3]], [True, False, True, True])",
+                        "(3, [[0,1],[0,2]], [[1,2],[0,1],[0,2],[2,1]], [False, True, True, False])",
+                        "(5, [[3,4],[2,3],[1,2],[0,1]], [[0,4],[4,0],[0,2]], [True, False, True])",
+                        "(2, [[0,1]], [[0,1]], [True])",
+                        "(2, [[0,1]], [[1,0]], [False])",
+                        "(4, [], [[0,1],[2,3]], [False, False])",
+                        "(3, [[0,1],[1,2]], [[0,2],[2,0],[1,2]], [True, False, True])",
+                        "(4, [[0,1],[0,2],[1,3],[2,3]], [[0,3],[1,2],[2,1],[3,0]], [True, False, False, False])",
+                        "(5, [[0,1],[1,2],[2,3],[3,4]], [[0,4],[1,4],[4,0]], [True, True, False])",
+                        "(6, [[0,1],[1,2],[2,3],[3,4],[4,5]], [[0,5],[5,0],[2,4]], [True, False, True])",
+                        "(3, [[0,1],[2,1]], [[0,2],[2,0]], [False, False])",
+                        "(4, [[0,1],[0,2],[1,3],[2,3],[0,3]], [[0,3],[3,1]], [True, False])",
+                        "(2, [[1,0]], [[1,0],[0,1]], [True, False])"
+                    ]
+                },
+                "body": "        result = run_check_if_prerequisite(Solution, num_courses, prerequisites, queries)\n        assert_check_if_prerequisite(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_if_prerequisite, assert_check_if_prerequisite\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum_courses = 2\nprerequisites = [[1, 0]]\nqueries = [[0, 1], [1, 0]]\nexpected = [False, True]",
+    "playground_run": "result = run_check_if_prerequisite(Solution, num_courses, prerequisites, queries)\nresult",
+    "playground_assert": "assert_check_if_prerequisite(result, expected)"
+}

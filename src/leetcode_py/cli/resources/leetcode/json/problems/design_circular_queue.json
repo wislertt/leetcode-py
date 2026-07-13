@@ -1,0 +1,109 @@
+{
+    "problem_name": "design_circular_queue",
+    "solution_class_name": "MyCircularQueue",
+    "problem_number": "622",
+    "problem_title": "Design Circular Queue",
+    "difficulty": "Medium",
+    "topics": "Array, Linked List, Design, Queue",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Design your implementation of the circular queue. The circular queue is a linear data structure that operates on the FIFO (First In First Out) principle, with the last position connected back to the first to form a circle (a \"Ring Buffer\").\n\nImplement the `MyCircularQueue` class:\n\n- `MyCircularQueue(k)` Initializes the object with the queue size `k`.\n- `int Front()` Gets the front item; returns `-1` if empty.\n- `int Rear()` Gets the last item; returns `-1` if empty.\n- `boolean enQueue(int value)` Inserts an element. Returns `true` if successful.\n- `boolean deQueue()` Deletes an element from the queue. Returns `true` if successful.\n- `boolean isEmpty()` Checks whether the queue is empty.\n- `boolean isFull()` Checks whether the queue is full.\n\nYou must solve the problem without using the built-in queue data structure.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyCircularQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"enQueue\", \"Rear\", \"isFull\", \"deQueue\", \"enQueue\", \"Rear\"]\n[[3], [1], [2], [3], [4], [], [], [], [4], []]\nOutput\n[null, true, true, true, false, 3, true, true, true, 4]\n\nExplanation\nmyCircularQueue = MyCircularQueue(3);\nmyCircularQueue.enQueue(1);  // True\nmyCircularQueue.enQueue(2);  // True\nmyCircularQueue.enQueue(3);  // True\nmyCircularQueue.enQueue(4);  // False, queue is full\nmyCircularQueue.Rear();      // 3\nmyCircularQueue.isFull();    // True\nmyCircularQueue.deQueue();   // True\nmyCircularQueue.enQueue(4);  // True\nmyCircularQueue.Rear();      // 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= k <= 1000\n- 0 <= value <= 1000\n- At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and isFull.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "circular_queue",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    queue = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyCircularQueue':\n            queue = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'en_queue' and queue is not None:\n            results.append(queue.en_queue(inputs[i][0]))\n        elif op == 'de_queue' and queue is not None:\n            results.append(queue.de_queue())\n        elif op == 'front' and queue is not None:\n            results.append(queue.front())\n        elif op == 'rear' and queue is not None:\n            results.append(queue.rear())\n        elif op == 'is_empty' and queue is not None:\n            results.append(queue.is_empty())\n        elif op == 'is_full' and queue is not None:\n            results.append(queue.is_full())\n    return results, queue",
+    "helpers_assert_name": "circular_queue",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_circular_queue, run_circular_queue\nfrom .solution import MyCircularQueue",
+    "test_content": "",
+    "test_class_name": "DesignCircularQueue",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, k: int) -> None",
+                "body": "        # TODO: Initialize circular queue\n        pass"
+            },
+            {
+                "name": "en_queue",
+                "signature": "(self, value: int) -> bool",
+                "body": "        # TODO: Implement en_queue\n        return False"
+            },
+            {
+                "name": "de_queue",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement de_queue\n        return False"
+            },
+            {
+                "name": "front",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement front\n        return -1"
+            },
+            {
+                "name": "rear",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement rear\n        return -1"
+            },
+            {
+                "name": "is_empty",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement is_empty\n        return True"
+            },
+            {
+                "name": "is_full",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement is_full\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_circular_queue",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue', 'en_queue', 'rear', 'is_full', 'de_queue', 'en_queue', 'rear'], [[3], [1], [2], [3], [4], [], [], [], [4], []], [None, True, True, True, False, 3, True, True, True, 4])",
+                        "(['MyCircularQueue', 'front', 'rear', 'is_empty', 'de_queue'], [[3], [], [], [], []], [None, -1, -1, True, False])",
+                        "(['MyCircularQueue', 'en_queue', 'front', 'rear', 'is_empty', 'is_full'], [[1], [5], [], [], [], []], [None, True, 5, 5, False, True])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue', 'is_full', 'de_queue', 'en_queue', 'front', 'rear'], [[3], [1], [2], [3], [], [], [4], [], []], [None, True, True, True, True, True, True, 2, 4])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue'], [[2], [1], [2], [3]], [None, True, True, False])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'de_queue', 'de_queue', 'is_empty', 'front'], [[2], [1], [2], [], [], [], []], [None, True, True, True, True, True, -1])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'de_queue', 'en_queue', 'de_queue', 'en_queue', 'en_queue', 'front', 'rear', 'is_full'], [[3], [1], [2], [], [3], [], [4], [5], [], [], []], [None, True, True, True, True, True, True, True, 3, 5, True])",
+                        "(['MyCircularQueue', 'en_queue', 'rear', 'en_queue', 'rear', 'en_queue', 'rear'], [[3], [10], [], [20], [], [30], []], [None, True, 10, True, 20, True, 30])",
+                        "(['MyCircularQueue', 'en_queue', 'de_queue', 'is_empty', 'en_queue', 'front', 'rear'], [[5], [1], [], [], [2], [], []], [None, True, True, True, True, 2, 2])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue', 'de_queue', 'front', 'de_queue', 'front'], [[3], [1], [2], [3], [], [], [], []], [None, True, True, True, True, 2, True, 3])",
+                        "(['MyCircularQueue', 'en_queue', 'is_full', 'en_queue', 'de_queue', 'is_empty', 'en_queue', 'front'], [[1], [1], [], [2], [], [], [3], []], [None, True, True, False, True, True, True, 3])",
+                        "(['MyCircularQueue', 'en_queue', 'front', 'rear'], [[2], [0], [], []], [None, True, 0, 0])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'is_empty', 'is_full'], [[10], [1], [2], [], []], [None, True, True, False, False])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'de_queue', 'de_queue', 'en_queue', 'en_queue', 'front', 'rear', 'is_full'], [[2], [1], [2], [], [], [3], [4], [], [], []], [None, True, True, True, True, True, True, 3, 4, True])",
+                        "(['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue', 'de_queue', 'de_queue', 'de_queue', 'en_queue', 'front', 'rear', 'is_empty', 'is_full'], [[3], [1], [2], [3], [], [], [], [4], [], [], [], []], [None, True, True, True, True, True, True, True, 4, 4, False, False])"
+                    ]
+                },
+                "body": "        result, _ = run_circular_queue(MyCircularQueue, operations, inputs)\n        assert_circular_queue(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_circular_queue, assert_circular_queue\nfrom solution import MyCircularQueue",
+    "playground_setup": "# Example test case\noperations = ['MyCircularQueue', 'en_queue', 'en_queue', 'en_queue', 'en_queue', 'rear', 'is_full', 'de_queue', 'en_queue', 'rear']\ninputs = [[3], [1], [2], [3], [4], [], [], [], [4], []]\nexpected = [None, True, True, True, False, 3, True, True, True, 4]",
+    "playground_run": "result, queue = run_circular_queue(MyCircularQueue, operations, inputs)\nprint(result)\nqueue",
+    "playground_assert": "assert_circular_queue(result, expected)"
+}

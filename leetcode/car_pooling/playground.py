@@ -1,0 +1,30 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.19.4
+#   kernelspec:
+#     display_name: leetcode-py-py3.13
+#     language: python
+#     name: python3
+# ---
+
+# %%
+from helpers import assert_car_pooling, run_car_pooling
+from solution import Solution
+
+# %%
+# Example test case
+trips = [[2, 1, 5], [3, 3, 7]]
+capacity = 4
+expected = False
+
+# %%
+result = run_car_pooling(Solution, trips, capacity)
+result
+
+# %%
+assert_car_pooling(result, expected)

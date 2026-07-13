@@ -1,3 +1,7 @@
+const types = ["feat", "fix", "chore", "docs", "style", "refactor", "perf", "test", "build", "ci"]
+
+const types_glob = `{${types.join(",")}}`
+
 module.exports = {
     branches: ["main"],
     plugins: [
@@ -6,17 +10,20 @@ module.exports = {
             {
                 preset: "angular",
                 releaseRules: [
-                    { breaking: true, release: "major" },
-                    { type: "feat", release: "minor" },
-                    { type: "fix", release: "patch" },
-                    { type: "chore", release: "patch" },
-                    { type: "docs", release: "patch" },
-                    { type: "style", release: "patch" },
-                    { type: "refactor", release: "patch" },
-                    { type: "perf", release: "patch" },
-                    { type: "test", release: "patch" },
-                    { type: "build", release: "patch" },
-                    { type: "ci", release: "patch" },
+                    {
+                        type: types_glob,
+                        subject: "*\\[MAJOR\\]*",
+                        release: "major",
+                    },
+                    {
+                        type: types_glob,
+                        subject: "*\\[MINOR\\]*",
+                        release: "minor",
+                    },
+                    {
+                        type: types_glob,
+                        release: "patch",
+                    },
                 ],
             },
         ],

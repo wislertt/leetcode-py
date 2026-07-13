@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, Binary Tree
-**Tags:** grind, grind-75, neetcode-150
+**Tags:** grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 543](https://leetcode.com/problems/diameter-of-binary-tree/description/)
 

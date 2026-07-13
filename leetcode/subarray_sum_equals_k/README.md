@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Prefix Sum
-**Tags:** algo-master-75
+**Tags:** algo-master-75, grind, neetcode-250
 
 **LeetCode:** [Problem 560](https://leetcode.com/problems/subarray-sum-equals-k/description/)
 

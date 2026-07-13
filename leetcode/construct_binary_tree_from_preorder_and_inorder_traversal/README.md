@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Divide and Conquer, Tree, Binary Tree
-**Tags:** blind-75, grind, grind-75, neetcode-150
+**Tags:** blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 105](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/)
 

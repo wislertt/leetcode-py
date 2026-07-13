@@ -1,0 +1,85 @@
+{
+    "problem_name": "island_perimeter",
+    "solution_class_name": "Solution",
+    "problem_number": "463",
+    "problem_title": "Island Perimeter",
+    "difficulty": "Easy",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Matrix",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given `row x col` `grid` representing a map where `grid[i][j] = 1` represents land and `grid[i][j] = 0` represents water.\n\nGrid cells are connected **horizontally/vertically** (not diagonally). The `grid` is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells).\n\nThe island doesn't have \"lakes\", meaning the water inside isn't connected to the water around the island. One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100.\n\nDetermine the perimeter of the island.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/12/island.png)\n\n```\nInput: grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]\nOutput: 16\nExplanation: The perimeter is the 16 yellow stripes in the image above.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1]]\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0]]\nOutput: 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- row == grid.length\n- col == grid[i].length\n- 1 <= row, col <= 100\n- grid[i][j] is 0 or 1.\n- There is exactly one island in grid.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "island_perimeter",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.island_perimeter(grid)",
+    "helpers_assert_name": "island_perimeter",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_island_perimeter, run_island_perimeter\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IslandPerimeter",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "island_perimeter",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement island_perimeter\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_island_perimeter",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]], 16)",
+                        "([[1]], 4)",
+                        "([[1,0]], 4)",
+                        "([[0,1]], 4)",
+                        "([[1,1]], 6)",
+                        "([[1],[1]], 6)",
+                        "([[1,1],[1,1]], 8)",
+                        "([[1,0],[0,0]], 4)",
+                        "([[0,1,0],[1,1,1],[0,1,0]], 12)",
+                        "([[1,1,1]], 8)",
+                        "([[1],[1],[1]], 8)",
+                        "([[1,1,1],[1,1,1],[1,1,1]], 12)",
+                        "([[1,1,0],[0,1,1]], 10)",
+                        "([[1,1],[1,0]], 8)",
+                        "([[1,1,1],[0,1,0],[0,1,0]], 12)"
+                    ]
+                },
+                "body": "        result = run_island_perimeter(Solution, grid)\n        assert_island_perimeter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_island_perimeter, assert_island_perimeter\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]\nexpected = 16",
+    "playground_run": "result = run_island_perimeter(Solution, grid)\nresult",
+    "playground_assert": "assert_island_perimeter(result, expected)"
+}

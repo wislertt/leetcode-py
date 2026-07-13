@@ -1,0 +1,96 @@
+{
+    "problem_name": "stone_game_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "1406",
+    "problem_title": "Stone Game III",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Dynamic Programming, Game Theory",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Alice and Bob continue their games with piles of stones. There are several stones **arranged in a row**, and each stone has an associated value which is an integer given in the array `stoneValue`.\n\nAlice and Bob take turns, with Alice starting first. On each player's turn, that player can take `1`, `2`, or `3` stones from the **first** remaining stones in the row.\n\nThe score of each player is the sum of the values of the stones taken. The score of each player is `0` initially.\n\nThe objective of the game is to end with the highest score, and the winner is the player with the highest score and there could be a tie. The game continues until all the stones have been taken.\n\nAssume Alice and Bob **play optimally**.\n\nReturn `\"Alice\"` if Alice will win, `\"Bob\"` if Bob will win, or `\"Tie\"` if they will end the game with the same score.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: stoneValue = [1,2,3,7]\nOutput: \"Bob\"\nExplanation: Alice will always lose. Her best move will be to take three piles and the score become 6. Now the score of Bob is 7 and Bob wins.\n```"
+            },
+            {
+                "content": "```\nInput: stoneValue = [1,2,3,-9]\nOutput: \"Alice\"\nExplanation: Alice must choose all the three piles at the first move to win and leave Bob with negative score.\n```"
+            },
+            {
+                "content": "```\nInput: stoneValue = [1,2,3,6]\nOutput: \"Tie\"\nExplanation: Alice cannot win this game. She can end the game in a draw if she decided to choose all the first three piles, otherwise she will lose.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= stoneValue.length <= 5 * 10^4`\n- `-1000 <= stoneValue[i] <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "stone_game_iii",
+    "helpers_run_signature": "(solution_class: type, stone_value: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.stone_game_iii(stone_value)",
+    "helpers_assert_name": "stone_game_iii",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_stone_game_iii, run_stone_game_iii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StoneGameIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "stone_game_iii",
+                "signature": "(self, stone_value: list[int]) -> str",
+                "body": "        # TODO: Implement stone_game_iii\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_stone_game_iii",
+                "signature": "(self, stone_value: list[int], expected: str)",
+                "parametrize": "stone_value, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,7], 'Bob')",
+                        "([1,2,3,-9], 'Alice')",
+                        "([1,2,3,6], 'Tie')",
+                        "([1], 'Alice')",
+                        "([1,2,3], 'Alice')",
+                        "([-1], 'Bob')",
+                        "([-1,-2,-3], 'Tie')",
+                        "([0,0,0], 'Tie')",
+                        "([-1,0,1], 'Tie')",
+                        "([5], 'Alice')",
+                        "([-1,-1,-1], 'Bob')",
+                        "([2,2,2], 'Alice')",
+                        "([1,1,1,1,1,1], 'Tie')",
+                        "([1,1,1,1,1], 'Alice')",
+                        "([1,1], 'Alice')",
+                        "([10,-1,-1,-1], 'Alice')",
+                        "([3,3,3,3], 'Alice')",
+                        "([1,-1,1,-1,1,-1], 'Alice')"
+                    ]
+                },
+                "body": "        result = run_stone_game_iii(Solution, stone_value)\n        assert_stone_game_iii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_stone_game_iii, assert_stone_game_iii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstone_value = [1, 2, 3, 7]\nexpected = 'Bob'",
+    "playground_run": "result = run_stone_game_iii(Solution, stone_value)\nresult",
+    "playground_assert": "assert_stone_game_iii(result, expected)"
+}

@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Dynamic Programming, Tree, Depth-First Search, Binary Tree
-**Tags:** algo-master-75, blind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 124](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
 

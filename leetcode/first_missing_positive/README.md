@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Hash Table
-**Tags:** algo-master-75
+**Tags:** algo-master-75, grind, neetcode-250
 
 **LeetCode:** [Problem 41](https://leetcode.com/problems/first-missing-positive/description/)
 

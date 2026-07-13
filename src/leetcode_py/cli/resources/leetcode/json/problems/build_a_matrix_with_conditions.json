@@ -1,0 +1,85 @@
+{
+    "problem_name": "build_a_matrix_with_conditions",
+    "solution_class_name": "Solution",
+    "problem_number": "2392",
+    "problem_title": "Build a Matrix With Conditions",
+    "difficulty": "Hard",
+    "topics": "Array, Graph Theory, Topological Sort, Matrix",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given a **positive** integer `k`. You are also given:\n\n- a 2D integer array `rowConditions` of size `n` where `rowConditions[i] = [above_i, below_i]`, and\n- a 2D integer array `colConditions` of size `m` where `colConditions[i] = [left_i, right_i]`.\n\nThe two arrays contain integers from `1` to `k`.\n\nYou have to build a `k x k` matrix that contains each of the numbers from `1` to `k` **exactly once**. The remaining cells should have the value `0`.\n\nThe matrix should also satisfy the following conditions:\n\n- The number `above_i` should appear in a **row** that is strictly **above** the row at which the number `below_i` appears for all `i` from `0` to `n - 1`.\n- The number `left_i` should appear in a **column** that is strictly **left** of the column at which the number `right_i` appears for all `i` from `0` to `m - 1`.\n\nReturn ***any** matrix that satisfies the conditions*. If no answer exists, return an empty matrix.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/07/06/gridosdrawio.png)\n\n```\nInput: k = 3, rowConditions = [[1,2],[3,2]], colConditions = [[2,1],[3,2]]\nOutput: [[3,0,0],[0,0,1],[0,2,0]]\nExplanation: The diagram above shows a valid example of a matrix that satisfies all the conditions.\nThe row conditions are the following:\n- Number 1 is in row 1, and number 2 is in row 2, so 1 is above 2 in the matrix.\n- Number 3 is in row 0, and number 2 is in row 2, so 3 is above 2 in the matrix.\nThe column conditions are the following:\n- Number 2 is in column 1, and number 1 is in column 2, so 2 is left of 1 in the matrix.\n- Number 3 is in column 0, and number 2 is in column 1, so 3 is left of 2 in the matrix.\nNote that there may be multiple correct answers.\n```"
+            },
+            {
+                "content": "```\nInput: k = 3, rowConditions = [[1,2],[2,3],[3,1],[2,3]], colConditions = [[2,1]]\nOutput: []\nExplanation: From the first two conditions, 3 has to be below 1 but the third conditions needs 3 to be above 1 to be satisfied.\nNo matrix can satisfy all the conditions, so we return the empty matrix.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= k <= 400\n- 1 <= rowConditions.length, colConditions.length <= 10^4\n- rowConditions[i].length == colConditions[i].length == 2\n- 1 <= above_i, below_i, left_i, right_i <= k\n- above_i != below_i\n- left_i != right_i",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "build_matrix",
+    "helpers_run_signature": "(solution_class: type, k: int, row_conditions: list[list[int]], col_conditions: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.build_matrix(k, row_conditions, col_conditions)",
+    "helpers_assert_name": "build_matrix",
+    "helpers_assert_signature": "(result: list[list[int]], k: int, row_conditions: list[list[int]], col_conditions: list[list[int]], valid: bool) -> bool",
+    "helpers_assert_body": "    if not valid:\n        assert result == []\n        return True\n    assert len(result) == k\n    for row in result:\n        assert len(row) == k\n    positions = {}\n    seen = set()\n    for r in range(k):\n        for c in range(k):\n            value = result[r][c]\n            if value != 0:\n                assert 1 <= value <= k\n                assert value not in seen\n                seen.add(value)\n                positions[value] = (r, c)\n    assert len(seen) == k\n    for above, below in row_conditions:\n        assert positions[above][0] < positions[below][0]\n    for left, right in col_conditions:\n        assert positions[left][1] < positions[right][1]\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_build_matrix, run_build_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestBuildAMatrixWithConditions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "build_matrix",
+                "signature": "(self, k: int, row_conditions: list[list[int]], col_conditions: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement build_matrix\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_build_matrix, assert_build_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nk = 3\nrow_conditions = [[1,2],[3,2]]\ncol_conditions = [[2,1],[3,2]]\nvalid = True",
+    "playground_run": "result = run_build_matrix(Solution, k, row_conditions, col_conditions)\nresult",
+    "playground_assert": "assert_build_matrix(result, k, row_conditions, col_conditions, valid)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_build_matrix",
+                "signature": "(self, k: int, row_conditions: list[list[int]], col_conditions: list[list[int]], valid: bool)",
+                "parametrize": "k, row_conditions, col_conditions, valid",
+                "test_cases": {
+                    "list": [
+                        "(3, [[1,2],[3,2]], [[2,1],[3,2]], True)",
+                        "(3, [[1,2],[2,3],[3,1],[2,3]], [[2,1]], False)",
+                        "(2, [], [], True)",
+                        "(3, [[1,2],[2,3]], [], True)",
+                        "(3, [], [[1,2],[2,3]], True)",
+                        "(2, [[1,2],[2,1]], [], False)",
+                        "(2, [], [[1,2],[2,1]], False)",
+                        "(4, [[1,2],[3,4]], [[2,3]], True)",
+                        "(3, [[1,2],[2,3],[3,1]], [], False)",
+                        "(5, [], [], True)",
+                        "(4, [[1,2],[2,3],[3,4]], [[4,3],[3,2],[2,1]], True)",
+                        "(2, [[1,2]], [[1,2]], True)",
+                        "(3, [[1,2],[1,3],[2,3]], [[3,2]], True)",
+                        "(3, [[1,2]], [[2,1],[1,2]], False)",
+                        "(4, [[1,2],[3,4],[2,3]], [[4,1]], True)"
+                    ]
+                },
+                "body": "        result = run_build_matrix(Solution, k, row_conditions, col_conditions)\n        assert_build_matrix(result, k, row_conditions, col_conditions, valid)"
+            }
+        ]
+    },
+    "playground_test_case": "k = 3\nrow_conditions = [[1,2],[3,2]]\ncol_conditions = [[2,1],[3,2]]",
+    "playground_execution": "result = run_build_matrix(Solution, k, row_conditions, col_conditions)",
+    "playground_assertion": "assert_build_matrix(result, 3, [[1,2],[3,2]], [[2,1],[3,2]], True)"
+}

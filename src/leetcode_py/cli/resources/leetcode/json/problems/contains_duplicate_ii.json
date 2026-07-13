@@ -1,0 +1,85 @@
+{
+    "problem_name": "contains_duplicate_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "219",
+    "problem_title": "Contains Duplicate II",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Sliding Window",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given an integer array `nums` and an integer `k`, return `true` *if there are two **distinct indices** * `i` *and* `j` *in the array such that* `nums[i] == nums[j]` *and* `abs(i - j) <= k`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,1], k = 3\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,0,1,1], k = 1\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,1,2,3], k = 2\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- -10^9 <= nums[i] <= 10^9\n- 0 <= k <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "contains_nearby_duplicate",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.contains_nearby_duplicate(nums, k)",
+    "helpers_assert_name": "contains_nearby_duplicate",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_contains_nearby_duplicate, run_contains_nearby_duplicate\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ContainsDuplicateII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "contains_nearby_duplicate",
+                "signature": "(self, nums: list[int], k: int) -> bool",
+                "body": "        # TODO: Implement contains_nearby_duplicate\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_contains_nearby_duplicate",
+                "signature": "(self, nums: list[int], k: int, expected: bool)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,1], 3, True)",
+                        "([1,0,1,1], 1, True)",
+                        "([1,2,3,1,2,3], 2, False)",
+                        "([1], 1, False)",
+                        "([1,1], 0, False)",
+                        "([1,1], 1, True)",
+                        "([1,2,1], 2, True)",
+                        "([1,2,1], 1, False)",
+                        "([1,2,3,4,1], 3, False)",
+                        "([1,2,3,4,1], 4, True)",
+                        "([5,5,5], 1, True)",
+                        "([1,2,3,4,5], 3, False)",
+                        "([1,2,3,1,1], 2, True)",
+                        "([99,99], 0, False)",
+                        "([1,2,3,4,5,1], 5, True)"
+                    ]
+                },
+                "body": "        result = run_contains_nearby_duplicate(Solution, nums, k)\n        assert_contains_nearby_duplicate(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_contains_nearby_duplicate, assert_contains_nearby_duplicate\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1,2,3,1]\nk = 3\nexpected = True",
+    "playground_run": "result = run_contains_nearby_duplicate(Solution, nums, k)\nresult",
+    "playground_assert": "assert_contains_nearby_duplicate(result, expected)"
+}

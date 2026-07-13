@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Dynamic Programming, Depth-First Search, Breadth-First Search, Graph Theory, Topological Sort, Memoization, Matrix
-**Tags:** algo-master-75, neetcode-150
+**Tags:** algo-master-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 329](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/)
 

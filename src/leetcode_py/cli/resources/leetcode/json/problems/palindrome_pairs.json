@@ -1,0 +1,85 @@
+{
+    "problem_name": "palindrome_pairs",
+    "solution_class_name": "Solution",
+    "problem_number": "336",
+    "problem_title": "Palindrome Pairs",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, String, Trie",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "You are given a **0-indexed** array of **unique** strings `words`.\n\nA **palindrome pair** is a pair of integers `(i, j)` such that:\n\n- `0 <= i, j < words.length`,\n- `i != j`, and\n- `words[i] + words[j]` (the concatenation of the two strings) is a palindrome.\n\nReturn an array of all the palindrome pairs of `words`.\n\nYou must write an algorithm with `O(sum of words[i].length)` runtime complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"abcd\",\"dcba\",\"lls\",\"s\",\"sssll\"]\nOutput: [[0,1],[1,0],[3,2],[2,4]]\nExplanation: The palindromes are [\"abcddcba\",\"dcbaabcd\",\"slls\",\"llssssll\"]\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"bat\",\"tab\",\"cat\"]\nOutput: [[0,1],[1,0]]\nExplanation: The palindromes are [\"battab\",\"tabbat\"]\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"a\",\"\"]\nOutput: [[0,1],[1,0]]\nExplanation: The palindromes are [\"a\",\"a\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 5000\n- 0 <= words[i].length <= 300\n- `words[i]` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "palindrome_pairs",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.palindrome_pairs(words)",
+    "helpers_assert_name": "palindrome_pairs",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Pair order does not matter; sort outer list for comparison\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_palindrome_pairs, run_palindrome_pairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromePairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "palindrome_pairs",
+                "signature": "(self, words: list[str]) -> list[list[int]]",
+                "body": "        # TODO: Implement palindrome_pairs\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_palindrome_pairs",
+                "signature": "(self, words: list[str], expected: list[list[int]])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abcd', 'dcba', 'lls', 's', 'sssll'], [[0, 1], [1, 0], [3, 2], [2, 4]])",
+                        "(['bat', 'tab', 'cat'], [[0, 1], [1, 0]])",
+                        "(['a', ''], [[0, 1], [1, 0]])",
+                        "(['a', 'b', 'c'], [])",
+                        "(['abc', ''], [])",
+                        "(['ab', 'ba'], [[0, 1], [1, 0]])",
+                        "(['ab', ''], [])",
+                        "(['aba', ''], [[0, 1], [1, 0]])",
+                        "(['lls', 's'], [[1, 0]])",
+                        "(['abba', ''], [[0, 1], [1, 0]])",
+                        "(['abc', 'ab'], [])",
+                        "(['abc', 'cba'], [[0, 1], [1, 0]])",
+                        "(['ab', 'ba', 'cd', 'dc'], [[0, 1], [1, 0], [2, 3], [3, 2]])",
+                        "(['abcd', 'dcba', 'xyz', 'zyx'], [[0, 1], [1, 0], [2, 3], [3, 2]])",
+                        "(['ab', 'cba'], [[0, 1]])"
+                    ]
+                },
+                "body": "        result = run_palindrome_pairs(Solution, words)\n        assert_palindrome_pairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_palindrome_pairs, assert_palindrome_pairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['abcd', 'dcba', 'lls', 's', 'sssll']\nexpected = [[0, 1], [1, 0], [3, 2], [2, 4]]",
+    "playground_run": "result = run_palindrome_pairs(Solution, words)\nresult",
+    "playground_assert": "assert_palindrome_pairs(result, expected)"
+}

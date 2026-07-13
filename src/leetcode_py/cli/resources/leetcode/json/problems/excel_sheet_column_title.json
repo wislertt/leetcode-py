@@ -1,0 +1,99 @@
+{
+    "problem_name": "excel_sheet_column_title",
+    "solution_class_name": "Solution",
+    "problem_number": "168",
+    "problem_title": "Excel Sheet Column Title",
+    "difficulty": "Easy",
+    "topics": "Math, String",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given an integer `columnNumber`, return *its corresponding column title as it appears in an Excel sheet*.\n\nFor example:\n\n```\nA -> 1\nB -> 2\nC -> 3\n...\nZ -> 26\nAA -> 27\nAB -> 28\n...\n```",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: columnNumber = 1\nOutput: \"A\"\n```"
+            },
+            {
+                "content": "```\nInput: columnNumber = 28\nOutput: \"AB\"\n```"
+            },
+            {
+                "content": "```\nInput: columnNumber = 701\nOutput: \"ZY\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= columnNumber <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "convert_to_title",
+    "helpers_run_signature": "(solution_class: type, column_number: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.convert_to_title(column_number)",
+    "helpers_assert_name": "convert_to_title",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_convert_to_title, run_convert_to_title\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestExcelSheetColumnTitle",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "convert_to_title",
+                "signature": "(self, column_number: int) -> str",
+                "body": "        # TODO: Implement convert_to_title\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_convert_to_title, assert_convert_to_title\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncolumn_number = 28\nexpected = 'AB'",
+    "playground_run": "result = run_convert_to_title(Solution, column_number)\nresult",
+    "playground_assert": "assert_convert_to_title(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_convert_to_title",
+                "signature": "(self, solution_class, column_number: int, expected: str)",
+                "parametrize": "solution_class, column_number, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 1, 'A')",
+                        "(Solution, 2, 'B')",
+                        "(Solution, 26, 'Z')",
+                        "(Solution, 27, 'AA')",
+                        "(Solution, 28, 'AB')",
+                        "(Solution, 52, 'AZ')",
+                        "(Solution, 53, 'BA')",
+                        "(Solution, 701, 'ZY')",
+                        "(Solution, 702, 'ZZ')",
+                        "(Solution, 703, 'AAA')",
+                        "(Solution, 18278, 'ZZZ')",
+                        "(Solution, 18279, 'AAAA')",
+                        "(Solution, 26, 'Z')",
+                        "(Solution, 78, 'BZ')",
+                        "(Solution, 79, 'CA')",
+                        "(Solution, 676, 'YZ')",
+                        "(Solution, 677, 'ZA')",
+                        "(Solution, 2147483647, 'FXSHRXW')"
+                    ]
+                },
+                "body": "        result = run_convert_to_title(solution_class, column_number)\n        assert_convert_to_title(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "column_number = 28",
+    "playground_execution": "result = run_convert_to_title(Solution, column_number)",
+    "playground_assertion": "assert_convert_to_title(result, 'AB')"
+}

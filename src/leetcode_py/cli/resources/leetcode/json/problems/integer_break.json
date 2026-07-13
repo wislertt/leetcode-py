@@ -1,0 +1,82 @@
+{
+    "problem_name": "integer_break",
+    "solution_class_name": "Solution",
+    "problem_number": "343",
+    "problem_title": "Integer Break",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given an integer `n`, break it into the sum of `k` **positive integers**, where `k >= 2`, and maximize the product of those integers.\n\nReturn *the maximum product you can get*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: 1\nExplanation: 2 = 1 + 1, 1 * 1 = 1.\n```"
+            },
+            {
+                "content": "```\nInput: n = 10\nOutput: 36\nExplanation: 10 = 3 + 3 + 4, 3 * 3 * 4 = 36.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 58",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "integer_break",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.integer_break(n)",
+    "helpers_assert_name": "integer_break",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_integer_break, run_integer_break\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntegerBreak",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "integer_break",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement integer_break\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_integer_break",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 1)",
+                        "(3, 2)",
+                        "(4, 4)",
+                        "(5, 6)",
+                        "(6, 9)",
+                        "(7, 12)",
+                        "(8, 18)",
+                        "(9, 27)",
+                        "(10, 36)",
+                        "(11, 54)",
+                        "(12, 81)",
+                        "(13, 108)",
+                        "(14, 162)",
+                        "(15, 243)",
+                        "(58, 1549681956)"
+                    ]
+                },
+                "body": "        result = run_integer_break(Solution, n)\n        assert_integer_break(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_integer_break, assert_integer_break\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 10\nexpected = 36",
+    "playground_run": "result = run_integer_break(Solution, n)\nresult",
+    "playground_assert": "assert_integer_break(result, expected)"
+}

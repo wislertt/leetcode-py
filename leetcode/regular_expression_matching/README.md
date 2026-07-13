@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** String, Dynamic Programming, Recursion
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 10](https://leetcode.com/problems/regular-expression-matching/description/)
 

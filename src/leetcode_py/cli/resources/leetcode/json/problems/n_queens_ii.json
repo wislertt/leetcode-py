@@ -1,0 +1,74 @@
+{
+    "problem_name": "n_queens_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "52",
+    "problem_title": "N-Queens II",
+    "difficulty": "Hard",
+    "topics": "Backtracking",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "The **n-queens** puzzle is the problem of placing `n` queens on an `n x n` chessboard such that no two queens attack each other.\n\nGiven an integer `n`, return *the number of distinct solutions to the **n-queens puzzle***.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4\nOutput: 2\n\nExplanation: There are two distinct solutions to the 4-queens puzzle as shown.\n```"
+            },
+            { "content": "```\nInput: n = 1\nOutput: 1\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "total_n_queens",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.total_n_queens(n)",
+    "helpers_assert_name": "total_n_queens",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_total_n_queens, run_total_n_queens\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestNQueensII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "total_n_queens",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement total_n_queens\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_total_n_queens, assert_total_n_queens\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nexpected = 2",
+    "playground_run": "result = run_total_n_queens(Solution, n)\nresult",
+    "playground_assert": "assert_total_n_queens(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_total_n_queens",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 0)",
+                        "(3, 0)",
+                        "(4, 2)",
+                        "(5, 10)",
+                        "(6, 4)",
+                        "(7, 40)",
+                        "(8, 92)",
+                        "(9, 352)"
+                    ]
+                },
+                "body": "        result = run_total_n_queens(Solution, n)\n        assert_total_n_queens(result, expected)"
+            }
+        ]
+    }
+}

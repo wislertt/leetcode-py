@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Depth-First Search, Breadth-First Search, Graph Theory, Heap (Priority Queue), Shortest Path
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 743](https://leetcode.com/problems/network-delay-time/description/)
 

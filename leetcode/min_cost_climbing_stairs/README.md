@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Dynamic Programming
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 746](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
 

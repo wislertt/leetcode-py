@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Stack, Monotonic Stack
-**Tags:** grind, neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 739](https://leetcode.com/problems/daily-temperatures/description/)
 

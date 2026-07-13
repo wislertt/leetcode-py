@@ -1,0 +1,81 @@
+{
+    "problem_name": "transpose_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "867",
+    "problem_title": "Transpose Matrix",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix, Simulation",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a 2D integer array `matrix`, return _the **transpose** of_ `matrix`.\n\nThe **transpose** of a matrix is the matrix flipped over its main diagonal, switching the matrix's row and column indices.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Transpose hint](https://assets.leetcode.com/uploads/2021/02/10/hint_transpose.png)\n\n```\nInput: matrix = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: [[1,4,7],[2,5,8],[3,6,9]]\n```"
+            },
+            {
+                "content": "```\nInput: matrix = [[1,2,3],[4,5,6]]\nOutput: [[1,4],[2,5],[3,6]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 1000\n- 1 <= m * n <= 10^5\n- -10^9 <= matrix[i][j] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "transpose",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.transpose(matrix)",
+    "helpers_assert_name": "transpose",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_transpose, run_transpose\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TransposeMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "transpose",
+                "signature": "(self, matrix: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement transpose\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_transpose",
+                "signature": "(self, matrix: list[list[int]], expected: list[list[int]])",
+                "parametrize": "matrix, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 4, 7], [2, 5, 8], [3, 6, 9]])",
+                        "([[1, 2, 3], [4, 5, 6]], [[1, 4], [2, 5], [3, 6]])",
+                        "([[1]], [[1]])",
+                        "([[1, 2]], [[1], [2]])",
+                        "([[1], [2]], [[1, 2]])",
+                        "([[1, 2, 3, 4], [5, 6, 7, 8]], [[1, 5], [2, 6], [3, 7], [4, 8]])",
+                        "([[-1, 0], [3, 5]], [[-1, 3], [0, 5]])",
+                        "([[0]], [[0]])",
+                        "([[1, 2], [3, 4], [5, 6], [7, 8]], [[1, 3, 5, 7], [2, 4, 6, 8]])",
+                        "([[1000000000]], [[1000000000]])",
+                        "([[1, 2, 3]], [[1], [2], [3]])",
+                        "([[1], [2], [3]], [[1, 2, 3]])",
+                        "([[9, 8, 7], [6, 5, 4], [3, 2, 1]], [[9, 6, 3], [8, 5, 2], [7, 4, 1]])",
+                        "([[5, 5], [5, 5]], [[5, 5], [5, 5]])"
+                    ]
+                },
+                "body": "        result = run_transpose(Solution, matrix)\n        assert_transpose(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_transpose, assert_transpose\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nexpected = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]",
+    "playground_run": "result = run_transpose(Solution, matrix)\nresult",
+    "playground_assert": "assert_transpose(result, expected)"
+}

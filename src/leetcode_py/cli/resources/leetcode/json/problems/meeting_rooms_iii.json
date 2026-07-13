@@ -1,0 +1,84 @@
+{
+    "problem_name": "meeting_rooms_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "2402",
+    "problem_title": "Meeting Rooms III",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Sorting, Heap (Priority Queue), Simulation",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given an integer `n`. There are `n` rooms numbered from `0` to `n - 1`.\n\nYou are given a 2D integer array `meetings` where `meetings[i] = [start_i, end_i]` means that a meeting will be held during the **half-closed** time interval `[start_i, end_i)`. All the values of `start_i` are **unique**.\n\nMeetings are allocated to rooms in the following manner:\n\n1. Each meeting will take place in the unused room with the **lowest** number.\n2. If there are no available rooms, the meeting will be delayed until a room becomes free. The delayed meeting should have the **same** duration as the original meeting.\n3. When a room becomes unused, meetings that have an earlier original **start** time should be given the room.\n\nReturn *the **number** of the room that held the most meetings.* If there are multiple rooms, return the room with the **lowest** number.\n\nA **half-closed interval** `[a, b)` is the interval between `a` and `b` **including** `a` and **not including** `b`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2, meetings = [[0,10],[1,5],[2,7],[3,4]]\nOutput: 0\nExplanation:\n- At time 0, both rooms are not being used. The first meeting starts in room 0.\n- At time 1, only room 1 is not being used. The second meeting starts in room 1.\n- At time 2, both rooms are being used. The third meeting is delayed.\n- At time 3, both rooms are being used. The fourth meeting is delayed.\n- At time 5, the meeting in room 1 finishes. The third meeting starts in room 1 for the time period [5,10).\n- At time 10, the meetings in both rooms finish. The fourth meeting starts in room 0 for the time period [10,11).\nBoth rooms 0 and 1 held 2 meetings, so we return 0.\n```"
+            },
+            {
+                "content": "```\nInput: n = 3, meetings = [[1,20],[2,10],[3,5],[4,9],[6,8]]\nOutput: 1\nExplanation:\n- At time 1, all three rooms are not being used. The first meeting starts in room 0.\n- At time 2, rooms 1 and 2 are not being used. The second meeting starts in room 1.\n- At time 3, only room 2 is not being used. The third meeting starts in room 2.\n- At time 4, all three rooms are being used. The fourth meeting is delayed.\n- At time 5, the meeting in room 2 finishes. The fourth meeting starts in room 2 for the time period [5,10).\n- At time 6, all three rooms are being used. The fifth meeting is delayed.\n- At time 10, the meetings in rooms 1 and 2 finish. The fifth meeting starts in room 1 for the time period [10,12).\nRoom 0 held 1 meeting while rooms 1 and 2 each held 2 meetings, so we return 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 100\n- 1 <= meetings.length <= 10^5\n- meetings[i].length == 2\n- 0 <= start_i < end_i <= 5 * 10^5\n- All the values of start_i are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "most_booked",
+    "helpers_run_signature": "(solution_class: type, n: int, meetings: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.most_booked(n, meetings)",
+    "helpers_assert_name": "most_booked",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_most_booked, run_most_booked\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestMeetingRoomsIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "most_booked",
+                "signature": "(self, n: int, meetings: list[list[int]]) -> int",
+                "body": "        # TODO: Implement most_booked\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_most_booked, assert_most_booked\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nmeetings = [[0,10],[1,5],[2,7],[3,4]]\nexpected = 0",
+    "playground_run": "result = run_most_booked(Solution, n, meetings)\nresult",
+    "playground_assert": "assert_most_booked(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_most_booked",
+                "signature": "(self, n: int, meetings: list[list[int]], expected: int)",
+                "parametrize": "n, meetings, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, [[0,10],[1,5],[2,7],[3,4]], 0)",
+                        "(3, [[1,20],[2,10],[3,5],[4,9],[6,8]], 1)",
+                        "(1, [[0,5],[5,10]], 0)",
+                        "(1, [[0,5],[3,10]], 0)",
+                        "(2, [[0,5],[1,2],[3,4]], 1)",
+                        "(4, [[0,3],[1,2],[2,3],[3,4]], 0)",
+                        "(2, [[0,10],[1,9],[2,8],[3,7],[4,6]], 0)",
+                        "(3, [[1,2],[2,3],[3,4],[4,5]], 0)",
+                        "(2, [[0,1],[2,3],[4,5],[6,7]], 0)",
+                        "(3, [[1,5],[2,3],[4,6]], 1)",
+                        "(1, [[0,1]], 0)",
+                        "(2, [[0,5],[5,10]], 0)",
+                        "(3, [[0,10],[1,11],[2,12],[3,13]], 0)",
+                        "(2, [[1,10],[2,3],[4,5],[6,7]], 1)"
+                    ]
+                },
+                "body": "        result = run_most_booked(Solution, n, meetings)\n        assert_most_booked(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "n = 2\nmeetings = [[0,10],[1,5],[2,7],[3,4]]",
+    "playground_execution": "result = run_most_booked(Solution, n, meetings)",
+    "playground_assertion": "assert_most_booked(result, 0)"
+}

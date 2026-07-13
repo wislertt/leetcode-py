@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, String, Backtracking, Trie, Matrix
-**Tags:** algo-master-75, blind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 212](https://leetcode.com/problems/word-search-ii/description/)
 

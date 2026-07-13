@@ -1,0 +1,79 @@
+{
+    "problem_name": "remove_duplicates_from_sorted_array",
+    "solution_class_name": "Solution",
+    "problem_number": "26",
+    "problem_title": "Remove Duplicates From Sorted Array",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given an integer array `nums` sorted in non-decreasing order, remove the duplicates **in-place** such that each unique element appears only once. The relative order of the elements should be kept the same. Then return *the number of unique elements in* `nums`.\n\nConsider the number of unique elements of `nums` to be `k`. To get accepted, you need to do the following things:\n\n- Change the array `nums` such that the first `k` elements of `nums` contain the unique elements in the order they were present in `nums` initially. The remaining elements of `nums` are not important as well as the size of `nums`.\n- Return `k`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,1,2]\nOutput: 2, nums = [1,2,_]\n\nExplanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.\nIt does not matter what you leave beyond the returned k (hence the underscores).\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,0,1,1,1,2,2,3,3,4]\nOutput: 5, nums = [0,1,2,3,4,_,_,_,_,_]\n\nExplanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 3 * 10^4`\n- `-100 <= nums[i] <= 100`\n- `nums` is sorted in non-decreasing order.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_duplicates",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    k = implementation.remove_duplicates(nums)\n    return k, nums[:k]",
+    "helpers_assert_name": "remove_duplicates",
+    "helpers_assert_signature": "(result: tuple[int, list[int]], expected: tuple[int, list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_duplicates, run_remove_duplicates\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestRemoveDuplicatesFromSortedArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_duplicates",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement remove_duplicates\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_remove_duplicates, assert_remove_duplicates\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]\nexpected = (5, [0, 1, 2, 3, 4])",
+    "playground_run": "result = run_remove_duplicates(Solution, nums)\nresult",
+    "playground_assert": "assert_remove_duplicates(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_duplicates",
+                "signature": "(self, nums: list[int], expected: tuple[int, list[int]])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 2], (2, [1, 2]))",
+                        "([0, 0, 1, 1, 1, 2, 2, 3, 3, 4], (5, [0, 1, 2, 3, 4]))",
+                        "([1], (1, [1]))",
+                        "([1, 2, 3], (3, [1, 2, 3]))",
+                        "([1, 1, 1, 1], (1, [1]))",
+                        "([-1, 0, 0, 1, 1, 2], (4, [-1, 0, 1, 2]))",
+                        "([1, 2], (2, [1, 2]))",
+                        "([5, 5, 5], (1, [5]))",
+                        "([0, 0, 0, 0, 0, 0], (1, [0]))",
+                        "([-100, -100, 0, 100, 100], (3, [-100, 0, 100]))",
+                        "([1, 2, 2, 3, 3, 3, 4, 4, 4, 4], (4, [1, 2, 3, 4]))",
+                        "([10], (1, [10]))"
+                    ]
+                },
+                "body": "        result = run_remove_duplicates(Solution, nums)\n        assert_remove_duplicates(result, expected)"
+            }
+        ]
+    }
+}

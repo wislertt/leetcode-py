@@ -1,0 +1,84 @@
+{
+    "problem_name": "open_the_lock",
+    "solution_class_name": "Solution",
+    "problem_number": "752",
+    "problem_title": "Open the Lock",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Breadth-First Search",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You have a lock in front of you with 4 circular wheels. Each wheel has 10 slots: `'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'`. The wheels can rotate freely and wrap around: for example we can turn `'9'` to be `'0'`, or `'0'` to be `'9'`. Each move consists of turning one wheel one slot.\n\nThe lock initially starts at `'0000'`, a string representing the state of the 4 wheels.\n\nYou are given a list of `deadends` dead ends, meaning if the lock displays any of these codes, the wheels of the lock will stop turning and you will be unable to open it.\n\nGiven a `target` representing the value of the wheels that will unlock the lock, return the minimum total number of turns required to open the lock, or `-1` if it is impossible.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: deadends = [\"0201\",\"0101\",\"0102\",\"1212\",\"2002\"], target = \"0202\"\nOutput: 6\nExplanation:\nA sequence of valid moves would be \"0000\" -> \"1000\" -> \"1100\" -> \"1200\" -> \"1201\" -> \"1202\" -> \"0202\".\nNote that a sequence like \"0000\" -> \"0001\" -> \"0002\" -> \"0102\" -> \"0202\" would be invalid,\nbecause the wheels of the lock become stuck after the display becomes the dead end \"0102\".\n```"
+            },
+            {
+                "content": "```\nInput: deadends = [\"8888\"], target = \"0009\"\nOutput: 1\nExplanation: We can turn the last wheel in reverse to move from \"0000\" -> \"0009\".\n```"
+            },
+            {
+                "content": "```\nInput: deadends = [\"8887\",\"8889\",\"8878\",\"8898\",\"8788\",\"8988\",\"7888\",\"9888\"], target = \"8888\"\nOutput: -1\nExplanation: We cannot reach the target without getting stuck.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= deadends.length <= 500\n- deadends[i].length == 4\n- target.length == 4\n- target will not be in the list `deadends`.\n- `target` and `deadends[i]` consist of digits only.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "open_lock",
+    "helpers_run_signature": "(solution_class: type, deadends: list[str], target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.open_lock(deadends, target)",
+    "helpers_assert_name": "open_lock",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_open_lock, run_open_lock\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OpenTheLock",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "open_lock",
+                "signature": "(self, deadends: list[str], target: str) -> int",
+                "body": "        # TODO: Implement open_lock\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_open_lock",
+                "signature": "(self, deadends: list[str], target: str, expected: int)",
+                "parametrize": "deadends, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(['0201', '0101', '0102', '1212', '2002'], '0202', 6)",
+                        "(['8888'], '0009', 1)",
+                        "(['8887', '8889', '8878', '8898', '8788', '8988', '7888', '9888'], '8888', -1)",
+                        "(['0000'], '8888', -1)",
+                        "([], '0000', 0)",
+                        "([], '0001', 1)",
+                        "([], '0009', 1)",
+                        "([], '0019', 2)",
+                        "(['0001', '0009', '0010', '0090', '0100', '0900', '1000', '9000'], '1111', -1)",
+                        "([], '9999', 4)",
+                        "([], '0202', 4)",
+                        "(['1000', '0100', '0010', '0001'], '2000', 4)",
+                        "(['1234', '5678'], '4321', 10)",
+                        "([], '1111', 4)"
+                    ]
+                },
+                "body": "        result = run_open_lock(Solution, deadends, target)\n        assert_open_lock(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_open_lock, assert_open_lock\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndeadends = ['0201', '0101', '0102', '1212', '2002']\ntarget = '0202'\nexpected = 6",
+    "playground_run": "result = run_open_lock(Solution, deadends, target)\nresult",
+    "playground_assert": "assert_open_lock(result, expected)"
+}

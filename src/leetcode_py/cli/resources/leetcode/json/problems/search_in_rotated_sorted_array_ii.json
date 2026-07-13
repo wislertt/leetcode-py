@@ -1,0 +1,96 @@
+{
+    "problem_name": "search_in_rotated_sorted_array_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "81",
+    "problem_title": "Search in Rotated Sorted Array II",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "There is an integer array `nums` sorted in non-decreasing order (not necessarily with **distinct** values).\n\nBefore being passed to your function, `nums` is **rotated** at an unknown pivot index `k` (`0 <= k < nums.length`) such that the resulting array is `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]` (**0-indexed**). For example, `[0,1,2,4,4,4,5,6,6,7]` might be rotated at pivot index `5` and become `[4,5,6,6,7,0,1,2,4,4]`.\n\nGiven the array `nums` **after** the rotation and an integer `target`, return `true` *if* `target` *is in* `nums`*, or* `false` *if it is not in* `nums`*.*\n\nYou must decrease the overall operation steps as much as possible.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,5,6,0,0,1,2], target = 0\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,5,6,0,0,1,2], target = 3\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 5000\n- -10^4 <= nums[i] <= 10^4\n- `nums` is guaranteed to be rotated at some pivot.\n- -10^4 <= target <= 10^4",
+    "readme_additional": "**Follow up:** This problem is similar to [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/), but `nums` may contain **duplicates**. Would this affect the runtime complexity? How and why?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "search",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.search(nums, target)",
+    "helpers_assert_name": "search",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_search, run_search\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSearchInRotatedSortedArrayII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "search",
+                "signature": "(self, nums: list[int], target: int) -> bool",
+                "body": "        # TODO: Implement search\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_search, assert_search\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 5, 6, 0, 0, 1, 2]\ntarget = 0\nexpected = True",
+    "playground_run": "result = run_search(Solution, nums, target)\nresult",
+    "playground_assert": "assert_search(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_search",
+                "signature": "(self, solution_class, nums: list[int], target: int, expected: bool)",
+                "parametrize": "solution_class, nums, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, [2, 5, 6, 0, 0, 1, 2], 0, True)",
+                        "(Solution, [2, 5, 6, 0, 0, 1, 2], 3, False)",
+                        "(Solution, [1], 0, False)",
+                        "(Solution, [1], 1, True)",
+                        "(Solution, [1], 2, False)",
+                        "(Solution, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1], 2, True)",
+                        "(Solution, [1, 1, 1, 1, 1], 2, False)",
+                        "(Solution, [3, 1], 1, True)",
+                        "(Solution, [1, 3], 3, True)",
+                        "(Solution, [1, 3, 1, 1, 1], 3, True)",
+                        "(Solution, [2, 2, 2, 3, 2, 2, 2], 3, True)",
+                        "(Solution, [4, 5, 6, 6, 7, 0, 1, 2, 4, 4], 6, True)",
+                        "(Solution, [4, 5, 6, 6, 7, 0, 1, 2, 4, 4], 8, False)",
+                        "(Solution, [1, 1, 1, 1, 1, 1, 1, 1, 1, 13, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 13, True)",
+                        "(Solution, [2, 5, 6, 0, 0, 1, 2], 6, True)",
+                        "(Solution, [2, 5, 6, 0, 0, 1, 2], 2, True)",
+                        "(Solution, [1, 0, 1, 1, 1], 0, True)",
+                        "(Solution, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 0, False)"
+                    ]
+                },
+                "body": "        result = run_search(solution_class, nums, target)\n        assert_search(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "nums = [2, 5, 6, 0, 0, 1, 2]\ntarget = 0",
+    "playground_execution": "result = run_search(Solution, nums, target)",
+    "playground_assertion": "assert_search(result, True)"
+}

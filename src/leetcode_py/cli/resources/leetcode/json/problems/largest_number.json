@@ -1,0 +1,91 @@
+{
+    "problem_name": "largest_number",
+    "solution_class_name": "Solution",
+    "problem_number": "179",
+    "problem_title": "Largest Number",
+    "difficulty": "Medium",
+    "topics": "Array, String, Greedy, Sorting",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "Given a list of non-negative integers `nums`, arrange them such that they form the largest number and return it.\n\nSince the result may be very large, you need to return a string instead of an integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [10,2]\nOutput: \"210\"\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,30,34,5,9]\nOutput: \"9534330\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 100\n- 0 <= nums[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_number",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_number(nums)",
+    "helpers_assert_name": "largest_number",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_number, run_largest_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_number",
+                "signature": "(self, nums: list[int]) -> str",
+                "body": "        # TODO: Implement largest_number\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_number",
+                "signature": "(self, nums: list[int], expected: str)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([10, 2], '210')",
+                        "([3, 30, 34, 5, 9], '9534330')",
+                        "([0, 0], '0')",
+                        "([0], '0')",
+                        "([1], '1')",
+                        "([1, 2, 3], '321')",
+                        "([20, 1], '201')",
+                        "([121, 12], '12121')",
+                        "([12, 121], '12121')",
+                        "([9, 90, 9], '9990')",
+                        "([0, 0, 0, 0], '0')",
+                        "([1, 0, 0], '100')",
+                        "([3, 30, 3], '3330')",
+                        "([999999991, 9], '9999999991')",
+                        "([432, 43243], '43243432')",
+                        "([818, 81], '81881')"
+                    ]
+                },
+                "body": "        result = run_largest_number(Solution, nums)\n        assert_largest_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_number, assert_largest_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 30, 34, 5, 9]\nexpected = '9534330'",
+    "playground_run": "result = run_largest_number(Solution, nums)\nresult",
+    "playground_assert": "assert_largest_number(result, expected)"
+}

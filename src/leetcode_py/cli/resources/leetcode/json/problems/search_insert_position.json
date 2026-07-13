@@ -1,0 +1,77 @@
+{
+    "problem_name": "search_insert_position",
+    "solution_class_name": "Solution",
+    "problem_number": "35",
+    "problem_title": "Search Insert Position",
+    "difficulty": "Easy",
+    "topics": "Array, Binary Search",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.\n\nYou must write an algorithm with `O(log n)` runtime complexity.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: nums = [1,3,5,6], target = 5\nOutput: 2\n```" },
+            { "content": "```\nInput: nums = [1,3,5,6], target = 2\nOutput: 1\n```" },
+            { "content": "```\nInput: nums = [1,3,5,6], target = 7\nOutput: 4\n```" }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^4`\n- `-10^4 <= nums[i] <= 10^4`\n- `nums` contains **distinct** values sorted in **ascending** order.\n- `-10^4 <= target <= 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "search_insert",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.search_insert(nums, target)",
+    "helpers_assert_name": "search_insert",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_search_insert, run_search_insert\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSearchInsertPosition",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "search_insert",
+                "signature": "(self, nums: list[int], target: int) -> int",
+                "body": "        # TODO: Implement search_insert\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_search_insert, assert_search_insert\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 3, 5, 6]\ntarget = 5\nexpected = 2",
+    "playground_run": "result = run_search_insert(Solution, nums, target)\nresult",
+    "playground_assert": "assert_search_insert(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_search_insert",
+                "signature": "(self, nums: list[int], target: int, expected: int)",
+                "parametrize": "nums, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, 5, 6], 5, 2)",
+                        "([1, 3, 5, 6], 2, 1)",
+                        "([1, 3, 5, 6], 7, 4)",
+                        "([1, 3, 5, 6], 0, 0)",
+                        "([1], 0, 0)",
+                        "([1], 1, 0)",
+                        "([1], 2, 1)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, 4)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11, 10)",
+                        "([-5, -3, -1, 0, 2, 4], -4, 1)",
+                        "([-5, -3, -1, 0, 2, 4], -5, 0)",
+                        "([10, 20, 30, 40, 50], 25, 2)",
+                        "([1, 3, 5], 4, 2)"
+                    ]
+                },
+                "body": "        result = run_search_insert(Solution, nums, target)\n        assert_search_insert(result, expected)"
+            }
+        ]
+    }
+}

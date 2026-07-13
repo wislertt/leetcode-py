@@ -1,0 +1,94 @@
+{
+    "problem_name": "gcd_of_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "1071",
+    "problem_title": "Greatest Common Divisor of Strings",
+    "difficulty": "Easy",
+    "topics": "Math, String",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "For two strings `s` and `t`, we say \"`t` divides `s`\" if and only if `s = t + t + t + ... + t + t` (i.e., `t` is concatenated with itself one or more times).\n\nGiven two strings `str1` and `str2`, return *the largest string* `x` *such that* `x` *divides both* `str1` *and* `str2`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: str1 = \"ABCABC\", str2 = \"ABC\"\nOutput: \"ABC\"\n```"
+            },
+            {
+                "content": "```\nInput: str1 = \"ABABAB\", str2 = \"ABAB\"\nOutput: \"AB\"\n```"
+            },
+            {
+                "content": "```\nInput: str1 = \"LEET\", str2 = \"CODE\"\nOutput: \"\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= str1.length, str2.length <= 1000`\n- `str1` and `str2` consist of English uppercase letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "gcd_of_strings",
+    "helpers_run_signature": "(solution_class: type, str1: str, str2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.gcd_of_strings(str1, str2)",
+    "helpers_assert_name": "gcd_of_strings",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_gcd_of_strings, run_gcd_of_strings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GcdOfStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "gcd_of_strings",
+                "signature": "(self, str1: str, str2: str) -> str",
+                "body": "        # TODO: Implement gcd_of_strings\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_gcd_of_strings",
+                "signature": "(self, str1: str, str2: str, expected: str)",
+                "parametrize": "str1, str2, expected",
+                "test_cases": {
+                    "list": [
+                        "('ABCABC', 'ABC', 'ABC')",
+                        "('ABABAB', 'ABAB', 'AB')",
+                        "('LEET', 'CODE', '')",
+                        "('AAAAAB', 'AAA', '')",
+                        "('A', 'A', 'A')",
+                        "('A', 'B', '')",
+                        "('AA', 'AA', 'AA')",
+                        "('AA', 'A', 'A')",
+                        "('ABABABAB', 'ABAB', 'ABAB')",
+                        "('ABCABCABC', 'ABCABC', 'ABC')",
+                        "('ABCABCABC', 'ABC', 'ABC')",
+                        "('ABCDE', 'ABCDE', 'ABCDE')",
+                        "('ABABAB', 'ABABAB', 'ABABAB')",
+                        "('ABCABCABCABC', 'ABCABC', 'ABCABC')",
+                        "('ABCDEF', 'ABC', '')",
+                        "('ABABABAB', 'AB', 'AB')"
+                    ]
+                },
+                "body": "        result = run_gcd_of_strings(Solution, str1, str2)\n        assert_gcd_of_strings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_gcd_of_strings, assert_gcd_of_strings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstr1 = 'ABCABC'\nstr2 = 'ABC'\nexpected = 'ABC'",
+    "playground_run": "result = run_gcd_of_strings(Solution, str1, str2)\nresult",
+    "playground_assert": "assert_gcd_of_strings(result, expected)"
+}

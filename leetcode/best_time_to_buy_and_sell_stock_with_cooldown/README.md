@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 309](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/)
 

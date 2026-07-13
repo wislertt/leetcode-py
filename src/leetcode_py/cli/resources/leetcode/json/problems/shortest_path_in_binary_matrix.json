@@ -1,0 +1,77 @@
+{
+    "problem_name": "shortest_path_in_binary_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "1091",
+    "problem_title": "Shortest Path in Binary Matrix",
+    "difficulty": "Medium",
+    "topics": "Array, Breadth-First Search, Matrix",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an `n x n` binary matrix `grid`, return *the length of the shortest **clear path*** in the matrix. If there is no clear path, return `-1`.\n\nA **clear path** in a binary matrix is a path from the top-left cell (i.e., `(0, 0)`) to the bottom-right cell (i.e., `(n - 1, n - 1)`) such that:\n\n- All the visited cells of the path are `0`.\n- All the adjacent cells of the path are **8-directionally** connected (i.e., they are different and they share an edge or a corner).\n\nThe length of a clear path is the number of visited cells of this path.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: grid = [[0,1],[1,0]]\nOutput: 2\n```" },
+            { "content": "```\nInput: grid = [[0,0,0],[1,1,0],[1,1,0]]\nOutput: 4\n```" },
+            { "content": "```\nInput: grid = [[1,0,0],[1,1,0],[1,1,0]]\nOutput: -1\n```" }
+        ]
+    },
+    "readme_constraints": "- `n == grid.length`\n- `n == grid[i].length`\n- `1 <= n <= 100`\n- `grid[i][j] is 0 or 1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_path_binary_matrix",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_path_binary_matrix(grid)",
+    "helpers_assert_name": "shortest_path_binary_matrix",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_path_binary_matrix, run_shortest_path_binary_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestShortestPathInBinaryMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_path_binary_matrix",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement shortest_path_binary_matrix\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_shortest_path_binary_matrix, assert_shortest_path_binary_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1], [1, 0]]\nexpected = 2",
+    "playground_run": "result = run_shortest_path_binary_matrix(Solution, grid)\nresult",
+    "playground_assert": "assert_shortest_path_binary_matrix(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_path_binary_matrix",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1], [1, 0]], 2)",
+                        "([[0, 0, 0], [1, 1, 0], [1, 1, 0]], 4)",
+                        "([[1, 0, 0], [1, 1, 0], [1, 1, 0]], -1)",
+                        "([[0]], 1)",
+                        "([[1]], -1)",
+                        "([[0, 0], [0, 0]], 2)",
+                        "([[0, 0, 0], [0, 1, 0], [0, 0, 0]], 4)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 3)",
+                        "([[0, 1, 1], [1, 1, 1], [1, 1, 0]], -1)",
+                        "([[0, 0], [1, 0]], 2)",
+                        "([[0, 1], [0, 0]], 2)",
+                        "([[0, 0], [0, 1]], -1)",
+                        "([[0, 1, 1], [0, 1, 1], [0, 0, 0]], 4)"
+                    ]
+                },
+                "body": "        result = run_shortest_path_binary_matrix(Solution, grid)\n        assert_shortest_path_binary_matrix(result, expected)"
+            }
+        ]
+    }
+}

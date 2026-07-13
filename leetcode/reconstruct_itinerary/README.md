@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, String, Depth-First Search, Graph Theory, Sorting, Heap (Priority Queue), Eulerian Circuit
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 332](https://leetcode.com/problems/reconstruct-itinerary/description/)
 

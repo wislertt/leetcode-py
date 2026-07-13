@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Binary Search, Bit Manipulation
-**Tags:** grind, neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 287](https://leetcode.com/problems/find-the-duplicate-number/description/)
 

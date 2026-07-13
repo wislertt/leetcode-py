@@ -1,0 +1,87 @@
+{
+    "problem_name": "online_stock_span",
+    "solution_class_name": "StockSpanner",
+    "problem_number": "901",
+    "problem_title": "Online Stock Span",
+    "difficulty": "Medium",
+    "topics": "Stack, Design, Monotonic Stack, Data Stream",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Design an algorithm that collects daily price quotes for some stock and returns **the span** of that stock's price for the current day.\n\nThe **span** of the stock's price in one day is the maximum number of consecutive days (starting from that day and going backward) for which the stock price was less than or equal to the price of that day.\n\n- For example, if the prices of the stock in the last four days is `[7,2,1,2]` and the price of the stock today is `2`, then the span of today is `4` because starting from today, the price of the stock was less than or equal `2` for `4` consecutive days.\n- Also, if the prices of the stock in the last four days is `[7,34,1,2]` and the price of the stock today is `8`, then the span of today is `3` because starting from today, the price of the stock was less than or equal `8` for `3` consecutive days.\n\nImplement the `StockSpanner` class:\n\n- `StockSpanner()` Initializes the object of the class.\n- `int next(int price)` Returns the **span** of the stock's price given that today's price is `price`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"StockSpanner\", \"next\", \"next\", \"next\", \"next\", \"next\", \"next\", \"next\"]\n[[], [100], [80], [60], [70], [60], [75], [85]]\nOutput\n[null, 1, 1, 1, 2, 1, 4, 6]\n\nExplanation\nStockSpanner stockSpanner = new StockSpanner();\nstockSpanner.next(100); // return 1\nstockSpanner.next(80);  // return 1\nstockSpanner.next(60);  // return 1\nstockSpanner.next(70);  // return 2\nstockSpanner.next(60);  // return 1\nstockSpanner.next(75);  // return 4, because the last 4 prices (including today's price of 75) were less than or equal to today's price.\nstockSpanner.next(85);  // return 6\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= price <= 10^5\n- At most 10^4 calls will be made to `next`.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "online_stock_span_operations",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    spanner: Any = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'StockSpanner':\n            spanner = solution_class()\n            results.append(None)\n        elif op == 'next' and spanner is not None:\n            results.append(spanner.next(inputs[i][0]))\n    return results",
+    "helpers_assert_name": "online_stock_span_operations",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_online_stock_span_operations, run_online_stock_span_operations\nfrom .solution import StockSpanner",
+    "test_content": "",
+    "test_class_name": "TestOnlineStockSpan",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize StockSpanner\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self, price: int) -> int",
+                "body": "        # TODO: Implement next\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_online_stock_span",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [100], [80], [60], [70], [60], [75], [85]], [None, 1, 1, 1, 2, 1, 4, 6])",
+                        "(['StockSpanner', 'next', 'next', 'next'], [[], [1], [2], [3]], [None, 1, 2, 3])",
+                        "(['StockSpanner', 'next', 'next', 'next'], [[], [3], [2], [1]], [None, 1, 1, 1])",
+                        "(['StockSpanner', 'next'], [[], [50]], [None, 1])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next'], [[], [10], [10], [10], [10], [10]], [None, 1, 2, 3, 4, 5])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next'], [[], [5], [3], [8], [2]], [None, 1, 1, 3, 1])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next'], [[], [31], [41], [48], [59], [79]], [None, 1, 2, 3, 4, 5])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [100], [80], [60], [70], [60], [75]], [None, 1, 1, 1, 2, 1, 4])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next'], [[], [29], [91], [62], [82]], [None, 1, 2, 1, 2])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [1], [2], [3], [4], [5], [6], [7], [8]], [None, 1, 2, 3, 4, 5, 6, 7, 8])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [8], [7], [6], [5], [4], [9]], [None, 1, 1, 1, 1, 1, 6])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [5], [4], [3], [2], [1], [2], [3], [4], [5]], [None, 1, 1, 1, 1, 1, 3, 5, 7, 9])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [120], [110], [100], [90], [80], [200]], [None, 1, 1, 1, 1, 1, 6])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [7], [2], [1], [2], [8], [1], [2]], [None, 1, 1, 1, 3, 5, 1, 2])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next'], [[], [25], [25], [25], [25]], [None, 1, 2, 3, 4])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [9], [8], [7], [6], [5], [10]], [None, 1, 1, 1, 1, 1, 6])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [3], [5], [2], [7], [1], [4], [6]], [None, 1, 2, 1, 4, 1, 2, 3])",
+                        "(['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next', 'next'], [[], [15], [14], [13], [12], [16], [11], [10], [20]], [None, 1, 1, 1, 1, 5, 1, 1, 8])"
+                    ]
+                },
+                "body": "        result = run_online_stock_span_operations(StockSpanner, operations, inputs)\n        assert_online_stock_span_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_online_stock_span_operations, assert_online_stock_span_operations\nfrom solution import StockSpanner",
+    "playground_setup": "# Example test case\noperations = ['StockSpanner', 'next', 'next', 'next', 'next', 'next', 'next', 'next']\ninputs = [[], [100], [80], [60], [70], [60], [75], [85]]\nexpected = [None, 1, 1, 1, 2, 1, 4, 6]",
+    "playground_run": "result = run_online_stock_span_operations(StockSpanner, operations, inputs)\nresult",
+    "playground_assert": "assert_online_stock_span_operations(result, expected)"
+}

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Two Pointers, String, Dynamic Programming
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 647](https://leetcode.com/problems/palindromic-substrings/description/)
 

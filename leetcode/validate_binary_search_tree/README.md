@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Depth-First Search, Binary Search Tree, Binary Tree
-**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, blind-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 98](https://leetcode.com/problems/validate-binary-search-tree/description/)
 

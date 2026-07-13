@@ -1,0 +1,88 @@
+{
+    "problem_name": "sum_of_all_subset_xor_totals",
+    "solution_class_name": "Solution",
+    "problem_number": "1863",
+    "problem_title": "Sum of All Subset XOR Totals",
+    "difficulty": "Easy",
+    "topics": "Array, Math, Backtracking, Bit Manipulation, Combinatorics, Enumeration",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "The **XOR total** of an array is defined as the bitwise `XOR` of **all its elements**, or `0` if the array is **empty**.\n\n- For example, the **XOR total** of the array `[2,5,6]` is `2 XOR 5 XOR 6 = 1`.\n\nGiven an array `nums`, return *the **sum** of all **XOR totals** for every **subset** of* `nums`.\n\n**Note:** Subsets with the **same** elements should be counted **multiple** times.\n\nAn array `a` is a **subset** of an array `b` if `a` can be obtained from `b` by deleting some (possibly zero) elements of `b`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,3]\nOutput: 6\nExplanation: The 4 subsets of [1,3] are:\n- The empty subset has an XOR total of 0.\n- [1] has an XOR total of 1.\n- [3] has an XOR total of 3.\n- [1,3] has an XOR total of 1 XOR 3 = 2.\n0 + 1 + 3 + 2 = 6\n```"
+            },
+            {
+                "content": "```\nInput: nums = [5,1,6]\nOutput: 28\nExplanation: The 8 subsets of [5,1,6] are:\n- The empty subset has an XOR total of 0.\n- [5] has an XOR total of 5.\n- [1] has an XOR total of 1.\n- [6] has an XOR total of 6.\n- [5,1] has an XOR total of 5 XOR 1 = 4.\n- [5,6] has an XOR total of 5 XOR 6 = 3.\n- [1,6] has an XOR total of 1 XOR 6 = 7.\n- [5,1,6] has an XOR total of 5 XOR 1 XOR 6 = 2.\n0 + 5 + 1 + 6 + 4 + 3 + 7 + 2 = 28\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,4,5,6,7,8]\nOutput: 480\nExplanation: The sum of all XOR totals for every subset is 480.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 12\n- 1 <= nums[i] <= 20",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "subset_xor_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.subset_xor_sum(nums)",
+    "helpers_assert_name": "subset_xor_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_subset_xor_sum, run_subset_xor_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSumOfAllSubsetXORTotals",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "subset_xor_sum",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement subset_xor_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_subset_xor_sum, assert_subset_xor_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1,3]\nexpected = 6",
+    "playground_run": "result = run_subset_xor_sum(Solution, nums)\nresult",
+    "playground_assert": "assert_subset_xor_sum(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_subset_xor_sum",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,3], 6)",
+                        "([5,1,6], 28)",
+                        "([3,4,5,6,7,8], 480)",
+                        "([1], 1)",
+                        "([5], 5)",
+                        "([1,2], 6)",
+                        "([2,2], 4)",
+                        "([1,1], 2)",
+                        "([10], 10)",
+                        "([1,2,3], 12)",
+                        "([1,2,3,4], 56)",
+                        "([8,8,8], 32)",
+                        "([20], 20)",
+                        "([1,2,4,8], 120)",
+                        "([7,7,7,7], 56)"
+                    ]
+                },
+                "body": "        result = run_subset_xor_sum(Solution, nums)\n        assert_subset_xor_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "nums = [1,3]",
+    "playground_execution": "result = run_subset_xor_sum(Solution, nums)",
+    "playground_assertion": "assert_subset_xor_sum(result, 6)"
+}

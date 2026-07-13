@@ -1,0 +1,96 @@
+{
+    "problem_name": "implement_stack_using_queues",
+    "solution_class_name": "MyStack",
+    "problem_number": "225",
+    "problem_title": "Implement Stack using Queues",
+    "difficulty": "Easy",
+    "topics": "Stack, Design, Queue",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (`push`, `top`, `pop`, and `empty`).\n\nImplement the `MyStack` class:\n\n- `void push(int x)` Pushes element x to the top of the stack.\n- `int pop()` Removes the element on the top of the stack and returns it.\n- `int top()` Returns the element on the top of the stack.\n- `boolean empty()` Returns `true` if the stack is empty, `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyStack\", \"push\", \"push\", \"top\", \"pop\", \"empty\"]\n[[], [1], [2], [], [], []]\nOutput\n[null, null, null, 2, 2, false]\n```\n**Explanation:**\n```\nMyStack myStack = new MyStack();\nmyStack.push(1);\nmyStack.push(2);\nmyStack.top(); // return 2\nmyStack.pop(); // return 2\nmyStack.empty(); // return False\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= x <= 9\n- At most 100 calls will be made to push, pop, top, and empty.\n- All the calls to pop and top are valid.",
+    "readme_additional": "**Notes:**\n- You must use **only** standard operations of a queue, which means that only `push to back`, `peek/pop from front`, `size`, and `is empty` operations are valid.\n- Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.\n\n**Follow-up:** Can you implement the stack using only one queue?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "my_stack",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    stack = None\n    results: list[int | None | bool] = []\n    for i, op in enumerate(operations):\n        if op == 'MyStack':\n            stack = solution_class()\n            results.append(None)\n        elif op == 'push' and stack is not None:\n            stack.push(inputs[i][0])\n            results.append(None)\n        elif op == 'pop' and stack is not None:\n            results.append(stack.pop())\n        elif op == 'top' and stack is not None:\n            results.append(stack.top())\n        elif op == 'empty' and stack is not None:\n            results.append(stack.empty())\n    return results, stack",
+    "helpers_assert_name": "my_stack",
+    "helpers_assert_signature": "(result: list[int | None | bool], expected: list[int | None | bool]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_my_stack, run_my_stack\nfrom .solution import MyStack",
+    "test_content": "",
+    "test_class_name": "ImplementStackUsingQueues",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "push",
+                "signature": "(self, x: int) -> None",
+                "body": "        # TODO: Implement push\n        pass"
+            },
+            {
+                "name": "pop",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement pop\n        return 0"
+            },
+            {
+                "name": "top",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement top\n        return 0"
+            },
+            {
+                "name": "empty",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement empty\n        return True"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_stack_operations",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None | bool])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyStack', 'push', 'push', 'top', 'pop', 'empty'], [[], [1], [2], [], [], []], [None, None, None, 2, 2, False])",
+                        "(['MyStack', 'empty'], [[], []], [None, True])",
+                        "(['MyStack', 'push', 'empty', 'pop', 'empty'], [[], [1], [], [], []], [None, None, False, 1, True])",
+                        "(['MyStack', 'push', 'push', 'push', 'pop', 'pop', 'top', 'pop', 'empty'], [[], [1], [2], [3], [], [], [], [], []], [None, None, None, None, 3, 2, 1, 1, True])",
+                        "(['MyStack', 'push', 'top'], [[], [5], []], [None, None, 5])",
+                        "(['MyStack', 'push', 'push', 'pop', 'push', 'top'], [[], [1], [2], [], [3], []], [None, None, None, 2, None, 3])",
+                        "(['MyStack', 'push', 'push', 'push', 'push', 'pop', 'pop', 'pop', 'pop', 'empty'], [[], [1], [2], [3], [4], [], [], [], [], []], [None, None, None, None, None, 4, 3, 2, 1, True])",
+                        "(['MyStack', 'push', 'pop', 'push', 'pop', 'empty'], [[], [7], [], [8], [], []], [None, None, 7, None, 8, True])",
+                        "(['MyStack', 'push', 'push', 'top', 'top', 'pop', 'top'], [[], [9], [8], [], [], [], []], [None, None, None, 8, 8, 8, 9])",
+                        "(['MyStack', 'push', 'push', 'push', 'push', 'push', 'pop', 'pop', 'pop', 'push', 'top'], [[], [1], [2], [3], [4], [5], [], [], [], [6], []], [None, None, None, None, None, None, 5, 4, 3, None, 6])",
+                        "(['MyStack', 'push', 'empty', 'top', 'pop', 'empty', 'push', 'empty'], [[], [1], [], [], [], [], [2], []], [None, None, False, 1, 1, True, None, False])",
+                        "(['MyStack', 'push', 'push', 'push', 'pop', 'push', 'pop', 'pop', 'push', 'pop'], [[], [1], [2], [3], [], [4], [], [], [5], []], [None, None, None, None, 3, None, 4, 2, None, 5])"
+                    ]
+                },
+                "body": "        result, _ = run_my_stack(MyStack, operations, inputs)\n        assert_my_stack(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_my_stack, assert_my_stack\nfrom solution import MyStack",
+    "playground_setup": "# Example test case\noperations = ['MyStack', 'push', 'push', 'top', 'pop', 'empty']\ninputs = [[], [1], [2], [], [], []]\nexpected = [None, None, None, 2, 2, False]",
+    "playground_run": "result, stack = run_my_stack(MyStack, operations, inputs)\nprint(result)\nstack",
+    "playground_assert": "assert_my_stack(result, expected)"
+}

@@ -1,0 +1,88 @@
+{
+    "problem_name": "find_the_town_judge",
+    "solution_class_name": "Solution",
+    "problem_number": "997",
+    "problem_title": "Find the Town Judge",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Graph Theory",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "In a town, there are `n` people labeled from `1` to `n`. There is a rumor that one of these people is secretly the town judge.\n\nIf the town judge exists, then:\n\n1. The town judge trusts nobody.\n2. Everybody (except for the town judge) trusts the town judge.\n3. There is exactly one person that satisfies properties 1 and 2.\n\nYou are given an array `trust` where `trust[i] = [ai, bi]` representing that the person labeled `ai` trusts the person labeled `bi`. If a trust relationship does not exist in `trust` array, then such a trust relationship does not exist.\n\nReturn *the label of the town judge if the town judge exists and can be identified, or return* `-1` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2, trust = [[1,2]]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: n = 3, trust = [[1,3],[2,3]]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: n = 3, trust = [[1,3],[2,3],[3,1]]\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1000\n- 0 <= trust.length <= 10^4\n- `trust[i].length == 2`\n- All the pairs of `trust` are **unique**.\n- `ai != bi`\n- 1 <= ai, bi <= n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_judge",
+    "helpers_run_signature": "(solution_class: type, n: int, trust: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_judge(n, trust)",
+    "helpers_assert_name": "find_judge",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_judge, run_find_judge\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheTownJudge",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_judge",
+                "signature": "(self, n: int, trust: list[list[int]]) -> int",
+                "body": "        # TODO: Implement find_judge\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_judge",
+                "signature": "(self, n: int, trust: list[list[int]], expected: int)",
+                "parametrize": "n, trust, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, [[1, 2]], 2)",
+                        "(3, [[1, 3], [2, 3]], 3)",
+                        "(3, [[1, 3], [2, 3], [3, 1]], -1)",
+                        "(1, [], 1)",
+                        "(4, [[1, 3], [1, 4], [2, 3], [2, 4], [4, 3]], 3)",
+                        "(3, [[1, 2], [2, 3]], -1)",
+                        "(4, [[1, 2], [1, 3], [2, 3], [4, 3]], 3)",
+                        "(3, [], -1)",
+                        "(4, [[1, 2], [2, 3], [3, 4], [4, 1]], -1)",
+                        "(2, [], -1)",
+                        "(5, [[1, 4], [2, 4], [3, 4], [5, 4]], 4)",
+                        "(2, [[1, 2], [2, 1]], -1)",
+                        "(4, [[1, 3], [2, 3], [4, 3], [3, 2]], -1)",
+                        "(3, [[1, 2], [1, 3]], -1)",
+                        "(6, [[1, 5], [2, 5], [3, 5], [4, 5], [6, 5]], 5)",
+                        "(3, [[1, 3], [2, 3], [1, 2]], 3)",
+                        "(4, [[1, 2], [3, 2], [4, 2], [2, 1]], -1)",
+                        "(2, [[2, 1]], 1)"
+                    ]
+                },
+                "body": "        result = run_find_judge(Solution, n, trust)\n        assert_find_judge(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_judge, assert_find_judge\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\ntrust = [[1, 3], [2, 3]]\nexpected = 3",
+    "playground_run": "result = run_find_judge(Solution, n, trust)\nresult",
+    "playground_assert": "assert_find_judge(result, expected)"
+}

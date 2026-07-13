@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Stack, Design
-**Tags:** algo-master-75, grind, grind-75, neetcode-150
+**Tags:** algo-master-75, grind, grind-75, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 155](https://leetcode.com/problems/min-stack/description/)
 

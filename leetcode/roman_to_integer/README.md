@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, Math, String
-**Tags:** grind
+**Tags:** grind, neetcode-250
 
 **LeetCode:** [Problem 13](https://leetcode.com/problems/roman-to-integer/description/)
 

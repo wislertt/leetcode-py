@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Linked List, Recursion
-**Tags:** algo-master-75, neetcode-150
+**Tags:** algo-master-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 25](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue)
-**Tags:** blind-75, neetcode-150
+**Tags:** blind-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 253](https://leetcode.com/problems/meeting-rooms-ii/description/)
 

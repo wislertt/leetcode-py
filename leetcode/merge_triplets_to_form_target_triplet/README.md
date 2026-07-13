@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Greedy
-**Tags:** neetcode-150
+**Tags:** neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 1899](https://leetcode.com/problems/merge-triplets-to-form-target-triplet/description/)
 

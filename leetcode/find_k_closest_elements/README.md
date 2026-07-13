@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers, Binary Search, Sliding Window, Sorting, Heap (Priority Queue)
-**Tags:** grind
+**Tags:** grind, neetcode-250
 
 **LeetCode:** [Problem 658](https://leetcode.com/problems/find-k-closest-elements/description/)
 

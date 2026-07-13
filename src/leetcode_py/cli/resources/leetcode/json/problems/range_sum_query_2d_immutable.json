@@ -1,0 +1,84 @@
+{
+    "problem_name": "range_sum_query_2d_immutable",
+    "solution_class_name": "NumMatrix",
+    "problem_number": "304",
+    "problem_title": "Range Sum Query 2D - Immutable",
+    "difficulty": "Medium",
+    "topics": "Array, Design, Matrix, Prefix Sum",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Given a 2D `matrix`, handle multiple queries of the following type:\n\n- Calculate the **sum** of the elements of `matrix` inside the rectangle defined by its **upper left corner** `(row1, col1)` and **lower right corner** `(row2, col2)`.\n\nImplement the `NumMatrix` class:\n\n- `NumMatrix(int[][] matrix)` Initializes the object with the integer matrix `matrix`.\n- `int sumRegion(int row1, int col1, int row2, int col2)` Returns the **sum** of the elements of `matrix` inside the rectangle defined by its **upper left corner** `(row1, col1)` and **lower right corner** `(row2, col2)`.\n\nYou must design an algorithm where `sumRegion` works on `O(1)` time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/14/sum-grid.jpg)\n\n```\nInput\n[\"NumMatrix\", \"sumRegion\", \"sumRegion\", \"sumRegion\"]\n[[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [2,1,4,3], [1,1,2,2], [1,2,2,4]]\nOutput\n[null, 8, 11, 12]\n\nExplanation\nNumMatrix numMatrix = new NumMatrix([[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]);\nnumMatrix.sumRegion(2, 1, 4, 3); // return 8\nnumMatrix.sumRegion(1, 1, 2, 2); // return 11\nnumMatrix.sumRegion(1, 2, 2, 4); // return 12\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 200\n- -10^4 <= matrix[i][j] <= 10^4\n- 0 <= row1 <= row2 < m\n- 0 <= col1 <= col2 < n\n- At most 10^4 calls will be made to sumRegion.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_matrix",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    num_matrix = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'NumMatrix':\n            num_matrix = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'sumRegion' and num_matrix is not None:\n            args = inputs[i]\n            results.append(num_matrix.sum_region(args[0], args[1], args[2], args[3]))\n    return results, num_matrix",
+    "helpers_assert_name": "num_matrix",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_matrix, run_num_matrix\nfrom .solution import NumMatrix",
+    "test_content": "",
+    "test_class_name": "RangeSumQuery2DImmutable",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, matrix: list[list[int]]) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "sum_region",
+                "signature": "(self, row1: int, col1: int, row2: int, col2: int) -> int",
+                "body": "        # TODO: Implement sum_region\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_matrix_operations",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['NumMatrix', 'sumRegion', 'sumRegion', 'sumRegion'], [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [2,1,4,3], [1,1,2,2], [1,2,2,4]], [None, 8, 11, 12])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1,2],[3,4]]], [0,0,1,1], [0,0,0,0]], [None, 10, 1])",
+                        "(['NumMatrix', 'sumRegion'], [[[[5]]], [0,0,0,0]], [None, 5])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[-1,-2],[-3,-4]]], [0,0,1,1], [0,0,0,1]], [None, -10, -3])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1,2,3,4]]], [0,0,0,3], [0,1,0,2]], [None, 10, 5])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1],[2],[3],[4]]], [0,0,3,0], [1,0,2,0]], [None, 10, 5])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [0,0,4,4], [0,0,0,0]], [None, 58, 3])",
+                        "(['NumMatrix', 'sumRegion'], [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [0,0,2,2]], [None, 21])",
+                        "(['NumMatrix', 'sumRegion'], [[[[0,0],[0,0]]], [0,0,1,1]], [None, 0])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1,1,1],[1,1,1],[1,1,1]]], [0,0,2,2], [1,1,2,2]], [None, 9, 4])",
+                        "(['NumMatrix', 'sumRegion'], [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [2,1,2,3]], [None, 3])",
+                        "(['NumMatrix', 'sumRegion'], [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [0,2,4,2]], [None, 7])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[100,200],[300,400]]], [0,0,1,1], [0,1,1,1]], [None, 1000, 600])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1,2,3],[4,5,6]]], [0,0,1,2], [0,2,1,2]], [None, 21, 9])",
+                        "(['NumMatrix', 'sumRegion', 'sumRegion'], [[[[1,-2,3],[-4,5,-6],[7,-8,9]]], [0,0,2,2], [0,0,0,2]], [None, 5, 2])"
+                    ]
+                },
+                "body": "        result, _ = run_num_matrix(NumMatrix, operations, inputs)\n        assert_num_matrix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_matrix, assert_num_matrix\nfrom solution import NumMatrix",
+    "playground_setup": "# Example test case\noperations = ['NumMatrix', 'sumRegion', 'sumRegion', 'sumRegion']\ninputs = [[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]], [2,1,4,3], [1,1,2,2], [1,2,2,4]]\nexpected = [None, 8, 11, 12]",
+    "playground_run": "result, num_matrix = run_num_matrix(NumMatrix, operations, inputs)\nprint(result)\nnum_matrix",
+    "playground_assert": "assert_num_matrix(result, expected)"
+}

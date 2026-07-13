@@ -1,0 +1,85 @@
+{
+    "problem_name": "employee_free_time",
+    "solution_class_name": "Solution",
+    "problem_number": "759",
+    "problem_title": "Employee Free Time",
+    "difficulty": "Hard",
+    "topics": "Array, Sorting, Sweep Line, Heap (Priority Queue)",
+    "readme_description": "We are given a list `schedule` of employees, which represents the working time for each employee.\n\nEach employee has a list of non-overlapping `Intervals`, and these intervals are in sorted order.\n\nReturn the list of finite intervals representing **common, positive-length free time** for _all_ employees, also in sorted order.\n\n(Even though we are representing `Intervals` in the form `[x, y]`, the objects inside are `Intervals`, not lists or arrays. For example, `schedule[0][0].start = 1`, `schedule[0][0].end = 2`, and `schedule[0][0][0]` is not defined). Also, we do not include intervals like `[5, 5]` in our answer, as they have zero length.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: schedule = [[[1,2],[5,6]],[[1,3]],[[4,10]]]\nOutput: [[3,4]]\nExplanation: There are a total of three employees, and all common free time intervals would be [-inf, 1], [3, 4], [10, inf]. We discard any intervals that contain inf as they are not finite.\n```"
+            },
+            {
+                "content": "```\nInput: schedule = [[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]\nOutput: [[5,6],[7,9]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= schedule.length, schedule[i].length <= 50`\n- `0 <= schedule[i].start < schedule[i].end <= 10^8`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "employee_free_time",
+    "helpers_run_signature": "(solution_class: type, schedule: list[list[list[int]]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.employee_free_time(schedule)",
+    "helpers_assert_name": "employee_free_time",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_employee_free_time, run_employee_free_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EmployeeFreeTime",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "employee_free_time",
+                "signature": "(self, schedule: list[list[list[int]]]) -> list[list[int]]",
+                "body": "        # TODO: Implement employee_free_time\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_employee_free_time",
+                "signature": "(self, schedule: list[list[list[int]]], expected: list[list[int]])",
+                "parametrize": "schedule, expected",
+                "test_cases": {
+                    "list": [
+                        "([[[1, 2], [5, 6]], [[1, 3]], [[4, 10]]], [[3, 4]])",
+                        "([[[1, 3], [6, 7]], [[2, 4]], [[2, 5], [9, 12]]], [[5, 6], [7, 9]])",
+                        "([[[1, 2]], [[2, 3]]], [])",
+                        "([[[1, 3]], [[5, 7]]], [[3, 5]])",
+                        "([[[1, 10]]], [])",
+                        "([[[1, 3]]], [])",
+                        "([[[1, 2], [3, 4]], [[1, 4]]], [])",
+                        "([[[1, 2], [5, 6]], [[1, 2], [5, 6]]], [[2, 5]])",
+                        "([[[1, 3], [4, 6]], [[2, 5]]], [])",
+                        "([[[1, 4]], [[2, 5]], [[3, 6]]], [])",
+                        "([[[1, 2], [8, 9]], [[3, 4]], [[5, 6]]], [[2, 3], [4, 5], [6, 8]])",
+                        "([[[1, 5]], [[10, 15]], [[20, 25]]], [[5, 10], [15, 20]])",
+                        "([[[1, 2], [10, 11]]], [[2, 10]])"
+                    ]
+                },
+                "body": "        result = run_employee_free_time(Solution, schedule)\n        assert_employee_free_time(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_employee_free_time, assert_employee_free_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nschedule = [[[1, 2], [5, 6]], [[1, 3]], [[4, 10]]]\nexpected = [[3, 4]]",
+    "playground_run": "result = run_employee_free_time(Solution, schedule)\nresult",
+    "playground_assert": "assert_employee_free_time(result, expected)"
+}

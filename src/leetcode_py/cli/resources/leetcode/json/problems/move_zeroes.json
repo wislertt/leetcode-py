@@ -1,0 +1,82 @@
+{
+    "problem_name": "move_zeroes",
+    "solution_class_name": "Solution",
+    "problem_number": "283",
+    "problem_title": "Move Zeroes",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers",
+    "_tags": { "list": ["grind"] },
+    "readme_description": "Given an integer array `nums`, move all `0`'s to the end of it while maintaining the relative order of the non-zero elements.\n\n**Note** that you must do this in-place without making a copy of the array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [0,1,0,3,12]\nOutput: [1,3,12,0,0]\nExplanation: The array after moving zeroes becomes [1,3,12,0,0].\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0]\nOutput: [0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^4\n- -2^31 <= nums[i] <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you minimize the total number of operations done?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "move_zeroes",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    nums_copy = nums.copy()\n    implementation = solution_class()\n    implementation.move_zeroes(nums_copy)\n    return nums_copy",
+    "helpers_assert_name": "move_zeroes",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_move_zeroes, run_move_zeroes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MoveZeroes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "move_zeroes",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Implement move_zeroes\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_move_zeroes",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 1, 0, 3, 12], [1, 3, 12, 0, 0])",
+                        "([0], [0])",
+                        "([1, 2, 3], [1, 2, 3])",
+                        "([0, 0, 0], [0, 0, 0])",
+                        "([1, 0], [1, 0])",
+                        "([0, 1], [1, 0])",
+                        "([1], [1])",
+                        "([1, 0, 2, 0, 3], [1, 2, 3, 0, 0])",
+                        "([0, 0, 1], [1, 0, 0])",
+                        "([1, 0, 0, 2, 0, 3], [1, 2, 3, 0, 0, 0])",
+                        "([2, 1], [2, 1])",
+                        "([0, 0, 0, 0, 1], [1, 0, 0, 0, 0])",
+                        "([1, 2, 3, 0, 4, 0, 5], [1, 2, 3, 4, 5, 0, 0])",
+                        "([4, 2, 4, 0, 0, 3, 0, 5, 1, 0], [4, 2, 4, 3, 5, 1, 0, 0, 0, 0])",
+                        "([-1, 0, -2, 0, -3], [-1, -2, -3, 0, 0])"
+                    ]
+                },
+                "body": "        result = run_move_zeroes(Solution, nums)\n        assert_move_zeroes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_move_zeroes, assert_move_zeroes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [0, 1, 0, 3, 12]\nexpected = [1, 3, 12, 0, 0]",
+    "playground_run": "result = run_move_zeroes(Solution, nums)\nresult",
+    "playground_assert": "assert_move_zeroes(result, expected)"
+}

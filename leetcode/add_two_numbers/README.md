@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Math, Recursion
-**Tags:** algo-master-75, neetcode-150
+**Tags:** algo-master-75, grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 2](https://leetcode.com/problems/add-two-numbers/description/)
 

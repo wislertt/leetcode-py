@@ -1,0 +1,82 @@
+{
+    "problem_name": "matchsticks_to_square",
+    "solution_class_name": "Solution",
+    "problem_number": "473",
+    "problem_title": "Matchsticks to Square",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given an integer array `matchsticks` where `matchsticks[i]` is the length of the `ith` matchstick. You want to use **all the matchsticks** to make one square. You **should not break** any stick, but you can link them up, and each matchstick must be used **exactly one time**.\n\nReturn `true` if you can make this square and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/09/matchsticks1-grid.jpg)\n\n```\nInput: matchsticks = [1,1,2,2,2]\nOutput: true\nExplanation: You can form a square with length 2, one side of the square came two sticks with length 1.\n```"
+            },
+            {
+                "content": "```\nInput: matchsticks = [3,3,3,3,4]\nOutput: false\nExplanation: You cannot find a way to form a square with all the matchsticks.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= matchsticks.length <= 15\n- 1 <= matchsticks[i] <= 10^8",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "makesquare",
+    "helpers_run_signature": "(solution_class: type, matchsticks: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.makesquare(matchsticks)",
+    "helpers_assert_name": "makesquare",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_makesquare, run_makesquare\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MatchsticksToSquare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "makesquare",
+                "signature": "(self, matchsticks: list[int]) -> bool",
+                "body": "        # TODO: Implement makesquare\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_makesquare",
+                "signature": "(self, matchsticks: list[int], expected: bool)",
+                "parametrize": "matchsticks, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 2, 2, 2], True)",
+                        "([3, 3, 3, 3, 4], False)",
+                        "([1, 1, 1, 1], True)",
+                        "([4, 4, 4, 4], True)",
+                        "([2, 2, 2, 2, 2, 2, 2, 2], True)",
+                        "([5], False)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], True)",
+                        "([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], True)",
+                        "([1, 1, 1, 1, 1], False)",
+                        "([2, 2, 2, 2, 4, 4, 4, 4], True)",
+                        "([1, 1, 1, 1, 2, 2, 2, 2], True)",
+                        "([3, 3, 3, 3, 3, 3, 3, 3], True)",
+                        "([7, 7, 7, 7], True)",
+                        "([7, 7, 7, 7, 7], False)",
+                        "([2, 2, 2, 2, 2, 2, 2, 2, 2, 2], False)"
+                    ]
+                },
+                "body": "        result = run_makesquare(Solution, matchsticks)\n        assert_makesquare(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_makesquare, assert_makesquare\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatchsticks = [1, 1, 2, 2, 2]\nexpected = True",
+    "playground_run": "result = run_makesquare(Solution, matchsticks)\nresult",
+    "playground_assert": "assert_makesquare(result, expected)"
+}

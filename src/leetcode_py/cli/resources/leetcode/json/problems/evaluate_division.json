@@ -1,0 +1,85 @@
+{
+    "problem_name": "evaluate_division",
+    "solution_class_name": "Solution",
+    "problem_number": "399",
+    "problem_title": "Evaluate Division",
+    "difficulty": "Medium",
+    "topics": "Array, String, Depth-First Search, Breadth-First Search, Union-Find, Graph Theory, Shortest Path",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given an array of variable pairs `equations` and an array of real numbers `values`, where `equations[i] = [Ai, Bi]` and `values[i]` represent the equation `Ai / Bi = values[i]`. Each `Ai` or `Bi` is a string that represents a single variable.\n\nYou are also given some `queries`, where `queries[j] = [Cj, Dj]` represents the `jth` query where you must find the answer for `Cj / Dj = ?`.\n\nReturn _the answers to all queries_. If a single answer cannot be determined, return `-1.0`.\n\n**Note:** The input is always valid. You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.\n\n**Note:** The variables that do not occur in the list of equations are undefined, so the answer cannot be determined for them.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: equations = [[\"a\",\"b\"],[\"b\",\"c\"]], values = [2.0,3.0], queries = [[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]\nOutput: [6.00000,0.50000,-1.00000,1.00000,-1.00000]\nExplanation: \nGiven: a / b = 2.0, b / c = 3.0\nqueries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? \nreturn: [6.0, 0.5, -1.0, 1.0, -1.0]\nnote: x is undefined => -1.0\n```"
+            },
+            {
+                "content": "```\nInput: equations = [[\"a\",\"b\"],[\"b\",\"c\"],[\"bc\",\"cd\"]], values = [1.5,2.5,5.0], queries = [[\"a\",\"c\"],[\"c\",\"b\"],[\"bc\",\"cd\"],[\"cd\",\"bc\"]]\nOutput: [3.75000,0.40000,5.00000,0.20000]\n```"
+            },
+            {
+                "content": "```\nInput: equations = [[\"a\",\"b\"]], values = [0.5], queries = [[\"a\",\"b\"],[\"b\",\"a\"],[\"a\",\"c\"],[\"x\",\"y\"]]\nOutput: [0.50000,2.00000,-1.00000,-1.00000]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= equations.length <= 20\n- equations[i].length == 2\n- 1 <= Ai.length, Bi.length <= 5\n- values.length == equations.length\n- 0.0 < values[i] <= 20.0\n- 1 <= queries.length <= 20\n- queries[i].length == 2\n- 1 <= Cj.length, Dj.length <= 5\n- Ai, Bi, Cj, Dj consist of lower case English letters and digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "calc_equation",
+    "helpers_run_signature": "(solution_class: type, equations: list[list[str]], values: list[float], queries: list[list[str]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.calc_equation(equations, values, queries)",
+    "helpers_assert_name": "calc_equation",
+    "helpers_assert_signature": "(result: list[float], expected: list[float]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_calc_equation, run_calc_equation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EvaluateDivision",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "calc_equation",
+                "signature": "(self, equations: list[list[str]], values: list[float], queries: list[list[str]]) -> list[float]",
+                "body": "        # TODO: Implement calc_equation\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_calc_equation",
+                "signature": "(self, equations: list[list[str]], values: list[float], queries: list[list[str]], expected: list[float])",
+                "parametrize": "equations, values, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "([['a','b'],['b','c']], [2.0,3.0], [['a','c'],['b','a'],['a','e'],['a','a'],['x','x']], [6.0,0.5,-1.0,1.0,-1.0])",
+                        "([['a','b'],['b','c'],['bc','cd']], [1.5,2.5,5.0], [['a','c'],['c','b'],['bc','cd'],['cd','bc']], [3.75,0.4,5.0,0.2])",
+                        "([['a','b']], [0.5], [['a','b'],['b','a'],['a','c'],['x','y']], [0.5,2.0,-1.0,-1.0])",
+                        "([['a','b']], [2.0], [['a','b']], [2.0])",
+                        "([['a','b']], [2.0], [['b','a']], [0.5])",
+                        "([['a','b']], [2.0], [['a','a']], [1.0])",
+                        "([['a','b']], [2.0], [['x','y']], [-1.0])",
+                        "([['a','b'],['b','c'],['c','d']], [2.0,3.0,4.0], [['a','d'],['d','a']], [24.0,0.041666666666666664])",
+                        "([['a','b'],['c','d']], [2.0,3.0], [['a','d']], [-1.0])",
+                        "([['a','b'],['b','c']], [2.0,3.0], [['a','c'],['c','a'],['b','b'],['y','z']], [6.0,0.16666666666666666,1.0,-1.0])",
+                        "([['a','b']], [1.0], [['a','b'],['b','a'],['a','a']], [1.0,1.0,1.0])",
+                        "([['a','b'],['b','c'],['c','d'],['d','e']], [2.0,2.0,2.0,2.0], [['a','e'],['e','a']], [16.0,0.0625])",
+                        "([['x1','x2'],['x2','x3']], [3.0,4.0], [['x1','x3'],['x3','x1']], [12.0,0.08333333333333333])",
+                        "([['a','b'],['b','c']], [2.0,3.0], [['x','x']], [-1.0])",
+                        "([['a','b']], [5.0], [['a','b'],['b','a']], [5.0,0.2])"
+                    ]
+                },
+                "body": "        result = run_calc_equation(Solution, equations, values, queries)\n        assert_calc_equation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_calc_equation, assert_calc_equation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nequations = [['a', 'b'], ['b', 'c']]\nvalues = [2.0, 3.0]\nqueries = [['a', 'c'], ['b', 'a'], ['a', 'e'], ['a', 'a'], ['x', 'x']]\nexpected = [6.0, 0.5, -1.0, 1.0, -1.0]",
+    "playground_run": "result = run_calc_equation(Solution, equations, values, queries)\nresult",
+    "playground_assert": "assert_calc_equation(result, expected)"
+}

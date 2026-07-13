@@ -1,0 +1,85 @@
+{
+    "problem_name": "stone_game",
+    "solution_class_name": "Solution",
+    "problem_number": "877",
+    "problem_title": "Stone Game",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Dynamic Programming, Game Theory",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "Alice and Bob play a game with piles of stones. There are an **even** number of piles arranged in a row, and each pile has a **positive** integer number of stones `piles[i]`.\n\nThe objective of the game is to end with the most stones. The **total** number of stones across all the piles is **odd**, so there are no ties.\n\nAlice and Bob take turns, with **Alice starting first**. Each turn, a player takes the entire pile of stones either from the **beginning** or from the **end** of the row. This continues until there are no more piles left, at which point the person with the **most stones wins**.\n\nAssuming Alice and Bob play optimally, return `true` if Alice wins the game, or `false` if Bob wins.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: piles = [5,3,4,5]\nOutput: true\nExplanation: \nAlice starts first, and can only take the first 5 or the last 5.\nSay she takes the first 5, so that the row becomes [3, 4, 5].\nIf Bob takes 3, then the board is [4, 5], and Alice takes 5 to win with 10 points.\nIf Bob takes the last 5, then the board is [3, 4], and Alice takes 4 to win with 9 points.\nThis demonstrated that taking the first 5 was a winning move for Alice, so we return true.\n```"
+            },
+            {
+                "content": "```\nInput: piles = [3,7,2,3]\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= piles.length <= 500\n- `piles.length` is even.\n- 1 <= piles[i] <= 500\n- `sum(piles[i])` is odd.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "stone_game",
+    "helpers_run_signature": "(solution_class: type, piles: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.stone_game(piles)",
+    "helpers_assert_name": "stone_game",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_stone_game, run_stone_game\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StoneGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "stone_game",
+                "signature": "(self, piles: list[int]) -> bool",
+                "body": "        # TODO: Implement stone_game\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_stone_game",
+                "signature": "(self, piles: list[int], expected: bool)",
+                "parametrize": "piles, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 3, 4, 5], True)",
+                        "([3, 7, 2, 3], True)",
+                        "([1, 2], True)",
+                        "([2, 1], True)",
+                        "([1, 2, 3, 4], True)",
+                        "([4, 3, 2, 1], True)",
+                        "([5, 1, 5, 1], True)",
+                        "([1, 5, 1, 5], True)",
+                        "([3, 9, 1, 2], True)",
+                        "([10, 20, 30, 40], True)",
+                        "([100, 50, 200, 75], True)",
+                        "([7, 7, 7, 7, 7, 8], True)",
+                        "([9, 8, 7, 6, 5, 4], True)",
+                        "([1, 100, 2, 99], True)",
+                        "([500, 1, 500, 1], True)",
+                        "([2, 4, 6, 8, 10, 12], True)",
+                        "([13, 11, 9, 7, 5, 3], True)",
+                        "([1, 3, 5, 7, 9, 11], True)"
+                    ]
+                },
+                "body": "        result = run_stone_game(Solution, piles)\n        assert_stone_game(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_stone_game, assert_stone_game\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npiles = [5, 3, 4, 5]\nexpected = True",
+    "playground_run": "result = run_stone_game(Solution, piles)\nresult",
+    "playground_assert": "assert_stone_game(result, expected)"
+}

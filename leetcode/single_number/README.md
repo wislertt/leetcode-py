@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Bit Manipulation
-**Tags:** neetcode-150
+**Tags:** grind, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 136](https://leetcode.com/problems/single-number/description/)
 

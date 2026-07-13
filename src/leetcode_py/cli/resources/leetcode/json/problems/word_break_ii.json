@@ -1,0 +1,99 @@
+{
+    "problem_name": "word_break_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "140",
+    "problem_title": "Word Break II",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given a string `s` and a dictionary of strings `wordDict`, add spaces in `s` to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in **any order**.\n\nNote that the same word in the dictionary may be reused multiple times in the segmentation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"catsanddog\", wordDict = [\"cat\",\"cats\",\"and\",\"sand\",\"dog\"]\nOutput: [\"cats and dog\",\"cat sand dog\"]\n```\n**Explanation:** The following are all of the possible valid segmentations:\n- \"cats and dog\"\n- \"cat sand dog\""
+            },
+            {
+                "content": "```\nInput: s = \"pineapplepenapple\", wordDict = [\"apple\",\"pen\",\"applepen\",\"pine\",\"pineapple\"]\nOutput: [\"pine apple pen apple\",\"pineapple pen apple\",\"pine applepen apple\"]\n```\n**Explanation:** Note that you are allowed to reuse a dictionary word."
+            },
+            {
+                "content": "```\nInput: s = \"catsandog\", wordDict = [\"cats\",\"dog\",\"sand\",\"and\",\"cat\"]\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 20\n- 1 <= wordDict.length <= 1000\n- 1 <= wordDict[i].length <= 10\n- `s` and `wordDict[i]` consist of only lowercase English letters.\n- All the strings of `wordDict` are unique.\n- Input is generated in a way that the length of the answer doesn't exceed 10^5.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_break",
+    "helpers_run_signature": "(solution_class: type, s: str, word_dict: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_break(s, word_dict)",
+    "helpers_assert_name": "word_break",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_break, run_word_break\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestWordBreakII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_break",
+                "signature": "(self, s: str, word_dict: list[str]) -> list[str]",
+                "body": "        # TODO: Implement word_break\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_break, assert_word_break\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'catsanddog'\nword_dict = ['cat', 'cats', 'and', 'sand', 'dog']\nexpected = ['cats and dog', 'cat sand dog']",
+    "playground_run": "result = run_word_break(Solution, s, word_dict)\nresult",
+    "playground_assert": "assert_word_break(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_break",
+                "signature": "(self, solution_class, s: str, word_dict: list[str], expected: list[str])",
+                "parametrize": "solution_class, s, word_dict, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 'catsanddog', ['cat', 'cats', 'and', 'sand', 'dog'], ['cats and dog', 'cat sand dog'])",
+                        "(Solution, 'pineapplepenapple', ['apple', 'pen', 'applepen', 'pine', 'pineapple'], ['pine apple pen apple', 'pineapple pen apple', 'pine applepen apple'])",
+                        "(Solution, 'catsandog', ['cats', 'dog', 'sand', 'and', 'cat'], [])",
+                        "(Solution, 'a', ['a'], ['a'])",
+                        "(Solution, 'ab', ['a', 'b'], ['a b'])",
+                        "(Solution, 'ab', ['a'], [])",
+                        "(Solution, 'leetcode', ['leet', 'code'], ['leet code'])",
+                        "(Solution, 'leetcode', ['leet', 'code', 'le', 'et'], ['leet code', 'le et code'])",
+                        "(Solution, 'abc', ['a', 'b', 'c', 'ab', 'bc'], ['a b c', 'a bc', 'ab c'])",
+                        "(Solution, 'aa', ['a'], ['a a'])",
+                        "(Solution, 'xyz', ['x', 'y', 'z'], ['x y z'])",
+                        "(Solution, 'xyz', ['xyz'], ['xyz'])",
+                        "(Solution, 'xyz', ['xy', 'z', 'x', 'yz'], ['xy z', 'x yz'])",
+                        "(Solution, 'bb', ['a', 'b', 'bbb', 'bbbb'], ['b b'])",
+                        "(Solution, 'abcd', ['a', 'abc', 'b', 'cd'], ['a b cd'])",
+                        "(Solution, 'aaaa', ['aa', 'a'], ['a a a a', 'a a aa', 'a aa a', 'aa a a', 'aa aa'])",
+                        "(Solution, 'aaaaaaa', ['aaaa', 'aaa'], ['aaa aaaa', 'aaaa aaa'])",
+                        "(Solution, 'abc', ['d'], [])"
+                    ]
+                },
+                "body": "        result = run_word_break(solution_class, s, word_dict)\n        assert_word_break(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "s = 'catsanddog'\nword_dict = ['cat', 'cats', 'and', 'sand', 'dog']",
+    "playground_execution": "result = run_word_break(Solution, s, word_dict)",
+    "playground_assertion": "assert_word_break(result, ['cats and dog', 'cat sand dog'])"
+}

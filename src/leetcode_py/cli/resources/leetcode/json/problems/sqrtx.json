@@ -1,0 +1,96 @@
+{
+    "problem_name": "sqrtx",
+    "solution_class_name": "Solution",
+    "problem_number": "69",
+    "problem_title": "Sqrt(x)",
+    "difficulty": "Easy",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": ["neetcode-250"]
+    },
+    "readme_description": "Given a non-negative integer `x`, return *the square root of* `x` *rounded down to the nearest integer*. The returned integer should be **non-negative** as well.\n\nYou **must not use** any built-in exponent function or operator.\n\n- For example, do not use `pow(x, 0.5)` in c++ or `x ** 0.5` in python.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: x = 4\nOutput: 2\n```\n**Explanation:** The square root of 4 is 2, so we return 2."
+            },
+            {
+                "content": "```\nInput: x = 8\nOutput: 2\n```\n**Explanation:** The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned."
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= x <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "my_sqrt",
+    "helpers_run_signature": "(solution_class: type, x: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.my_sqrt(x)",
+    "helpers_assert_name": "my_sqrt",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_my_sqrt, run_my_sqrt\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSqrtx",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "my_sqrt",
+                "signature": "(self, x: int) -> int",
+                "body": "        # TODO: Implement my_sqrt\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_my_sqrt, assert_my_sqrt\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 4\nexpected = 2",
+    "playground_run": "result = run_my_sqrt(Solution, x)\nresult",
+    "playground_assert": "assert_my_sqrt(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_my_sqrt",
+                "signature": "(self, solution_class, x: int, expected: int)",
+                "parametrize": "solution_class, x, expected",
+                "test_cases": {
+                    "list": [
+                        "(Solution, 4, 2)",
+                        "(Solution, 8, 2)",
+                        "(Solution, 0, 0)",
+                        "(Solution, 1, 1)",
+                        "(Solution, 2, 1)",
+                        "(Solution, 3, 1)",
+                        "(Solution, 6, 2)",
+                        "(Solution, 7, 2)",
+                        "(Solution, 9, 3)",
+                        "(Solution, 15, 3)",
+                        "(Solution, 16, 4)",
+                        "(Solution, 25, 5)",
+                        "(Solution, 26, 5)",
+                        "(Solution, 99, 9)",
+                        "(Solution, 100, 10)",
+                        "(Solution, 2147483647, 46340)",
+                        "(Solution, 2147395600, 46340)",
+                        "(Solution, 2147395599, 46339)"
+                    ]
+                },
+                "body": "        result = run_my_sqrt(solution_class, x)\n        assert_my_sqrt(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "x = 4",
+    "playground_execution": "result = run_my_sqrt(Solution, x)",
+    "playground_assertion": "assert_my_sqrt(result, 2)"
+}

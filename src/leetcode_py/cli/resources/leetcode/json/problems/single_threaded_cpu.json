@@ -1,0 +1,85 @@
+{
+    "problem_name": "single_threaded_cpu",
+    "solution_class_name": "Solution",
+    "problem_number": "1834",
+    "problem_title": "Single-Threaded CPU",
+    "difficulty": "Medium",
+    "topics": "Array, Sorting, Heap (Priority Queue)",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given `n` tasks labeled from `0` to `n - 1` represented by a 2D integer array `tasks`, where `tasks[i] = [enqueueTime_i, processingTime_i]` means that the `i^th` task will be available to process at `enqueueTime_i` and will take `processingTime_i` to finish processing.\n\nYou have a single-threaded CPU that can process **at most one** task at a time and will act in the following way:\n\n- If the CPU is idle and there are no available tasks to process, the CPU remains idle.\n- If the CPU is idle and there are available tasks, the CPU will choose the one with the **shortest processing time**. If multiple tasks have the same shortest processing time, it will choose the task with the smallest index.\n- Once a task is started, the CPU will **process the entire task** without stopping.\n- The CPU can finish a task then start a new one instantly.\n\nReturn *the order in which the CPU will process the tasks.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: tasks = [[1,2],[2,4],[3,2],[4,1]]\nOutput: [0,2,3,1]\nExplanation: The events go as follows:\n- At time = 1, task 0 is available to process. Available tasks = {0}.\n- Also at time = 1, the idle CPU starts processing task 0. Available tasks = {}.\n- At time = 2, task 1 is available to process. Available tasks = {1}.\n- At time = 3, task 2 is available to process. Available tasks = {1, 2}.\n- Also at time = 3, the CPU finishes task 0 and starts processing task 2 as it is the shortest. Available tasks = {1}.\n- At time = 4, task 3 is available to process. Available tasks = {1, 3}.\n- At time = 5, the CPU finishes task 2 and starts processing task 3 as it is the shortest. Available tasks = {1}.\n- At time = 6, the CPU finishes task 3 and starts processing task 1. Available tasks = {}.\n- At time = 10, the CPU finishes task 1 and becomes idle.\n```"
+            },
+            {
+                "content": "```\nInput: tasks = [[7,10],[7,12],[7,5],[7,4],[7,2]]\nOutput: [4,3,2,0,1]\nExplanation: The events go as follows:\n- At time = 7, all the tasks become available. Available tasks = {0,1,2,3,4}.\n- Also at time = 7, the idle CPU starts processing task 4. Available tasks = {0,1,2,3}.\n- At time = 9, the CPU finishes task 4 and starts processing task 3. Available tasks = {0,1,2}.\n- At time = 13, the CPU finishes task 3 and starts processing task 2. Available tasks = {0,1}.\n- At time = 18, the CPU finishes task 2 and starts processing task 0. Available tasks = {1}.\n- At time = 28, the CPU finishes task 0 and starts processing task 1. Available tasks = {}.\n- At time = 40, the CPU finishes task 1 and becomes idle.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- tasks.length == n\n- 1 <= n <= 10^5\n- 1 <= enqueueTime_i, processingTime_i <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_order",
+    "helpers_run_signature": "(solution_class: type, tasks: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_order(tasks)",
+    "helpers_assert_name": "get_order",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_order, run_get_order\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSingleThreadedCPU",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_order",
+                "signature": "(self, tasks: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement get_order\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_get_order, assert_get_order\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntasks = [[1,2],[2,4],[3,2],[4,1]]\nexpected = [0,2,3,1]",
+    "playground_run": "result = run_get_order(Solution, tasks)\nresult",
+    "playground_assert": "assert_get_order(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_order",
+                "signature": "(self, tasks: list[list[int]], expected: list[int])",
+                "parametrize": "tasks, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,2],[2,4],[3,2],[4,1]], [0,2,3,1])",
+                        "([[7,10],[7,12],[7,5],[7,4],[7,2]], [4,3,2,0,1])",
+                        "([[1,1]], [0])",
+                        "([[5,1]], [0])",
+                        "([[1,1],[2,1]], [0,1])",
+                        "([[1,5],[2,2]], [0,1])",
+                        "([[1,3],[2,1],[3,1]], [0,1,2])",
+                        "([[1,2],[1,2],[1,2]], [0,1,2])",
+                        "([[1,100],[2,1],[3,1],[4,1]], [0,1,2,3])",
+                        "([[5,2],[5,1],[5,3]], [1,0,2])",
+                        "([[1,5],[5,1]], [0,1])",
+                        "([[1,10],[2,5],[3,1]], [0,2,1])",
+                        "([[1,1],[1,1],[1,1],[1,1]], [0,1,2,3])",
+                        "([[10,1],[1,10]], [1,0])",
+                        "([[100,1],[1,100]], [1,0])"
+                    ]
+                },
+                "body": "        result = run_get_order(Solution, tasks)\n        assert_get_order(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "tasks = [[1,2],[2,4],[3,2],[4,1]]",
+    "playground_execution": "result = run_get_order(Solution, tasks)",
+    "playground_assertion": "assert_get_order(result, [0,2,3,1])"
+}

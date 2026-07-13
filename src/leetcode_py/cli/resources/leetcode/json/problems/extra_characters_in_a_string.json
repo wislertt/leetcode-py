@@ -1,0 +1,85 @@
+{
+    "problem_name": "extra_characters_in_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "2707",
+    "problem_title": "Extra Characters in a String",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Dynamic Programming, Trie",
+    "_tags": { "list": ["neetcode-250"] },
+    "readme_description": "You are given a **0-indexed** string `s` and a dictionary of words `dictionary`. You have to break `s` into one or more **non-overlapping** substrings such that each substring is present in `dictionary`. There may be some **extra characters** in `s` which are not present in any of the substrings.\n\nReturn *the **minimum** number of extra characters left over if you break up* `s` *optimally.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"leetscode\", dictionary = [\"leet\",\"code\",\"leetcode\"]\nOutput: 1\nExplanation: We can break s in two substrings: \"leet\" from index 0 to 3 and \"code\" from index 5 to 8. There is only 1 unused character (at index 4), so we return 1.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"sayhelloworld\", dictionary = [\"hello\",\"world\"]\nOutput: 3\nExplanation: We can break s in two substrings: \"hello\" from index 3 to 7 and \"world\" from index 8 to 12. The characters at indices 0, 1, 2 are not used in any substring and thus are considered as extra characters. Hence, we return 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 50\n- 1 <= dictionary.length <= 50\n- 1 <= dictionary[i].length <= 50\n- dictionary[i] and s consists of only lowercase English letters\n- dictionary contains distinct words",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_extra_char",
+    "helpers_run_signature": "(solution_class: type, s: str, dictionary: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_extra_char(s, dictionary)",
+    "helpers_assert_name": "min_extra_char",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_extra_char, run_min_extra_char\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestExtraCharactersInAString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_extra_char",
+                "signature": "(self, s: str, dictionary: list[str]) -> int",
+                "body": "        # TODO: Implement min_extra_char\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "playground_imports": "from helpers import run_min_extra_char, assert_min_extra_char\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leetscode'\ndictionary = ['leet', 'code', 'leetcode']\nexpected = 1",
+    "playground_run": "result = run_min_extra_char(Solution, s, dictionary)\nresult",
+    "playground_assert": "assert_min_extra_char(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_extra_char",
+                "signature": "(self, s: str, dictionary: list[str], expected: int)",
+                "parametrize": "s, dictionary, expected",
+                "test_cases": {
+                    "list": [
+                        "('leetscode', ['leet', 'code', 'leetcode'], 1)",
+                        "('sayhelloworld', ['hello', 'world'], 3)",
+                        "('leetcode', ['leet', 'code'], 0)",
+                        "('hello', ['hello'], 0)",
+                        "('a', ['b'], 1)",
+                        "('a', ['a'], 0)",
+                        "('abc', ['a', 'b', 'c'], 0)",
+                        "('abc', ['d', 'e'], 3)",
+                        "('aaaa', ['aa'], 0)",
+                        "('aaaa', ['aaa'], 1)",
+                        "('xyz', ['q'], 3)",
+                        "('binary', ['bin', 'ary'], 0)",
+                        "('abcd', ['ab', 'cd', 'abcd'], 0)",
+                        "('ababab', ['ab', 'ba'], 0)",
+                        "('xxx', ['xx'], 1)"
+                    ]
+                },
+                "body": "        result = run_min_extra_char(Solution, s, dictionary)\n        assert_min_extra_char(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "s = 'leetscode'\ndictionary = ['leet', 'code', 'leetcode']",
+    "playground_execution": "result = run_min_extra_char(Solution, s, dictionary)",
+    "playground_assertion": "assert_min_extra_char(result, 1)"
+}
