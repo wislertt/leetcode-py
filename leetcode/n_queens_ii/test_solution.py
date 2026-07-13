@@ -12,7 +12,20 @@ class TestTestNQueensII:
 
     @logged_test
     @pytest.mark.parametrize(
-        "n, expected", [(1, 1), (2, 0), (3, 0), (4, 2), (5, 10), (6, 4), (7, 40), (8, 92), (9, 352)]
+        "n, expected",
+        [
+            (1, 1),
+            (2, 0),
+            (3, 0),
+            (4, 2),
+            (5, 10),
+            (6, 4),
+            (7, 40),
+            (8, 92),
+            (9, 352),
+            (8, 92),
+            (9, 352),
+        ],
     )
     def test_total_n_queens(self, n: int, expected: int):
         result = run_total_n_queens(Solution, n)
