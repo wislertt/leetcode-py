@@ -118,6 +118,14 @@ class TestAccountsMerge:
                     ["Name", "a@mail.com", "b@mail.com", "c@mail.com", "f@mail.com"],
                 ],
             ),
+            (
+                [
+                    ["John", "a@mail.com", "b@mail.com"],
+                    ["John", "c@mail.com", "d@mail.com"],
+                    ["John", "b@mail.com", "c@mail.com"],
+                ],
+                [["John", "a@mail.com", "b@mail.com", "c@mail.com", "d@mail.com"]],
+            ),
         ],
     )
     def test_accounts_merge(self, accounts: list[list[str]], expected: list[list[str]]):
