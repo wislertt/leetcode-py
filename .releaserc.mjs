@@ -2,7 +2,7 @@ const types = ["feat", "fix", "chore", "docs", "style", "refactor", "perf", "tes
 
 const types_glob = `{${types.join(",")}}`
 
-module.exports = {
+export default {
     branches: ["main"],
     plugins: [
         [
