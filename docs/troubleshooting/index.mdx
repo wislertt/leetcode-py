@@ -1,0 +1,65 @@
+---
+title: Troubleshooting
+description: Fixes for the errors you are most likely to hit.
+---
+
+## check-consistency reports drift
+
+`leetcode/` is generated from JSON templates; editing a generated file by
+hand always resurfaces as drift. Fix it at the source:
+
+```bash
+# edit src/leetcode_py/cli/resources/leetcode/json/problems/<name>.json
+bake p-gen -p <name> --force
+bake check-consistency
+```
+
+If you already solved the problem, copy your `solution.py` out first,
+regenerate, then copy it back. The generated tree must match the templates
+exactly.
+
+## lcpy gen fails
+
+- **Unknown problem number or slug**: run `lcpy list` (or `lcpy list -t
+  <tag>`) to confirm the problem ships with your installed version.
+- **Files already exist**: add `--force`, or pick a different `-o` directory.
+- **Problem not in the catalog at all**: scrape it first; see
+  [Problem Creation](/contributing/problem-creation).
+
+## Visualizations show ASCII instead of diagrams
+
+Diagram rendering needs the system Graphviz binary, not just the Python
+package. The objects fall back to ASCII text when it is missing. Install
+it ([download guide](https://graphviz.org/download/), e.g.
+`brew install graphviz`) and restart your terminal.
+
+## Notebook cells do not render
+
+`playground.py` files use jupytext percent format (`# %%` markers).
+
+- **VS Code**: install the Python extension, then use the interactive
+  window; it understands `# %%` natively.
+- **JupyterLab**: enable the jupytext contents manager.
+- **Committed an `.ipynb` by accident**: run `bake nb-to-py` to convert
+  everything back to percent format and delete the `.ipynb` files.
+
+## bake brand fails on svg conversion
+
+Brand asset regeneration converts SVG to PNG through `rsvg-convert`, which
+comes from librsvg: `brew install librsvg`. Details live in
+`scripts/branding/BRAND.md`.
+
+## bake docs issues
+
+- **`mintlify: command not found`**: the CLI comes from mise; run `mise
+  install` in the repo, or use `mise exec npm:mintlify -- mintlify dev`.
+- **`must be run in a directory where a docs.json file exists`**: run from
+  `docs/`, or use `bake docs` which does that for you.
+- **Port already in use**: the dev server listens on port 3000; stop the
+  other process or pass `--port`.
+
+## Still stuck
+
+Open an issue on
+[GitHub](https://github.com/wislertt/leetcode-py/issues) with the command
+you ran and its output.

@@ -78,7 +78,7 @@ class TestImplementQueueUsingStacks:
         ],
     )
     def test_queue_operations(
-        self, operations: list[str], inputs: list[list[int]], expected: list[int | None | bool]
+        self, operations: list[str], inputs: list[list[int]], expected: list[int | bool | None]
     ):
         result, _ = run_my_queue(MyQueue, operations, inputs)
         assert_my_queue(result, expected)

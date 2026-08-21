@@ -1,0 +1,101 @@
+---
+title: lcpy
+description: Generate, list, and scrape LeetCode problems from any directory.
+---
+
+`lcpy` is the published CLI (`leetcode-py-sdk` on PyPI). It is designed to
+run inside *your* repos, not just this one: install it, point it at an
+empty directory, and it generates a complete practice environment there.
+This repository is itself just one practice environment kept in sync by
+the same generator.
+
+```bash
+pip install leetcode-py-sdk
+# or
+uv tool install leetcode-py-sdk
+```
+
+```bash
+mkdir my-practice && cd my-practice
+lcpy gen -t grind-75    # a full practice env, no repo checkout needed
+```
+
+## lcpy gen
+
+Generate problem directories from the JSON templates bundled with the
+package.
+
+| Option | Meaning |
+| --- | --- |
+| `-n, --problem-num` | Problem number(s); repeat the flag for more than one |
+| `-s, --problem-slug` | Problem slug(s), e.g. `two-sum`; repeatable |
+| `-t, --problem-tag` | Generate every problem in a collection tag |
+| `-d, --difficulty` | Filter by `Easy`, `Medium`, or `Hard` |
+| `--all` | Generate every problem in the catalog |
+| `-o, --output` | Output directory (default: current directory) |
+| `--force` | Overwrite existing files |
+
+```bash
+lcpy gen -n 1                          # Two Sum
+lcpy gen -n 1 -n 125 -n 206            # several at once
+lcpy gen -s two-sum -s valid-palindrome
+lcpy gen -t grind-75 -o leetcode       # a whole collection
+lcpy gen -t grind-75 -d Easy           # collection + difficulty filter
+lcpy gen -n 1 --force                  # regenerate over existing files
+```
+
+What lands on disk is documented in
+[Problem Anatomy](/practice/problem-anatomy).
+
+## lcpy list
+
+List available problems in a formatted table (307 problems ship with the
+package).
+
+| Option | Meaning |
+| --- | --- |
+| `-t, --tag` | Filter by collection: `grind-75`, `grind`, `blind-75`, `neetcode-150`, `neetcode-250`, `algo-master-75` |
+| `-d, --difficulty` | Filter by `Easy`, `Medium`, or `Hard` |
+
+```bash
+lcpy list
+lcpy list -t blind-75
+lcpy list -t neetcode-150 -d Hard
+```
+
+## lcpy scrape
+
+Fetch problem data from LeetCode and print it as JSON. This is the first
+step of adding a new problem to the catalog; see
+[Problem Creation](/contributing/problem-creation).
+
+| Option | Meaning |
+| --- | --- |
+| `-n, --problem-num` | Problem number |
+| `-s, --problem-slug` | Problem slug |
+
+```bash
+lcpy scrape -n 198                    # print JSON to stdout
+lcpy scrape -s house-robber > house_robber.json
+```
+
+## Errors and exit codes
+
+Exit code `0` on success, `1` on error. Common failures:
+
+- Problem number or slug not in the catalog: check `lcpy list` first
+- Unknown tag: use one of the six collection tags above
+- Output files already exist: add `--force` to overwrite
+- Network errors during `scrape`: retry, or check the slug on leetcode.com
+
+## Machine-readable docs
+
+The docs site serves machine-readable endpoints alongside the HTML pages. `lcpy --help` advertises these in its afterword:
+
+| Endpoint | Purpose |
+| --- | --- |
+| `https://leetcode-py.wisl.dev/llms.txt` | Docs index for AI agents |
+| `https://leetcode-py.wisl.dev/llms-full.txt` | All pages in one file |
+| `https://leetcode-py.wisl.dev/skill.md` | Agent skill file (`npx skills add https://leetcode-py.wisl.dev`) |
+| `https://leetcode-py.wisl.dev/mcp` | Search MCP server for MCP clients |
+| Any page URL + `.md` | Markdown export, e.g. `/cli/lcpy.md` |

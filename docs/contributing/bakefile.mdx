@@ -1,0 +1,68 @@
+---
+title: bakefile
+description: Contributor reference for repo tooling, bake tasks for problem workflow, checks, and docs.
+---
+
+<Note>
+This page is for contributors working inside a clone of the leetcode-py
+repository. If you practice with the standalone `lcpy` CLI in your own
+repo, none of this applies; see the [lcpy CLI reference](/cli/lcpy).
+</Note>
+
+[bakefile](https://bakefile.wisl.dev/) is the task runner used inside this
+repository (see [Installation](/getting-started/installation) for the
+development setup). Its CLI is the `bake` command; this repo's bakebook
+wraps `lcpy` and the other tooling so every workflow is one command.
+Run `bake --help` for the full list; these are the ones you will use.
+
+## Problem workflow
+
+| Command | What it does |
+| --- | --- |
+| `bake p-test -p <name>` | Run one problem's test suite with verbose output |
+| `bake p-gen -p <name>` | Regenerate one problem from its JSON template (`--force` to overwrite) |
+| `bake p-del -p <name>` | Delete one problem directory |
+| `bake gen-all-problems` | Delete all of `leetcode/` and regenerate every problem |
+| `bake check-consistency` | Verify `leetcode/` matches the JSON source of truth |
+| `bake check-test-cases -t 12` | Find problems with few test cases |
+| `bake nb-to-py` | Convert all `.ipynb` under `leetcode/` to percent-format `.py` |
+
+```bash
+bake p-test -p two_sum
+bake p-gen -p two_sum --force
+bake check-test-cases -t 12 -m 20   # threshold 12, show at most 20
+```
+
+## Consistency and drift
+
+`leetcode/` is generated from the JSON templates under
+`src/leetcode_py/cli/resources/leetcode/json/` plus a cookiecutter
+scaffold. `bake check-consistency` regenerates everything into a backup
+directory and compares; CI runs it on every push.
+
+When it reports drift, the fix is never to edit the generated file. Edit
+the problem's JSON template, then regenerate:
+
+```bash
+bake p-gen -p two_sum --force
+```
+
+The full pipeline is documented in
+[Problem Creation](/contributing/problem-creation).
+
+## Docs and brand
+
+| Command | What it does |
+| --- | --- |
+| `bake docs` | Run the Mintlify docs dev server (port 3000) |
+| `bake docs-check` | Check the docs site for broken links |
+| `bake docs-catalog` | Regenerate the catalog pages under `docs/catalog/` from the JSON templates |
+| `bake brand` | Regenerate brand assets into `docs/img/brand/` |
+
+## Repo-wide tasks
+
+Inherited from bakefile's built-in library tasks: `bake test` (unit
+tests), `bake test-all`, `bake lint`, `bake clean`, `bake setup-dev`,
+`bake update` (upgrade dependencies), `bake publish`, `bake version`. See
+the [bakefile docs](https://bakefile.wisl.dev/) for what the runner itself
+provides.

@@ -78,7 +78,7 @@ class TestImplementStackUsingQueues:
         ],
     )
     def test_stack_operations(
-        self, operations: list[str], inputs: list[list[int]], expected: list[int | None | bool]
+        self, operations: list[str], inputs: list[list[int]], expected: list[int | bool | None]
     ):
         result, _ = run_my_stack(MyStack, operations, inputs)
         assert_my_stack(result, expected)

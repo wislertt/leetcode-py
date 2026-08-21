@@ -23,6 +23,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")
         self.ctx.run("uv run python scripts/check_tag_problems.py")
+        self.ctx.run("uv run python scripts/gen_catalog.py")
         super().lint()
 
     def test(self) -> None:
@@ -69,6 +70,38 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         console.echo("Converting all .ipynb files in leetcode/ to .py files...")
         self._convert_notebooks_to_python()
         console.success("Conversion complete. All .ipynb files converted to .py and deleted.")
+
+    @command("brand", help="Regenerate brand assets into docs/img/brand/")
+    def brand(self):
+        console.echo("Regenerating brand assets...")
+
+        self.ctx.run(
+            "cd scripts/branding && "
+            "uv run python3 gen_mark.py && "
+            "uv run --with fonttools python3 gen_wordmark.py && "
+            "uv run --with fonttools python3 gen_lockup.py && "
+            "uv run --with pillow python3 gen_pngs.py && "
+            "uv run --with fonttools --with pillow python3 gen_og.py && "
+            "mkdir -p ../../docs/img/brand && "
+            "cp .cache/leetcode-py-*.svg .cache/leetcode-py-mark-*.png .cache/favicon* "
+            ".cache/apple-touch-icon.png .cache/og-card-*.png ../../docs/img/brand/"
+        )
+
+        console.success("Brand assets regenerated into docs/img/brand/")
+
+    @command("docs", help="Run Mintlify docs dev server")
+    def docs(self):
+        self.ctx.run("mintlify dev", cwd=Path("docs"))
+
+    @command("docs-check", help="Check docs site for broken links")
+    def docs_check(self):
+        self.ctx.run("mintlify broken-links", cwd=Path("docs"))
+
+    @command("docs-catalog", help="Regenerate docs/catalog/ pages from JSON templates")
+    def docs_catalog(self):
+        console.echo("Regenerating docs/catalog/ pages...")
+        self.ctx.run("uv run python scripts/gen_catalog.py")
+        console.success("Catalog pages regenerated into docs/catalog/")
 
     @command("check-test-cases", help="Find problems with few test cases")
     def check_test_cases(

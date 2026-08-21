@@ -1,0 +1,53 @@
+---
+title: Why leetcode-py
+description: What a generated practice environment gives you that a bare editor does not.
+---
+
+Grinding LeetCode in a bare editor means writing `if __name__ == "__main__"`
+prints, losing your test cases between attempts, and having nothing to show
+for a solved problem. leetcode-py generates a **real software project per
+problem**, tests, helpers, docs, and tooling included, so practice looks
+like the engineering you already do.
+
+## Tests come with the problem
+
+Every generated problem ships a parametrized pytest suite with 10+ cases,
+including edge cases, and a `run_helper`/`assert_helper` pair that keeps
+inputs readable in failure output. You never write test scaffolding; you only
+ever make red go green. Multiple solution approaches to the same problem?
+One test suite covers all of them via
+[parametrized classes](/practice/testing).
+
+## Data structures you can see
+
+`TreeNode`, `ListNode`, `GraphNode`, and `DictTree` convert between LeetCode's
+array format and live objects, and render themselves as diagrams in Jupyter
+or clean ASCII in the terminal. Debugging a twisted tree traversal is much
+shorter when you can look at the tree.
+See [Visualizations](/practice/visualizations).
+
+## 300+ problems, ready to generate
+
+The catalog covers the collections that matter (Grind 75, Blind 75,
+NeetCode 150, NeetCode 250, and Algo Master 75) as JSON templates that
+generate identical files on every machine. Browse everything in the
+[Catalog](/catalog), then `lcpy gen -t <collection>` and practice.
+
+## Extensible by design
+
+- **Template-driven**: every problem comes from a JSON template plus a
+  cookiecutter scaffold, so the tree stays consistent and reproducible.
+  See [Problem Creation](/contributing/problem-creation).
+- **LLM-assisted creation**: the repo ships command specs that let Claude
+  Code, Cursor, or Copilot add new problems and strengthen test suites
+  following the house rules. See
+  [LLM-Assisted Problem Creation](/contributing/problem-creation).
+- **Production hygiene**: type hints everywhere, loguru-powered test logs,
+  95%+ coverage, security scanning, and CI that verifies problems regenerate
+  byte-identically from their templates.
+
+## The loop
+
+Generate, read the README, implement `solution.py`, run `pytest`, inspect in
+`playground`, next problem. Every problem, the same shape. That consistency
+is the feature: nothing between you and the algorithm except the algorithm.

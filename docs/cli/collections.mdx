@@ -1,0 +1,54 @@
+---
+title: Collections
+description: Curated problem sets as tags, and how they drive bulk generation.
+---
+
+Collections are curated problem lists (Grind 75, Blind 75, the NeetCode
+roadmaps) encoded as tags. Every collection is a tag you can filter, list,
+and bulk-generate with. Membership is defined in `tags.json5` inside the
+[JSON resources](/contributing/problem-creation); `lcpy` reads it for `-t`
+filters.
+
+## The collections
+
+| Collection | What it gives you |
+| --- | --- |
+| [`grind-75`](/catalog/grind-75) | The essential 75 from Tech Interview Handbook, ordered by a study plan |
+| [`grind`](/catalog/grind) | Extended Grind; superset of Grind 75 with more problems |
+| [`blind-75`](/catalog/blind-75) | The classic curated list that started the trend |
+| [`neetcode-150`](/catalog/neetcode-150) | Comprehensive NeetCode coverage by topic |
+| [`neetcode-250`](/catalog/neetcode-250) | The full NeetCode roadmap; coverage still growing |
+| [`algo-master-75`](/catalog/algo-master-75) | Algorithmic mastery set curated in this repo, 75 problems |
+
+Current problem counts live on the [Catalog](/catalog) pages, which are
+generated straight from the templates and never go stale.
+
+## Preview before you generate
+
+```bash
+lcpy list -t grind-75              # every problem in the collection
+lcpy list -t neetcode-250 -d Hard  # narrow to one difficulty
+```
+
+## Generate a whole collection
+
+```bash
+lcpy gen -t grind-75        # all of Grind 75 into ./
+lcpy gen -t blind-75 -o leetcode
+lcpy gen -t grind-75 -d Easy   # just the Easy problems
+```
+
+Bulk generation prints one `Generated problem:` line per problem and
+creates each directory with the standard
+[six files](/practice/problem-anatomy).
+
+<img src="/images/problems-generation.png" alt="Bulk generation output for all Grind 75 problems" />
+
+<img src="/images/problems-generation-2.png" alt="Folder structure with all generated problem directories" />
+
+## Picking a collection
+
+Short on time: `grind-75`. Want the classic list everyone references:
+`blind-75`. Preparing by topic with video explanations: `neetcode-150`.
+The right collection is the one you will finish; every one of them
+generates the same high-quality problem directories.

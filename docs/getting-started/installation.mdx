@@ -1,0 +1,75 @@
+---
+title: Installation
+description: Install leetcode-py as a CLI tool, or set up the repository for development.
+---
+
+There are two ways to use leetcode-py, depending on your goal:
+
+- **Practice problems**: install the `lcpy` CLI from PyPI and generate a
+  practice environment in any directory or repo. Cloning this repository is
+  not required; see the [lcpy CLI reference](/cli/lcpy).
+- **Develop in this repository**: clone it to extend the collection, tweak
+  templates, or run the full test suite.
+
+## Requirements
+
+- **Python 3.10+** (3.10 through 3.14 supported)
+- **Graphviz**: needed for data structure visualizations. Install it before
+  running the project ([install guide](https://graphviz.org/download/))
+
+## Install the CLI
+
+The package is published on PyPI as `leetcode-py-sdk`:
+
+```bash
+pip install leetcode-py-sdk
+```
+
+Or with `uv`:
+
+```bash
+uv tool install leetcode-py-sdk
+```
+
+Verify the installation:
+
+```bash
+lcpy --help
+```
+
+You should see the `gen`, `list`, and `scrape` commands. Head to the
+[Quickstart](/getting-started/quickstart) to generate your first problem.
+
+## Development setup
+
+To work within the repository itself (adding problems, changing templates,
+or hacking on the generator) you additionally need:
+
+- [**uv**](https://docs.astral.sh/uv/): fast Python package manager
+- [**bakefile**](https://bakefile.wisl.dev/): the task runner that
+  wraps the common workflows
+- **Git**
+
+```bash
+git clone https://github.com/wislertt/leetcode-py.git
+cd leetcode-py
+uv sync
+```
+
+Confirm everything works by running the full test suite:
+
+```bash
+bake test
+```
+
+<Note>
+Problems in `leetcode/` are generated from JSON templates. Never edit them
+by hand; see [Problem Creation](/contributing/problem-creation) for the
+source-of-truth workflow.
+</Note>
+
+## Next steps
+
+- [Quickstart](/getting-started/quickstart): generate and solve your first problem
+- [Why leetcode-py](/getting-started/why-leetcode-py): what the environment gives you
+- [CLI reference](/cli/lcpy): all `lcpy` commands and options

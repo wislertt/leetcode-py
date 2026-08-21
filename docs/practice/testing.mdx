@@ -1,0 +1,78 @@
+---
+title: Testing
+description: Parametrized suites, logged test output, and covering multiple solutions with one suite.
+---
+
+Tests ship with the problem. You never write test scaffolding. You arrive,
+run the suite, watch it fail, and make it pass.
+
+```bash
+bake p-test -p two_sum
+# or: cd leetcode/two_sum && python -m pytest test_solution.py
+```
+
+<img src="/images/test-example.png" alt="Terminal run of a generated suite: loguru case logs interleaved with pytest output, 58 passed" />
+
+## One suite, many cases
+
+Each test method is parametrized over 10+ cases: the examples from the
+problem statement plus edge cases like empty results, negatives, duplicates,
+and boundary sizes.
+
+```python
+class TestTwoSum:
+    def setup_method(self):
+        self.solution = Solution()
+
+    @logged_test
+    @pytest.mark.parametrize(
+        "nums, target, expected",
+        [
+            ([2, 7, 11, 15], 9, [0, 1]),
+            ([3, 3], 6, [0, 1]),               # duplicate values
+            ([-1, -2, -3, -4, -5], -8, [2, 4]),  # all negatives
+            ([1, 2], 5, []),                   # no answer exists
+            ([-1000000000, 1000000000], 0, [0, 1]),  # boundary values
+        ],
+    )
+    def test_two_sum(self, nums: list[int], target: int, expected: list[int]):
+        result = run_two_sum(Solution, nums, target)
+        assert_two_sum(result, expected)
+```
+
+## Readable failures via helpers
+
+The `run_`/`assert_` pair from [Problem Anatomy](/practice/problem-anatomy)
+keeps input formatting in one place and normalizes comparison, so a
+returned `[1, 0]` does not fail against expected `[0, 1]` when order does
+not matter.
+
+## Logged output on every case
+
+The `@logged_test` decorator (from `leetcode_py`) wraps each test with
+loguru output: the case being run, `Test passed! ✨` on success, or a full
+`logger.exception` traceback on failure.
+
+```text
+2026-08-21 10:12:01 | DEBUG | Running test_two_sum(nums=[3, 3], target=6, expected=[0, 1])
+2026-08-21 10:12:01 | DEBUG | Test passed! ✨
+```
+
+<img src="/images/logs-in-test-solution.png" alt="Loguru output interleaved with pytest results in a test run" />
+
+## Multiple solutions, one suite
+
+Implementing a second approach, say `SolutionMath` next to `Solution`?
+Don't copy the tests. Parametrize over the solution class and the same
+suite covers every approach:
+
+```python
+@pytest.mark.parametrize("solution_class", [Solution, SolutionMath])
+@pytest.mark.parametrize("input_params, expected", test_cases)
+def test_method(self, solution_class, input_params, expected):
+    result = run_helper(solution_class, *input_params)
+    assert_helper(result, expected)
+```
+
+The helpers already accept `solution_class: type` as their first argument,
+so this works with no scaffolding changes.

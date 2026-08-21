@@ -1,6 +1,6 @@
 def run_my_stack(solution_class: type, operations: list[str], inputs: list[list[int]]):
     stack = None
-    results: list[int | None | bool] = []
+    results: list[int | bool | None] = []
     for i, op in enumerate(operations):
         if op == "MyStack":
             stack = solution_class()
@@ -17,6 +17,6 @@ def run_my_stack(solution_class: type, operations: list[str], inputs: list[list[
     return results, stack
 
 
-def assert_my_stack(result: list[int | None | bool], expected: list[int | None | bool]) -> bool:
+def assert_my_stack(result: list[int | bool | None], expected: list[int | bool | None]) -> bool:
     assert result == expected
     return True

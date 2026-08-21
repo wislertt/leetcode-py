@@ -1,0 +1,85 @@
+---
+title: Quickstart
+description: Generate your first problem, run its tests, and solve it.
+---
+
+From a clean install to a solved problem in five commands.
+
+## 1. Generate a problem
+
+```bash
+lcpy gen -n 1   # Two Sum
+```
+
+This creates a `leetcode/two_sum/` directory with a complete, testable
+scaffold. You can also generate a whole collection at once:
+
+```bash
+lcpy gen -t grind-75      # all Grind 75 problems
+lcpy gen -t neetcode-250  # the full NeetCode 250 roadmap
+```
+
+Browse every collection in the [Catalog](/catalog).
+
+## 2. Look at what you got
+
+```
+leetcode/two_sum/
+├── README.md           # Problem description with examples and constraints
+├── solution.py         # Implementation with type hints and TODO placeholder
+├── test_solution.py    # Parametrized tests, 10+ cases
+├── helpers.py          # Test helper functions
+├── playground.py       # Interactive debugging environment
+└── __init__.py         # Package marker
+```
+
+Every problem has the same shape; see
+[Problem Anatomy](/practice/problem-anatomy) for what each file does.
+
+## 3. Run the tests
+
+The tests fail out of the box because `solution.py` is a TODO stub. That is
+the point: red, implement, green.
+
+```bash
+cd leetcode/two_sum
+python -m pytest test_solution.py
+```
+
+## 4. Solve it
+
+Open `solution.py` and replace the TODO with your implementation:
+
+```python
+class Solution:
+    def two_sum(self, nums: list[int], target: int) -> list[int]:
+        seen: dict[int, int] = {}
+        for i, n in enumerate(nums):
+            if target - n in seen:
+                return [seen[target - n], i]
+            seen[n] = i
+        return []
+```
+
+## 5. Rerun the tests
+
+```bash
+python -m pytest test_solution.py
+```
+
+All green? Move to the next problem. Stuck? Drop into `playground.py` and
+inspect your data structures: trees, linked lists, and graphs all render as
+diagrams. See [Visualizations](/practice/visualizations).
+
+## Working inside this repository
+
+If you cloned the repo for development, the same loop goes through `bake`:
+
+```bash
+bake p-test -p two_sum   # test one problem
+bake p-gen -p two_sum    # regenerate one problem from its JSON template
+bake test                # run the whole suite
+```
+
+See the [bakefile reference](/contributing/bakefile) for everything else the
+runner provides.

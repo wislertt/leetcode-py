@@ -1,5 +1,3 @@
-# LeetCode Practice Environment Generator 🚀
-
 [![tests](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=tests&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml)
 [![release](https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=release&logo=github)](https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=wislertt_leetcode-py&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=wislertt_leetcode-py)
@@ -11,6 +9,15 @@
 [![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?logo=python)](https://github.com/wislertt/leetcode-py/)
 [![Star ⭐](https://img.shields.io/github/stars/wislertt/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wislertt/leetcode-py)
 [![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wislertt)
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/brand/leetcode-py-lockup-dark.svg">
+    <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/brand/leetcode-py-lockup.svg" width="360" alt="leetcode-py logo">
+  </picture>
+</p>
+
+# leetcode-py
 
 A Python package to generate professional LeetCode practice environments. Features automated problem generation from LeetCode URLs, beautiful data structure visualizations (TreeNode, ListNode, GraphNode), and comprehensive testing with 10+ test cases per problem. Built with professional development practices including CI/CD, type hints, and quality gates.
 
@@ -29,12 +36,12 @@ A Python package to generate professional LeetCode practice environments. Featur
 
 **What makes this different:**
 
-- 🤖 **[LLM-Assisted Workflow](https://github.com/wislertt/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)**: Generate new problems instantly with AI assistance
+- 🤖 **[LLM-Assisted Workflow](https://leetcode-py.wisl.dev/contributing/problem-creation)**: Generate new problems instantly with AI assistance
 - 🎨 **Visual Debugging**: Interactive tree/graph rendering with Graphviz and anytree
 - 🧪 **Production Testing**: Comprehensive test suites with edge cases and reproducibility verification
 - 🚀 **Modern Python**: PEP 585/604 type hints, uv, and professional tooling
 - 📊 **Quality Assurance**: 95%+ test coverage, security scanning, automated linting
-- ⚡ **[Powerful CLI](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)**: Generate problems anywhere with `lcpy` command
+- ⚡ **[Powerful CLI](https://leetcode-py.wisl.dev/cli/lcpy)**: Generate problems anywhere with `lcpy` command
 
 ## <a id="whats-included"></a>🎯 What's Included
 
@@ -173,7 +180,7 @@ _Interactive multi-cell playground with rich data structure visualization for ea
 
 ### CLI Usage (Global Installation)
 
-Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)** for detailed documentation with all options and examples.
+Perfect for quick problem generation anywhere. See the 📖 **[Complete CLI Usage Guide](https://leetcode-py.wisl.dev/cli/lcpy)** for detailed documentation with all options and examples.
 
 ## <a id="development-setup"></a>🛠️ Development Setup
 
@@ -205,7 +212,7 @@ bake gen-all-problems
 
 To extend the problem collection beyond the current catalog, leverage an LLM assistant within your IDE (Cursor, GitHub Copilot Chat, Amazon Q, etc.).
 
-📖 **[Complete LLM-Assisted Problem Creation Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/llm-assisted-problem-creation.md)** - Comprehensive guide with screenshots and detailed workflow.
+📖 **[Complete LLM-Assisted Problem Creation Guide](https://leetcode-py.wisl.dev/contributing/problem-creation)** - Comprehensive guide with screenshots and detailed workflow.
 
 **Quick Start:**
 
@@ -260,7 +267,7 @@ uv run python -m leetcode_py.tools.check_test_cases --threshold=10
 
 ### CLI Commands (Global)
 
-📖 **[Complete CLI Usage Guide](https://github.com/wislertt/leetcode-py/blob/main/docs/cli-usage.md)** - Detailed documentation with all options and examples.
+📖 **[Complete CLI Usage Guide](https://leetcode-py.wisl.dev/cli/lcpy)** - Detailed documentation with all options and examples.
 
 ```bash
 # Generate problems

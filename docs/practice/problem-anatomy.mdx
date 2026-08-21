@@ -1,0 +1,82 @@
+---
+title: Anatomy of a problem
+description: What lcpy gen creates, what each file is for, and which one you own.
+---
+
+Every generated problem is the same six files. Learn the shape once and every
+problem in the catalog feels like home.
+
+```bash
+lcpy gen -n 1
+```
+
+```text
+leetcode/two_sum/
+├── README.md           # problem statement, difficulty, topics, tags
+├── solution.py         # your code; the only file you edit
+├── test_solution.py    # 10+ parametrized cases, ready to run
+├── helpers.py          # run_/assert_ pair for readable test output
+├── playground.py       # percent-format scratchpad notebook
+└── __init__.py
+```
+
+## README.md
+
+The problem statement: difficulty, topics, collection tags, a link to the
+original LeetCode problem, the description, and worked examples. Everything
+you need to solve without leaving the terminal.
+
+<img src="/images/readme-example.png" alt="Generated README for Two Sum" />
+
+## solution.py: the only file you edit
+
+Generated with a class skeleton, the method signature with type hints, and a
+`TODO` where your implementation goes. Solved examples in this repo also
+carry `Time`/`Space` complexity comments at the top of the method, the
+house convention.
+
+```python
+class Solution:
+    # Time: O(n)
+    # Space: O(n)
+    def two_sum(self, nums: list[int], target: int) -> list[int]:
+        ...
+```
+
+<img src="/images/solution-boilerplate.png" alt="Generated solution.py stub with TODO placeholder" />
+
+## test_solution.py
+
+A parametrized pytest suite with 10+ cases per problem, edge cases included.
+It runs red the moment you generate the problem and stays the contract: make
+red go green, never edit the tests. See [Testing](/practice/testing).
+
+## helpers.py
+
+Two functions per problem: `run_<name>` instantiates your solution class and
+calls the method; `assert_<name>` compares result to expected, normalized
+so order-insensitive answers compare cleanly. Failures print the inputs and
+expected output instead of a raw object dump.
+
+```python
+def run_two_sum(solution_class: type, nums: list[int], target: int):
+    implementation = solution_class()
+    return implementation.two_sum(nums, target)
+
+
+def assert_two_sum(result: list[int], expected: list[int]) -> bool:
+    assert sorted(result) == sorted(expected)
+    return True
+```
+
+## playground.py
+
+A scratchpad in jupytext percent format: plain Python in git, a notebook
+when you want one. See [Notebooks](/practice/notebooks).
+
+## Generated, not hand-rolled
+
+Every problem directory comes from a JSON template, so files arrive
+byte-identical on every machine and CI verifies they regenerate exactly.
+If something looks off, regenerate the problem with `bake p-gen` rather
+than editing generated files by hand.

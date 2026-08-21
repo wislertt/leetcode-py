@@ -41,7 +41,10 @@ dependencies = [
 lcpy = "leetcode_py.cli.main:app"
 
 [project.urls]
-Homepage = "https://github.com/wislertt/leetcode-py"
+Changelog = "https://github.com/wislertt/leetcode-py/releases"
+Documentation = "https://leetcode-py.wisl.dev"
+Homepage = "https://leetcode-py.wisl.dev"
+Issues = "https://github.com/wislertt/leetcode-py/issues"
 Repository = "https://github.com/wislertt/leetcode-py"
 
 [dependency-groups]
@@ -73,6 +76,7 @@ extend_exclude = [
   ".claude",
   "bakefile.py",
   "leetcode",
+  "scripts",
   "src/leetcode_py/cli/resources"
 ]
 per_rule_ignores = {DEP002 = ["chardet"]}
@@ -122,6 +126,7 @@ unresolved-import = "ignore"
 
 [tool.ty.src]
 exclude = [
+  "scripts/branding",
   "src/leetcode_py/cli/resources"
 ]
 

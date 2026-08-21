@@ -1,0 +1,73 @@
+---
+title: leetcode-py
+description: Modern Python LeetCode practice environment with automated problem generation, beautiful data structure visualizations, and comprehensive testing.
+---
+
+<img
+    src="/img/brand/og-card-light.png"
+    className="sd-hero sd-hero-light"
+    alt="leetcode-py: Modern Python LeetCode practice environment."
+/>
+
+<img
+    src="/img/brand/og-card-dark.png"
+    className="sd-hero sd-hero-dark"
+    alt="leetcode-py: Modern Python LeetCode practice environment."
+/>
+
+<div className="not-prose sd-badges">
+    <a href="https://github.com/wislertt/leetcode-py/actions/workflows/cd.yml">
+        <img
+            src="https://img.shields.io/github/actions/workflow/status/wislertt/leetcode-py/cd.yml?branch=main&label=tests&logo=github"
+            alt="tests"
+        />
+    </a>
+    <a href="https://codecov.io/gh/wislertt/leetcode-py">
+        <img
+            src="https://codecov.io/gh/wislertt/leetcode-py/graph/badge.svg"
+            alt="codecov"
+        />
+    </a>
+    <a href="https://pypi.org/project/leetcode-py-sdk/">
+        <img
+            src="https://img.shields.io/pypi/v/leetcode-py-sdk.svg?color=blue"
+            alt="pypi"
+        />
+    </a>
+    <a href="https://github.com/wislertt/leetcode-py/">
+        <img
+            src="https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?logo=python"
+            alt="python versions"
+        />
+    </a>
+</div>
+
+## Why leetcode-py?
+
+- **Tests come with the problem**: every generated problem ships a
+  parametrized pytest suite with 10+ cases. You never write test scaffolding;
+  you only make red go green.
+- **Data structures you can see**: `TreeNode`, `ListNode`, and `GraphNode`
+  convert between LeetCode's array format and live objects, and render as
+  diagrams in Jupyter or clean ASCII in the terminal.
+- **300+ problems ready to generate**: Grind 75, Blind 75, NeetCode 150,
+  NeetCode 250, and Algo Master 75 as reproducible JSON templates.
+
+See the full pitch in [Why leetcode-py](/getting-started/why-leetcode-py).
+
+## A taste
+
+```bash
+lcpy gen -n 1   # generate Two Sum: README, solution stub, 10+ parametrized tests
+cd leetcode/two_sum
+python -m pytest test_solution.py   # red -> implement solution.py -> green
+```
+
+<CardGroup cols={2}>
+    <Card title="Installation" icon="download" href="/getting-started/installation">
+        Install the CLI from PyPI, or clone the repo for development.
+    </Card>
+    <Card title="Quickstart" icon="rocket" href="/getting-started/quickstart">
+        Generate your first problem, run its tests, and solve it.
+    </Card>
+</CardGroup>

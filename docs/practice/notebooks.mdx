@@ -1,0 +1,64 @@
+---
+title: Notebooks
+description: Every problem ships a playground in jupytext percent format, plain Python in git and a notebook when you want one.
+---
+
+Every problem directory includes `playground.py`, a scratchpad for poking
+at inputs, inspecting data structures, and experimenting before you commit
+to an approach. See [Problem Anatomy](/practice/problem-anatomy) for where
+it fits.
+
+## Percent format, not .ipynb
+
+Playgrounds are stored as jupytext **percent format**: plain Python with
+`# %%` cell markers.
+
+```python
+# %%
+from helpers import assert_two_sum, run_two_sum
+from solution import Solution
+
+# %%
+# Example test case
+nums = [2, 7, 11, 15]
+target = 9
+expected = [0, 1]
+
+# %%
+result = run_two_sum(Solution, nums, target)
+result
+
+# %%
+assert_two_sum(result, expected)
+```
+
+In git that means clean diffs, real code review, and mergeable history,
+with none of the JSON noise `.ipynb` would add.
+
+## Open it as a notebook
+
+Pick whichever fits your setup:
+
+- **VS Code**: the Python extension supports `# %%` cells natively; open
+  `playground.py` and run cells in the interactive window.
+- **JupyterLab with the jupytext contents manager**: same experience, in
+  the browser.
+- **One-off conversion**: `uv run jupytext --to ipynb
+  leetcode/two_sum/playground.py` gives you a real `playground.ipynb`.
+
+<img src="/images/notebook-example.png" alt="playground.py open as a notebook with executed cells" />
+
+## Convert back before committing
+
+If you converted to `.ipynb`, convert back before you commit. The repo
+keeps only the `.py` form:
+
+```bash
+bake nb-to-py   # all .ipynb under leetcode/ -> py:percent, .ipynb deleted
+```
+
+## A scratchpad, not the contract
+
+The playground imports the same helpers and solution as the tests, so what
+you probe here matches what the suite runs. Nothing in it is graded;
+[test_solution.py](/practice/testing) stays the contract.

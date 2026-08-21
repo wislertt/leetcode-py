@@ -1,0 +1,68 @@
+---
+title: Visualizations
+description: TreeNode, ListNode, and GraphNode render as diagrams in Jupyter and clean ASCII in the terminal.
+---
+
+The data structure classes from `leetcode_py` convert between LeetCode's
+array format and live objects, and render themselves so you can look at
+what your code is doing.
+
+```python
+from leetcode_py import GraphNode, ListNode, TreeNode
+```
+
+## Array format, live objects
+
+```python
+root = TreeNode.from_list([3, 9, 20, None, None, 15, 7])
+root.to_list()          # [3, 9, 20, None, None, 15, 7]
+
+head = ListNode.from_list([1, 2, 3])
+head.to_list()          # [1, 2, 3]
+
+graph = GraphNode.from_adjacency_list([[2, 4], [1, 3], [2, 4], [1, 3]])
+GraphNode.to_adjacency_list(graph)  # [[2, 4], [1, 3], [2, 4], [1, 3]]
+```
+
+Cyclic lists are safe: traversal detects cycles instead of hanging, in both
+directions.
+
+## In Jupyter: diagrams
+
+As the last expression of a cell, these objects render as Graphviz SVG
+diagrams. `TreeNode` lays out top-to-bottom; `ListNode` goes left-to-right
+with rounded boxes. A cyclic list draws the back-edge in red, dashed, and
+labeled `cycle`.
+
+```python
+head = ListNode.from_list([1, 2, 3])
+head.next.next.next = head.next   # cycle: 3 -> 2
+head                              # renders the diagram, cycle included
+```
+
+<img src="/images/tree-viz.png" alt="TreeNode rendered as a Graphviz tree diagram in Jupyter" />
+<img src="/images/linkedlist-viz.png" alt="ListNode rendered as a left-to-right box diagram in Jupyter" />
+
+## In the terminal: ASCII
+
+`print()` falls back to clean text: an indented tree, an arrow chain for
+lists (cycles shown as `... (cycle back to 2)`), and a formatted adjacency
+dict for graphs.
+
+```python
+print(root)
+# 3
+# ├── 9
+# └── 20
+#     ├── 15
+#     └── 7
+```
+
+<img src="/images/tree-str-viz.png" alt="TreeNode printed as an ASCII tree in the terminal" />
+<img src="/images/linkedlist-str-viz.png" alt="ListNode printed as an arrow chain in the terminal" />
+
+## Requirements
+
+Diagram rendering needs the system Graphviz binary (see
+[Installation](/getting-started/installation)). If it is missing, the
+objects fall back to the ASCII form, so you get readable output either way.

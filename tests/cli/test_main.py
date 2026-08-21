@@ -15,6 +15,22 @@ def test_cli_help():
     assert "list" in result.stdout
 
 
+def test_cli_help_contains_agent_docs_pointers():
+    result = runner.invoke(app, ["--help"])
+    assert result.exit_code == 0
+    # normalize whitespace: rich wraps the epilog at the terminal width
+    output = " ".join(result.stdout.split())
+    assert "Docs: https://leetcode-py.wisl.dev" in output
+    assert (
+        "Full docs in one file (for AI agents): https://leetcode-py.wisl.dev/llms-full.txt"
+        in output
+    )
+    assert "Docs index: https://leetcode-py.wisl.dev/llms.txt" in output
+    assert "Agent skill: https://leetcode-py.wisl.dev/skill.md" in output
+    assert "Install agent skill: `npx skills add https://leetcode-py.wisl.dev`" in output
+    assert "Docs search via MCP: https://leetcode-py.wisl.dev/mcp" in output
+
+
 def test_cli_version():
     result = runner.invoke(app, ["--version"])
     assert result.exit_code == 0

@@ -1,0 +1,124 @@
+{
+    "$schema": "https://www.mintlify.com/docs.json",
+    "theme": "mint",
+    "name": "leetcode-py",
+    "description": "Modern Python LeetCode practice environment with automated problem generation, beautiful data structure visualizations, and comprehensive testing",
+    "colors": {
+        "primary": "#3776AB",
+        "light": "#5A94C4",
+        "dark": "#387EB8"
+    },
+    "background": {
+        "color": {
+            "light": "#F8F9FB",
+            "dark": "#0D1117"
+        }
+    },
+    "styling": {
+        "codeblocks": {
+            "theme": {
+                "light": "github-light",
+                "dark": "github-dark"
+            }
+        }
+    },
+    "markdown": {
+        "instructions": [
+            "leetcode-py is a Python LeetCode practice environment generator with one CLI: lcpy. It is not a service or platform.",
+            "Each problem is a directory under leetcode/ with README.md, solution.py, test_solution.py, helpers.py, and playground.ipynb. lcpy gen creates them from JSON templates bundled with the package.",
+            "Examples are backed by tests; copy them verbatim."
+        ]
+    },
+    "seo": {
+        "metatags": {
+            "og:image": "/img/brand/og-card-light.png"
+        }
+    },
+    "footer": {
+        "socials": {
+            "github": "https://github.com/wislertt/leetcode-py"
+        },
+        "links": [
+            {
+                "header": "Resources",
+                "items": [
+                    {
+                        "label": "PyPI",
+                        "href": "https://pypi.org/project/leetcode-py-sdk/"
+                    },
+                    {
+                        "label": "Why leetcode-py",
+                        "href": "/getting-started/why-leetcode-py"
+                    },
+                    {
+                        "label": "Made by Wisaroot Lertthaweedech",
+                        "href": "https://wisl.dev"
+                    }
+                ]
+            }
+        ]
+    },
+    "favicon": "/favicon.svg",
+    "logo": {
+        "light": "/img/brand/leetcode-py-lockup.svg",
+        "dark": "/img/brand/leetcode-py-lockup-dark.svg"
+    },
+    "navbar": {
+        "links": [
+            {
+                "label": "GitHub",
+                "href": "https://github.com/wislertt/leetcode-py"
+            }
+        ]
+    },
+    "navigation": {
+        "groups": [
+            {
+                "group": "Welcome",
+                "pages": ["index"]
+            },
+            {
+                "group": "Getting Started",
+                "pages": [
+                    "getting-started/installation",
+                    "getting-started/quickstart",
+                    "getting-started/why-leetcode-py"
+                ]
+            },
+            {
+                "group": "Practice",
+                "pages": [
+                    "practice/problem-anatomy",
+                    "practice/testing",
+                    "practice/visualizations",
+                    "practice/notebooks"
+                ]
+            },
+            {
+                "group": "CLI",
+                "pages": ["cli/lcpy", "cli/collections"]
+            },
+            {
+                "group": "Catalog",
+                "pages": [
+                    "catalog/index",
+                    "catalog/all",
+                    "catalog/grind-75",
+                    "catalog/grind",
+                    "catalog/blind-75",
+                    "catalog/neetcode-150",
+                    "catalog/neetcode-250",
+                    "catalog/algo-master-75"
+                ]
+            },
+            {
+                "group": "Contributing",
+                "pages": ["contributing/problem-creation", "contributing/bakefile"]
+            },
+            {
+                "group": "Troubleshooting",
+                "pages": ["troubleshooting/index"]
+            }
+        ]
+    }
+}
