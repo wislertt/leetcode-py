@@ -22,9 +22,9 @@
     "helpers_content": "",
     "helpers_run_name": "my_queue",
     "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
-    "helpers_run_body": "    queue = None\n    results: list[int | None | bool] = []\n    for i, op in enumerate(operations):\n        if op == 'MyQueue':\n            queue = solution_class()\n            results.append(None)\n        elif op == 'push' and queue is not None:\n            queue.push(inputs[i][0])\n            results.append(None)\n        elif op == 'pop' and queue is not None:\n            results.append(queue.pop())\n        elif op == 'peek' and queue is not None:\n            results.append(queue.peek())\n        elif op == 'empty' and queue is not None:\n            results.append(queue.empty())\n    return results, queue",
+    "helpers_run_body": "    queue = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyQueue':\n            queue = solution_class()\n            results.append(None)\n        elif op == 'push' and queue is not None:\n            queue.push(inputs[i][0])\n            results.append(None)\n        elif op == 'pop' and queue is not None:\n            results.append(queue.pop())\n        elif op == 'peek' and queue is not None:\n            results.append(queue.peek())\n        elif op == 'empty' and queue is not None:\n            results.append(queue.empty())\n    return results, queue",
     "helpers_assert_name": "my_queue",
-    "helpers_assert_signature": "(result: list[int | None | bool], expected: list[int | None | bool]) -> bool",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
     "solution_imports": "",
     "solution_contents": "",
@@ -69,7 +69,7 @@
         "list": [
             {
                 "name": "test_queue_operations",
-                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None | bool])",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | bool | None])",
                 "parametrize": "operations, inputs, expected",
                 "test_cases": {
                     "list": [
