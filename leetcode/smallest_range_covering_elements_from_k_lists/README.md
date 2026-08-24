@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Greedy, Heap, Sliding Window
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 632](https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/description/)
 

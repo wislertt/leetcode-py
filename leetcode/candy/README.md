@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Greedy
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 135](https://leetcode.com/problems/candy/description/)
 

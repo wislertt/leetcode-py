@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 410](https://leetcode.com/problems/split-array-largest-sum/description/)
 

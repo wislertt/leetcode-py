@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Divide and Conquer, Tree, Matrix
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 427](https://leetcode.com/problems/construct-quad-tree/description/)
 

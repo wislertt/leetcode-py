@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Two Pointers, Divide and Conquer, Sorting, Merge Sort
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 148](https://leetcode.com/problems/sort-list/description/)
 

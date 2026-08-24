@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Design, Trie, Hash Table, String
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 588](https://leetcode.com/problems/design-in-memory-file-system/description/)
 

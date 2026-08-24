@@ -94,7 +94,7 @@ problems_list = [
     (211, "Design Add and Search Words Data Structure"),
     (417, "Pacific Atlantic Water Flow"),
     (19, "Remove Nth Node From End of List"),
-    (1091, "Shortest Path to Get Food"),
+    (1730, "Shortest Path to Get Food"),
     (287, "Find the Duplicate Number"),
     (692, "Top K Frequent Words"),
     (300, "Longest Increasing Subsequence"),

@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Binary Search
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 35](https://leetcode.com/problems/search-insert-position/description/)
 

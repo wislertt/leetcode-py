@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Sorting, Counting
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 229](https://leetcode.com/problems/majority-element-ii/description/)
 

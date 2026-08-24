@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 767](https://leetcode.com/problems/reorganize-string/description/)
 

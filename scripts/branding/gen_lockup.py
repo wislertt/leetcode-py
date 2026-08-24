@@ -1,8 +1,8 @@
 """Generate lockup: snake mark left + wordmark right, one SVG (light + dark).
 
 Mark embeds as nested <svg> scaled by viewBox; text reuses wordmark parts.
-Ratio 1.0 (locked): mark height = wordmark font size, mark optically centered
-on the x-height midline.
+Ratio 0.85 (locked): mark height = MARK_FONT_RATIO x wordmark font size,
+mark bottom sits MARK_BOTTOM_DROP below the wordmark baseline.
 
 Run: uv run --with fonttools python3 gen_lockup.py
 """
@@ -24,8 +24,11 @@ from gen_wordmark import (
 )
 
 MARK = ".cache/leetcode-py-mark.svg"
-MARK_FONT_RATIO = 1.0  # mark height vs wordmark font size
+MARK_FONT_RATIO = 0.85  # mark height vs wordmark font size
 GAP_FONT_RATIO = 0.3  # mark-to-text gap vs font size
+MARK_BOTTOM_DROP = (
+    18  # mark bottom below baseline; between grey baseline (0) and py descenders (~33)
+)
 PAD = 2
 CACHE = Path(".cache")
 
@@ -38,7 +41,7 @@ def mark_inner(src):
 
 
 def build(font, mark_src, ink, accent):
-    parts, boxes, xh = wordmark_parts(font)
+    parts, boxes, _ = wordmark_parts(font)
     swap = {INK: ink, PY_BLUE: accent}
     parts = [(d, swap.get(c, c)) for d, c in parts]
     tx0 = min(b[0] for b in boxes)
@@ -51,8 +54,7 @@ def build(font, mark_src, ink, accent):
     vb, mvw, mvh, inner = mark_inner(mark_src)
     mark_w = mvw * mark_h / mvh
 
-    cy = -xh / 2  # optical center: x-height midline, baseline at y=0
-    mark_top = cy - mark_h / 2
+    mark_top = MARK_BOTTOM_DROP - mark_h
     text_dx = mark_w + gap - tx0
 
     x0 = min(0.0, text_dx + tx0)

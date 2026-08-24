@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Greedy
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 860](https://leetcode.com/problems/lemonade-change/description/)
 

@@ -31,8 +31,21 @@
     },
     "seo": {
         "metatags": {
-            "og:image": "/img/brand/og-card-light.png"
+            "canonical": "https://leetcode-py.wisl.dev",
+            "og:image": "/img/brand/og-card-light.png",
+            "twitter:card": "summary_large_image"
+        },
+        "organization": {
+            "url": "https://leetcode-py.wisl.dev",
+            "sameAs": [
+                "https://github.com/wislertt/leetcode-py",
+                "https://pypi.org/project/leetcode-py-sdk/",
+                "https://wisl.dev"
+            ]
         }
+    },
+    "metadata": {
+        "timestamp": true
     },
     "footer": {
         "socials": {

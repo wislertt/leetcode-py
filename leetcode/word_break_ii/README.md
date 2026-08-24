@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 140](https://leetcode.com/problems/word-break-ii/description/)
 

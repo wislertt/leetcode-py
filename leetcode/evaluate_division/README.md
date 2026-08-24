@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, String, Depth-First Search, Breadth-First Search, Union-Find, Graph Theory, Shortest Path
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 399](https://leetcode.com/problems/evaluate-division/description/)
 

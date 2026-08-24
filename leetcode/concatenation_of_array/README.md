@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Simulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1929](https://leetcode.com/problems/concatenation-of-array/description/)
 

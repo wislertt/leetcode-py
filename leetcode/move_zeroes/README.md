@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Two Pointers
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 283](https://leetcode.com/problems/move-zeroes/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math, Dynamic Programming, Breadth-First Search
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 279](https://leetcode.com/problems/perfect-squares/description/)
 

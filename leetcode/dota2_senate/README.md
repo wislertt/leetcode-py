@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Greedy, Queue
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 649](https://leetcode.com/problems/dota2-senate/description/)
 

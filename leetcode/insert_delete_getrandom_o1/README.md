@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Math, Design
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 380](https://leetcode.com/problems/insert-delete-getrandom-o1/description/)
 

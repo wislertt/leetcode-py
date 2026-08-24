@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Two Pointers, String
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1768](https://leetcode.com/problems/merge-strings-alternately/description/)
 

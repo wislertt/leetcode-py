@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Matrix
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 221](https://leetcode.com/problems/maximal-square/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Two Pointers
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 31](https://leetcode.com/problems/next-permutation/description/)
 

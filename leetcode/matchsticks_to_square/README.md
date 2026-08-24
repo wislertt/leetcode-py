@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 473](https://leetcode.com/problems/matchsticks-to-square/description/)
 

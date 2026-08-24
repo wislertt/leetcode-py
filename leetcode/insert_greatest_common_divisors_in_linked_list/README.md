@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Math, Number Theory
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 2807](https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/description/)
 

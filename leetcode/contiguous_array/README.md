@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, Prefix Sum
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 525](https://leetcode.com/problems/contiguous-array/description/)
 

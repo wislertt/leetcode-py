@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Divide and Conquer, Tree, Binary Search Tree, Binary Tree
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 108](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/)
 

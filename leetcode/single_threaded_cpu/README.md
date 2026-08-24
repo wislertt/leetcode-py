@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Sorting, Heap (Priority Queue)
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1834](https://leetcode.com/problems/single-threaded-cpu/description/)
 

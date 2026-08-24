@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Matrix, Simulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 867](https://leetcode.com/problems/transpose-matrix/description/)
 

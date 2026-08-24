@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 92](https://leetcode.com/problems/reverse-linked-list-ii/description/)
 

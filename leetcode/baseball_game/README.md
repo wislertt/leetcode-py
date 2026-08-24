@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Stack, Simulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 682](https://leetcode.com/problems/baseball-game/description/)
 

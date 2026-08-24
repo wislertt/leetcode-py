@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Hash Table, Stack, Design, Ordered Set
-**Tags:** grind, neetcode-250
+**Tags:** grind, neetcode, neetcode-250
 
 **LeetCode:** [Problem 895](https://leetcode.com/problems/maximum-frequency-stack/description/)
 

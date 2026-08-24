@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Two Pointers, String, Greedy
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 680](https://leetcode.com/problems/valid-palindrome-ii/description/)
 

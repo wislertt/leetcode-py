@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Linked List, Two Pointers, Stack, Recursion
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 234](https://leetcode.com/problems/palindrome-linked-list/description/)
 

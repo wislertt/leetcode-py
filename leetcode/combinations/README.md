@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Backtracking
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 77](https://leetcode.com/problems/combinations/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Union-Find, Graph Theory, Sorting, Minimum Spanning Tree, Strongly Connected Component
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1489](https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/description/)
 

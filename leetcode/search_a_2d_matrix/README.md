@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search, Matrix
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 74](https://leetcode.com/problems/search-a-2d-matrix/description/)
 

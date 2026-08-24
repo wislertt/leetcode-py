@@ -1,0 +1,98 @@
+{
+    "problem_name": "integer_to_roman",
+    "solution_class_name": "Solution",
+    "problem_number": "12",
+    "problem_title": "Integer to Roman",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Seven different symbols represent Roman numerals with the following values:\n\n| Symbol | Value |\n| --- | --- |\n| I | 1 |\n| V | 5 |\n| X | 10 |\n| L | 50 |\n| C | 100 |\n| D | 500 |\n| M | 1000 |\n\nRoman numerals are formed by appending the conversions of decimal place values from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:\n\n- If the value does not start with 4 or 9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.\n- If the value starts with 4 or 9 use the **subtractive form** representing one symbol subtracted from the following symbol, for example, 4 is 1 (`I`) less than 5 (`V`): `IV` and 9 is 1 (`I`) less than 10 (`X`): `IX`. Only the following subtractive forms are used: 4 (`IV`), 9 (`IX`), 40 (`XL`), 90 (`XC`), 400 (`CD`) and 900 (`CM`).\n- Only powers of 10 (`I`, `X`, `C`, `M`) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5 (`V`), 50 (`L`), or 500 (`D`) multiple times. If you need to append a symbol 4 times use the **subtractive form**.\n\nGiven an integer, convert it to a Roman numeral.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 3749\nOutput: \"MMMDCCXLIX\"\n\nExplanation:\n\n3000 = MMM as 1000 (M) + 1000 (M) + 1000 (M)\n 700 = DCC as 500 (D) + 100 (C) + 100 (C)\n  40 = XL as 10 (X) less of 50 (L)\n   9 = IX as 1 (I) less of 10 (X)\nNote: 49 is not 1 (I) less of 50 (L) because the conversion is based on decimal places\n```"
+            },
+            {
+                "content": "```\nInput: num = 58\nOutput: \"LVIII\"\n\nExplanation:\n\n50 = L\n 8 = VIII\n```"
+            },
+            {
+                "content": "```\nInput: num = 1994\nOutput: \"MCMXCIV\"\n\nExplanation:\n\n1000 = M\n 900 = CM\n  90 = XC\n   4 = IV\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num <= 3999`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "int_to_roman",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.int_to_roman(num)",
+    "helpers_assert_name": "int_to_roman",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_int_to_roman, run_int_to_roman\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntegerToRoman",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "int_to_roman",
+                "signature": "(self, num: int) -> str",
+                "body": "        # TODO: Implement int_to_roman\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_int_to_roman",
+                "signature": "(self, num: int, expected: str)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(3749, 'MMMDCCXLIX')",
+                        "(58, 'LVIII')",
+                        "(1994, 'MCMXCIV')",
+                        "(1, 'I')",
+                        "(3999, 'MMMCMXCIX')",
+                        "(3, 'III')",
+                        "(4, 'IV')",
+                        "(8, 'VIII')",
+                        "(9, 'IX')",
+                        "(14, 'XIV')",
+                        "(40, 'XL')",
+                        "(90, 'XC')",
+                        "(400, 'CD')",
+                        "(900, 'CM')",
+                        "(1000, 'M')",
+                        "(444, 'CDXLIV')",
+                        "(999, 'CMXCIX')",
+                        "(1776, 'MDCCLXXVI')",
+                        "(2024, 'MMXXIV')",
+                        "(3549, 'MMMDXLIX')"
+                    ]
+                },
+                "body": "        result = run_int_to_roman(Solution, num)\n        assert_int_to_roman(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_int_to_roman, assert_int_to_roman\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 3749\nexpected = 'MMMDCCXLIX'",
+    "playground_run": "result = run_int_to_roman(Solution, num)\nresult",
+    "playground_assert": "assert_int_to_roman(result, expected)"
+}

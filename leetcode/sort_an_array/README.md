@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Divide and Conquer, Sorting, Heap (Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 912](https://leetcode.com/problems/sort-an-array/description/)
 

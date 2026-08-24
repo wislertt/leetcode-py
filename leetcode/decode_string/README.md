@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Stack, Recursion
-**Tags:** grind, neetcode-250
+**Tags:** grind, neetcode, neetcode-250
 
 **LeetCode:** [Problem 394](https://leetcode.com/problems/decode-string/description/)
 

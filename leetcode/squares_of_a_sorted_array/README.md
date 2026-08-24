@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Two Pointers, Sorting
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 977](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
 

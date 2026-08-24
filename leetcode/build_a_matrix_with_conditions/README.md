@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Graph Theory, Topological Sort, Matrix
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 2392](https://leetcode.com/problems/build-a-matrix-with-conditions/description/)
 

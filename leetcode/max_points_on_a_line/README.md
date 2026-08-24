@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Hash Table, Math, Geometry
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode
 
 **LeetCode:** [Problem 149](https://leetcode.com/problems/max-points-on-a-line/description/)
 

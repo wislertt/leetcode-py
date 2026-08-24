@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Stack, Simulation
-**Tags:** grind, neetcode-250
+**Tags:** grind, neetcode, neetcode-250
 
 **LeetCode:** [Problem 735](https://leetcode.com/problems/asteroid-collision/description/)
 

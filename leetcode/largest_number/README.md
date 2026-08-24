@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, String, Greedy, Sorting
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 179](https://leetcode.com/problems/largest-number/description/)
 

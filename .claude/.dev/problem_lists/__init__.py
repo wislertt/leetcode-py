@@ -2,6 +2,7 @@ from . import (
     algo_master_75,
     blind_75,
     grind,
+    neetcode,
     neetcode_150,
     neetcode_250,
 )
@@ -12,4 +13,5 @@ available_lists = {
     blind_75.tag_name: blind_75.problem_list,
     grind.tag_name: grind.problems_list,
     neetcode_250.tag_name: neetcode_250.problems_list,
+    neetcode.tag_name: neetcode.problems_list,
 }

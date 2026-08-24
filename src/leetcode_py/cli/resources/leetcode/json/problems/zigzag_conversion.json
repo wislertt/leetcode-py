@@ -1,0 +1,98 @@
+{
+    "problem_name": "zigzag_conversion",
+    "solution_class_name": "Solution",
+    "problem_number": "6",
+    "problem_title": "Zigzag Conversion",
+    "difficulty": "Medium",
+    "topics": "String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "The string `\"PAYPALISHIRING\"` is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)\n\n```\nP   A   H   N\nA P L S I I G\nY   I   R\n```\n\nAnd then read line by line: `\"PAHNAPLSIIGYIR\"`\n\nWrite the code that will take a string and make this conversion given a number of rows:\n\n```\nstring convert(string s, int numRows);\n```",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"PAYPALISHIRING\", numRows = 3\nOutput: \"PAHNAPLSIIGYIR\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"PAYPALISHIRING\", numRows = 4\nOutput: \"PINALSIGYAHRPI\"\nExplanation:\n\nP     I    N\nA   L S  I G\nY A   H R\nP     I\n```"
+            },
+            {
+                "content": "```\nInput: s = \"A\", numRows = 1\nOutput: \"A\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 1000`\n- `s` consists of English letters (lower-case and upper-case), `','` and `'.'`.\n- `1 <= numRows <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "convert",
+    "helpers_run_signature": "(solution_class: type, s: str, num_rows: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.convert(s, num_rows)",
+    "helpers_assert_name": "convert",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_convert, run_convert\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ZigzagConversion",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "convert",
+                "signature": "(self, s: str, num_rows: int) -> str",
+                "body": "        # TODO: Implement convert\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_convert",
+                "signature": "(self, s: str, num_rows: int, expected: str)",
+                "parametrize": "s, num_rows, expected",
+                "test_cases": {
+                    "list": [
+                        "('PAYPALISHIRING', 3, 'PAHNAPLSIIGYIR')",
+                        "('PAYPALISHIRING', 4, 'PINALSIGYAHRPI')",
+                        "('PAYPALISHIRING', 5, 'PHASIYIRPLIGAN')",
+                        "('A', 1, 'A')",
+                        "('AB', 1, 'AB')",
+                        "('ABCDEF', 1, 'ABCDEF')",
+                        "('ABC', 2, 'ACB')",
+                        "('ABCD', 2, 'ACBD')",
+                        "('ABCDE', 2, 'ACEBD')",
+                        "('ABAB', 2, 'AABB')",
+                        "('ABCD', 3, 'ABDC')",
+                        "('ABCDE', 3, 'AEBDC')",
+                        "('ABCD', 4, 'ABCD')",
+                        "('ABCDEF', 4, 'ABFCED')",
+                        "('AB', 2, 'AB')",
+                        "('ABC', 5, 'ABC')",
+                        "('Z', 1000, 'Z')",
+                        "('XY', 3, 'XY')",
+                        "('abcdefghijklmnop', 5, 'aibhjpcgkodflnem')",
+                        "('a,b.c', 2, 'abc,.')"
+                    ]
+                },
+                "body": "        result = run_convert(Solution, s, num_rows)\n        assert_convert(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_convert, assert_convert\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'PAYPALISHIRING'\nnum_rows = 3\nexpected = 'PAHNAPLSIIGYIR'",
+    "playground_run": "result = run_convert(Solution, s, num_rows)\nresult",
+    "playground_assert": "assert_convert(result, expected)"
+}

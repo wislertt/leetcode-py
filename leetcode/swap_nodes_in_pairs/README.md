@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Recursion
-**Tags:** algo-master-75, grind
+**Tags:** algo-master-75, grind, neetcode
 
 **LeetCode:** [Problem 24](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
 

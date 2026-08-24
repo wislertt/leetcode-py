@@ -5,13 +5,21 @@
     "problem_title": "Shortest Path in Binary Matrix",
     "difficulty": "Medium",
     "topics": "Array, Breadth-First Search, Matrix",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["neetcode"]
+    },
     "readme_description": "Given an `n x n` binary matrix `grid`, return *the length of the shortest **clear path*** in the matrix. If there is no clear path, return `-1`.\n\nA **clear path** in a binary matrix is a path from the top-left cell (i.e., `(0, 0)`) to the bottom-right cell (i.e., `(n - 1, n - 1)`) such that:\n\n- All the visited cells of the path are `0`.\n- All the adjacent cells of the path are **8-directionally** connected (i.e., they are different and they share an edge or a corner).\n\nThe length of a clear path is the number of visited cells of this path.",
     "_readme_examples": {
         "list": [
-            { "content": "```\nInput: grid = [[0,1],[1,0]]\nOutput: 2\n```" },
-            { "content": "```\nInput: grid = [[0,0,0],[1,1,0],[1,1,0]]\nOutput: 4\n```" },
-            { "content": "```\nInput: grid = [[1,0,0],[1,1,0],[1,1,0]]\nOutput: -1\n```" }
+            {
+                "content": "```\nInput: grid = [[0,1],[1,0]]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[0,0,0],[1,1,0],[1,1,0]]\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0,0],[1,1,0],[1,1,0]]\nOutput: -1\n```"
+            }
         ]
     },
     "readme_constraints": "- `n == grid.length`\n- `n == grid[i].length`\n- `1 <= n <= 100`\n- `grid[i][j] is 0 or 1`",
@@ -41,7 +49,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "playground_imports": "from helpers import run_shortest_path_binary_matrix, assert_shortest_path_binary_matrix\nfrom solution import Solution",
     "playground_setup": "# Example test case\ngrid = [[0, 1], [1, 0]]\nexpected = 2",

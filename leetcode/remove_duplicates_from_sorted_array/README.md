@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Two Pointers
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 26](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 

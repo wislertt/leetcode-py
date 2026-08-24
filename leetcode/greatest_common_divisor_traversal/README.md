@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Math, Union Find, Number Theory
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 2709](https://leetcode.com/problems/greatest-common-divisor-traversal/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Greedy, Heap (Priority Queue)
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1405](https://leetcode.com/problems/longest-happy-string/description/)
 

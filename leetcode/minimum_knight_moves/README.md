@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Breadth-First Search
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 1197](https://leetcode.com/problems/minimum-knight-moves/description/)
 

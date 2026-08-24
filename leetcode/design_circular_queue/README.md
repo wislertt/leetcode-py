@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Linked List, Design, Queue
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 622](https://leetcode.com/problems/design-circular-queue/description/)
 

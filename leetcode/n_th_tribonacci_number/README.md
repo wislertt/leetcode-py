@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math, Dynamic Programming, Memoization
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1137](https://leetcode.com/problems/n-th-tribonacci-number/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Tree, Depth-First Search, Breadth-First Search, Binary Tree
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 101](https://leetcode.com/problems/symmetric-tree/description/)
 

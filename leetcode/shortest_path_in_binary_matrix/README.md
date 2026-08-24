@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Breadth-First Search, Matrix
-**Tags:** grind
+**Tags:** neetcode
 
 **LeetCode:** [Problem 1091](https://leetcode.com/problems/shortest-path-in-binary-matrix/description/)
 

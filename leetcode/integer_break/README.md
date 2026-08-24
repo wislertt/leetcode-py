@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math, Dynamic Programming
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 343](https://leetcode.com/problems/integer-break/description/)
 

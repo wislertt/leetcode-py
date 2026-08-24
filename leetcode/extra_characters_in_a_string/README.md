@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Hash Table, String, Dynamic Programming, Trie
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 2707](https://leetcode.com/problems/extra-characters-in-a-string/description/)
 

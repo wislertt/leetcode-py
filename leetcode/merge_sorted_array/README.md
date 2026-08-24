@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Two Pointers, Sorting
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 88](https://leetcode.com/problems/merge-sorted-array/description/)
 

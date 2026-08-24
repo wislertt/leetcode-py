@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Math, Recursion
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 50](https://leetcode.com/problems/powx-n/description/)
 

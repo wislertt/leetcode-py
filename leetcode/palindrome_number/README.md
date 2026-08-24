@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 9](https://leetcode.com/problems/palindrome-number/description/)
 

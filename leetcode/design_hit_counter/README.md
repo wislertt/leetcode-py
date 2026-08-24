@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Design, Queue, Array, Binary Search, Data Stream
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 362](https://leetcode.com/problems/design-hit-counter/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Simulation, Prefix Sum
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1094](https://leetcode.com/problems/car-pooling/description/)
 

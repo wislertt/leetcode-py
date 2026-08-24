@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math, String
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1071](https://leetcode.com/problems/gcd-of-strings/description/)
 

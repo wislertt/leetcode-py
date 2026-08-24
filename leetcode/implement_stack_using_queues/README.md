@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Stack, Design, Queue
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 225](https://leetcode.com/problems/implement-stack-using-queues/description/)
 

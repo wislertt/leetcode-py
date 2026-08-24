@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Design, Matrix, Prefix Sum
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 304](https://leetcode.com/problems/range-sum-query-2d-immutable/description/)
 

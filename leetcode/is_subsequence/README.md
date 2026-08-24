@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Two Pointers, String, Dynamic Programming
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode
 
 **LeetCode:** [Problem 392](https://leetcode.com/problems/is-subsequence/description/)
 

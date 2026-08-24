@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Two Pointers, String, Stack, Simulation
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 844](https://leetcode.com/problems/backspace-string-compare/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Binary Search, Prefix Sum
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 528](https://leetcode.com/problems/random-pick-with-weight/description/)
 

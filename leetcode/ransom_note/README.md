@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Hash Table, String, Counting
-**Tags:** grind, grind-75
+**Tags:** grind, grind-75, neetcode
 
 **LeetCode:** [Problem 383](https://leetcode.com/problems/ransom-note/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Bit Manipulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 201](https://leetcode.com/problems/bitwise-and-of-numbers-range/description/)
 

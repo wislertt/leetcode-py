@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Binary Search Tree, Binary Tree
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 450](https://leetcode.com/problems/delete-node-in-a-bst/description/)
 

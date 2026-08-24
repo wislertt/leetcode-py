@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Binary Search, Interactive
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 374](https://leetcode.com/problems/guess-number-higher-or-lower/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Bit Manipulation
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode
 
 **LeetCode:** [Problem 260](https://leetcode.com/problems/single-number-iii/description/)
 

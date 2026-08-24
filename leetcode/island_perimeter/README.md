@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Depth-First Search, Breadth-First Search, Matrix
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 463](https://leetcode.com/problems/island-perimeter/description/)
 

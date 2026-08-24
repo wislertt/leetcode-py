@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Two Pointers
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 27](https://leetcode.com/problems/remove-element/description/)
 

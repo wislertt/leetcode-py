@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Sorting, Sweep Line, Heap (Priority Queue)
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 759](https://leetcode.com/problems/employee-free-time/description/)
 

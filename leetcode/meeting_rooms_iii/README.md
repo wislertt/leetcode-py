@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Hash Table, Sorting, Heap (Priority Queue), Simulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 2402](https://leetcode.com/problems/meeting-rooms-iii/description/)
 

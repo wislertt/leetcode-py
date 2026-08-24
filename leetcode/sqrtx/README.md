@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Math, Binary Search
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 69](https://leetcode.com/problems/sqrtx/description/)
 

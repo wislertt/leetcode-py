@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Dynamic Programming, Tree, Depth-First Search, Binary Tree
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 337](https://leetcode.com/problems/house-robber-iii/description/)
 

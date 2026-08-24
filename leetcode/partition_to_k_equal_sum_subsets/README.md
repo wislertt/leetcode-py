@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming, Backtracking, Bit Manipulation, Memoization, Bitmask
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 698](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/description/)
 

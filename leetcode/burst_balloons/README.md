@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Dynamic Programming
-**Tags:** neetcode-150, neetcode-250
+**Tags:** neetcode, neetcode-150, neetcode-250
 
 **LeetCode:** [Problem 312](https://leetcode.com/problems/burst-balloons/description/)
 

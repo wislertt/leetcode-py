@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Stack, Design, Monotonic Stack, Data Stream
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 901](https://leetcode.com/problems/online-stock-span/description/)
 

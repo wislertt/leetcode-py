@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search, Design, Segment Tree, Ordered Set
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode
 
 **LeetCode:** [Problem 729](https://leetcode.com/problems/my-calendar-i/description/)
 

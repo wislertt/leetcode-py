@@ -27,6 +27,16 @@ GraphNode.to_adjacency_list(graph)  # [[2, 4], [1, 3], [2, 4], [1, 3]]
 Cyclic lists are safe: traversal detects cycles instead of hanging, in both
 directions.
 
+Each class carries a few extras beyond conversion and rendering:
+
+- `TreeNode.find_node(value)` returns the first node with that value.
+- `GraphNode.is_clone(other)` checks deep equality between a graph and its
+  copy, the shape clone-graph problems ask for.
+- All three are generic: `TreeNode[int]`, `ListNode[str]`, and so on.
+- `from leetcode_py.data_structures import DictTree` gives a dict-backed
+  tree that renders with box-drawing characters in the terminal and Graphviz
+  in Jupyter, which suits Trie implementations.
+
 ## In Jupyter: diagrams
 
 As the last expression of a cell, these objects render as Graphviz SVG
@@ -41,7 +51,10 @@ head                              # renders the diagram, cycle included
 ```
 
 <img src="/images/tree-viz.png" alt="TreeNode rendered as a Graphviz tree diagram in Jupyter" />
-<img src="/images/linkedlist-viz.png" alt="ListNode rendered as a left-to-right box diagram in Jupyter" />
+<img
+    src="/images/linkedlist-viz.png"
+    alt="ListNode rendered as a left-to-right box diagram in Jupyter"
+/>
 
 ## In the terminal: ASCII
 

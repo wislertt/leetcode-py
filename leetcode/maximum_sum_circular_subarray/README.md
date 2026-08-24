@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Divide and Conquer, Dynamic Programming, Queue, Monotonic Queue
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 918](https://leetcode.com/problems/maximum-sum-circular-subarray/description/)
 

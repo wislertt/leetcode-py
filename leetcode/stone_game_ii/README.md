@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Math, Dynamic Programming, Prefix Sum, Game Theory
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1140](https://leetcode.com/problems/stone-game-ii/description/)
 

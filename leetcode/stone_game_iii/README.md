@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Math, Dynamic Programming, Game Theory
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1406](https://leetcode.com/problems/stone-game-iii/description/)
 

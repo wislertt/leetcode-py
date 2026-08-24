@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Hash Table, String, Sliding Window
-**Tags:** algo-master-75, grind, grind-75
+**Tags:** algo-master-75, grind, grind-75, neetcode
 
 **LeetCode:** [Problem 438](https://leetcode.com/problems/find-all-anagrams-in-a-string/description/)
 

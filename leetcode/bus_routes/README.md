@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Array, Hash Table, Breadth-First Search
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 815](https://leetcode.com/problems/bus-routes/description/)
 

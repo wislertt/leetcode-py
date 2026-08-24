@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Tree, Binary Search Tree, Binary Tree
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 701](https://leetcode.com/problems/insert-into-a-binary-search-tree/description/)
 

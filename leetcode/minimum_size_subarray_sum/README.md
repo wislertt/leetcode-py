@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search, Sliding Window, Prefix Sum
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 209](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
 

@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Dynamic Programming
-**Tags:** grind, neetcode-150, neetcode-250
+**Tags:** grind, neetcode, neetcode-250
 
 **LeetCode:** [Problem 377](https://leetcode.com/problems/combination-sum-iv/description/)
 

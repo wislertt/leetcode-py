@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Bit Manipulation
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 3133](https://leetcode.com/problems/minimum-array-end/description/)
 

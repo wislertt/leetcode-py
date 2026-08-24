@@ -2,7 +2,7 @@
 
 **Difficulty:** Easy
 **Topics:** Array, Math, Backtracking, Bit Manipulation, Combinatorics, Enumeration
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1863](https://leetcode.com/problems/sum-of-all-subset-xor-totals/description/)
 

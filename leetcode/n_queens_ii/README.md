@@ -2,7 +2,7 @@
 
 **Difficulty:** Hard
 **Topics:** Backtracking
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 52](https://leetcode.com/problems/n-queens-ii/description/)
 

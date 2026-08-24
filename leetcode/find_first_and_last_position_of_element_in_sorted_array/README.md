@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Array, Binary Search
-**Tags:** algo-master-75
+**Tags:** algo-master-75, neetcode
 
 **LeetCode:** [Problem 34](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
 

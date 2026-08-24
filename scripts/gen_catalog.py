@@ -28,6 +28,7 @@ COLLECTION_META: dict[str, str] = {
     "blind-75": "Blind 75",
     "neetcode-150": "NeetCode 150",
     "neetcode-250": "NeetCode 250",
+    "neetcode": "NeetCode All",
     "algo-master-75": "AlgoMaster 75",
 }
 

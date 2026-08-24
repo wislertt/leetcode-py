@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** Linked List, Two Pointers
-**Tags:** grind
+**Tags:** grind, neetcode
 
 **LeetCode:** [Problem 61](https://leetcode.com/problems/rotate-list/description/)
 

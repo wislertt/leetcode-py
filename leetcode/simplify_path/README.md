@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Stack
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 71](https://leetcode.com/problems/simplify-path/description/)
 

@@ -1,0 +1,100 @@
+{
+    "problem_name": "shortest_path_to_get_food",
+    "solution_class_name": "Solution",
+    "problem_number": "1730",
+    "problem_title": "Shortest Path to Get Food",
+    "difficulty": "Medium",
+    "topics": "Array, Breadth-First Search, Matrix",
+    "_tags": {
+        "list": ["grind"]
+    },
+    "readme_description": "You are starving and you want to eat food as quickly as possible. You want to find the shortest path to arrive at any food cell.\n\nYou are given an `m x n` character matrix, `grid`, of these different types of cells:\n\n- `'*'` is your location. There is exactly one `'*'` cell.\n- `'#'` is a food cell. There may be multiple food cells.\n- `'O'` is free space, and you can travel through these cells.\n- `'X'` is an obstacle, and you cannot travel through these cells.\n\nYou can travel to any adjacent cell north, east, south, or west of your current location if there is not an obstacle.\n\nReturn the length of the shortest path for you to reach any food cell. If there is no path for you to reach food, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[\"X\",\"X\",\"X\",\"X\",\"X\",\"X\"],[\"X\",\"*\",\"O\",\"O\",\"O\",\"X\"],[\"X\",\"O\",\"O\",\"#\",\"O\",\"X\"],[\"X\",\"X\",\"X\",\"X\",\"X\",\"X\"]]\nOutput: 3\nExplanation: It takes 3 steps to reach the food.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[\"X\",\"X\",\"X\",\"X\",\"X\"],[\"X\",\"*\",\"X\",\"O\",\"X\"],[\"X\",\"O\",\"X\",\"#\",\"X\"],[\"X\",\"X\",\"X\",\"X\",\"X\"]]\nOutput: -1\nExplanation: It is not possible to reach the food.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[\"X\",\"X\",\"X\",\"X\",\"X\",\"X\",\"X\",\"X\"],[\"X\",\"*\",\"O\",\"X\",\"O\",\"#\",\"O\",\"X\"],[\"X\",\"O\",\"O\",\"X\",\"O\",\"O\",\"X\",\"X\"],[\"X\",\"O\",\"O\",\"O\",\"O\",\"#\",\"O\",\"X\"],[\"X\",\"X\",\"X\",\"X\",\"X\",\"X\",\"X\",\"X\"]]\nOutput: 6\nExplanation: There can be multiple food cells. It only takes 6 steps to reach the bottom food.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[\"O\",\"*\"],[\"#\",\"O\"]]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 200`\n- `grid[row][col]` is `'*'`, `'X'`, `'O'`, or `'#'`.\n- The `grid` contains exactly one `'*'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_food",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[str]])",
+    "helpers_run_body": "    import copy\n    grid_copy = copy.deepcopy(grid)\n    implementation = solution_class()\n    return implementation.get_food(grid_copy)",
+    "helpers_assert_name": "get_food",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_food, run_get_food\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestPathToGetFood",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_food",
+                "signature": "(self, grid: list[list[str]]) -> int",
+                "body": "        # TODO: Implement get_food\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_food",
+                "signature": "(self, grid: list[list[str]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([['X','X','X','X','X','X'],['X','*','O','O','O','X'],['X','O','O','#','O','X'],['X','X','X','X','X','X']], 3)",
+                        "([['X','X','X','X','X'],['X','*','X','O','X'],['X','O','X','#','X'],['X','X','X','X','X']], -1)",
+                        "([['X','X','X','X','X','X','X','X'],['X','*','O','X','O','#','O','X'],['X','O','O','X','O','O','X','X'],['X','O','O','O','O','#','O','X'],['X','X','X','X','X','X','X','X']], 6)",
+                        "([['O','*'],['#','O']], 2)",
+                        "([['X','*'],['#','X']], -1)",
+                        "([['*','#']], 1)",
+                        "([['#','*']], 1)",
+                        "([['*','O','#']], 2)",
+                        "([['*','X','#']], -1)",
+                        "([['*']], -1)",
+                        "([['*','O','O','O','O','O','O','#']], 7)",
+                        "([['*'],['O'],['O'],['#']], 3)",
+                        "([['O','O','*','O','O'],['O','X','X','X','O'],['O','O','#','O','O']], 6)",
+                        "([['O','*','O'],['O','X','O'],['#','O','#']], 3)",
+                        "([['*','O','O'],['X','X','O'],['O','O','#']], 4)",
+                        "([['#','X','*'],['O','X','O'],['O','O','#']], 2)",
+                        "([['X','*','X'],['X','O','X'],['X','#','X']], 2)",
+                        "([['*','O','O','O'],['O','X','X','O'],['O','X','#','O'],['O','O','O','O']], 6)",
+                        "([['*','O','O'],['X','X','O'],['O','O','O'],['O','X','#']], 5)"
+                    ]
+                },
+                "body": "        result = run_get_food(Solution, grid)\n        assert_get_food(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_food, assert_get_food\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [['X','X','X','X','X','X'],['X','*','O','O','O','X'],['X','O','O','#','O','X'],['X','X','X','X','X','X']]\nexpected = 3",
+    "playground_run": "result = run_get_food(Solution, grid)\nresult",
+    "playground_assert": "assert_get_food(result, expected)"
+}

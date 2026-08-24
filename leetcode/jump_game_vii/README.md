@@ -2,7 +2,7 @@
 
 **Difficulty:** Medium
 **Topics:** String, Dynamic Programming, Sliding Window, Prefix Sum
-**Tags:** neetcode-250
+**Tags:** neetcode, neetcode-250
 
 **LeetCode:** [Problem 1871](https://leetcode.com/problems/jump-game-vii/description/)
 
