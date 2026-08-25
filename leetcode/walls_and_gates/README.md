@@ -25,25 +25,27 @@ Fill each empty room with the distance to its nearest gate. If it is impossible 
 ```
 Input: rooms = [[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]
 Output: [[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]
+```
+
 **Explanation:** the 2D grid is:
-```
-
-INF -1 0 INF
-INF INF INF -1
-INF -1 INF -1
-0 -1 INF INF
 
 ```
+INF  -1   0   INF
+INF  INF  INF  -1
+INF  -1   INF  -1
+  0  -1   INF  INF
+```
+
 the result is:
-```
-
-3 -1 0 1
-2 2 1 -1
-1 -1 2 -1
-0 -1 3 4
 
 ```
-explanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0).`
+ 3  -1   0   1
+ 2   2   1  -1
+ 1  -1   2  -1
+ 0  -1   3   4
+```
+
+explanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0)..`
 
 ### Example 2:
 
@@ -61,5 +63,6 @@ Output: [[0,-1],[1,2]]
 - `1 <= m, n <= 100`
 - `rooms[i][j]` is one of `-1`, `0`, or `2147483647`.
 
+```
 
 ```

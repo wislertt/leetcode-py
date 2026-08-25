@@ -30,9 +30,10 @@
         ]
     },
     "seo": {
+        "indexing": "all",
         "metatags": {
             "canonical": "https://leetcode-py.wisl.dev",
-            "og:image": "/img/brand/og-card-light.png",
+            "og:image": "https://leetcode-py.wisl.dev/img/brand/og-card-light.png",
             "twitter:card": "summary_large_image"
         },
         "organization": {
@@ -102,6 +103,7 @@
                 "group": "Practice",
                 "pages": [
                     "practice/problem-anatomy",
+                    "practice/test-locally",
                     "practice/testing",
                     "practice/visualizations",
                     "practice/notebooks"

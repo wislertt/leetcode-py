@@ -8,11 +8,11 @@
     "_tags": {
         "list": ["neetcode-150"]
     },
-    "readme_description": "You are given a `m × n` 2D grid initialized with these three possible values:\n\n- `-1` - A wall or obstacle that can not be traversed.\n- `0` - A gate.\n- `INF` - Infinity an empty room. We use the value `2^31 - 1 = 2147483647` to represent `INF`.\n\nFill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with `INF`.\n\n**Follow up:** Can you solve it in-place and in O(m × n) time complexity?",
+    "readme_description": "You are given a `m \u00d7 n` 2D grid initialized with these three possible values:\n\n- `-1` - A wall or obstacle that can not be traversed.\n- `0` - A gate.\n- `INF` - Infinity an empty room. We use the value `2^31 - 1 = 2147483647` to represent `INF`.\n\nFill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with `INF`.\n\n**Follow up:** Can you solve it in-place and in O(m \u00d7 n) time complexity?",
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: rooms = [[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]\nOutput: [[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]\n**Explanation:** the 2D grid is:\n```\nINF  -1   0   INF\nINF  INF  INF  -1\nINF  -1   INF  -1\n  0  -1   INF  INF\n```\nthe result is:\n```\n 3  -1   0   1\n 2   2   1  -1\n 1  -1   2  -1\n 0  -1   3   4\n```\nexplanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0).`"
+                "content": "```\nInput: rooms = [[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]\nOutput: [[3,-1,0,1],[2,2,1,-1],[1,-1,2,-1],[0,-1,3,4]]\n```\n\n**Explanation:** the 2D grid is:\n\n```\nINF  -1   0   INF\nINF  INF  INF  -1\nINF  -1   INF  -1\n  0  -1   INF  INF\n```\nthe result is:\n```\n 3  -1   0   1\n 2   2   1  -1\n 1  -1   2  -1\n 0  -1   3   4\n```\nexplanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0)."
             },
             {
                 "content": "```\nInput: rooms = [[0,-1],[2147483647,2147483647]]\nOutput: [[0,-1],[1,2]]\n```"

@@ -1,0 +1,120 @@
+---
+title: Test LeetCode Solutions Locally with pytest
+sidebarTitle: Test locally
+description: "Set up a local feedback loop for LeetCode problems: generate a problem, run its pytest suite, make red go green, and iterate on single cases."
+---
+
+Solving on leetcode.com means round-tripping between browser tabs. A
+generated practice environment moves that loop into your terminal: every
+problem ships with a parametrized pytest suite, so testing your solution
+is one command in your own editor, with your own debugger and no page
+reloads.
+
+## One-time setup
+
+```bash
+pip install leetcode-py-sdk
+pip install pytest
+```
+
+The package pulls in `loguru`, which the suites use to log every case.
+`pytest` is not a package dependency, so install it in the same
+environment. Or use `uv`: `uv tool install leetcode-py-sdk` plus
+`uv pip install pytest` in your active venv.
+
+## Generate a problem, see red
+
+```bash
+lcpy gen -n 1
+cd two_sum
+python -m pytest test_solution.py
+```
+
+The suite runs immediately and mostly fails, because `solution.py`
+arrives as a TODO stub:
+
+```text
+15 failed, 3 passed in 0.86s
+```
+
+Every failing case is named by its parametrized id, and the assertion
+output shows the inputs and the expected result, so you know exactly
+which contract you broke.
+
+## Implement, go green
+
+Replace the TODO in `solution.py` with your approach:
+
+```python
+class Solution:
+    def two_sum(self, nums: list[int], target: int) -> list[int]:
+        seen: dict[int, int] = {}
+        for i, n in enumerate(nums):
+            if target - n in seen:
+                return [seen[target - n], i]
+            seen[n] = i
+        return []
+```
+
+Rerun the suite:
+
+```bash
+python -m pytest test_solution.py
+```
+
+```text
+18 passed in 0.45s
+```
+
+Never edit the tests to make them pass. The suite is the contract; the
+10+ cases per problem include the LeetCode examples plus edge cases
+(empty results, negatives, duplicates, boundary sizes), so green here
+means green, not "green for the two examples I checked".
+
+## Iterate on one case at a time
+
+Mid-debug, you want one case, not eighteen. pytest flags that earn
+their keep on these suites:
+
+| Command | Effect |
+| --- | --- |
+| `python -m pytest -k nums0` | run only the case whose id matches |
+| `python -m pytest -x` | stop at the first failure |
+| `python -m pytest -s` | show the per-case loguru output |
+
+```bash
+python -m pytest test_solution.py -k nums0
+```
+
+```text
+1 passed, 17 deselected in 0.26s
+```
+
+With `-s`, each case logs its inputs and verdict:
+
+```text
+2026-08-24 14:41:49 | DEBUG | Running test_two_sum(nums=[2, 7, 11, 15], target=9, expected=[0, 1])
+2026-08-24 14:41:49 | DEBUG | Test passed! ✨
+```
+
+## A whole practice tree works the same
+
+Generate a collection and plain `pytest` discovers every suite under
+the current directory:
+
+```bash
+lcpy gen -t blind-75
+python -m pytest          # every problem, every case
+```
+
+Pick your set in [Collections](/cli/collections) or browse the
+[Catalog](/catalog).
+
+## Where to go next
+
+- [Anatomy of a test suite](/practice/testing): how the parametrized
+  cases, helpers, and logging fit together, and how one suite covers
+  multiple solution classes
+- [Problem anatomy](/practice/problem-anatomy): what each of the six
+  generated files is for
+- [lcpy CLI reference](/cli/lcpy): every `gen` and `list` option

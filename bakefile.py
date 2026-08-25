@@ -103,6 +103,12 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         self.ctx.run("uv run python scripts/gen_catalog.py")
         console.success("Catalog pages regenerated into docs/catalog/")
 
+    @command("docs-problems", help="Regenerate docs/problems/ pages from JSON templates")
+    def docs_problems(self):
+        console.echo("Regenerating docs/problems/ pages...")
+        self.ctx.run("uv run python scripts/gen_problems.py")
+        console.success("Problem pages regenerated into docs/problems/")
+
     @command("check-test-cases", help="Find problems with few test cases")
     def check_test_cases(
         self,

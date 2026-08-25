@@ -1,5 +1,6 @@
 ---
-title: lcpy
+title: "lcpy CLI: Generate and List Problems"
+sidebarTitle: lcpy
 description: Generate, list, and scrape LeetCode problems from any directory.
 ---
 
@@ -28,7 +29,7 @@ package.
 | Option | Meaning |
 | --- | --- |
 | `-n, --problem-num` | Problem number(s); repeat the flag for more than one |
-| `-s, --problem-slug` | Problem slug(s), e.g. `two-sum`; repeatable |
+| `-s, --problem-slug` | Problem name(s), e.g. `two_sum`; repeatable |
 | `-t, --problem-tag` | Generate every problem in a collection tag |
 | `-d, --difficulty` | Filter by `Easy`, `Medium`, or `Hard` |
 | `--all` | Generate every problem in the catalog |
@@ -38,14 +39,15 @@ package.
 ```bash
 lcpy gen -n 1                          # Two Sum
 lcpy gen -n 1 -n 125 -n 206            # several at once
-lcpy gen -s two-sum -s valid-palindrome
+lcpy gen -s two_sum -s valid_palindrome
 lcpy gen -t grind-75 -o leetcode       # a whole collection
 lcpy gen -t grind-75 -d Easy           # collection + difficulty filter
 lcpy gen -n 1 --force                  # regenerate over existing files
 ```
 
 What lands on disk is documented in
-[Problem Anatomy](/practice/problem-anatomy).
+[Problem Anatomy](/practice/problem-anatomy), and running the suites is
+covered in [Test LeetCode Solutions Locally](/practice/test-locally).
 
 ## lcpy list
 

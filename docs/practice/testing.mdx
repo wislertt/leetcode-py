@@ -1,10 +1,14 @@
 ---
-title: Testing
-description: Parametrized suites, logged test output, and covering multiple solutions with one suite.
+title: LeetCode Python Test Cases with pytest
+sidebarTitle: Testing
+description: "Anatomy of a generated LeetCode test suite: 10+ parametrized pytest cases per problem, logged output, and one suite covering multiple solutions."
 ---
 
 Tests ship with the problem. You never write test scaffolding. You arrive,
-run the suite, watch it fail, and make it pass.
+run the suite, watch it fail, and make it pass. For the local-setup
+workflow (installing pytest, first red-green loop, running single cases),
+see [Test LeetCode Solutions Locally](/practice/test-locally); this page
+is about how the test cases themselves are built.
 
 ```bash
 bake p-test -p two_sum
