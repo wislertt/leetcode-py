@@ -45,15 +45,13 @@ the result is:
  0  -1   3   4
 ```
 
-explanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0)..`
+explanation: the gate is located at (0,2), (3,0), (3,3). the room at (0,0) is distance 3 from the nearest gate at (3,0).
 
 ### Example 2:
 
 ```
-
 Input: rooms = [[0,-1],[2147483647,2147483647]]
 Output: [[0,-1],[1,2]]
-
 ```
 
 ## Constraints
@@ -62,7 +60,3 @@ Output: [[0,-1],[1,2]]
 - `n == rooms[i].length`
 - `1 <= m, n <= 100`
 - `rooms[i][j]` is one of `-1`, `0`, or `2147483647`.
-
-```
-
-```
