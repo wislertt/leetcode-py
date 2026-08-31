@@ -9,50 +9,103 @@ description: Batch creation workflow for multiple LeetCode problems - loops thro
 ## Assistant Workflow
 
 1. **Parse arguments**: If `$ARGUMENTS` contains the keyword `unscrapable`, run the **Creating Unscrapable Problems from the Web** flow (bottom of this file) instead of the normal loop. Otherwise use `$ARGUMENTS` as count (valid integer); default 5 if absent
-2. **Loop**: for each problem — find next problem, follow @.claude/skills/problem-creation.md, implement the optimal solution, run quality assurance per @.claude/skills/test-quality-assurance.md
-3. **Finalize the whole batch**: pre-commit, tag sync check, consistency check (in order — see Batch Finalization)
-4. **Summarize**: batch results + skill improvement suggestions
+2. **Pre-assign problems** (main context): find N problems in one pass, scrape each to a /tmp file WITHOUT reading its content (Step 1.1)
+3. **Per-problem subagent loop**: spawn one `general-purpose` subagent per problem; the agent does JSON creation, tag insert, p-gen, solution, QA. Main context only sees the agent's short report (Step 1.2-1.4)
+4. **Finalize the whole batch** (main context): pre-commit, tag sync check, consistency check (in order — see Batch Finalization)
+5. **Summarize**: batch results + skill improvement suggestions
 
-**CRITICAL**: Read test-quality-assurance.md before executing quality assurance for ANY problem — do not rely on memory of the workflow.
+**Why subagents**: a problem costs 30-60k context tokens when done inline (scrape dumps, JSON scripts, p-gen/test output). A subagent does the same work in its own context; the orchestrator pays only ~200-500 tokens per problem (spawn prompt + report). This keeps main context near-flat for any batch size.
 
 ## Step 1: Problem Creation Loop
 
-### 1.1: Find Next Problem
+### 1.1: Pre-Assign All Problems (main context, ONE pass)
 
-**GOTCHA — never hand-copy the number into the scrape.** Transcribing `#214` as `257` scrapes the wrong problem silently and wastes a full cycle. Chain the scrape off the script output — and capture the `Tag:` line in the same pass (it feeds `_tags.list` in the JSON; piping to grep twice drops it):
+**GOTCHA — never hand-copy the number into the scrape.** Transcribing `#214` as `257` scrapes the wrong problem silently and wastes a full cycle. Chain everything off script output.
 
-```bash
-OUT=$(uv run python .claude/.dev/next_problem.py)
-N=$(echo "$OUT" | grep -oE '#[0-9]+' | tr -d '#')
-TAG=$(echo "$OUT" | grep -oE 'Tag: [a-z0-9-]+' | cut -d' ' -f2)
-uv run lcpy scrape -n "$N"   # report: #N, tag: $TAG
-```
-
-The script automatically excludes known unscrapable problems.
-
-### 1.2: Create Problem Files
-
-Follow @.claude/skills/problem-creation.md end to end: scrape → transform (with images) → JSON in `src/leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json` → tags.json5 insert → `bake p-gen -p {problem_name}` → fix JSON (never generated files) and re-run until clean.
-
-All gotchas live there, including the batch-only steps in its **Batch Flow Notes** section: premium/SQL scrape-failure queueing, rtk tee truncation, repo-wide lint batching cadence, and the ruff-clean-from-start rules. The `ast.literal_eval` and E501 test-case rules are in its JSON Template Format section. Do not re-derive them here.
-
-### 1.3: Implement Optimal Solution
-
-Implement ONE optimal solution in the single `Solution` class in `solution.py` (design problems: the custom class only) — before QA, so tests must pass there. Write it ruff/ty-clean up front per problem-creation.md Batch Flow Notes; `bake lint` during QA may not surface pre-commit-level findings, and fixing at finalization costs a late fix cycle.
-
-### 1.4: Quality Assurance
-
-Follow the 6-step process in @.claude/skills/test-quality-assurance.md (backup → regen → restore solution → lint → test → cleanup). Per-problem chain, lint deferred per the batching cadence in problem-creation.md Batch Flow Notes:
+Run all N lookups + scrapes in ONE bash call. Scrape output goes to files — NEVER print it to main context (it is the single largest context cost; the agent reads the file instead). Print only number, tag, slug, title:
 
 ```bash
-cp -r leetcode/{problem_name} leetcode/{problem_name}_backup && \
-bake p-gen -p {problem_name} -f && \
-cp leetcode/{problem_name}_backup/solution.py leetcode/{problem_name}/solution.py && \
-bake p-test -p {problem_name} 2>&1 | tail -1 && \
-rm -rf leetcode/{problem_name}_backup
+for i in $(seq 1 {count}); do
+  OUT=$(uv run python .claude/.dev/next_problem.py)
+  N=$(echo "$OUT" | grep -oE '#[0-9]+' | tr -d '#')
+  TAG=$(echo "$OUT" | grep -oE 'Tag: [a-z0-9-]+' | cut -d' ' -f2)
+  uv run lcpy scrape -n "$N" > "/tmp/batch_scrape_${N}.json" 2>&1
+  rc=$?
+  if [ $rc -ne 0 ] || head -c 1 "/tmp/batch_scrape_${N}.json" | grep -qv '{'; then
+    echo "QUEUE $N $TAG SCRAPE_FAILED"
+  else
+    META=$(python3 -c "import json; d=json.load(open('/tmp/batch_scrape_${N}.json')); print(d['slug'], '|', d['title'])")
+    echo "QUEUE $N $TAG $META"
+  fi
+done
 ```
 
-The solution is already implemented (1.3), so tests MUST pass here — a failure means bad JSON test expectations or a wrong solution (see problem-creation.md gotchas), not an "incomplete solution".
+Notes:
+
+- `next_problem.py` automatically excludes known unscrapable problems; running it once per problem consumes queue entries in order
+- A failed scrape (premium signature `Error fetching problem: 'NoneType' object is not iterable`, SQL `Error: Problem number N not found`) does NOT consume the number — handle per Error Handling below, then re-run the loop for that slot
+- The `QUEUE ...` lines are the batch manifest. Keep them; each line becomes one subagent spawn
+
+### 1.2: Spawn One Subagent Per Problem (sequential)
+
+For each manifest line, spawn ONE agent with `subagent_type: "general-purpose"` (fresh empty context — NEVER `fork`, it inherits the orchestrator's whole conversation and defeats the purpose). Wait for the agent's report before spawning the next.
+
+**Why sequential in v1**: each agent inserts its own `tags.json5` entry (step 6 of the prompt); concurrent agents would race on that file. Parallel mode (2-3 concurrent) requires pre-inserting all tags main-side first — possible once slugs are known from the manifest, but untested; do not enable without verifying `bake p-gen` tolerates a JSON whose tag is absent from tags.json5.
+
+**Subagent prompt template** — fill `{N}`, `{TAG}`, `{SCRAPE_PATH}` (`/tmp/batch_scrape_{N}.json`) from the manifest line, verbatim otherwise:
+
+```text
+Create LeetCode problem #{N} in this repo. Work autonomously; report back concisely.
+
+FIRST: read these two files completely before any other action:
+- .claude/skills/problem-creation/SKILL.md
+- .claude/skills/test-quality-assurance/SKILL.md
+Follow them exactly — every gotcha in them is there because it cost a real cycle.
+
+Input data: the problem is already scraped to {SCRAPE_PATH}. Do NOT re-scrape.
+Read that file (it has description, examples, constraints, topics, python_code signature, image URLs).
+
+Do, in order:
+1. Build the JSON template at src/leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json
+   per problem-creation.md (images, _tags: { "list": ["{TAG}"] }, 12+ test cases, single-quote
+   playground strings, None not null). Write it via a python script that machine-verifies every
+   test-case expectation with a reference implementation and asserts BEFORE json.dump — never
+   hand-transcribe expectations.
+2. Insert the tag: uv run python .claude/.dev/insert_tag.py {TAG} {problem_name}
+3. bake p-gen -p {problem_name}  (fix the JSON, never generated files, re-run until clean)
+4. Implement ONE optimal solution in the single Solution class in solution.py (design problems:
+   the custom class only), ruff/ty-clean up front per problem-creation.md Batch Flow Notes.
+5. Run the QA chain from test-quality-assurance.md step 2 (backup -> p-gen -f -> restore
+   solution -> p-test -> cleanup). lint step is NOT yours — the orchestrator runs repo-wide
+   lint at finalization. Tests MUST pass (solution is implemented); a failure means bad JSON
+   expectations or a wrong solution — fix it, do not dismiss it.
+
+Boundaries — you own ONLY this problem:
+- Touch only: your JSON file, leetcode/{problem_name}/, your tags.json5 line, /tmp scratch files
+- Do NOT: edit bakefile.py, other problems' files, problem_lists/*.py, unscrapable.py;
+  run `bake lint`, pre-commit, or any repo-wide command; git commit
+- This is a subagent task: skip the brainstorming/superpowers skill ceremony; the two skill
+  files above are your complete instructions.
+
+Report back EXACTLY this and nothing else:
+- problem_name: <name>
+- status: PASS | FAIL
+- tests: <count> passed
+- if FAIL: one paragraph — what failed, the error, what you tried
+- any deviation from the skills you had to make and why
+```
+
+### 1.3: After Each Agent Report (main context)
+
+- PASS: `sed -i '' 's/    problem: str = ".*"/    problem: str = "{problem_name}"/' bakefile.py` — keeps `bake p-test` default pointing at the newest problem
+- FAIL: log reason for the summary; decide retry once vs skip per Error Handling. Do not debug inline — a failed agent's context is gone; if retrying, spawn a fresh agent including the failure paragraph in the prompt
+- Suppressed-output discipline (the whole point of this design): never print scrape JSON, full p-gen logs, or full test output to main context. `| tail -3` or grep a count. If deeper inspection is needed, it belongs in the NEXT agent's prompt, not this conversation
+
+### 1.4: What Moved Where (vs inline flow)
+
+- Agent-side (its context, not yours): scrape reading, JSON writing + verification, tag insert, p-gen cycles, solution implementation, QA chain, all gotcha application
+- Orchestrator-side (main context): manifest, spawns, bakefile sed, finalization gates, summary
+- Unchanged skills: problem-creation.md and test-quality-assurance.md are read BY THE AGENT — do not summarize them into the prompt beyond the pointers above; the files are the source of truth
 
 ## Step 2: Batch Finalization (MANDATORY — after ALL problems)
 
