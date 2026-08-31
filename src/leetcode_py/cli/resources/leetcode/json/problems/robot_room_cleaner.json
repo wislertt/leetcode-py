@@ -1,0 +1,89 @@
+{
+    "problem_name": "robot_room_cleaner",
+    "solution_class_name": "Solution",
+    "problem_number": "489",
+    "problem_title": "Robot Room Cleaner",
+    "difficulty": "Hard",
+    "topics": "Backtracking, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are controlling a robot that is located somewhere in a room. The room is modeled as an `m x n` binary grid where `0` represents a wall and `1` represents an empty slot.\n\nThe robot starts at an unknown location in the room that is guaranteed to be empty, and you do not have access to the grid, but you can move the robot using the given API `Robot`.\n\nYou are tasked to use the robot to clean the entire room (i.e. clean every empty cell in the room). The robot with the four given APIs can move forward, turn left, or turn right. Each turn is `90` degrees.\n\nWhen the robot tries to move into a wall cell, its bumper sensor detects the obstacle, and it stays on the current cell.\n\nDesign an algorithm to clean the entire room using the following APIs:\n\n```\ninterface Robot {\n  // returns true if next cell is open and robot moves into the cell.\n  // returns false if next cell is obstacle and robot stays on the current cell.\n  boolean move();\n\n  // Robot will stay on the same cell after calling turnLeft/turnRight.\n  // Each turn will be 90 degrees.\n  void turnLeft();\n  void turn_right();\n\n  // Clean the current cell.\n  void clean();\n}\n```\n\n**Note** that the initial direction of the robot will be facing up. You can assume all four edges of the grid are all surrounded by a wall.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0489.Robot%20Room%20Cleaner/images/lc-grid.jpg)\n\n```\nInput: room = [[1,1,1,1,1,0,1,1],[1,1,1,1,1,0,1,1],[1,0,1,1,1,1,1,1],[0,0,0,1,0,0,0,0],[1,1,1,1,1,1,1,1]], row = 1, col = 3\nOutput: Robot cleaned all rooms.\nExplanation: All grids in the room are marked by either 0 or 1. 0 means the cell is blocked, while 1 means the cell is accessible. The robot initially starts at the position of row=1, col=3.\n```"
+            },
+            {
+                "content": "```\nInput: room = [[1]], row = 0, col = 0\nOutput: Robot cleaned all rooms.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == room.length`\n- `n == room[i].length`\n- `1 <= m <= 100`\n- `1 <= n <= 200`\n- `room[i][j]` is either `0` or `1`.\n- `0 <= row < m`\n- `0 <= col < n`\n- `room[row][col] == 1`\n- All the empty cells can be visited from the starting position.",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import Robot",
+    "helpers_content": "",
+    "helpers_run_name": "clean_room",
+    "helpers_run_signature": "(solution_class: type, room: list[list[int]], row: int, col: int)",
+    "helpers_run_body": "    robot = Robot(room, row, col)\n    solution_class().clean_room(robot)\n    return len(robot.cleaned)",
+    "helpers_assert_name": "clean_room",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class Robot:\n    # Test-harness API: backs the interactive move/turn/clean interface with the grid\n    def __init__(self, room: list[list[int]], row: int, col: int) -> None:\n        self.room = room\n        self.row = row\n        self.col = col\n        self.direction = 0  # 0 up, 1 right, 2 down, 3 left\n        self.cleaned: set[tuple[int, int]] = set()\n\n    def move(self) -> bool:\n        dr = (-1, 0, 1, 0)[self.direction]\n        dc = (0, 1, 0, -1)[self.direction]\n        nr, nc = self.row + dr, self.col + dc\n        if (\n            nr < 0\n            or nr >= len(self.room)\n            or nc < 0\n            or nc >= len(self.room[0])\n            or self.room[nr][nc] == 0\n        ):\n            return False\n        self.row, self.col = nr, nc\n        return True\n\n    def turn_left(self) -> None:\n        self.direction = (self.direction + 3) % 4\n\n    def turn_right(self) -> None:\n        self.direction = (self.direction + 1) % 4\n\n    def clean(self) -> None:\n        self.cleaned.add((self.row, self.col))\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_clean_room, run_clean_room\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RobotRoomCleaner",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "clean_room",
+                "signature": "(self, robot: Robot) -> None",
+                "body": "        # TODO: Implement clean_room\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_clean_room",
+                "signature": "(self, room: list[list[int]], row: int, col: int, expected: int)",
+                "parametrize": "room, row, col, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,1,1,1,1,0,1,1],[1,1,1,1,1,0,1,1],[1,0,1,1,1,1,1,1],[0,0,0,1,0,0,0,0],[1,1,1,1,1,1,1,1]],1,3,30)",
+                        "([[1]],0,0,1)",
+                        "([[1,1],[1,0]],0,0,3)",
+                        "([[0,1],[1,1]],0,1,3)",
+                        "([[1,1,1],[1,1,1],[1,1,1]],1,1,9)",
+                        "([[1,0],[0,0]],0,0,1)",
+                        "([[1,1,1,1]],0,1,4)",
+                        "([[1],[1],[1]],0,0,3)",
+                        "([[1,1,0],[0,1,1],[1,1,1]],0,0,7)",
+                        "([[1,1],[1,1],[1,1],[1,1]],2,1,8)",
+                        "([[1,1,1,1,1],[1,0,1,1,1],[0,1,0,1,1],[0,1,1,1,1],[0,0,1,0,0]],0,0,17)",
+                        "([[1,0,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,0,1],[1,1,1,1,1]],0,0,23)",
+                        "([[1,0,1,1,1],[1,1,1,1,1],[1,1,1,0,1],[1,1,1,1,1],[0,0,1,1,1]],0,0,21)",
+                        "([[1,1,1,1,1],[1,0,0,1,1],[1,0,1,1,0],[1,1,1,1,0],[0,1,1,1,1]],0,0,19)"
+                    ]
+                },
+                "body": "        result = run_clean_room(Solution, room, row, col)\n        assert_clean_room(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_clean_room, assert_clean_room\nfrom solution import Solution, Robot",
+    "playground_setup": "# Example test case\nroom = [[1, 1], [1, 0]]\nrow = 0\ncol = 0\nexpected = 3",
+    "playground_run": "result = run_clean_room(Solution, room, row, col)\nresult",
+    "playground_assert": "assert_clean_room(result, expected)"
+}

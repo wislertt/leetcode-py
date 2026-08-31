@@ -1,0 +1,87 @@
+{
+    "problem_name": "binary_tree_longest_consecutive_sequence_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "549",
+    "problem_title": "Binary Tree Longest Consecutive Sequence II",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree, Tree DP",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return the length of the longest consecutive path in the tree.\n\nA consecutive path is a path where the values of the consecutive nodes in the path differ by one. This path can be either increasing or decreasing.\n\n- For example, `[1,2,3,4]` and `[4,3,2,1]` are both considered valid, but the path `[1,2,4,3]` is not valid.\n\nOn the other hand, the path can be in the child-Parent-child order, where not necessarily be parent-child order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0549.Binary%20Tree%20Longest%20Consecutive%20Sequence%20II/images/consec2-1-tree.jpg)\n\n```\nInput: root = [1,2,3]\nOutput: 2\nExplanation: The longest consecutive path is [1, 2] or [2, 1].\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0549.Binary%20Tree%20Longest%20Consecutive%20Sequence%20II/images/consec2-2-tree.jpg)\n\n```\nInput: root = [2,1,3]\nOutput: 3\nExplanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[1, 3 * 10^4]`.\n- `-3 * 10^4 <= Node.val <= 3 * 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "longest_consecutive",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    implementation = solution_class()\n    return implementation.longest_consecutive(root)",
+    "helpers_assert_name": "longest_consecutive",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_consecutive, run_longest_consecutive\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeLongestConsecutiveSequenceII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_consecutive",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement longest_consecutive\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_consecutive",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3],2)",
+                        "([2,1,3],3)",
+                        "([1],1)",
+                        "([3,2,None,1],3)",
+                        "([5,3,6,2,4,None,None,1],4)",
+                        "([1,None,2,None,3,None,4],4)",
+                        "([1,2,3,4,5],2)",
+                        "([0,3,-2],1)",
+                        "([-1,-3,-3,-3,4],1)",
+                        "([-3,-2,-5,-1],3)",
+                        "([-4,-1,0],1)",
+                        "([2,None,-5],1)"
+                    ]
+                },
+                "body": "        result = run_longest_consecutive(Solution, root_list)\n        assert_longest_consecutive(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_consecutive, assert_longest_consecutive\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [2, 1, 3]\nexpected = 3",
+    "playground_run": "result = run_longest_consecutive(Solution, root_list)\nresult",
+    "playground_assert": "assert_longest_consecutive(result, expected)"
+}

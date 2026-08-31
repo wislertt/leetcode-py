@@ -1,0 +1,90 @@
+{
+    "problem_name": "the_maze",
+    "solution_class_name": "Solution",
+    "problem_number": "490",
+    "problem_title": "The Maze",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Array, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is a ball in a `maze` with empty spaces (represented as `0`) and walls (represented as `1`). The ball can go through the empty spaces by rolling **up, down, left or right**, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.\n\nGiven the `m x n` `maze`, the ball's `start` position and the `destination`, where `start = [start_row, start_col]` and `destination = [destination_row, destination_col]`, return `true` if the ball can stop at the destination, otherwise return `false`.\n\nYou may assume that **the borders of the maze are all walls** (see examples).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0490.The%20Maze/images/maze1-1-grid.jpg)\n\n```\nInput: maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [4,4]\nOutput: true\nExplanation: One possible way is : left -> down -> left -> down -> right -> down -> right.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0490.The%20Maze/images/maze1-2-grid.jpg)\n\n```\nInput: maze = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]], start = [0,4], destination = [3,2]\nOutput: false\nExplanation: There is no way for the ball to stop at the destination. Notice that you can pass through the destination but you cannot stop there.\n```"
+            },
+            {
+                "content": "```\nInput: maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], start = [4,3], destination = [0,1]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == maze.length`\n- `n == maze[i].length`\n- `1 <= m, n <= 100`\n- `maze[i][j]` is `0` or `1`.\n- `start.length == 2`\n- `destination.length == 2`\n- `0 <= start_row, destination_row < m`\n- `0 <= start_col, destination_col < n`\n- Both the ball and the destination exist in an empty space, and they will not be in the same position initially.\n- The maze contains **at least 2 empty spaces**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "has_path",
+    "helpers_run_signature": "(solution_class: type, maze: list[list[int]], start: list[int], destination: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.has_path(maze, start, destination)",
+    "helpers_assert_name": "has_path",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_has_path, run_has_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TheMaze",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "has_path",
+                "signature": "(self, maze: list[list[int]], start: list[int], destination: list[int]) -> bool",
+                "body": "        # TODO: Implement has_path\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_has_path",
+                "signature": "(self, maze: list[list[int]], start: list[int], destination: list[int], expected: bool)",
+                "parametrize": "maze, start, destination, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]],[0,4],[4,4],True)",
+                        "([[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]],[0,4],[3,2],False)",
+                        "([[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]],[4,3],[0,1],False)",
+                        "([[0,0],[0,0]],[0,0],[1,1],True)",
+                        "([[0,0,0],[0,1,0],[0,0,0]],[0,0],[2,2],True)",
+                        "([[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]],[0,4],[2,0],True)",
+                        "([[0,1,0],[0,1,0],[0,1,0]],[0,0],[0,2],False)",
+                        "([[0,1,0],[0,1,0],[0,0,0]],[0,0],[2,0],True)",
+                        "([[0,0,0],[1,1,0],[0,0,0]],[0,0],[2,0],True)",
+                        "([[0,0,0,0],[0,1,1,0],[0,0,1,0],[0,0,0,0]],[0,0],[3,3],True)",
+                        "([[0,0,0],[0,0,0],[0,0,0]],[1,1],[0,0],True)",
+                        "([[0,0,0,0,0],[1,1,1,1,0],[0,0,0,0,0]],[0,0],[2,0],True)"
+                    ]
+                },
+                "body": "        result = run_has_path(Solution, maze, start, destination)\n        assert_has_path(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_has_path, assert_has_path\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmaze = [[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [1, 1, 0, 1, 1], [0, 0, 0, 0, 0]]\nstart = [0, 4]\ndestination = [4, 4]\nexpected = True",
+    "playground_run": "result = run_has_path(Solution, maze, start, destination)\nresult",
+    "playground_assert": "assert_has_path(result, expected)"
+}

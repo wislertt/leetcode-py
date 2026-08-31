@@ -1,0 +1,93 @@
+{
+    "problem_name": "design_excel_sum_formula",
+    "solution_class_name": "Excel",
+    "problem_number": "631",
+    "problem_title": "Design Excel Sum Formula",
+    "difficulty": "Hard",
+    "topics": "Graph, Design, Topological Sort, Array, Hash Table, String, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design the basic function of **Excel** and implement the function of the sum formula.\n\nImplement the `Excel` class:\n\n- `Excel(int height, char width)` Initializes the object with the `height` and the `width` of the sheet. The sheet is an integer matrix `mat` of size `height x width` with the row index in the range `[1, height]` and the column index in the range `['A', width]`. All the values should be **zero** initially.\n- `void set(int row, char column, int val)` Changes the value at `mat[row][column]` to be `val`.\n- `int get(int row, char column)` Returns the value at `mat[row][column]`.\n- `int sum(int row, char column, List<String> numbers)` Sets the value at `mat[row][column]` to be the sum of cells represented by `numbers` and returns the value at `mat[row][column]`. This sum formula **should exist** until this cell is overlapped by another value or another sum formula. `numbers[i]` could be on the format:\n  - `\"ColRow\"` that represents a single cell. For example, `\"F7\"` represents the cell `mat[7]['F']`.\n  - `\"ColRow1:ColRow2\"` that represents a range of cells. The range will always be a rectangle where `\"ColRow1\"` represents the position of the top-left cell, and `\"ColRow2\"` represents the position of the bottom-right cell.\n\n**Note:** You could assume that there will not be any circular sum reference.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Excel\", \"set\", \"sum\", \"set\", \"get\"]\n[[3, \"C\"], [1, \"A\", 2], [3, \"C\", [\"A1\", \"A1:B2\"]], [2, \"B\", 2], [3, \"C\"]]\nOutput\n[null, null, 4, null, 6]\n\nExplanation\nExcel excel = new Excel(3, \"C\");\nexcel.set(1, \"A\", 2);\nexcel.sum(3, \"C\", [\"A1\", \"A1:B2\"]); // return 4\nexcel.set(2, \"B\", 2);\nexcel.get(3, \"C\"); // return 6\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= height <= 26`\n- `'A' <= width <= 'Z'`\n- `1 <= row <= height`\n- `'A' <= column <= width`\n- `-100 <= val <= 100`\n- `1 <= numbers.length <= 5`\n- `numbers[i]` has the format `\"ColRow\"` or `\"ColRow1:ColRow2\"`.\n- At most `100` calls will be made to `set`, `get`, and `sum`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "excel_sum_formula",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    excel = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Excel':\n            excel = solution_class(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'set' and excel is not None:\n            excel.set(inputs[i][0], inputs[i][1], inputs[i][2])\n            results.append(None)\n        elif op == 'get' and excel is not None:\n            results.append(excel.get(inputs[i][0], inputs[i][1]))\n        elif op == 'sum' and excel is not None:\n            results.append(excel.sum(inputs[i][0], inputs[i][1], inputs[i][2]))\n    return results, excel",
+    "helpers_assert_name": "excel_sum_formula",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_excel_sum_formula, run_excel_sum_formula\nfrom .solution import Excel",
+    "test_content": "",
+    "test_class_name": "DesignExcelSumFormula",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, height: int, width: str) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "set",
+                "signature": "(self, row: int, column: str, val: int) -> None",
+                "body": "        # TODO: Implement set\n        return None"
+            },
+            {
+                "name": "get",
+                "signature": "(self, row: int, column: str) -> int",
+                "body": "        # TODO: Implement get\n        return 0"
+            },
+            {
+                "name": "sum",
+                "signature": "(self, row: int, column: str, numbers: list[str]) -> int",
+                "body": "        # TODO: Implement sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_excel_sum_formula",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Excel','set','sum','set','get'],[[3,'C'],[1,'A',2],[3,'C',['A1','A1:B2']],[2,'B',2],[3,'C']],[None,None,4,None,6])",
+                        "(['Excel','set','sum','get','set','get'],[[3,'C'],[1,'A',2],[2,'B',['A1']],[2,'B'],[1,'A',5],[2,'B']],[None,None,2,2,None,5])",
+                        "(['Excel','set','sum','set','get'],[[2,'B'],[1,'A',1],[2,'B',['A1:A2']],[2,'A',3],[2,'B']],[None,None,1,None,4])",
+                        "(['Excel','set','sum','sum','get'],[[3,'C'],[1,'B',7],[1,'A',['B1']],[2,'A',['A1','B1']],[2,'A']],[None,None,7,14,14])",
+                        "(['Excel','set','set','set','set','sum','get'],[[5,'E'],[1,'A',1],[1,'B',2],[2,'A',3],[2,'B',4],[3,'C',['A1:B2']],[3,'C']],[None,None,None,None,None,10,10])",
+                        "(['Excel','set','set','sum','get'],[[2,'A'],[1,'A',-5],[2,'A',8],[2,'A',['A1']],[2,'A']],[None,None,None,-5,-5])",
+                        "(['Excel','sum','sum','get','get'],[[4,'D'],[1,'A',['C1:C2']],[4,'D',['A1','B1']],[4,'D'],[1,'A']],[None,0,0,0,0])",
+                        "(['Excel','set','get'],[[1,'A'],[1,'A',42],[1,'A']],[None,None,42])",
+                        "(['Excel','get'],[[2,'B'],[1,'A']],[None,0])",
+                        "(['Excel','sum','set','get','get'],[[3,'C'],[3,'C',['A1:A3']],[3,'A',10],[3,'C'],[3,'A']],[None,0,None,10,10])",
+                        "(['Excel','set','sum','get'],[[2,'B'],[1,'A',6],[2,'B',['A1','A1']],[2,'B']],[None,None,12,12])",
+                        "(['Excel','set','set','sum','get'],[[2,'C'],[1,'A',1],[2,'C',5],[1,'B',['A1','C2']],[1,'B']],[None,None,None,6,6])"
+                    ]
+                },
+                "body": "        result, _ = run_excel_sum_formula(Excel, operations, inputs)\n        assert_excel_sum_formula(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_excel_sum_formula, assert_excel_sum_formula\nfrom solution import Excel",
+    "playground_setup": "# Example test case\noperations = ['Excel', 'set', 'sum', 'set', 'get']\ninputs = [[3, 'C'], [1, 'A', 2], [3, 'C', ['A1', 'A1:B2']], [2, 'B', 2], [3, 'C']]\nexpected = [None, None, 4, None, 6]",
+    "playground_run": "result, excel = run_excel_sum_formula(Excel, operations, inputs)\nprint(result)\nexcel",
+    "playground_assert": "assert_excel_sum_formula(result, expected)"
+}

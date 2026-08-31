@@ -1,0 +1,88 @@
+{
+    "problem_name": "the_maze_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "499",
+    "problem_title": "The Maze III",
+    "difficulty": "Hard",
+    "topics": "Depth-First Search, Breadth-First Search, Graph, Array, String, Matrix, Shortest Path, Dijkstra, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is a ball in a `maze` with empty spaces (represented as `0`) and walls (represented as `1`). The ball can go through the empty spaces by rolling **up, down, left or right**, but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction (must be different from last chosen direction). There is also a hole in this maze. The ball will drop into the hole if it rolls onto the hole.\n\nGiven the `m x n` `maze`, the ball's position `ball` and the hole's position `hole`, where `ball = [ball_row, ball_col]` and `hole = [hole_row, hole_col]`, return a string `instructions` of all the instructions that the ball should follow to drop in the hole with the **shortest distance** possible. If there are multiple valid instructions, return the **lexicographically minimum** one. If the ball can't drop in the hole, return `\"impossible\"`.\n\nIf there is a way for the ball to drop in the hole, the answer `instructions` should contain the characters `'u'` (i.e. up), `'d'` (i.e. down), `'l'` (i.e. left), and `'r'` (i.e. right).\n\nThe **distance** is the number of **empty spaces** traveled by the ball from the start position (excluded) to the destination (included).\n\nYou may assume that **the borders of the maze are all walls** (see examples).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0499.The%20Maze%20III/images/maze3-1-grid.jpg)\n\n```\nInput: maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], ball = [4,3], hole = [0,1]\nOutput: \"lul\"\nExplanation: There are two shortest ways for the ball to drop into the hole. The first way is left -> up -> left, represented by \"lul\". The second way is up -> left, represented by 'ul'. Both ways have shortest distance 6, but the first way is lexicographically smaller because 'l' < 'u'. So the output is \"lul\".\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0499.The%20Maze%20III/images/maze3-2-grid.jpg)\n\n```\nInput: maze = [[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]], ball = [4,3], hole = [3,0]\nOutput: \"impossible\"\nExplanation: The ball cannot reach the hole.\n```"
+            },
+            {
+                "content": "```\nInput: maze = [[0,0,0,0,0,0,0],[0,0,1,0,0,1,0],[0,0,0,0,1,0,0],[0,0,0,0,0,0,1]], ball = [0,4], hole = [3,5]\nOutput: \"dldr\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == maze.length`\n- `n == maze[i].length`\n- `1 <= m, n <= 100`\n- `maze[i][j]` is `0` or `1`.\n- `ball.length == 2`\n- `hole.length == 2`\n- `0 <= ball_row, hole_row <= m`\n- `0 <= ball_col, hole_col <= n`\n- Both the ball and the hole exist in an empty space, and they will not be in the same position initially.\n- The maze contains **at least 2 empty spaces**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_shortest_way",
+    "helpers_run_signature": "(solution_class: type, maze: list[list[int]], ball: list[int], hole: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_shortest_way(maze, ball, hole)",
+    "helpers_assert_name": "find_shortest_way",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_shortest_way, run_find_shortest_way\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TheMazeIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_shortest_way",
+                "signature": "(self, maze: list[list[int]], ball: list[int], hole: list[int]) -> str",
+                "body": "        # TODO: Implement find_shortest_way\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_shortest_way",
+                "signature": "(self, maze: list[list[int]], ball: list[int], hole: list[int], expected: str)",
+                "parametrize": "maze, ball, hole, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]],[4,3],[0,1],'lul')",
+                        "([[0,0,0,0,0],[1,1,0,0,1],[0,0,0,0,0],[0,1,0,0,1],[0,1,0,0,0]],[4,3],[3,0],'impossible')",
+                        "([[0,0,0,0,0,0,0],[0,0,1,0,0,1,0],[0,0,0,0,1,0,0],[0,0,0,0,0,0,1]],[0,4],[3,5],'dldr')",
+                        "([[0,0,0],[0,0,0],[0,0,0]],[0,0],[2,2],'dr')",
+                        "([[0,0,0],[0,1,0],[0,0,0]],[0,0],[2,0],'d')",
+                        "([[0,1,0],[0,0,0],[0,1,0]],[0,0],[2,2],'impossible')",
+                        "([[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]],[0,4],[1,2],'ldl')",
+                        "([[0,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,0]],[0,0],[3,0],'d')",
+                        "([[0,0],[0,0]],[0,0],[0,1],'r')",
+                        "([[0,0,0],[1,0,0],[0,0,0]],[0,0],[2,1],'rdl')"
+                    ]
+                },
+                "body": "        result = run_find_shortest_way(Solution, maze, ball, hole)\n        assert_find_shortest_way(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_shortest_way, assert_find_shortest_way\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmaze = [[0, 0, 0, 0, 0], [1, 1, 0, 0, 1], [0, 0, 0, 0, 0], [0, 1, 0, 0, 1], [0, 1, 0, 0, 0]]\nball = [4, 3]\nhole = [0, 1]\nexpected = 'lul'",
+    "playground_run": "result = run_find_shortest_way(Solution, maze, ball, hole)\nresult",
+    "playground_assert": "assert_find_shortest_way(result, expected)"
+}

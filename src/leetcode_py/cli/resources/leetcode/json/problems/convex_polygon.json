@@ -1,0 +1,87 @@
+{
+    "problem_name": "convex_polygon",
+    "solution_class_name": "Solution",
+    "problem_number": "469",
+    "problem_title": "Convex Polygon",
+    "difficulty": "Medium",
+    "topics": "Geometry, Array, Math, Polygon",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of points on the **X-Y** plane `points` where `points[i] = [x_i, y_i]`. The points form a polygon when joined sequentially.\n\nReturn `true` if this polygon is [convex](http://en.wikipedia.org/wiki/Convex_polygon) and `false` otherwise.\n\nYou may assume the polygon formed by given points is always a [simple polygon](http://en.wikipedia.org/wiki/Simple_polygon). In other words, we ensure that exactly two edges intersect at each vertex and that edges otherwise don't intersect each other.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0469.Convex%20Polygon/images/covpoly1-plane.jpg)\n\n```\nInput: points = [[0,0],[0,5],[5,5],[5,0]]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0469.Convex%20Polygon/images/covpoly2-plane.jpg)\n\n```\nInput: points = [[0,0],[0,10],[10,10],[10,0],[5,5]]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= points.length <= 10^4`\n- `points[i].length == 2`\n- `-10^4 <= x_i, y_i <= 10^4`\n- All the given points are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_convex",
+    "helpers_run_signature": "(solution_class: type, points: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_convex(points)",
+    "helpers_assert_name": "is_convex",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_convex, run_is_convex\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConvexPolygon",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_convex",
+                "signature": "(self, points: list[list[int]]) -> bool",
+                "body": "        # TODO: Implement is_convex\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_convex",
+                "signature": "(self, points: list[list[int]], expected: bool)",
+                "parametrize": "points, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,0],[0,5],[5,5],[5,0]],True)",
+                        "([[0,0],[0,10],[10,10],[10,0],[5,5]],False)",
+                        "([[0,0],[5,0],[5,5],[0,5]],True)",
+                        "([[0,0],[2,0],[1,1],[0,2]],True)",
+                        "([[0,0],[0,1],[0,2],[1,1]],True)",
+                        "([[0,0],[1,1],[2,0]],True)",
+                        "([[0,0],[4,0],[4,4],[2,1]],False)",
+                        "([[0,0],[0,4],[4,2],[2,2]],False)",
+                        "([[1,1],[5,1],[5,5],[3,7],[1,5]],True)",
+                        "([[0,0],[-2,-2],[-4,0]],True)",
+                        "([[0,0],[10,0],[10,10],[5,10],[5,5],[0,5]],False)",
+                        "([[-5,-5],[-5,5],[5,5],[5,-5]],True)"
+                    ]
+                },
+                "body": "        result = run_is_convex(Solution, points)\n        assert_is_convex(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_convex, assert_is_convex\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npoints = [[0, 0], [0, 5], [5, 5], [5, 0]]\nexpected = True",
+    "playground_run": "result = run_is_convex(Solution, points)\nresult",
+    "playground_assert": "assert_is_convex(result, expected)"
+}

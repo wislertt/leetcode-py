@@ -77,8 +77,6 @@ UNSCRAPABLE_PROBLEMS = [
     (411, "minimum-unique-word-abbreviation"),
     (418, "sentence-screen-fitting"),
     (422, "valid-word-square"),
-    # ======= Add new unscrapable problems below this line.
-    # All problems above this line are already handled.
     (425, "word-squares"),
     (426, "convert-binary-search-tree-to-sorted-doubly-linked-list"),
     (428, "serialize-and-deserialize-n-ary-tree"),
@@ -95,7 +93,7 @@ UNSCRAPABLE_PROBLEMS = [
     (499, "the-maze-iii"),
     (505, "the-maze-ii"),
     (510, "inorder-successor-in-bst-ii"),
-    (527, "beautiful-arrangement-ii"),
+    (527, "word-abbreviation"),
     (531, "lonely-pixel-i"),
     (545, "boundary-of-binary-tree"),
     (548, "split-array-with-equal-sum"),
@@ -109,6 +107,8 @@ UNSCRAPABLE_PROBLEMS = [
     (634, "find-the-derangement-of-an-array"),
     (635, "design-log-storage"),
     (642, "design-search-autocomplete-system"),
+    # ======= Add new unscrapable problems below this line.
+    # All problems above this line are already handled.
     (644, "maximum-average-subarray-ii"),
     (651, "4-keys-keyboard"),
     (656, "coin-path"),

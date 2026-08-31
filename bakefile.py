@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "valid_word_square"
+    problem: str = "design_search_autocomplete_system"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

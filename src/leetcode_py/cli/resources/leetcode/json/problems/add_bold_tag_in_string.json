@@ -1,0 +1,88 @@
+{
+    "problem_name": "add_bold_tag_in_string",
+    "solution_class_name": "Solution",
+    "problem_number": "616",
+    "problem_title": "Add Bold Tag in String",
+    "difficulty": "Medium",
+    "topics": "Trie, Array, Hash Table, String, String Matching",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` and an array of strings `words`.\n\nYou should add a closed pair of bold tag `<b>` and `</b>` to wrap the substrings in `s` that exist in `words`.\n\n- If two such substrings overlap, you should wrap them together with only one pair of closed bold-tag.\n- If two substrings wrapped by bold tags are consecutive, you should combine them.\n\nReturn `s` after adding the bold tags.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcxyz123\", words = [\"abc\",\"123\"]\nOutput: \"<b>abc</b>xyz<b>123</b>\"\nExplanation: The two strings of words are substrings of s as following: \"abcxyz123\". We add <b> before each substring and </b> after each substring.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaabbb\", words = [\"aa\",\"b\"]\nOutput: \"<b>aaabbb</b>\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 1000`\n- `0 <= words.length <= 100`\n- `1 <= words[i].length <= 1000`\n- `s` and `words[i]` consist of English letters and digits.\n- All the values of `words` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "add_bold_tag",
+    "helpers_run_signature": "(solution_class: type, s: str, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.add_bold_tag(s, words)",
+    "helpers_assert_name": "add_bold_tag",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_add_bold_tag, run_add_bold_tag\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AddBoldTagInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "add_bold_tag",
+                "signature": "(self, s: str, words: list[str]) -> str",
+                "body": "        # TODO: Implement add_bold_tag\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_add_bold_tag",
+                "signature": "(self, s: str, words: list[str], expected: str)",
+                "parametrize": "s, words, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcxyz123',['abc','123'],'<b>abc</b>xyz<b>123</b>')",
+                        "('aaabbb',['aa','b'],'<b>aaabbb</b>')",
+                        "('abcxyz123',['abc','xyz','123'],'<b>abcxyz123</b>')",
+                        "('aaabbbaaa',['aaa'],'<b>aaa</b>bbb<b>aaa</b>')",
+                        "('abcdefg',['xyz'],'abcdefg')",
+                        "('abcdefg',[],'abcdefg')",
+                        "('a',['a'],'<b>a</b>')",
+                        "('a',['b'],'a')",
+                        "('aaaa',['a'],'<b>aaaa</b>')",
+                        "('abcd',['ab','cd'],'<b>abcd</b>')",
+                        "('abcabcabc',['bc'],'a<b>bc</b>a<b>bc</b>a<b>bc</b>')",
+                        "('x10x',['1','0'],'x<b>10</b>x')",
+                        "('mississippi',['mis','sis','sip'],'<b>mississip</b>pi')"
+                    ]
+                },
+                "body": "        result = run_add_bold_tag(Solution, s, words)\n        assert_add_bold_tag(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_add_bold_tag, assert_add_bold_tag\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcxyz123'\nwords = ['abc', '123']\nexpected = '<b>abc</b>xyz<b>123</b>'",
+    "playground_run": "result = run_add_bold_tag(Solution, s, words)\nresult",
+    "playground_assert": "assert_add_bold_tag(result, expected)"
+}

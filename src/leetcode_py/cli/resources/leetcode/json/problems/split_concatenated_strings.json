@@ -1,0 +1,88 @@
+{
+    "problem_name": "split_concatenated_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "555",
+    "problem_title": "Split Concatenated Strings",
+    "difficulty": "Medium",
+    "topics": "Greedy, Array, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of strings `strs`. You could concatenate these strings together into a loop, where for each string, you could choose to reverse it or not. Among all the possible loops\n\nReturn the lexicographically largest string after cutting the loop, which will make the looped string into a regular one.\n\nSpecifically, to find the lexicographically largest string, you need to experience two phases:\n\n1. Concatenate all the strings into a loop, where you can reverse some strings or not and connect them in the same order as given.\n2. Cut and make one breakpoint in any place of the loop, which will make the looped string into a regular one starting from the character at the cutpoint.\n\nAnd your job is to find the lexicographically largest one among all the possible regular strings.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: strs = [\"abc\",\"xyz\"]\nOutput: \"zyxcba\"\nExplanation: You can get the looped string \"-abcxyz-\", \"-abczyx-\", \"-cbaxyz-\", \"-cbazyx-\", where '-' represents the looped status. The answer string came from the fourth looped one, where you could cut from the middle character 'a' and get \"zyxcba\".\n```"
+            },
+            {
+                "content": "```\nInput: strs = [\"abc\"]\nOutput: \"cba\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= strs.length <= 1000`\n- `1 <= strs[i].length <= 1000`\n- `1 <= sum(strs[i].length) <= 1000`\n- `strs[i]` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "split_looping_string",
+    "helpers_run_signature": "(solution_class: type, strs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.split_looping_string(strs)",
+    "helpers_assert_name": "split_looping_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_split_looping_string, run_split_looping_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplitConcatenatedStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "split_looping_string",
+                "signature": "(self, strs: list[str]) -> str",
+                "body": "        # TODO: Implement split_looping_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_split_looping_string",
+                "signature": "(self, strs: list[str], expected: str)",
+                "parametrize": "strs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abc','xyz'],'zyxcba')",
+                        "(['abc'],'cba')",
+                        "(['ab','ba'],'bbaa')",
+                        "(['a','b','c'],'cab')",
+                        "(['aba','bab'],'bababa')",
+                        "(['zz','yy','xx'],'zzyyxx')",
+                        "(['bc','ab','cb'],'ccbbab')",
+                        "(['a','bbb','baa'],'bbbbaaa')",
+                        "(['aa','baa','b'],'bbaaaa')",
+                        "(['b','aa','b','aab'],'bbaabaa')",
+                        "(['bba','ab','baa'],'bbbabaaa')",
+                        "(['baa','a'],'baaa')",
+                        "(['b','bba','bb','ab'],'bbbbbaba')"
+                    ]
+                },
+                "body": "        result = run_split_looping_string(Solution, strs)\n        assert_split_looping_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_split_looping_string, assert_split_looping_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstrs = ['abc', 'xyz']\nexpected = 'zyxcba'",
+    "playground_run": "result = run_split_looping_string(Solution, strs)\nresult",
+    "playground_assert": "assert_split_looping_string(result, expected)"
+}

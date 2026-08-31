@@ -1,0 +1,88 @@
+{
+    "problem_name": "design_compressed_string_iterator",
+    "solution_class_name": "StringIterator",
+    "problem_number": "604",
+    "problem_title": "Design Compressed String Iterator",
+    "difficulty": "Easy",
+    "topics": "Design, Array, String, Iterator",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design and implement a data structure for a compressed string iterator. The given compressed string will be in the form of each letter followed by a positive integer representing the number of this letter existing in the original uncompressed string.\n\nImplement the `StringIterator` class:\n\n- `next()` Returns **the next character** if the original string still has uncompressed characters, otherwise returns a **white space**.\n- `has_next()` Returns true if there is any letter needs to be uncompressed in the original string, otherwise returns `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"StringIterator\", \"next\", \"next\", \"next\", \"next\", \"next\", \"next\", \"hasNext\", \"next\", \"hasNext\"]\n[[\"L1e2t1C1o1d1e1\"], [], [], [], [], [], [], [], [], []]\nOutput\n[null, \"L\", \"e\", \"e\", \"t\", \"C\", \"o\", true, \"d\", true]\n\nExplanation\nStringIterator stringIterator = new StringIterator(\"L1e2t1C1o1d1e1\");\nstringIterator.next(); // return \"L\"\nstringIterator.next(); // return \"e\"\nstringIterator.next(); // return \"e\"\nstringIterator.next(); // return \"t\"\nstringIterator.next(); // return \"C\"\nstringIterator.next(); // return \"o\"\nstringIterator.hasNext(); // return True\nstringIterator.next(); // return \"d\"\nstringIterator.hasNext(); // return True\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= compressedString.length <= 1000`\n- `compressedString` consists of lower-case an upper-case English letters and digits.\n- The number of a single character repetitions in `compressedString` is in the range `[1, 10^9]`.\n- At most `100` calls will be made to `next` and `hasNext`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "string_iterator",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    iterator = None\n    results: list[str | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'StringIterator':\n            iterator = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'next' and iterator is not None:\n            results.append(iterator.next())\n        elif op == 'has_next' and iterator is not None:\n            results.append(iterator.has_next())\n    return results, iterator",
+    "helpers_assert_name": "string_iterator",
+    "helpers_assert_signature": "(result: list[str | bool | None], expected: list[str | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_string_iterator, run_string_iterator\nfrom .solution import StringIterator",
+    "test_content": "",
+    "test_class_name": "DesignCompressedStringIterator",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, compressed_string: str) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self) -> str",
+                "body": "        # TODO: Implement next\n        return ' '"
+            },
+            {
+                "name": "has_next",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement has_next\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_string_iterator",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[str | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['StringIterator','next','next','next','next','next','next','has_next','next','has_next'],[['L1e2t1C1o1d1e1'],[],[],[],[],[],[],[],[],[]],[None,'L','e','e','t','C','o',True,'d',True])",
+                        "(['StringIterator','next','next','next','next','next','next','next','next','next','next','has_next','next'],[['L1e2t1C1o1d1e1'],[],[],[],[],[],[],[],[],[],[],[],[]],[None,'L','e','e','t','C','o','d','e','\\x20','\\x20',False,'\\x20'])",
+                        "(['StringIterator','next','next','next','next','has_next','next','next','next','has_next','next'],[['a2b2c3'],[],[],[],[],[],[],[],[],[],[]],[None,'a','a','b','b',True,'c','c','c',False,'\\x20'])",
+                        "(['StringIterator','next','next','next','next','next','next','next','next','has_next','next','has_next'],[['a2b2c3'],[],[],[],[],[],[],[],[],[],[],[]],[None,'a','a','b','b','c','c','c','\\x20',False,'\\x20',False])",
+                        "(['StringIterator','next','next','next','next','next','next','next','next','next','next','next','next','has_next','next','has_next'],[['x10'],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]],[None,'x','x','x','x','x','x','x','x','x','x','\\x20','\\x20',False,'\\x20',False])",
+                        "(['StringIterator','next','next','has_next'],[['a1'],[],[],[]],[None,'a','\\x20',False])",
+                        "(['StringIterator','has_next','next','next','has_next','has_next'],[['a1'],[],[],[],[],[]],[None,True,'a','\\x20',False,False])",
+                        "(['StringIterator','next','next','has_next','has_next'],[['z1000000000'],[],[],[],[]],[None,'z','z',True,True])",
+                        "(['StringIterator','has_next','next','next'],[['z1000000000'],[],[],[]],[None,True,'z','z'])",
+                        "(['StringIterator','next','has_next','next','next','has_next','next','next','next','has_next','next'],[['X1Y2Z3'],[],[],[],[],[],[],[],[],[],[]],[None,'X',True,'Y','Y',True,'Z','Z','Z',False,'\\x20'])",
+                        "(['StringIterator','next','next','next','next','next','next','next','next','next','has_next'],[['a9'],[],[],[],[],[],[],[],[],[],[]],[None,'a','a','a','a','a','a','a','a','a',False])",
+                        "(['StringIterator','next','next','has_next','next','next','has_next'],[['b3'],[],[],[],[],[],[]],[None,'b','b',True,'b','\\x20',False])"
+                    ]
+                },
+                "body": "        result, _ = run_string_iterator(StringIterator, operations, inputs)\n        assert_string_iterator(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_string_iterator, assert_string_iterator\nfrom solution import StringIterator",
+    "playground_setup": "# Example test case\noperations = ['StringIterator', 'next', 'next', 'has_next']\ninputs = [['L1e2t1C1o1d1e1'], [], [], []]\nexpected = [None, 'L', 'e', True]",
+    "playground_run": "result, iterator = run_string_iterator(StringIterator, operations, inputs)\nprint(result)\niterator",
+    "playground_assert": "assert_string_iterator(result, expected)"
+}
