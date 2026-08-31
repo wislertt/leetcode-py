@@ -123,7 +123,7 @@ problems_list = [
     (1094, "Car Pooling"),
     (295, "Find Median From Data Stream"),
     (502, "IPO"),
-    (1863, "Sum of All Subsets XOR Total"),
+    (1863, "Sum of All Subset XOR Totals"),
     (78, "Subsets"),
     (39, "Combination Sum"),
     (40, "Combination Sum II"),

@@ -1,0 +1,93 @@
+{
+    "problem_name": "factor_combinations",
+    "solution_class_name": "Solution",
+    "problem_number": "254",
+    "problem_title": "Factor Combinations",
+    "difficulty": "Medium",
+    "topics": "Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Numbers can be regarded as the product of their factors.\n\n- For example, `8 = 2 x 2 x 2 = 2 x 4`.\n\nGiven an integer `n`, return *all possible combinations of its factors*. You may return the answer in **any order**.\n\n**Note** that the factors should be in the range `[2, n - 1]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: n = 12\nOutput: [[2,6],[3,4],[2,2,3]]\n```"
+            },
+            {
+                "content": "```\nInput: n = 37\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 10^7`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_factors",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_factors(n)",
+    "helpers_assert_name": "get_factors",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    result_sorted = sorted(sorted(combo) for combo in result)\n    expected_sorted = sorted(sorted(combo) for combo in expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_factors, run_get_factors\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FactorCombinations",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_factors",
+                "signature": "(self, n: int) -> list[list[int]]",
+                "body": "        # TODO: Implement get_factors\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_factors",
+                "signature": "(self, n: int, expected: list[list[int]])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, [])",
+                        "(2, [])",
+                        "(3, [])",
+                        "(4, [[2, 2]])",
+                        "(6, [[2, 3]])",
+                        "(8, [[2, 4], [2, 2, 2]])",
+                        "(12, [[3, 4], [2, 6], [2, 2, 3]])",
+                        "(16, [[4, 4], [2, 8], [2, 2, 4], [2, 2, 2, 2]])",
+                        "(24, [[4, 6], [3, 8], [2, 12], [2, 3, 4], [2, 2, 6], [2, 2, 2, 3]])",
+                        "(27, [[3, 9], [3, 3, 3]])",
+                        "(32, [[4, 8], [2, 16], [2, 4, 4], [2, 2, 8], [2, 2, 2, 4], [2, 2, 2, 2, 2]])",
+                        "(36,[[6,6],[4,9],[3,12],[3,3,4],[2,18],[2,3,6],[2,2,9],[2,2,3,3]])",
+                        "(37, [])",
+                        "(40, [[5, 8], [4, 10], [2, 20], [2, 4, 5], [2, 2, 10], [2, 2, 2, 5]])",
+                        "(100,[[10,10],[5,20],[4,25],[4,5,5],[2,50],[2,5,10],[2,2,25],[2,2,5,5]])"
+                    ]
+                },
+                "body": "        result = run_get_factors(Solution, n)\n        assert_get_factors(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_factors, assert_get_factors\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 12\nexpected = [[2, 6], [3, 4], [2, 2, 3]]",
+    "playground_run": "result = run_get_factors(Solution, n)\nresult",
+    "playground_assert": "assert_get_factors(result, expected)"
+}

@@ -1,0 +1,88 @@
+{
+    "problem_name": "interval_list_intersections",
+    "solution_class_name": "Solution",
+    "problem_number": "986",
+    "problem_title": "Interval List Intersections",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Sweep Line",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two lists of closed intervals, `firstList` and `secondList`, where `firstList[i] = [starti, endi]` and `secondList[j] = [startj, endj]`. Each list of intervals is pairwise disjoint and in sorted order.\n\nReturn *the intersection of these two interval lists*.\n\nA closed interval `[a, b]` (with `a <= b`) denotes the set of real numbers `x` with `a <= x <= b`.\n\nThe **intersection** of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of `[1, 3]` and `[2, 4]` is `[2, 3]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/01/30/interval1.png)\n\n```\nInput: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]\nOutput: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]\n```"
+            },
+            {
+                "content": "```\nInput: firstList = [[1,3],[5,9]], secondList = []\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= firstList.length, secondList.length <= 1000`\n- `firstList.length + secondList.length >= 1`\n- `0 <= starti < endi <= 10^9`\n- `endi < starti+1`\n- `0 <= startj < endj <= 10^9`\n- `endj < startj+1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "interval_intersection",
+    "helpers_run_signature": "(solution_class: type, first_list: list[list[int]], second_list: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.interval_intersection(first_list, second_list)",
+    "helpers_assert_name": "interval_intersection",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_interval_intersection, run_interval_intersection\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntervalListIntersections",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "interval_intersection",
+                "signature": "(self, first_list: list[list[int]], second_list: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement interval_intersection\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_interval_intersection",
+                "signature": "(self, first_list: list[list[int]], second_list: list[list[int]], expected: list[list[int]])",
+                "parametrize": "first_list, second_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,2],[5,10],[13,23],[24,25]],[[1,5],[8,12],[15,24],[25,26]],[[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]])",
+                        "([[1,3],[5,9]],[],[])",
+                        "([],[[1,3]],[])",
+                        "([[0,4],[6,8]],[],[])",
+                        "([[1,2]],[[1,2]],[[1,2]])",
+                        "([[1,3]],[[4,6]],[])",
+                        "([[1,5]],[[2,3]],[[2,3]])",
+                        "([[1,5]],[[5,10]],[[5,5]])",
+                        "([[1,5]],[[2,10]],[[2,5]])",
+                        "([[3,5],[9,20]],[[1,2],[6,8],[21,30]],[])",
+                        "([[0,10]],[[1,2],[3,4],[5,6],[7,8]],[[1,2],[3,4],[5,6],[7,8]])",
+                        "([[1,2],[3,4],[5,6]],[[1,2],[3,4],[5,6]],[[1,2],[3,4],[5,6]])",
+                        "([[1,4],[8,12]],[[2,3],[5,7],[9,11]],[[2,3],[9,11]])"
+                    ]
+                },
+                "body": "        result = run_interval_intersection(Solution, first_list, second_list)\n        assert_interval_intersection(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_interval_intersection, assert_interval_intersection\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nfirst_list = [[0, 2], [5, 10], [13, 23], [24, 25]]\nsecond_list = [[1, 5], [8, 12], [15, 24], [25, 26]]\nexpected = [[1, 2], [5, 5], [8, 10], [15, 23], [24, 24], [25, 25]]",
+    "playground_run": "result = run_interval_intersection(Solution, first_list, second_list)\nresult",
+    "playground_assert": "assert_interval_intersection(result, expected)"
+}

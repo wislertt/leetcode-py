@@ -1,0 +1,94 @@
+{
+    "problem_name": "number_of_atoms",
+    "solution_class_name": "Solution",
+    "problem_number": "726",
+    "problem_title": "Number of Atoms",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Stack, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `formula` representing a chemical formula, return the count of each atom.\n\nThe atomic element always starts with an uppercase character, then zero or more lowercase letters, representing the name.\n\nOne or more digits representing that element's count may follow if the count is greater than 1. If the count is 1, no digits will follow.\n\n- For example, `\"H2O\"` and `\"H2O2\"` are possible, but `\"H1O2\"` is impossible.\n\nTwo formulas are concatenated together to produce another formula.\n\n- For example, `\"H2O2He3Mg4\"` is also a formula.\n\nA formula placed in parentheses, and a count (optionally added) is also a formula.\n\n- For example, `\"(H2O2)\"` and `\"(H2O2)3\"` are formulas.\n\nReturn the count of all elements as a string in the following form: the first name (in sorted order), followed by its count (if that count is more than 1), followed by the second name (in sorted order), followed by its count (if that count is more than 1), and so on.\n\nThe test cases are generated so that all the values in the output fit in a 32-bit integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: formula = \"H2O\"\nOutput: \"H2O\"\nExplanation: The count of elements are {'H': 2, 'O': 1}.\n```"
+            },
+            {
+                "content": "```\nInput: formula = \"Mg(OH)2\"\nOutput: \"H2MgO2\"\nExplanation: The count of elements are {'H': 2, 'Mg': 1, 'O': 2}.\n```"
+            },
+            {
+                "content": "```\nInput: formula = \"K4(ON(SO3)2)2\"\nOutput: \"K4N2O14S4\"\nExplanation: The count of elements are {'K': 4, 'N': 2, 'O': 14, 'S': 4}.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= formula.length <= 1000\n- formula consists of English letters, digits, '(', and ')'.\n- formula is always valid.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_of_atoms",
+    "helpers_run_signature": "(solution_class: type, formula: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_of_atoms(formula)",
+    "helpers_assert_name": "count_of_atoms",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import re\nfrom collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_of_atoms, run_count_of_atoms\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfAtoms",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_of_atoms",
+                "signature": "(self, formula: str) -> str",
+                "body": "        # TODO: Implement count_of_atoms\n        return formula"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_of_atoms",
+                "signature": "(self, formula: str, expected: str)",
+                "parametrize": "formula, expected",
+                "test_cases": {
+                    "list": [
+                        "('H2O', 'H2O')",
+                        "('Mg(OH)2', 'H2MgO2')",
+                        "('K4(ON(SO3)2)2', 'K4N2O14S4')",
+                        "('H', 'H')",
+                        "('H2', 'H2')",
+                        "('Be32', 'Be32')",
+                        "('(H)', 'H')",
+                        "('(H)2', 'H2')",
+                        "('H2Mg', 'H2Mg')",
+                        "('((H)2)3', 'H6')",
+                        "('Mg(H2O)2N', 'H4MgNO2')",
+                        "('Nb2', 'Nb2')",
+                        "('B2O3Si', 'B2O3Si')",
+                        "('Fe16O32', 'Fe16O32')",
+                        "('ZnNe500', 'Ne500Zn')",
+                        "('(((H41)40)41)40', 'H2689600')"
+                    ]
+                },
+                "body": "        result = run_count_of_atoms(Solution, formula)\n        assert_count_of_atoms(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_of_atoms, assert_count_of_atoms\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nformula = 'H2O'\nexpected = 'H2O'",
+    "playground_run": "result = run_count_of_atoms(Solution, formula)\nresult",
+    "playground_assert": "assert_count_of_atoms(result, expected)"
+}

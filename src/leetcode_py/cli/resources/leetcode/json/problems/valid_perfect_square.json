@@ -1,0 +1,96 @@
+{
+    "problem_name": "valid_perfect_square",
+    "solution_class_name": "Solution",
+    "problem_number": "367",
+    "problem_title": "Valid Perfect Square",
+    "difficulty": "Easy",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a positive integer `num`, return `true` if `num` is a perfect square or `false` otherwise.\n\nA **perfect square** is an integer that is the square of an integer. In other words, it is the product of some integer with itself.\n\nYou must not use any built-in library function, such as `sqrt`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 16\nOutput: true\nExplanation: We return true because 4 * 4 = 16 and 4 is an integer.\n```"
+            },
+            {
+                "content": "```\nInput: num = 14\nOutput: false\nExplanation: We return false because 3.742 * 3.742 = 14 and 3.742 is not an integer.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= num <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_perfect_square",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_perfect_square(num)",
+    "helpers_assert_name": "is_perfect_square",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_perfect_square, run_is_perfect_square\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidPerfectSquare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_perfect_square",
+                "signature": "(self, num: int) -> bool",
+                "body": "        # TODO: Implement is_perfect_square\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_perfect_square",
+                "signature": "(self, num: int, expected: bool)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(16, True)",
+                        "(14, False)",
+                        "(1, True)",
+                        "(2, False)",
+                        "(3, False)",
+                        "(4, True)",
+                        "(5, False)",
+                        "(8, False)",
+                        "(9, True)",
+                        "(24, False)",
+                        "(25, True)",
+                        "(80, False)",
+                        "(81, True)",
+                        "(10000, True)",
+                        "(9999, False)",
+                        "(2147395600, True)",
+                        "(2147483646, False)",
+                        "(2147483647, False)",
+                        "(2147395601, False)",
+                        "(49, True)",
+                        "(50, False)"
+                    ]
+                },
+                "body": "        result = run_is_perfect_square(Solution, num)\n        assert_is_perfect_square(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_perfect_square, assert_is_perfect_square\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 16\nexpected = True",
+    "playground_run": "result = run_is_perfect_square(Solution, num)\nresult",
+    "playground_assert": "assert_is_perfect_square(result, expected)"
+}

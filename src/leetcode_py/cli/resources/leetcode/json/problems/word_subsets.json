@@ -1,0 +1,87 @@
+{
+    "problem_name": "word_subsets",
+    "solution_class_name": "Solution",
+    "problem_number": "916",
+    "problem_title": "Word Subsets",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two string arrays <code>words1</code> and <code>words2</code>.</p>\n\n<p>A string <code>b</code> is a <strong>subset</strong> of string <code>a</code> if every letter in <code>b</code> occurs in <code>a</code> including multiplicity.</p>\n\n<ul>\n\t<li>For example, <code>\"wrr\"</code> is a subset of <code>\"warrior\"</code> but is not a subset of <code>\"world\"</code>.</li>\n</ul>\n\n<p>A string <code>a</code> from <code>words1</code> is <strong>universal</strong> if for every string <code>b</code> in <code>words2</code>, <code>b</code> is a subset of <code>a</code>.</p>\n\n<p>Return an array of all the <strong>universal</strong> strings in <code>words1</code>. You may return the answer in <strong>any order</strong>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words1 = [\"amazon\",\"apple\",\"facebook\",\"google\",\"leetcode\"], words2 = [\"e\",\"o\"]\nOutput: [\"facebook\",\"google\",\"leetcode\"]\n```"
+            },
+            {
+                "content": "```\nInput: words1 = [\"amazon\",\"apple\",\"facebook\",\"google\",\"leetcode\"], words2 = [\"l\",\"o\"]\nOutput: [\"google\",\"leetcode\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words1.length, words2.length <= 10^4\n- 1 <= words1[i].length, words2[i].length <= 10\n- words1[i] and words2[i] consist only of lowercase English letters.\n- All the strings of words1 are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_subsets",
+    "helpers_run_signature": "(solution_class: type, words1: list[str], words2: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_subsets(words1, words2)",
+    "helpers_assert_name": "word_subsets",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_subsets, run_word_subsets\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordSubsets",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_subsets",
+                "signature": "(self, words1: list[str], words2: list[str]) -> list[str]",
+                "body": "        # TODO: Implement word_subsets\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_subsets",
+                "signature": "(self, words1: list[str], words2: list[str], expected: list[str])",
+                "parametrize": "words1, words2, expected",
+                "test_cases": {
+                    "list": [
+                        "(['amazon', 'apple', 'facebook', 'google', 'leetcode'], ['e', 'o'], ['facebook', 'google', 'leetcode'])",
+                        "(['amazon', 'apple', 'facebook', 'google', 'leetcode'], ['l', 'o'], ['google', 'leetcode'])",
+                        "(['acaac', 'cccbb', 'aacbb', 'caacc', 'bcbbb'], ['c', 'cc', 'b'], ['cccbb'])",
+                        "(['amazon'], ['amazon'], ['amazon'])",
+                        "(['abc'], ['d'], [])",
+                        "(['a', 'b', 'c'], ['a', 'b'], [])",
+                        "(['hello', 'world'], ['lo', 'rl'], ['world'])",
+                        "(['aaaaa'], ['a', 'aa', 'aaa'], ['aaaaa'])",
+                        "(['warrior', 'world'], ['wrr'], ['warrior'])",
+                        "(['leetcode', 'online', 'judge'], ['eo', 'nt', 'ok'], [])",
+                        "(['abcd', 'dcba'], ['ab', 'cd', 'dc'], ['abcd', 'dcba'])",
+                        "(['xyz'], ['zz'], [])"
+                    ]
+                },
+                "body": "        result = run_word_subsets(Solution, words1, words2)\n        assert_word_subsets(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_subsets, assert_word_subsets\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords1 = ['amazon', 'apple', 'facebook', 'google', 'leetcode']\nwords2 = ['e', 'o']\nexpected = ['facebook', 'google', 'leetcode']",
+    "playground_run": "result = run_word_subsets(Solution, words1, words2)\nresult",
+    "playground_assert": "assert_word_subsets(result, expected)"
+}

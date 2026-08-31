@@ -1,0 +1,88 @@
+{
+    "problem_name": "number_of_music_playlists",
+    "solution_class_name": "Solution",
+    "problem_number": "920",
+    "problem_title": "Number of Music Playlists",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming, Combinatorics",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Your music player contains <code>n</code> different songs. You want to listen to <code>goal</code> songs (not necessarily different) during your trip. To avoid boredom, you will create a playlist so that:\n\n<ul>\n\t<li>Every song is played <strong>at least once</strong>.</li>\n\t<li>A song can only be played again only if <code>k</code> other songs have been played.</li>\n</ul>\n\n<p>Given <code>n</code>, <code>goal</code>, and <code>k</code>, return <em>the number of possible playlists that you can create</em>. Since the answer can be very large, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3, goal = 3, k = 1\nOutput: 6\nExplanation: There are 6 possible playlists: [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], and [3, 2, 1].\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, goal = 3, k = 0\nOutput: 6\nExplanation: There are 6 possible playlists: [1, 1, 2], [1, 2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 2], and [1, 2, 2].\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, goal = 3, k = 1\nOutput: 2\nExplanation: There are 2 possible playlists: [1, 2, 1] and [2, 1, 2].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 &lt;= k &lt; n &lt;= goal &lt;= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_music_playlists",
+    "helpers_run_signature": "(solution_class: type, n: int, goal: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_music_playlists(n, goal, k)",
+    "helpers_assert_name": "num_music_playlists",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_music_playlists, run_num_music_playlists\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfMusicPlaylists",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_music_playlists",
+                "signature": "(self, n: int, goal: int, k: int) -> int",
+                "body": "        # TODO: Implement num_music_playlists\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_music_playlists",
+                "signature": "(self, n: int, goal: int, k: int, expected: int)",
+                "parametrize": "n, goal, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3, 1, 6)",
+                        "(2, 3, 0, 6)",
+                        "(2, 3, 1, 2)",
+                        "(1, 1, 0, 1)",
+                        "(1, 5, 0, 1)",
+                        "(2, 2, 1, 2)",
+                        "(2, 2, 0, 2)",
+                        "(3, 4, 1, 18)",
+                        "(3, 4, 0, 36)",
+                        "(4, 4, 2, 24)",
+                        "(3, 5, 1, 42)",
+                        "(2, 5, 1, 2)",
+                        "(4, 6, 2, 168)",
+                        "(5, 7, 2, 3000)",
+                        "(10, 12, 3, 676505593)",
+                        "(2, 100, 1, 2)",
+                        "(100, 100, 0, 437918130)",
+                        "(16, 16, 4, 789741546)"
+                    ]
+                },
+                "body": "        result = run_num_music_playlists(Solution, n, goal, k)\n        assert_num_music_playlists(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_music_playlists, assert_num_music_playlists\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\ngoal = 3\nk = 1\nexpected = 6",
+    "playground_run": "result = run_num_music_playlists(Solution, n, goal, k)\nresult",
+    "playground_assert": "assert_num_music_playlists(result, expected)"
+}

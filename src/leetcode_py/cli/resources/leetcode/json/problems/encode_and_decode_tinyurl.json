@@ -1,0 +1,88 @@
+{
+    "problem_name": "encode_and_decode_tinyurl",
+    "solution_class_name": "Codec",
+    "problem_number": "535",
+    "problem_title": "Encode and Decode TinyURL",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Design",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "TinyURL is a URL shortening service where you enter a URL such as `https://leetcode.com/problems/design-tinyurl` and it returns a short URL such as `http://tinyurl.com/4e9iAk`. Design a class to encode a URL and decode a tiny URL.\n\n> Note: This is a companion problem to the System Design problem: Design TinyURL.\n\nThere is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.\n\nImplement the `Codec` class:\n\n- `Codec()` Initializes the object of the system.\n- `String encode(String longUrl)` Returns a tiny URL for the given `longUrl`.\n- `String decode(String shortUrl)` Returns the original long URL for the given `shortUrl`. It is guaranteed that the given `shortUrl` was encoded by the same object.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: url = \"https://leetcode.com/problems/design-tinyurl\"\nOutput: \"https://leetcode.com/problems/design-tinyurl\"\n\nExplanation:\nCodec codec = new Codec();\nstring tiny = codec.encode(url); // returns the encoded tiny url.\nstring ans = codec.decode(tiny); // returns the original url after decoding it.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= url.length <= 10^4`\n- `url` is guranteed to be a valid URL.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "encode_and_decode_tinyurl",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    codec = None\n    results: list[str | None] = []\n    last_short: str | None = None\n    for op, args in zip(operations, inputs, strict=True):\n        if op == 'Codec':\n            codec = solution_class()\n            results.append(None)\n        elif op == 'encode' and codec is not None:\n            last_short = codec.encode(args[0])\n            results.append(None)\n        elif op == 'decode' and codec is not None:\n            results.append(codec.decode(last_short or ''))\n    return results, codec",
+    "helpers_assert_name": "encode_and_decode_tinyurl",
+    "helpers_assert_signature": "(result: list[str | None], expected: list[str | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_encode_and_decode_tinyurl, run_encode_and_decode_tinyurl\nfrom .solution import Codec",
+    "test_content": "",
+    "test_class_name": "EncodeAndDecodeTinyURL",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize codec\n        pass"
+            },
+            {
+                "name": "encode",
+                "signature": "(self, long_url: str) -> str",
+                "body": "        # TODO: Implement encode\n        return ''"
+            },
+            {
+                "name": "decode",
+                "signature": "(self, short_url: str) -> str",
+                "body": "        # TODO: Implement decode\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_encode_and_decode_tinyurl",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[str | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Codec', 'encode', 'decode'], [[], ['https://leetcode.com'], []], [None, None, 'https://leetcode.com'])",
+                        "(['Codec', 'encode', 'decode', 'encode', 'decode'], [[], ['a.com'], [], ['b.com'], []], [None, None, 'a.com', None, 'b.com'])",
+                        "(['Codec', 'encode', 'decode', 'encode', 'decode'], [[], ['x.io'], [], ['x.io'], []], [None, None, 'x.io', None, 'x.io'])",
+                        "(['Codec', 'encode', 'decode'], [[], ['https://a.b/c?d=e#f'], []], [None, None, 'https://a.b/c?d=e#f'])",
+                        "(['Codec', 'encode', 'encode', 'decode'], [[], ['m.io'], ['n.io'], []], [None, None, None, 'n.io'])",
+                        "(['Codec', 'encode', 'decode', 'encode', 'decode', 'encode', 'decode'], [[], ['1.tv'], [], ['2.tv'], [], ['3.tv'], []], [None, None, '1.tv', None, '2.tv', None, '3.tv'])",
+                        "(['Codec', 'encode', 'decode'], [[], ['http://tinyurl.com'], []], [None, None, 'http://tinyurl.com'])",
+                        "(['Codec', 'encode', 'decode'], [[], ['ftp://files.net/doc.pdf'], []], [None, None, 'ftp://files.net/doc.pdf'])",
+                        "(['Codec', 'encode', 'decode', 'encode', 'decode'], [[], ['https://leetcode.com/problems/design-tinyurl'], [], ['https://leetcode.com/problems/two-sum'], []], [None, None, 'https://leetcode.com/problems/design-tinyurl', None, 'https://leetcode.com/problems/two-sum'])",
+                        "(['Codec', 'encode', 'decode'], [[], ['a'], []], [None, None, 'a'])",
+                        "(['Codec', 'encode', 'encode', 'decode'], [[], ['same.dev'], ['same.dev'], []], [None, None, None, 'same.dev'])",
+                        "(['Codec', 'encode', 'decode', 'encode', 'decode', 'encode', 'decode'], [[], ['i.org'], [], ['j.org'], [], ['i.org'], []], [None, None, 'i.org', None, 'j.org', None, 'i.org'])"
+                    ]
+                },
+                "body": "        result, _ = run_encode_and_decode_tinyurl(Codec, operations, inputs)\n        assert_encode_and_decode_tinyurl(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_encode_and_decode_tinyurl, assert_encode_and_decode_tinyurl\nfrom solution import Codec",
+    "playground_setup": "# Example test case\noperations = ['Codec', 'encode', 'decode']\ninputs = [[''], ['https://leetcode.com/problems/design-tinyurl'], []]\nexpected = [None, None, 'https://leetcode.com/problems/design-tinyurl']",
+    "playground_run": "result, codec = run_encode_and_decode_tinyurl(Codec, operations, inputs)\nprint(result)\ncodec",
+    "playground_assert": "assert_encode_and_decode_tinyurl(result, expected)"
+}

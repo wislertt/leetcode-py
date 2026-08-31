@@ -1,0 +1,90 @@
+{
+    "problem_name": "grumpy_bookstore_owner",
+    "solution_class_name": "Solution",
+    "problem_number": "1052",
+    "problem_title": "Grumpy Bookstore Owner",
+    "difficulty": "Medium",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is a bookstore owner that has a store open for <code>n</code> minutes. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customers that enter the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.\n\nDuring certain minutes, the bookstore owner is grumpy. You are given a binary array <code>grumpy</code> where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.\n\nWhen the bookstore owner is grumpy, the customers entering during that minute are not <strong>satisfied</strong>. Otherwise, they are satisfied.\n\nThe bookstore owner knows a secret technique to remain <strong>not grumpy</strong> for <code>minutes</code> consecutive minutes, but this technique can only be used <strong>once</strong>.\n\nReturn the <strong>maximum</strong> number of customers that can be <em>satisfied</em> throughout the day.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3\nOutput: 16\nExplanation: The bookstore owner keeps themselves not grumpy for the last 3 minutes. The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.\n```"
+            },
+            {
+                "content": "```\nInput: customers = [1], grumpy = [0], minutes = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- <code>n == customers.length == grumpy.length</code>\n- <code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code>\n- <code>0 &lt;= customers[i] &lt;= 1000</code>\n- <code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_satisfied",
+    "helpers_run_signature": "(solution_class: type, customers: list[int], grumpy: list[int], minutes: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_satisfied(customers, grumpy, minutes)",
+    "helpers_assert_name": "max_satisfied",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_satisfied, run_max_satisfied\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GrumpyBookstoreOwner",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_satisfied",
+                "signature": "(self, customers: list[int], grumpy: list[int], minutes: int) -> int",
+                "body": "        # TODO: Implement max_satisfied\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_satisfied",
+                "signature": "(self, customers: list[int], grumpy: list[int], minutes: int, expected: int)",
+                "parametrize": "customers, grumpy, minutes, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 1, 2, 1, 1, 7, 5], [0, 1, 0, 1, 0, 1, 0, 1], 3, 16)",
+                        "([1], [0], 1, 1)",
+                        "([4, 10, 10], [1, 1, 0], 2, 24)",
+                        "([1], [1], 1, 1)",
+                        "([0], [1], 1, 0)",
+                        "([2, 6, 6, 2], [0, 0, 1, 1], 2, 16)",
+                        "([9, 10, 4, 5], [1, 0, 1, 1], 1, 19)",
+                        "([5, 8, 2, 9, 1], [0, 1, 0, 1, 0], 2, 17)",
+                        "([3, 7, 1, 4, 2, 6], [1, 1, 1, 1, 1, 1], 6, 23)",
+                        "([3, 7, 1, 4, 2, 6], [1, 1, 1, 1, 1, 1], 1, 7)",
+                        "([10, 1, 1, 10], [0, 1, 1, 0], 2, 22)",
+                        "([7, 7, 7, 7], [1, 0, 1, 0], 1, 21)",
+                        "([1, 2, 3, 4, 5], [0, 0, 0, 0, 0], 2, 15)",
+                        "([1000, 0, 1000], [1, 0, 1], 1, 1000)",
+                        "([2, 3, 1, 5, 4, 6, 8, 2], [1, 0, 1, 0, 1, 0, 1, 0], 3, 28)"
+                    ]
+                },
+                "body": "        result = run_max_satisfied(Solution, customers, grumpy, minutes)\n        assert_max_satisfied(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_satisfied, assert_max_satisfied\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncustomers = [1, 0, 1, 2, 1, 1, 7, 5]\ngrumpy = [0, 1, 0, 1, 0, 1, 0, 1]\nminutes = 3\nexpected = 16",
+    "playground_run": "result = run_max_satisfied(Solution, customers, grumpy, minutes)\nresult",
+    "playground_assert": "assert_max_satisfied(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "new_21_game",
+    "solution_class_name": "Solution",
+    "problem_number": "837",
+    "problem_title": "New 21 Game",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Sliding Window, Probability and Statistics",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Alice plays the following game, loosely based on the card game `\"21\"`.\n\nAlice starts with `0` points and draws numbers while she has less than `k` points. During each draw, she gains an integer number of points randomly from the range `[1, maxPts]`, where `maxPts` is an integer. Each draw is independent and the outcomes have equal probabilities.\n\nAlice stops drawing numbers when she gets `k` or more points.\n\nReturn the probability that Alice has `n` or fewer points.\n\nAnswers within `10-5` of the actual answer are considered accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 10, k = 1, maxPts = 10\nOutput: 1.00000\nExplanation: Alice gets a single card, then stops.\n```"
+            },
+            {
+                "content": "```\nInput: n = 6, k = 1, maxPts = 10\nOutput: 0.60000\nExplanation: Alice gets a single card, then stops.\nIn 6 out of 10 possibilities, she is at or below 6 points.\n```"
+            },
+            {
+                "content": "```\nInput: n = 21, k = 17, maxPts = 10\nOutput: 0.73278\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= k <= n <= 10^4\n- 1 <= maxPts <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "new21_game",
+    "helpers_run_signature": "(solution_class: type, n: int, k: int, max_pts: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.new21_game(n, k, max_pts)",
+    "helpers_assert_name": "new21_game",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    # The statement accepts answers within 10^-5 of the actual answer\n    assert abs(result - expected) < 1e-5\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_new21_game, run_new21_game\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "New21Game",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "new21_game",
+                "signature": "(self, n: int, k: int, max_pts: int) -> float",
+                "body": "        # TODO: Implement new21_game\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_new21_game",
+                "signature": "(self, n: int, k: int, max_pts: int, expected: float)",
+                "parametrize": "n, k, max_pts, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 1, 10, 1.0)",
+                        "(6, 1, 10, 0.6)",
+                        "(21, 17, 10, 0.73278)",
+                        "(0, 0, 1, 1.0)",
+                        "(5, 0, 3, 1.0)",
+                        "(1, 1, 1, 1.0)",
+                        "(2, 1, 2, 1.0)",
+                        "(3, 2, 2, 1.0)",
+                        "(10, 10, 10, 0.23579)",
+                        "(6, 2, 10, 0.55)",
+                        "(4, 2, 1, 1.0)",
+                        "(12, 3, 5, 1.0)",
+                        "(500, 300, 100, 1.0)",
+                        "(1500, 857, 187, 1.0)",
+                        "(4550, 4519, 192, 0.30484)",
+                        "(3000, 2517, 833, 0.82445)",
+                        "(10000, 9576, 8527, 0.08848)"
+                    ]
+                },
+                "body": "        result = run_new21_game(Solution, n, k, max_pts)\n        assert_new21_game(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_new21_game, assert_new21_game\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 10\nk = 1\nmax_pts = 10\nexpected = 1.0",
+    "playground_run": "result = run_new21_game(Solution, n, k, max_pts)\nresult",
+    "playground_assert": "assert_new21_game(result, expected)"
+}

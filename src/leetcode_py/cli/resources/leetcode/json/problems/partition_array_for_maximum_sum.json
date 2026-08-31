@@ -1,0 +1,90 @@
+{
+    "problem_name": "partition_array_for_maximum_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "1043",
+    "problem_title": "Partition Array for Maximum Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `arr`, partition the array into (contiguous) subarrays of length **at most** `k`. After partitioning, each subarray has their values changed to become the maximum value of that subarray.\n\nReturn *the largest sum of the given array after partitioning*. Test cases are generated so that the answer fits in a **32-bit** integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,15,7,9,2,5,10], k = 3\nOutput: 84\nExplanation: arr becomes [15,15,15,9,10,10,10]\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,4,1,5,7,3,6,1,9,9,3], k = 4\nOutput: 83\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1], k = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 500`\n- `0 <= arr[i] <= 10^9`\n- `1 <= k <= arr.length`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_sum_after_partitioning",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_sum_after_partitioning(arr, k)",
+    "helpers_assert_name": "max_sum_after_partitioning",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_sum_after_partitioning, run_max_sum_after_partitioning\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PartitionArrayForMaximumSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_sum_after_partitioning",
+                "signature": "(self, arr: list[int], k: int) -> int",
+                "body": "        # TODO: Implement max_sum_after_partitioning\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_sum_after_partitioning",
+                "signature": "(self, arr: list[int], k: int, expected: int)",
+                "parametrize": "arr, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 15, 7, 9, 2, 5, 10], 3, 84)",
+                        "([1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], 4, 83)",
+                        "([1], 1, 1)",
+                        "([1, 2], 2, 4)",
+                        "([1, 2], 1, 3)",
+                        "([9, 9, 9], 1, 27)",
+                        "([0, 0], 2, 0)",
+                        "([1, 2, 3, 4, 5], 2, 17)",
+                        "([10, 1, 10, 1, 10], 2, 50)",
+                        "([7, 2, 4], 2, 18)",
+                        "([1, 3, 2, 4, 6, 5], 3, 29)",
+                        "([8, 8, 1, 2, 8, 8], 3, 48)"
+                    ]
+                },
+                "body": "        result = run_max_sum_after_partitioning(Solution, arr, k)\n        assert_max_sum_after_partitioning(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_sum_after_partitioning, assert_max_sum_after_partitioning\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 15, 7, 9, 2, 5, 10]\nk = 3\nexpected = 84",
+    "playground_run": "result = run_max_sum_after_partitioning(Solution, arr, k)\nresult",
+    "playground_assert": "assert_max_sum_after_partitioning(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "remove_linked_list_elements",
+    "solution_class_name": "Solution",
+    "problem_number": "203",
+    "problem_title": "Remove Linked List Elements",
+    "difficulty": "Easy",
+    "topics": "Linked List, Recursion",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `head` of a linked list and an integer `val`, remove all the nodes of the linked list that has `Node.val == val`, and return *the new head*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/06/removelinked-list.jpg)\n\n```\nInput: head = [1,2,6,3,4,5,6], val = 6\nOutput: [1,2,3,4,5]\n```"
+            },
+            {
+                "content": "```\nInput: head = [], val = 1\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: head = [7,7,7,7], val = 7\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range [0, 10<sup>4</sup>]\n- 1 <= Node.val <= 50\n- 0 <= val <= 50",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "remove_linked_list_elements",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int], val: int)",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_vals)\n    implementation = solution_class()\n    return implementation.remove_linked_list_elements(head, val)",
+    "helpers_assert_name": "remove_linked_list_elements",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_vals: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_vals)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_linked_list_elements, run_remove_linked_list_elements\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveLinkedListElements",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_linked_list_elements",
+                "signature": "(self, head: ListNode[int] | None, val: int) -> ListNode[int] | None",
+                "body": "        # TODO: Implement remove_linked_list_elements\n        return head"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_linked_list_elements",
+                "signature": "(self, head_vals: list[int], val: int, expected_vals: list[int])",
+                "parametrize": "head_vals, val, expected_vals",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 6, 3, 4, 5, 6], 6, [1, 2, 3, 4, 5])",
+                        "([], 1, [])",
+                        "([7, 7, 7, 7], 7, [])",
+                        "([1], 1, [])",
+                        "([1], 2, [1])",
+                        "([1, 2], 1, [2])",
+                        "([1, 2], 2, [1])",
+                        "([1, 2, 3], 2, [1, 3])",
+                        "([1, 1, 2, 1, 3, 1], 1, [2, 3])",
+                        "([1, 2, 3, 4, 5], 6, [1, 2, 3, 4, 5])",
+                        "([50, 50, 49], 50, [49])",
+                        "([1, 2, 2, 2, 3, 3, 4], 2, [1, 3, 3, 4])",
+                        "([1, 2, 2, 2, 3, 3, 4], 3, [1, 2, 2, 2, 4])",
+                        "([5], 5, [])",
+                        "([2, 1, 2, 1, 2], 2, [1, 1])",
+                        "([1, 2, 3, 1, 2, 3], 1, [2, 3, 2, 3])"
+                    ]
+                },
+                "body": "        result = run_remove_linked_list_elements(Solution, head_vals, val)\n        assert_remove_linked_list_elements(result, expected_vals)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_linked_list_elements, assert_remove_linked_list_elements\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals: list[int] = [1, 2, 6, 3, 4, 5, 6]\nval: int = 6\nexpected_vals: list[int] = [1, 2, 3, 4, 5]",
+    "playground_run": "result = run_remove_linked_list_elements(Solution, head_vals, val)\nresult",
+    "playground_assert": "assert_remove_linked_list_elements(result, expected_vals)"
+}

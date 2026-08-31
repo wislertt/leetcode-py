@@ -1,0 +1,89 @@
+{
+    "problem_name": "shortest_common_supersequence",
+    "solution_class_name": "Solution",
+    "problem_number": "1092",
+    "problem_title": "Shortest Common Supersequence",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two strings <code>str1</code> and <code>str2</code>, return <em>the shortest string that has both </em><code>str1</code><em> and </em><code>str2</code><em> as <strong>subsequences</strong></em>. If there are multiple valid strings, return <strong>any</strong> of them.\n\nA string <code>s</code> is a <strong>subsequence</strong> of string <code>t</code> if deleting some number of characters from <code>t</code> (possibly <code>0</code>) results in the string <code>s</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: str1 = \"abac\", str2 = \"cab\"\nOutput: \"cabac\"\nExplanation: str1 = \"abac\" is a subsequence of \"cabac\" because we can delete the first \"c\". str2 = \"cab\" is a subsequence of \"cabac\" because we can delete the last \"ac\". The answer provided is the shortest such string that satisfies these properties.\n```"
+            },
+            {
+                "content": "```\nInput: str1 = \"aaaaaaaa\", str2 = \"aaaaaaaa\"\nOutput: \"aaaaaaaa\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- <code>1 &lt;= str1.length, str2.length &lt;= 1000</code>\n- <code>str1</code> and <code>str2</code> consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_common_supersequence",
+    "helpers_run_signature": "(solution_class: type, str1: str, str2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_common_supersequence(str1, str2)",
+    "helpers_assert_name": "shortest_common_supersequence",
+    "helpers_assert_signature": "(result: str, str1: str, str2: str, expected_length: int) -> bool",
+    "helpers_assert_body": "    def is_subsequence(sub: str, s: str) -> bool:\n        it = iter(s)\n        return all(c in it for c in sub)\n\n    assert len(result) == expected_length\n    assert is_subsequence(str1, result)\n    assert is_subsequence(str2, result)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_common_supersequence, run_shortest_common_supersequence\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestCommonSupersequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_common_supersequence",
+                "signature": "(self, str1: str, str2: str) -> str",
+                "body": "        # TODO: Implement shortest_common_supersequence\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_common_supersequence",
+                "signature": "(self, str1: str, str2: str, expected_length: int)",
+                "parametrize": "str1, str2, expected_length",
+                "test_cases": {
+                    "list": [
+                        "('abac', 'cab', 5)",
+                        "('aaaaaaaa', 'aaaaaaaa', 8)",
+                        "('abc', 'abc', 3)",
+                        "('abc', 'def', 6)",
+                        "('a', 'a', 1)",
+                        "('a', 'b', 2)",
+                        "('ab', 'ba', 3)",
+                        "('geek', 'eke', 5)",
+                        "('AGGTAB', 'GXTXAYB', 9)",
+                        "('aaaa', 'aa', 4)",
+                        "('bcaeacdea', 'afabacf', 13)",
+                        "('xyxyx', 'yxyxy', 6)",
+                        "('kjklk', 'kkjkk', 6)",
+                        "('abababab', 'babababa', 9)"
+                    ]
+                },
+                "body": "        result = run_shortest_common_supersequence(Solution, str1, str2)\n        assert_shortest_common_supersequence(result, str1, str2, expected_length)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_common_supersequence, assert_shortest_common_supersequence\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstr1 = 'abac'\nstr2 = 'cab'\nexpected_length = 5",
+    "playground_run": "result = run_shortest_common_supersequence(Solution, str1, str2)\nresult",
+    "playground_assert": "assert_shortest_common_supersequence(result, str1, str2, expected_length)"
+}

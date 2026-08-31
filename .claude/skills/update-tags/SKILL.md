@@ -23,7 +23,7 @@ The script prints two kinds of lines. They have **different fix locations**:
 | `Missing N: [...]`                          | in source, not in tags.json5 | **tags.json5** (add entries)                          |
 | `Removed N: [...] (not included in update)` | in tags.json5, not in source | **either layer** — decide via `_tags.list` (see trap) |
 
-**Iron rule:** `Missing` → edit `tags.json5`. `Removed` → **check the problem's `_tags.list` first** — fix source if membership confirmed, else delete from tags.json5. Never guess the direction.
+**Iron rule:** `Missing` → edit `tags.json5`. `Removed` → **check the problem's `_tags.list` first** — fix source if membership confirmed, else delete from tags.json5. Never guess the direction. For batch-created problems, confirm with source-list membership by problem number (see circularity gotcha below).
 
 ## The "Removed" Trap (where data gets lost)
 
@@ -38,6 +38,8 @@ A "Removed" line means tags.json5 lists a problem the source list doesn't. **Do 
 
 - flagged tag ∈ `_tags.list` → the problem considers itself a member; the source list just hasn't caught up. Add the tuple to source.
 - flagged tag ∉ `_tags.list` → the tags.json5 entry was likely added by mistake. Do **not** propagate it to source. Confirm with the user, then delete the entry from that tag's array in tags.json5.
+
+**GOTCHA — `_tags.list` is circular for batch-created problems.** The `_tags.list` field is written at creation time by whoever created the problem. If the stamp was wrong there, this check "confirms" the wrong membership and directs you to pollute the source list — which permanently cements the mistake (a later sync commit did exactly this and bogus tuples had to be reverted by hand). For problems created via the batch/problem-creation flow, ground truth is **source-list membership by problem number**, not `_tags.list`: grep `(number,` across `.claude/.dev/problem_lists/*.py`. Number present in that list's file → member; absent → not a member, regardless of what `_tags.list` claims. If the number is in NO source file except `neetcode.py` (the 943 all-queue), the problem is queue-only: `_tags.list` should be `["neetcode"]` and the tags.json5 roadmap entries are the bug.
 
 The script deliberately refuses to auto-delete ("not included in update") so a human makes this call. Both wrong directions are permanent: deleting a real entry hides it (source lacks it, so `Missing` never fires to restore); adding a bogus tuple to source cements a mistake the script can no longer flag. The `_tags.list` check is what tells you which direction is safe.
 

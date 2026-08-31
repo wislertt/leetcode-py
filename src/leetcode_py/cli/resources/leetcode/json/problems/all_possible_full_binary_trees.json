@@ -1,0 +1,88 @@
+{
+    "problem_name": "all_possible_full_binary_trees",
+    "solution_class_name": "Solution",
+    "problem_number": "894",
+    "problem_title": "All Possible Full Binary Trees",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming, Tree, Recursion, Memoization, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer <code>n</code>, return <em>a list of all possible <strong>full binary trees</strong> with</em> <code>n</code> <em>nodes</em>. Each node of each tree in the answer must have <code>Node.val == 0</code>.</p>\n\n<p>Each element of the answer is the root node of one possible tree. You may return the final list of trees in <strong>any order</strong>.</p>\n\n<p>A <strong>full binary tree</strong> is a binary tree where each node has exactly <code>0</code> or <code>2</code> children.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 7\nOutput: [[0,0,0,None,None,0,0,None,None,0,0],[0,0,0,None,None,0,0,None,None,0,0],[0,0,0,0,0,None,None,0,0],[0,0,0,0,0,None,None,0,0],[0,0,0,0,0,0,0]]\n```"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: [[0,0,0]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 20",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "def assert_all_possible_fbt_solution_count(result: list[TreeNode[int] | None], expected: int) -> bool:\n    assert len(result) == expected\n    return True",
+    "helpers_run_name": "all_possible_fbt",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.all_possible_fbt(n)",
+    "helpers_assert_name": "all_possible_fbt",
+    "helpers_assert_signature": "(result: list[TreeNode[int] | None], expected: list[list[int | None]]) -> bool",
+    "helpers_assert_body": "    # Trees serialize to lists; compare as multisets since order doesn't matter\n    roots = [tree for tree in result if tree is not None]\n    assert len(roots) == len(result)\n\n    def key(tree: list[int | None]) -> tuple[int, str]:\n        return (len(tree), str(tree))\n\n    result_lists = [tree.to_list() for tree in roots]\n    assert sorted(result_lists, key=key) == sorted(expected, key=key)\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import (\n    assert_all_possible_fbt,\n    assert_all_possible_fbt_solution_count,\n    run_all_possible_fbt,\n)\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AllPossibleFullBinaryTrees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "all_possible_fbt",
+                "signature": "(self, n: int) -> list[TreeNode[int] | None]",
+                "body": "        # TODO: Implement all_possible_fbt\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_all_possible_fbt",
+                "signature": "(self, n: int, expected: list[list[int | None]])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, [[0]])",
+                        "(3, [[0, 0, 0]])",
+                        "(5, [[0, 0, 0, None, None, 0, 0], [0, 0, 0, 0, 0]])",
+                        "(7,[[0,0,0,0,0,0,0],[0,0,0,0,0,None,None,0,0],[0,0,0,None,None,0,0,0,0],[0,0,0,0,0,None,None,None,None,0,0],[0,0,0,None,None,0,0,None,None,0,0]])"
+                    ]
+                },
+                "body": "        result = run_all_possible_fbt(Solution, n)\n        assert_all_possible_fbt(result, expected)"
+            },
+            {
+                "name": "test_all_possible_fbt_solution_count",
+                "signature": "(self, n: int, expected_count: int)",
+                "parametrize": "n, expected_count",
+                "test_cases": {
+                    "list": ["(9, 14)", "(11, 42)", "(13, 132)", "(15, 429)", "(17, 1430)", "(19, 4862)"]
+                },
+                "body": "        result = run_all_possible_fbt(Solution, n)\n        assert_all_possible_fbt_solution_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_all_possible_fbt, assert_all_possible_fbt\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nn = 5\nexpected = [[0, 0, 0, None, None, 0, 0], [0, 0, 0, 0, 0]]",
+    "playground_run": "result = run_all_possible_fbt(Solution, n)\nresult",
+    "playground_assert": "assert_all_possible_fbt(result, expected)"
+}

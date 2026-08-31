@@ -7,6 +7,7 @@ Run with --check to verify committed pages are up to date without writing.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -108,6 +109,18 @@ COLLECTION_INTRO: dict[str, str] = {
 }
 
 DIFFICULTIES = ["Easy", "Medium", "Hard"]
+
+# Hand-written files whose problem count is injected between markers so the
+# number never goes stale. README.md is plain markdown (HTML comment); .mdx
+# files need JSX comments since MDX does not support HTML comments.
+COUNT_FILES: dict[str, tuple[str, str]] = {
+    "README.md": ("<!-- problem-count:start -->", "<!-- problem-count:end -->"),
+    "docs/index.mdx": ("{/* problem-count:start */}", "{/* problem-count:end */}"),
+    "docs/getting-started/why-leetcode-py.mdx": (
+        "{/* problem-count:start */}",
+        "{/* problem-count:end */}",
+    ),
+}
 
 
 def load_tags() -> dict[str, list]:
@@ -301,6 +314,19 @@ def render_index_page(
     return "\n".join(lines)
 
 
+def render_count_patches(total: int) -> dict[Path, str]:
+    patches: dict[Path, str] = {}
+    for rel, (start, end) in COUNT_FILES.items():
+        path = REPO_ROOT / rel
+        pattern = re.compile(re.escape(start) + r"(.*?)" + re.escape(end), re.DOTALL)
+        text = path.read_text()
+        if not pattern.search(text):
+            print(f"❌ {rel} is missing problem-count markers ({start})")
+            sys.exit(1)
+        patches[path] = pattern.sub(f"{start}{total}{end}", text)
+    return patches
+
+
 def render_all() -> dict[Path, str]:
     tags = load_tags()
     problems = load_problems()
@@ -333,6 +359,7 @@ def render_all() -> dict[Path, str]:
     }
     for tag, names in collections.items():
         pages[CATALOG_DIR / f"{tag}.mdx"] = render_collection_page(tag, names, problems, tags)
+    pages.update(render_count_patches(len(problems)))
     return pages
 
 

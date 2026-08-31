@@ -1,0 +1,83 @@
+{
+    "problem_name": "range_sum_query_immutable",
+    "solution_class_name": "NumArray",
+    "problem_number": "303",
+    "problem_title": "Range Sum Query - Immutable",
+    "difficulty": "Easy",
+    "topics": "Array, Design, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums`, handle multiple queries of the following type:\n\n1. Calculate the **sum** of the elements of `nums` between indices `left` and `right` **inclusive** where `left <= right`.\n\nImplement the `NumArray` class:\n\n- `NumArray(int[] nums)` Initializes the object with the integer array `nums`.\n- `int sumRange(int left, int right)` Returns the **sum** of the elements of `nums` between indices `left` and `right` **inclusive** (i.e. `nums[left] + nums[left + 1] + ... + nums[right]`).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n['NumArray', 'sumRange', 'sumRange', 'sumRange']\n[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]\nOutput\n[None, 1, -1, -3]\n\nExplanation\nNumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);\nnumArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1\nnumArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1\nnumArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10<sup>4</sup>\n- -10<sup>5</sup> <= nums[i] <= 10<sup>5</sup>\n- 0 <= left <= right < nums.length\n- At most 10<sup>4</sup> calls will be made to `sumRange`.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "range_sum_query_immutable",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[Any]])",
+    "helpers_run_body": "    num_array: Any = None\n    results: list[Any] = []\n\n    for op, args in zip(operations, inputs, strict=False):\n        if op == 'NumArray':\n            num_array = solution_class(args[0])\n            results.append(None)\n        elif op == 'sumRange':\n            assert num_array is not None\n            results.append(num_array.sum_range(args[0], args[1]))\n\n    return results",
+    "helpers_assert_name": "range_sum_query_immutable",
+    "helpers_assert_signature": "(result: list[Any], expected: list[Any]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "from typing import Any\n\nimport pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_range_sum_query_immutable, run_range_sum_query_immutable\nfrom .solution import NumArray",
+    "test_content": "",
+    "test_class_name": "RangeSumQueryImmutable",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize data structure\n        pass"
+            },
+            {
+                "name": "sum_range",
+                "signature": "(self, left: int, right: int) -> int",
+                "body": "        # TODO: Implement sum_range\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_range_sum_query_immutable",
+                "signature": "(self, operations: list[str], inputs: list[list[Any]], expected: list[Any])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange'], [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]], [None, 1, -1, -3])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[1, 2, 3, 4, 5]], [0, 4], [1, 3], [2, 2], [0, 0], [4, 4]], [None, 15, 9, 3, 1, 5])",
+                        "(['NumArray', 'sumRange'], [[[7]], [0, 0]], [None, 7])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[-1, -2, -3, -4]], [0, 3], [1, 2], [0, 1], [3, 3]], [None, -10, -5, -3, -4])",
+                        "(['NumArray', 'sumRange', 'sumRange'], [[[0, 0, 0]], [0, 2], [1, 1]], [None, 0, 0])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange'], [[[100000, -100000, 100000]], [0, 2], [0, 1], [1, 2]], [None, 100000, 0, 0])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[5, 5, 5, 5]], [0, 3], [1, 3], [0, 1], [2, 3]], [None, 20, 15, 10, 10])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[1, -1, 1, -1, 1, -1]], [0, 5], [1, 4], [0, 3], [2, 5], [3, 3]], [None, 0, 0, 0, 0, -1])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[9, 8, 7, 6, 5, 4, 3, 2, 1]], [0, 8], [4, 8], [0, 4], [2, 6]], [None, 45, 15, 35, 25])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[-5, 10, -15, 20, -25]], [0, 4], [1, 3], [2, 2], [0, 2], [3, 4]], [None, -15, 15, -15, -10, -5])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange', 'sumRange'], [[[2, 4, 6, 8, 10]], [0, 0], [0, 2], [3, 4], [1, 4]], [None, 2, 12, 18, 28])",
+                        "(['NumArray', 'sumRange', 'sumRange', 'sumRange'], [[[3]], [0, 0], [0, 0], [0, 0]], [None, 3, 3, 3])"
+                    ]
+                },
+                "body": "        result = run_range_sum_query_immutable(NumArray, operations, inputs)\n        assert_range_sum_query_immutable(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_range_sum_query_immutable, assert_range_sum_query_immutable\nfrom solution import NumArray",
+    "playground_setup": "# Example test case\noperations = ['NumArray', 'sumRange', 'sumRange', 'sumRange']\ninputs = [[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]\nexpected = [None, 1, -1, -3]",
+    "playground_run": "result = run_range_sum_query_immutable(NumArray, operations, inputs)\nresult",
+    "playground_assert": "assert_range_sum_query_immutable(result, expected)"
+}

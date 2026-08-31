@@ -1,0 +1,92 @@
+{
+    "problem_name": "arithmetic_slices_ii_subsequence",
+    "solution_class_name": "Solution",
+    "problem_number": "446",
+    "problem_title": "Arithmetic Slices II - Subsequence",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums`, return *the number of all the **arithmetic subsequences** of* `nums`.\n\nA sequence of numbers is called arithmetic if it consists of **at least three elements** and if the difference between any two consecutive elements is the same.\n\n- For example, `[1, 3, 5, 7, 9]`, `[7, 7, 7, 7]`, and `[3, -1, -5, -9]` are arithmetic sequences.\n- For example, `[1, 1, 2, 5, 7]` is not an arithmetic sequence.\n\nA **subsequence** of an array is a sequence that can be formed by removing some elements (possibly none) of the array.\n\n- For example, `[2,5,10]` is a subsequence of `[1,2,1,**2**,4,1,**5**,**10**]`.\n\nThe test cases are generated so that the answer fits in **32-bit** integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,4,6,8,10]\nOutput: 7\nExplanation: All arithmetic subsequence slices are:\n[2,4,6]\n[4,6,8]\n[6,8,10]\n[2,4,6,8]\n[4,6,8,10]\n[2,4,6,8,10]\n[2,6,10]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [7,7,7,7,7]\nOutput: 16\nExplanation: Any subsequence of this array is arithmetic.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 1000`\n- `-2^31 <= nums[i] <= 2^31 - 1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "number_of_arithmetic_slices",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.number_of_arithmetic_slices(nums)",
+    "helpers_assert_name": "number_of_arithmetic_slices",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_number_of_arithmetic_slices, run_number_of_arithmetic_slices\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ArithmeticSlicesIISubsequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "number_of_arithmetic_slices",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement number_of_arithmetic_slices\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_number_of_arithmetic_slices",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 4, 6, 8, 10], 7)",
+                        "([7, 7, 7, 7, 7], 16)",
+                        "([1], 0)",
+                        "([1, 2], 0)",
+                        "([1, 2, 3], 1)",
+                        "([1, 2, 4], 0)",
+                        "([0, 0, 0], 1)",
+                        "([1, 1, 2, 3], 2)",
+                        "([1, 3, 5, 7], 3)",
+                        "([2, 2, 3, 4], 2)",
+                        "([1, 2, 1, 2, 4, 1, 5, 10], 1)",
+                        "([5, 4, 3, 2, 1], 7)",
+                        "([1, -1, 1, -1, 1], 1)",
+                        "([0, 2000000000, -294967296], 0)",
+                        "([1, 2, 3, 4, 5, 6, 7], 20)",
+                        "([7, 7, 7, 7], 5)",
+                        "([3, -1, -5, -9], 3)"
+                    ]
+                },
+                "body": "        result = run_number_of_arithmetic_slices(Solution, nums)\n        assert_number_of_arithmetic_slices(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_number_of_arithmetic_slices, assert_number_of_arithmetic_slices\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 4, 6, 8, 10]\nexpected = 7",
+    "playground_run": "result = run_number_of_arithmetic_slices(Solution, nums)\nresult",
+    "playground_assert": "assert_number_of_arithmetic_slices(result, expected)"
+}

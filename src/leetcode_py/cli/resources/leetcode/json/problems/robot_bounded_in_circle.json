@@ -1,0 +1,94 @@
+{
+    "problem_name": "robot_bounded_in_circle",
+    "solution_class_name": "Solution",
+    "problem_number": "1041",
+    "problem_title": "Robot Bounded In Circle",
+    "difficulty": "Medium",
+    "topics": "Math, String, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "On an infinite plane, a robot initially stands at `(0, 0)` and faces north. Note that:\n\n- The north direction is the positive direction of the y-axis.\n- The south direction is the negative direction of the y-axis.\n- The east direction is the positive direction of the x-axis.\n- The west direction is the negative direction of the x-axis.\n\nThe robot can receive one of three instructions:\n\n- `\"G\"`: go straight 1 unit.\n- `\"L\"`: turn 90 degrees to the left (i.e., anti-clockwise direction).\n- `\"R\"`: turn 90 degrees to the right (i.e., clockwise direction).\n\nThe robot performs the `instructions` given in order, and repeats them forever.\n\nReturn `true` if and only if there exists a circle in the plane such that the robot never leaves the circle.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: instructions = \"GGLLGG\"\nOutput: true\nExplanation: The robot is initially at (0, 0) facing the north direction.\n\"G\": move one step. Position: (0, 1). Direction: North.\n\"G\": move one step. Position: (0, 2). Direction: North.\n\"L\": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: West.\n\"L\": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: South.\n\"G\": move one step. Position: (0, 1). Direction: South.\n\"G\": move one step. Position: (0, 0). Direction: South.\nRepeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (0, 2) --> (0, 1) --> (0, 0).\nBased on that, we return true.\n```"
+            },
+            {
+                "content": "```\nInput: instructions = \"GG\"\nOutput: false\nExplanation: The robot is initially at (0, 0) facing the north direction.\n\"G\": move one step. Position: (0, 1). Direction: North.\n\"G\": move one step. Position: (0, 2). Direction: North.\nRepeating the instructions, keeps advancing in the north direction and does not go into cycles.\nBased on that, we return false.\n```"
+            },
+            {
+                "content": "```\nInput: instructions = \"GL\"\nOutput: true\nExplanation: The robot is initially at (0, 0) facing the north direction.\n\"G\": move one step. Position: (0, 1). Direction: North.\n\"L\": turn 90 degrees anti-clockwise. Position: (0, 1). Direction: West.\n\"G\": move one step. Position: (-1, 1). Direction: West.\n\"L\": turn 90 degrees anti-clockwise. Position: (-1, 1). Direction: South.\n\"G\": move one step. Position: (-1, 0). Direction: South.\n\"L\": turn 90 degrees anti-clockwise. Position: (-1, 0). Direction: East.\n\"G\": move one step. Position: (0, 0). Direction: East.\n\"L\": turn 90 degrees anti-clockwise. Position: (0, 0). Direction: North.\nRepeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (-1, 1) --> (-1, 0) --> (0, 0).\nBased on that, we return true.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= instructions.length <= 100`\n- `instructions[i]` is `'G'`, `'L'` or, `'R'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_robot_bounded",
+    "helpers_run_signature": "(solution_class: type, instructions: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_robot_bounded(instructions)",
+    "helpers_assert_name": "is_robot_bounded",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result is expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_robot_bounded, run_is_robot_bounded\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RobotBoundedInCircle",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_robot_bounded",
+                "signature": "(self, instructions: str) -> bool",
+                "body": "        # TODO: Implement is_robot_bounded\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_robot_bounded",
+                "signature": "(self, instructions: str, expected: bool)",
+                "parametrize": "instructions, expected",
+                "test_cases": {
+                    "list": [
+                        "('GGLLGG', True)",
+                        "('GG', False)",
+                        "('GL', True)",
+                        "('G', False)",
+                        "('L', True)",
+                        "('R', True)",
+                        "('GR', True)",
+                        "('GLGLGLG', True)",
+                        "('GGGR', True)",
+                        "('GGRGGRGGG', True)",
+                        "('GLRLLGLL', True)",
+                        "('GLGLG', True)",
+                        "('GGLL', True)",
+                        "('GLLGLLGGLL', True)",
+                        "('GGLGLLGG', True)",
+                        "('RGGRGGRG', True)"
+                    ]
+                },
+                "body": "        result = run_is_robot_bounded(Solution, instructions)\n        assert_is_robot_bounded(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_robot_bounded, assert_is_robot_bounded\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ninstructions = 'GGLLGG'\nexpected = True",
+    "playground_run": "result = run_is_robot_bounded(Solution, instructions)\nresult",
+    "playground_assert": "assert_is_robot_bounded(result, expected)"
+}

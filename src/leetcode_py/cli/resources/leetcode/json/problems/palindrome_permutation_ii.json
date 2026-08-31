@@ -1,0 +1,97 @@
+{
+    "problem_name": "palindrome_permutation_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "267",
+    "problem_title": "Palindrome Permutation II",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking",
+    "readme_description": "Given a string `s`, return *all the palindromic permutations (without duplicates) of it*.\n\nYou may return the answer in **any order**. If `s` has no palindromic permutation, return an empty list.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aabb\"\nOutput: [\"abba\",\"baab\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abc\"\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 16`\n- `s` consists of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def assert_generate_palindromes_count(result: list[str], expected: int) -> bool:\n    assert len(result) == expected\n    return True",
+    "helpers_run_name": "generate_palindromes",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.generate_palindromes(s)",
+    "helpers_assert_name": "generate_palindromes",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_generate_palindromes, assert_generate_palindromes_count, run_generate_palindromes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromePermutationII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "generate_palindromes",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement generate_palindromes\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_generate_palindromes",
+                "signature": "(self, s: str, expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aabb', ['abba', 'baab'])",
+                        "('abc', [])",
+                        "('a', ['a'])",
+                        "('aa', ['aa'])",
+                        "('ab', [])",
+                        "('aab', ['aba'])",
+                        "('aaa', ['aaa'])",
+                        "('abab', ['abba', 'baab'])",
+                        "('aaaabb', ['aabbaa', 'abaaba', 'baaaab'])",
+                        "('aabbcc', ['abccba', 'acbbca', 'baccab', 'bcaacb', 'cabbac', 'cbaabc'])"
+                    ]
+                },
+                "body": "        result = run_generate_palindromes(Solution, s)\n        assert_generate_palindromes(result, expected)"
+            },
+            {
+                "name": "test_generate_palindromes_count",
+                "signature": "(self, s: str, expected_count: int)",
+                "parametrize": "s, expected_count",
+                "test_cases": {
+                    "list": [
+                        "('aabbccdd', 24)",
+                        "('aaaabbbb', 6)",
+                        "('aaaaaabbbbbb', 20)",
+                        "('aaaabbbbcccc', 90)",
+                        "('aabbccddeeff', 720)"
+                    ]
+                },
+                "body": "        result = run_generate_palindromes(Solution, s)\n        assert_generate_palindromes_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_generate_palindromes, assert_generate_palindromes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aabb'\nexpected = ['abba', 'baab']",
+    "playground_run": "result = run_generate_palindromes(Solution, s)\nresult",
+    "playground_assert": "assert_generate_palindromes(result, expected)"
+}

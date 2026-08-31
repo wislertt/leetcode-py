@@ -1,0 +1,79 @@
+{
+    "problem_name": "range_sum_of_bst",
+    "solution_class_name": "Solution",
+    "problem_number": "938",
+    "problem_title": "Range Sum of BST",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "<p>Given the <code>root</code> node of a binary search tree and two integers <code>low</code> and <code>high</code>, return <em>the sum of values of all nodes with a value in the <strong>inclusive</strong> range </em><code>[low, high]</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg)\n\n```\nInput: root = [10,5,15,3,7,null,18], low = 7, high = 15\nOutput: 32\nExplanation: Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/11/05/bst2.jpg)\n\n```\nInput: root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10\nOutput: 23\nExplanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 2 * 10^4]</code>.</li>\n\t<li><code>1 &lt;= Node.val &lt;= 10^5</code></li>\n\t<li><code>1 &lt;= low &lt;= high &lt;= 10^5</code></li>\n\t<li>All <code>Node.val</code> are <strong>unique</strong>.</li>\n</ul>",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "range_sum_bst",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], low: int, high: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.range_sum_bst(root, low, high)",
+    "helpers_assert_name": "range_sum_bst",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_range_sum_bst, run_range_sum_bst\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RangeSumOfBST",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "range_sum_bst",
+                "signature": "(self, root: TreeNode[int] | None, low: int, high: int) -> int",
+                "body": "        # TODO: Implement range_sum_bst\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_range_sum_bst",
+                "signature": "(self, root_list: list[int | None], low: int, high: int, expected: int)",
+                "parametrize": "root_list, low, high, expected",
+                "test_cases": {
+                    "list": [
+                        "([10, 5, 15, 3, 7, None, 18], 7, 15, 32)",
+                        "([10, 5, 15, 3, 7, 13, 18, 1, None, 6], 6, 10, 23)",
+                        "([1], 1, 1, 1)",
+                        "([1], 2, 5, 0)",
+                        "([10, 5, 15], 5, 15, 30)",
+                        "([10, 5, 15], 11, 14, 0)",
+                        "([5, 3, 8, 1, 4, 7, 9], 4, 8, 24)",
+                        "([20, 10, 30, 5, 15, 25, 35], 10, 30, 100)",
+                        "([50, 30, 70, 20, 40, 60, 80], 45, 75, 180)",
+                        "([100], 1, 100000, 100)",
+                        "([2, 1, 3], 1, 3, 6)",
+                        "([10, 5, 15, 3, 7, 13, 18], 6, 14, 30)"
+                    ]
+                },
+                "body": "        result = run_range_sum_bst(Solution, root_list, low, high)\n        assert_range_sum_bst(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_range_sum_bst, assert_range_sum_bst\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [10, 5, 15, 3, 7, None, 18]\nlow = 7\nhigh = 15\nexpected = 32",
+    "playground_run": "result = run_range_sum_bst(Solution, root_list, low, high)\nresult",
+    "playground_assert": "assert_range_sum_bst(result, expected)"
+}

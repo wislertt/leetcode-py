@@ -1,0 +1,91 @@
+{
+    "problem_name": "populating_next_right_pointers_in_each_node",
+    "solution_class_name": "Solution",
+    "problem_number": "116",
+    "problem_title": "Populating Next Right Pointers In Each Node",
+    "difficulty": "Medium",
+    "topics": "Linked List, Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **perfect binary tree** where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:\n\n```\nstruct Node {\n  int val;\n  Node *left;\n  Node *right;\n  Node *next;\n}\n```\n\nPopulate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to `NULL`.\n\nInitially, all next pointers are set to `NULL`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/02/14/116_sample.png)\n\n```\nInput: root = [1,2,3,4,5,6,7]\nOutput: [1,#,2,3,#,4,5,6,7,#]\nExplanation: Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 2^12 - 1]\n- -1000 <= Node.val <= 1000",
+    "readme_additional": "**Follow-up:**\n\n- You may only use constant extra space.\n- The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.",
+    "helpers_imports": "from .solution import Node",
+    "helpers_content": "def _build_tree(root_list: list[int | None]) -> Node | None:\n    if not root_list or root_list[0] is None:\n        return None\n    root = Node(root_list[0])\n    queue: list[Node] = [root]\n    i = 1\n    while queue and i < len(root_list):\n        node = queue.pop(0)\n        if i < len(root_list) and root_list[i] is not None:\n            val = root_list[i]\n            assert val is not None\n            node.left = Node(val)\n            queue.append(node.left)\n        i += 1\n        if i < len(root_list) and root_list[i] is not None:\n            val = root_list[i]\n            assert val is not None\n            node.right = Node(val)\n            queue.append(node.right)\n        i += 1\n    return root\n\n\ndef _serialize_next_tree(root: Node | None) -> list[int | None]:\n    result: list[int | None] = []\n    level_start = root\n    while level_start is not None:\n        current: Node | None = level_start\n        while current is not None:\n            result.append(current.val)\n            current = current.next\n        result.append(None)\n        level_start = level_start.left\n    return result",
+    "helpers_run_name": "connect",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = _build_tree(root_list)\n    implementation = solution_class()\n    connected = implementation.connect(root)\n    return _serialize_next_tree(connected)",
+    "helpers_assert_name": "connect",
+    "helpers_assert_signature": "(result: list[int | None], expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected_list\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class Node:\n    def __init__(\n        self,\n        val: int = 0,\n        left: Node | None = None,\n        right: Node | None = None,\n        next: Node | None = None,\n    ):\n        self.val = val\n        self.left = left\n        self.right = right\n        self.next = next\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_connect, run_connect\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PopulatingNextRightPointersInEachNode",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "connect",
+                "signature": "(self, root: Node | None) -> Node | None",
+                "body": "        # TODO: Implement connect\n        return root"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_connect",
+                "signature": "(self, root_list: list[int | None], expected_list: list[int | None])",
+                "parametrize": "root_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6, 7], [1, None, 2, 3, None, 4, 5, 6, 7, None])",
+                        "([], [])",
+                        "([1], [1, None])",
+                        "([7], [7, None])",
+                        "([1, 2, 3], [1, None, 2, 3, None])",
+                        "([-1, -2, -3], [-1, None, -2, -3, None])",
+                        "([5, 4, 6], [5, None, 4, 6, None])",
+                        "([9, 8, 7], [9, None, 8, 7, None])",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [1, None, 2, 3, None, 4, 5, 6, 7, None, 8, 9, 10, 11, 12, 13, 14, 15, None])",
+                        "([15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [15, None, 14, 13, None, 12, 11, 10, 9, None, 8, 7, 6, 5, 4, 3, 2, 1, None])",
+                        "([0, 0, 0, 0, 0, 0, 0], [0, None, 0, 0, None, 0, 0, 0, 0, None])",
+                        "([3, 3, 3, 3, 3, 3, 3], [3, None, 3, 3, None, 3, 3, 3, 3, None])",
+                        "([10, 5, 15, 3, 7, 12, 18], [10, None, 5, 15, None, 3, 7, 12, 18, None])",
+                        "([100, 50, 200, 25, 75, 150, 250], [100, None, 50, 200, None, 25, 75, 150, 250, None])",
+                        "([-1000, 1000, -1000, 1000, -1000, 1000, -1000], [-1000, None, 1000, -1000, None, 1000, -1000, 1000, -1000, None])",
+                        "([-3, -6, -9, -12, -24, -36, -48], [-3, None, -6, -9, None, -12, -24, -36, -48, None])"
+                    ]
+                },
+                "body": "        result = run_connect(Solution, root_list)\n        assert_connect(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_connect, assert_connect\nfrom solution import Node, Solution",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4, 5, 6, 7]\nexpected_list: list[int | None] = [1, None, 2, 3, None, 4, 5, 6, 7, None]",
+    "playground_run": "result = run_connect(Solution, root_list)\nresult",
+    "playground_assert": "assert_connect(result, expected_list)"
+}

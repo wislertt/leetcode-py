@@ -1,0 +1,84 @@
+{
+    "problem_name": "sum_of_square_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "633",
+    "problem_title": "Sum of Square Numbers",
+    "difficulty": "Medium",
+    "topics": "Math, Two Pointers, Binary Search",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given a non-negative integer `c`, decide whether there're two integers `a` and `b` such that `a^2 + b^2 = c`.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: c = 5\nOutput: true\nExplanation: 1 * 1 + 2 * 2 = 5\n```" },
+            { "content": "```\nInput: c = 3\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 0 <= c <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "judge_square_sum",
+    "helpers_run_signature": "(solution_class: type, c: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.judge_square_sum(c)",
+    "helpers_assert_name": "judge_square_sum",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from math import isqrt",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_judge_square_sum, run_judge_square_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumOfSquareNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "judge_square_sum",
+                "signature": "(self, c: int) -> bool",
+                "body": "        # TODO: Implement judge_square_sum\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_judge_square_sum",
+                "signature": "(self, c: int, expected: bool)",
+                "parametrize": "c, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, True)",
+                        "(3, False)",
+                        "(0, True)",
+                        "(1, True)",
+                        "(2, True)",
+                        "(4, True)",
+                        "(8, True)",
+                        "(9, True)",
+                        "(10, True)",
+                        "(18, True)",
+                        "(25, True)",
+                        "(26, True)",
+                        "(49, True)",
+                        "(50, True)",
+                        "(9999, False)",
+                        "(10000, True)",
+                        "(65536, True)",
+                        "(999999999, False)",
+                        "(1000000000, True)",
+                        "(2147483646, False)",
+                        "(2147483647, False)"
+                    ]
+                },
+                "body": "        result = run_judge_square_sum(Solution, c)\n        assert_judge_square_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_judge_square_sum, assert_judge_square_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nc = 5\nexpected = True",
+    "playground_run": "result = run_judge_square_sum(Solution, c)\nresult",
+    "playground_assert": "assert_judge_square_sum(result, expected)"
+}

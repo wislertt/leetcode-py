@@ -1,0 +1,95 @@
+{
+    "problem_name": "ugly_number_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "264",
+    "problem_title": "Ugly Number II",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, Dynamic Programming, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An **ugly number** is a positive integer whose prime factors are limited to `2`, `3`, and `5`.\n\nGiven an integer `n`, return *the* `nth` * **ugly number***.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 10\nOutput: 12\nExplanation: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of the first 10 ugly numbers.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\nExplanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1690",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "nth_ugly_number",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.nth_ugly_number(n)",
+    "helpers_assert_name": "nth_ugly_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_nth_ugly_number, run_nth_ugly_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UglyNumberII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "nth_ugly_number",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement nth_ugly_number\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_nth_ugly_number",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 4)",
+                        "(5, 5)",
+                        "(6, 6)",
+                        "(7, 8)",
+                        "(8, 9)",
+                        "(9, 10)",
+                        "(10, 12)",
+                        "(11, 15)",
+                        "(15, 24)",
+                        "(20, 36)",
+                        "(50, 243)",
+                        "(100, 1536)",
+                        "(235, 30720)",
+                        "(500, 937500)",
+                        "(666, 4423680)",
+                        "(1000, 51200000)",
+                        "(1690, 2123366400)"
+                    ]
+                },
+                "body": "        result = run_nth_ugly_number(Solution, n)\n        assert_nth_ugly_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_nth_ugly_number, assert_nth_ugly_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 10\nexpected = 12",
+    "playground_run": "result = run_nth_ugly_number(Solution, n)\nresult",
+    "playground_assert": "assert_nth_ugly_number(result, expected)"
+}

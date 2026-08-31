@@ -1,0 +1,94 @@
+{
+    "problem_name": "restore_ip_addresses",
+    "solution_class_name": "Solution",
+    "problem_number": "93",
+    "problem_title": "Restore IP Addresses",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **valid IP address** consists of exactly four integers separated by single dots. Each integer is between `0` and `255` (**inclusive**) and cannot have leading zeros.\n\n- For example, `\"0.1.2.201\"` and `\"192.168.1.1\"` are **valid** IP addresses, but `\"0.011.255.245\"`, `\"192.168.1.312\"` and `\"192.168@1.1\"` are **invalid** IP addresses.\n\nGiven a string `s` containing only digits, return *all possible valid IP addresses that can be formed by inserting dots into* `s`. You are **not** allowed to reorder or remove any digits in `s`. You may return the valid IP addresses in **any** order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"25525511135\"\nOutput: [\"255.255.11.135\",\"255.255.111.35\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"0000\"\nOutput: [\"0.0.0.0\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"101023\"\nOutput: [\"1.0.10.23\",\"1.0.102.3\",\"10.1.0.23\",\"10.10.2.3\",\"101.0.2.3\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 20`\n- `s` consists of digits only.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "restore_ip_addresses",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return sorted(implementation.restore_ip_addresses(s))",
+    "helpers_assert_name": "restore_ip_addresses",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_restore_ip_addresses, run_restore_ip_addresses\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RestoreIpAddresses",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "restore_ip_addresses",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement restore_ip_addresses\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_restore_ip_addresses",
+                "signature": "(self, s: str, expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('25525511135', ['255.255.11.135', '255.255.111.35'])",
+                        "('0000', ['0.0.0.0'])",
+                        "('101023', ['1.0.10.23', '1.0.102.3', '10.1.0.23', '10.10.2.3', '101.0.2.3'])",
+                        "('0', [])",
+                        "('00', [])",
+                        "('000', [])",
+                        "('00000', [])",
+                        "('1111', ['1.1.1.1'])",
+                        "('1001', ['1.0.0.1'])",
+                        "('010010', ['0.100.1.0', '0.10.0.10'])",
+                        "('12345', ['1.2.3.45', '1.2.34.5', '1.23.4.5', '12.3.4.5'])",
+                        "('255255255255', ['255.255.255.255'])",
+                        "('255025502550', [])",
+                        "('255255255256', [])",
+                        "('1111111111111', [])",
+                        "('20', [])"
+                    ]
+                },
+                "body": "        result = run_restore_ip_addresses(Solution, s)\n        assert_restore_ip_addresses(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_restore_ip_addresses, assert_restore_ip_addresses\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '25525511135'\nexpected = ['255.255.11.135', '255.255.111.35']",
+    "playground_run": "result = run_restore_ip_addresses(Solution, s)\nresult",
+    "playground_assert": "assert_restore_ip_addresses(result, expected)"
+}

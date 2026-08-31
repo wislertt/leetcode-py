@@ -31,6 +31,10 @@ bake lint
 
 # Step 5: Verify tests pass (expected to fail if solution is incomplete)
 bake p-test -p {problem_name}
+# NOTE: in the batch-problem-creation flow the solution is implemented BEFORE this
+# step, so tests MUST pass here. A failure = real defect: wrong expected values in
+# the JSON test_cases (most common — see problem-creation.md tree gotchas) or a
+# wrong solution. Debug it; do not dismiss it as "incomplete solution".
 
 # Step 6: Cleanup
 rm -rf leetcode/{problem_name}_backup
@@ -118,6 +122,18 @@ bake p-gen -p {problem_name} -f
 
 **Expected**: Tests may fail if solution is incomplete (returns 0 or placeholder)
 **Action**: This is normal - focus on ty passing, not test results
+**Exception**: if the solution is already implemented (batch flow), failures are real
+defects — fix the JSON test cases or the solution, then re-run the 6 steps
+
+### Issue: pre-commit flags solution.py (B905 / E741 / RUF012 / N806 / ty list invariance)
+
+**Cause**: `bake lint` during QA runs a narrower ruff config than the pre-commit hook, so `zip()` without `strict=` (B905), variable names like `l` (E741), mutable class-attribute defaults (RUF012), uppercase locals like `MOD` (N806), and list-invariance type mismatches in ty pass QA and surface only at batch finalization.
+
+- Fix: `zip(s, t)` → `zip(s, t, strict=True)`; rename `l`/`I`/`O` variables (`left_val`, etc.); class-level constant lists → tuples (`BELOW_20: tuple[str, ...] = (...)`) or annotate with `typing.ClassVar`; `MOD = 1_000_000_007` → lowercase `mod` (N806, recurs on every modulo problem); annotate accumulators with the full return element type (`result: list[TreeNode[int] | None]`, not `list[TreeNode[int]]` returned against `-> list[TreeNode[int] | None]` — ty rejects the narrowing under list invariance); a `float('-inf')` sentinel in an int-returning DP poisons derived values into `float` (ty `invalid-return-type`) — prefer a type-pure int sentinel like `-1` for non-negative domains (hit with 741 Cherry Pickup); a nested `dfs(node: TreeNode[int] | None, ...)` whose body touches `node.val`/`node.left`/`node.right` passes `bake lint` but fails pre-commit ty with one `unresolved-attribute` per access — ty does not narrow through the call site when `root` is `Optional`, so add `if node is None: return` at the top of the DFS (hit with 988, 7 errors at once). Generated helpers add three more: RUF005 list concatenation in return expressions → unpack instead (`[node.val, *left, *right]`, hit with 889); E731 lambda assigned to a name → rewrite as a `def` with return type (hit with 894); ty `unresolved-attribute` when calling `.to_list()` on a `TreeNode | None` element — `assert all(x is not None ...)` does NOT narrow a comprehension variable; filter into a new list (`roots = [t for t in result if t is not None]`) and assert equal length (hit with 894). All are fixed at the JSON level (`helpers_assert_body` / `helpers_content`) or in `solution.py`, never in other generated files
+- Hit with 273 Integer to English Words: lookup-table lists (`BELOW_20 = [...]`) at class level flagged `RUF012 Mutable default value for class attribute`
+- Hit with 552/576/629 (`MOD` → N806) and 652 (ty `invalid-return-type` on list invariance)
+- E501 also fires on COMMENTS: a complexity comment listing per-method costs (`# Time: get O(index), add_at_index O(index), ...`) overflows col 100 — compress or split it (hit with 707 Design Linked List)
+- Prevention: write solutions ruff-clean from the start (see problem-creation.md, Batch Flow Notes section)
 
 ### Issue: \`null\` vs \`None\` in JSON Templates
 
@@ -132,6 +148,13 @@ bake p-gen -p {problem_name} -f
 - This applies to \`test_cases\` list and \`playground_setup\` fields
 - After fixing JSON, regenerate with \`bake p-gen -p {problem_name} -f\`
 - Generated code will now pass linting without manual edits
+
+### Issue: hand-invented inputs pass value-range checks but violate STRUCTURAL constraints
+
+**Cause**: verifying each entry against value ranges (\`grid[i][j]\` is 0 or 1, \`nums[i] <= 10^4\`) is not enough — shape invariants stated in the constraints must be checked too. Hit with 827 Making A Large Island: the statement guarantees an \`n x n\` (square) grid, but a test case like \`[[1], [1]]\` is 2x1; it passes all value checks and then crashes matrix-indexing solutions with \`IndexError\`, which reads as a solution bug rather than a test-data bug
+
+- **Fix**: include shape invariants (\`grid.length == grid[i].length\`, row/col counts, ordering guarantees like "graph[i] is strictly increasing") in the reference-implementation verification script — assert the STRUCTURE of every input, not just element values
+- Drop or reshape any case that violates a structural constraint, even if the expected output "looks right"
 
 ## Success Criteria
 

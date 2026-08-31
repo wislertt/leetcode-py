@@ -1,0 +1,87 @@
+{
+    "problem_name": "find_common_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "1002",
+    "problem_title": "Find Common Characters",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string array `words`, return *an array of all characters that show up in all strings within the* `words` *(including duplicates)*. You may return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"bella\",\"label\",\"roller\"]\nOutput: [\"e\",\"l\",\"l\"]\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"cool\",\"lock\",\"cook\"]\nOutput: [\"c\",\"o\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 100`\n- `1 <= words[i].length <= 100`\n- `words[i]` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "common_chars",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.common_chars(words)",
+    "helpers_assert_name": "common_chars",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_common_chars, run_common_chars\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindCommonCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "common_chars",
+                "signature": "(self, words: list[str]) -> list[str]",
+                "body": "        # TODO: Implement common_chars\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_common_chars",
+                "signature": "(self, words: list[str], expected: list[str])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['bella', 'label', 'roller'], ['e', 'l', 'l'])",
+                        "(['cool', 'lock', 'cook'], ['c', 'o'])",
+                        "(['a'], ['a'])",
+                        "(['a', 'a', 'a'], ['a'])",
+                        "(['ab'], ['a', 'b'])",
+                        "(['ab', 'cd'], [])",
+                        "(['abc', 'bca', 'cab'], ['a', 'b', 'c'])",
+                        "(['hello', 'world'], ['l', 'o'])",
+                        "(['aaaa', 'aa', 'aaa'], ['a', 'a'])",
+                        "(['xyz'], ['x', 'y', 'z'])",
+                        "(['abcde', 'edcba', 'cdeba'], ['a', 'b', 'c', 'd', 'e'])",
+                        "(['fast', 'safe', 'soft'], ['f', 's'])"
+                    ]
+                },
+                "body": "        result = run_common_chars(Solution, words)\n        assert_common_chars(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_common_chars, assert_common_chars\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['bella', 'label', 'roller']\nexpected = ['e', 'l', 'l']",
+    "playground_run": "result = run_common_chars(Solution, words)\nresult",
+    "playground_assert": "assert_common_chars(result, expected)"
+}

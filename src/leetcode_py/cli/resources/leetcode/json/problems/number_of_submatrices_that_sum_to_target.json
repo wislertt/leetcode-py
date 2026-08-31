@@ -1,0 +1,90 @@
+{
+    "problem_name": "number_of_submatrices_that_sum_to_target",
+    "solution_class_name": "Solution",
+    "problem_number": "1074",
+    "problem_title": "Number of Submatrices That Sum to Target",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Matrix, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a <code>matrix</code>&nbsp;and a <code>target</code>, return the number of non-empty submatrices that sum to <code>target</code>.\n\nA submatrix <code>x1, y1, x2, y2</code> is the set of all cells <code>matrix[x][y]</code> with <code>x1 &lt;= x &lt;= x2</code> and <code>y1 &lt;= y &lt;= y2</code>.\n\nTwo submatrices <code>(x1, y1, x2, y2)</code> and <code>(x1&#39;, y1&#39;, x2&#39;, y2&#39;)</code> are different if they have some coordinate&nbsp;that is different: for example, if <code>x1 != x1&#39;</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/02/mate1.jpg)\n\n```\nInput: matrix = [[0,1,0],[1,1,1],[0,1,0]], target = 0\nOutput: 4\nExplanation: The four 1x1 submatrices that only contain 0.\n```"
+            },
+            {
+                "content": "```\nInput: matrix = [[1,-1],[-1,1]], target = 0\nOutput: 5\nExplanation: The two 1x2 submatrices, plus the two 2x1 submatrices, plus the 2x2 submatrix.\n```"
+            },
+            {
+                "content": "```\nInput: matrix = [[904]], target = 0\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- <code>1 &lt;= matrix.length &lt;= 100</code>\n- <code>1 &lt;= matrix[0].length &lt;= 100</code>\n- <code>-1000 &lt;= matrix[i][j] &lt;= 1000</code>\n- <code>-10<sup>8</sup> &lt;= target &lt;= 10<sup>8</sup></code>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_submatrix_sum_target",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_submatrix_sum_target(matrix, target)",
+    "helpers_assert_name": "num_submatrix_sum_target",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_submatrix_sum_target, run_num_submatrix_sum_target\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSubmatricesThatSumToTarget",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_submatrix_sum_target",
+                "signature": "(self, matrix: list[list[int]], target: int) -> int",
+                "body": "        # TODO: Implement num_submatrix_sum_target\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_submatrix_sum_target",
+                "signature": "(self, matrix: list[list[int]], target: int, expected: int)",
+                "parametrize": "matrix, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1, 0], [1, 1, 1], [0, 1, 0]], 0, 4)",
+                        "([[1, -1], [-1, 1]], 0, 5)",
+                        "([[904]], 0, 0)",
+                        "([[1]], 1, 1)",
+                        "([[1, -1]], 0, 1)",
+                        "([[1, 2], [3, 4]], 3, 2)",
+                        "([[0, 0], [0, 0]], 0, 9)",
+                        "([[1, 1, 1], [1, 1, 1]], 2, 7)",
+                        "([[2, 2], [2, 2]], 4, 4)",
+                        "([[1, -1, 1], [-1, 1, -1]], 0, 10)",
+                        "([[5]], 5, 1)",
+                        "([[0, 1], [1, 0]], 1, 6)"
+                    ]
+                },
+                "body": "        result = run_num_submatrix_sum_target(Solution, matrix, target)\n        assert_num_submatrix_sum_target(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_submatrix_sum_target, assert_num_submatrix_sum_target\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]\ntarget = 0\nexpected = 4",
+    "playground_run": "result = run_num_submatrix_sum_target(Solution, matrix, target)\nresult",
+    "playground_assert": "assert_num_submatrix_sum_target(result, expected)"
+}

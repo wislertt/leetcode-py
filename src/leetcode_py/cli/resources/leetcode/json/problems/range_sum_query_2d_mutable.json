@@ -1,0 +1,91 @@
+{
+    "problem_name": "range_sum_query_2d_mutable",
+    "solution_class_name": "NumMatrix",
+    "problem_number": "308",
+    "problem_title": "Range Sum Query 2D - Mutable",
+    "difficulty": "Medium",
+    "topics": "Design, Binary Indexed Tree, Segment Tree, Array, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a 2D matrix `matrix`, handle multiple queries of the following types:\n\n1. **Update** the value of a cell in `matrix`.\n2. Calculate the **sum** of the elements of `matrix` inside the rectangle defined by its **upper left corner** `(row1, col1)` and **lower right corner** `(row2, col2)`.\n\nImplement the `NumMatrix` class:\n\n- `NumMatrix(int[][] matrix)` Initializes the object with the integer matrix `matrix`.\n- `void update(int row, int col, int val)` **Updates** the value of `matrix[row][col]` to be `val`.\n- `int sumRegion(int row1, int col1, int row2, int col2)` Returns the **sum** of the elements of `matrix` inside the rectangle defined by its **upper left corner** `(row1, col1)` and **lower right corner** `(row2, col2)`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0308.Range%20Sum%20Query%202D%20-%20Mutable/images/summut-grid.jpg)\n\n```\nInput\n[\"NumMatrix\", \"sumRegion\", \"update\", \"sumRegion\"]\n[[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [3, 2, 2], [2, 1, 4, 3]]\nOutput\n[null, 8, null, 10]\n\nExplanation\nNumMatrix numMatrix = new NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);\nnumMatrix.sumRegion(2, 1, 4, 3); // return 8\nnumMatrix.update(3, 2, 2); // matrix changes from left image to right image\nnumMatrix.sumRegion(2, 1, 4, 3); // return 10\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == matrix.length`\n- `n == matrix[i].length`\n- `1 <= m, n <= 200`\n- `-1000 <= matrix[i][j] <= 1000`\n- `0 <= row < m`\n- `0 <= col < n`\n- `-1000 <= val <= 1000`\n- `0 <= row1 <= row2 < m`\n- `0 <= col1 <= col2 < n`\n- At most `5000` calls will be made to `sumRegion` and `update`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "range_sum_query_2d_mutable",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[list[int]]])",
+    "helpers_run_body": "    matrix_obj = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'NumMatrix':\n            matrix_obj = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'update' and matrix_obj is not None:\n            matrix_obj.update(inputs[i][0], inputs[i][1], inputs[i][2])\n            results.append(None)\n        elif op == 'sum_region' and matrix_obj is not None:\n            results.append(\n                matrix_obj.sum_region(\n                    inputs[i][0], inputs[i][1], inputs[i][2], inputs[i][3]\n                )\n            )\n    return results, matrix_obj",
+    "helpers_assert_name": "range_sum_query_2d_mutable",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class BinaryIndexedTree:\n    def __init__(self, n: int) -> None:\n        self.n = n\n        self.c = [0] * (n + 1)\n\n    @staticmethod\n    def lowbit(x: int) -> int:\n        return x & -x\n\n    def update(self, x: int, delta: int) -> None:\n        while x <= self.n:\n            self.c[x] += delta\n            x += BinaryIndexedTree.lowbit(x)\n\n    def query(self, x: int) -> int:\n        s = 0\n        while x > 0:\n            s += self.c[x]\n            x -= BinaryIndexedTree.lowbit(x)\n        return s",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_range_sum_query_2d_mutable, run_range_sum_query_2d_mutable\nfrom .solution import NumMatrix",
+    "test_content": "",
+    "test_class_name": "RangeSumQuery2DMutable",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, matrix: list[list[int]]) -> None",
+                "body": "        # TODO: Initialize with matrix\n        pass"
+            },
+            {
+                "name": "update",
+                "signature": "(self, row: int, col: int, val: int) -> None",
+                "body": "        # TODO: Implement update\n        pass"
+            },
+            {
+                "name": "sum_region",
+                "signature": "(self, row1: int, col1: int, row2: int, col2: int) -> int",
+                "body": "        # TODO: Implement sum_region\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_range_sum_query_2d_mutable",
+                "signature": "(self, operations: list[str], inputs: list[list[list[int]]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['NumMatrix','sum_region','update','sum_region'],[[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]],[2,1,4,3],[3,2,2],[2,1,4,3]],[None,8,None,10])",
+                        "(['NumMatrix','sum_region','update','sum_region'],[[[[5]]],[0,0,0,0],[0,0,10],[0,0,0,0]],[None,5,None,10])",
+                        "(['NumMatrix','sum_region','sum_region'],[[[[1,2,3]]],[0,0,0,1],[0,1,0,2]],[None,3,5])",
+                        "(['NumMatrix','sum_region'],[[[[1],[2],[3]]],[0,0,2,0]],[None,6])",
+                        "(['NumMatrix','sum_region','update','sum_region'],[[[[1,2],[3,4]]],[0,0,1,1],[0,0,5],[0,0,1,1]],[None,10,None,14])",
+                        "(['NumMatrix','sum_region'],[[[[1,2],[3,4]]],[1,1,1,1]],[None,4])",
+                        "(['NumMatrix','update','update','sum_region'],[[[[0,0],[0,0]]],[0,0,7],[0,0,3],[0,0,0,0]],[None,None,None,3])",
+                        "(['NumMatrix','sum_region'],[[[[-1,-2],[-3,-4]]],[0,0,1,1]],[None,-10])",
+                        "(['NumMatrix','update','sum_region','update','sum_region'],[[[[9,9,9],[9,9,9]]],[0,1,1],[0,0,0,2],[1,2,-9],[0,0,1,2]],[None,None,19,None,28])",
+                        "(['NumMatrix','sum_region'],[[[[0,0],[0,0]]],[0,0,1,1]],[None,0])",
+                        "(['NumMatrix','update','sum_region'],[[[[1,2],[3,4]]],[1,1,100],[0,0,0,0]],[None,None,1])",
+                        "(['NumMatrix','sum_region','sum_region','sum_region'],[[[[1,2,3],[4,5,6],[7,8,9]]],[0,0,2,2],[1,1,2,2],[0,2,0,2]],[None,45,28,3])",
+                        "(['NumMatrix','update','sum_region'],[[[[5,5],[5,5]]],[0,1,-5],[0,0,1,1]],[None,None,10])",
+                        "(['NumMatrix','sum_region','update','sum_region'],[[[[2,4,6],[8,10,12]]],[0,1,1,1],[0,1,0],[0,1,1,1]],[None,14,None,10])",
+                        "(['NumMatrix','sum_region','update','sum_region'],[[[[1]]],[0,0,0,0],[0,0,-1],[0,0,0,0]],[None,1,None,-1])"
+                    ]
+                },
+                "body": "        result, _ = run_range_sum_query_2d_mutable(NumMatrix, operations, inputs)\n        assert_range_sum_query_2d_mutable(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_range_sum_query_2d_mutable, assert_range_sum_query_2d_mutable\nfrom solution import NumMatrix",
+    "playground_setup": "# Example test case\noperations = ['NumMatrix', 'sum_region', 'update', 'sum_region']\ninputs = [[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [3, 2, 2], [2, 1, 4, 3]]\nexpected = [None, 8, None, 10]",
+    "playground_run": "result, matrix_obj = run_range_sum_query_2d_mutable(NumMatrix, operations, inputs)\nprint(result)\nmatrix_obj",
+    "playground_assert": "assert_range_sum_query_2d_mutable(result, expected)"
+}

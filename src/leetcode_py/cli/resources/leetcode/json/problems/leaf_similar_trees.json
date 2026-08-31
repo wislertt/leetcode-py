@@ -1,0 +1,81 @@
+{
+    "problem_name": "leaf_similar_trees",
+    "solution_class_name": "Solution",
+    "problem_number": "872",
+    "problem_title": "Leaf-Similar Trees",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a <strong>leaf value sequence</strong>.</p>\n\n<p>For example, in the given tree above, the leaf value sequence is <code>(6, 7, 4, 9, 8)</code>.</p>\n\n<p>Two binary trees are considered <em>leaf-similar</em> if their leaf value sequence is the same.</p>\n\n<p>Return <code>true</code> if and only if the two given trees with head nodes <code>root1</code> and <code>root2</code> are leaf-similar.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/03/leaf-similar-1.jpg)\n\n```\nInput: root1 = [3,5,1,6,2,9,8,null,null,7,4], root2 = [3,5,1,6,7,4,2,null,null,null,null,null,null,9,8]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/09/03/leaf-similar-2.jpg)\n\n```\nInput: root1 = [1,2,3], root2 = [1,3,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in each tree will be in the range [1, 200].\n- Both of the given trees will have values in the range [0, 200].",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "leaf_similar",
+    "helpers_run_signature": "(solution_class: type, root1_list: list[int | None], root2_list: list[int | None])",
+    "helpers_run_body": "    root1 = TreeNode[int].from_list(root1_list)\n    root2 = TreeNode[int].from_list(root2_list)\n    implementation = solution_class()\n    return implementation.leaf_similar(root1, root2)",
+    "helpers_assert_name": "leaf_similar",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_leaf_similar, run_leaf_similar\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LeafSimilarTrees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "leaf_similar",
+                "signature": "(self, root1: TreeNode[int] | None, root2: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement leaf_similar\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_leaf_similar",
+                "signature": "(self, root1_list: list[int | None], root2_list: list[int | None], expected: bool)",
+                "parametrize": "root1_list, root2_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3,5,1,6,2,9,8,None,None,7,4],[3,5,1,6,7,4,2,None,None,None,None,None,None,9,8],True)",
+                        "([1, 2, 3], [1, 3, 2], False)",
+                        "([1], [1], True)",
+                        "([1], [2], False)",
+                        "([1, 2], [1, 2], True)",
+                        "([1, 2], [2, 1], False)",
+                        "([3,5,1,6,2,9,8,None,None,7,4],[3,5,1,6,2,9,8,None,None,7,4],True)",
+                        "([2, 2, 2, None, 2], [2, 2, 2], True)",
+                        "([0, 200, 100], [0, 100, 200], False)",
+                        "([1, 2, 3, None, 4], [3, None, 4, 2, None, None, 1], False)",
+                        "([5, 4, 3, 2], [5, 4, 2, 3], False)",
+                        "([7, 8], [7], False)",
+                        "([1, None, 2, None, 3], [1, None, 2, None, 3], True)",
+                        "([1, 2, None, 3], [1, None, 2, None, 3], True)"
+                    ]
+                },
+                "body": "        result = run_leaf_similar(Solution, root1_list, root2_list)\n        assert_leaf_similar(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_leaf_similar, assert_leaf_similar\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot1_list: list[int | None] = [3, 5, 1, 6, 2, 9, 8, None, None, 7, 4]\nroot2_list: list[int | None] = [3, 5, 1, 6, 7, 4, 2, None, None, None, None, None, None, 9, 8]\nexpected = True",
+    "playground_run": "result = run_leaf_similar(Solution, root1_list, root2_list)\nresult",
+    "playground_assert": "assert_leaf_similar(result, expected)"
+}

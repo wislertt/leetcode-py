@@ -1,0 +1,91 @@
+{
+    "problem_name": "subarray_product_less_than_k",
+    "solution_class_name": "Solution",
+    "problem_number": "713",
+    "problem_title": "Subarray Product Less Than K",
+    "difficulty": "Medium",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of integers `nums` and an integer `k`, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than `k`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [10,5,2,6], k = 100\nOutput: 8\nExplanation: The 8 subarrays that have product less than 100 are:\n[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]\nNote that [10, 5, 2] is not included as the product of 100 is not strictly less than k.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3], k = 0\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 3 * 10^4\n- 1 <= nums[i] <= 1000\n- 0 <= k <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_subarray_product_less_than_k",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_subarray_product_less_than_k(nums, k)",
+    "helpers_assert_name": "num_subarray_product_less_than_k",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_subarray_product_less_than_k, run_num_subarray_product_less_than_k\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SubarrayProductLessThanK",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_subarray_product_less_than_k",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement num_subarray_product_less_than_k\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_subarray_product_less_than_k",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([10,5,2,6], 100, 8)",
+                        "([1,2,3], 0, 0)",
+                        "([1,1,1], 1, 0)",
+                        "([1,1,1], 2, 6)",
+                        "([10,9,10,9], 90, 4)",
+                        "([1,2,3,4], 100, 10)",
+                        "([2,2,2], 8, 5)",
+                        "([1000], 1000, 0)",
+                        "([1000], 1001, 1)",
+                        "([5,5,5,5], 626, 10)",
+                        "([1], 2, 1)",
+                        "([3,3,3], 27, 5)",
+                        "([2,3,4], 25, 6)",
+                        "([50,2,1,1,1], 100, 11)",
+                        "([9,1,1,1,1,9], 10, 20)",
+                        "([4,4,4,4], 65, 9)"
+                    ]
+                },
+                "body": "        result = run_num_subarray_product_less_than_k(Solution, nums, k)\n        assert_num_subarray_product_less_than_k(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_subarray_product_less_than_k, assert_num_subarray_product_less_than_k\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [10, 5, 2, 6]\nk = 100\nexpected = 8",
+    "playground_run": "result = run_num_subarray_product_less_than_k(Solution, nums, k)\nresult",
+    "playground_assert": "assert_num_subarray_product_less_than_k(result, expected)"
+}

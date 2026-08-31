@@ -1,0 +1,91 @@
+{
+    "problem_name": "find_peak_element",
+    "solution_class_name": "Solution",
+    "problem_number": "162",
+    "problem_title": "Find Peak Element",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A peak element is an element that is strictly greater than its neighbors.\n\nGiven a **0-indexed** integer array `nums`, find a peak element, and return its index. If the array contains multiple peaks, return the index to **any of the peaks**.\n\nYou may imagine that `nums[-1] = nums[n] = -&infin;`. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.\n\nYou must write an algorithm that runs in `O(log n)` time.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,1]\nOutput: 2\nExplanation: 3 is a peak element and your function should return the index number 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,1,3,5,6,4]\nOutput: 5\nExplanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 1000\n- -2<sup>31</sup> <= nums[i] <= 2<sup>31</sup> - 1\n- `nums[i] != nums[i + 1]` for all valid `i`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_peak_element",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_peak_element(nums)",
+    "helpers_assert_name": "find_peak_element",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_peak_element, run_find_peak_element\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindPeakElement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_peak_element",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement find_peak_element\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_peak_element",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 1], 2)",
+                        "([1, 2, 1, 3, 5, 6, 4], 5)",
+                        "([1], 0)",
+                        "([1, 2], 1)",
+                        "([2, 1], 0)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([5, 4, 3, 2, 1], 0)",
+                        "([1, 3, 2, 1], 1)",
+                        "([3, 1, 2, 1, 3], 2)",
+                        "([1, 2, 1, 2, 1], 3)",
+                        "([-2147483648], 0)",
+                        "([1, 2, 3, 1, 2, 1, 4], 6)",
+                        "([10, 20, 15, 2, 23, 90, 67], 5)",
+                        "([1, 5, 1], 1)",
+                        "([3, 4, 3, 2, 1], 1)",
+                        "([6, 3, 5, 4], 2)"
+                    ]
+                },
+                "body": "        result = run_find_peak_element(Solution, nums)\n        assert_find_peak_element(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_peak_element, assert_find_peak_element\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums: list[int] = [1, 2, 3, 1]\nexpected: int = 2",
+    "playground_run": "result = run_find_peak_element(Solution, nums)\nresult",
+    "playground_assert": "assert_find_peak_element(result, expected)"
+}

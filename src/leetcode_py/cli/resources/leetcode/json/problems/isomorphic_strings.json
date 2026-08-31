@@ -1,0 +1,95 @@
+{
+    "problem_name": "isomorphic_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "205",
+    "problem_title": "Isomorphic Strings",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two strings `s` and `t`, determine if they are isomorphic.\n\nTwo strings `s` and `t` are isomorphic if the characters in `s` can be replaced to get `t`.\n\nAll occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"egg\", t = \"add\"\nOutput: true\nExplanation: The strings s and t can be made identical by:\n- Mapping 'e' to 'a'.\n- Mapping 'g' to 'd'.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"f11\", t = \"b23\"\nOutput: false\nExplanation: The strings s and t can not be made identical as '1' needs to be mapped to both '2' and '3'.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"paper\", t = \"title\"\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 5 * 10^4\n- t.length == s.length\n- s and t consist of any valid ascii character.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_isomorphic",
+    "helpers_run_signature": "(solution_class: type, s: str, t: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_isomorphic(s, t)",
+    "helpers_assert_name": "is_isomorphic",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_isomorphic, run_is_isomorphic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IsomorphicStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_isomorphic",
+                "signature": "(self, s: str, t: str) -> bool",
+                "body": "        # TODO: Implement is_isomorphic\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_isomorphic",
+                "signature": "(self, s: str, t: str, expected: bool)",
+                "parametrize": "s, t, expected",
+                "test_cases": {
+                    "list": [
+                        "('egg', 'add', True)",
+                        "('foo', 'bar', False)",
+                        "('paper', 'title', True)",
+                        "('f11', 'b23', False)",
+                        "('badc', 'baba', False)",
+                        "('ab', 'aa', False)",
+                        "('aa', 'ab', False)",
+                        "('a', 'a', True)",
+                        "('a', 'b', True)",
+                        "('ab', 'ca', True)",
+                        "('abc', 'def', True)",
+                        "('aa', 'aa', True)",
+                        "('abab', 'baba', True)",
+                        "('abab', 'cdcd', True)",
+                        "('egg', 'edd', True)",
+                        "('abcd', 'abab', False)",
+                        "('13', '42', True)",
+                        "('!!', '?!', False)"
+                    ]
+                },
+                "body": "        result = run_is_isomorphic(Solution, s, t)\n        assert_is_isomorphic(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_isomorphic, assert_is_isomorphic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'egg'\nt = 'add'\nexpected = True",
+    "playground_run": "result = run_is_isomorphic(Solution, s, t)\nresult",
+    "playground_assert": "assert_is_isomorphic(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "zigzag_iterator",
+    "solution_class_name": "ZigzagIterator",
+    "problem_number": "281",
+    "problem_title": "Zigzag Iterator",
+    "difficulty": "Medium",
+    "topics": "Design, Queue, Array, Iterator",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two vectors of integers `v1` and `v2`, implement an iterator to return their elements alternately.\n\nImplement the `ZigzagIterator` class:\n\n- `ZigzagIterator(List<int> v1, List<int> v2)` initializes the object with the two vectors `v1` and `v2`.\n- `boolean hasNext()` returns `true` if the iterator still has elements, and `false` otherwise.\n- `int next()` returns the current element of the iterator and moves the iterator to the next element.\n\n**Follow up:** What if you are given `k` vectors? How well can your code be extended to such cases?",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: v1 = [1,2], v2 = [3,4,5,6]\nOutput: [1,3,2,4,5,6]\nExplanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,3,2,4,5,6].\n```"
+            },
+            {
+                "content": "```\nInput: v1 = [1], v2 = []\nOutput: [1]\n```"
+            },
+            {
+                "content": "```\nInput: v1 = [], v2 = [1]\nOutput: [1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= v1.length, v2.length <= 1000`\n- `1 <= v1.length + v2.length <= 2000`\n- `-10^9 <= v1[i], v2[i] <= 10^9`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "zigzag_iterator",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    iterator = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'ZigzagIterator':\n            iterator = solution_class(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'next' and iterator is not None:\n            results.append(iterator.next())\n        elif op == 'has_next' and iterator is not None:\n            results.append(iterator.has_next())\n    return results, iterator",
+    "helpers_assert_name": "zigzag_iterator",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_zigzag_iterator, run_zigzag_iterator\nfrom .solution import ZigzagIterator",
+    "test_content": "",
+    "test_class_name": "ZigzagIteratorTest",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, v1: list[int], v2: list[int]) -> None",
+                "body": "        # TODO: Initialize zigzag iterator\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement next\n        return 0"
+            },
+            {
+                "name": "has_next",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement has_next\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_zigzag_iterator",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['ZigzagIterator','next','has_next','next','next','next','has_next','next','has_next'],[[[1,2],[3,4,5,6]],[],[],[],[],[],[],[],[]],[None,1,True,3,2,4,True,5,True])",
+                        "(['ZigzagIterator','next','has_next'],[[[1],[]],[],[]],[None,1,False])",
+                        "(['ZigzagIterator','next','has_next'],[[[],[1]],[],[]],[None,1,False])",
+                        "(['ZigzagIterator','has_next'],[[[],[]],[]],[None,False])",
+                        "(['ZigzagIterator','next','next','next','has_next'],[[[1,2,3],[]],[],[],[],[]],[None,1,2,3,False])",
+                        "(['ZigzagIterator','next','next','next','has_next'],[[[],[7,8,9]],[],[],[]],[None,7,8,9,False])",
+                        "(['ZigzagIterator','next','next','next','next','has_next'],[[[1,2,3],[4]],[],[],[],[],[]],[None,1,4,2,3,False])",
+                        "(['ZigzagIterator','next','next','next','next','has_next'],[[[1],[2,3,4]],[],[],[],[],[]],[None,1,2,3,4,False])",
+                        "(['ZigzagIterator','next','next','next','has_next'],[[[1,2],[3]],[],[],[],[]],[None,1,3,2,False])",
+                        "(['ZigzagIterator','next','next','next','next','next','has_next'],[[[1,1,1],[2,2]],[],[],[],[],[],[]],[None,1,2,1,2,1,False])",
+                        "(['ZigzagIterator','next','next','next','next','next','next','has_next'],[[[10,20,30,40],[50,60]],[],[],[],[],[],[],[]],[None,10,50,20,60,30,40,False])",
+                        "(['ZigzagIterator','next','next','has_next'],[[[5],[6]],[],[],[]],[None,5,6,False])",
+                        "(['ZigzagIterator','next','next','next','next','next','next','next','next','has_next'],[[[1,2,3,4],[5,6,7,8]],[],[],[],[],[],[],[],[],[]],[None,1,5,2,6,3,7,4,8,False])"
+                    ]
+                },
+                "body": "        result, _ = run_zigzag_iterator(ZigzagIterator, operations, inputs)\n        assert_zigzag_iterator(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_zigzag_iterator, assert_zigzag_iterator\nfrom solution import ZigzagIterator",
+    "playground_setup": "# Example test case\noperations = ['ZigzagIterator', 'next', 'next', 'next', 'next', 'next', 'next', 'has_next']\ninputs = [[[1, 2], [3, 4, 5, 6]], [], [], [], [], [], [], []]\nexpected = [None, 1, 3, 2, 4, 5, 6, False]",
+    "playground_run": "result, iterator = run_zigzag_iterator(ZigzagIterator, operations, inputs)\nprint(result)\niterator",
+    "playground_assert": "assert_zigzag_iterator(result, expected)"
+}

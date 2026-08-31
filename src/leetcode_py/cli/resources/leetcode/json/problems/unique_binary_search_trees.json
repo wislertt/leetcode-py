@@ -1,0 +1,94 @@
+{
+    "problem_name": "unique_binary_search_trees",
+    "solution_class_name": "Solution",
+    "problem_number": "96",
+    "problem_title": "Unique Binary Search Trees",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Tree, Binary Search Tree, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, return *the number of structurally unique **BST's** (binary search trees) which has exactly `n` nodes of unique values from `1` to `n`*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/18/uniquebstn3.jpg)\n\n```\nInput: n = 3\nOutput: 5\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 19`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_trees",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_trees(n)",
+    "helpers_assert_name": "num_trees",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_trees, run_num_trees\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UniqueBinarySearchTrees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_trees",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement num_trees\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_trees",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 5)",
+                        "(4, 14)",
+                        "(5, 42)",
+                        "(6, 132)",
+                        "(7, 429)",
+                        "(8, 1430)",
+                        "(9, 4862)",
+                        "(10, 16796)",
+                        "(11, 58786)",
+                        "(12, 208012)",
+                        "(13, 742900)",
+                        "(14, 2674440)",
+                        "(15, 9694845)",
+                        "(16, 35357670)",
+                        "(17, 129644790)",
+                        "(18, 477638700)",
+                        "(19, 1767263190)"
+                    ]
+                },
+                "body": "        result = run_num_trees(Solution, n)\n        assert_num_trees(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_trees, assert_num_trees\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = 5",
+    "playground_run": "result = run_num_trees(Solution, n)\nresult",
+    "playground_assert": "assert_num_trees(result, expected)"
+}

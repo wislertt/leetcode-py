@@ -1,0 +1,90 @@
+{
+    "problem_name": "smallest_rectangle_enclosing_black_pixels",
+    "solution_class_name": "Solution",
+    "problem_number": "302",
+    "problem_title": "Smallest Rectangle Enclosing Black Pixels",
+    "difficulty": "Hard",
+    "topics": "Depth-First Search, Breadth-First Search, Array, Binary Search, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `m x n` binary matrix `image` where `0` represents a white pixel and `1` represents a black pixel.\n\nThe black pixels are connected (i.e., there is only one black region). Pixels are connected horizontally and vertically.\n\nGiven two integers `x` and `y` that represents the location of one of the black pixels, return *the area of the smallest (axis-aligned) rectangle that encloses all black pixels*.\n\nYou must write an algorithm with less than `O(mn)` runtime complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0302.Smallest%20Rectangle%20Enclosing%20Black%20Pixels/images/pixel-grid.jpg)\n\n```\nInput: image = [[\"0010\"],[\"0110\"],[\"0100\"]], x = 0, y = 2\nOutput: 6\n```"
+            },
+            {
+                "content": "```\nInput: image = [[\"1\"]], x = 0, y = 0\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == image.length`\n- `n == image[i].length`\n- `1 <= m, n <= 100`\n- `image[i][j]` is either `'0'` or `'1'`.\n- `0 <= x < m`\n- `0 <= y < n`\n- `image[x][y] == '1'`.\n- The black pixels in the `image` only form **one component**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_area",
+    "helpers_run_signature": "(solution_class: type, image: list[list[str]], x: int, y: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_area(image, x, y)",
+    "helpers_assert_name": "min_area",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_area, run_min_area\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SmallestRectangleEnclosingBlackPixels",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_area",
+                "signature": "(self, image: list[list[str]], x: int, y: int) -> int",
+                "body": "        # TODO: Implement min_area\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_area",
+                "signature": "(self, image: list[list[str]], x: int, y: int, expected: int)",
+                "parametrize": "image, x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "([['0','0','1','0'],['0','1','1','0'],['0','1','0','0']], 0, 2, 6)",
+                        "([['1']], 0, 0, 1)",
+                        "([['1','1','1']], 0, 1, 3)",
+                        "([['1'],['1'],['1']], 1, 0, 3)",
+                        "([['1','1'],['1','1']], 0, 0, 4)",
+                        "([['0','0'],['1','0']], 1, 0, 1)",
+                        "([['0','0','0'],['0','1','0']], 1, 1, 1)",
+                        "([['1','0','0'],['1','1','0'],['1','1','1']], 2, 2, 9)",
+                        "([['0','1','0'],['0','1','0']], 0, 1, 2)",
+                        "([['0','0','0','0'],['0','1','1','0'],['0','1','1','0'],['0','0','0','0']], 1, 1, 4)",
+                        "([['1','1','1','1','1']], 0, 3, 5)",
+                        "([['0','1'],['0','1'],['0','1'],['0','1']], 3, 1, 4)",
+                        "([['0','0'],['0','1']], 1, 1, 1)",
+                        "([['1','1','0','0'],['1','1','0','0'],['0','0','0','0'],['0','0','0','0']], 0, 0, 4)",
+                        "([['0','0','1'],['0','1','1']], 0, 2, 4)"
+                    ]
+                },
+                "body": "        result = run_min_area(Solution, image, x, y)\n        assert_min_area(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_area, assert_min_area\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nimage = [['0','0','1','0'],['0','1','1','0'],['0','1','0','0']]\nx = 0\ny = 2\nexpected = 6",
+    "playground_run": "result = run_min_area(Solution, image, x, y)\nresult",
+    "playground_assert": "assert_min_area(result, expected)"
+}

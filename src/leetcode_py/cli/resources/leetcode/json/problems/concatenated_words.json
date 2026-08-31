@@ -1,0 +1,89 @@
+{
+    "problem_name": "concatenated_words",
+    "solution_class_name": "Solution",
+    "problem_number": "472",
+    "problem_title": "Concatenated Words",
+    "difficulty": "Hard",
+    "topics": "Array, String, Dynamic Programming, Depth-First Search, Trie",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `words` (**without duplicates**), return *all the **concatenated words** in the given list of* `words`.\n\nA **concatenated word** is defined as a string that is comprised entirely of **at least two shorter words (not necessarily distinct)** in the given array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"cat\",\"cats\",\"catsdogcats\",\"dog\",\"dogcatsdog\",\"hippopotamuses\",\"rat\",\"ratcatdogcat\"]\nOutput: [\"catsdogcats\",\"dogcatsdog\",\"ratcatdogcat\"]\nExplanation: \"catsdogcats\" can be concatenated by \"cats\", \"dog\" and \"cats\";\n\"dogcatsdog\" can be concatenated by \"dog\", \"cats\" and \"dog\";\n\"ratcatdogcat\" can be concatenated by \"rat\", \"cat\", \"dog\" and \"cat\".\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"cat\",\"dog\",\"catdog\"]\nOutput: [\"catdog\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 10^4`\n- `1 <= words[i].length <= 30`\n- `words[i]` consists of only lowercase English letters.\n- All the strings of `words` are unique.\n- `1 <= sum(words[i].length) <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_all_concatenated_words_in_a_dict",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_all_concatenated_words_in_a_dict(words)",
+    "helpers_assert_name": "find_all_concatenated_words_in_a_dict",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_all_concatenated_words_in_a_dict, run_find_all_concatenated_words_in_a_dict\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConcatenatedWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_all_concatenated_words_in_a_dict",
+                "signature": "(self, words: list[str]) -> list[str]",
+                "body": "        # TODO: Implement find_all_concatenated_words_in_a_dict\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_all_concatenated_words_in_a_dict",
+                "signature": "(self, words: list[str], expected: list[str])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['cat', 'cats', 'catsdogcats', 'dog', 'dogcatsdog', 'hippopotamuses', 'rat', 'ratcatdogcat'], ['catsdogcats', 'dogcatsdog', 'ratcatdogcat'])",
+                        "(['cat', 'dog', 'catdog'], ['catdog'])",
+                        "(['a', 'aa', 'aaa', 'aaaa'], ['aa', 'aaa', 'aaaa'])",
+                        "(['a'], [])",
+                        "(['ab'], [])",
+                        "(['a', 'b', 'ab'], ['ab'])",
+                        "(['a', 'ab', 'abc', 'abcabc'], ['abcabc'])",
+                        "(['x', 'xx', 'xxx', 'xxxxx'], ['xx', 'xxx', 'xxxxx'])",
+                        "(['me', 'mo', 'memo', 'memome'], ['memo', 'memome'])",
+                        "(['to', 'get', 'her', 'together'], ['together'])",
+                        "(['dog', 'cat', 'dogcatcat'], ['dogcatcat'])",
+                        "(['aa', 'aaaa', 'aaaaaa'], ['aaaa', 'aaaaaa'])",
+                        "(['a', 'aa', 'aaa'], ['aa', 'aaa'])",
+                        "(['hi', 'hifi', 'hifihifi'], ['hifihifi'])"
+                    ]
+                },
+                "body": "        result = run_find_all_concatenated_words_in_a_dict(Solution, words)\n        assert_find_all_concatenated_words_in_a_dict(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_all_concatenated_words_in_a_dict, assert_find_all_concatenated_words_in_a_dict\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['cat', 'cats', 'catsdogcats', 'dog', 'dogcatsdog', 'hippopotamuses', 'rat', 'ratcatdogcat']\nexpected = ['catsdogcats', 'dogcatsdog', 'ratcatdogcat']",
+    "playground_run": "result = run_find_all_concatenated_words_in_a_dict(Solution, words)\nresult",
+    "playground_assert": "assert_find_all_concatenated_words_in_a_dict(result, expected)"
+}

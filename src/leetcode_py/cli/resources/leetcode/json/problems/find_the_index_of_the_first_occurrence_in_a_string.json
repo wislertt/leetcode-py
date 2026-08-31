@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_the_index_of_the_first_occurrence_in_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "28",
+    "problem_title": "Find the Index of the First Occurrence in a String",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String, String Matching",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two strings `needle` and `haystack`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: haystack = \"sadbutsad\", needle = \"sad\"\nOutput: 0\nExplanation: \"sad\" occurs at index 0 and 6.\nThe first occurrence is at index 0, so we return 0.\n```"
+            },
+            {
+                "content": "```\nInput: haystack = \"leetcode\", needle = \"leeto\"\nOutput: -1\nExplanation: \"leeto\" did not occur in \"leetcode\", so we return -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= haystack.length, needle.length <= 10^4\n- haystack and needle consist of only lowercase English characters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "str_str",
+    "helpers_run_signature": "(solution_class: type, haystack: str, needle: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.str_str(haystack, needle)",
+    "helpers_assert_name": "str_str",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_str_str, run_str_str\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindIndexOfFirstOccurrenceInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "str_str",
+                "signature": "(self, haystack: str, needle: str) -> int",
+                "body": "        # TODO: Implement str_str\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_str_str",
+                "signature": "(self, haystack: str, needle: str, expected: int)",
+                "parametrize": "haystack, needle, expected",
+                "test_cases": {
+                    "list": [
+                        "('sadbutsad', 'sad', 0)",
+                        "('leetcode', 'leeto', -1)",
+                        "('hello', 'll', 2)",
+                        "('aaaaa', 'bba', -1)",
+                        "('a', 'a', 0)",
+                        "('abc', 'c', 2)",
+                        "('abc', 'abc', 0)",
+                        "('abcd', 'cd', 2)",
+                        "('mississippi', 'issip', 4)",
+                        "('mississippi', 'issipi', -1)",
+                        "('aaabaaab', 'abaa', 2)",
+                        "('abcdefg', 'defg', 3)",
+                        "('baab', 'ab', 2)",
+                        "('xxxxxyz', 'xyz', 4)",
+                        "('mississippi', 'sippi', 6)",
+                        "('abc', 'abcd', -1)",
+                        "('aaa', 'aaaa', -1)",
+                        "('pitipity', 'ity', 5)"
+                    ]
+                },
+                "body": "        result = run_str_str(Solution, haystack, needle)\n        assert_str_str(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_str_str, assert_str_str\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nhaystack = 'sadbutsad'\nneedle = 'sad'\nexpected = 0",
+    "playground_run": "result = run_str_str(Solution, haystack, needle)\nresult",
+    "playground_assert": "assert_str_str(result, expected)"
+}

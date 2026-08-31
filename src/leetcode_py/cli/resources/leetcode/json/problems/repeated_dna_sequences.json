@@ -1,0 +1,92 @@
+{
+    "problem_name": "repeated_dna_sequences",
+    "solution_class_name": "Solution",
+    "problem_number": "187",
+    "problem_title": "Repeated DNA Sequences",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Bit Manipulation, Sliding Window, Rolling Hash, Hash Function",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "The **DNA sequence** is composed of a series of nucleotides abbreviated as `'A'`, `'C'`, `'G'`, and `'T'`.\n\n- For example, `\"ACGAATTCCG\"` is a **DNA sequence**.\n\nWhen studying **DNA**, it is useful to identify repeated sequences within the DNA.\n\nGiven a string `s` that represents a DNA sequence, return all the **10-letter-long sequences** (substrings) that occur more than once in a DNA molecule. You may return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT\"\nOutput: [\"AAAAACCCCC\",\"CCCCCAAAAA\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"AAAAAAAAAAAAA\"\nOutput: [\"AAAAAAAAAA\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10<sup>5</sup>\n- `s[i]` is either `'A'`, `'C'`, `'G'`, or `'T'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "repeated_dna_sequences",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.repeated_dna_sequences(s)",
+    "helpers_assert_name": "repeated_dna_sequences",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_repeated_dna_sequences, run_repeated_dna_sequences\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RepeatedDNASequences",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "repeated_dna_sequences",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement repeated_dna_sequences\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_repeated_dna_sequences",
+                "signature": "(self, s: str, expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT', ['AAAAACCCCC', 'CCCCCAAAAA'])",
+                        "('AAAAAAAAAAAAA', ['AAAAAAAAAA'])",
+                        "('A', [])",
+                        "('AAAAAAAAAA', [])",
+                        "('AAAAAAAAAAA', ['AAAAAAAAAA'])",
+                        "('ACGTACGTAC', [])",
+                        "('ACGTACGTACGTA', [])",
+                        "('AAAAAGGGGGAAAAAGGGGG', ['AAAAAGGGGG'])",
+                        "('CCCCCCCCCCC', ['CCCCCCCCCC'])",
+                        "('ACACACACACACACACACAC', ['ACACACACAC', 'CACACACACA'])",
+                        "('GGGGGGGGGGGGGG', ['GGGGGGGGGG'])",
+                        "('AAGTCCGTTAAGTCCGTT', [])",
+                        "('TTTTTTTTTTTTTTTTTTTT', ['TTTTTTTTTT'])",
+                        "('CATGGCATGGCATGG', ['CATGGCATGG'])",
+                        "('GATTACAGATTACAGATTACA', ['ACAGATTACA', 'ATTACAGATT', 'GATTACAGAT', 'TACAGATTAC', 'TTACAGATTA'])",
+                        "('ACGTACGTACGTACGTACGT', ['ACGTACGTAC', 'CGTACGTACG', 'GTACGTACGT', 'TACGTACGTA'])",
+                        "('TAAAAATTTTTAAAAATTTTT', ['AAAAATTTTT', 'TAAAAATTTT'])"
+                    ]
+                },
+                "body": "        result = run_repeated_dna_sequences(Solution, s)\n        assert_repeated_dna_sequences(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_repeated_dna_sequences, assert_repeated_dna_sequences\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns: str = 'AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT'\nexpected: list[str] = ['AAAAACCCCC', 'CCCCCAAAAA']",
+    "playground_run": "result = run_repeated_dna_sequences(Solution, s)\nresult",
+    "playground_assert": "assert_repeated_dna_sequences(result, expected)"
+}

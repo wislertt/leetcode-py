@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_pivot_index",
+    "solution_class_name": "Solution",
+    "problem_number": "724",
+    "problem_title": "Find Pivot Index",
+    "difficulty": "Easy",
+    "topics": "Array, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of integers `nums`, calculate the pivot index of this array.\n\nThe pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.\n\nIf the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.\n\nReturn the leftmost pivot index. If no such index exists, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,7,3,6,5,6]\nOutput: 3\nExplanation:\nThe pivot index is 3.\nLeft sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11\nRight sum = nums[4] + nums[5] = 5 + 6 = 11\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3]\nOutput: -1\nExplanation:\nThere is no index that satisfies the conditions in the problem statement.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,1,-1]\nOutput: 0\nExplanation:\nThe pivot index is 0.\nLeft sum = 0 (no elements to the left of index 0)\nRight sum = nums[1] + nums[2] = 1 + -1 = 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^4\n- -1000 <= nums[i] <= 1000",
+    "readme_additional": "**Note:** This question is the same as 1991: [Find the Middle Index in Array](https://leetcode.com/problems/find-the-middle-index-in-array/)",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "pivot_index",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.pivot_index(nums)",
+    "helpers_assert_name": "pivot_index",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pivot_index, run_pivot_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindPivotIndex",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pivot_index",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement pivot_index\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pivot_index",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,7,3,6,5,6], 3)",
+                        "([1,2,3], -1)",
+                        "([2,1,-1], 0)",
+                        "([1], 0)",
+                        "([0], 0)",
+                        "([-1,-1,-1,-1,-1], 2)",
+                        "([1,0], 0)",
+                        "([0,0,0], 0)",
+                        "([-1,1], -1)",
+                        "([1,-1,1], 0)",
+                        "([10,0,10], 1)",
+                        "([2,3,5,1,4,3,2], -1)",
+                        "([100,-100,100], 0)",
+                        "([1,100,1], 1)",
+                        "([5,5,5,5,5,5], -1)"
+                    ]
+                },
+                "body": "        result = run_pivot_index(Solution, nums)\n        assert_pivot_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_pivot_index, assert_pivot_index\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 7, 3, 6, 5, 6]\nexpected = 3",
+    "playground_run": "result = run_pivot_index(Solution, nums)\nresult",
+    "playground_assert": "assert_pivot_index(result, expected)"
+}

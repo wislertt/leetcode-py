@@ -1,0 +1,88 @@
+{
+    "problem_name": "intersection_of_two_arrays",
+    "solution_class_name": "Solution",
+    "problem_number": "349",
+    "problem_title": "Intersection of Two Arrays",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Two Pointers, Binary Search, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two integer arrays `nums1` and `nums2`, return an array of their intersection. Each element in the result must be **unique** and you may return the result in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums1 = [1,2,2,1], nums2 = [2,2]\nOutput: [2]\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [4,9,5], nums2 = [9,4,9,8,4]\nOutput: [9,4]\nExplanation: [4,9] is also accepted.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums1.length, nums2.length <= 1000\n- 0 <= nums1[i], nums2[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "intersection",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.intersection(nums1, nums2)",
+    "helpers_assert_name": "intersection",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_intersection, run_intersection\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntersectionOfTwoArrays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "intersection",
+                "signature": "(self, nums1: list[int], nums2: list[int]) -> list[int]",
+                "body": "        # TODO: Implement intersection\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_intersection",
+                "signature": "(self, nums1: list[int], nums2: list[int], expected: list[int])",
+                "parametrize": "nums1, nums2, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 2, 1], [2, 2], [2])",
+                        "([4, 9, 5], [9, 4, 9, 8, 4], [4, 9])",
+                        "([1], [1], [1])",
+                        "([1], [2], [])",
+                        "([0, 0, 0], [0, 0], [0])",
+                        "([1, 2, 3], [4, 5, 6], [])",
+                        "([1, 2, 3, 4, 5], [5, 4, 3, 2, 1], [1, 2, 3, 4, 5])",
+                        "([7, 8, 9, 10], [10, 9, 8, 7, 6, 5], [7, 8, 9, 10])",
+                        "([1000, 999, 998], [998, 999, 1000, 1], [998, 999, 1000])",
+                        "([1, 1, 1, 1], [1, 1, 1, 1], [1])",
+                        "([2, 4, 6, 8], [1, 3, 5, 7, 9], [])",
+                        "([3, 3, 5, 7, 9], [7, 5, 3, 3], [3, 5, 7])",
+                        "([0, 1000], [1000, 0], [0, 1000])"
+                    ]
+                },
+                "body": "        result = run_intersection(Solution, nums1, nums2)\n        assert_intersection(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_intersection, assert_intersection\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums1 = [4, 9, 5]\nnums2 = [9, 4, 9, 8, 4]\nexpected = [4, 9]",
+    "playground_run": "result = run_intersection(Solution, nums1, nums2)\nresult",
+    "playground_assert": "assert_intersection(result, expected)"
+}

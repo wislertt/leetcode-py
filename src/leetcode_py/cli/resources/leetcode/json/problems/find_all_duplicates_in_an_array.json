@@ -1,0 +1,98 @@
+{
+    "problem_name": "find_all_duplicates_in_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "442",
+    "problem_title": "Find All Duplicates in an Array",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums` of length `n` where all the integers of `nums` are in the range `[1, n]` and each integer appears **at most** **twice**, return *an array of all the integers that appears **twice***.\n\nYou must write an algorithm that runs in `O(n)` time and uses only *constant* auxiliary space, excluding the space needed to store the output",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,3,2,7,8,2,3,1]\nOutput: [2,3]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,1,2]\nOutput: [1]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1]\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == nums.length`\n- `1 <= n <= 10^5`\n- `1 <= nums[i] <= n`\n- Each element in `nums` appears **once** or **twice**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_duplicates",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_duplicates(nums)",
+    "helpers_assert_name": "find_duplicates",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # order of the duplicates does not matter\n    assert sorted(result) == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_duplicates, run_find_duplicates\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindAllDuplicatesInAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_duplicates",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement find_duplicates\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_duplicates",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 3, 2, 7, 8, 2, 3, 1], [2, 3])",
+                        "([1, 1, 2], [1])",
+                        "([1], [])",
+                        "([2, 2], [2])",
+                        "([1, 2, 3, 4, 5], [])",
+                        "([1, 1], [1])",
+                        "([5, 4, 3, 2, 1], [])",
+                        "([2, 1, 2, 1], [1, 2])",
+                        "([3, 1, 2, 3], [3])",
+                        "([1, 2, 1, 2], [1, 2])",
+                        "([1, 2, 2, 1], [1, 2])",
+                        "([4, 1, 3, 4, 2, 2], [2, 4])",
+                        "([5, 5, 4, 4, 3, 3, 2, 2, 1, 1], [1, 2, 3, 4, 5])",
+                        "([2, 2, 1], [2])",
+                        "([1, 3, 2, 3], [3])",
+                        "([6, 5, 4, 3, 2, 1, 6], [6])",
+                        "([2, 3, 2, 4, 3], [2, 3])",
+                        "([1, 4, 4, 1, 2, 3], [1, 4])",
+                        "([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [])",
+                        "([1, 1, 2, 2, 3, 3, 4, 4], [1, 2, 3, 4])"
+                    ]
+                },
+                "body": "        result = run_find_duplicates(Solution, nums)\n        assert_find_duplicates(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_duplicates, assert_find_duplicates\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 3, 2, 7, 8, 2, 3, 1]\nexpected = [2, 3]",
+    "playground_run": "result = run_find_duplicates(Solution, nums)\nresult",
+    "playground_assert": "assert_find_duplicates(result, expected)"
+}

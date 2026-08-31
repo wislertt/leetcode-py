@@ -1,0 +1,96 @@
+{
+    "problem_name": "strobogrammatic_number",
+    "solution_class_name": "Solution",
+    "problem_number": "246",
+    "problem_title": "Strobogrammatic Number",
+    "difficulty": "Easy",
+    "topics": "Hash Table, Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `num` which represents an integer, return `true` *if* `num` *is a **strobogrammatic number***.\n\nA **strobogrammatic number** is a number that looks the same when rotated `180` degrees (looked at upside down).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = \"69\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: num = \"88\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: num = \"962\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num.length <= 50`\n- `num` consists of only digits.\n- `num` does not contain any leading zeros except for zero itself.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_strobogrammatic",
+    "helpers_run_signature": "(solution_class: type, num: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_strobogrammatic(num)",
+    "helpers_assert_name": "is_strobogrammatic",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_strobogrammatic, run_is_strobogrammatic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StrobogrammaticNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_strobogrammatic",
+                "signature": "(self, num: str) -> bool",
+                "body": "        # TODO: Implement is_strobogrammatic\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_strobogrammatic",
+                "signature": "(self, num: str, expected: bool)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "('69', True)",
+                        "('88', True)",
+                        "('962', False)",
+                        "('0', True)",
+                        "('1', True)",
+                        "('8', True)",
+                        "('2', False)",
+                        "('5', False)",
+                        "('6', False)",
+                        "('9', False)",
+                        "('11', True)",
+                        "('96', True)",
+                        "('619', True)",
+                        "('689', True)",
+                        "('1001', True)",
+                        "('25', False)",
+                        "('818', True)",
+                        "('9006', True)"
+                    ]
+                },
+                "body": "        result = run_is_strobogrammatic(Solution, num)\n        assert_is_strobogrammatic(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_strobogrammatic, assert_is_strobogrammatic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = '69'\nexpected = True",
+    "playground_run": "result = run_is_strobogrammatic(Solution, num)\nresult",
+    "playground_assert": "assert_is_strobogrammatic(result, expected)"
+}

@@ -1,0 +1,110 @@
+{
+    "problem_name": "integer_to_english_words",
+    "solution_class_name": "Solution",
+    "problem_number": "273",
+    "problem_title": "Integer to English Words",
+    "difficulty": "Hard",
+    "topics": "Math, String, Recursion",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Convert a non-negative integer `num` to its English words representation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 123\nOutput: 'One Hundred Twenty Three'\n```"
+            },
+            {
+                "content": "```\nInput: num = 12345\nOutput: 'Twelve Thousand Three Hundred Forty Five'\n```"
+            },
+            {
+                "content": "```\nInput: num = 1234567\nOutput: 'One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven'\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= num <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "number_to_words",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.number_to_words(num)",
+    "helpers_assert_name": "number_to_words",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_number_to_words, run_number_to_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntegerToEnglishWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "number_to_words",
+                "signature": "(self, num: int) -> str",
+                "body": "        # TODO: Implement number_to_words\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_number_to_words",
+                "signature": "(self, num: int, expected: str)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 'Zero')",
+                        "(1, 'One')",
+                        "(10, 'Ten')",
+                        "(11, 'Eleven')",
+                        "(13, 'Thirteen')",
+                        "(20, 'Twenty')",
+                        "(21, 'Twenty One')",
+                        "(38, 'Thirty Eight')",
+                        "(85, 'Eighty Five')",
+                        "(99, 'Ninety Nine')",
+                        "(100, 'One Hundred')",
+                        "(105, 'One Hundred Five')",
+                        "(115, 'One Hundred Fifteen')",
+                        "(123, 'One Hundred Twenty Three')",
+                        "(678, 'Six Hundred Seventy Eight')",
+                        "(999, 'Nine Hundred Ninety Nine')",
+                        "(1000, 'One Thousand')",
+                        "(1001, 'One Thousand One')",
+                        "(1010, 'One Thousand Ten')",
+                        "(1100, 'One Thousand One Hundred')",
+                        "(1234, 'One Thousand Two Hundred Thirty Four')",
+                        "(2345, 'Two Thousand Three Hundred Forty Five')",
+                        "(10000, 'Ten Thousand')",
+                        "(10001, 'Ten Thousand One')",
+                        "(12345, 'Twelve Thousand Three Hundred Forty Five')",
+                        "(1000000, 'One Million')",
+                        "(1000001, 'One Million One')",
+                        "(1234567, 'One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven')",
+                        "(100000000, 'One Hundred Million')",
+                        "(1000000000, 'One Billion')",
+                        "(1000000001, 'One Billion One')",
+                        "(1000010000, 'One Billion Ten Thousand')"
+                    ]
+                },
+                "body": "        result = run_number_to_words(Solution, num)\n        assert_number_to_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_number_to_words, assert_number_to_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 1234567\nexpected = 'One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven'",
+    "playground_run": "result = run_number_to_words(Solution, num)\nresult",
+    "playground_assert": "assert_number_to_words(result, expected)"
+}

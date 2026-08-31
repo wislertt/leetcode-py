@@ -1,0 +1,27 @@
+---
+title: "Visualizations Show ASCII Instead of Diagrams"
+sidebarTitle: ASCII diagrams
+description: "Data structure visualizations print as ASCII text instead of diagrams when the system Graphviz binary is missing. Install Graphviz and restart the terminal."
+---
+
+No error is raised. Visualization objects print as ASCII fallback text
+instead of rendered diagrams, which means the system Graphviz binary is
+missing. The Python package alone is not enough: rendering shells out to
+the `dot` executable.
+
+## Fix
+
+Install Graphviz for your platform
+([download guide](https://graphviz.org/download/)):
+
+```bash
+brew install graphviz      # macOS
+sudo apt install graphviz  # Debian/Ubuntu
+```
+
+Restart the terminal afterwards so the new binary is on `PATH`, then
+re-run the notebook or script. What the rendered output looks like is
+shown in [Visualizations](/practice/visualizations).
+
+Not this problem? Every fix lives on
+[Troubleshooting](/troubleshooting).

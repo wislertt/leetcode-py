@@ -1,0 +1,87 @@
+{
+    "problem_name": "flatten_2d_vector",
+    "solution_class_name": "Vector2D",
+    "problem_number": "251",
+    "problem_title": "Flatten 2D Vector",
+    "difficulty": "Medium",
+    "topics": "Design, Array, Two Pointers, Iterator",
+    "readme_description": "Design an iterator to flatten a 2D vector. It should support the `next` and `hasNext` operations.\n\nImplement the `Vector2D` class:\n\n- `Vector2D(int[][] vec)` initializes the object with the 2D vector `vec`.\n- `next()` returns the next element from the 2D vector and moves the pointer one step forward. You may assume that all the calls to `next` are valid.\n- `hasNext()` returns `true` if there are still some elements in the vector, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Vector2D\", \"next\", \"next\", \"next\", \"hasNext\", \"hasNext\", \"next\", \"hasNext\"]\n[[[[1, 2], [3], [4]]], [], [], [], [], [], [], []]\nOutput\n[null, 1, 2, 3, true, true, 4, false]\n\nExplanation\nVector2D vector2D = new Vector2D([[1, 2], [3], [4]]);\nvector2D.next();    // return 1\nvector2D.next();    // return 2\nvector2D.next();    // return 3\nvector2D.hasNext(); // return True\nvector2D.hasNext(); // return True\nvector2D.next();    // return 4\nvector2D.hasNext(); // return False\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= vec.length <= 200`\n- `0 <= vec[i].length <= 500`\n- `-500 <= vec[i][j] <= 500`\n- At most `10^5` calls will be made to `next` and `hasNext`.",
+    "readme_additional": "**Follow up:** As an added challenge, try to code it using only iterators in C++ or iterators in Java.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "flatten_2d_vector",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    iterator = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Vector2D':\n            iterator = solution_class(inputs[i])\n            results.append(None)\n        elif op == 'next' and iterator is not None:\n            results.append(iterator.next())\n        elif op == 'has_next' and iterator is not None:\n            results.append(iterator.has_next())\n    return results, iterator",
+    "helpers_assert_name": "flatten_2d_vector",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flatten_2d_vector, run_flatten_2d_vector\nfrom .solution import Vector2D",
+    "test_content": "",
+    "test_class_name": "Flatten2DVector",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, vec: list[list[int]]) -> None",
+                "body": "        # TODO: Initialize the iterator\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement next\n        return 0"
+            },
+            {
+                "name": "has_next",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement has_next\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flatten_2d_vector",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Vector2D', 'next', 'has_next'], [[[1]], [], []], [None, 1, False])",
+                        "(['Vector2D','next','next','has_next'],[[[1,2]],[],[],[]],[None,1,2,False])",
+                        "(['Vector2D','next','has_next','next'],[[[1],[2]],[],[],[]],[None,1,True,2])",
+                        "(['Vector2D', 'has_next', 'next'], [[[], [1]], [], []], [None, True, 1])",
+                        "(['Vector2D', 'next', 'has_next'], [[[1], []], [], []], [None, 1, False])",
+                        "(['Vector2D', 'has_next'], [[[], []], []], [None, False])",
+                        "(['Vector2D', 'has_next'], [[[]], []], [None, False])",
+                        "(['Vector2D','next','next','next'],[[[1,2],[3]],[],[],[]],[None,1,2,3])",
+                        "(['Vector2D','next','next','next'],[[[-5],[0],[5]],[],[],[]],[None,-5,0,5])",
+                        "(['Vector2D','next','next','has_next'],[[[2,4],[6,8]],[],[],[]],[None,2,4,True])",
+                        "(['Vector2D', 'has_next', 'next'], [[[1], [2], [3]], [], []], [None, True, 1])",
+                        "(['Vector2D', 'next', 'next', 'next'], [[[7, 8, 9]], [], [], []], [None, 7, 8, 9])",
+                        "(['Vector2D', 'next'], [[[0]], []], [None, 0])",
+                        "(['Vector2D', 'has_next'], [[], []], [None, False])"
+                    ]
+                },
+                "body": "        result, _ = run_flatten_2d_vector(Vector2D, operations, inputs)\n        assert_flatten_2d_vector(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flatten_2d_vector, assert_flatten_2d_vector\nfrom solution import Vector2D",
+    "playground_setup": "# Example test case\noperations = ['Vector2D', 'next', 'next', 'next', 'has_next']\ninputs = [[[1, 2], [3], [4]], [], [], [], []]\nexpected = [None, 1, 2, 3, True]",
+    "playground_run": "result, iterator = run_flatten_2d_vector(Vector2D, operations, inputs)\nprint(result)\niterator",
+    "playground_assert": "assert_flatten_2d_vector(result, expected)"
+}

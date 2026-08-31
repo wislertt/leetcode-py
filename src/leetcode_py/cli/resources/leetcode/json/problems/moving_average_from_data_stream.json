@@ -1,0 +1,86 @@
+{
+    "problem_name": "moving_average_from_data_stream",
+    "solution_class_name": "MovingAverage",
+    "problem_number": "346",
+    "problem_title": "Moving Average from Data Stream",
+    "difficulty": "Easy",
+    "topics": "Design, Queue, Array, Data Stream",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.\n\nImplement the `MovingAverage` class:\n\n- `MovingAverage(int size)` Initializes the object with the size of the window `size`.\n- `double next(int val)` Returns the moving average of the last `size` values of the stream.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MovingAverage\", \"next\", \"next\", \"next\", \"next\"]\n[[3], [1], [10], [3], [5]]\nOutput\n[null, 1.0, 5.5, 4.66667, 6.0]\n\nExplanation\nMovingAverage movingAverage = new MovingAverage(3);\nmovingAverage.next(1); // return 1.0 = 1 / 1\nmovingAverage.next(10); // return 5.5 = (1 + 10) / 2\nmovingAverage.next(3); // return 4.66667 = (1 + 10 + 3) / 3\nmovingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= size <= 1000`\n- `-10^5 <= val <= 10^5`\n- At most `10^4` calls will be made to `next`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "moving_average",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    average = None\n    results: list[float | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MovingAverage':\n            average = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'next' and average is not None:\n            results.append(average.next(inputs[i][0]))\n    return results, average",
+    "helpers_assert_name": "moving_average",
+    "helpers_assert_signature": "(result: list[float | None], expected: list[float | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_moving_average, run_moving_average\nfrom .solution import MovingAverage",
+    "test_content": "",
+    "test_class_name": "MovingAverageFromDataStream",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, size: int) -> None",
+                "body": "        # TODO: Initialize with window size\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self, val: int) -> float",
+                "body": "        # TODO: Implement next\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_moving_average",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[float | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MovingAverage','next','next','next','next'],[[3],[1],[10],[3],[5]],[None,1.0,5.5,14/3,6.0])",
+                        "(['MovingAverage','next','next','next','next'],[[2],[1],[2],[3],[4]],[None,1.0,1.5,2.5,3.5])",
+                        "(['MovingAverage','next','next','next'],[[1],[5],[6],[7]],[None,5.0,6.0,7.0])",
+                        "(['MovingAverage','next','next','next','next'],[[3],[3],[6],[9],[12]],[None,3.0,4.5,6.0,9.0])",
+                        "(['MovingAverage','next','next','next'],[[2],[-2],[-4],[0]],[None,-2.0,-3.0,-2.0])",
+                        "(['MovingAverage','next','next','next','next','next'],[[4],[1],[2],[3],[4],[5]],[None,1.0,1.5,2.0,2.5,3.5])",
+                        "(['MovingAverage','next','next'],[[5],[10],[20]],[None,10.0,15.0])",
+                        "(['MovingAverage','next','next','next'],[[3],[0],[0],[0]],[None,0.0,0.0,0.0])",
+                        "(['MovingAverage','next','next','next'],[[2],[100],[-100],[100]],[None,100.0,0.0,0.0])",
+                        "(['MovingAverage','next','next','next','next','next'],[[3],[5],[10],[15],[20],[25]],[None,5.0,7.5,10.0,15.0,20.0])",
+                        "(['MovingAverage','next'],[[1],[-1]],[None,-1.0])",
+                        "(['MovingAverage','next','next','next','next','next'],[[10],[1],[2],[3],[4],[5]],[None,1.0,1.5,2.0,2.5,3.0])",
+                        "(['MovingAverage','next','next','next','next'],[[2],[7],[7],[7],[7]],[None,7.0,7.0,7.0,7.0])",
+                        "(['MovingAverage','next','next','next','next'],[[3],[3],[3],[6],[9]],[None,3.0,3.0,4.0,6.0])",
+                        "(['MovingAverage','next','next','next','next','next'],[[4],[8],[4],[2],[1],[0]],[None,8.0,6.0,14/3,3.75,1.75])"
+                    ]
+                },
+                "body": "        result, _ = run_moving_average(MovingAverage, operations, inputs)\n        assert_moving_average(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_moving_average, assert_moving_average\nfrom solution import MovingAverage",
+    "playground_setup": "# Example test case\noperations = ['MovingAverage', 'next', 'next', 'next', 'next']\ninputs = [[3], [1], [10], [3], [5]]\nexpected = [None, 1.0, 5.5, 14 / 3, 6.0]",
+    "playground_run": "result, average = run_moving_average(MovingAverage, operations, inputs)\nprint(result)\naverage",
+    "playground_assert": "assert_moving_average(result, expected)"
+}

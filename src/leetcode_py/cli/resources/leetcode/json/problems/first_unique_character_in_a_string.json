@@ -1,0 +1,98 @@
+{
+    "problem_name": "first_unique_character_in_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "387",
+    "problem_title": "First Unique Character in a String",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Queue, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s`, find the **first** non-repeating character in it and return its index. If it **does not** exist, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"leetcode\"\nOutput: 0\nExplanation: The character 'l' at index 0 is the first character that does not occur at any other index.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"loveleetcode\"\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aabb\"\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `s` consists of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "first_uniq_char",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.first_uniq_char(s)",
+    "helpers_assert_name": "first_uniq_char",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_first_uniq_char, run_first_uniq_char\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FirstUniqueCharacterInAString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "first_uniq_char",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement first_uniq_char\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_first_uniq_char",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('leetcode', 0)",
+                        "('loveleetcode', 2)",
+                        "('aabb', -1)",
+                        "('a', 0)",
+                        "('aa', -1)",
+                        "('abcabc', -1)",
+                        "('abc', 0)",
+                        "('aadadaad', -1)",
+                        "('z', 0)",
+                        "('zz', -1)",
+                        "('xyyx', -1)",
+                        "('xyx', 1)",
+                        "('aab', 2)",
+                        "('aba', 1)",
+                        "('aaabbb', -1)",
+                        "('aaab', 3)",
+                        "('abcab', 2)",
+                        "('aabbc', 4)",
+                        "('aabcc', 2)",
+                        "('aabbb', -1)"
+                    ]
+                },
+                "body": "        result = run_first_uniq_char(Solution, s)\n        assert_first_uniq_char(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_first_uniq_char, assert_first_uniq_char\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leetcode'\nexpected = 0",
+    "playground_run": "result = run_first_uniq_char(Solution, s)\nresult",
+    "playground_assert": "assert_first_uniq_char(result, expected)"
+}

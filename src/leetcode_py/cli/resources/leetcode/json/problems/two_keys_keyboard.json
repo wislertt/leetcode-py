@@ -1,0 +1,79 @@
+{
+    "problem_name": "two_keys_keyboard",
+    "solution_class_name": "Solution",
+    "problem_number": "650",
+    "problem_title": "2 Keys Keyboard",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "There is only one character `'A'` on the screen of a notepad. You can perform one of two operations on this notepad for each step:\n\n- **Copy All:** You can copy all the characters present on the screen (a partial copy is not allowed).\n- **Paste:** You can paste the characters which are copied last time.\n\nGiven an integer `n`, return *the minimum number of operations to get the character* `'A'` *exactly* `n` *times on the screen*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3\nOutput: 3\nExplanation: Initially, we have one character 'A'.\nIn step 1, we use Copy All operation.\nIn step 2, we use Paste operation to get 'AA'.\nIn step 3, we use Paste operation to get 'AAA'.\n```"
+            },
+            { "content": "```\nInput: n = 1\nOutput: 0\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_steps",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_steps(n)",
+    "helpers_assert_name": "min_steps",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_steps, run_min_steps\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TwoKeysKeyboard",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_steps",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement min_steps\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_steps",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3)",
+                        "(1, 0)",
+                        "(2, 2)",
+                        "(4, 4)",
+                        "(6, 5)",
+                        "(12, 7)",
+                        "(30, 10)",
+                        "(100, 14)",
+                        "(128, 14)",
+                        "(729, 18)",
+                        "(999, 46)",
+                        "(1000, 21)",
+                        "(971, 971)",
+                        "(5, 5)"
+                    ]
+                },
+                "body": "        result = run_min_steps(Solution, n)\n        assert_min_steps(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_steps, assert_min_steps\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = 3",
+    "playground_run": "result = run_min_steps(Solution, n)\nresult",
+    "playground_assert": "assert_min_steps(result, expected)"
+}

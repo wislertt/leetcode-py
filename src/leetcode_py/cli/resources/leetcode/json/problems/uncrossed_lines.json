@@ -1,0 +1,90 @@
+{
+    "problem_name": "uncrossed_lines",
+    "solution_class_name": "Solution",
+    "problem_number": "1035",
+    "problem_title": "Uncrossed Lines",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two integer arrays `nums1` and `nums2`. We write the integers of `nums1` and `nums2` (in the order they are given) on two separate horizontal lines.\n\nWe may draw connecting lines: a straight line connecting two numbers `nums1[i]` and `nums2[j]` such that:\n\n- `nums1[i] == nums2[j]`, and\n- the line we draw does not intersect any other connecting (non-horizontal) line.\n\nNote that a connecting line cannot intersect even at the endpoints (i.e., each number can only belong to one connecting line).\n\nReturn *the maximum number of connecting lines we can draw in this way*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/04/26/142.png)\n\n```\nInput: nums1 = [1,4,2], nums2 = [1,2,4]\nOutput: 2\nExplanation: We can draw 2 uncrossed lines as in the diagram.\nWe cannot draw 3 uncrossed lines, because the line from nums1[1] = 4 to nums2[2] = 4 will intersect the line from nums1[2]=2 to nums2[1]=2.\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [2,5,1,2,5], nums2 = [10,5,2,1,5,2]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [1,3,7,1,7,5], nums2 = [1,9,2,5,1]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums1.length, nums2.length <= 500`\n- `1 <= nums1[i], nums2[j] <= 2000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_uncrossed_lines",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_uncrossed_lines(nums1, nums2)",
+    "helpers_assert_name": "max_uncrossed_lines",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_uncrossed_lines, run_max_uncrossed_lines\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UncrossedLines",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_uncrossed_lines",
+                "signature": "(self, nums1: list[int], nums2: list[int]) -> int",
+                "body": "        # TODO: Implement max_uncrossed_lines\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_uncrossed_lines",
+                "signature": "(self, nums1: list[int], nums2: list[int], expected: int)",
+                "parametrize": "nums1, nums2, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,4,2],[1,2,4],2)",
+                        "([2,5,1,2,5],[10,5,2,1,5,2],3)",
+                        "([1,3,7,1,7,5],[1,9,2,5,1],2)",
+                        "([1],[1],1)",
+                        "([1],[2],0)",
+                        "([1,2,3],[3,2,1],1)",
+                        "([1,2,3,4],[1,2,3,4],4)",
+                        "([5,5,5],[5,5],2)",
+                        "([1,1,2,2],[2,2,1,1],2)",
+                        "([10],[10],1)",
+                        "([1,2,1,2],[2,2,1,1],2)",
+                        "([7,8,9],[9,8,7,7,8,9],3)"
+                    ]
+                },
+                "body": "        result = run_max_uncrossed_lines(Solution, nums1, nums2)\n        assert_max_uncrossed_lines(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_uncrossed_lines, assert_max_uncrossed_lines\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums1 = [1, 4, 2]\nnums2 = [1, 2, 4]\nexpected = 2",
+    "playground_run": "result = run_max_uncrossed_lines(Solution, nums1, nums2)\nresult",
+    "playground_assert": "assert_max_uncrossed_lines(result, expected)"
+}

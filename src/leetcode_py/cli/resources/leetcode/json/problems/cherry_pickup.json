@@ -1,0 +1,89 @@
+{
+    "problem_name": "cherry_pickup",
+    "solution_class_name": "Solution",
+    "problem_number": "741",
+    "problem_title": "Cherry Pickup",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `n x n` `grid` representing a field of cherries, each cell is one of three possible integers.\n\n- `0` means the cell is empty, so you can pass through,\n- `1` means the cell contains a cherry that you can pick up and pass through, or\n- `-1` means the cell contains a thorn that blocks your way.\n\nReturn *the maximum number of cherries you can collect by following the rules below*:\n\n- Starting at the position `(0, 0)` and reaching `(n - 1, n - 1)` by moving right or down through valid path cells (cells with value `0` or `1`).\n- After reaching `(n - 1, n - 1)`, returning to `(0, 0)` by moving left or up through valid path cells.\n- When passing through a path cell containing a cherry, you pick it up, and the cell becomes an empty cell `0`.\n- If there is no valid path between `(0, 0)` and `(n - 1, n - 1)`, then no cherries can be collected.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/12/14/grid.jpg)\n\n```\nInput: grid = [[0,1,-1],[1,0,-1],[1,1,1]]\nOutput: 5\nExplanation: The player started at (0, 0) and went down, down, right right to reach (2, 2).\n4 cherries were picked up during this single trip, and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].\nThen, the player went left, up, up, left to return home, picking up one more cherry.\nThe total number of cherries picked up is 5, and this is the maximum possible.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,1,-1],[1,-1,1],[-1,1,1]]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length\n- n == grid[i].length\n- 1 <= n <= 50\n- grid[i][j] is -1, 0, or 1.\n- grid[0][0] != -1\n- grid[n - 1][n - 1] != -1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "cherry_pickup",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.cherry_pickup(grid)",
+    "helpers_assert_name": "cherry_pickup",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_cherry_pickup, run_cherry_pickup\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CherryPickup",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "cherry_pickup",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement cherry_pickup\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_cherry_pickup",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1, -1], [1, 0, -1], [1, 1, 1]], 5)",
+                        "([[1, 1, -1], [1, -1, 1], [-1, 1, 1]], 0)",
+                        "([[0]], 0)",
+                        "([[1]], 1)",
+                        "([[0, 1], [1, 0]], 2)",
+                        "([[1, 0], [0, 1]], 2)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[1, 1], [1, 1]], 4)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 8)",
+                        "([[1, -1, 1], [1, 1, 1], [-1, 1, 1]], 6)",
+                        "([[0, 1, 1], [1, 0, 1], [1, 1, 0]], 6)",
+                        "([[1, -1, 0], [0, 0, 1], [-1, 1, 1]], 4)",
+                        "([[0, 0, 1], [1, 0, 1], [1, 1, 0]], 5)",
+                        "([[0, 1, 0], [0, 0, 0], [0, 0, 0]], 1)"
+                    ]
+                },
+                "body": "        result = run_cherry_pickup(Solution, grid)\n        assert_cherry_pickup(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_cherry_pickup, assert_cherry_pickup\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1, -1], [1, 0, -1], [1, 1, 1]]\nexpected = 5",
+    "playground_run": "result = run_cherry_pickup(Solution, grid)\nresult",
+    "playground_assert": "assert_cherry_pickup(result, expected)"
+}

@@ -34,7 +34,7 @@ dependencies = [
   "rich>=14.1.0",
   "ruff>=0.14.0",
   "ty>=0.0.13",
-  "typer>=0.21.0"
+  "typer>=0.21.0,<0.27.2"
 ]
 
 [project.scripts]

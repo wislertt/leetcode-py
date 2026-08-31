@@ -1,0 +1,81 @@
+{
+    "problem_name": "my_calendar_ii",
+    "solution_class_name": "MyCalendarTwo",
+    "problem_number": "731",
+    "problem_title": "My Calendar II",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Design, Segment Tree, Ordered Set, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a triple booking.\n\nA triple booking happens when three events have some non-empty intersection (i.e., some moment is common to all the three events.).\n\nThe event can be represented as a pair of integers `startTime` and `endTime` that represents a booking on the half-open interval `[startTime, endTime)`, the range of real numbers `x` such that `startTime <= x < endTime`.\n\nImplement the `MyCalendarTwo` class:\n\n- `MyCalendarTwo()` Initializes the calendar object.\n- `boolean book(int startTime, int endTime)` Returns `true` if the event can be added to the calendar successfully without causing a triple booking. Otherwise, return `false` and do not add the event to the calendar.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyCalendarTwo\", \"book\", \"book\", \"book\", \"book\", \"book\", \"book\"]\n[[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]\nOutput\n[null, true, true, true, false, true, true]\n\nExplanation\nMyCalendarTwo myCalendarTwo = new MyCalendarTwo();\nmyCalendarTwo.book(10, 20); // return True, The event can be booked.\nmyCalendarTwo.book(50, 60); // return True, The event can be booked.\nmyCalendarTwo.book(10, 40); // return True, The event can be double booked.\nmyCalendarTwo.book(5, 15);  // return False, The event cannot be booked, because it would result in a triple booking.\nmyCalendarTwo.book(5, 10);  // return True, The event can be booked, as it does not use time 10 which is already double booked.\nmyCalendarTwo.book(25, 55); // return True, The event can be booked, as the time in [25, 40) will be double booked with the third event;\n                            // the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= start < end <= 10^9\n- At most 1000 calls will be made to book.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "calendar_ops",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    calendar = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyCalendarTwo':\n            calendar = solution_class()\n            results.append(None)\n        elif op == 'book' and calendar is not None:\n            results.append(calendar.book(inputs[i][0], inputs[i][1]))\n    return results, calendar",
+    "helpers_assert_name": "calendar_ops",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_calendar_ops, run_calendar_ops\nfrom .solution import MyCalendarTwo",
+    "test_content": "",
+    "test_class_name": "MyCalendarII",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "book",
+                "signature": "(self, start_time: int, end_time: int) -> bool",
+                "body": "        # TODO: Implement book\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_calendar_ops",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyCalendarTwo','book','book','book','book','book','book'],[[],[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]],[None,True,True,True,False,True,True])",
+                        "(['MyCalendarTwo','book','book','book'],[[],[1,2],[2,3],[3,4]],[None,True,True,True])",
+                        "(['MyCalendarTwo','book','book'],[[],[1,2],[1,2]],[None,True,True])",
+                        "(['MyCalendarTwo','book','book','book'],[[],[1,2],[1,2],[1,2]],[None,True,True,False])",
+                        "(['MyCalendarTwo','book','book','book','book'],[[],[10,20],[10,20],[10,20],[15,25]],[None,True,True,False,False])",
+                        "(['MyCalendarTwo','book','book','book'],[[],[5,15],[10,20],[5,10]],[None,True,True,True])",
+                        "(['MyCalendarTwo','book','book','book','book'],[[],[1,5],[4,8],[2,6],[10,12]],[None,True,True,False,True])",
+                        "(['MyCalendarTwo','book','book','book','book','book'],[[],[1,10],[2,3],[3,4],[2,3],[1,2]],[None,True,True,True,False,True])",
+                        "(['MyCalendarTwo','book','book','book'],[[],[0,1000000000],[0,1000000000],[0,1000000000]],[None,True,True,False])",
+                        "(['MyCalendarTwo','book','book','book','book'],[[],[26,35],[26,32],[20,30],[20,26]],[None,True,True,False,True])"
+                    ]
+                },
+                "body": "        result, _ = run_calendar_ops(MyCalendarTwo, operations, inputs)\n        assert_calendar_ops(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_calendar_ops, assert_calendar_ops\nfrom solution import MyCalendarTwo",
+    "playground_setup": "# Example test case\noperations = ['MyCalendarTwo', 'book', 'book', 'book']\ninputs = [[], [10, 20], [50, 60], [10, 40]]\nexpected = [None, True, True, True]",
+    "playground_run": "result, calendar = run_calendar_ops(MyCalendarTwo, operations, inputs)\nprint(result)\ncalendar",
+    "playground_assert": "assert_calendar_ops(result, expected)"
+}

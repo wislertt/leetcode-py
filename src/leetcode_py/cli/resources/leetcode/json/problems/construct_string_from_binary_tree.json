@@ -1,0 +1,81 @@
+{
+    "problem_name": "construct_string_from_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "606",
+    "problem_title": "Construct String from Binary Tree",
+    "difficulty": "Medium",
+    "topics": "String, Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given the `root` node of a binary tree, your task is to create a string representation of the tree following a specific set of formatting rules. The representation should be based on a preorder traversal of the binary tree and must adhere to the following guidelines:\n\n- **Node Representation**: Each node in the tree should be represented by its integer value.\n- **Parentheses for Children**: If a node has at least one child (either left or right), its children should be represented inside parentheses. Specifically:\n  - If a node has a left child, the value of the left child should be enclosed in parentheses immediately following the node's value.\n  - If a node has a right child, the value of the right child should also be enclosed in parentheses. The parentheses for the right child should follow those of the left child.\n- **Omitting Empty Parentheses**: Any empty parentheses pairs (i.e., `()`) should be omitted from the final string representation of the tree, with one specific exception: when a node has a right child but no left child. In such cases, you must include an empty pair of parentheses to indicate the absence of the left child. This ensures that the one-to-one mapping between the string representation and the original binary tree structure is maintained.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/03/cons1-tree.jpg)\n\n```\nInput: root = [1,2,3,4]\nOutput: \"1(2(4))(3)\"\nExplanation: Originally, it needs to be \"1(2(4)())(3()())\", but you need to omit all the empty parenthesis pairs. And it will be \"1(2(4))(3)\".\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/05/03/cons2-tree.jpg)\n\n```\nInput: root = [1,2,3,null,4]\nOutput: \"1(2()(4))(3)\"\nExplanation: Almost the same as the first example, except the () after 2 is necessary to indicate the absence of a left child for 2 and the presence of the right child.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10^4].\n- -1000 <= Node.val <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "tree2str",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.tree2str(root)",
+    "helpers_assert_name": "tree2str",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import TreeNode, logged_test\nfrom .helpers import assert_tree2str, run_tree2str\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructStringFromBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "tree2str",
+                "signature": "(self, root: TreeNode[int] | None) -> str",
+                "body": "        # TODO: Implement tree2str\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_tree2str",
+                "signature": "(self, root_list: list[int | None], expected: str)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,4], '1(2(4))(3)')",
+                        "([1,2,3,None,4], '1(2()(4))(3)')",
+                        "([1], '1')",
+                        "([1,2], '1(2)')",
+                        "([1,None,2], '1()(2)')",
+                        "([1,2,3], '1(2)(3)')",
+                        "([1,2,None,3], '1(2(3))')",
+                        "([-1,-2,-3,None,-4], '-1(-2()(-4))(-3)')",
+                        "([1,2,3,4,5,6,7], '1(2(4)(5))(3(6)(7))')",
+                        "([1,2,None,None,3], '1(2()(3))')",
+                        "([0,0,0], '0(0)(0)')",
+                        "([1,2,3,None,None,4], '1(2)(3(4))')",
+                        "([5,None,6,None,7,None,8], '5()(6()(7()(8)))')",
+                        "([1,None,2,None,3], '1()(2()(3))')"
+                    ]
+                },
+                "body": "        result = run_tree2str(Solution, root_list)\n        assert_tree2str(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_tree2str, assert_tree2str\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4]\nexpected = '1(2(4))(3)'",
+    "playground_run": "result = run_tree2str(Solution, root_list)\nresult",
+    "playground_assert": "assert_tree2str(result, expected)"
+}

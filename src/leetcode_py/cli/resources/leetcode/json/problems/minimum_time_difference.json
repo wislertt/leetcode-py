@@ -1,0 +1,90 @@
+{
+    "problem_name": "minimum_time_difference",
+    "solution_class_name": "Solution",
+    "problem_number": "539",
+    "problem_title": "Minimum Time Difference",
+    "difficulty": "Medium",
+    "topics": "Array, Math, String, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a list of 24-hour clock time points in **\"HH:MM\"** format, return *the minimum **minutes** difference between any two time-points in the list*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: timePoints = [\"23:59\",\"00:00\"]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: timePoints = [\"00:00\",\"23:59\",\"00:00\"]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= timePoints.length <= 2 * 10^4`\n- `timePoints[i]` is in the format **\"HH:MM\"**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_min_difference",
+    "helpers_run_signature": "(solution_class: type, time_points: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_min_difference(time_points)",
+    "helpers_assert_name": "find_min_difference",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_min_difference, run_find_min_difference\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumTimeDifference",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_min_difference",
+                "signature": "(self, time_points: list[str]) -> int",
+                "body": "        # TODO: Implement find_min_difference\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_min_difference",
+                "signature": "(self, time_points: list[str], expected: int)",
+                "parametrize": "time_points, expected",
+                "test_cases": {
+                    "list": [
+                        "(['23:59', '00:00'], 1)",
+                        "(['00:00', '23:59', '00:00'], 0)",
+                        "(['00:00', '00:00'], 0)",
+                        "(['12:00', '12:01'], 1)",
+                        "(['06:00', '18:00'], 720)",
+                        "(['00:00', '12:00'], 720)",
+                        "(['05:31', '22:08', '00:35'], 147)",
+                        "(['23:58', '00:02'], 4)",
+                        "(['01:00', '23:00'], 120)",
+                        "(['10:59', '11:00', '11:01'], 1)",
+                        "(['00:01', '23:59'], 2)",
+                        "(['13:26', '04:24', '20:46', '09:52'], 214)",
+                        "(['22:29', '23:52', '01:15'], 83)",
+                        "(['07:30', '08:00', '07:45'], 15)",
+                        "(['18:00', '06:00', '12:00'], 360)"
+                    ]
+                },
+                "body": "        result = run_find_min_difference(Solution, time_points)\n        assert_find_min_difference(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_min_difference, assert_find_min_difference\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntime_points = ['23:59', '00:00']\nexpected = 1",
+    "playground_run": "result = run_find_min_difference(Solution, time_points)\nresult",
+    "playground_assert": "assert_find_min_difference(result, expected)"
+}

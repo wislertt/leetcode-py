@@ -1,0 +1,84 @@
+{
+    "problem_name": "walking_robot_simulation",
+    "solution_class_name": "Solution",
+    "problem_number": "874",
+    "problem_title": "Walking Robot Simulation",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Simulation",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "A robot on an infinite XY-plane starts at point <code>(0, 0)</code> facing north. The robot receives an array of integers <code>commands</code>, which represents a sequence of moves that it needs to execute. There are only three possible types of instructions the robot can receive:</p>\n\n<ul>\n\t<li><code>-2</code>: Turn left 90 degrees.</li>\n\t<li><code>-1</code>: Turn right 90 degrees.</li>\n\t<li><code>1 &lt;= k &lt;= 9</code>: Move forward <code>k</code> units, one unit at a time.</li>\n</ul>\n\n<p>Some of the grid squares are obstacles. The <code>ith</code> obstacle is at grid point <code>obstacles[i] = (xi, yi)</code>. If the robot runs into an obstacle, it will stay in its current location (on the block adjacent to the obstacle) and move onto the next command.</p>\n\n<p>Return <em>the maximum squared Euclidean distance that the robot reaches at any point in its path</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: commands = [4,-1,3], obstacles = []\nOutput: 25\nExplanation: The robot starts at (0, 0):\n1. Move north 4 units to (0, 4).\n2. Turn right to face east.\n3. Move east 3 units to (3, 4).\nThe furthest point the robot ever gets from the origin is (3, 4), which squared is 3^2 + 4^2 = 25 units away.\n```"
+            },
+            {
+                "content": "```\nInput: commands = [4,-1,4,-2,4], obstacles = [[2,4]]\nOutput: 65\nExplanation: The robot is being tracked:\n1. Move north 4 units to (0, 4).\n2. Turn right to face east.\n3. Move east 1 unit and get blocked by the obstacle at (2, 4), robot is at (1, 4).\n4. Turn left to face north.\n5. Move north 4 units to (1, 8).\nThe furthest point the robot ever gets from the origin is (1, 8), which squared is 1^2 + 8^2 = 65 units away.\n```"
+            },
+            {
+                "content": "```\nInput: commands = [6,-1,-1,6], obstacles = []\nOutput: 36\nExplanation: The robot starts at (0, 0):\n1. Move north 6 units to (0, 6).\n2. Turn right to face east.\n3. Turn right to face south.\n4. Move south 6 units to (0, 0).\nThe furthest point the robot ever gets from the origin is (0, 6), which squared is 6^2 = 36 units away.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= commands.length <= 10^4\n- commands[i] is either -2, -1, or an integer in the range [1, 9].\n- 0 <= obstacles.length <= 10^4\n- -3 * 10^4 <= xi, yi <= 3 * 10^4\n- The answer is guaranteed to be less than 2^31.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "robot_sim",
+    "helpers_run_signature": "(solution_class: type, commands: list[int], obstacles: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.robot_sim(commands, obstacles)",
+    "helpers_assert_name": "robot_sim",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_robot_sim, run_robot_sim\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WalkingRobotSimulation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "robot_sim",
+                "signature": "(self, commands: list[int], obstacles: list[list[int]]) -> int",
+                "body": "        # TODO: Implement robot_sim\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_robot_sim",
+                "signature": "(self, commands: list[int], obstacles: list[list[int]], expected: int)",
+                "parametrize": "commands, obstacles, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, -1, 3], [], 25)",
+                        "([4, -1, 4, -2, 4], [[2, 4]], 65)",
+                        "([-1, 9], [[5, 0], [2, 0]], 1)",
+                        "([6, -1, -1, 6], [], 36)",
+                        "([], [], 0)",
+                        "([9], [], 81)",
+                        "([4, -1, 4, -2, 4], [], 80)",
+                        "([1, 2, -2, 3], [[0, 3]], 13)",
+                        "([7,-2,-2,7,5],[[-3,2],[-2,1],[0,1],[-5,0]],144)",
+                        "([3, 4, -1, 2, -2, 4], [[2, 4]], 125)",
+                        "([-1, -2, 9, -1, -2, 9], [], 324)",
+                        "([2, 2, 2, -1, 2], [[0, 3], [1, 2]], 4)",
+                        "([5, -1, 5, -2, 5], [[3, 3], [3, 4]], 125)",
+                        "([1, -2, 1, -2, 1], [[0, 2], [2, 0]], 2)"
+                    ]
+                },
+                "body": "        result = run_robot_sim(Solution, commands, obstacles)\n        assert_robot_sim(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_robot_sim, assert_robot_sim\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncommands = [4, -1, 4, -2, 4]\nobstacles = [[2, 4]]\nexpected = 65",
+    "playground_run": "result = run_robot_sim(Solution, commands, obstacles)\nresult",
+    "playground_assert": "assert_robot_sim(result, expected)"
+}

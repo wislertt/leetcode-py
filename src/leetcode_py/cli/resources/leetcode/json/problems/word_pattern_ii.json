@@ -1,0 +1,95 @@
+{
+    "problem_name": "word_pattern_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "291",
+    "problem_title": "Word Pattern II",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a `pattern` and a string `s`, return `true` *if* `s` *matches the* `pattern`.\n\nA string `s` **matches** a `pattern` if there is some **bijective mapping** of single characters to **non-empty** strings such that if each character in `pattern` is replaced by the string it maps to, then the resulting string is `s`. A **bijective mapping** means that no two characters map to the same string, and no character maps to two different strings.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: pattern = \"abab\", s = \"redblueredblue\"\nOutput: true\nExplanation: One possible mapping is as follows:\n'a' -> \"red\"\n'b' -> \"blue\"\n```"
+            },
+            {
+                "content": "```\nInput: pattern = \"aaaa\", s = \"asdasdasdasd\"\nOutput: true\nExplanation: One possible mapping is as follows:\n'a' -> \"asd\"\n```"
+            },
+            {
+                "content": "```\nInput: pattern = \"aabb\", s = \"xyzabcxzyabc\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= pattern.length, s.length <= 20`\n- `pattern` and `s` consist of only lowercase English letters.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_pattern_match",
+    "helpers_run_signature": "(solution_class: type, pattern: str, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_pattern_match(pattern, s)",
+    "helpers_assert_name": "word_pattern_match",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_pattern_match, run_word_pattern_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordPatternII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_pattern_match",
+                "signature": "(self, pattern: str, s: str) -> bool",
+                "body": "        # TODO: Implement word_pattern_match\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_pattern_match",
+                "signature": "(self, pattern: str, s: str, expected: bool)",
+                "parametrize": "pattern, s, expected",
+                "test_cases": {
+                    "list": [
+                        "('abab', 'redblueredblue', True)",
+                        "('aaaa', 'asdasdasdasd', True)",
+                        "('aabb', 'xyzabcxzyabc', False)",
+                        "('a', 'a', True)",
+                        "('a', 'z', True)",
+                        "('ab', 'aa', False)",
+                        "('ab', 'ab', True)",
+                        "('abba', 'dogcatcatdog', True)",
+                        "('abba', 'dogdogdogdog', False)",
+                        "('aaaa', 'aaaaaaaa', True)",
+                        "('abc', 'ab', False)",
+                        "('ab', 'aaa', True)",
+                        "('ab', 'aabb', True)",
+                        "('abab', 'xyxy', True)",
+                        "('a', 'ab', True)",
+                        "('abba', 'dogcatcatfish', False)",
+                        "('aa', 'aa', True)",
+                        "('ab', 'aab', True)"
+                    ]
+                },
+                "body": "        result = run_word_pattern_match(Solution, pattern, s)\n        assert_word_pattern_match(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_pattern_match, assert_word_pattern_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npattern = 'abab'\ns = 'redblueredblue'\nexpected = True",
+    "playground_run": "result = run_word_pattern_match(Solution, pattern, s)\nresult",
+    "playground_assert": "assert_word_pattern_match(result, expected)"
+}

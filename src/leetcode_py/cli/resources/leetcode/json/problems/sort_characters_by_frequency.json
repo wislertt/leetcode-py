@@ -1,0 +1,92 @@
+{
+    "problem_name": "sort_characters_by_frequency",
+    "solution_class_name": "Solution",
+    "problem_number": "451",
+    "problem_title": "Sort Characters By Frequency",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sorting, Heap (Priority Queue), Bucket Sort, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s`, sort it in **decreasing order** based on the **frequency** of the characters. The **frequency** of a character is the number of times it appears in the string.\n\nReturn *the sorted string*. If there are multiple answers, return *any of them*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"tree\"\nOutput: \"eert\"\nExplanation: 'e' appears twice while 'r' and 't' both appear once.\nSo 'e' must appear before both 'r' and 't'. Therefore \"eetr\" is also a valid answer.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"cccaaa\"\nOutput: \"aaaccc\"\nExplanation: Both 'c' and 'a' appear three times, so both \"cccaaa\" and \"aaaccc\" are valid answers.\nNote that \"cacaca\" is incorrect, as the same characters must be together.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"Aabb\"\nOutput: \"bbAa\"\nExplanation: \"bbaA\" is also a valid answer, but \"Aabb\" is incorrect.\nNote that 'A' and 'a' are treated as two different characters.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 5 * 10^5`\n- `s` consists of uppercase and lowercase English letters and digits.",
+    "readme_additional": "",
+    "helpers_imports": "import re\nfrom collections import Counter",
+    "helpers_content": "",
+    "helpers_run_name": "frequency_sort",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.frequency_sort(s)",
+    "helpers_assert_name": "frequency_sort",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert len(result) == len(expected)\n    runs = [m.group() for m in re.finditer(r'(.)\\1*', result)]\n    freqs = [len(run) for run in runs]\n    assert freqs == sorted(freqs, reverse=True)\n    assert Counter(result) == Counter(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_frequency_sort, run_frequency_sort\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortCharactersByFrequency",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "frequency_sort",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement frequency_sort\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_frequency_sort",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('tree', 'eetr')",
+                        "('cccaaa', 'aaaccc')",
+                        "('Aabb', 'bbAa')",
+                        "('a', 'a')",
+                        "('aa', 'aa')",
+                        "('ab', 'ab')",
+                        "('ba', 'ab')",
+                        "('aaabbb', 'bbbaaa')",
+                        "('abcabc', 'aabbcc')",
+                        "('112233', '332211')",
+                        "('mississippi', 'iiiissssppm')",
+                        "('aabbbcccc', 'ccccbbbaa')",
+                        "('2a55bbb2222', '22222bbb55a')",
+                        "('eded', 'eedd')"
+                    ]
+                },
+                "body": "        result = run_frequency_sort(Solution, s)\n        assert_frequency_sort(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_frequency_sort, assert_frequency_sort\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'tree'\nexpected = 'eetr'",
+    "playground_run": "result = run_frequency_sort(Solution, s)\nresult",
+    "playground_assert": "assert_frequency_sort(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "longest_substring_with_at_most_k_distinct_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "340",
+    "problem_title": "Longest Substring with At Most K Distinct Characters",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` and an integer `k`, return *the length of the longest* substring *of* `s` *that contains at most* `k` **distinct** characters*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"eceba\", k = 2\nOutput: 3\nExplanation: The substring is \"ece\" with length 3.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aa\", k = 1\nOutput: 2\nExplanation: The substring is \"aa\" with length 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 5 * 10^4`\n- `0 <= k <= 50`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "length_of_longest_substring_k_distinct",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.length_of_longest_substring_k_distinct(s, k)",
+    "helpers_assert_name": "length_of_longest_substring_k_distinct",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_length_of_longest_substring_k_distinct, run_length_of_longest_substring_k_distinct\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestSubstringWithAtMostKDistinctCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "length_of_longest_substring_k_distinct",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement length_of_longest_substring_k_distinct\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_length_of_longest_substring_k_distinct",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('eceba',2,3)",
+                        "('aa',1,2)",
+                        "('eceba',1,1)",
+                        "('eceba',0,0)",
+                        "('a',0,0)",
+                        "('a',1,1)",
+                        "('aaabbb',1,3)",
+                        "('aaabbb',2,6)",
+                        "('abaccc',2,4)",
+                        "('abcabcabc',3,9)",
+                        "('abcabcabc',2,2)",
+                        "('ccaabbb',2,5)",
+                        "('abacatatime',3,6)",
+                        "('zzzz',1,4)",
+                        "('abcdef',50,6)"
+                    ]
+                },
+                "body": "        result = run_length_of_longest_substring_k_distinct(Solution, s, k)\n        assert_length_of_longest_substring_k_distinct(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_length_of_longest_substring_k_distinct, assert_length_of_longest_substring_k_distinct\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'eceba'\nk = 2\nexpected = 3",
+    "playground_run": "result = run_length_of_longest_substring_k_distinct(Solution, s, k)\nresult",
+    "playground_assert": "assert_length_of_longest_substring_k_distinct(result, expected)"
+}

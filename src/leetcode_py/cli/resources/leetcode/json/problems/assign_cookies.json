@@ -1,0 +1,90 @@
+{
+    "problem_name": "assign_cookies",
+    "solution_class_name": "Solution",
+    "problem_number": "455",
+    "problem_title": "Assign Cookies",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Assume you are an awesome parent and want to give your children some cookies. But, you should give each child at most one cookie.\n\nEach child `i` has a greed factor `g[i]`, which is the minimum size of a cookie that the child will be content with; and each cookie `j` has a size `s[j]`. If `s[j] >= g[i]`, we can assign the cookie `j` to the child `i`, and the child `i` will be content. Your goal is to maximize the number of your content children and output the maximum number.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: g = [1,2,3], s = [1,1]\nOutput: 1\nExplanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3.\nAnd even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.\nYou need to output 1.\n```"
+            },
+            {
+                "content": "```\nInput: g = [1,2], s = [1,2,3]\nOutput: 2\nExplanation: You have 2 children and 3 cookies. The greed factors of 2 children are 1, 2.\nYou have 3 cookies and their sizes are big enough to gratify all of the children,\nYou need to output 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= g.length <= 3 * 10^4`\n- `0 <= s.length <= 3 * 10^4`\n- `1 <= g[i], s[j] <= 2^31 - 1`",
+    "readme_additional": "**Note:** This question is the same as 2410: Maximum Matching of Players With Trainers.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_content_children",
+    "helpers_run_signature": "(solution_class: type, g: list[int], s: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_content_children(g, s)",
+    "helpers_assert_name": "find_content_children",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_content_children, run_find_content_children\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AssignCookies",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_content_children",
+                "signature": "(self, g: list[int], s: list[int]) -> int",
+                "body": "        # TODO: Implement find_content_children\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_content_children",
+                "signature": "(self, g: list[int], s: list[int], expected: int)",
+                "parametrize": "g, s, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], [1, 1], 1)",
+                        "([1, 2], [1, 2, 3], 2)",
+                        "([1, 2, 3], [], 0)",
+                        "([1], [], 0)",
+                        "([5], [5], 1)",
+                        "([5], [4], 0)",
+                        "([1, 2, 7], [1, 3, 5, 9], 3)",
+                        "([10, 9, 8, 7], [5, 6, 7, 8, 9, 10], 4)",
+                        "([1, 2, 3], [3], 1)",
+                        "([2, 2, 2], [2, 2], 2)",
+                        "([1, 5, 9], [1, 5, 9], 3)",
+                        "([3, 7, 9], [4, 8], 2)",
+                        "([4, 5, 6], [1, 2, 3], 0)",
+                        "([7, 8, 9, 10], [1, 2, 3, 4, 5], 0)",
+                        "([1, 1, 1], [1, 1, 1], 3)"
+                    ]
+                },
+                "body": "        result = run_find_content_children(Solution, g, s)\n        assert_find_content_children(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_content_children, assert_find_content_children\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ng = [1, 2, 3]\ns = [1, 1]\nexpected = 1",
+    "playground_run": "result = run_find_content_children(Solution, g, s)\nresult",
+    "playground_assert": "assert_find_content_children(result, expected)"
+}

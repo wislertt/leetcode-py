@@ -1,0 +1,80 @@
+{
+    "problem_name": "profitable_schemes",
+    "solution_class_name": "Solution",
+    "problem_number": "879",
+    "problem_title": "Profitable Schemes",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Knapsack Problem, 0-1 Knapsack",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "There is a group of <code>n</code> members, and a list of various crimes they could commit. The <code>ith</code> crime generates a <code>profit[i]</code> and requires <code>group[i]</code> members to participate in it. If a member participates in one crime, that member can't participate in another crime.</p>\n\n<p>Let's call a <em>profitable scheme</em> any subset of these crimes that generates at least <code>minProfit</code> profit, and the total number of members participating in that subset of crimes is at most <code>n</code>.</p>\n\n<p>Return the number of schemes that can be chosen. Since the answer may be very large, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 5, minProfit = 3, group = [2,2], profit = [2,3]\nOutput: 2\nExplanation: To make a profit of at least 3, the group could either commit crimes 0 and 1, or just crime 1.\nIn total, there are 2 schemes.\n```"
+            },
+            {
+                "content": "```\nInput: n = 10, minProfit = 5, group = [2,3,5], profit = [6,7,8]\nOutput: 7\nExplanation: Every subset of the crimes has total members at most 10 and profit at least 5,\nand 7 subsets exist, so all of them are profitable schemes.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 100\n- 0 <= minProfit <= 100\n- 1 <= group.length <= 100\n- 1 <= group[i] <= 100\n- profit.length == group.length\n- 0 <= profit[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "profitable_schemes",
+    "helpers_run_signature": "(solution_class: type, n: int, min_profit: int, group: list[int], profit: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.profitable_schemes(n, min_profit, group, profit)",
+    "helpers_assert_name": "profitable_schemes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_profitable_schemes, run_profitable_schemes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ProfitableSchemes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "profitable_schemes",
+                "signature": "(self, n: int, min_profit: int, group: list[int], profit: list[int]) -> int",
+                "body": "        # TODO: Implement profitable_schemes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_profitable_schemes",
+                "signature": "(self, n: int, min_profit: int, group: list[int], profit: list[int], expected: int)",
+                "parametrize": "n, min_profit, group, profit, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, 3, [2, 2], [2, 3], 2)",
+                        "(10, 5, [2, 3, 5], [6, 7, 8], 7)",
+                        "(1, 1, [1], [1], 1)",
+                        "(1, 2, [1], [1], 0)",
+                        "(3, 0, [2, 2], [1, 2], 3)",
+                        "(4, 3, [2, 2], [2, 3], 2)",
+                        "(2, 1, [1, 1], [1, 1], 3)",
+                        "(3, 2, [1, 1, 1], [1, 1, 1], 4)",
+                        "(10, 10, [5, 5, 5], [4, 4, 4], 0)",
+                        "(100, 100, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 1)",
+                        "(1, 0, [1, 1, 1], [0, 0, 0], 4)",
+                        "(8, 5, [2, 3, 5, 1], [6, 7, 8, 0], 11)",
+                        "(6, 4, [1, 2, 3, 4], [3, 2, 1, 4], 6)"
+                    ]
+                },
+                "body": "        result = run_profitable_schemes(Solution, n, min_profit, group, profit)\n        assert_profitable_schemes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_profitable_schemes, assert_profitable_schemes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nmin_profit = 3\ngroup = [2, 2]\nprofit = [2, 3]\nexpected = 2",
+    "playground_run": "result = run_profitable_schemes(Solution, n, min_profit, group, profit)\nresult",
+    "playground_assert": "assert_profitable_schemes(result, expected)"
+}

@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "shortest_path_to_get_food"
+    problem: str = "shortest_path_with_alternating_colors"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

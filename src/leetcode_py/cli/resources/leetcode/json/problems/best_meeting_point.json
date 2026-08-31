@@ -1,0 +1,86 @@
+{
+    "problem_name": "best_meeting_point",
+    "solution_class_name": "Solution",
+    "problem_number": "296",
+    "problem_title": "Best Meeting Point",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Matrix, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an `m x n` binary `grid` where each `1` marks the home of one friend, return *the minimal **total travel distance***.\n\nThe **total travel distance** is the sum of the distances between the houses of the friends and the meeting point.\n\nThe distance is calculated using Manhattan Distance, where `distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0200-0299/0296.Best%20Meeting%20Point/images/meetingpoint-grid.jpg)\n\n```\nInput: grid = [[1,0,0,0,1],[0,0,0,0,0],[0,0,1,0,0]]\nOutput: 6\nExplanation: Given three friends living at (0,0), (0,4), and (2,2).\nThe point (0,2) is an ideal meeting point, as the total travel distance of 2 + 2 + 2 = 6 is minimal.\nSo return 6.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,1]]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 200`\n- `grid[i][j]` is either `0` or `1`.\n- There will be **at least two** friends in the `grid`.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_total_distance",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_total_distance(grid)",
+    "helpers_assert_name": "min_total_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_total_distance, run_min_total_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BestMeetingPoint",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_total_distance",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_total_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_total_distance",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 0, 0, 0, 1], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0]], 6)",
+                        "([[1, 1]], 1)",
+                        "([[1, 0], [0, 1]], 2)",
+                        "([[1, 1], [1, 1]], 4)",
+                        "([[0, 0, 0, 1], [1, 0, 0, 1]], 4)",
+                        "([[1, 0, 1], [0, 1, 0], [1, 0, 1]], 8)",
+                        "([[1, 0, 0, 0, 0, 0, 0, 0, 1]], 8)",
+                        "([[1], [0], [0], [1]], 3)",
+                        "([[0, 1], [1, 0], [0, 1]], 3)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 12)",
+                        "([[1, 0, 1, 0, 1], [0, 0, 0, 0, 0]], 4)",
+                        "([[0, 0, 1], [0, 1, 0], [1, 0, 0]], 4)"
+                    ]
+                },
+                "body": "        result = run_min_total_distance(Solution, grid)\n        assert_min_total_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_total_distance, assert_min_total_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 0, 0, 0, 1], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0]]\nexpected = 6",
+    "playground_run": "result = run_min_total_distance(Solution, grid)\nresult",
+    "playground_assert": "assert_min_total_distance(result, expected)"
+}

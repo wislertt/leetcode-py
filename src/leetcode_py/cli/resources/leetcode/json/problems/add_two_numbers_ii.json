@@ -1,0 +1,91 @@
+{
+    "problem_name": "add_two_numbers_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "445",
+    "problem_title": "Add Two Numbers II",
+    "difficulty": "Medium",
+    "topics": "Linked List, Math, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two **non-empty** linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.\n\nYou may assume the two numbers do not contain any leading zero, except the number `0` itself.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/09/sumii-linked-list.jpg)\n\n```\nInput: l1 = [7,2,4,3], l2 = [5,6,4]\nOutput: [7,8,0,7]\n```"
+            },
+            {
+                "content": "```\nInput: l1 = [2,4,3], l2 = [5,6,4]\nOutput: [8,0,7]\n```"
+            },
+            {
+                "content": "```\nInput: l1 = [0], l2 = [0]\nOutput: [0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in each linked list is in the range `[1, 100]`.\n- `0 <= Node.val <= 9`\n- It is guaranteed that the list represents a number that does not have leading zeros.",
+    "readme_additional": "**Follow up:** Could you solve it without reversing the input lists?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "add_two_numbers",
+    "helpers_run_signature": "(solution_class: type, l1_vals: list[int], l2_vals: list[int])",
+    "helpers_run_body": "    l1 = ListNode[int].from_list(l1_vals)\n    l2 = ListNode[int].from_list(l2_vals)\n    implementation = solution_class()\n    return implementation.add_two_numbers(l1, l2)",
+    "helpers_assert_name": "add_two_numbers",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_vals: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_vals)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_add_two_numbers, run_add_two_numbers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AddTwoNumbersII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "add_two_numbers",
+                "signature": "(self, l1: ListNode[int] | None, l2: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement add_two_numbers\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_add_two_numbers",
+                "signature": "(self, l1_vals: list[int], l2_vals: list[int], expected_vals: list[int])",
+                "parametrize": "l1_vals, l2_vals, expected_vals",
+                "test_cases": {
+                    "list": [
+                        "([7, 2, 4, 3], [5, 6, 4], [7, 8, 0, 7])",
+                        "([2, 4, 3], [5, 6, 4], [8, 0, 7])",
+                        "([0], [0], [0])",
+                        "([9, 9, 9, 9], [1], [1, 0, 0, 0, 0])",
+                        "([1], [9], [1, 0])",
+                        "([5], [5], [1, 0])",
+                        "([1, 0, 0], [9, 9], [1, 9, 9])",
+                        "([3, 7, 8], [5, 4, 3], [9, 2, 1])",
+                        "([9], [9, 9, 9], [1, 0, 0, 8])",
+                        "([1, 2, 3, 4, 5], [5, 4, 3, 2, 1], [6, 6, 6, 6, 6])",
+                        "([9, 9], [9, 9], [1, 9, 8])",
+                        "([1, 8, 9], [2, 1], [2, 1, 0])",
+                        "([0], [9, 9, 9], [9, 9, 9])"
+                    ]
+                },
+                "body": "        result = run_add_two_numbers(Solution, l1_vals, l2_vals)\n        assert_add_two_numbers(result, expected_vals)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_add_two_numbers, assert_add_two_numbers\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nl1_vals = [7, 2, 4, 3]\nl2_vals = [5, 6, 4]\nexpected_vals = [7, 8, 0, 7]",
+    "playground_run": "result = run_add_two_numbers(Solution, l1_vals, l2_vals)\nListNode[int].to_list(result) if result else []",
+    "playground_assert": "assert_add_two_numbers(result, expected_vals)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "shortest_word_distance",
+    "solution_class_name": "Solution",
+    "problem_number": "243",
+    "problem_title": "Shortest Word Distance",
+    "difficulty": "Easy",
+    "topics": "Array, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `wordsDict` and two different strings that already exist in the array `word1` and `word2`, return *the shortest distance between these two words in the list*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: wordsDict = [\"practice\", \"makes\", \"perfect\", \"coding\", \"makes\"], word1 = \"coding\", word2 = \"practice\"\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: wordsDict = [\"practice\", \"makes\", \"perfect\", \"coding\", \"makes\"], word1 = \"makes\", word2 = \"coding\"\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= wordsDict.length <= 3 * 10^4`\n- `1 <= wordsDict[i].length <= 10`\n- `wordsDict[i]` consists of lowercase English letters.\n- `word1` and `word2` are in `wordsDict`.\n- `word1 != word2`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_distance",
+    "helpers_run_signature": "(solution_class: type, words_dict: list[str], word1: str, word2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_distance(words_dict, word1, word2)",
+    "helpers_assert_name": "shortest_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_distance, run_shortest_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestWordDistance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_distance",
+                "signature": "(self, words_dict: list[str], word1: str, word2: str) -> int",
+                "body": "        # TODO: Implement shortest_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_distance",
+                "signature": "(self, words_dict: list[str], word1: str, word2: str, expected: int)",
+                "parametrize": "words_dict, word1, word2, expected",
+                "test_cases": {
+                    "list": [
+                        "(['practice', 'makes', 'perfect', 'coding', 'makes'], 'coding', 'practice', 3)",
+                        "(['practice', 'makes', 'perfect', 'coding', 'makes'], 'makes', 'coding', 1)",
+                        "(['a', 'x', 'x', 'b'], 'a', 'b', 3)",
+                        "(['a', 'x', 'b', 'x', 'a'], 'a', 'b', 2)",
+                        "(['a', 'b', 'c', 'd', 'e'], 'a', 'e', 4)",
+                        "(['b', 'a', 'c', 'd', 'e', 'a'], 'b', 'e', 4)",
+                        "(['w', 'x', 'y', 'z', 'w'], 'w', 'y', 2)",
+                        "(['q', 'a', 'b', 'c', 'd', 'e', 'f', 'q', 'r'], 'q', 'r', 1)",
+                        "(['a', 'b', 'a', 'b', 'a', 'b', 'a', 'b', 'a'], 'a', 'b', 1)",
+                        "(['cat', 'dog', 'bird', 'fish', 'cat', 'dog'], 'cat', 'fish', 1)",
+                        "(['a', 'z', 'y', 'x', 'w', 'v', 'u', 't', 'b'], 'a', 'b', 8)",
+                        "(['red', 'blue', 'red', 'green', 'blue', 'red'], 'red', 'green', 1)",
+                        "(['i', 'j', 'k', 'i', 'j', 'k', 'i', 'j', 'k'], 'i', 'j', 1)",
+                        "(['one', 'two', 'three', 'four', 'five', 'one'], 'one', 'five', 1)",
+                        "(['x1', 'y2', 'x3', 'y4', 'x5', 'y6', 'x7', 'y8', 'x9'], 'x1', 'x9', 8)"
+                    ]
+                },
+                "body": "        result = run_shortest_distance(Solution, words_dict, word1, word2)\n        assert_shortest_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_distance, assert_shortest_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords_dict = ['practice', 'makes', 'perfect', 'coding', 'makes']\nword1 = 'coding'\nword2 = 'practice'\nexpected = 3",
+    "playground_run": "result = run_shortest_distance(Solution, words_dict, word1, word2)\nresult",
+    "playground_assert": "assert_shortest_distance(result, expected)"
+}

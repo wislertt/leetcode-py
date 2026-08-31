@@ -1,0 +1,79 @@
+{
+    "problem_name": "uncommon_words_from_two_sentences",
+    "solution_class_name": "Solution",
+    "problem_number": "884",
+    "problem_title": "Uncommon Words from Two Sentences",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "A <strong>sentence</strong> is a string of single-space separated words where each word consists only of lowercase English letters.</p>\n\n<p>A word is <strong>uncommon</strong> if it appears exactly once in one of the sentences, and <strong>does not appear</strong> in the other sentence.</p>\n\n<p>Given two sentences <code>s1</code> and <code>s2</code>, return <em>a list of all the <strong>uncommon words</strong></em>. You may return the answer in any order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s1 = \"this apple is sweet\", s2 = \"this apple is sour\"\nOutput: [\"sweet\",\"sour\"]\n```"
+            },
+            { "content": "```\nInput: s1 = \"apple apple\", s2 = \"banana\"\nOutput: [\"banana\"]\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s1.length, s2.length <= 200\n- s1 and s2 consist of lowercase English letters and spaces.\n- s1 and s2 do not have leading or trailing spaces.\n- All the words in s1 and s2 are separated by a single space.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "uncommon_from_sentences",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.uncommon_from_sentences(s1, s2)",
+    "helpers_assert_name": "uncommon_from_sentences",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_uncommon_from_sentences, run_uncommon_from_sentences\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UncommonWordsFromTwoSentences",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "uncommon_from_sentences",
+                "signature": "(self, s1: str, s2: str) -> list[str]",
+                "body": "        # TODO: Implement uncommon_from_sentences\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_uncommon_from_sentences",
+                "signature": "(self, s1: str, s2: str, expected: list[str])",
+                "parametrize": "s1, s2, expected",
+                "test_cases": {
+                    "list": [
+                        "('this apple is sweet', 'this apple is sour', ['sweet', 'sour'])",
+                        "('apple apple', 'banana', ['banana'])",
+                        "('a', 'b', ['a', 'b'])",
+                        "('a', 'a', [])",
+                        "('a b c', 'a b c', [])",
+                        "('a b c d', 'b c d e', ['a', 'e'])",
+                        "('apple', 'apple apple', [])",
+                        "('a b', 'c d', ['a', 'b', 'c', 'd'])",
+                        "('x y z w', 'z w q r', ['q', 'r', 'x', 'y'])",
+                        "('aa aa', 'aa', [])",
+                        "('ab bc ca', 'bc ab', ['ca'])",
+                        "('one two', 'three four five', ['five', 'four', 'one', 'three', 'two'])",
+                        "('hello world hello', 'world', [])",
+                        "('p q', 'p q p q', [])"
+                    ]
+                },
+                "body": "        result = run_uncommon_from_sentences(Solution, s1, s2)\n        assert_uncommon_from_sentences(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_uncommon_from_sentences, assert_uncommon_from_sentences\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'this apple is sweet'\ns2 = 'this apple is sour'\nexpected = ['sweet', 'sour']",
+    "playground_run": "result = run_uncommon_from_sentences(Solution, s1, s2)\nresult",
+    "playground_assert": "assert_uncommon_from_sentences(result, expected)"
+}

@@ -1,0 +1,87 @@
+{
+    "problem_name": "knight_dialer",
+    "solution_class_name": "Solution",
+    "problem_number": "935",
+    "problem_title": "Knight Dialer",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "<p>The chess knight has a <strong>unique movement</strong>&nbsp;,it may move two squares vertically and one square horizontally, or two squares horizontally and one square vertically (with both forming the shape of an <strong>L</strong>). The possible movements of chess knight are shown in this diagram:</p>\n\n<p>A chess knight can move as indicated in the chess diagram below:</p>\n\n<p>We have a chess knight and a phone pad as shown below, the knight can only stand on a numeric cell&nbsp;(i.e. blue cell).</p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/08/18/chess.jpg\" style=\"width: 402px; height: 402px;\" /></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/08/18/phone.jpg\" style=\"width: 282px; height: 302px;\" /></p>\n\n<p>Given an integer <code>n</code>, return how many distinct phone numbers of length <code>n</code> we can dial.</p>\n\n<p>You are allowed to place the knight on any numeric cell initially and then you should perform <code>n - 1</code> jumps to dial a number of length <code>n</code>. All jumps should be valid knight jumps.</p>\n\n<p>As the answer may be very large, return the answer modulo <code>10<sup>9</sup> + 7</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: 10\nExplanation: We need to dial a number of length 1, so placing the knight over any numeric cell of the 10 cells is sufficient.\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: 20\nExplanation: All the valid number we can dial are [04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81, 83, 92, 94]\n```"
+            },
+            {
+                "content": "```\nInput: n = 3131\nOutput: 136006598\nExplanation: Please take care of the mod.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= n &lt;= 5000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "knight_dialer",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.knight_dialer(n)",
+    "helpers_assert_name": "knight_dialer",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_knight_dialer, run_knight_dialer\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KnightDialer",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "knight_dialer",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement knight_dialer\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_knight_dialer",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 10)",
+                        "(2, 20)",
+                        "(3, 46)",
+                        "(4, 104)",
+                        "(5, 240)",
+                        "(6, 544)",
+                        "(7, 1256)",
+                        "(8, 2848)",
+                        "(9, 6576)",
+                        "(10, 14912)",
+                        "(12, 78080)",
+                        "(15, 944000)",
+                        "(20, 58689536)",
+                        "(100, 540641702)",
+                        "(1000, 88106097)",
+                        "(3131, 136006598)",
+                        "(5000, 406880451)"
+                    ]
+                },
+                "body": "        result = run_knight_dialer(Solution, n)\n        assert_knight_dialer(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_knight_dialer, assert_knight_dialer\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nexpected = 20",
+    "playground_run": "result = run_knight_dialer(Solution, n)\nresult",
+    "playground_assert": "assert_knight_dialer(result, expected)"
+}

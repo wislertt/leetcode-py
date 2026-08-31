@@ -1,0 +1,91 @@
+{
+    "problem_name": "push_dominoes",
+    "solution_class_name": "Solution",
+    "problem_number": "838",
+    "problem_title": "Push Dominoes",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `n` dominoes in a line, and we place each domino vertically upright. In the beginning, we simultaneously push some of the dominoes either to the left or to the right.\n\nAfter each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standing on the right.\n\nWhen a vertical domino has dominoes falling on it from both sides, it stays still due to the balance of the forces.\n\nFor the purposes of this question, we will consider that a falling domino expends no additional force to a falling or already fallen domino.\n\nYou are given a string `dominoes` representing the initial state where:\n\n- `dominoes[i] = 'L'`, if the `ith` domino has been pushed to the left,\n- `dominoes[i] = 'R'`, if the `ith` domino has been pushed to the right, and\n- `dominoes[i] = '.'`, if the `ith` domino has not been pushed.\n\nReturn *a string representing the final state*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: dominoes = \"RR.L\"\nOutput: \"RR.L\"\nExplanation: The first domino expends no additional force on the second domino.\n```"
+            },
+            {
+                "content": "```\nInput: dominoes = \".L.R...LR..L..\"\nOutput: \"LL.RR.LLRRLL..\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == dominoes.length\n- 1 <= n <= 10^5\n- dominoes[i] is either 'L', 'R', or '.'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "push_dominoes",
+    "helpers_run_signature": "(solution_class: type, dominoes: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.push_dominoes(dominoes)",
+    "helpers_assert_name": "push_dominoes",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_push_dominoes, run_push_dominoes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PushDominoes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "push_dominoes",
+                "signature": "(self, dominoes: str) -> str",
+                "body": "        # TODO: Implement push_dominoes\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_push_dominoes",
+                "signature": "(self, dominoes: str, expected: str)",
+                "parametrize": "dominoes, expected",
+                "test_cases": {
+                    "list": [
+                        "('RR.L', 'RR.L')",
+                        "('.L.R...LR..L..', 'LL.RR.LLRRLL..')",
+                        "('.', '.')",
+                        "('L', 'L')",
+                        "('R', 'R')",
+                        "('L.', 'L.')",
+                        "('.L', 'LL')",
+                        "('R.', 'RR')",
+                        "('.R', '.R')",
+                        "('R...L', 'RR.LL')",
+                        "('L...R', 'L...R')",
+                        "('R.L', 'R.L')",
+                        "('.L.R.', 'LL.RR')",
+                        "('R....L....R', 'RRRLLL....R')",
+                        "('R.R.L', 'RRR.L')",
+                        "('....L...R.....RRRLLL.....', 'LLLLL...RRRRRRRRRLLL.....')"
+                    ]
+                },
+                "body": "        result = run_push_dominoes(Solution, dominoes)\n        assert_push_dominoes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_push_dominoes, assert_push_dominoes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndominoes = 'RR.L'\nexpected = 'RR.L'",
+    "playground_run": "result = run_push_dominoes(Solution, dominoes)\nresult",
+    "playground_assert": "assert_push_dominoes(result, expected)"
+}

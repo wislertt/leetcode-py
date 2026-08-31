@@ -1,0 +1,32 @@
+---
+title: "lcpy gen Error: Problem Already Exists"
+sidebarTitle: Already exists
+description: "lcpy refuses to generate into a directory that already exists. Pick another output directory or pass --force to overwrite."
+---
+
+```
+Error: Problem 'two_sum' already exists. Use --force to overwrite.
+```
+
+`lcpy gen` never overwrites silently. A directory named after the problem
+already exists under the output directory, so generation stops.
+
+## Reproduce
+
+```bash
+lcpy gen -n 1
+lcpy gen -n 1
+# Error: Problem 'two_sum' already exists. Use --force to overwrite.
+```
+
+## Fix
+
+- **Generate somewhere else**: pass a different output directory,
+  `lcpy gen -n 1 -o practice/week-1`.
+- **Regenerate on purpose**: add `--force`. The generated files replace
+  whatever is there, including your edits. If the directory holds a
+  solution you want, copy `solution.py` out first, regenerate, then copy
+  it back.
+
+Not this error? Every fix lives on
+[Troubleshooting](/troubleshooting).

@@ -1,0 +1,94 @@
+{
+    "problem_name": "continuous_subarray_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "523",
+    "problem_title": "Continuous Subarray Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums` and an integer `k`, return `true` *if* `nums` *has a **good subarray** or* `false` *otherwise*.\n\nA **good subarray** is a subarray where:\n\n- its length is **at least two**, and\n- the sum of the elements of the subarray is a multiple of `k`.\n\n**Note** that:\n\n- A **subarray** is a contiguous part of the array.\n- An integer `x` is a multiple of `k` if there exists an integer `n` such that `x = n * k`. `0` is **always** a multiple of `k`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [23,2,4,6,7], k = 6\nOutput: true\nExplanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [23,2,6,4,7], k = 6\nOutput: true\nExplanation: [23, 2, 6, 4, 7] is an continuous subarray of size 5 whose elements sum up to 42.\n42 is a multiple of 6 because 42 = 7 * 6 and 7 is an integer.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [23,2,6,4,7], k = 13\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `0 <= nums[i] <= 10^9`\n- `0 <= sum(nums[i]) <= 2^31 - 1`\n- `1 <= k <= 2^31 - 1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_subarray_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_subarray_sum(nums, k)",
+    "helpers_assert_name": "check_subarray_sum",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_subarray_sum, run_check_subarray_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ContinuousSubarraySum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_subarray_sum",
+                "signature": "(self, nums: list[int], k: int) -> bool",
+                "body": "        # TODO: Implement check_subarray_sum\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_subarray_sum",
+                "signature": "(self, nums: list[int], k: int, expected: bool)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([23, 2, 4, 6, 7], 6, True)",
+                        "([23, 2, 6, 4, 7], 6, True)",
+                        "([23, 2, 6, 4, 7], 13, False)",
+                        "([1, 2], 2, False)",
+                        "([0, 0], 1, True)",
+                        "([0], 1, False)",
+                        "([5, 0, 0], 3, True)",
+                        "([1, 1], 5, False)",
+                        "([2, 4], 6, True)",
+                        "([1, 2, 3], 5, True)",
+                        "([1000000000], 3, False)",
+                        "([6, 6], 6, True)",
+                        "([1, 0], 2, False)",
+                        "([5, 2, 4], 7, True)",
+                        "([1, 2, 12], 6, False)",
+                        "([7, 1, 5], 4, True)"
+                    ]
+                },
+                "body": "        result = run_check_subarray_sum(Solution, nums, k)\n        assert_check_subarray_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_subarray_sum, assert_check_subarray_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [23, 2, 4, 6, 7]\nk = 6\nexpected = True",
+    "playground_run": "result = run_check_subarray_sum(Solution, nums, k)\nresult",
+    "playground_assert": "assert_check_subarray_sum(result, expected)"
+}

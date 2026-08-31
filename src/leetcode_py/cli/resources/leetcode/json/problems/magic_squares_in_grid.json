@@ -1,0 +1,88 @@
+{
+    "problem_name": "magic_squares_in_grid",
+    "solution_class_name": "Solution",
+    "problem_number": "840",
+    "problem_title": "Magic Squares In Grid",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A `3 x 3` magic square is a `3 x 3` grid filled with **distinct** numbers **from** `1` **to** `9` such that each row, column, and both diagonals all have the same sum.\n\nGiven a `row x col` `grid` of integers, how many `3 x 3` magic square subgrids are there?\n\n**Note:** while a magic square can only contain numbers from `1` to `9`, `grid` may contain numbers up to `15`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[4,3,8,4],[9,5,1,9],[2,7,6,2]]\nOutput: 1\nExplanation:\nThe following subgrid is a 3 x 3 magic square:\n\nwhile this one is not:\n\nIn total, there is only one magic square inside the given grid.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[8]]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- row == grid.length\n- col == grid[i].length\n- 1 <= row, col <= 10\n- 0 <= grid[i][j] <= 15",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_magic_squares_inside",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_magic_squares_inside(grid)",
+    "helpers_assert_name": "num_magic_squares_inside",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_magic_squares_inside, run_num_magic_squares_inside\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MagicSquaresInGrid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_magic_squares_inside",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement num_magic_squares_inside\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_magic_squares_inside",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[4, 3, 8, 4], [9, 5, 1, 9], [2, 7, 6, 2]], 1)",
+                        "([[8]], 0)",
+                        "([[4, 7, 8], [9, 5, 1], [2, 3, 6]], 0)",
+                        "([[4, 9, 2], [3, 5, 7], [8, 1, 6]], 1)",
+                        "([[3, 2, 9, 2, 7], [6, 1, 8, 8, 6], [5, 0, 1, 4, 5], [6, 7, 2, 9, 4], [3, 2, 7, 6, 1]], 0)",
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 0)",
+                        "([[10, 3, 5], [1, 6, 11], [7, 9, 2]], 0)",
+                        "([[4, 3, 8, 4, 3, 8], [9, 5, 1, 9, 5, 1], [2, 7, 6, 2, 7, 6]], 2)",
+                        "([[5, 5, 5], [5, 5, 5], [5, 5, 5]], 0)",
+                        "([[8, 1, 6, 8, 1, 6], [3, 5, 7, 3, 5, 7], [4, 9, 2, 4, 9, 2], [8, 1, 6, 8, 1, 6], [3, 5, 7, 3, 5, 7], [4, 9, 2, 4, 9, 2]], 4)",
+                        "([[1, 15, 14, 4, 13], [12, 6, 7, 9, 8], [11, 10, 2, 5, 3], [1, 15, 14, 4, 13], [12, 6, 7, 9, 8]], 0)",
+                        "([[9, 0, 8, 1, 6], [2, 7, 3, 5, 7], [4, 5, 4, 9, 2], [6, 1, 8, 1, 6]], 1)",
+                        "([[1]], 0)"
+                    ]
+                },
+                "body": "        result = run_num_magic_squares_inside(Solution, grid)\n        assert_num_magic_squares_inside(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_magic_squares_inside, assert_num_magic_squares_inside\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[4, 3, 8, 4], [9, 5, 1, 9], [2, 7, 6, 2]]\nexpected = 1",
+    "playground_run": "result = run_num_magic_squares_inside(Solution, grid)\nresult",
+    "playground_assert": "assert_num_magic_squares_inside(result, expected)"
+}

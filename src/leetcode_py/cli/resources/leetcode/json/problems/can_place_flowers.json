@@ -1,0 +1,80 @@
+{
+    "problem_name": "can_place_flowers",
+    "solution_class_name": "Solution",
+    "problem_number": "605",
+    "problem_title": "Can Place Flowers",
+    "difficulty": "Easy",
+    "topics": "Array, Greedy",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in **adjacent** plots.\n\nGiven an integer array `flowerbed` containing `0`'s and `1`'s, where `0` means empty and `1` means not empty, and an integer `n`, return `true` *if* `n` *new flowers can be planted in the* `flowerbed` *without violating the no-adjacent-flowers rule and* `false` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: flowerbed = [1,0,0,0,1], n = 1\nOutput: true\n```" },
+            { "content": "```\nInput: flowerbed = [1,0,0,0,1], n = 2\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= flowerbed.length <= 2 * 10^4\n- flowerbed[i] is 0 or 1.\n- There are no two adjacent flowers in flowerbed.\n- 0 <= n <= flowerbed.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_place_flowers",
+    "helpers_run_signature": "(solution_class: type, flowerbed: list[int], n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_place_flowers(flowerbed, n)",
+    "helpers_assert_name": "can_place_flowers",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_place_flowers, run_can_place_flowers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CanPlaceFlowers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_place_flowers",
+                "signature": "(self, flowerbed: list[int], n: int) -> bool",
+                "body": "        # TODO: Implement can_place_flowers\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_place_flowers",
+                "signature": "(self, flowerbed: list[int], n: int, expected: bool)",
+                "parametrize": "flowerbed, n, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,0,0,0,1], 1, True)",
+                        "([1,0,0,0,1], 2, False)",
+                        "([0], 0, True)",
+                        "([0], 1, True)",
+                        "([1], 0, True)",
+                        "([1], 1, False)",
+                        "([0,0], 1, True)",
+                        "([0,0], 2, False)",
+                        "([0,0,0], 1, True)",
+                        "([0,0,0], 2, True)",
+                        "([0,0,0,0], 2, True)",
+                        "([0,0,0,0], 3, False)",
+                        "([1,0,0,0,0,1], 1, True)",
+                        "([1,0,0,0,0,1], 2, False)",
+                        "([0,0,1,0,0], 1, True)",
+                        "([0,0,1,0,0], 2, True)",
+                        "([0,0,1,0,0], 3, False)"
+                    ]
+                },
+                "body": "        result = run_can_place_flowers(Solution, flowerbed, n)\n        assert_can_place_flowers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_place_flowers, assert_can_place_flowers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nflowerbed: list[int] = [1, 0, 0, 0, 1]\nn = 1\nexpected = True",
+    "playground_run": "result = run_can_place_flowers(Solution, flowerbed, n)\nresult",
+    "playground_assert": "assert_can_place_flowers(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "recover_a_tree_from_preorder_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "1028",
+    "problem_title": "Recover a Tree From Preorder Traversal",
+    "difficulty": "Hard",
+    "topics": "String, Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "We run a preorder depth-first search (DFS) on the `root` of a binary tree.\n\nAt each node in this traversal, we output `D` dashes (where `D` is the depth of this node), then we output the value of this node. If the depth of a node is `D`, the depth of its immediate child is `D + 1`. The depth of the `root` node is `0`.\n\nIf a node has only one child, that child is guaranteed to be **the left child**.\n\nGiven the output traversal of this traversal, recover the tree and return its `root`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/09/10/recover_tree_ex1.png)\n\n```\nInput: traversal = \"1-2--3--4-5--6--7\"\nOutput: [1,2,5,3,4,6,7]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/09/10/recover_tree_ex2.png)\n\n```\nInput: traversal = \"1-2--3---4-5--6---7\"\nOutput: [1,2,5,3,null,6,null,4,null,7]\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2024/09/10/recover_tree_ex3.png)\n\n```\nInput: traversal = \"1-401--349---90--88\"\nOutput: [1,401,null,349,88,90]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the original tree is in the range `[1, 1000]`.\n- `1 <= Node.val <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "recover_from_preorder",
+    "helpers_run_signature": "(solution_class: type, traversal: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.recover_from_preorder(traversal)",
+    "helpers_assert_name": "recover_from_preorder",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_recover_from_preorder, run_recover_from_preorder\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RecoverATreeFromPreorderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "recover_from_preorder",
+                "signature": "(self, traversal: str) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement recover_from_preorder\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_recover_from_preorder",
+                "signature": "(self, traversal: str, expected_list: list[int | None])",
+                "parametrize": "traversal, expected_list",
+                "test_cases": {
+                    "list": [
+                        "('1-2--3--4-5--6--7', [1, 2, 5, 3, 4, 6, 7])",
+                        "('1-2--3---4-5--6---7', [1, 2, 5, 3, None, 6, None, 4, None, 7])",
+                        "('1-401--349---90--88', [1, 401, None, 349, 88, 90])",
+                        "('1', [1])",
+                        "('10', [10])",
+                        "('1-2', [1, 2])",
+                        "('1-2-3', [1, 2, 3])",
+                        "('1-2--3-4', [1, 2, 4, 3])",
+                        "('5-4--3---2---2--3', [5, 4, None, 3, 3, 2, 2])",
+                        "('100-200--300', [100, 200, None, 300])",
+                        "('9-8--7---6----5', [9, 8, None, 7, None, 6, None, 5])",
+                        "('1-2--3--4-5--6', [1, 2, 5, 3, 4, 6])"
+                    ]
+                },
+                "body": "        result = run_recover_from_preorder(Solution, traversal)\n        assert_recover_from_preorder(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_recover_from_preorder, assert_recover_from_preorder\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\ntraversal = '1-2--3--4-5--6--7'\nexpected_list: list[int | None] = [1, 2, 5, 3, 4, 6, 7]",
+    "playground_run": "result = run_recover_from_preorder(Solution, traversal)\nresult",
+    "playground_assert": "assert_recover_from_preorder(result, expected_list)"
+}

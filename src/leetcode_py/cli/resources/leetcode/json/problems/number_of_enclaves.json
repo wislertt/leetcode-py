@@ -1,0 +1,87 @@
+{
+    "problem_name": "number_of_enclaves",
+    "solution_class_name": "Solution",
+    "problem_number": "1020",
+    "problem_title": "Number of Enclaves",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` binary matrix `grid`, where `0` represents a sea cell and `1` represents a land cell.\n\nA move consists of walking from one land cell to another adjacent (4-directionally) land cell or walking off the boundary of the grid.\n\nReturn *the number of land cells in* `grid` *for which we cannot walk off the boundary of the grid in any number of moves*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/18/enclaves1.jpg)\n\n```\nInput: grid = [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]\nOutput: 3\nExplanation: There are three 1s that are enclosed by 0s, and one 1 that is not enclosed because its on the boundary.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/18/enclaves2.jpg)\n\n```\nInput: grid = [[0,1,1,0],[0,0,1,0],[0,0,1,0],[0,0,0,0]]\nOutput: 0\nExplanation: All 1s are either on the boundary or can reach the boundary.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 500`\n- `grid[i][j]` is either `0` or `1`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_enclaves",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_enclaves(grid)",
+    "helpers_assert_name": "num_enclaves",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_enclaves, run_num_enclaves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfEnclaves",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_enclaves",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement num_enclaves\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_enclaves",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]], 3)",
+                        "([[0,1,1,0],[0,0,1,0],[0,0,1,0],[0,0,0,0]], 0)",
+                        "([[0]], 0)",
+                        "([[1]], 0)",
+                        "([[0,0],[0,0]], 0)",
+                        "([[1,1],[1,1]], 0)",
+                        "([[1,0],[0,1]], 0)",
+                        "([[1,1],[0,0],[1,1]], 0)",
+                        "([[0,1],[1,0]], 0)",
+                        "([[0,0,1],[1,1,1],[1,1,1]], 0)",
+                        "([[0,0,0],[0,1,0],[0,0,0]], 1)",
+                        "([[1,0,1],[0,1,0],[1,0,1]], 1)"
+                    ]
+                },
+                "body": "        result = run_num_enclaves(Solution, grid)\n        assert_num_enclaves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_enclaves, assert_num_enclaves\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]\nexpected = 3",
+    "playground_run": "result = run_num_enclaves(Solution, grid)\nresult",
+    "playground_assert": "assert_num_enclaves(result, expected)"
+}

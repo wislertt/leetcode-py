@@ -1,0 +1,88 @@
+{
+    "problem_name": "reverse_words_in_a_string_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "186",
+    "problem_title": "Reverse Words in a String II",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a character array `s`, reverse the order of the **words**.\n\nA **word** is defined as a sequence of non-space characters. The **words** in `s` will be separated by a single space.\n\nYour code must solve the problem **in-place**, i.e. without allocating extra space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = [\"t\",\"h\",\"e\",\" \",\"s\",\"k\",\"y\",\" \",\"i\",\"s\",\" \",\"b\",\"l\",\"u\",\"e\"]\nOutput: [\"b\",\"l\",\"u\",\"e\",\" \",\"i\",\"s\",\" \",\"s\",\"k\",\"y\",\" \",\"t\",\"h\",\"e\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = [\"a\"]\nOutput: [\"a\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s[i] is an English letter (uppercase or lowercase), digit, or space ' '\n- There is at least one word in s\n- s does not contain leading or trailing spaces\n- All the words in s are guaranteed to be separated by a single space",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_words",
+    "helpers_run_signature": "(solution_class: type, s: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    implementation.reverse_words(s)\n    return s",
+    "helpers_assert_name": "reverse_words",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_words, run_reverse_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseWordsInAStringII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_words",
+                "signature": "(self, s: list[str]) -> None",
+                "body": "        # TODO: Implement reverse_words\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_words",
+                "signature": "(self, s: list[str], expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "(['t', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e'], ['b', 'l', 'u', 'e', ' ', 'i', 's', ' ', 's', 'k', 'y', ' ', 't', 'h', 'e'])",
+                        "(['a'], ['a'])",
+                        "(['a', 'b'], ['a', 'b'])",
+                        "(['h', 'i'], ['h', 'i'])",
+                        "(['a', ' ', 'b'], ['b', ' ', 'a'])",
+                        "(['a', 'b', ' ', 'c', 'd'], ['c', 'd', ' ', 'a', 'b'])",
+                        "(['a', 'b', 'c', ' ', 'd'], ['d', ' ', 'a', 'b', 'c'])",
+                        "(['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'], ['w', 'o', 'r', 'l', 'd', ' ', 'h', 'e', 'l', 'l', 'o'])",
+                        "(['o', 'n', 'e', ' ', 't', 'w', 'o', ' ', 't', 'h', 'r', 'e', 'e'], ['t', 'h', 'r', 'e', 'e', ' ', 't', 'w', 'o', ' ', 'o', 'n', 'e'])",
+                        "(['f', 'o', 'o', ' ', 'b', 'a', 'r'], ['b', 'a', 'r', ' ', 'f', 'o', 'o'])",
+                        "(['1', '2', ' ', '3'], ['3', ' ', '1', '2'])",
+                        "(['a', ' ', 'b', ' ', 'c'], ['c', ' ', 'b', ' ', 'a'])",
+                        "(['a', 'b', 'c'], ['a', 'b', 'c'])",
+                        "(['w', 'o', 'r', 'd'], ['w', 'o', 'r', 'd'])"
+                    ]
+                },
+                "body": "        result = run_reverse_words(Solution, s)\n        assert_reverse_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_words, assert_reverse_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = ['t', 'h', 'e', ' ', 's', 'k', 'y', ' ', 'i', 's', ' ', 'b', 'l', 'u', 'e']\nexpected = ['b', 'l', 'u', 'e', ' ', 'i', 's', ' ', 's', 'k', 'y', ' ', 't', 'h', 'e']",
+    "playground_run": "result = run_reverse_words(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_words(result, expected)"
+}

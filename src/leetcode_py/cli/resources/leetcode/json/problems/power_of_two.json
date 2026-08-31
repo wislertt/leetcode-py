@@ -1,0 +1,96 @@
+{
+    "problem_name": "power_of_two",
+    "solution_class_name": "Solution",
+    "problem_number": "231",
+    "problem_title": "Power of Two",
+    "difficulty": "Easy",
+    "topics": "Math, Bit Manipulation, Recursion",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, return `true` if it is a power of two. Otherwise, return `false`.\n\nAn integer `n` is a power of two, if there exists an integer `x` such that `n == 2^x`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: true\nExplanation: 2^0 = 1\n```"
+            },
+            {
+                "content": "```\nInput: n = 16\nOutput: true\nExplanation: 2^4 = 16\n```"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= n <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you solve it without loops/recursion?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_power_of_two",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_power_of_two(n)",
+    "helpers_assert_name": "is_power_of_two",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_power_of_two, run_is_power_of_two\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PowerOfTwo",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_power_of_two",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement is_power_of_two\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_power_of_two",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, True)",
+                        "(16, True)",
+                        "(3, False)",
+                        "(2, True)",
+                        "(4, True)",
+                        "(8, True)",
+                        "(32, True)",
+                        "(1024, True)",
+                        "(0, False)",
+                        "(-1, False)",
+                        "(-2, False)",
+                        "(-16, False)",
+                        "(5, False)",
+                        "(6, False)",
+                        "(2147483648, True)",
+                        "(2147483647, False)",
+                        "(1073741824, True)",
+                        "(536870912, True)"
+                    ]
+                },
+                "body": "        result = run_is_power_of_two(Solution, n)\n        assert_is_power_of_two(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_power_of_two, assert_is_power_of_two\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 16\nexpected = True",
+    "playground_run": "result = run_is_power_of_two(Solution, n)\nresult",
+    "playground_assert": "assert_is_power_of_two(result, expected)"
+}

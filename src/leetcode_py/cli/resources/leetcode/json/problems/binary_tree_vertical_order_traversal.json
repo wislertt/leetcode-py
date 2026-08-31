@@ -1,0 +1,93 @@
+{
+    "problem_name": "binary_tree_vertical_order_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "314",
+    "problem_title": "Binary Tree Vertical Order Traversal",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Hash Table, Binary Tree, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return **the vertical order traversal** of its nodes' values. (i.e., from top to bottom, column by column).\n\nIf two nodes are in the same row and column, the order should be from **left to right**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0314.Binary%20Tree%20Vertical%20Order%20Traversal/images/image1.png)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: [[9],[3,15],[20],[7]]\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0314.Binary%20Tree%20Vertical%20Order%20Traversal/images/image3.png)\n\n```\nInput: root = [3,9,8,4,0,1,7]\nOutput: [[4],[9],[3,0,1],[8],[7]]\n```"
+            },
+            {
+                "content": "![Example 3](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0314.Binary%20Tree%20Vertical%20Order%20Traversal/images/image2.png)\n\n```\nInput: root = [1,2,3,4,10,9,11,null,5,null,null,null,null,null,null,null,6]\nOutput: [[4],[2,5],[1,10,9,6],[3],[11]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 100]`.\n- `-100 <= Node.val <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "vertical_order",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    from leetcode_py import TreeNode\n    root = TreeNode.from_list(root_list)\n    implementation = solution_class()\n    return implementation.vertical_order(root)",
+    "helpers_assert_name": "vertical_order",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom leetcode_py import TreeNode\nfrom .helpers import assert_vertical_order, run_vertical_order\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeVerticalOrderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "vertical_order",
+                "signature": "(self, root: TreeNode[int] | None) -> list[list[int]]",
+                "body": "        # TODO: Implement vertical_order\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_vertical_order",
+                "signature": "(self, root_list: list[int | None], expected: list[list[int]])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3,9,20,None,None,15,7],[[9],[3,15],[20],[7]])",
+                        "([3,9,8,4,0,1,7],[[4],[9],[3,0,1],[8],[7]])",
+                        "([1,2,3,4,10,9,11,None,5,None,None,None,None,None,None,None,6],[[4],[2,5],[1,10,9,6],[3],[11]])",
+                        "([],[])",
+                        "([1],[[1]])",
+                        "([1,2,3],[[2],[1],[3]])",
+                        "([1,2,3,4,5],[[4],[2],[1,5],[3]])",
+                        "([1,2,None,3],[[3],[2],[1]])",
+                        "([1,None,2,None,3],[[1],[2],[3]])",
+                        "([1,2,3,4,5,6,7],[[4],[2],[1,5,6],[3],[7]])",
+                        "([1,2,3,4,5,6,7,8],[[8],[4],[2],[1,5,6],[3],[7]])",
+                        "([5,1,6,None,2,None,7],[[1],[5,2],[6],[7]])",
+                        "([-1,-2,-3],[[-2],[-1],[-3]])",
+                        "([1,2,3,None,None,4,5],[[2],[1,4],[3],[5]])",
+                        "([4,2,6,1,3,5,7],[[1],[2],[4,3,5],[6],[7]])"
+                    ]
+                },
+                "body": "        result = run_vertical_order(Solution, root_list)\n        assert_vertical_order(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_vertical_order, assert_vertical_order\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3, 9, 20, None, None, 15, 7]\nexpected = [[9], [3, 15], [20], [7]]",
+    "playground_run": "result = run_vertical_order(Solution, root_list)\nresult",
+    "playground_assert": "assert_vertical_order(result, expected)"
+}

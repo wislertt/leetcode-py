@@ -1,0 +1,86 @@
+{
+    "problem_name": "design_tic_tac_toe",
+    "solution_class_name": "TicTacToe",
+    "problem_number": "348",
+    "problem_title": "Design Tic-Tac-Toe",
+    "difficulty": "Medium",
+    "topics": "Design, Array, Hash Table, Matrix, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Assume the following rules are for the tic-tac-toe game on an `n x n` board between two players:\n\n1. A move is guaranteed to be valid and is placed on an empty block.\n2. Once a winning condition is reached, no more moves are allowed.\n3. A player who succeeds in placing `n` of their marks in a horizontal, vertical, or diagonal row wins the game.\n\nImplement the `TicTacToe` class:\n\n- `TicTacToe(int n)` Initializes the object the size of the board `n`.\n- `int move(int row, int col, int player)` Indicates that the player with id `player` plays at the cell `(row, col)` of the board. The move is guaranteed to be a valid move, and the two players alternate in making moves. Return\n    - `0` if there is **no winner** after the move,\n    - `1` if **player 1** is the winner after the move, or\n    - `2` if **player 2** is the winner after the move.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"TicTacToe\", \"move\", \"move\", \"move\", \"move\", \"move\", \"move\", \"move\"]\n[[3], [0, 0, 1], [0, 2, 2], [2, 2, 1], [1, 1, 2], [2, 0, 1], [1, 0, 2], [2, 1, 1]]\nOutput\n[null, 0, 0, 0, 0, 0, 0, 1]\n\nExplanation\nTicTacToe ticTacToe = new TicTacToe(3);\nAssume that player 1 is \"X\" and player 2 is \"O\" in the board.\nticTacToe.move(0, 0, 1); // return 0 (no one wins)\n|X| | |\n| | | |    // Player 1 makes a move at (0, 0).\n| | | |\n\nticTacToe.move(0, 2, 2); // return 0 (no one wins)\n|X| |O|\n| | | |    // Player 2 makes a move at (0, 2).\n| | | |\n\nticTacToe.move(2, 2, 1); // return 0 (no one wins)\n|X| |O|\n| | | |    // Player 1 makes a move at (2, 2).\n| | |X|\n\nticTacToe.move(1, 1, 2); // return 0 (no one wins)\n|X| |O|\n| |O| |    // Player 2 makes a move at (1, 1).\n| | |X|\n\nticTacToe.move(2, 0, 1); // return 0 (no one wins)\n|X| |O|\n| |O| |    // Player 1 makes a move at (2, 0).\n|X| |X|\n\nticTacToe.move(1, 0, 2); // return 0 (no one wins)\n|X| |O|\n|O|O| |    // Player 2 makes a move at (1, 0).\n|X| |X|\n\nticTacToe.move(2, 1, 1); // return 1 (player 1 wins)\n|X| |O|\n|O|O| |    // Player 1 makes a move at (2, 1).\n|X|X|X|\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= n <= 100`\n- `player` is `1` or `2`.\n- `0 <= row, col < n`\n- `(row, col)` are **unique** for each different call to `move`.\n- At most `n^2` calls will be made to `move`.",
+    "readme_additional": "**Follow-up:** Could you do better than `O(n^2)` per `move()` operation?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "design_tic_tac_toe",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    game = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'TicTacToe':\n            game = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'move' and game is not None:\n            results.append(game.move(inputs[i][0], inputs[i][1], inputs[i][2]))\n    return results, game",
+    "helpers_assert_name": "design_tic_tac_toe",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_design_tic_tac_toe, run_design_tic_tac_toe\nfrom .solution import TicTacToe",
+    "test_content": "",
+    "test_class_name": "DesignTicTacToe",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, n: int) -> None",
+                "body": "        # TODO: Initialize the n x n board\n        pass"
+            },
+            {
+                "name": "move",
+                "signature": "(self, row: int, col: int, player: int) -> int",
+                "body": "        # TODO: Implement move\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_design_tic_tac_toe",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['TicTacToe','move','move','move','move','move','move','move'],[[3],[0,0,1],[0,2,2],[2,2,1],[1,1,2],[2,0,1],[1,0,2],[2,1,1]],[None,0,0,0,0,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move'],[[4],[0,0,1],[1,1,2],[0,1,1],[1,2,2],[0,2,1]],[None,0,0,0,0,0])",
+                        "(['TicTacToe','move','move','move'],[[2],[0,0,1],[1,0,2],[0,1,1]],[None,0,0,1])",
+                        "(['TicTacToe','move','move','move'],[[2],[0,0,1],[0,1,2],[1,1,1]],[None,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move'],[[3],[0,0,1],[0,1,2],[1,1,1],[0,2,2],[2,2,1]],[None,0,0,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move','move'],[[3],[0,0,1],[0,2,2],[0,1,1],[1,1,2],[1,0,1],[2,0,2]],[None,0,0,0,0,0,2])",
+                        "(['TicTacToe','move','move','move','move','move','move','move','move','move'],[[3],[0,0,1],[0,2,2],[0,1,1],[1,0,2],[1,2,1],[1,1,2],[2,0,1],[2,1,2],[2,2,1]],[None,0,0,0,0,0,0,0,0,0])",
+                        "(['TicTacToe','move','move','move','move','move'],[[3],[0,0,2],[1,0,1],[1,1,2],[2,2,1],[2,1,2]],[None,0,0,0,0,0])",
+                        "(['TicTacToe','move','move','move','move','move','move','move'],[[4],[0,0,1],[0,1,2],[1,1,1],[0,2,2],[2,2,1],[0,3,2],[3,3,1]],[None,0,0,0,0,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move'],[[3],[0,1,1],[0,0,2],[1,1,1],[1,0,2],[2,1,1]],[None,0,0,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move','move'],[[3],[0,0,1],[2,0,2],[0,1,1],[2,1,2],[1,2,1],[2,2,2]],[None,0,0,0,0,0,2])",
+                        "(['TicTacToe','move','move','move','move','move','move'],[[3],[0,1,1],[0,0,2],[1,2,1],[1,1,2],[2,0,1],[2,2,2]],[None,0,0,0,0,0,2])",
+                        "(['TicTacToe','move','move','move','move','move','move'],[[3],[0,0,1],[0,2,2],[1,1,1],[1,2,2],[2,1,1],[2,2,2]],[None,0,0,0,0,0,2])",
+                        "(['TicTacToe','move','move','move','move','move'],[[3],[2,1,1],[0,0,2],[2,0,1],[1,1,2],[2,2,1]],[None,0,0,0,0,1])",
+                        "(['TicTacToe','move','move','move','move','move','move'],[[3],[0,0,1],[2,2,2],[1,0,1],[1,1,2],[0,1,1],[0,2,2]],[None,0,0,0,0,0,0])"
+                    ]
+                },
+                "body": "        result, _ = run_design_tic_tac_toe(TicTacToe, operations, inputs)\n        assert_design_tic_tac_toe(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_design_tic_tac_toe, assert_design_tic_tac_toe\nfrom solution import TicTacToe",
+    "playground_setup": "# Example test case\noperations = ['TicTacToe', 'move', 'move', 'move', 'move', 'move', 'move', 'move']\ninputs = [[3], [0, 0, 1], [0, 2, 2], [2, 2, 1], [1, 1, 2], [2, 0, 1], [1, 0, 2], [2, 1, 1]]\nexpected = [None, 0, 0, 0, 0, 0, 0, 1]",
+    "playground_run": "result, game = run_design_tic_tac_toe(TicTacToe, operations, inputs)\nprint(result)\ngame",
+    "playground_assert": "assert_design_tic_tac_toe(result, expected)"
+}

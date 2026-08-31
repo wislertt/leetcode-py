@@ -1,0 +1,88 @@
+{
+    "problem_name": "stickers_to_spell_word",
+    "solution_class_name": "Solution",
+    "problem_number": "691",
+    "problem_title": "Stickers to Spell Word",
+    "difficulty": "Hard",
+    "topics": "Array, String, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "We are given `n` different types of stickers. Each sticker has a lowercase English word on it.\n\nYou would like to spell out the given string `target` by cutting individual letters from your collection of stickers and rearranging them. You can use each sticker more than once if you want, and you have infinite quantities of each sticker.\n\nReturn the minimum number of stickers that you need to spell out `target`. If the task is impossible, return `-1`.\n\nNote: In all test cases, all words were chosen randomly from the 1000 most common US English words, and target was chosen as a concatenation of two random words.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: stickers = [\"with\",\"example\",\"science\"], target = \"thehat\"\nOutput: 3\nExplanation: We can use 2 \"with\" stickers, and 1 \"example\" sticker.\nAfter cutting and rearrange the letters of those stickers, we can form the target \"thehat\".\nAlso, this is the minimum number of stickers necessary to form the target string.\n```"
+            },
+            {
+                "content": "```\nInput: stickers = [\"notice\",\"possible\"], target = \"basicbasic\"\nOutput: -1\nExplanation: We cannot form the target \"basicbasic\" from cutting letters from the given stickers.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == stickers.length\n- 1 <= n <= 50\n- 1 <= stickers[i].length <= 10\n- 1 <= target.length <= 15\n- stickers[i] and target consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_stickers",
+    "helpers_run_signature": "(solution_class: type, stickers: list[str], target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_stickers(stickers, target)",
+    "helpers_assert_name": "min_stickers",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from functools import lru_cache",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_stickers, run_min_stickers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StickersToSpellWord",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_stickers",
+                "signature": "(self, stickers: list[str], target: str) -> int",
+                "body": "        # TODO: Implement min_stickers\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_stickers",
+                "signature": "(self, stickers: list[str], target: str, expected: int)",
+                "parametrize": "stickers, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(['with','example','science'], 'thehat', 3)",
+                        "(['notice','possible'], 'basicbasic', -1)",
+                        "(['a'], 'a', 1)",
+                        "(['a'], 'aaaaa', 5)",
+                        "(['ab'], 'ba', 1)",
+                        "(['ab','bc'], 'abc', 2)",
+                        "(['these','guess','about','garden','him'], 'atomher', 3)",
+                        "(['fly','me','grass','planet','enter'], 'plantenemy', 4)",
+                        "(['control','heart'], 'heartcontrol', 2)",
+                        "(['summer','winter','autumn','spring'], 'summertime', 3)",
+                        "(['aaa','bbb','ccc'], 'abcabcabc', 3)",
+                        "(['x'], 'y', -1)",
+                        "(['and','two','their','playing'], 'angling', 2)"
+                    ]
+                },
+                "body": "        result = run_min_stickers(Solution, stickers, target)\n        assert_min_stickers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_stickers, assert_min_stickers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstickers = ['with', 'example', 'science']\ntarget = 'thehat'\nexpected = 3",
+    "playground_run": "result = run_min_stickers(Solution, stickers, target)\nresult",
+    "playground_assert": "assert_min_stickers(result, expected)"
+}

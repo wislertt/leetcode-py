@@ -1,0 +1,53 @@
+---
+title: "lcpy gen Error: Problem Not Found"
+sidebarTitle: Problem not found
+description: "lcpy reports a problem number, name, or tag it cannot find. Check the catalog with lcpy list, use snake_case names, or upgrade the package."
+---
+
+```
+Error: Problem number 42 not found
+```
+
+`lcpy gen` resolves numbers and tags against the JSON catalog bundled with
+your installed version. The error means the number, name, or tag is not in
+that catalog. A close cousin, reported as a warning during bulk runs:
+
+```
+Warning: JSON file not found for problem 'two-sum', skipping
+```
+
+That one means the name does not match a catalog entry, most often because
+the name is spelled as a slug instead of snake_case.
+
+## Reproduce
+
+```bash
+lcpy gen -n 42
+# Error: Problem number 42 not found
+
+lcpy gen -s two-sum
+# Warning: JSON file not found for problem 'two-sum', skipping
+# Completed: 0 successful, 1 failed
+```
+
+## Fix
+
+- **Check what ships with your version**: run `lcpy list`, or `lcpy list -t
+  <tag>` for one collection. Only listed problems can be generated.
+- **With `-s`, spell the name exactly as the repo does, underscored**:
+  `two_sum`, `valid_palindrome`. The hyphenated form (`two-sum`) is the
+  LeetCode URL slug and matches nothing. Numbers via `-n` sidestep
+  spelling entirely:
+
+```bash
+lcpy gen -s two_sum
+# ✅ Generated problem: two_sum
+# Completed: 1 successful, 0 failed
+```
+- **Problem added to the repo after you installed**: upgrade the package,
+  `pip install --upgrade leetcode-py-sdk`, then generate again.
+- **Problem not in the catalog at all**: it has to be scraped and added
+  first; see [Problem Creation](/contributing/problem-creation).
+
+Not this error? Every fix lives on
+[Troubleshooting](/troubleshooting).

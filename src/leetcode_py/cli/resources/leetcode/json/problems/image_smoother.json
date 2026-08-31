@@ -1,0 +1,89 @@
+{
+    "problem_name": "image_smoother",
+    "solution_class_name": "Solution",
+    "problem_number": "661",
+    "problem_title": "Image Smoother",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An **image smoother** is a filter of the size `3 x 3` that can be applied to each cell of an image by rounding down the average of the cell and the eight surrounding cells (i.e., the average of the nine cells in the blue smoother). If one or more of the surrounding cells of a cell is not present, we do not consider it in the average (i.e., the average of the four cells in the red smoother).\n\nGiven an `m x n` integer matrix `img` representing the grayscale of an image, return the image after applying the smoother on each cell of it.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/03/smooth-grid.jpg)\n\n```\nInput: img = [[1,1,1],[1,0,1],[1,1,1]]\nOutput: [[0,0,0],[0,0,0],[0,0,0]]\nExplanation: For the points (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0.\nFor the points (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0.\nFor the point (1,1): floor(8/9) = floor(0.88888889) = 0.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/05/03/smooth2-grid.jpg)\n\n```\nInput: img = [[100,200,100],[200,50,200],[100,200,100]]\nOutput: [[137,141,137],[141,138,141],[137,141,137]]\nExplanation: For the points (0,0), (0,2), (2,0), (2,2): floor((100+200+200+50)/4) = floor(137.5) = 137.\nFor the points (0,1), (1,0), (1,2), (2,1): floor((200+200+50+200+100+100)/6) = floor(141.666667) = 141.\nFor the point (1,1): floor((50+200+200+200+200+100+100+100+100)/9) = floor(138.888889) = 138.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == img.length\n- n == img[i].length\n- 1 <= m, n <= 200\n- 0 <= img[i][j] <= 255",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "image_smoother",
+    "helpers_run_signature": "(solution_class: type, img: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.image_smoother(img)",
+    "helpers_assert_name": "image_smoother",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_image_smoother, run_image_smoother\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ImageSmoother",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "image_smoother",
+                "signature": "(self, img: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement image_smoother\n        return img"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_image_smoother",
+                "signature": "(self, img: list[list[int]], expected: list[list[int]])",
+                "parametrize": "img, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,1,1],[1,0,1],[1,1,1]], [[0,0,0],[0,0,0],[0,0,0]])",
+                        "([[100,200,100],[200,50,200],[100,200,100]], [[137,141,137],[141,138,141],[137,141,137]])",
+                        "([[5]], [[5]])",
+                        "([[2,3]], [[2,2]])",
+                        "([[1,2,3]], [[1,2,2]])",
+                        "([[1],[2],[3]], [[1],[2],[2]])",
+                        "([[7,7],[7,7]], [[7,7],[7,7]])",
+                        "([[0,0,0],[0,0,0]], [[0,0,0],[0,0,0]])",
+                        "([[255,255,255],[255,255,255],[255,255,255]], [[255,255,255],[255,255,255],[255,255,255]])",
+                        "([[1,2,3],[4,5,6],[7,8,9]], [[3,3,4],[4,5,5],[6,6,7]])",
+                        "([[10,20,30,40]], [[15,20,30,35]])",
+                        "([[10],[20],[30],[40]], [[15],[20],[30],[35]])",
+                        "([[255,0,255],[0,255,0],[255,0,255]], [[127,127,127],[127,141,127],[127,127,127]])",
+                        "([[1,1,1,1],[1,1,1,1]], [[1,1,1,1],[1,1,1,1]])"
+                    ]
+                },
+                "body": "        result = run_image_smoother(Solution, img)\n        assert_image_smoother(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_image_smoother, assert_image_smoother\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nimg = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]\nexpected = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]",
+    "playground_run": "result = run_image_smoother(Solution, img)\nresult",
+    "playground_assert": "assert_image_smoother(result, expected)"
+}

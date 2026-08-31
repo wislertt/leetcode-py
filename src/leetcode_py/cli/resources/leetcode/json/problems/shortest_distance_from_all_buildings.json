@@ -1,0 +1,93 @@
+{
+    "problem_name": "shortest_distance_from_all_buildings",
+    "solution_class_name": "Solution",
+    "problem_number": "317",
+    "problem_title": "Shortest Distance from All Buildings",
+    "difficulty": "Hard",
+    "topics": "Breadth-First Search, Array, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` grid `grid` of values `0`, `1`, or `2`, where:\n\n- each `0` marks **an empty land** that you can pass by freely,\n- each `1` marks **a building** that you cannot pass through, and\n- each `2` marks **an obstacle** that you cannot pass through.\n\nYou want to build a house on an empty land that reaches all buildings in the **shortest total travel** distance. You can only move up, down, left, and right.\n\nReturn *the **shortest travel distance** for such a house*. If it is not possible to build such a house according to the above rules, return `-1`.\n\nThe **total travel distance** is the sum of the distances between the houses of the friends and the meeting point.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0317.Shortest%20Distance%20from%20All%20Buildings/images/buildings-grid.jpg)\n\n```\nInput: grid = [[1,0,2,0,1],[0,0,0,0,0],[0,0,1,0,0]]\nOutput: 7\nExplanation: Given three buildings at (0,0), (0,4), (2,2), and an obstacle at (0,2).\nThe point (1,2) is an ideal empty land to build a house, as the total travel distance of 3+3+1=7 is minimal.\nSo return 7.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0]]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1]]\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 50`\n- `grid[i][j]` is either `0`, `1`, or `2`.\n- There will be **at least one** building in the `grid`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_distance",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_distance(grid)",
+    "helpers_assert_name": "shortest_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_distance, run_shortest_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestDistanceFromAllBuildings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_distance",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement shortest_distance\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_distance",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,0,2,0,1],[0,0,0,0,0],[0,0,1,0,0]],7)",
+                        "([[1,0]],1)",
+                        "([[1]],-1)",
+                        "([[1,0,0]],1)",
+                        "([[1,2,0]],-1)",
+                        "([[0,1],[1,0]],2)",
+                        "([[1,0],[2,0],[1,0]],4)",
+                        "([[1,0,0,0,1]],4)",
+                        "([[1,2],[2,1]],-1)",
+                        "([[0,0,0],[0,1,0],[0,0,0]],1)",
+                        "([[1,0,2],[0,0,0],[2,0,1]],4)",
+                        "([[1,1],[0,0]],3)",
+                        "([[2,0,1]],1)",
+                        "([[1,0,0],[0,2,0],[0,0,1]],4)",
+                        "([[1,0,0,0]],1)"
+                    ]
+                },
+                "body": "        result = run_shortest_distance(Solution, grid)\n        assert_shortest_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_distance, assert_shortest_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 0, 2, 0, 1], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0]]\nexpected = 7",
+    "playground_run": "result = run_shortest_distance(Solution, grid)\nresult",
+    "playground_assert": "assert_shortest_distance(result, expected)"
+}

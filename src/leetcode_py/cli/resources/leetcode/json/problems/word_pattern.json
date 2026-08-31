@@ -1,0 +1,98 @@
+{
+    "problem_name": "word_pattern",
+    "solution_class_name": "Solution",
+    "problem_number": "290",
+    "problem_title": "Word Pattern",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a `pattern` and a string `s`, find if `s` follows the same pattern.\n\nHere **follow** means a full match, such that there is a bijection between a letter in `pattern` and a **non-empty** word in `s`. Specifically:\n\n- Each letter in `pattern` maps to **exactly** one unique word in `s`.\n- Each unique word in `s` maps to **exactly** one letter in `pattern`.\n- No two letters map to the same word, and no two words map to the same letter.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: pattern = 'abba', s = 'dog cat cat dog'\nOutput: true\nExplanation:\nThe bijection can be established as:\n- 'a' maps to 'dog'.\n- 'b' maps to 'cat'.\n```"
+            },
+            {
+                "content": "```\nInput: pattern = 'abba', s = 'dog cat cat fish'\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: pattern = 'aaaa', s = 'dog cat cat dog'\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= pattern.length <= 300\n- `pattern` contains only lower-case English letters.\n- 1 <= s.length <= 3000\n- `s` contains only lowercase English letters and spaces `' '`.\n- `s` does not contain any leading or trailing spaces.\n- All the words in `s` are separated by a single space.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_pattern",
+    "helpers_run_signature": "(solution_class: type, pattern: str, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_pattern(pattern, s)",
+    "helpers_assert_name": "word_pattern",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_pattern, run_word_pattern\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordPattern",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_pattern",
+                "signature": "(self, pattern: str, s: str) -> bool",
+                "body": "        # TODO: Implement word_pattern\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_pattern",
+                "signature": "(self, pattern: str, s: str, expected: bool)",
+                "parametrize": "pattern, s, expected",
+                "test_cases": {
+                    "list": [
+                        "('abba', 'dog cat cat dog', True)",
+                        "('abba', 'dog cat cat fish', False)",
+                        "('aaaa', 'dog cat cat dog', False)",
+                        "('abba', 'dog dog dog dog', False)",
+                        "('a', 'a', True)",
+                        "('a', 'b', True)",
+                        "('ab', 'dog cat', True)",
+                        "('ab', 'cat dog', True)",
+                        "('aa', 'dog dog', True)",
+                        "('aa', 'dog cat', False)",
+                        "('abc', 'dog cat dog', False)",
+                        "('abc', 'dog cat fish', True)",
+                        "('abba', 'dog cat cat', False)",
+                        "('abba', 'dog cat cat dog extra', False)",
+                        "('aaaa', 'dog dog dog dog', True)",
+                        "('abcabc', 'dog cat fish dog cat fish', True)",
+                        "('abcabc', 'dog cat fish cat fish dog', False)",
+                        "('ab', 'dog dog', False)",
+                        "('aabb', 'dog dog cat cat', True)",
+                        "('abba', 'dog cat fish dog', False)"
+                    ]
+                },
+                "body": "        result = run_word_pattern(Solution, pattern, s)\n        assert_word_pattern(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_pattern, assert_word_pattern\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npattern = 'abba'\ns = 'dog cat cat dog'\nexpected = True",
+    "playground_run": "result = run_word_pattern(Solution, pattern, s)\nresult",
+    "playground_assert": "assert_word_pattern(result, expected)"
+}

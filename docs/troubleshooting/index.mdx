@@ -1,8 +1,19 @@
 ---
-title: Fixing lcpy Setup and Generation Errors
+title: "lcpy Errors and Troubleshooting"
 sidebarTitle: Troubleshooting
-description: Fixes for the errors you are most likely to hit with lcpy, bake, and generated problems.
+description: "Fixes for the lcpy errors users hit most, each on its own page, plus contributor fixes for bake tasks and generated-file drift."
 ---
+
+Every user-facing error gets its own page with the exact message, the
+cause, and the fix:
+
+- [lcpy gen Error: Problem Not Found](/troubleshooting/unknown-problem)
+- [lcpy gen Error: Problem Already Exists](/troubleshooting/files-already-exist)
+- [Visualizations Show ASCII Instead of Diagrams](/troubleshooting/graphviz-missing)
+- [Playground Notebook Cells Do Not Render](/troubleshooting/notebook-cells)
+
+The rest of this page covers contributor-side failures in the repository
+itself.
 
 ## check-consistency reports drift
 
@@ -18,31 +29,6 @@ bake check-consistency
 If you already solved the problem, copy your `solution.py` out first,
 regenerate, then copy it back. The generated tree must match the templates
 exactly.
-
-## lcpy gen fails
-
-- **Unknown problem number or slug**: run `lcpy list` (or `lcpy list -t
-  <tag>`) to confirm the problem ships with your installed version.
-- **Files already exist**: add `--force`, or pick a different `-o` directory.
-- **Problem not in the catalog at all**: scrape it first; see
-  [Problem Creation](/contributing/problem-creation).
-
-## Visualizations show ASCII instead of diagrams
-
-Diagram rendering needs the system Graphviz binary, not just the Python
-package. The objects fall back to ASCII text when it is missing. Install
-it ([download guide](https://graphviz.org/download/), e.g.
-`brew install graphviz`) and restart your terminal.
-
-## Notebook cells do not render
-
-`playground.py` files use jupytext percent format (`# %%` markers).
-
-- **VS Code**: install the Python extension, then use the interactive
-  window; it understands `# %%` natively.
-- **JupyterLab**: enable the jupytext contents manager.
-- **Committed an `.ipynb` by accident**: run `bake nb-to-py` to convert
-  everything back to percent format and delete the `.ipynb` files.
 
 ## bake brand fails on svg conversion
 

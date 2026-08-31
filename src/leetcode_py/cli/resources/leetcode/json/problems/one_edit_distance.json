@@ -1,0 +1,102 @@
+{
+    "problem_name": "one_edit_distance",
+    "solution_class_name": "Solution",
+    "problem_number": "161",
+    "problem_title": "One Edit Distance",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two strings `s` and `t`, return `true` if they are both one edit distance apart, otherwise return `false`.\n\nA string `s` is said to be one distance apart from a string `t` if you can:\n\n- Insert exactly one character into `s` to get `t`.\n- Delete exactly one character from `s` to get `t`.\n- Replace exactly one character of `s` to get `t`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ab\", t = \"acb\"\nOutput: true\nExplanation: We can insert 'c' into s to get t.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"cab\", t = \"ad\"\nOutput: false\nExplanation: We cannot get t from s by only one step.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"1203\", t = \"1213\"\nOutput: true\nExplanation: We can replace '0' with '1' to get t.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= s.length, t.length <= 10^4\n- s and t consist of lowercase letters, uppercase letters, and digits",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_one_edit_distance",
+    "helpers_run_signature": "(solution_class: type, s: str, t: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_one_edit_distance(s, t)",
+    "helpers_assert_name": "is_one_edit_distance",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_one_edit_distance, run_is_one_edit_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OneEditDistance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_one_edit_distance",
+                "signature": "(self, s: str, t: str) -> bool",
+                "body": "        # TODO: Implement is_one_edit_distance\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_one_edit_distance",
+                "signature": "(self, s: str, t: str, expected: bool)",
+                "parametrize": "s, t, expected",
+                "test_cases": {
+                    "list": [
+                        "('ab', 'acb', True)",
+                        "('cab', 'ad', False)",
+                        "('1203', '1213', True)",
+                        "('', '', False)",
+                        "('', 'a', True)",
+                        "('a', '', True)",
+                        "('a', 'a', False)",
+                        "('abc', 'abc', False)",
+                        "('abc', 'ab', True)",
+                        "('ab', 'abc', True)",
+                        "('abc', 'abcd', True)",
+                        "('abcd', 'abc', True)",
+                        "('abc', 'axcy', False)",
+                        "('abcdef', 'abc', False)",
+                        "('x', 'y', True)",
+                        "('xy', 'xz', True)",
+                        "('xy', 'xzy', True)",
+                        "('teacher', 'taecher', False)",
+                        "('a', 'ba', True)",
+                        "('ba', 'a', True)",
+                        "('1234', '1234', False)",
+                        "('kitten', 'sitten', True)",
+                        "('abc', 'abd', True)",
+                        "('abcd', 'abdc', False)",
+                        "('abcd', 'acbd', False)"
+                    ]
+                },
+                "body": "        result = run_is_one_edit_distance(Solution, s, t)\n        assert_is_one_edit_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_one_edit_distance, assert_is_one_edit_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ab'\nt = 'acb'\nexpected = True",
+    "playground_run": "result = run_is_one_edit_distance(Solution, s, t)\nresult",
+    "playground_assert": "assert_is_one_edit_distance(result, expected)"
+}

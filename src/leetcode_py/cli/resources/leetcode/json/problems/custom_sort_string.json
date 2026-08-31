@@ -1,0 +1,89 @@
+{
+    "problem_name": "custom_sort_string",
+    "solution_class_name": "Solution",
+    "problem_number": "791",
+    "problem_title": "Custom Sort String",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two strings `order` and `s`. All the characters of `order` are **unique** and were sorted in some custom order previously.\n\n*Permute* the characters of `s` so that they match the order that `order` was sorted. More specifically, if a character `x` occurs before a character `y` in `order`, then `x` should occur before `y` in the permuted string.\n\nReturn *any permutation of* `s` *that satisfies this property*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: order = \"cba\", s = \"abcd\"\nOutput: \"cbad\"\nExplanation: \"a\", \"b\", \"c\" appear in order, so the order of \"a\", \"b\", \"c\" should be \"c\", \"b\", and \"a\".\nSince \"d\" does not appear in order, it can be at any position in the returned string. \"dcba\", \"cdba\", \"cbda\" are also valid outputs.\n```"
+            },
+            {
+                "content": "```\nInput: order = \"bcafg\", s = \"abcd\"\nOutput: \"bcad\"\nExplanation: The characters \"b\", \"c\", and \"a\" from order dictate the order for the characters in s. The character \"d\" in s does not appear in order, so its position is flexible.\nFollowing the order of appearance in order, \"b\", \"c\", and \"a\" from s should be arranged as \"b\", \"c\", \"a\". \"d\" can be placed at any position since it's not in order. The output \"bcad\" correctly follows this rule. Other arrangements like \"dbca\" or \"bcda\" would also be valid, as long as \"b\", \"c\", \"a\" maintain their order.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= order.length <= 26\n- 1 <= s.length <= 200\n- order and s consist of lowercase English letters.\n- All the characters of order are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "custom_sort_string",
+    "helpers_run_signature": "(solution_class: type, order: str, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.custom_sort_string(order, s)",
+    "helpers_assert_name": "custom_sort_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    # Multiple valid answers exist; the solution is a deterministic stable\n    # rank sort, so its canonical output is compared for exact equality\n    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_custom_sort_string, run_custom_sort_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CustomSortString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "custom_sort_string",
+                "signature": "(self, order: str, s: str) -> str",
+                "body": "        # TODO: Implement custom_sort_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_custom_sort_string",
+                "signature": "(self, order: str, s: str, expected: str)",
+                "parametrize": "order, s, expected",
+                "test_cases": {
+                    "list": [
+                        "('cba', 'abcd', 'cbad')",
+                        "('bcafg', 'abcd', 'bcad')",
+                        "('world', 'hello', 'ollhe')",
+                        "('exv', 'dttatvtterttxeree', 'eeeexvdttatttrttr')",
+                        "('a', 'aaaa', 'aaaa')",
+                        "('a', 'b', 'b')",
+                        "('zyxwvu', 'uutsrqponml', 'uutsrqponml')",
+                        "('hgz', 'ggghhzz', 'hhgggzz')",
+                        "('k', 'k', 'k')",
+                        "('cba', 'ccbbbaaaddd', 'ccbbbaaaddd')",
+                        "('pqks', 'spqqkkss', 'pqqkksss')",
+                        "('mno', 'onom', 'mnoo')",
+                        "('abc', 'abc', 'abc')",
+                        "('cba', 'aaa', 'aaa')"
+                    ]
+                },
+                "body": "        result = run_custom_sort_string(Solution, order, s)\n        assert_custom_sort_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_custom_sort_string, assert_custom_sort_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\norder = 'cba'\ns = 'abcd'\nexpected = 'cbad'",
+    "playground_run": "result = run_custom_sort_string(Solution, order, s)\nresult",
+    "playground_assert": "assert_custom_sort_string(result, expected)"
+}

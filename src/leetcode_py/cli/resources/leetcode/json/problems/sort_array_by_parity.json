@@ -1,0 +1,79 @@
+{
+    "problem_name": "sort_array_by_parity",
+    "solution_class_name": "Solution",
+    "problem_number": "905",
+    "problem_title": "Sort Array By Parity",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Sorting",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given an integer array <code>nums</code>, move all the even integers at the beginning of the array followed by all the odd integers.</p>\n\n<p>Return <em>any array that satisfies this condition</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,1,2,4]\nOutput: [2,4,3,1]\nExplanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.\n```"
+            },
+            { "content": "```\nInput: nums = [0]\nOutput: [0]\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 5000\n- 0 <= nums[i] <= 5000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sort_array_by_parity",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sort_array_by_parity(nums)",
+    "helpers_assert_name": "sort_array_by_parity",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Any arrangement with the same multiset, evens first then odds, is valid\n    assert sorted(result) == sorted(expected)\n    odd_seen = False\n    for value in result:\n        if value % 2 == 1:\n            odd_seen = True\n        else:\n            assert not odd_seen\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sort_array_by_parity, run_sort_array_by_parity\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortArrayByParity",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sort_array_by_parity",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement sort_array_by_parity\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sort_array_by_parity",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 1, 2, 4], [2, 4, 3, 1])",
+                        "([0], [0])",
+                        "([1], [1])",
+                        "([2], [2])",
+                        "([0, 1], [0, 1])",
+                        "([1, 0], [0, 1])",
+                        "([2, 4, 6], [2, 4, 6])",
+                        "([1, 3, 5], [1, 3, 5])",
+                        "([0, 2, 1, 4, 3, 5], [0, 2, 4, 1, 3, 5])",
+                        "([5000, 4999], [5000, 4999])",
+                        "([0, 0, 1, 1], [0, 0, 1, 1])",
+                        "([7, 3, 2, 6, 8], [2, 6, 8, 7, 3])",
+                        "([1, 2], [2, 1])",
+                        "([4, 2, 5, 7], [4, 2, 5, 7])"
+                    ]
+                },
+                "body": "        result = run_sort_array_by_parity(Solution, nums)\n        assert_sort_array_by_parity(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sort_array_by_parity, assert_sort_array_by_parity\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 1, 2, 4]\nexpected = [2, 4, 3, 1]",
+    "playground_run": "result = run_sort_array_by_parity(Solution, nums)\nresult",
+    "playground_assert": "assert_sort_array_by_parity(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "find_bottom_left_tree_value",
+    "solution_class_name": "Solution",
+    "problem_number": "513",
+    "problem_title": "Find Bottom Left Tree Value",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return *the leftmost value in the last row of the tree*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/12/14/tree1.jpg)\n\n```\nInput: root = [2,1,3]\nOutput: 1\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/12/14/tree2.jpg)\n\n```\nInput: root = [1,2,3,4,null,5,6,null,null,7]\nOutput: 7\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[1, 10^4]`.\n- `-2^31 <= Node.val <= 2^31 - 1`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "find_bottom_left_value",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.find_bottom_left_value(root)",
+    "helpers_assert_name": "find_bottom_left_value",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_bottom_left_value, run_find_bottom_left_value\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindBottomLeftTreeValue",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_bottom_left_value",
+                "signature": "(self, root: TreeNode[int]) -> int",
+                "body": "        # TODO: Implement find_bottom_left_value\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_bottom_left_value",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 3], 1)",
+                        "([1, 2, 3, 4, None, 5, 6, None, None, 7], 7)",
+                        "([1], 1)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, None, 3], 3)",
+                        "([1, None, 2], 2)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([1, 2, 3, None, 4, None, 5], 4)",
+                        "([0, -1, 1, None, None, -2, 2], -2)",
+                        "([1, 2, 2, 3, 3, None, None, 4], 4)",
+                        "([7], 7)",
+                        "([3, 1, 5, 0, 2, 4, 6], 0)",
+                        "([1, 2, 3, 4, None, None, 5, 6], 6)",
+                        "([10, 5, 15, 3, None, None, 20], 3)",
+                        "([1, None, 2, None, 3], 3)"
+                    ]
+                },
+                "body": "        result = run_find_bottom_left_value(Solution, root_list)\n        assert_find_bottom_left_value(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_bottom_left_value, assert_find_bottom_left_value\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [2, 1, 3]\nexpected = 1",
+    "playground_run": "result = run_find_bottom_left_value(Solution, root_list)\nresult",
+    "playground_assert": "assert_find_bottom_left_value(result, expected)"
+}

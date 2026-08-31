@@ -1,0 +1,93 @@
+{
+    "problem_name": "remove_duplicates_from_sorted_array_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "80",
+    "problem_title": "Remove Duplicates from Sorted Array II",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums` sorted in **non-decreasing order**, remove some duplicates **in-place** such that each unique element appears **at most twice**. The **relative order** of the elements should be kept the **same**.\n\nSince it is impossible to change the length of the array in some languages, you must instead have the result be placed in the **first part** of the array `nums`. More formally, if there are `k` elements after removing the duplicates, then the first `k` elements of `nums` should hold the final result. It does not matter what you leave beyond the first `k` elements.\n\nReturn `k` *after placing the final result in the first* `k` *slots of* `nums`.\n\nDo **not** allocate extra space for another array. You must do this by **modifying the input array in-place** with O(1) extra memory.\n\n**Custom Judge:**\n\nThe judge will test your solution with the following code:\n\n```\nint[] nums = [...]; // Input array\nint[] expectedNums = [...]; // The expected answer with correct length\n\nint k = removeDuplicates(nums); // Calls your implementation\n\nassert k == expectedNums.length;\nfor (int i = 0; i < k; i++) {\n    assert nums[i] == expectedNums[i];\n}\n```\n\nIf all assertions pass, then your solution is accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,1,1,2,2,3]\nOutput: 5, nums = [1,1,2,2,3,_]\nExplanation: Your function should return k = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively.\nIt does not matter what you leave beyond the returned k (hence they are underscores).\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,0,1,1,1,1,2,3,3]\nOutput: 7, nums = [0,0,1,1,2,3,3,_,_]\nExplanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.\nIt does not matter what you leave beyond the returned k (hence they are underscores).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 3 * 10^4\n- -10^4 <= nums[i] <= 10^4\n- nums is sorted in non-decreasing order.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_duplicates",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    k = implementation.remove_duplicates(nums)\n    return k, nums[:k]",
+    "helpers_assert_name": "remove_duplicates",
+    "helpers_assert_signature": "(result: tuple[int, list[int]], expected: tuple[int, list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_duplicates, run_remove_duplicates\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveDuplicatesFromSortedArrayII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_duplicates",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement remove_duplicates\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_duplicates",
+                "signature": "(self, nums: list[int], expected: tuple[int, list[int]])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 1, 2, 2, 3], (5, [1, 1, 2, 2, 3]))",
+                        "([0, 0, 1, 1, 1, 1, 2, 3, 3], (7, [0, 0, 1, 1, 2, 3, 3]))",
+                        "([1], (1, [1]))",
+                        "([1, 1], (2, [1, 1]))",
+                        "([1, 1, 1], (2, [1, 1]))",
+                        "([1, 2, 3], (3, [1, 2, 3]))",
+                        "([1, 1, 1, 1], (2, [1, 1]))",
+                        "([2, 2, 2, 2, 2], (2, [2, 2]))",
+                        "([1, 2, 2, 2, 3, 3, 3, 3, 4], (6, [1, 2, 2, 3, 3, 4]))",
+                        "([-1, -1, -1, 0, 0, 0, 0, 1], (5, [-1, -1, 0, 0, 1]))",
+                        "([1, 1, 2, 2, 3, 3], (6, [1, 1, 2, 2, 3, 3]))",
+                        "([5, 5, 5, 5, 5, 5, 5], (2, [5, 5]))",
+                        "([1, 2, 3, 4, 5], (5, [1, 2, 3, 4, 5]))",
+                        "([3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5], (6, [3, 3, 4, 4, 5, 5]))",
+                        "([0, 0, 0, 0, 0], (2, [0, 0]))",
+                        "([-3, -3, -3], (2, [-3, -3]))",
+                        "([1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3], (6, [1, 1, 2, 2, 3, 3]))",
+                        "([7], (1, [7]))"
+                    ]
+                },
+                "body": "        result = run_remove_duplicates(Solution, nums)\n        assert_remove_duplicates(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_duplicates, assert_remove_duplicates\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 1, 1, 2, 2, 3]\nexpected = (5, [1, 1, 2, 2, 3])",
+    "playground_run": "result = run_remove_duplicates(Solution, nums)\nresult",
+    "playground_assert": "assert_remove_duplicates(result, expected)"
+}

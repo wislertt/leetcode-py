@@ -1,0 +1,97 @@
+{
+    "problem_name": "paint_fence",
+    "solution_class_name": "Solution",
+    "problem_number": "276",
+    "problem_title": "Paint Fence",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are painting a fence of `n` posts with `k` different colors. You must paint the posts following these rules:\n\n- Every post must be painted **exactly one** color.\n- There **cannot** be three or more **consecutive** posts with the same color.\n\nGiven the two integers `n` and `k`, return *the **number of ways** you can paint the fence*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0200-0299/0276.Paint%20Fence/images/paintfenceex1.png)\n\n```\nInput: n = 3, k = 2\nOutput: 6\nExplanation: All the possibilities are shown.\nNote that painting all the posts red or all the posts green is invalid because there cannot be three posts in a row with the same color.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1, k = 1\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: n = 7, k = 2\nOutput: 42\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 50`\n- `1 <= k <= 10^5`\n- The testcases are generated such that the answer is in the range `[0, 2^31 - 1]` for the given `n` and `k`.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_ways",
+    "helpers_run_signature": "(solution_class: type, n: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_ways(n, k)",
+    "helpers_assert_name": "num_ways",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_ways, run_num_ways\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PaintFence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_ways",
+                "signature": "(self, n: int, k: int) -> int",
+                "body": "        # TODO: Implement num_ways\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_ways",
+                "signature": "(self, n: int, k: int, expected: int)",
+                "parametrize": "n, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1, 1)",
+                        "(1, 2, 2)",
+                        "(2, 2, 4)",
+                        "(2, 3, 9)",
+                        "(3, 2, 6)",
+                        "(3, 3, 24)",
+                        "(3, 1, 0)",
+                        "(4, 2, 10)",
+                        "(5, 2, 16)",
+                        "(7, 2, 42)",
+                        "(2, 1, 1)",
+                        "(4, 3, 66)",
+                        "(5, 3, 180)",
+                        "(10, 2, 178)",
+                        "(10, 3, 27408)",
+                        "(2, 10, 100)",
+                        "(7, 3, 1344)",
+                        "(4, 10, 9810)",
+                        "(6, 2, 26)",
+                        "(8, 2, 68)"
+                    ]
+                },
+                "body": "        result = run_num_ways(Solution, n, k)\n        assert_num_ways(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_ways, assert_num_ways\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nk = 2\nexpected = 6",
+    "playground_run": "result = run_num_ways(Solution, n, k)\nresult",
+    "playground_assert": "assert_num_ways(result, expected)"
+}

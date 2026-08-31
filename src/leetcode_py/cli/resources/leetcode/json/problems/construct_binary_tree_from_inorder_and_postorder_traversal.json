@@ -1,0 +1,90 @@
+{
+    "problem_name": "construct_binary_tree_from_inorder_and_postorder_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "106",
+    "problem_title": "Construct Binary Tree from Inorder and Postorder Traversal",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Divide and Conquer, Tree, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two integer arrays `inorder` and `postorder` where `inorder` is the inorder traversal of a binary tree and `postorder` is the postorder traversal of the same tree, construct and return *the binary tree*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/tree.jpg)\n\n```\nInput: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]\nOutput: [3,9,20,null,null,15,7]\n```"
+            },
+            {
+                "content": "```\nInput: inorder = [-1], postorder = [-1]\nOutput: [-1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= inorder.length <= 3000\n- postorder.length == inorder.length\n- -3000 <= inorder[i], postorder[i] <= 3000\n- inorder and postorder consist of **unique** values\n- Each value of postorder also appears in inorder\n- inorder is **guaranteed** to be the inorder traversal of the tree\n- postorder is **guaranteed** to be the postorder traversal of the tree",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "build_tree",
+    "helpers_run_signature": "(solution_class: type, inorder: list[int], postorder: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.build_tree(inorder, postorder)",
+    "helpers_assert_name": "build_tree",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_build_tree, run_build_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructBinaryTreeFromInorderAndPostorderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "build_tree",
+                "signature": "(self, inorder: list[int], postorder: list[int]) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement build_tree\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_build_tree",
+                "signature": "(self, inorder: list[int], postorder: list[int], expected_list: list[int | None])",
+                "parametrize": "inorder, postorder, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([9, 3, 15, 20, 7], [9, 15, 7, 20, 3], [3, 9, 20, None, None, 15, 7])",
+                        "([-1], [-1], [-1])",
+                        "([1], [1], [1])",
+                        "([1, 2], [2, 1], [1, None, 2])",
+                        "([2, 1], [2, 1], [1, 2])",
+                        "([2, 1, 3], [2, 3, 1], [1, 2, 3])",
+                        "([1, 2, 3, 4], [1, 3, 2, 4], [4, 2, None, 1, 3])",
+                        "([3, 2, 1], [3, 2, 1], [1, 2, None, 3])",
+                        "([4, 3, 2, 1], [4, 3, 2, 1], [1, 2, None, 3, None, 4])",
+                        "([1, 2, 3, 4], [4, 3, 2, 1], [1, None, 2, None, 3, None, 4])",
+                        "([4, 2, 5, 1, 6, 3, 7], [4, 5, 2, 6, 7, 3, 1], [1, 2, 3, 4, 5, 6, 7])",
+                        "([-3, -1, 2], [-3, 2, -1], [-1, -3, 2])",
+                        "([2, 3, 1], [3, 2, 1], [1, 2, None, None, 3])",
+                        "([1, 3, 2], [3, 2, 1], [1, None, 2, 3])",
+                        "([8, 4, 9, 2, 10, 5, 11, 1, 12, 6, 13, 3, 14, 7, 15], [8, 9, 4, 10, 11, 5, 2, 12, 13, 6, 14, 15, 7, 3, 1], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])"
+                    ]
+                },
+                "body": "        result = run_build_tree(Solution, inorder, postorder)\n        assert_build_tree(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_build_tree, assert_build_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\ninorder: list[int] = [9, 3, 15, 20, 7]\npostorder: list[int] = [9, 15, 7, 20, 3]\nexpected_list: list[int | None] = [3, 9, 20, None, None, 15, 7]",
+    "playground_run": "result = run_build_tree(Solution, inorder, postorder)\nresult",
+    "playground_assert": "assert_build_tree(result, expected_list)"
+}

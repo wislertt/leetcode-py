@@ -1,0 +1,77 @@
+{
+    "problem_name": "brick_wall",
+    "solution_class_name": "Solution",
+    "problem_number": "554",
+    "problem_title": "Brick Wall",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "There is a rectangular brick wall in front of you with `n` rows of bricks. The i<sup>th</sup> row has some number of bricks each of the same height (i.e., one unit) but they can be of different widths. The total width of each row is the same.\n\nDraw a vertical line from the top to the bottom and cross the least bricks. If your line goes through the edge of a brick, then the brick is not considered as crossed. You cannot draw a line just along one of the two vertical edges of the wall, in which case the line will obviously cross no bricks.\n\nGiven the 2D integer array `wall` that contains the information about the wall, return *the minimum number of crossed bricks after drawing such a vertical line*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2025/01/17/a.png)\n\n```\nInput: wall = [[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]]\nOutput: 2\n```"
+            },
+            { "content": "```\nInput: wall = [[1],[1],[1]]\nOutput: 3\n```" }
+        ]
+    },
+    "readme_constraints": "- n == wall.length\n- 1 <= n <= 10^4\n- 1 <= wall[i].length <= 10^4\n- 1 <= sum(wall[i].length) <= 2 * 10^4\n- sum(wall[i]) is the same for each row i.\n- 1 <= wall[i][j] <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "least_bricks",
+    "helpers_run_signature": "(solution_class: type, wall: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.least_bricks(wall)",
+    "helpers_assert_name": "least_bricks",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_least_bricks, run_least_bricks\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BrickWall",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "least_bricks",
+                "signature": "(self, wall: list[list[int]]) -> int",
+                "body": "        # TODO: Implement least_bricks\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_least_bricks",
+                "signature": "(self, wall: list[list[int]], expected: int)",
+                "parametrize": "wall, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,2,2,1],[3,1,2],[1,3,2],[2,4],[3,1,2],[1,3,1,1]], 2)",
+                        "([[1],[1],[1]], 3)",
+                        "([[1,1],[2],[1,1]], 1)",
+                        "([[1000000000],[1000000000]], 2)",
+                        "([[1,2],[2,1],[3]], 2)",
+                        "([[1,1,1],[1,1,1],[3]], 1)",
+                        "([[5]], 1)",
+                        "([[2,2],[2,2],[2,2],[4]], 1)",
+                        "([[1,3],[2,2],[3,1],[4]], 3)",
+                        "([[7,1,2],[3,5,2],[8,2],[6,4]], 1)",
+                        "([[1,1,1,1],[1,1,1,1]], 0)",
+                        "([[3,3,3],[3,3,3],[3,3,3],[3,3,3],[3,3,3]], 0)"
+                    ]
+                },
+                "body": "        result = run_least_bricks(Solution, wall)\n        assert_least_bricks(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_least_bricks, assert_least_bricks\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwall: list[list[int]] = [[1, 2, 2, 1], [3, 1, 2], [1, 3, 2], [2, 4], [3, 1, 2], [1, 3, 1, 1]]\nexpected = 2",
+    "playground_run": "result = run_least_bricks(Solution, wall)\nresult",
+    "playground_assert": "assert_least_bricks(result, expected)"
+}

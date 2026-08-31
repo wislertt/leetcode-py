@@ -1,0 +1,89 @@
+{
+    "problem_name": "freedom_trail",
+    "solution_class_name": "Solution",
+    "problem_number": "514",
+    "problem_title": "Freedom Trail",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming, Depth-First Search, Breadth-First Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "In the video game Fallout 4, the quest *\"Road to Freedom\"* requires players to reach a metal dial called the **\"Freedom Trail Ring\"** and use the dial to spell a specific keyword to open the door.\n\nGiven a string `ring` that represents the code engraved on the outer ring and another string `key` that represents the keyword that needs to be spelled, return *the minimum number of steps to spell all the characters in the keyword*.\n\nInitially, the first character of the ring is aligned at the `\"12:00\"` direction. You should spell all the characters in `key` one by one by rotating `ring` clockwise or anticlockwise to make each character of the string key aligned at the `\"12:00\"` direction and then by pressing the center button.\n\nAt the stage of rotating the ring to spell the key character `key[i]`:\n\n1. You can rotate the ring clockwise or anticlockwise by one place, which counts as **one step**. The final purpose of the rotation is to align one of `ring`'s characters at the `\"12:00\"` direction, where this character must equal `key[i]`.\n2. If the character `key[i]` has been aligned at the `\"12:00\"` direction, press the center button to spell, which also counts as **one step**. After the pressing, you could begin to spell the next character in the key (next stage). Otherwise, you have finished all the spelling.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/09/17/ring.jpg)\n\n```\nInput: ring = \"godding\", key = \"gd\"\nOutput: 4\nExplanation:\nFor the first key character 'g', since it is already in place, we just need 1 step to spell this character.\nFor the second key character 'd', we need to rotate the ring \"godding\" anticlockwise by two steps to make it become \"ddinggo\".\nAlso, we need 1 more step for spelling.\nSo the final output is 4.\n```"
+            },
+            {
+                "content": "```\nInput: ring = \"godding\", key = \"godding\"\nOutput: 13\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= ring.length, key.length <= 100`\n- `ring` and `key` consist of only lower case English letters.\n- It is guaranteed that `key` could always be spelled by rotating `ring`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_rotate_steps",
+    "helpers_run_signature": "(solution_class: type, ring: str, key: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_rotate_steps(ring, key)",
+    "helpers_assert_name": "find_rotate_steps",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_rotate_steps, run_find_rotate_steps\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FreedomTrail",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_rotate_steps",
+                "signature": "(self, ring: str, key: str) -> int",
+                "body": "        # TODO: Implement find_rotate_steps\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_rotate_steps",
+                "signature": "(self, ring: str, key: str, expected: int)",
+                "parametrize": "ring, key, expected",
+                "test_cases": {
+                    "list": [
+                        "('godding', 'gd', 4)",
+                        "('godding', 'godding', 13)",
+                        "('a', 'a', 1)",
+                        "('ab', 'b', 2)",
+                        "('ab', 'a', 1)",
+                        "('abc', 'abc', 5)",
+                        "('abc', 'cba', 6)",
+                        "('edcba', 'abcde', 10)",
+                        "('xyzx', 'xzyx', 8)",
+                        "('aaaa', 'aa', 2)",
+                        "('abab', 'baab', 7)",
+                        "('x', 'xxx', 3)",
+                        "('knmop', 'monk', 10)",
+                        "('zxcvb', 'vcxz', 9)"
+                    ]
+                },
+                "body": "        result = run_find_rotate_steps(Solution, ring, key)\n        assert_find_rotate_steps(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_rotate_steps, assert_find_rotate_steps\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nring = 'godding'\nkey = 'gd'\nexpected = 4",
+    "playground_run": "result = run_find_rotate_steps(Solution, ring, key)\nresult",
+    "playground_assert": "assert_find_rotate_steps(result, expected)"
+}

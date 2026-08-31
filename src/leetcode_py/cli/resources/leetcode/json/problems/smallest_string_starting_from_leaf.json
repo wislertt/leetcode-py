@@ -1,0 +1,90 @@
+{
+    "problem_name": "smallest_string_starting_from_leaf",
+    "solution_class_name": "Solution",
+    "problem_number": "988",
+    "problem_title": "Smallest String Starting From Leaf",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking, Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `root` of a binary tree where each node has a value in the range `[0, 25]` representing the letters `'a'` to `'z'`.\n\nReturn *the lexicographically smallest string that starts at a leaf of this tree and ends at the root*.\n\nAs a reminder, any shorter prefix of a string is lexicographically smaller.\n\n- For example, `\"ab\"` is lexicographically smaller than `\"aba\"`.\n\nA leaf of a node is a node that has no children.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/01/30/tree1.png)\n\n```\nInput: root = [0,1,2,3,4,3,4]\nOutput: \"dba\"\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/01/30/tree2.png)\n\n```\nInput: root = [25,1,3,1,3,0,2]\nOutput: \"adz\"\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2019/02/01/tree3.png)\n\n```\nInput: root = [2,2,1,null,1,0,null,0]\nOutput: \"abc\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[1, 8500]`.\n- `0 <= Node.val <= 25`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_from_leaf",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.smallest_from_leaf(root)",
+    "helpers_assert_name": "smallest_from_leaf",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_from_leaf, run_smallest_from_leaf\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SmallestStringStartingFromLeaf",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_from_leaf",
+                "signature": "(self, root: TreeNode[int] | None) -> str",
+                "body": "        # TODO: Implement smallest_from_leaf\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_from_leaf",
+                "signature": "(self, root_list: list[int | None], expected: str)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 1, 2, 3, 4, 3, 4], 'dba')",
+                        "([25, 1, 3, 1, 3, 0, 2], 'adz')",
+                        "([2, 2, 1, None, 1, 0, None, 0], 'abc')",
+                        "([0], 'a')",
+                        "([25], 'z')",
+                        "([1, 0], 'ab')",
+                        "([0, None, 0], 'aa')",
+                        "([4, 0, 1, 1], 'bae')",
+                        "([25, 1, None, 0, 0, 1], 'abz')",
+                        "([2, 0], 'ac')",
+                        "([0, 25, 0, None, 24], 'aa')",
+                        "([19, 3, 4, 3, None, None, 4], 'ddt')"
+                    ]
+                },
+                "body": "        result = run_smallest_from_leaf(Solution, root_list)\n        assert_smallest_from_leaf(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_from_leaf, assert_smallest_from_leaf\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [0, 1, 2, 3, 4, 3, 4]\nexpected = 'dba'",
+    "playground_run": "result = run_smallest_from_leaf(Solution, root_list)\nresult",
+    "playground_assert": "assert_smallest_from_leaf(result, expected)"
+}

@@ -1,0 +1,85 @@
+{
+    "problem_name": "flip_game",
+    "solution_class_name": "Solution",
+    "problem_number": "293",
+    "problem_title": "Flip Game",
+    "difficulty": "Easy",
+    "topics": "String",
+    "readme_description": "You are playing a Flip Game with your friend.\n\nYou are given a string `currentState` that contains only `'+'` and `'-'`. You and your friend take turns to flip **two consecutive** `\"++\"` into `\"--\"`. The game ends when a person can no longer make a move, and therefore the other person will be the winner.\n\nReturn all possible states of the string `currentState` after **one valid move**. You may return the answer in **any order**. If there is no valid move, return an empty list `[]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: currentState = \"++++\"\nOutput: [\"--++\",\"+--+\",\"++--\"]\n```"
+            },
+            {
+                "content": "```\nInput: currentState = \"+\"\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= currentState.length <= 500`\n- `currentState[i]` is either `'+'` or `'-'`.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "generate_possible_next_moves",
+    "helpers_run_signature": "(solution_class: type, current_state: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.generate_possible_next_moves(current_state)",
+    "helpers_assert_name": "generate_possible_next_moves",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_generate_possible_next_moves, run_generate_possible_next_moves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FlipGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "generate_possible_next_moves",
+                "signature": "(self, current_state: str) -> list[str]",
+                "body": "        # TODO: Implement generate_possible_next_moves\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_generate_possible_next_moves",
+                "signature": "(self, current_state: str, expected: list[str])",
+                "parametrize": "current_state, expected",
+                "test_cases": {
+                    "list": [
+                        "('++++', ['++--', '+--+', '--++'])",
+                        "('+', [])",
+                        "('-', [])",
+                        "('--', [])",
+                        "('++', ['--'])",
+                        "('-++-', ['----'])",
+                        "('++--', ['----'])",
+                        "('--++', ['----'])",
+                        "('+-+-+', [])",
+                        "('++++++', ['++++--', '+++--+', '++--++', '+--+++', '--++++'])",
+                        "('-+-+-+', [])",
+                        "('+++', ['+--', '--+'])",
+                        "('--++++--', ['--++----', '--+--+--', '----++--'])",
+                        "('++-++', ['++---', '---++'])"
+                    ]
+                },
+                "body": "        result = run_generate_possible_next_moves(Solution, current_state)\n        assert_generate_possible_next_moves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_generate_possible_next_moves, assert_generate_possible_next_moves\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncurrent_state = '++++'\nexpected = ['--++', '+--+', '++--']",
+    "playground_run": "result = run_generate_possible_next_moves(Solution, current_state)\nresult",
+    "playground_assert": "assert_generate_possible_next_moves(result, expected)"
+}

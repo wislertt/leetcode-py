@@ -1,0 +1,90 @@
+{
+    "problem_name": "split_linked_list_in_parts",
+    "solution_class_name": "Solution",
+    "problem_number": "725",
+    "problem_title": "Split Linked List in Parts",
+    "difficulty": "Medium",
+    "topics": "Linked List",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the head of a singly linked list and an integer `k`, split the linked list into `k` consecutive linked list parts.\n\nThe length of each part should be as equal as possible: no two parts should have a size differing by more than one. This may lead to some parts being null.\n\nThe parts should be in the order of occurrence in the input list, and parts occurring earlier should always have a size greater than or equal to parts occurring later.\n\nReturn an array of the `k` parts.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: head = [1,2,3], k = 5\nOutput: [[1],[2],[3],[],[]]\nExplanation: The first element output[0] has output[0].val = 1, output[0].next = null.\nThe last element output[4] is null, but its string representation as a ListNode is [].\n```"
+            },
+            {
+                "content": "```\nInput: head = [1,2,3,4,5,6,7,8,9,10], k = 3\nOutput: [[1,2,3,4],[5,6,7],[8,9,10]]\nExplanation: The input has been split into consecutive parts with size difference at most 1, and earlier parts are a larger size than the later parts.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range [0, 1000].\n- 0 <= Node.val <= 1000\n- 1 <= k <= 50",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "split_list_to_parts",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int], k: int)",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_vals)\n    implementation = solution_class()\n    parts = implementation.split_list_to_parts(head, k)\n    return [part.to_list() if part is not None else [] for part in parts]",
+    "helpers_assert_name": "split_list_to_parts",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_split_list_to_parts, run_split_list_to_parts\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplitLinkedListInParts",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "split_list_to_parts",
+                "signature": "(self, head: ListNode[int] | None, k: int) -> list[ListNode[int] | None]",
+                "body": "        # TODO: Implement split_list_to_parts\n        return [head] + [None] * (k - 1)"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_split_list_to_parts",
+                "signature": "(self, head_vals: list[int], k: int, expected: list[list[int]])",
+                "parametrize": "head_vals, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3], 5, [[1],[2],[3],[],[]])",
+                        "([1,2,3,4,5,6,7,8,9,10], 3, [[1,2,3,4],[5,6,7],[8,9,10]])",
+                        "([], 3, [[],[],[]])",
+                        "([], 1, [[]])",
+                        "([1], 1, [[1]])",
+                        "([1], 2, [[1],[]])",
+                        "([1], 5, [[1],[],[],[],[]])",
+                        "([1,2], 1, [[1,2]])",
+                        "([1,2,3,4], 2, [[1,2],[3,4]])",
+                        "([1,2,3,4,5], 2, [[1,2,3],[4,5]])",
+                        "([0,0,0,0,0,0,0,0,0,0], 4, [[0,0,0],[0,0,0],[0,0],[0,0]])",
+                        "([1,2,3], 3, [[1],[2],[3]])",
+                        "([5,5,5,5,5,5,5], 5, [[5,5],[5,5],[5],[5],[5]])",
+                        "([1,2,3,4,5,6,7], 7, [[1],[2],[3],[4],[5],[6],[7]])",
+                        "([1,2,3,4,5,6,7,8], 5, [[1,2],[3,4],[5,6],[7],[8]])"
+                    ]
+                },
+                "body": "        result = run_split_list_to_parts(Solution, head_vals, k)\n        assert_split_list_to_parts(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_split_list_to_parts, assert_split_list_to_parts\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals: list[int] = [1, 2, 3]\nk = 5\nexpected = [[1], [2], [3], [], []]",
+    "playground_run": "result = run_split_list_to_parts(Solution, head_vals, k)\nresult",
+    "playground_assert": "assert_split_list_to_parts(result, expected)"
+}

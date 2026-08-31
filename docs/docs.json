@@ -132,7 +132,13 @@
             },
             {
                 "group": "Troubleshooting",
-                "pages": ["troubleshooting/index"]
+                "pages": [
+                    "troubleshooting/index",
+                    "troubleshooting/unknown-problem",
+                    "troubleshooting/files-already-exist",
+                    "troubleshooting/graphviz-missing",
+                    "troubleshooting/notebook-cells"
+                ]
             }
         ]
     }

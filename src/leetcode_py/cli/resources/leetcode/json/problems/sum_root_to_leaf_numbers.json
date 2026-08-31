@@ -1,0 +1,92 @@
+{
+    "problem_name": "sum_root_to_leaf_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "129",
+    "problem_title": "Sum Root to Leaf Numbers",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `root` of a binary tree containing digits from `0` to `9` only.\n\nEach root-to-leaf path in the tree represents a number.\n\n- For example, the root-to-leaf path `1 -> 2 -> 3` represents the number `123`.\n\nReturn *the total sum of all root-to-leaf numbers*. Test cases are generated so that the answer will fit in a **32-bit** integer.\n\nA **leaf** node is a node with no children.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/02/19/num1tree.jpg)\n\n```\nInput: root = [1,2,3]\nOutput: 25\nExplanation:\nThe root-to-leaf path 1->2 represents the number 12.\nThe root-to-leaf path 1->3 represents the number 13.\nTherefore, sum = 12 + 13 = 25.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/02/19/num2tree.jpg)\n\n```\nInput: root = [4,9,0,5,1]\nOutput: 1026\nExplanation:\nThe root-to-leaf path 4->9->5 represents the number 495.\nThe root-to-leaf path 4->9->1 represents the number 491.\nThe root-to-leaf path 4->0 represents the number 40.\nTherefore, sum = 495 + 491 + 40 = 1026.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 1000]\n- 0 <= Node.val <= 9\n- The depth of the tree will not exceed 10",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "sum_numbers",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.sum_numbers(root)",
+    "helpers_assert_name": "sum_numbers",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sum_numbers, run_sum_numbers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumRootToLeafNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sum_numbers",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement sum_numbers\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sum_numbers",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], 25)",
+                        "([4, 9, 0, 5, 1], 1026)",
+                        "([0], 0)",
+                        "([5], 5)",
+                        "([9], 9)",
+                        "([1, 2], 12)",
+                        "([1, None, 3], 13)",
+                        "([0, 0, 0], 0)",
+                        "([1, 0, 0], 20)",
+                        "([9, 9, 9, 9, 9, 9, 9], 3996)",
+                        "([9, 9, 9, 9, None, None, 9], 1998)",
+                        "([1, 2, 3, 4, 5, 6, 7], 522)",
+                        "([2, 1, None, None, 3], 213)",
+                        "([1, None, 2, None, 3], 123)",
+                        "([0, 1, None], 1)",
+                        "([0, None, 1], 1)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6], 10478)"
+                    ]
+                },
+                "body": "        result = run_sum_numbers(Solution, root_list)\n        assert_sum_numbers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sum_numbers, assert_sum_numbers\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [4, 9, 0, 5, 1]\nexpected: int = 1026",
+    "playground_run": "result = run_sum_numbers(Solution, root_list)\nresult",
+    "playground_assert": "assert_sum_numbers(result, expected)"
+}

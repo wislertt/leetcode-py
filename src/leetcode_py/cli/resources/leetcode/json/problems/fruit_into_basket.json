@@ -1,0 +1,85 @@
+{
+    "problem_name": "fruit_into_basket",
+    "solution_class_name": "Solution",
+    "problem_number": "904",
+    "problem_title": "Fruit Into Baskets",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Sliding Window",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array <code>fruits</code> where <code>fruits[i]</code> is the <strong>type</strong> of fruit the <code>i<sup>th</sup></code> tree produces. You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:</p>\n\n<ul>\n\t<li>You only have <strong>two</strong> baskets, and each basket can only hold a <strong>single type</strong> of fruit. There is no limit on the amount of fruit each basket can hold.</li>\n\t<li>Starting from any tree of your choice, you must pick exactly <strong>one fruit</strong> from <strong>every</strong> tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.</li>\n\t<li>Once you get to a tree, the fruit cannot jump back to the tree 1. (For example, if you pick fruit 1 from tree 2, you cannot pick fruit 1 from tree 1.)</li>\n\t<li>Given the integer array <code>fruits</code>, return <em>the <strong>maximum</strong> number of fruits you can pick.</em></li>\n</ul>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: fruits = [1,2,1]\nOutput: 3\nExplanation: We can pick from all 3 trees.\n```"
+            },
+            {
+                "content": "```\nInput: fruits = [0,1,2,2]\nOutput: 3\nExplanation: We can pick from trees [1,2,2].\nIf we had started from the first tree, we would only pick from trees [0,1].\n```"
+            },
+            {
+                "content": "```\nInput: fruits = [1,2,3,2,2]\nOutput: 4\nExplanation: We can pick from trees [2,3,2,2].\nIf we had started from the first tree, we would only pick from trees [1,2].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= fruits.length <= 10^5\n- 0 <= fruits[i] < fruits.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "total_fruit",
+    "helpers_run_signature": "(solution_class: type, fruits: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.total_fruit(fruits)",
+    "helpers_assert_name": "total_fruit",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import defaultdict",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_total_fruit, run_total_fruit\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FruitIntoBasket",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "total_fruit",
+                "signature": "(self, fruits: list[int]) -> int",
+                "body": "        # TODO: Implement total_fruit\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_total_fruit",
+                "signature": "(self, fruits: list[int], expected: int)",
+                "parametrize": "fruits, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 1], 3)",
+                        "([0, 1, 2, 2], 3)",
+                        "([1, 2, 3, 2, 2], 4)",
+                        "([0], 1)",
+                        "([0, 0], 2)",
+                        "([0, 1], 2)",
+                        "([3, 3, 3, 3, 3], 5)",
+                        "([1, 0, 1, 4, 1, 4, 1, 2, 3], 5)",
+                        "([0, 1, 6, 6, 4, 4, 6], 5)",
+                        "([0, 0, 1, 1, 0], 5)",
+                        "([1, 0, 0, 2, 2, 0], 5)",
+                        "([0, 1, 2, 3, 4], 2)",
+                        "([2, 2, 2, 2, 1, 1, 3, 3], 6)",
+                        "([5, 5, 5, 1, 1, 1, 5, 5], 8)",
+                        "([0, 1, 2], 2)"
+                    ]
+                },
+                "body": "        result = run_total_fruit(Solution, fruits)\n        assert_total_fruit(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_total_fruit, assert_total_fruit\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nfruits = [1, 2, 3, 2, 2]\nexpected = 4",
+    "playground_run": "result = run_total_fruit(Solution, fruits)\nresult",
+    "playground_assert": "assert_total_fruit(result, expected)"
+}

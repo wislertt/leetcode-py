@@ -1,0 +1,95 @@
+{
+    "problem_name": "parsing_a_boolean_expression",
+    "solution_class_name": "Solution",
+    "problem_number": "1106",
+    "problem_title": "Parsing A Boolean Expression",
+    "difficulty": "Hard",
+    "topics": "String, Stack, Recursion",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A <strong>boolean expression</strong> is an expression that evaluates to either <code>true</code> or <code>false</code>. It can be in one of the following shapes:\n\n- <code>&#39;t&#39;</code> that evaluates to <code>true</code>.\n- <code>&#39;f&#39;</code> that evaluates to <code>false</code>.\n- <code>&#39;!(subExpr)&#39;</code> that evaluates to <strong>the logical NOT</strong> of the inner expression <code>subExpr</code>.\n- <code>&#39;&amp;(subExpr<sub>1</sub>, subExpr<sub>2</sub>, ..., subExpr<sub>n</sub>)&#39;</code> that evaluates to <strong>the logical AND</strong> of the inner expressions <code>subExpr<sub>1</sub>, subExpr<sub>2</sub>, ..., subExpr<sub>n</sub></code> where <code>n &gt;= 1</code>.\n- <code>&#39;|(subExpr<sub>1</sub>, subExpr<sub>2</sub>, ..., subExpr<sub>n</sub>)&#39;</code> that evaluates to <strong>the logical OR</strong> of the inner expressions <code>subExpr<sub>1</sub>, subExpr<sub>2</sub>, ..., subExpr<sub>n</sub></code> where <code>n &gt;= 1</code>.\n\nGiven a string <code>expression</code> that represents a <strong>boolean expression</strong>, return <em>the evaluation of that expression</em>.\n\nIt is <strong>guaranteed</strong> that the given expression is valid and follows the given rules.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: expression = \"&(|(f))\"\nOutput: false\nExplanation: First, evaluate |(f) --> f. The expression is now \"&(f)\". Then, evaluate &(f) --> f. The expression is now \"f\". Finally, return false.\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"|(f,f,f,t)\"\nOutput: true\nExplanation: The evaluation of (false OR false OR false OR true) is true.\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"!(&(f,t))\"\nOutput: true\nExplanation: First, evaluate &(f,t) --> (false AND true) --> false --> f. The expression is now \"!(f)\". Then, evaluate !(f) --> NOT false --> true. We return true.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- <code>1 &lt;= expression.length &lt;= 2 * 10<sup>4</sup></code>\n- <code>expression[i]</code> is one following characters: <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;&amp;&#39;</code>, <code>&#39;|&#39;</code>, <code>&#39;!&#39;</code>, <code>&#39;t&#39;</code>, <code>&#39;f&#39;</code>, and <code>&#39;,&#39;</code>.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "parse_bool_expr",
+    "helpers_run_signature": "(solution_class: type, expression: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.parse_bool_expr(expression)",
+    "helpers_assert_name": "parse_bool_expr",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_parse_bool_expr, run_parse_bool_expr\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ParsingABooleanExpression",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "parse_bool_expr",
+                "signature": "(self, expression: str) -> bool",
+                "body": "        # TODO: Implement parse_bool_expr\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_parse_bool_expr",
+                "signature": "(self, expression: str, expected: bool)",
+                "parametrize": "expression, expected",
+                "test_cases": {
+                    "list": [
+                        "('&(|(f))', False)",
+                        "('|(f,f,f,t)', True)",
+                        "('!(&(f,t))', True)",
+                        "('t', True)",
+                        "('f', False)",
+                        "('!(&(t))', False)",
+                        "('!(t)', False)",
+                        "('&(t,t,t)', True)",
+                        "('&(t,f)', False)",
+                        "('|(f,f)', False)",
+                        "('|(t,f)', True)",
+                        "('!(&(|(t,f),f))', True)",
+                        "('|(&(t,f,t),!(f))', True)",
+                        "('&(|(f,t),&(t),!(f))', True)",
+                        "('!(!(!(f)))', True)",
+                        "('|(&(f,t),&(f,f),|(t,t))', True)",
+                        "('&(t,|(f,t),&(t,t))', True)"
+                    ]
+                },
+                "body": "        result = run_parse_bool_expr(Solution, expression)\n        assert_parse_bool_expr(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_parse_bool_expr, assert_parse_bool_expr\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nexpression = '|(f, f, f, t)'\nexpected = True",
+    "playground_run": "result = run_parse_bool_expr(Solution, expression)\nresult",
+    "playground_assert": "assert_parse_bool_expr(result, expected)"
+}

@@ -1,0 +1,82 @@
+{
+    "problem_name": "find_duplicate_subtrees",
+    "solution_class_name": "Solution",
+    "problem_number": "652",
+    "problem_title": "Find Duplicate Subtrees",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Tree, Depth-First Search, Binary Tree",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given the `root` of a binary tree, return all **duplicate subtrees**.\n\nFor each kind of duplicate subtrees, you only need to return the root node of any one **of them**.\n\nTwo trees are **duplicate** if they have the **same structure** with the **same node values**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/08/16/e1.jpg)\n\n```\nInput: root = [1,2,3,4,null,2,4,null,null,4]\nOutput: [[2,4],[4]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/08/16/e2.jpg)\n\n```\nInput: root = [2,1,1]\nOutput: [[1]]\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2020/08/16/e33.jpg)\n\n```\nInput: root = [2,2,2,3,null,3,null]\nOutput: [[2,3],[3]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of the nodes in the tree will be in the range [1, 5000]\n- -200 <= Node.val <= 200",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "def _to_level_list(root: TreeNode[int] | None) -> list[int | None]:\n    \"\"\"Serialize a tree to compact LeetCode level-order form.\"\"\"\n    out: list[int | None] = []\n    queue: list[TreeNode[int] | None] = [root]\n    while queue:\n        node = queue.pop(0)\n        if node is None:\n            out.append(None)\n            continue\n        out.append(node.val)\n        queue.append(node.left)\n        queue.append(node.right)\n    while out and out[-1] is None:\n        out.pop()\n    return out",
+    "helpers_run_name": "find_duplicate_subtrees",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    roots = implementation.find_duplicate_subtrees(root)\n    return sorted(_to_level_list(node) for node in roots)",
+    "helpers_assert_name": "find_duplicate_subtrees",
+    "helpers_assert_signature": "(result: list[list[int | None]], expected: list[list[int | None]]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "from collections import Counter\n\nfrom leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import TreeNode, logged_test\nfrom .helpers import assert_find_duplicate_subtrees, run_find_duplicate_subtrees\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindDuplicateSubtrees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_duplicate_subtrees",
+                "signature": "(self, root: TreeNode[int] | None) -> list[TreeNode[int] | None]",
+                "body": "        # TODO: Implement find_duplicate_subtrees\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_duplicate_subtrees",
+                "signature": "(self, root_list: list[int | None], expected: list[list[int | None]])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,4,None,2,4,None,None,4], [[2,4],[4]])",
+                        "([2,1,1], [[1]])",
+                        "([2,2,2,3,None,3,None], [[2,3],[3]])",
+                        "([1], [])",
+                        "([1,1,1], [[1]])",
+                        "([0,0,0,0,None,None,0,None,None,None,0], [[0]])",
+                        "([2,2,2,2,2,2], [[2]])",
+                        "([1,2,3], [])",
+                        "([1,1], [])",
+                        "([1,None,1], [])",
+                        "([5,4,4,3,3,None,None,2,2], [[2]])",
+                        "([1,2,2,3,3,3,3], [[2,3,3],[3]])"
+                    ]
+                },
+                "body": "        result = run_find_duplicate_subtrees(Solution, root_list)\n        assert_find_duplicate_subtrees(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_duplicate_subtrees, assert_find_duplicate_subtrees\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [2, 1, 1]\nexpected: list[list[int | None]] = [[1]]",
+    "playground_run": "result = run_find_duplicate_subtrees(Solution, root_list)\nresult",
+    "playground_assert": "assert_find_duplicate_subtrees(result, expected)"
+}

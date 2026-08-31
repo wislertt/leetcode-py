@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_swap",
+    "solution_class_name": "Solution",
+    "problem_number": "670",
+    "problem_title": "Maximum Swap",
+    "difficulty": "Medium",
+    "topics": "Math, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer `num`. You can swap two digits at most once to get the maximum valued number.\n\nReturn the maximum valued number you can get.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 2736\nOutput: 7236\nExplanation: Swap the number 2 and the number 7.\n```"
+            },
+            {
+                "content": "```\nInput: num = 9973\nOutput: 9973\nExplanation: No swap.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= num <= 10^8",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_swap",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_swap(num)",
+    "helpers_assert_name": "maximum_swap",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_swap, run_maximum_swap\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumSwap",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_swap",
+                "signature": "(self, num: int) -> int",
+                "body": "        # TODO: Implement maximum_swap\n        return num"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_swap",
+                "signature": "(self, num: int, expected: int)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(2736, 7236)",
+                        "(9973, 9973)",
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(9, 9)",
+                        "(10, 10)",
+                        "(11, 11)",
+                        "(98, 98)",
+                        "(1993, 9913)",
+                        "(9931, 9931)",
+                        "(120, 210)",
+                        "(909, 990)",
+                        "(10000000, 10000000)",
+                        "(987654321, 987654321)",
+                        "(100000000, 100000000)",
+                        "(999999999, 999999999)",
+                        "(2736736, 7736236)",
+                        "(98368, 98863)"
+                    ]
+                },
+                "body": "        result = run_maximum_swap(Solution, num)\n        assert_maximum_swap(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_swap, assert_maximum_swap\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 2736\nexpected = 7236",
+    "playground_run": "result = run_maximum_swap(Solution, num)\nresult",
+    "playground_assert": "assert_maximum_swap(result, expected)"
+}

@@ -1,0 +1,99 @@
+{
+    "problem_name": "strobogrammatic_number_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "247",
+    "problem_title": "Strobogrammatic Number II",
+    "difficulty": "Medium",
+    "topics": "Recursion, Array, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, return all the **strobogrammatic numbers** that are of length `n`. You may return the answer in **any order**.\n\nA **strobogrammatic number** is a number that looks the same when rotated `180` degrees (looked at upside down).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: [\"11\",\"69\",\"88\",\"96\"]\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: [\"0\",\"1\",\"8\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 14`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def assert_find_strobogrammatic_count(result: list[str], expected: int) -> bool:\n    assert len(result) == expected\n    return True",
+    "helpers_run_name": "find_strobogrammatic",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_strobogrammatic(n)",
+    "helpers_assert_name": "find_strobogrammatic",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_strobogrammatic, assert_find_strobogrammatic_count, run_find_strobogrammatic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StrobogrammaticNumberII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_strobogrammatic",
+                "signature": "(self, n: int) -> list[str]",
+                "body": "        # TODO: Implement find_strobogrammatic\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_strobogrammatic",
+                "signature": "(self, n: int, expected: list[str])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, ['0', '1', '8'])",
+                        "(2, ['11', '69', '88', '96'])",
+                        "(3, ['101', '111', '181', '609', '619', '689', '808', '818', '888', '906', '916', '986'])",
+                        "(4, ['1001', '1111', '1691', '1881', '1961', '6009', '6119', '6699', '6889', '6969', '8008', '8118', '8698', '8888', '8968', '9006', '9116', '9696', '9886', '9966'])"
+                    ]
+                },
+                "body": "        result = run_find_strobogrammatic(Solution, n)\n        assert_find_strobogrammatic(result, expected)"
+            },
+            {
+                "name": "test_find_strobogrammatic_count",
+                "signature": "(self, n: int, expected_count: int)",
+                "parametrize": "n, expected_count",
+                "test_cases": {
+                    "list": [
+                        "(5, 60)",
+                        "(6, 100)",
+                        "(7, 300)",
+                        "(8, 500)",
+                        "(9, 1500)",
+                        "(10, 2500)",
+                        "(11, 7500)",
+                        "(12, 12500)",
+                        "(13, 37500)",
+                        "(14, 62500)"
+                    ]
+                },
+                "body": "        result = run_find_strobogrammatic(Solution, n)\n        assert_find_strobogrammatic_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_strobogrammatic, assert_find_strobogrammatic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nexpected = ['11', '69', '88', '96']",
+    "playground_run": "result = run_find_strobogrammatic(Solution, n)\nresult",
+    "playground_assert": "assert_find_strobogrammatic(result, expected)"
+}

@@ -1,0 +1,81 @@
+{
+    "problem_name": "monotonic_array",
+    "solution_class_name": "Solution",
+    "problem_number": "896",
+    "problem_title": "Monotonic Array",
+    "difficulty": "Easy",
+    "topics": "Array",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "An array is <strong>monotonic</strong> if it is either monotone increasing or monotone decreasing.</p>\n\n<p>An array <code>nums</code> is monotone increasing if for all <code>i &lt;= j</code>, <code>nums[i] &lt;= nums[j]</code>. An array <code>nums</code> is monotone decreasing if for all <code>i &lt;= j</code>, <code>nums[i] &gt;= nums[j]</code>.</p>\n\n<p>Given an integer array <code>nums</code>, return <code>true</code> <em>if the given array is monotonic, or</em> <code>false</code> <em>otherwise</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: nums = [1,2,2,3]\nOutput: true\n```" },
+            { "content": "```\nInput: nums = [6,5,4,4]\nOutput: true\n```" },
+            { "content": "```\nInput: nums = [1,3,2]\nOutput: false\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- -10^5 <= nums[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_monotonic",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_monotonic(nums)",
+    "helpers_assert_name": "is_monotonic",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_monotonic, run_is_monotonic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MonotonicArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_monotonic",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement is_monotonic\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_monotonic",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 2, 3], True)",
+                        "([6, 5, 4, 4], True)",
+                        "([1, 3, 2], False)",
+                        "([1], True)",
+                        "([1, 1], True)",
+                        "([1, 2], True)",
+                        "([2, 1], True)",
+                        "([5], True)",
+                        "([1, 1, 1, 1], True)",
+                        "([1, 2, 2, 3, 3, 4], True)",
+                        "([5, 4, 4, 3, 1], True)",
+                        "([1, 5, 3, 7], False)",
+                        "([10], True)",
+                        "([-3, -1, 0, 2], True)",
+                        "([0, 0, 1, 0], False)",
+                        "([100, -100], True)",
+                        "([2, 2, 3, 2], False)"
+                    ]
+                },
+                "body": "        result = run_is_monotonic(Solution, nums)\n        assert_is_monotonic(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_monotonic, assert_is_monotonic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 2, 3]\nexpected = True",
+    "playground_run": "result = run_is_monotonic(Solution, nums)\nresult",
+    "playground_assert": "assert_is_monotonic(result, expected)"
+}

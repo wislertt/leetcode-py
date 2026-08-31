@@ -1,0 +1,90 @@
+{
+    "problem_name": "sparse_matrix_multiplication",
+    "solution_class_name": "Solution",
+    "problem_number": "311",
+    "problem_title": "Sparse Matrix Multiplication",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two [sparse matrices](https://en.wikipedia.org/wiki/Sparse_matrix) `mat1` of size `m x k` and `mat2` of size `k x n`, return the result of `mat1 x mat2`. You may assume that multiplication is always possible.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0311.Sparse%20Matrix%20Multiplication/images/mult-grid.jpg)\n\n```\nInput: mat1 = [[1,0,0],[-1,0,3]], mat2 = [[7,0,0],[0,0,0],[0,0,1]]\nOutput: [[7,0,0],[-7,0,3]]\n```"
+            },
+            {
+                "content": "```\nInput: mat1 = [[0]], mat2 = [[0]]\nOutput: [[0]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == mat1.length`\n- `k == mat1[i].length == mat2.length`\n- `n == mat2[i].length`\n- `1 <= m, n, k <= 100`\n- `-100 <= mat1[i][j], mat2[i][j] <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "multiply",
+    "helpers_run_signature": "(solution_class: type, mat1: list[list[int]], mat2: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.multiply(mat1, mat2)",
+    "helpers_assert_name": "multiply",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_multiply, run_multiply\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SparseMatrixMultiplication",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "multiply",
+                "signature": "(self, mat1: list[list[int]], mat2: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement multiply\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_multiply",
+                "signature": "(self, mat1: list[list[int]], mat2: list[list[int]], expected: list[list[int]])",
+                "parametrize": "mat1, mat2, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,0,0],[-1,0,3]],[[7,0,0],[0,0,0],[0,0,1]],[[7,0,0],[-7,0,3]])",
+                        "([[0]],[[0]],[[0]])",
+                        "([[1,0],[0,1]],[[5,6],[7,8]],[[5,6],[7,8]])",
+                        "([[3]],[[4]],[[12]])",
+                        "([[1,2,3]],[[4],[5],[6]],[[32]])",
+                        "([[1],[2],[3]],[[4,5,6]],[[4,5,6],[8,10,12],[12,15,18]])",
+                        "([[-1,0],[0,-1]],[[2,3],[4,5]],[[-2,-3],[-4,-5]])",
+                        "([[0,0],[0,0]],[[1,2],[3,4]],[[0,0],[0,0]])",
+                        "([[1,0,0],[0,0,0],[0,0,2]],[[0,3,0],[0,0,0],[5,0,0]],[[0,3,0],[0,0,0],[10,0,0]])",
+                        "([[1,2],[3,4]],[[5,6],[7,8]],[[19,22],[43,50]])",
+                        "([[0,1],[1,0]],[[0,1],[1,0]],[[1,0],[0,1]])",
+                        "([[10]],[[-10]],[[-100]])",
+                        "([[1,1],[1,1]],[[1,1],[1,1]],[[2,2],[2,2]])",
+                        "([[2,0,1],[0,3,0]],[[1,0],[0,1],[1,1]],[[3,1],[0,3]])",
+                        "([[1,0,0],[0,0,2]],[[0,3],[0,0],[5,0]],[[0,3],[10,0]])"
+                    ]
+                },
+                "body": "        result = run_multiply(Solution, mat1, mat2)\n        assert_multiply(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_multiply, assert_multiply\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmat1 = [[1, 0, 0], [-1, 0, 3]]\nmat2 = [[7, 0, 0], [0, 0, 0], [0, 0, 1]]\nexpected = [[7, 0, 0], [-7, 0, 3]]",
+    "playground_run": "result = run_multiply(Solution, mat1, mat2)\nresult",
+    "playground_assert": "assert_multiply(result, expected)"
+}

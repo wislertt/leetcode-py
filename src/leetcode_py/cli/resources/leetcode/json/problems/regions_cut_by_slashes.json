@@ -1,0 +1,94 @@
+{
+    "problem_name": "regions_cut_by_slashes",
+    "solution_class_name": "Solution",
+    "problem_number": "959",
+    "problem_title": "Regions Cut By Slashes",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Depth-First Search, Breadth-First Search, Union Find, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An `n x n` grid is composed of `1 x 1` squares where each `1 x 1` square consists of a `'/`', `'\\`', or blank space `' `'. These characters divide the square into contiguous regions.\n\nGiven the grid `grid` represented as a string array, return *the number of regions*.\n\nNote that backslash characters are escaped, so a `'\\`' is represented as `'\\\\`'.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/15/1.png)\n\n```\nInput: grid = [\" /\",\"/ \"]\nOutput: 2\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/15/2.png)\n\n```\nInput: grid = [\" /\",\"  \"]\nOutput: 1\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2018/12/15/4.png)\n\n```\nInput: grid = [\"/\\\\\",\"\\\\/\"]\nOutput: 5\nExplanation: Recall that because \\ characters are escaped, \"\\\\/\" refers to \\/, and \"/\\\\\" refers to /\\.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == grid.length == grid[i].length`\n- `1 <= n <= 30`\n- `grid[i][j]` is either `'/`', `'\\`', or `' `'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "regions_by_slashes",
+    "helpers_run_signature": "(solution_class: type, grid: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.regions_by_slashes(grid)",
+    "helpers_assert_name": "regions_by_slashes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_regions_by_slashes, run_regions_by_slashes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RegionsCutBySlashes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "regions_by_slashes",
+                "signature": "(self, grid: list[str]) -> int",
+                "body": "        # TODO: Implement regions_by_slashes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_regions_by_slashes",
+                "signature": "(self, grid: list[str], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([' /', '/ '], 2)",
+                        "([' /', '  '], 1)",
+                        "(['/\\\\', '\\\\/'], 5)",
+                        "(['  ', '  '], 1)",
+                        "(['/'], 2)",
+                        "(['\\\\'], 2)",
+                        "([' '], 1)",
+                        "(['//', '/ '], 3)",
+                        "(['\\\\/', '/\\\\'], 4)",
+                        "([' / ', '/  ', '  /'], 3)",
+                        "(['/\\\\/', ' \\\\/', '/  '], 3)",
+                        "(['\\\\\\\\', '  '], 2)",
+                        "(['\\\\\\\\', '\\\\\\\\'], 4)",
+                        "([' /\\\\ ', '\\\\ / ', '/  \\\\', ' \\\\/ '], 2)",
+                        "(['/\\\\/\\\\', '\\\\ / ', ' \\\\\\\\ ', '\\\\\\\\  '], 5)",
+                        "(['/\\\\/', ' \\\\/', '/  '], 3)"
+                    ]
+                },
+                "body": "        result = run_regions_by_slashes(Solution, grid)\n        assert_regions_by_slashes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_regions_by_slashes, assert_regions_by_slashes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [' /', '/ ']\nexpected = 2",
+    "playground_run": "result = run_regions_by_slashes(Solution, grid)\nresult",
+    "playground_assert": "assert_regions_by_slashes(result, expected)"
+}

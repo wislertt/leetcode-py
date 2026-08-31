@@ -1,0 +1,81 @@
+{
+    "problem_name": "out_of_boundary_paths",
+    "solution_class_name": "Solution",
+    "problem_number": "576",
+    "problem_title": "Out of Boundary Paths",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "There is an `m x n` grid with a ball. The ball is initially at the position `[startRow, startColumn]`. You are allowed to move the ball to one of the four adjacent cells in the grid (possibly out of the grid crossing the grid boundary). You can apply **at most** `maxMove` moves to the ball.\n\nGiven the five integers `m`, `n`, `maxMove`, `startRow`, `startColumn`, return the number of paths to move the ball out of the grid boundary. Since the answer can be very large, return it **modulo** `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png)\n\n```\nInput: m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0\nOutput: 6\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png)\n\n```\nInput: m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1\nOutput: 12\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= m, n <= 50\n- 0 <= maxMove <= 50\n- 0 <= startRow < m\n- 0 <= startColumn < n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_paths",
+    "helpers_run_signature": "(solution_class: type, m: int, n: int, max_move: int, start_row: int, start_column: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_paths(m, n, max_move, start_row, start_column)",
+    "helpers_assert_name": "find_paths",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_paths, run_find_paths\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OutOfBoundaryPaths",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_paths",
+                "signature": "(self, m: int, n: int, max_move: int, start_row: int, start_column: int) -> int",
+                "body": "        # TODO: Implement find_paths\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_paths",
+                "signature": "(self, m: int, n: int, max_move: int, start_row: int, start_column: int, expected: int)",
+                "parametrize": "m, n, max_move, start_row, start_column, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 2, 2, 0, 0, 6)",
+                        "(1, 3, 3, 0, 1, 12)",
+                        "(1, 1, 1, 0, 0, 4)",
+                        "(1, 1, 0, 0, 0, 0)",
+                        "(2, 2, 0, 1, 1, 0)",
+                        "(3, 3, 4, 1, 1, 52)",
+                        "(2, 3, 5, 0, 2, 78)",
+                        "(3, 2, 3, 2, 0, 13)",
+                        "(1, 4, 6, 0, 3, 48)",
+                        "(4, 1, 5, 3, 0, 29)",
+                        "(5, 5, 10, 2, 2, 79840)",
+                        "(3, 3, 8, 0, 0, 1756)",
+                        "(2, 2, 50, 0, 0, 797922653)",
+                        "(5, 4, 20, 2, 3, 891314074)"
+                    ]
+                },
+                "body": "        result = run_find_paths(Solution, m, n, max_move, start_row, start_column)\n        assert_find_paths(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_paths, assert_find_paths\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nm = 2\nn = 2\nmax_move = 2\nstart_row = 0\nstart_column = 0\nexpected = 6",
+    "playground_run": "result = run_find_paths(Solution, m, n, max_move, start_row, start_column)\nresult",
+    "playground_assert": "assert_find_paths(result, expected)"
+}

@@ -53,7 +53,7 @@ See the [Quickstart](https://leetcode-py.wisl.dev/getting-started/quickstart) fo
 
 ## 🗂️ Collections
 
-307 problems, ready to generate, across six complete collections. Browse them all in the [catalog](https://leetcode-py.wisl.dev/catalog):
+<!-- problem-count:start -->531<!-- problem-count:end --> problems, ready to generate, across seven complete collections. Browse them all in the [catalog](https://leetcode-py.wisl.dev/catalog):
 
 | Collection                                                           | What it is                                                  |
 | -------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -62,6 +62,7 @@ See the [Quickstart](https://leetcode-py.wisl.dev/getting-started/quickstart) fo
 | [Blind 75](https://leetcode-py.wisl.dev/catalog/blind-75)            | The original curated list                                   |
 | [NeetCode 150](https://leetcode-py.wisl.dev/catalog/neetcode-150)    | Comprehensive coverage by topic                             |
 | [NeetCode 250](https://leetcode-py.wisl.dev/catalog/neetcode-250)    | NeetCode 150 plus 100 more                                  |
+| [NeetCode All](https://leetcode-py.wisl.dev/catalog/neetcode)        | The complete neetcode.io list; coverage still growing       |
 | [AlgoMaster 75](https://leetcode-py.wisl.dev/catalog/algo-master-75) | Curated algorithmic mastery problems                        |
 
 ## 🛠️ Development

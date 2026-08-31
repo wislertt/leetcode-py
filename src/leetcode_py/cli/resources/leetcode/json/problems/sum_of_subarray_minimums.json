@@ -1,0 +1,83 @@
+{
+    "problem_name": "sum_of_subarray_minimums",
+    "solution_class_name": "Solution",
+    "problem_number": "907",
+    "problem_title": "Sum of Subarray Minimums",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Stack, Monotonic Stack",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given an array of integers <code>arr</code>, find the sum of <code>min(b)</code>, where <code>b</code> ranges over every (contiguous) subarray of <code>arr</code>. Since the answer may be large, return the answer <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [3,1,2,4]\nOutput: 17\nExplanation: \nSubarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. \nMinimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1. Sum is 17.\n```"
+            },
+            { "content": "```\nInput: arr = [50]\nOutput: 50\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 3 * 10^4\n- 1 <= arr[i] <= 3 * 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sum_subarray_mins",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sum_subarray_mins(arr)",
+    "helpers_assert_name": "sum_subarray_mins",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sum_subarray_mins, run_sum_subarray_mins\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumOfSubarrayMinimums",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sum_subarray_mins",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement sum_subarray_mins\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sum_subarray_mins",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 1, 2, 4], 17)",
+                        "([50], 50)",
+                        "([1], 1)",
+                        "([2, 1], 4)",
+                        "([1, 2], 4)",
+                        "([3, 3, 3], 18)",
+                        "([11, 81, 94, 43, 78], 647)",
+                        "([1, 2, 3], 10)",
+                        "([3, 2, 1], 10)",
+                        "([2, 2, 1, 2, 2], 21)",
+                        "([10000, 10000], 30000)",
+                        "([1, 30000, 1], 30005)",
+                        "([4, 3, 2, 1, 5], 29)",
+                        "([5, 1, 2, 3, 4], 29)",
+                        "([7, 7, 7, 7, 7, 7, 7], 196)",
+                        "([20000, 1, 20000, 1, 20000], 60012)",
+                        "([2, 5, 3, 1, 4], 29)",
+                        "([9], 9)"
+                    ]
+                },
+                "body": "        result = run_sum_subarray_mins(Solution, arr)\n        assert_sum_subarray_mins(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sum_subarray_mins, assert_sum_subarray_mins\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [3, 1, 2, 4]\nexpected = 17",
+    "playground_run": "result = run_sum_subarray_mins(Solution, arr)\nresult",
+    "playground_assert": "assert_sum_subarray_mins(result, expected)"
+}

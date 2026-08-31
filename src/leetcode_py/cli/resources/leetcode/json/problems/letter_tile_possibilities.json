@@ -1,0 +1,92 @@
+{
+    "problem_name": "letter_tile_possibilities",
+    "solution_class_name": "Solution",
+    "problem_number": "1079",
+    "problem_title": "Letter Tile Possibilities",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have <code>n</code>&nbsp;&nbsp;<code>tiles</code>, where each tile has one letter <code>tiles[i]</code> printed on it.\n\nReturn <em>the number of possible non-empty sequences of letters</em> you can make using the letters printed on those <code>tiles</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: tiles = \"AAB\"\nOutput: 8\nExplanation: The possible sequences are \"A\", \"B\", \"AA\", \"AB\", \"BA\", \"AAB\", \"ABA\", \"BAA\".\n```"
+            },
+            {
+                "content": "```\nInput: tiles = \"AAABBC\"\nOutput: 188\n```"
+            },
+            {
+                "content": "```\nInput: tiles = \"V\"\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- <code>1 &lt;= tiles.length &lt;= 7</code>\n- <code>tiles</code> consists of uppercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_tile_possibilities",
+    "helpers_run_signature": "(solution_class: type, tiles: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_tile_possibilities(tiles)",
+    "helpers_assert_name": "num_tile_possibilities",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_tile_possibilities, run_num_tile_possibilities\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LetterTilePossibilities",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_tile_possibilities",
+                "signature": "(self, tiles: str) -> int",
+                "body": "        # TODO: Implement num_tile_possibilities\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_tile_possibilities",
+                "signature": "(self, tiles: str, expected: int)",
+                "parametrize": "tiles, expected",
+                "test_cases": {
+                    "list": [
+                        "('AAB', 8)",
+                        "('AAABBC', 188)",
+                        "('V', 1)",
+                        "('A', 1)",
+                        "('AA', 2)",
+                        "('AB', 4)",
+                        "('AAA', 3)",
+                        "('ABC', 15)",
+                        "('AABB', 18)",
+                        "('AAABB', 33)",
+                        "('ZZZZZZZ', 7)",
+                        "('ABCC', 34)",
+                        "('QQQ', 3)",
+                        "('ABCDEFG', 13699)"
+                    ]
+                },
+                "body": "        result = run_num_tile_possibilities(Solution, tiles)\n        assert_num_tile_possibilities(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_tile_possibilities, assert_num_tile_possibilities\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntiles = 'AAB'\nexpected = 8",
+    "playground_run": "result = run_num_tile_possibilities(Solution, tiles)\nresult",
+    "playground_assert": "assert_num_tile_possibilities(result, expected)"
+}

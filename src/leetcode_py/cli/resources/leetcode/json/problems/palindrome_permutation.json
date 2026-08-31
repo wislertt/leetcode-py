@@ -1,0 +1,93 @@
+{
+    "problem_name": "palindrome_permutation",
+    "solution_class_name": "Solution",
+    "problem_number": "266",
+    "problem_title": "Palindrome Permutation",
+    "difficulty": "Easy",
+    "topics": "Bit Manipulation, Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s`, return `true` *if a permutation of the string could form a **palindrome** and* `false` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"code\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aab\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"carerac\"\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 5000`\n- `s` consists of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_permute_palindrome",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_permute_palindrome(s)",
+    "helpers_assert_name": "can_permute_palindrome",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import Counter",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_permute_palindrome, run_can_permute_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromePermutation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_permute_palindrome",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement can_permute_palindrome\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_permute_palindrome",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('code', False)",
+                        "('aab', True)",
+                        "('carerac', True)",
+                        "('a', True)",
+                        "('ab', False)",
+                        "('aa', True)",
+                        "('abba', True)",
+                        "('abc', False)",
+                        "('aabb', True)",
+                        "('aabbc', True)",
+                        "('aabbcc', True)",
+                        "('abcabc', True)",
+                        "('racecar', True)",
+                        "('zz', True)",
+                        "('abcde', False)"
+                    ]
+                },
+                "body": "        result = run_can_permute_palindrome(Solution, s)\n        assert_can_permute_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_permute_palindrome, assert_can_permute_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'carerac'\nexpected = True",
+    "playground_run": "result = run_can_permute_palindrome(Solution, s)\nresult",
+    "playground_assert": "assert_can_permute_palindrome(result, expected)"
+}

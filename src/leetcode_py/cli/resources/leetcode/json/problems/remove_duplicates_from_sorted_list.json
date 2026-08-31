@@ -1,0 +1,90 @@
+{
+    "problem_name": "remove_duplicates_from_sorted_list",
+    "solution_class_name": "Solution",
+    "problem_number": "83",
+    "problem_title": "Remove Duplicates from Sorted List",
+    "difficulty": "Easy",
+    "topics": "Linked List",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `head` of a sorted linked list, *delete all duplicates such that each element appears only once*. Return the linked list **sorted** as well.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/04/list1.jpg)\n\n```\nInput: head = [1,1,2]\nOutput: [1,2]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/01/04/list2.jpg)\n\n```\nInput: head = [1,1,2,3,3]\nOutput: [1,2,3]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range `[0, 300]`.\n- `-100 <= Node.val <= 100`\n- The list is guaranteed to be sorted in ascending order.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "delete_duplicates",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.delete_duplicates(head)",
+    "helpers_assert_name": "delete_duplicates",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_list: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_delete_duplicates, run_delete_duplicates\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveDuplicatesFromSortedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "delete_duplicates",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement delete_duplicates\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_delete_duplicates",
+                "signature": "(self, head_list: list[int], expected_list: list[int])",
+                "parametrize": "head_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 2], [1, 2])",
+                        "([1, 1, 2, 3, 3], [1, 2, 3])",
+                        "([], [])",
+                        "([1], [1])",
+                        "([1, 1], [1])",
+                        "([1, 1, 1, 1, 1], [1])",
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])",
+                        "([-100, -100, -99, 0, 0, 100], [-100, -99, 0, 100])",
+                        "([0, 0], [0])",
+                        "([-1, -1, -1], [-1])",
+                        "([1, 1, 2, 2, 3, 3], [1, 2, 3])",
+                        "([1, 2, 2, 3, 3, 3, 4], [1, 2, 3, 4])",
+                        "([5, 5, 5, 5, 5, 5, 5, 5], [5])",
+                        "([-3, -2, -1, 0, 1, 2, 3], [-3, -2, -1, 0, 1, 2, 3])",
+                        "([1, 1, 1, 2, 3, 3, 3, 4, 5, 5], [1, 2, 3, 4, 5])"
+                    ]
+                },
+                "body": "        result = run_delete_duplicates(Solution, head_list)\n        assert_delete_duplicates(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_delete_duplicates, assert_delete_duplicates\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [1, 1, 2, 3, 3]\nexpected_list = [1, 2, 3]",
+    "playground_run": "result = run_delete_duplicates(Solution, head_list)\nresult",
+    "playground_assert": "assert_delete_duplicates(result, expected_list)"
+}

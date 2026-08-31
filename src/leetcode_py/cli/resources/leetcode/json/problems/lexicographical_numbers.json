@@ -1,0 +1,87 @@
+{
+    "problem_name": "lexicographical_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "386",
+    "problem_title": "Lexicographical Numbers",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Trie",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, return all the numbers in the range `[1, n]` sorted in lexicographical order.\n\nYou must write an algorithm that runs in `O(n)` time and uses `O(1)` extra space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 13\nOutput: [1,10,11,12,13,2,3,4,5,6,7,8,9]\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: [1,2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 5 * 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "lexical_order",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.lexical_order(n)",
+    "helpers_assert_name": "lexical_order",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_lexical_order, run_lexical_order\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LexicographicalNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "lexical_order",
+                "signature": "(self, n: int) -> list[int]",
+                "body": "        # TODO: Implement lexical_order\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_lexical_order",
+                "signature": "(self, n: int, expected: list[int])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, [1])",
+                        "(2, [1, 2])",
+                        "(3, [1, 2, 3])",
+                        "(9, [1, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(10, [1, 10, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(11, [1, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(13, [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(14, [1, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(15, [1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(19, [1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(20, [1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 3, 4, 5, 6, 7, 8, 9])",
+                        "(21, [1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 3, 4, 5, 6, 7, 8, 9])"
+                    ]
+                },
+                "body": "        result = run_lexical_order(Solution, n)\n        assert_lexical_order(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_lexical_order, assert_lexical_order\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 13\nexpected = [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]",
+    "playground_run": "result = run_lexical_order(Solution, n)\nresult",
+    "playground_assert": "assert_lexical_order(result, expected)"
+}

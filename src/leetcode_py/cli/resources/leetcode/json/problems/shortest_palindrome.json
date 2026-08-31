@@ -1,0 +1,90 @@
+{
+    "problem_name": "shortest_palindrome",
+    "solution_class_name": "Solution",
+    "problem_number": "214",
+    "problem_title": "Shortest Palindrome",
+    "difficulty": "Hard",
+    "topics": "String, Rolling Hash, String Matching, Hash Function, Manacher, Z Algorithm, Knuth-Morris-Pratt Algorithm",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s`. You can convert `s` to a palindrome by adding characters in front of it.\n\nReturn the shortest palindrome you can find by performing this transformation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aacecaaa\"\nOutput: \"aaacecaaa\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcd\"\nOutput: \"dcbabcd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= s.length <= 5 * 10^4\n- s consists of lowercase English letters only.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_palindrome",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_palindrome(s)",
+    "helpers_assert_name": "shortest_palindrome",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_palindrome, run_shortest_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestPalindrome",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_palindrome",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement shortest_palindrome\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_palindrome",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aacecaaa', 'aaacecaaa')",
+                        "('abcd', 'dcbabcd')",
+                        "('', '')",
+                        "('a', 'a')",
+                        "('aa', 'aa')",
+                        "('ab', 'bab')",
+                        "('aba', 'aba')",
+                        "('abc', 'cbabc')",
+                        "('aabba', 'abbaabba')",
+                        "('race', 'ecarace')",
+                        "('aaa', 'aaa')",
+                        "('abab', 'babab')",
+                        "('abcdcba', 'abcdcba')",
+                        "('aabbaabb', 'bbaabbaabb')",
+                        "('abcda', 'adcbabcda')",
+                        "('abcb', 'bcbabcb')"
+                    ]
+                },
+                "body": "        result = run_shortest_palindrome(Solution, s)\n        assert_shortest_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_palindrome, assert_shortest_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aacecaaa'\nexpected = 'aaacecaaa'",
+    "playground_run": "result = run_shortest_palindrome(Solution, s)\nresult",
+    "playground_assert": "assert_shortest_palindrome(result, expected)"
+}

@@ -1,0 +1,105 @@
+{
+    "problem_name": "design_linked_list",
+    "solution_class_name": "MyLinkedList",
+    "problem_number": "707",
+    "problem_title": "Design Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Design",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design your implementation of the linked list. You can choose to use a singly or doubly linked list.\nA node in a singly linked list should have two attributes: `val` and `next`. `val` is the value of the current node, and `next` is a pointer/reference to the next node.\nIf you want to use the doubly linked list, you will need one more attribute `prev` to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed.\n\nImplement the `MyLinkedList` class:\n\n- `MyLinkedList()` Initializes the `MyLinkedList` object.\n- `int get(index)` Get the value of the `indexth` node in the linked list. If the index is invalid, return `-1`.\n- `void addAtHead(int val)` Add a node of value `val` before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.\n- `void addAtTail(int val)` Append a node of value `val` as the last element of the linked list.\n- `void addAtIndex(int index, int val)` Add a node of value `val` before the `indexth` node in the linked list. If `index` equals the length of the linked list, the node will be appended to the end of the linked list. If `index` is greater than the length, the node will not be inserted.\n- `void deleteAtIndex(int index)` Delete the `indexth` node in the linked list, if the index is valid.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyLinkedList\", \"addAtHead\", \"addAtTail\", \"addAtIndex\", \"get\", \"deleteAtIndex\", \"get\"]\n[[], [1], [3], [1, 2], [1], [1], [1]]\nOutput\n[null, null, null, null, 2, null, 3]\n\nExplanation\nMyLinkedList myLinkedList = new MyLinkedList();\nmyLinkedList.addAtHead(1);\nmyLinkedList.addAtTail(3);\nmyLinkedList.addAtIndex(1, 2);    // linked list becomes 1->2->3\nmyLinkedList.get(1);              // return 2\nmyLinkedList.deleteAtIndex(1);    // now the linked list is 1->3\nmyLinkedList.get(1);              // return 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= index, val <= 1000\n- Please do not use the built-in LinkedList library.\n- At most 2000 calls will be made to get, addAtHead, addAtTail, addAtIndex and deleteAtIndex.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "linked_list_ops",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    linked_list = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyLinkedList':\n            linked_list = solution_class()\n            results.append(None)\n        elif op == 'get' and linked_list is not None:\n            results.append(linked_list.get(inputs[i][0]))\n        elif op == 'add_at_head' and linked_list is not None:\n            linked_list.add_at_head(inputs[i][0])\n            results.append(None)\n        elif op == 'add_at_tail' and linked_list is not None:\n            linked_list.add_at_tail(inputs[i][0])\n            results.append(None)\n        elif op == 'add_at_index' and linked_list is not None:\n            linked_list.add_at_index(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'delete_at_index' and linked_list is not None:\n            linked_list.delete_at_index(inputs[i][0])\n            results.append(None)\n    return results, linked_list",
+    "helpers_assert_name": "linked_list_ops",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_linked_list_ops, run_linked_list_ops\nfrom .solution import MyLinkedList",
+    "test_content": "",
+    "test_class_name": "DesignLinkedList",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "get",
+                "signature": "(self, index: int) -> int",
+                "body": "        # TODO: Implement get\n        return -1"
+            },
+            {
+                "name": "add_at_head",
+                "signature": "(self, val: int) -> None",
+                "body": "        # TODO: Implement add_at_head\n        pass"
+            },
+            {
+                "name": "add_at_tail",
+                "signature": "(self, val: int) -> None",
+                "body": "        # TODO: Implement add_at_tail\n        pass"
+            },
+            {
+                "name": "add_at_index",
+                "signature": "(self, index: int, val: int) -> None",
+                "body": "        # TODO: Implement add_at_index\n        pass"
+            },
+            {
+                "name": "delete_at_index",
+                "signature": "(self, index: int) -> None",
+                "body": "        # TODO: Implement delete_at_index\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_linked_list_ops",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyLinkedList','add_at_head','add_at_tail','add_at_index','get','delete_at_index','get'],[[],[1],[3],[1,2],[1],[1],[1]],[None,None,None,None,2,None,3])",
+                        "(['MyLinkedList','add_at_head','get'],[[],[1],[0]],[None,None,1])",
+                        "(['MyLinkedList','add_at_tail','get','get'],[[],[1],[0],[1]],[None,None,1,-1])",
+                        "(['MyLinkedList','get'],[[],[0]],[None,-1])",
+                        "(['MyLinkedList','add_at_head','delete_at_index','get'],[[],[1],[0],[0]],[None,None,None,-1])",
+                        "(['MyLinkedList','add_at_index','get'],[[],[0,1],[0]],[None,None,1])",
+                        "(['MyLinkedList','add_at_index','get'],[[],[1,1],[0]],[None,None,-1])",
+                        "(['MyLinkedList','add_at_tail','add_at_index','delete_at_index','get','get'],[[],[1],[0,2],[0],[0],[0]],[None,None,None,None,1,1])",
+                        "(['MyLinkedList','add_at_head','add_at_head','add_at_head','get','get','get'],[[],[1],[2],[3],[0],[1],[2]],[None,None,None,None,3,2,1])",
+                        "(['MyLinkedList','add_at_tail','add_at_tail','add_at_tail','delete_at_index','delete_at_index','get','get','get'],[[],[1],[2],[3],[0],[0],[0],[0],[0]],[None,None,None,None,None,None,3,3,3])",
+                        "(['MyLinkedList','add_at_index','add_at_index','add_at_index','get'],[[],[3,3],[0,1],[1,2],[0]],[None,None,None,None,1])",
+                        "(['MyLinkedList','add_at_tail','add_at_index','add_at_index','add_at_index','get','get','get','get'],[[],[5],[0,1],[1,2],[2,3],[0],[1],[2],[3]],[None,None,None,None,None,1,2,3,5])",
+                        "(['MyLinkedList','add_at_head','delete_at_index','get','add_at_tail','get'],[[],[5],[0],[0],[7],[0]],[None,None,None,-1,None,7])",
+                        "(['MyLinkedList','add_at_tail','add_at_tail','add_at_index','delete_at_index','delete_at_index','get','add_at_head','get','get'],[[],[1],[2],[1,3],[2],[0],[0],[9],[0],[1]],[None,None,None,None,None,None,3,None,9,3])"
+                    ]
+                },
+                "body": "        result, _ = run_linked_list_ops(MyLinkedList, operations, inputs)\n        assert_linked_list_ops(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_linked_list_ops, assert_linked_list_ops\nfrom solution import MyLinkedList",
+    "playground_setup": "# Example test case\noperations = ['MyLinkedList', 'add_at_head', 'add_at_tail', 'add_at_index', 'get', 'delete_at_index', 'get']\ninputs = [[], [1], [3], [1, 2], [1], [1], [1]]\nexpected = [None, None, None, None, 2, None, 3]",
+    "playground_run": "result, linked_list = run_linked_list_ops(MyLinkedList, operations, inputs)\nprint(result)\nlinked_list",
+    "playground_assert": "assert_linked_list_ops(result, expected)"
+}

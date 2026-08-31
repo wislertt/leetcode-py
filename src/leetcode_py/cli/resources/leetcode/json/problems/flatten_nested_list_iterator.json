@@ -1,0 +1,93 @@
+{
+    "problem_name": "flatten_nested_list_iterator",
+    "solution_class_name": "NestedIterator",
+    "problem_number": "341",
+    "problem_title": "Flatten Nested List Iterator",
+    "difficulty": "Medium",
+    "topics": "Stack, Tree, Depth-First Search, Design, Queue, Iterator",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a nested list of integers `nestedList`. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.\n\nImplement the `NestedIterator` class:\n\n- `NestedIterator(List[NestedInteger] nestedList)` Initializes the iterator with the nested list `nestedList`.\n- `int next()` Returns the next integer in the nested list.\n- `boolean hasNext()` Returns `true` if there are still some integers in the nested list and `false` otherwise.\n\nYour code will be tested with the following pseudocode:\n\n```\ninitialize iterator with nestedList\nres = []\nwhile iterator.hasNext()\n    append iterator.next() to the end of res\nreturn res\n```\n\nIf `res` matches the expected flattened list, then your code will be judged as correct.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nestedList = [[1,1],2,[1,1]]\nOutput: [1,1,2,1,1]\nExplanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].\n```"
+            },
+            {
+                "content": "```\nInput: nestedList = [1,[4,[6]]]\nOutput: [1,4,6]\nExplanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nestedList.length <= 500\n- The values of the integers in the nested list is in the range [-10<sup>6</sup>, 10<sup>6</sup>].",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "flatten_nested_list_iterator",
+    "helpers_run_signature": "(solution_class: type, nested_list: list[Any])",
+    "helpers_run_body": "    iterator = solution_class(nested_list)\n    results: list[Any] = []\n    while iterator.has_next():\n        results.append(iterator.next())\n\n    return results",
+    "helpers_assert_name": "flatten_nested_list_iterator",
+    "helpers_assert_signature": "(result: list[Any], expected: list[Any]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from typing import Any",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "from typing import Any\n\nimport pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flatten_nested_list_iterator, run_flatten_nested_list_iterator\nfrom .solution import NestedIterator",
+    "test_content": "",
+    "test_class_name": "FlattenNestedListIterator",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nested_list: list[Any]) -> None",
+                "body": "        # TODO: Initialize data structure\n        pass"
+            },
+            {
+                "name": "next",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement next\n        return 0"
+            },
+            {
+                "name": "has_next",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement has_next\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flatten_nested_list_iterator",
+                "signature": "(self, nested_list: list[Any], expected: list[Any])",
+                "parametrize": "nested_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1], 2, [1, 1]], [1, 1, 2, 1, 1])",
+                        "([1, [4, [6]]], [1, 4, 6])",
+                        "([1], [1])",
+                        "([[]], [])",
+                        "([[], [[]]], [])",
+                        "([[], 1, []], [1])",
+                        "([[[[[5]]]]], [5])",
+                        "([1, [2, [3, [4, [5]]]]], [1, 2, 3, 4, 5])",
+                        "([[-1, [0], 1], [-2]], [-1, 0, 1, -2])",
+                        "([[1000000], [[-1000000]]], [1000000, -1000000])",
+                        "([[1, 2], [3, [4, 5]], [6, [7, [8, [9, [10]]]]]], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])",
+                        "([[], [1, []], [2, [[]]], 3], [1, 2, 3])",
+                        "([0, [0, [0]]], [0, 0, 0])",
+                        "([[[], []], [], [[]]], [])"
+                    ]
+                },
+                "body": "        result = run_flatten_nested_list_iterator(NestedIterator, nested_list)\n        assert_flatten_nested_list_iterator(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flatten_nested_list_iterator, assert_flatten_nested_list_iterator\nfrom solution import NestedIterator",
+    "playground_setup": "# Example test case\nnested_list = [[1, 1], 2, [1, 1]]\nexpected = [1, 1, 2, 1, 1]",
+    "playground_run": "result = run_flatten_nested_list_iterator(NestedIterator, nested_list)\nresult",
+    "playground_assert": "assert_flatten_nested_list_iterator(result, expected)"
+}

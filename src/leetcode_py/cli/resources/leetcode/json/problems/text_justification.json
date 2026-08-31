@@ -1,0 +1,96 @@
+{
+    "problem_name": "text_justification",
+    "solution_class_name": "Solution",
+    "problem_number": "68",
+    "problem_title": "Text Justification",
+    "difficulty": "Hard",
+    "topics": "Array, String, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `words` and a width `max_width`, format the text such that each line has exactly `max_width` characters and is fully (left and right) justified.\n\nYou should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces `' '` when necessary so that each line has exactly `max_width` characters.\n\nExtra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.\n\nFor the last line of text, it should be left-justified, and no extra space is inserted between words.\n\n**Note:**\n\n- A word is defined as a character sequence consisting of non-space characters only.\n- Each word's length is guaranteed to be greater than 0 and not exceed `max_width`.\n- The input array `words` contains at least one word.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"This\", \"is\", \"an\", \"example\", \"of\", \"text\", \"justification.\"], max_width = 16\nOutput:\n[\n   \"This    is    an\",\n   \"example  of text\",\n   \"justification.  \"\n]\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"What\",\"must\",\"be\",\"acknowledgment\",\"shall\",\"be\"], max_width = 16\nOutput:\n[\n  \"What   must   be\",\n  \"acknowledgment  \",\n  \"shall be        \"\n]\nExplanation: Note that the last line is \"shall be    \" instead of \"shall     be\", because the last line must be left-justified instead of fully-justified.\nNote that the second line is also left-justified because it contains only one word.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"Science\",\"is\",\"what\",\"we\",\"understand\",\"well\",\"enough\",\"to\",\"explain\",\"to\",\"a\",\"computer.\",\"Art\",\"is\",\"everything\",\"else\",\"we\",\"do\"], max_width = 20\nOutput:\n[\n  \"Science  is  what we\",\n  \"understand      well\",\n  \"enough to explain to\",\n  \"a  computer.  Art is\",\n  \"everything  else  we\",\n  \"do                  \"\n]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 300\n- 1 <= words[i].length <= 20\n- words[i] consists of only English letters and symbols.\n- 1 <= max_width <= 100\n- words[i].length <= max_width",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "full_justify",
+    "helpers_run_signature": "(solution_class: type, words: list[str], max_width: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.full_justify(words, max_width)",
+    "helpers_assert_name": "full_justify",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_full_justify, run_full_justify\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TextJustification",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "full_justify",
+                "signature": "(self, words: list[str], max_width: int) -> list[str]",
+                "body": "        # TODO: Implement full_justify\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_full_justify",
+                "signature": "(self, words: list[str], max_width: int, expected: list[str])",
+                "parametrize": "words, max_width, expected",
+                "test_cases": {
+                    "list": [
+                        "(['This', 'is', 'an', 'example', 'of', 'text', 'justification.'], 16, ['This    is    an', 'example  of text', 'justification.  '])",
+                        "(['What', 'must', 'be', 'acknowledgment', 'shall', 'be'], 16, ['What   must   be', 'acknowledgment  ', 'shall be        '])",
+                        "(['Science', 'is', 'what', 'we', 'understand', 'well', 'enough', 'to', 'explain', 'to', 'a', 'computer.', 'Art', 'is', 'everything', 'else', 'we', 'do'], 20, ['Science  is  what we', 'understand      well', 'enough to explain to', 'a  computer.  Art is', 'everything  else  we', 'do                  '])",
+                        "(['hello'], 10, ['hello     '])",
+                        "(['a'], 1, ['a'])",
+                        "(['a', 'b', 'c', 'd'], 3, ['a b', 'c d'])",
+                        "(['a', 'b', 'c'], 5, ['a b c'])",
+                        "(['a', 'b', 'c'], 4, ['a  b', 'c   '])",
+                        "(['listen', 'to', 'the', 'rain'], 6, ['listen', 'to the', 'rain  '])",
+                        "(['a', 'b', 'c', 'd'], 7, ['a b c d'])",
+                        "(['aa', 'bb', 'cc', 'dd'], 8, ['aa bb cc', 'dd      '])",
+                        "(['a', 'b', 'c', 'xxx'], 7, ['a  b  c', 'xxx    '])",
+                        "(['a', 'b', 'c', 'd', 'e'], 8, ['a  b c d', 'e       '])",
+                        "(['abcde'], 5, ['abcde'])",
+                        "(['a', 'b'], 1, ['a', 'b'])",
+                        "(['aaa', 'bbb'], 3, ['aaa', 'bbb'])",
+                        "(['to', 'be', 'or', 'not', 'to', 'be'], 6, ['to  be', 'or not', 'to be '])",
+                        "(['x', 'yy', 'zzz', 'wwww'], 7, ['x    yy', 'zzz    ', 'wwww   '])"
+                    ]
+                },
+                "body": "        result = run_full_justify(Solution, words, max_width)\n        assert_full_justify(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_full_justify, assert_full_justify\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['This', 'is', 'an', 'example', 'of', 'text', 'justification.']\nmax_width = 16\nexpected = ['This    is    an', 'example  of text', 'justification.  ']",
+    "playground_run": "result = run_full_justify(Solution, words, max_width)\nresult",
+    "playground_assert": "assert_full_justify(result, expected)"
+}

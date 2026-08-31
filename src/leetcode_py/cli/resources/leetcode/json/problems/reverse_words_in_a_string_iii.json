@@ -1,0 +1,79 @@
+{
+    "problem_name": "reverse_words_in_a_string_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "557",
+    "problem_title": "Reverse Words in a String III",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given a string `s`, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"Let's take LeetCode contest\"\nOutput: \"s'teL ekat edoCteeL tsetnoc\"\n```"
+            },
+            { "content": "```\nInput: s = \"Mr Ding\"\nOutput: \"rM gniD\"\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 5 * 10^4\n- `s` contains printable ASCII characters.\n- `s` does not contain any leading or trailing spaces.\n- There is **at least one** word in `s`.\n- All the words in `s` are separated by a single space.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_words",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_words(s)",
+    "helpers_assert_name": "reverse_words",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_words, run_reverse_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseWordsInAStringIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_words",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reverse_words\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_words",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('Let\\'s take LeetCode contest', 's\\'teL ekat edoCteeL tsetnoc')",
+                        "('Mr Ding', 'rM gniD')",
+                        "('a', 'a')",
+                        "('ab', 'ba')",
+                        "('abc def', 'cba fed')",
+                        "('hello world', 'olleh dlrow')",
+                        "('racecar', 'racecar')",
+                        "('a b c d', 'a b c d')",
+                        "('Python is fun', 'nohtyP si nuf')",
+                        "('x', 'x')",
+                        "('123 456', '321 654')",
+                        "('Ab! Cd?', '!bA ?dC')",
+                        "('ab cd ef gh', 'ba dc fe hg')",
+                        "('LeetCode', 'edoCteeL')"
+                    ]
+                },
+                "body": "        result = run_reverse_words(Solution, s)\n        assert_reverse_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_words, assert_reverse_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'Mr Ding'\nexpected = 'rM gniD'",
+    "playground_run": "result = run_reverse_words(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_words(result, expected)"
+}

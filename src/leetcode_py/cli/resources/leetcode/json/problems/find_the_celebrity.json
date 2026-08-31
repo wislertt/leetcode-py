@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_the_celebrity",
+    "solution_class_name": "Solution",
+    "problem_number": "277",
+    "problem_title": "Find the Celebrity",
+    "difficulty": "Medium",
+    "topics": "Graph, Two Pointers, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Suppose you are at a party with `n` people labeled from `0` to `n - 1` and among them, there may exist one celebrity. The definition of a celebrity is that all the other `n - 1` people know the celebrity, but the celebrity does not know any of them.\n\nNow you want to find out who the celebrity is or verify that there is not one. You are only allowed to ask questions like: \"Hi, A. Do you know B?\" to get information about whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).\n\nYou are given an integer `n` and a helper function `bool knows(a, b)` that tells you whether `a` knows `b`. Implement a function `int findCelebrity(n)`. There will be exactly one celebrity if they are at the party.\n\nReturn *the celebrity's label if there is a celebrity at the party*. If there is no celebrity, return `-1`.\n\n**Note** that the `n x n` 2D array `graph` given as input is **not** directly available to you, and instead **only** accessible through the helper function `knows`. `graph[i][j] == 1` represents person `i` knows person `j`, whereas `graph[i][j] == 0` represents person `i` does not know person `j`.\n\n**Follow up:** If the maximum number of allowed calls to the API `knows` is `3 * n`, could you find a solution without exceeding the maximum number of calls?",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0200-0299/0277.Find%20the%20Celebrity/images/g1.jpg)\n\n```\nInput: graph = [[1,1,0],[0,1,0],[1,1,1]]\nOutput: 1\nExplanation: There are three persons labeled with 0, 1 and 2. graph[i][j] = 1 means person i knows person j, otherwise graph[i][j] = 0 means person i does not know person j. The celebrity is the person labeled as 1 because both 0 and 2 know him but 1 does not know anybody.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0200-0299/0277.Find%20the%20Celebrity/images/g2.jpg)\n\n```\nInput: graph = [[1,0,1],[1,1,0],[0,1,1]]\nOutput: -1\nExplanation: There is no celebrity.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == graph.length == graph[i].length`\n- `2 <= n <= 100`\n- `graph[i][j]` is `0` or `1`.\n- `graph[i][i] == 1`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_celebrity",
+    "helpers_run_signature": "(solution_class: type, graph: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    # The knows API is backed by the graph only via injection\n    implementation.graph = graph\n    return implementation.find_celebrity(len(graph))",
+    "helpers_assert_name": "find_celebrity",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from typing import ClassVar",
+    "solution_contents": "",
+    "solution_class_content": "    # Backing store for the knows API, injected by the test helper\n    graph: ClassVar[list[list[int]]] = []\n",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_celebrity, run_find_celebrity\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheCelebrity",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "knows",
+                "signature": "(self, a: int, b: int) -> bool",
+                "body": "        # TODO: Implement knows\n        return False"
+            },
+            {
+                "name": "find_celebrity",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement find_celebrity\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_celebrity",
+                "signature": "(self, graph: list[list[int]], expected: int)",
+                "parametrize": "graph, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1, 0], [0, 1, 0], [1, 1, 1]], 1)",
+                        "([[1, 0, 1], [1, 1, 0], [0, 1, 1]], -1)",
+                        "([[1, 0], [0, 1]], -1)",
+                        "([[1, 1], [0, 1]], 1)",
+                        "([[1, 0], [1, 1]], 0)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], -1)",
+                        "([[1, 0, 0], [1, 1, 0], [1, 1, 1]], 0)",
+                        "([[1, 1, 0, 0], [1, 1, 0, 0], [1, 1, 1, 0], [1, 1, 1, 1]], -1)",
+                        "([[1, 1, 1, 1], [0, 1, 0, 0], [0, 1, 1, 0], [0, 1, 1, 1]], 1)",
+                        "([[1, 1], [1, 1]], -1)",
+                        "([[1, 0, 0, 1], [0, 1, 1, 1], [1, 1, 1, 1], [0, 0, 1, 1]], -1)",
+                        "([[1, 0, 1, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]], -1)",
+                        "([[1, 1, 1], [0, 1, 0], [0, 1, 1]], 1)",
+                        "([[1, 0, 0], [1, 1, 0], [1, 0, 1]], 0)"
+                    ]
+                },
+                "body": "        result = run_find_celebrity(Solution, graph)\n        assert_find_celebrity(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_celebrity, assert_find_celebrity\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngraph = [[1, 1, 0], [0, 1, 0], [1, 1, 1]]\nexpected = 1",
+    "playground_run": "result = run_find_celebrity(Solution, graph)\nresult",
+    "playground_assert": "assert_find_celebrity(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "russian_doll_envelopes",
+    "solution_class_name": "Solution",
+    "problem_number": "354",
+    "problem_title": "Russian Doll Envelopes",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Dynamic Programming, Sorting, Longest Increasing Subsequence",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 2D array of integers `envelopes` where `envelopes[i] = [wi, hi]` represents the width and the height of an envelope.\n\nOne envelope can fit into another if and only if both the width and height of one envelope are greater than the other envelope's width and height.\n\nReturn *the maximum number of envelopes you can Russian doll (i.e., put one inside the other)*.\n\n**Note:** You cannot rotate an envelope.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: envelopes = [[5,4],[6,4],[6,7],[2,3]]\nOutput: 3\nExplanation: The maximum number of envelopes you can Russian doll is 3 ([2,3] => [5,4] => [6,7]).\n```"
+            },
+            {
+                "content": "```\nInput: envelopes = [[1,1],[1,1],[1,1]]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= envelopes.length <= 10<sup>5</sup>\n- `envelopes[i].length == 2`\n- 1 <= w<sub>i</sub>, h<sub>i</sub> <= 10<sup>5</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_envelopes",
+    "helpers_run_signature": "(solution_class: type, envelopes: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_envelopes(envelopes)",
+    "helpers_assert_name": "max_envelopes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from bisect import bisect_left",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_envelopes, run_max_envelopes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RussianDollEnvelopes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_envelopes",
+                "signature": "(self, envelopes: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_envelopes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_envelopes",
+                "signature": "(self, envelopes: list[list[int]], expected: int)",
+                "parametrize": "envelopes, expected",
+                "test_cases": {
+                    "list": [
+                        "([[5, 4], [6, 4], [6, 7], [2, 3]], 3)",
+                        "([[1, 1], [1, 1], [1, 1]], 1)",
+                        "([[1, 1]], 1)",
+                        "([[1, 3], [3, 5], [6, 7], [6, 8], [8, 4], [9, 5]], 3)",
+                        "([[4, 5], [4, 6], [6, 7], [2, 3], [1, 1]], 4)",
+                        "([[10, 8], [1, 12], [6, 15], [2, 18]], 2)",
+                        "([[5, 4], [6, 4], [6, 7], [2, 3], [1, 2], [8, 9], [7, 8]], 6)",
+                        "([[1, 2], [2, 3], [3, 4], [4, 5]], 4)",
+                        "([[2, 100], [3, 200], [4, 300], [5, 250], [5, 400], [5, 500], [6, 360], [7, 380]], 5)",
+                        "([[17, 15], [17, 25], [5, 3], [17, 11], [1, 1], [4, 11], [19, 3], [9, 10], [14, 16]], 5)",
+                        "([[100000, 100000], [99999, 99999], [1, 1]], 3)",
+                        "([[1, 1], [2, 2], [2, 3], [3, 4], [3, 5], [4, 6]], 4)",
+                        "([[15, 8], [2, 20], [5, 3], [2, 14], [18, 2], [8, 18], [18, 14], [16, 18], [15, 17]], 3)",
+                        "([[2, 1], [4, 1], [6, 2], [8, 3], [10, 5], [12, 8], [14, 13], [16, 21]], 7)",
+                        "([[1, 100], [2, 99], [3, 98], [4, 97]], 1)"
+                    ]
+                },
+                "body": "        result = run_max_envelopes(Solution, envelopes)\n        assert_max_envelopes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_envelopes, assert_max_envelopes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nenvelopes = [[5, 4], [6, 4], [6, 7], [2, 3]]\nexpected = 3",
+    "playground_run": "result = run_max_envelopes(Solution, envelopes)\nresult",
+    "playground_assert": "assert_max_envelopes(result, expected)"
+}

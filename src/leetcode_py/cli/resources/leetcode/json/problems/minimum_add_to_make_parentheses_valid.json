@@ -1,0 +1,78 @@
+{
+    "problem_name": "minimum_add_to_make_parentheses_valid",
+    "solution_class_name": "Solution",
+    "problem_number": "921",
+    "problem_title": "Minimum Add to Make Parentheses Valid",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Greedy",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "<p>A parentheses string is valid if and only if:</p>\n\n<ul>\n\t<li>It is the empty string,</li>\n\t<li>It can be written as <code>AB</code> (<code>A</code> concatenated with <code>B</code>), where <code>A</code> and <code>B</code> are valid strings, or</li>\n\t<li>It can be written as <code>(A)</code>, where <code>A</code> is a valid string.</li>\n</ul>\n\n<p>You are given a parentheses string <code>s</code>. In one move, you can insert a parenthesis at any position of the string.</p>\n\n<ul>\n\t<li>For example, if <code>s = &quot;()))&quot;</code>, you can insert an opening parenthesis to be <code>&quot;(()))&quot;</code> or a closing parenthesis to be <code>&quot;())))&quot;</code>.</li>\n</ul>\n\n<p>Return <em>the minimum number of moves required to make </em><code>s</code><em> valid</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            { "content": "```\nInput: s = \"())\"\nOutput: 1\n```" },
+            { "content": "```\nInput: s = \"(((\"\nOutput: 3\n```" }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= s.length &lt;= 1000\n- s[i] is either &#39;(&#39; or &#39;)&#39;.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_add_to_make_valid",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_add_to_make_valid(s)",
+    "helpers_assert_name": "min_add_to_make_valid",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_add_to_make_valid, run_min_add_to_make_valid\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumAddToMakeParenthesesValid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_add_to_make_valid",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement min_add_to_make_valid\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_add_to_make_valid",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('())', 1)",
+                        "('(((', 3)",
+                        "('', 0)",
+                        "('()', 0)",
+                        "('()))(((', 5)",
+                        "('(', 1)",
+                        "(')', 1)",
+                        "('()(', 1)",
+                        "(')(', 2)",
+                        "('(())', 0)",
+                        "('))((', 4)",
+                        "('()()', 0)",
+                        "('(()())(', 1)",
+                        "(')()(', 2)",
+                        "('()()))(()', 3)"
+                    ]
+                },
+                "body": "        result = run_min_add_to_make_valid(Solution, s)\n        assert_min_add_to_make_valid(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_add_to_make_valid, assert_min_add_to_make_valid\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '())'\nexpected = 1",
+    "playground_run": "result = run_min_add_to_make_valid(Solution, s)\nresult",
+    "playground_assert": "assert_min_add_to_make_valid(result, expected)"
+}

@@ -1,0 +1,81 @@
+{
+    "problem_name": "n_ary_tree_postorder_traversal",
+    "solution_class_name": "Solution",
+    "problem_number": "590",
+    "problem_title": "N-ary Tree Postorder Traversal",
+    "difficulty": "Easy",
+    "topics": "Stack, Tree, Depth-First Search",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "Given the `root` of an n-ary tree, return *the postorder traversal of its nodes' values*.\n\nNary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)\n\n```\nInput: root = [1,null,3,2,4,null,5,6]\nOutput: [5,6,3,2,4,1]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/11/08/sample_4_964.png)\n\n```\nInput: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\nOutput: [2,6,14,11,7,3,12,8,4,13,9,10,5,1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 10^4].\n- 0 <= Node.val <= 10^4\n- The height of the n-ary tree is less than or equal to 1000.",
+    "readme_additional": "**Follow up:** Recursive solution is trivial, could you do it iteratively?",
+    "helpers_imports": "from .solution import NaryNode",
+    "helpers_content": "def _nary_from_list(vals: list[int | None]) -> NaryNode | None:\n    \"\"\"Build an n-ary tree from LeetCode level-order form (None separates child groups).\"\"\"\n    if not vals or vals[0] is None:\n        return None\n    root = NaryNode(vals[0])\n    queue: list[NaryNode] = [root]\n    i = 2\n    while queue and i < len(vals):\n        node = queue.pop(0)\n        children: list[NaryNode] = []\n        while i < len(vals):\n            val = vals[i]\n            i += 1\n            if val is None:\n                break\n            child = NaryNode(val)\n            children.append(child)\n            queue.append(child)\n        node.children = children\n    return root",
+    "helpers_run_name": "postorder",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = _nary_from_list(root_list)\n    implementation = solution_class()\n    return implementation.postorder(root)",
+    "helpers_assert_name": "postorder",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class NaryNode:\n    def __init__(self, val: int = 0, children: list[NaryNode] | None = None) -> None:\n        self.val = val\n        self.children = children if children is not None else []\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_postorder, run_postorder\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NAryTreePostorderTraversal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "postorder",
+                "signature": "(self, root: NaryNode | None) -> list[int]",
+                "body": "        # TODO: Implement postorder\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_postorder",
+                "signature": "(self, root_list: list[int | None], expected: list[int])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,None,3,2,4,None,5,6],[5,6,3,2,4,1])",
+                        "([1,None,2,3,4,5,None,None,6,7,None,8,None,9,10,None,None,11,None,12,None,13,None,None,14],[2,6,14,11,7,3,12,8,4,13,9,10,5,1])",
+                        "([],[])",
+                        "([1],[1])",
+                        "([1,None,2],[2,1])",
+                        "([1,None,2,3],[2,3,1])",
+                        "([1,None,2,None,3,None,4,None,5],[5,4,3,2,1])",
+                        "([1,None,3,2,4],[3,2,4,1])",
+                        "([1,None,2,3,None,4,5,6],[4,5,6,2,3,1])",
+                        "([5,None,4,None,2,None,3,1],[3,1,2,4,5])",
+                        "([1,None,10,2,None,20,30,40],[20,30,40,10,2,1])",
+                        "([1,None,2,None,3,None,4],[4,3,2,1])",
+                        "([1,None,2,3,4,5],[2,3,4,5,1])",
+                        "([1,None,2,None,3,4,None,5,None,6],[5,3,6,4,2,1])"
+                    ]
+                },
+                "body": "        result = run_postorder(Solution, root_list)\n        assert_postorder(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_postorder, assert_postorder\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 3, 2, 4, None, 5, 6]\nexpected = [5, 6, 3, 2, 4, 1]",
+    "playground_run": "result = run_postorder(Solution, root_list)\nresult",
+    "playground_assert": "assert_postorder(result, expected)"
+}

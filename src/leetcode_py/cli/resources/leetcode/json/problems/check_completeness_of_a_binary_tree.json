@@ -1,0 +1,80 @@
+{
+    "problem_name": "check_completeness_of_a_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "958",
+    "problem_title": "Check Completeness of a Binary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Breadth-First Search, Binary Tree",
+    "_tags": { "list": ["neetcode"] },
+    "readme_description": "<p>Given the <code>root</code> of a binary tree, determine if it is a <em>complete binary tree</em>.</p>\n\n<p>In a <strong><a href=\"http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees\" target=\"_blank\">complete binary tree</a></strong>, every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between <code>1</code> and <code>2<sup>h</sup></code> nodes inclusive at the last level <code>h</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png)\n\n```\nInput: root = [1,2,3,4,5,6]\nOutput: true\nExplanation: Every level before the last is full (ie. levels with node-values {1} and {2, 3}), and all nodes in the last level ({4, 5, 6}) are as far left as possible.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-2.png)\n\n```\nInput: root = [1,2,3,4,5,null,7]\nOutput: false\nExplanation: The node with value 7 isn't as far left as possible.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 100].\n- 1 &lt;= Node.val &lt;= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_complete_tree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.is_complete_tree(root)",
+    "helpers_assert_name": "is_complete_tree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_complete_tree, run_is_complete_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckCompletenessOfABinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_complete_tree",
+                "signature": "(self, root: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement is_complete_tree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_complete_tree",
+                "signature": "(self, root_list: list[int | None], expected: bool)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6], True)",
+                        "([1, 2, 3, 4, 5, None, 7], False)",
+                        "([1], True)",
+                        "([1, 2], True)",
+                        "([1, None, 2], False)",
+                        "([1, 2, 3], True)",
+                        "([1, 2, 3, 4], True)",
+                        "([1, 2, 3, 4, None, None, 7], False)",
+                        "([1, 2, 3, 4, 5, 6, 7], True)",
+                        "([1, 2, 3, None, 4], False)",
+                        "([1, 2, None, 4], False)",
+                        "([1, 2, 3, 4, 5, None, None, 8], False)",
+                        "([1, 2, 3, 4, 5, None, None, 8, 9], False)"
+                    ]
+                },
+                "body": "        result = run_is_complete_tree(Solution, root_list)\n        assert_is_complete_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_complete_tree, assert_is_complete_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4, 5, 6]\nexpected = True",
+    "playground_run": "result = run_is_complete_tree(Solution, root_list)\nresult",
+    "playground_assert": "assert_is_complete_tree(result, expected)"
+}

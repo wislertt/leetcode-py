@@ -1,0 +1,90 @@
+{
+    "problem_name": "sliding_puzzle",
+    "solution_class_name": "Solution",
+    "problem_number": "773",
+    "problem_title": "Sliding Puzzle",
+    "difficulty": "Hard",
+    "topics": "Array, Breadth-First Search, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "On an `2 x 3` board, there are five tiles labeled from `1` to `5`, and an empty square represented by `0`. A move consists of choosing `0` and a 4-directionally adjacent number and swapping it.\n\nThe state of the board is solved if and only if the board is `[[1,2,3],[4,5,0]]`.\n\nGiven the puzzle board `board`, return *the least number of moves required so that the state of the board is solved*. If it is impossible for the state of the board to be solved, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/29/slide1-grid.jpg)\n\n```\nInput: board = [[1,2,3],[4,0,5]]\nOutput: 1\nExplanation: Swap the 0 and the 5 in one move.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/06/29/slide2-grid.jpg)\n\n```\nInput: board = [[1,2,3],[5,4,0]]\nOutput: -1\nExplanation: No number of moves will make the board solved.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/06/29/slide3-grid.jpg)\n\n```\nInput: board = [[4,1,2],[5,0,3]]\nOutput: 5\nExplanation: 5 is the smallest number of moves that solves the board.\nAn example path:\nAfter move 0: [[4,1,2],[5,0,3]]\nAfter move 1: [[4,1,2],[0,5,3]]\nAfter move 2: [[0,1,2],[4,5,3]]\nAfter move 3: [[1,0,2],[4,5,3]]\nAfter move 4: [[1,2,0],[4,5,3]]\nAfter move 5: [[1,2,3],[4,5,0]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- board.length == 2\n- board[i].length == 3\n- 0 <= board[i][j] <= 5\n- Each value board[i][j] is unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sliding_puzzle",
+    "helpers_run_signature": "(solution_class: type, board: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sliding_puzzle(board)",
+    "helpers_assert_name": "sliding_puzzle",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sliding_puzzle, run_sliding_puzzle\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SlidingPuzzle",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sliding_puzzle",
+                "signature": "(self, board: list[list[int]]) -> int",
+                "body": "        # TODO: Implement sliding_puzzle\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sliding_puzzle",
+                "signature": "(self, board: list[list[int]], expected: int)",
+                "parametrize": "board, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3], [4, 0, 5]], 1)",
+                        "([[1, 2, 3], [5, 4, 0]], -1)",
+                        "([[4, 1, 2], [5, 0, 3]], 5)",
+                        "([[1, 2, 3], [4, 5, 0]], 0)",
+                        "([[3, 2, 4], [1, 5, 0]], 14)",
+                        "([[0, 1, 2], [3, 4, 5]], 15)",
+                        "([[1, 0, 2], [3, 4, 5]], 14)",
+                        "([[1, 2, 0], [3, 4, 5]], 13)",
+                        "([[2, 3, 4], [1, 5, 0]], -1)",
+                        "([[1, 4, 2], [3, 5, 0]], 16)",
+                        "([[3, 4, 5], [1, 2, 0]], 10)",
+                        "([[0, 5, 4], [3, 2, 1]], 15)"
+                    ]
+                },
+                "body": "        result = run_sliding_puzzle(Solution, board)\n        assert_sliding_puzzle(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sliding_puzzle, assert_sliding_puzzle\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [[1, 2, 3], [4, 0, 5]]\nexpected = 1",
+    "playground_run": "result = run_sliding_puzzle(Solution, board)\nresult",
+    "playground_assert": "assert_sliding_puzzle(result, expected)"
+}

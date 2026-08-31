@@ -1,0 +1,27 @@
+---
+title: "Playground Notebook Cells Do Not Render"
+sidebarTitle: Notebook cells
+description: "Playground files use jupytext percent format, so cells need an editor that understands # %% markers: the VS Code interactive window or JupyterLab with jupytext enabled."
+---
+
+No error is raised. `playground.py` opens as a plain Python file with
+`# %%` markers instead of notebook cells. Playgrounds use jupytext
+percent format: one `.py` file that behaves as a notebook in the right
+editor.
+
+## Fix
+
+- **VS Code**: install the Python extension, then open `playground.py`
+  and use *Run Cell* / the interactive window. VS Code understands
+  `# %%` natively.
+- **JupyterLab**: enable the jupytext contents manager so percent-format
+  files open as notebooks.
+- **Committed an `.ipynb` by accident**: the repo keeps playgrounds as
+  percent-format Python. In a repository checkout, run `bake nb-to-py`
+  to convert everything back and delete the `.ipynb` files.
+
+How the playground is meant to be used is covered in
+[Notebooks](/practice/notebooks).
+
+Not this problem? Every fix lives on
+[Troubleshooting](/troubleshooting).

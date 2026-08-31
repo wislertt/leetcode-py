@@ -1,0 +1,87 @@
+{
+    "problem_name": "flip_game_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "294",
+    "problem_title": "Flip Game II",
+    "difficulty": "Medium",
+    "topics": "Memoization, Math, Dynamic Programming, Backtracking, Game Theory",
+    "readme_description": "You are playing a Flip Game with your friend.\n\nYou are given a string `currentState` that contains only `'+'` and `'-'`. You and your friend take turns to flip **two consecutive** `\"++\"` into `\"--\"`. The game ends when a person can no longer make a move, and therefore the other person will be the winner.\n\nReturn `true` *if the starting player can **guarantee a win***, and `false` otherwise.\n\n**Follow up:** Derive your algorithm's runtime complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: currentState = \"++++\"\nOutput: true\nExplanation: The starting player can guarantee a win by flipping the middle \"++\" to become \"+--+\".\n```"
+            },
+            {
+                "content": "```\nInput: currentState = \"+\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= currentState.length <= 60`\n- `currentState[i]` is either `'+'` or `'-'`.\n- There cannot be more than 20 consecutive `'+'`.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_win",
+    "helpers_run_signature": "(solution_class: type, current_state: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_win(current_state)",
+    "helpers_assert_name": "can_win",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_win, run_can_win\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FlipGameII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_win",
+                "signature": "(self, current_state: str) -> bool",
+                "body": "        # TODO: Implement can_win\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_win",
+                "signature": "(self, current_state: str, expected: bool)",
+                "parametrize": "current_state, expected",
+                "test_cases": {
+                    "list": [
+                        "('++++', True)",
+                        "('+', False)",
+                        "('++', True)",
+                        "('+++', True)",
+                        "('+++++', False)",
+                        "('-++', True)",
+                        "('+--+', False)",
+                        "('+---+', False)",
+                        "('++--++', False)",
+                        "('+++-++', False)",
+                        "('--', False)",
+                        "('+-+-', False)",
+                        "('++++-', True)",
+                        "('+++-', True)",
+                        "('+++++++', True)",
+                        "('++-++-++', True)"
+                    ]
+                },
+                "body": "        result = run_can_win(Solution, current_state)\n        assert_can_win(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_win, assert_can_win\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncurrent_state = '++++'\nexpected = True",
+    "playground_run": "result = run_can_win(Solution, current_state)\nresult",
+    "playground_assert": "assert_can_win(result, expected)"
+}

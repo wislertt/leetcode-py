@@ -1,0 +1,93 @@
+{
+    "problem_name": "nested_list_weight_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "339",
+    "problem_title": "Nested List Weight Sum",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a nested list of integers `nestedList`. Each element is either an integer or a list whose elements may also be integers or other lists.\n\nThe **depth** of an integer is the number of lists that it is inside of. For example, the nested list `[1,[2,2],[[3],2],1]` has each integer's value set to its **depth**.\n\nReturn *the sum of each integer in* `nestedList` *multiplied by its **depth***.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0339.Nested%20List%20Weight%20Sum/images/nestedlistweightsumex1.png)\n\n```\nInput: nestedList = [[1,1],2,[1,1]]\nOutput: 10\nExplanation: Four 1's at depth 2, one 2 at depth 1. 1*2 + 1*2 + 2*1 + 1*2 + 1*2 = 10.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0339.Nested%20List%20Weight%20Sum/images/nestedlistweightsumex2.png)\n\n```\nInput: nestedList = [1,[4,[6]]]\nOutput: 27\nExplanation: One 1 at depth 1, one 4 at depth 2, and one 6 at depth 3. 1*1 + 4*2 + 6*3 = 27.\n```"
+            },
+            {
+                "content": "```\nInput: nestedList = [0]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nestedList.length <= 50`\n- The values of the integers in the nested list is in the range `[-100, 100]`.\n- The maximum **depth** of any integer is less than or equal to `50`.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "depth_sum",
+    "helpers_run_signature": "(solution_class: type, nested_list: list[Any])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.depth_sum(nested_list)",
+    "helpers_assert_name": "depth_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from typing import Any",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom typing import Any\nfrom leetcode_py import logged_test\nfrom .helpers import assert_depth_sum, run_depth_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NestedListWeightSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "depth_sum",
+                "signature": "(self, nested_list: list[Any]) -> int",
+                "body": "        # TODO: Implement depth_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_depth_sum",
+                "signature": "(self, nested_list: list[Any], expected: int)",
+                "parametrize": "nested_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,1],2,[1,1]],10)",
+                        "([1,[4,[6]]],27)",
+                        "([0],0)",
+                        "([1],1)",
+                        "([[1]],2)",
+                        "([[[[1]]]],4)",
+                        "([[-1,[-2]],-3],-11)",
+                        "([[2,2],2,[2,2]],18)",
+                        "([1,[2,[3,[4,[5]]]]],55)",
+                        "([[10]],20)",
+                        "([5,[5,[5,[5]]]],50)",
+                        "([[1,2],[3,[4]],[5]],34)",
+                        "([100],100)",
+                        "([[[-100]]],-300)",
+                        "([[1,[2,[3]]],[4]],28)"
+                    ]
+                },
+                "body": "        result = run_depth_sum(Solution, nested_list)\n        assert_depth_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_depth_sum, assert_depth_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnested_list = [[1, 1], 2, [1, 1]]\nexpected = 10",
+    "playground_run": "result = run_depth_sum(Solution, nested_list)\nresult",
+    "playground_assert": "assert_depth_sum(result, expected)"
+}
