@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "number_of_substrings_containing_all_three_characters"
+    problem: str = "find_the_longest_substring_containing_vowels_in_even_counts"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

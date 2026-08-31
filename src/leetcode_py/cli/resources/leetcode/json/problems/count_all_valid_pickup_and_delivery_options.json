@@ -1,0 +1,91 @@
+{
+    "problem_name": "count_all_valid_pickup_and_delivery_options",
+    "solution_class_name": "Solution",
+    "problem_number": "1359",
+    "problem_title": "Count All Valid Pickup and Delivery Options",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming, Combinatorics",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given <code>n</code> orders, each order consists of a pickup and a delivery service.\n\nCount all valid pickup/delivery possible sequences such that delivery(i) is always after of&nbsp;pickup(i).&nbsp;\n\nSince the answer&nbsp;may be too large,&nbsp;return it modulo<code> 10<sup>9</sup> + 7</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\nExplanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: 6\nExplanation: All possible orders: \n(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).\nThis is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.\n```"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: 90\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 500",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_orders",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_orders(n)",
+    "helpers_assert_name": "count_orders",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_orders, run_count_orders\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountAllValidPickupAndDeliveryOptions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_orders",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement count_orders\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_orders",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 6)",
+                        "(3, 90)",
+                        "(4, 2520)",
+                        "(5, 113400)",
+                        "(6, 7484400)",
+                        "(7, 681080400)",
+                        "(8, 729647433)",
+                        "(9, 636056472)",
+                        "(10, 850728840)",
+                        "(25, 586091532)",
+                        "(100, 14159051)",
+                        "(500, 764678010)"
+                    ]
+                },
+                "body": "        result = run_count_orders(Solution, n)\n        assert_count_orders(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_orders, assert_count_orders\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = 90",
+    "playground_run": "result = run_count_orders(Solution, n)\nresult",
+    "playground_assert": "assert_count_orders(result, expected)"
+}
