@@ -75,7 +75,16 @@
                 "signature": "(self, n: int, expected_count: int)",
                 "parametrize": "n, expected_count",
                 "test_cases": {
-                    "list": ["(9, 14)", "(11, 42)", "(13, 132)", "(15, 429)", "(17, 1430)", "(19, 4862)"]
+                    "list": [
+                        "(9, 14)",
+                        "(11, 42)",
+                        "(13, 132)",
+                        "(15, 429)",
+                        "(17, 1430)",
+                        "(19, 4862)",
+                        "(21, 16796)",
+                        "(23, 58786)"
+                    ]
                 },
                 "body": "        result = run_all_possible_fbt(Solution, n)\n        assert_all_possible_fbt_solution_count(result, expected_count)"
             }

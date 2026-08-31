@@ -39,7 +39,8 @@ class TestAllPossibleFullBinaryTrees:
 
     @logged_test
     @pytest.mark.parametrize(
-        "n, expected_count", [(9, 14), (11, 42), (13, 132), (15, 429), (17, 1430), (19, 4862)]
+        "n, expected_count",
+        [(9, 14), (11, 42), (13, 132), (15, 429), (17, 1430), (19, 4862), (21, 16796), (23, 58786)],
     )
     def test_all_possible_fbt_solution_count(self, n: int, expected_count: int):
         result = run_all_possible_fbt(Solution, n)
