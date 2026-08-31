@@ -1,0 +1,91 @@
+{
+    "problem_name": "range_addition",
+    "solution_class_name": "Solution",
+    "problem_number": "370",
+    "problem_title": "Range Addition",
+    "difficulty": "Medium",
+    "topics": "Array, Prefix Sum",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer `length` and an array `updates` where `updates[i] = [startIdx_i, endIdx_i, inc_i]`.\n\nYou have an array `arr` of length `length` with all zeros, and you have some operation to apply on `arr`. In the `i^th` operation, you should increment all the elements `arr[startIdx_i], arr[startIdx_i + 1], ..., arr[endIdx_i]` by `inc_i`.\n\nReturn `arr` *after applying all the* `updates`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0370.Range%20Addition/images/rangeadd-grid.jpg)\n\n```\nInput: length = 5, updates = [[1,3,2],[2,4,3],[0,2,-2]]\nOutput: [-2,0,3,5,3]\n```"
+            },
+            {
+                "content": "```\nInput: length = 10, updates = [[2,4,6],[5,6,8],[1,9,-4]]\nOutput: [0,-4,2,2,2,4,4,-4,-4,-4]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= length <= 10^5`\n- `0 <= updates.length <= 10^4`\n- `0 <= startIdx_i <= endIdx_i < length`\n- `-1000 <= inc_i <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_modified_array",
+    "helpers_run_signature": "(solution_class: type, length: int, updates: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_modified_array(length, updates)",
+    "helpers_assert_name": "get_modified_array",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_modified_array, run_get_modified_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RangeAddition",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_modified_array",
+                "signature": "(self, length: int, updates: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement get_modified_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_modified_array",
+                "signature": "(self, length: int, updates: list[list[int]], expected: list[int])",
+                "parametrize": "length, updates, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[1,3,2],[2,4,3],[0,2,-2]], [-2,0,3,5,3])",
+                        "(10, [[2,4,6],[5,6,8],[1,9,-4]], [0,-4,2,2,2,4,4,-4,-4,-4])",
+                        "(1, [], [0])",
+                        "(1, [[0,0,5]], [5])",
+                        "(3, [[0,2,1],[0,2,1],[0,2,1]], [3,3,3])",
+                        "(4, [[0,0,-3],[3,3,7]], [-3,0,0,7])",
+                        "(5, [[4,4,1000]], [0,0,0,0,1000])",
+                        "(5, [[0,4,-1000]], [-1000,-1000,-1000,-1000,-1000])",
+                        "(6, [[0,5,1],[1,4,2],[2,3,3],[3,3,-6]], [1,3,6,0,3,1])",
+                        "(2, [[0,1,1],[1,1,2],[0,0,-4]], [-3,3])",
+                        "(7, [[3,5,2]], [0,0,0,2,2,2,0])",
+                        "(8, [], [0,0,0,0,0,0,0,0])",
+                        "(5, [[0,4,1000],[0,4,-1000]], [0,0,0,0,0])",
+                        "(6, [[2,2,9]], [0,0,9,0,0,0])",
+                        "(4, [[0,3,1],[1,2,-2]], [1,-1,-1,1])",
+                        "(9, [[0,8,3],[4,8,-1],[2,6,7]], [3,3,10,10,9,9,9,2,2])"
+                    ]
+                },
+                "body": "        result = run_get_modified_array(Solution, length, updates)\n        assert_get_modified_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_modified_array, assert_get_modified_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlength = 5\nupdates = [[1, 3, 2], [2, 4, 3], [0, 2, -2]]\nexpected = [-2, 0, 3, 5, 3]",
+    "playground_run": "result = run_get_modified_array(Solution, length, updates)\nresult",
+    "playground_assert": "assert_get_modified_array(result, expected)"
+}

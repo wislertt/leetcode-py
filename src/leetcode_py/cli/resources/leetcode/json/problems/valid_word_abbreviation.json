@@ -1,0 +1,107 @@
+{
+    "problem_name": "valid_word_abbreviation",
+    "solution_class_name": "Solution",
+    "problem_number": "408",
+    "problem_title": "Valid Word Abbreviation",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A string can be **abbreviated** by replacing any number of **non-adjacent**, **non-empty** substrings with their lengths. The lengths **should not** have leading zeros.\n\nFor example, a string such as `\"substitution\"` could be abbreviated as (but not limited to):\n\n- `\"s10n\"` (`\"s ubstitutio n\"`)\n- `\"sub4u4\"` (`\"sub stit u tion\"`)\n- `\"12\"` (`\"substitution\"`)\n- `\"su3i1u2on\"` (`\"su bst i t u ti on\"`)\n- `\"substitution\"` (no substrings replaced)\n\nThe following are **not valid** abbreviations:\n\n- `\"s55n\"` (`\"s ubsti tutio n\"`, the replaced substrings are adjacent)\n- `\"s010n\"` (has leading zeros)\n- `\"s0ubstitution\"` (replaces an empty substring)\n\nGiven a string `word` and an abbreviation `abbr`, return *whether the string **matches** the given abbreviation*.\n\nA **substring** is a contiguous **non-empty** sequence of characters within a string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: word = \"internationalization\", abbr = \"i12iz4n\"\nOutput: true\nExplanation: The word \"internationalization\" can be abbreviated as \"i12iz4n\" (\"i nternational iz atio n\").\n```"
+            },
+            {
+                "content": "```\nInput: word = \"apple\", abbr = \"a2e\"\nOutput: false\nExplanation: The word \"apple\" cannot be abbreviated as \"a2e\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= word.length <= 20`\n- `1 <= abbr.length <= 20`\n- `word` consists of only lowercase English letters.\n- `abbr` consists of lowercase English letters and digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_word_abbreviation",
+    "helpers_run_signature": "(solution_class: type, word: str, abbr: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_word_abbreviation(word, abbr)",
+    "helpers_assert_name": "valid_word_abbreviation",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_word_abbreviation, run_valid_word_abbreviation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidWordAbbreviation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_word_abbreviation",
+                "signature": "(self, word: str, abbr: str) -> bool",
+                "body": "        # TODO: Implement valid_word_abbreviation\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_word_abbreviation",
+                "signature": "(self, word: str, abbr: str, expected: bool)",
+                "parametrize": "word, abbr, expected",
+                "test_cases": {
+                    "list": [
+                        "('internationalization', 'i12iz4n', True)",
+                        "('apple', 'a2e', False)",
+                        "('apple', '5', True)",
+                        "('apple', '4e', True)",
+                        "('apple', '1pple', True)",
+                        "('internationalization', '20', True)",
+                        "('internationalization', 'i18n', True)",
+                        "('apple', 'a3e', True)",
+                        "('apple', 'ap2e', True)",
+                        "('apple', '01', False)",
+                        "('apple', 'a01', False)",
+                        "('a', '1', True)",
+                        "('a', 'a', True)",
+                        "('a', '2', False)",
+                        "('hi', '2', True)",
+                        "('hi', '1i', True)",
+                        "('hi', '1', False)",
+                        "('abbreviation', 'a10n', True)",
+                        "('abbreviation', 'a010n', False)",
+                        "('word', 'w2d', True)",
+                        "('word', 'wo2', True)",
+                        "('word', '2d', False)",
+                        "('word', '4', True)",
+                        "('word', '3', False)",
+                        "('word', 'w1r1', True)",
+                        "('substitution', 's10n', True)",
+                        "('substitution', 'sub4u4', True)",
+                        "('substitution', '12', True)",
+                        "('substitution', 's55n', False)",
+                        "('substitution', 's010n', False)",
+                        "('substitution', 'su3i1u2on', True)",
+                        "('substitution', 'sub5tion', True)"
+                    ]
+                },
+                "body": "        result = run_valid_word_abbreviation(Solution, word, abbr)\n        assert_valid_word_abbreviation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_word_abbreviation, assert_valid_word_abbreviation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword = 'internationalization'\nabbr = 'i12iz4n'\nexpected = True",
+    "playground_run": "result = run_valid_word_abbreviation(Solution, word, abbr)\nresult",
+    "playground_assert": "assert_valid_word_abbreviation(result, expected)"
+}

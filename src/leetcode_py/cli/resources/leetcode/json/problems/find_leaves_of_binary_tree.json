@@ -1,0 +1,89 @@
+{
+    "problem_name": "find_leaves_of_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "366",
+    "problem_title": "Find Leaves of Binary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a binary tree, collect a tree's nodes as if you were doing this:\n\n- Collect all the leaf nodes.\n- Remove all the leaf\u00a0nodes.\n- Repeat until the tree is empty.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0366.Find%20Leaves%20of%20Binary%20Tree/images/remleaves-tree.jpg)\n\n```\nInput: root = [1,2,3,4,5]\nOutput: [[4,5,3],[2],[1]]\nExplanation:\n[[3,5,4],[2],[1]] and [[3,4,5],[2],[1]] are also considered correct answers since per each level it does not matter the order on which elements are returned.\n```"
+            },
+            {
+                "content": "```\nInput: root = [1]\nOutput: [[1]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[1, 100]`.\n- `-100 <= Node.val <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "find_leaves",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.find_leaves(root)",
+    "helpers_assert_name": "find_leaves",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Node order within each level does not matter.\n    assert sorted(sorted(level) for level in result) == sorted(sorted(level) for level in expected)\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_leaves, run_find_leaves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindLeavesOfBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_leaves",
+                "signature": "(self, root: TreeNode[int] | None) -> list[list[int]]",
+                "body": "        # TODO: Implement find_leaves\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_leaves",
+                "signature": "(self, root_list: list[int | None], expected: list[list[int]])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,4,5], [[4,5,3],[2],[1]])",
+                        "([1], [[1]])",
+                        "([1,2], [[2],[1]])",
+                        "([1,2,3], [[2,3],[1]])",
+                        "([1,2,3,4,5,6,7], [[4,5,6,7],[2,3],[1]])",
+                        "([1,2,3,None,None,6,7], [[2,6,7],[3],[1]])",
+                        "([1,2,None,3], [[3],[2],[1]])",
+                        "([1,None,2,None,3], [[3],[2],[1]])",
+                        "([-1,-2,-3,-4,-5], [[-4,-5,-3],[-2],[-1]])",
+                        "([1,None,2,3], [[3],[2],[1]])",
+                        "([0,0,0,0,0,0,0,0], [[0,0,0,0],[0,0],[0],[0]])",
+                        "([5,4,8,11,None,13,4,7,2], [[7,2,13,4],[11,8],[4],[5]])",
+                        "([1,2,3,None,4,5,6,None,None,7], [[4,7,6],[2,5],[3],[1]])",
+                        "([10], [[10]])"
+                    ]
+                },
+                "body": "        result = run_find_leaves(Solution, root_list)\n        assert_find_leaves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_leaves, assert_find_leaves\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4, 5]\nexpected: list[list[int]] = [[4, 5, 3], [2], [1]]",
+    "playground_run": "result = run_find_leaves(Solution, root_list)\nresult",
+    "playground_assert": "assert_find_leaves(result, expected)"
+}

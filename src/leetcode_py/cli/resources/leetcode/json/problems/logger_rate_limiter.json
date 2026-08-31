@@ -1,0 +1,83 @@
+{
+    "problem_name": "logger_rate_limiter",
+    "solution_class_name": "Logger",
+    "problem_number": "359",
+    "problem_title": "Logger Rate Limiter",
+    "difficulty": "Easy",
+    "topics": "Design, Hash Table, Data Stream",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a logger system that receives a stream of messages along with their timestamps. Each **unique** message should only be printed **at most every 10 seconds** (i.e. a message printed at timestamp `t` will prevent other identical messages from being printed until timestamp `t + 10`).\n\nAll messages will come in chronological order. Several messages may arrive at the same timestamp.\n\nImplement the `Logger` class:\n\n- `Logger()` Initializes the `logger` object.\n- `bool shouldPrintMessage(int timestamp, string message)` Returns `true` if the `message` should be printed in the given `timestamp`, otherwise returns `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Logger\", \"shouldPrintMessage\", \"shouldPrintMessage\", \"shouldPrintMessage\", \"shouldPrintMessage\", \"shouldPrintMessage\", \"shouldPrintMessage\"]\n[[], [1, \"foo\"], [2, \"bar\"], [3, \"foo\"], [8, \"bar\"], [10, \"foo\"], [11, \"foo\"]]\nOutput\n[null, true, true, false, false, false, true]\n\nExplanation\nLogger logger = new Logger();\nlogger.shouldPrintMessage(1, \"foo\");  // return true, next allowed timestamp for \"foo\" is 1 + 10 = 11\nlogger.shouldPrintMessage(2, \"bar\");  // return true, next allowed timestamp for \"bar\" is 2 + 10 = 12\nlogger.shouldPrintMessage(3, \"foo\");  // 3 < 11, return false\nlogger.shouldPrintMessage(8, \"bar\");  // 8 < 12, return false\nlogger.shouldPrintMessage(10, \"foo\"); // 10 < 11, return false\nlogger.shouldPrintMessage(11, \"foo\"); // 11 >= 11, return true, next allowed timestamp for \"foo\" is 11 + 10 = 21\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= timestamp <= 10^9`\n- Every `timestamp` will be passed in non-decreasing order (chronological order).\n- `1 <= message.length <= 30`\n- At most `10^4` calls will be made to `shouldPrintMessage`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "logger_rate_limiter",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    logger = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Logger':\n            logger = solution_class()\n            results.append(None)\n        elif op == 'should_print_message' and logger is not None:\n            results.append(logger.should_print_message(inputs[i][0], inputs[i][1]))\n    return results, logger",
+    "helpers_assert_name": "logger_rate_limiter",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_logger_rate_limiter, run_logger_rate_limiter\nfrom .solution import Logger",
+    "test_content": "",
+    "test_class_name": "LoggerRateLimiter",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize logger\n        pass"
+            },
+            {
+                "name": "should_print_message",
+                "signature": "(self, timestamp: int, message: str) -> bool",
+                "body": "        # TODO: Implement should_print_message\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_logger_rate_limiter",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[1,'foo'],[2,'bar'],[3,'foo'],[8,'bar'],[10,'foo'],[11,'foo']], [None,True,True,False,False,False,True])",
+                        "(['Logger','should_print_message','should_print_message'], [[],[5,'a'],[5,'a']], [None,True,False])",
+                        "(['Logger','should_print_message','should_print_message'], [[],[0,'x'],[10,'x']], [None,True,True])",
+                        "(['Logger','should_print_message','should_print_message'], [[],[0,'x'],[9,'x']], [None,True,False])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[1,'a'],[1,'b'],[1,'c'],[1,'a']], [None,True,True,True,False])",
+                        "(['Logger','should_print_message','should_print_message'], [[],[0,'m'],[100,'m']], [None,True,True])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[2,'p'],[11,'q'],[12,'p'],[21,'q']], [None,True,True,True,True])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[0,'a'],[10,'a'],[20,'a'],[30,'a']], [None,True,True,True,True])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[7,'rogue'],[7,'rogue'],[17,'rogue'],[16,'rogue']], [None,True,False,True,False])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message'], [[],[0,'ab'],[0,'ab'],[1,'ab']], [None,True,False,False])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[3,'z'],[13,'z'],[12,'z'],[23,'z']], [None,True,True,False,True])",
+                        "(['Logger','should_print_message','should_print_message','should_print_message','should_print_message','should_print_message'], [[],[100,'hit'],[100,'hit'],[110,'hit'],[109,'hit'],[110,'hit']], [None,True,False,True,False,False])"
+                    ]
+                },
+                "body": "        result, _ = run_logger_rate_limiter(Logger, operations, inputs)\n        assert_logger_rate_limiter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_logger_rate_limiter, assert_logger_rate_limiter\nfrom solution import Logger",
+    "playground_setup": "# Example test case\noperations = ['Logger', 'should_print_message', 'should_print_message']\ninputs = [[], [1, 'foo'], [2, 'bar']]\nexpected = [None, True, True]",
+    "playground_run": "result, logger = run_logger_rate_limiter(Logger, operations, inputs)\nprint(result)\nlogger",
+    "playground_assert": "assert_logger_rate_limiter(result, expected)"
+}

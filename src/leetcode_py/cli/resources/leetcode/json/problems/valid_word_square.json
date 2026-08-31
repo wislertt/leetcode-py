@@ -1,0 +1,94 @@
+{
+    "problem_name": "valid_word_square",
+    "solution_class_name": "Solution",
+    "problem_number": "422",
+    "problem_title": "Valid Word Square",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `words`, return `true` *if it forms a valid **word square***.\n\nA sequence of strings forms a valid **word square** if the `k^th` row and column read the same string, where `0 <= k < max(numRows, numColumns)`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0422.Valid%20Word%20Square/images/validsq1-grid.jpg)\n\n```\nInput: words = [\"abcd\",\"bnrt\",\"crmy\",\"dtye\"]\nOutput: true\nExplanation:\nThe 1st row and 1st column both read \"abcd\".\nThe 2nd row and 2nd column both read \"bnrt\".\nThe 3rd row and 3rd column both read \"crmy\".\nThe 4th row and 4th column both read \"dtye\".\nTherefore, it is a valid word square.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0422.Valid%20Word%20Square/images/validsq2-grid.jpg)\n\n```\nInput: words = [\"abcd\",\"bnrt\",\"crm\",\"dt\"]\nOutput: true\nExplanation:\nThe 1st row and 1st column both read \"abcd\".\nThe 2nd row and 2nd column both read \"bnrt\".\nThe 3rd row and 3rd column both read \"crm\".\nThe 4th row and 4th column both read \"dt\".\nTherefore, it is a valid word square.\n```"
+            },
+            {
+                "content": "![Example 3](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0422.Valid%20Word%20Square/images/validsq3-grid.jpg)\n\n```\nInput: words = [\"ball\",\"area\",\"read\",\"lady\"]\nOutput: false\nExplanation:\nThe 3rd row reads \"read\" while the 3rd column reads \"lead\".\nTherefore, it is NOT a valid word square.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 500`\n- `1 <= words[i].length <= 500`\n- `words[i]` consists of only lower-case English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_word_square",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_word_square(words)",
+    "helpers_assert_name": "valid_word_square",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_word_square, run_valid_word_square\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidWordSquare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_word_square",
+                "signature": "(self, words: list[str]) -> bool",
+                "body": "        # TODO: Implement valid_word_square\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_word_square",
+                "signature": "(self, words: list[str], expected: bool)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abcd','bnrt','crmy','dtye'], True)",
+                        "(['abcd','bnrt','crm','dt'], True)",
+                        "(['ball','area','read','lady'], False)",
+                        "(['a'], True)",
+                        "(['ab','ba'], True)",
+                        "(['ab','b'], True)",
+                        "(['abc','de'], False)",
+                        "(['abc','b','c'], True)",
+                        "(['a','b','c'], False)",
+                        "(['aa','aa'], True)",
+                        "(['ab','aa'], False)",
+                        "(['aaa','aaa','aaa'], True)",
+                        "(['abcd','bnrt','crm'], False)",
+                        "(['ball','asee','let','lep'], False)",
+                        "(['abcd','bnrt','crm','de'], False)",
+                        "(['m'], True)"
+                    ]
+                },
+                "body": "        result = run_valid_word_square(Solution, words)\n        assert_valid_word_square(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_word_square, assert_valid_word_square\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['abcd', 'bnrt', 'crmy', 'dtye']\nexpected = True",
+    "playground_run": "result = run_valid_word_square(Solution, words)\nresult",
+    "playground_assert": "assert_valid_word_square(result, expected)"
+}

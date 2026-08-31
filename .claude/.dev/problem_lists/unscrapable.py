@@ -62,8 +62,6 @@ UNSCRAPABLE_PROBLEMS = [
     (346, "moving-average-from-data-stream"),
     (348, "design-tic-tac-toe"),
     (351, "android-unlock-patterns"),
-    # ======= Add new unscrapable problems below this line.
-    # All problems above this line are already handled.
     (353, "design-snake-game"),
     (356, "line-reflection"),
     (358, "rearrange-string-k-distance-apart"),
@@ -79,6 +77,8 @@ UNSCRAPABLE_PROBLEMS = [
     (411, "minimum-unique-word-abbreviation"),
     (418, "sentence-screen-fitting"),
     (422, "valid-word-square"),
+    # ======= Add new unscrapable problems below this line.
+    # All problems above this line are already handled.
     (425, "word-squares"),
     (426, "convert-binary-search-tree-to-sorted-doubly-linked-list"),
     (428, "serialize-and-deserialize-n-ary-tree"),
