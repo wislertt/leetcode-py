@@ -1,0 +1,93 @@
+{
+    "problem_name": "remove_sub_folders_from_the_filesystem",
+    "solution_class_name": "Solution",
+    "problem_number": "1233",
+    "problem_title": "Remove Sub-Folders from the Filesystem",
+    "difficulty": "Medium",
+    "topics": "Array, String, Depth-First Search, Trie",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a list of folders `folder`, return *the folders after removing all **sub-folders** in those folders*. You may return the answer in **any order**.\n\nIf a `folder[i]` is located within another `folder[j]`, it is called a **sub-folder** of it. A sub-folder of `folder[j]` must start with `folder[j]`, followed by a `\"/\"`. For example, `\"/a/b\"` is a sub-folder of `\"/a\"`, but `\"/b\"` is not a sub-folder of `\"/a/b/c\"`.\n\nThe format of a path is one or more concatenated strings of the form: `'/'` followed by one or more lowercase English letters.\n\n- For example, `\"/leetcode\"` and `\"/leetcode/problems\"` are valid paths while an empty string and `\"/\"` are not.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: folder = [\"/a\",\"/a/b\",\"/c/d\",\"/c/d/e\",\"/c/f\"]\nOutput: [\"/a\",\"/c/d\",\"/c/f\"]\nExplanation: Folders \"/a/b\" is a subfolder of \"/a\" and \"/c/d/e\" is inside of folder \"/c/d\" in our filesystem.\n```"
+            },
+            {
+                "content": "```\nInput: folder = [\"/a\",\"/a/b/c\",\"/a/b/d\"]\nOutput: [\"/a\"]\nExplanation: Folders \"/a/b/c\" and \"/a/b/d\" will be removed because they are subfolders of \"/a\".\n```"
+            },
+            {
+                "content": "```\nInput: folder = [\"/a/b/c\",\"/a/b/ca\",\"/a/b/d\"]\nOutput: [\"/a/b/c\",\"/a/b/ca\",\"/a/b/d\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= folder.length <= 4 * 10^4`\n- `2 <= folder[i].length <= 100`\n- `folder[i]` contains only lowercase letters and `'/'`.\n- `folder[i]` always starts with the character `'/'`.\n- Each folder name is unique.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_subfolders",
+    "helpers_run_signature": "(solution_class: type, folder: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_subfolders(folder)",
+    "helpers_assert_name": "remove_subfolders",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_subfolders, run_remove_subfolders\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveSubFoldersFromTheFilesystemTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_subfolders",
+                "signature": "(self, folder: list[str]) -> list[str]",
+                "body": "        # TODO: Implement remove_subfolders\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_subfolders",
+                "signature": "(self, folder: list[str], expected: list[str])",
+                "parametrize": "folder, expected",
+                "test_cases": {
+                    "list": [
+                        "([\"/a\", \"/a/b\", \"/c/d\", \"/c/d/e\", \"/c/f\"], [\"/a\", \"/c/d\", \"/c/f\"])",
+                        "([\"/a\", \"/a/b/c\", \"/a/b/d\"], [\"/a\"])",
+                        "([\"/a/b/c\", \"/a/b/ca\", \"/a/b/d\"], [\"/a/b/c\", \"/a/b/ca\", \"/a/b/d\"])",
+                        "([\"/a\"], [\"/a\"])",
+                        "([\"/a\", \"/aa\"], [\"/a\", \"/aa\"])",
+                        "([\"/a/b\", \"/a\"], [\"/a\"])",
+                        "([\"/x\", \"/x/y\", \"/x/y/z\", \"/p\", \"/p/q\"], [\"/p\", \"/x\"])",
+                        "([\"/ab\", \"/abc\", \"/abcd\", \"/a\"], [\"/a\", \"/ab\", \"/abc\", \"/abcd\"])",
+                        "([\"/one\", \"/one/two\", \"/three\", \"/three/four\"], [\"/one\", \"/three\"])",
+                        "([\"/c\", \"/c/d\", \"/c/d/e\", \"/c/f\", \"/c/f/g\"], [\"/c\"])",
+                        "([\"/a/b/c\", \"/a/b/ca\", \"/a/b/d\", \"/a\", \"/a/b\"], [\"/a\"])",
+                        "([\"/z/x/y\", \"/z/x\", \"/z\", \"/a/b\", \"/a\"], [\"/a\", \"/z\"])",
+                        "([\"/q/rs\", \"/q/rs/t\", \"/q\"], [\"/q\"])",
+                        "([\"/aa/bb\", \"/aa\", \"/aa/bb/cc\", \"/bb\", \"/bb/cc\"], [\"/aa\", \"/bb\"])",
+                        "([\"/deep/nested/path\", \"/deep\", \"/deep/nested\"], [\"/deep\"])",
+                        "([\"/f\", \"/f/g\", \"/f/g/h\", \"/e\"], [\"/e\", \"/f\"])"
+                    ]
+                },
+                "body": "        result = run_remove_subfolders(Solution, folder)\n        assert_remove_subfolders(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_subfolders, assert_remove_subfolders\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nfolder = ['/a', '/a/b', '/c/d', '/c/d/e', '/c/f']\nexpected = ['/a', '/c/d', '/c/f']",
+    "playground_run": "result = run_remove_subfolders(Solution, folder)\nresult",
+    "playground_assert": "assert_remove_subfolders(result, expected)"
+}

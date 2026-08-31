@@ -1,0 +1,90 @@
+{
+    "problem_name": "path_with_maximum_gold",
+    "solution_class_name": "Solution",
+    "problem_number": "1219",
+    "problem_title": "Path with Maximum Gold",
+    "difficulty": "Medium",
+    "topics": "Array, Backtracking, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "In a gold mine `grid` of size `m x n`, each cell in this mine has an integer representing the amount of gold in that cell, `0` if it is empty.\n\nReturn the maximum amount of gold you can collect under the conditions:\n\n- Every time you are located in a cell you will collect all the gold in that cell.\n- From your position, you can walk one step to the left, right, up, or down.\n- You can't visit the same cell more than once.\n- Never visit a cell with `0` gold.\n- You can start and stop collecting gold from **any** position in the grid that has some gold.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[0,6,0],[5,8,7],[0,9,0]]\nOutput: 24\nExplanation:\nPath to get the maximum gold, 9 -> 8 -> 7.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]\nOutput: 28\nExplanation:\nPath to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 15`\n- `0 <= grid[i][j] <= 100`\n- There are at most **25** cells containing gold.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_maximum_gold",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_maximum_gold(grid)",
+    "helpers_assert_name": "get_maximum_gold",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_maximum_gold, run_get_maximum_gold\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PathWithMaximumGoldTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_maximum_gold",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement get_maximum_gold\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_maximum_gold",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 6, 0], [5, 8, 7], [0, 9, 0]], 24)",
+                        "([[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]], 28)",
+                        "([[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [2, 0, 9]], 28)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 0)",
+                        "([[5]], 5)",
+                        "([[0]], 0)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 9)",
+                        "([[1, 0, 1], [0, 0, 0], [1, 0, 1]], 1)",
+                        "([[10, 20], [30, 40]], 100)",
+                        "([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]], 55)",
+                        "([[25, 25], [25, 25]], 100)",
+                        "([[1, 0], [0, 1]], 1)",
+                        "([[5, 5], [5, 0], [5, 5]], 25)",
+                        "([[0, 5, 5], [5, 0, 5], [5, 5, 0]], 15)",
+                        "([[100, 0, 0], [0, 0, 0], [0, 0, 100]], 100)",
+                        "([[3, 4], [7, 0], [0, 8]], 14)"
+                    ]
+                },
+                "body": "        result = run_get_maximum_gold(Solution, grid)\n        assert_get_maximum_gold(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_maximum_gold, assert_get_maximum_gold\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]\nexpected = 24",
+    "playground_run": "result = run_get_maximum_gold(Solution, grid)\nresult",
+    "playground_assert": "assert_get_maximum_gold(result, expected)"
+}
