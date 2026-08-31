@@ -75,6 +75,8 @@ Required fields for `src/leetcode_py/cli/resources/leetcode/json/problems/{probl
 
 **GOTCHA — every `test_cases` entry must be a COMPLETE Python tuple literal.** The generator parses each entry with `ast.literal_eval`; a bare two-expression string like `'(H)', 'H'` (no enclosing parens) fails to eval and the generator splits it on commas into orphan parametrize values, producing a confusing collection error: `in "parametrize" the number of names (2) must be equal to the number of values (3)`. Parens INSIDE a quoted value are fine — `('Mg(OH)2', 'H2MgO2')` parses correctly; the entry just needs its own enclosing `('...', '...')`. Hit with 726 Number of Atoms: five hand-written paren-formula cases broke collection and cost a full regen cycle. Sanity-check before generating: `python3 -c "import ast; [ast.literal_eval(c) for c in cases]"`.
 
+**GOTCHA — the generator does NOT warn when `test_cases` has fewer than 12 entries** (the repo's stated minimum, enforced only at the QA/review level). Count the case list BEFORE running `p-gen` — the JSON-writing script should assert `len(tc) >= 12` alongside its other write-time checks. Hit twice in one batch (723 with 11 cases, 1086 with 6); each needed a post-QA JSON edit + `p-gen -f` regen + solution restore, ~2 extra cycles. When hand-invented cases fall short, top up programmatically: generate random small inputs, run the same reference implementation over them, and assert the outputs into the case list (see 1086 High Five).
+
 **IMPORTANT: Create actual JSON files, not JSON5**
 
 The template below uses JSON5 format with comments for documentation purposes only. When creating the actual `.json` file, you must:

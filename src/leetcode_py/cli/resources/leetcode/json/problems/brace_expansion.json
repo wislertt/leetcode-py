@@ -1,0 +1,87 @@
+{
+    "problem_name": "brace_expansion",
+    "solution_class_name": "Solution",
+    "problem_number": "1087",
+    "problem_title": "Brace Expansion",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking, Breadth-First Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` representing a list of words. Each letter in the word has one or more options.\n\n- If there is one option, the letter is represented as is.\n- If there is more than one option, then curly braces delimit the options. For example, `\"{a,b,c}\"` represents options `[\"a\", \"b\", \"c\"]`.\n\nFor example, if `s = \"a{b,c}\"`, the first character is always `'a'`, but the second character can be `'b'` or `'c'`. The original list is `[\"ab\", \"ac\"]`.\n\nReturn all words that can be formed in this manner, sorted in **lexicographical order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"{a,b}c{d,e}f\"\nOutput: [\"acdf\",\"acef\",\"bcdf\",\"bcef\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcd\"\nOutput: [\"abcd\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 50\n- s consists of curly brackets '{}', commas ',', and lowercase English letters.\n- s is guaranteed to be a valid input.\n- There are no nested curly brackets.\n- All characters inside a pair of consecutive opening and ending curly brackets are different.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "expand",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.expand(s)",
+    "helpers_assert_name": "expand",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_expand, run_expand\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BraceExpansion",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "expand",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement expand\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_expand",
+                "signature": "(self, s: str, expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('{a,b}c{d,e}f',['acdf','acef','bcdf','bcef'])",
+                        "('abcd',['abcd'])",
+                        "('{a,b}{x,y}',['ax','ay','bx','by'])",
+                        "('a',['a'])",
+                        "('{b,a}',['a','b'])",
+                        "('k{a,b,c}z',['kaz','kbz','kcz'])",
+                        "('{x,y}a{b,c}d{e,f}',['xabde','xabdf','xacde','xacdf','yabde','yabdf','yacde','yacdf'])",
+                        "('ab{q,r}cd',['abqcd','abrcd'])",
+                        "('{m,n}{o,p}',['mo','mp','no','np'])",
+                        "('zzz',['zzz'])",
+                        "('a{b,c}d{e,f}g{h,i}',['abdegh','abdegi','abdfgh','abdfgi','acdegh','acdegi','acdfgh','acdfgi'])",
+                        "('{u,v}w',['uw','vw'])"
+                    ]
+                },
+                "body": "        result = run_expand(Solution, s)\n        assert_expand(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_expand, assert_expand\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '{a,b}c{d,e}f'\nexpected = ['acdf', 'acef', 'bcdf', 'bcef']",
+    "playground_run": "result = run_expand(Solution, s)\nresult",
+    "playground_assert": "assert_expand(result, expected)"
+}

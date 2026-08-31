@@ -1,0 +1,90 @@
+{
+    "problem_name": "coin_path",
+    "solution_class_name": "Solution",
+    "problem_number": "656",
+    "problem_title": "Coin Path",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `coins` **(1-indexed)** of length `n` and an integer `maxJump`. You can jump to any index `i` of the array `coins` if `coins[i] != -1` and you have to pay `coins[i]` when you visit index `i`. In addition to that, if you are currently at index `i`, you can only jump to any index `i + k` where `i + k <= n` and `k` is a value in the range `[1, maxJump]`.\n\nYou are initially positioned at index `1` (`coins[1]` is not -1). You want to find the path that reaches index `n` with the minimum cost.\n\nReturn an integer array of the indices that you will visit in order so that you can reach index `n` with the minimum cost. If there are multiple paths with the same cost, return the lexicographically smallest such path. If it is not possible to reach index `n`, return an empty array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: coins = [1,2,4,-1,2], maxJump = 2\nOutput: [1,3,5]\nExplanation: Path 1->3->5 has the cost of coins[1]+coins[3]+coins[5] = 1+4+2 = 7.\n- Path 1->2->5 has the cost of coins[1]+coins[2]+coins[5] = 1+2+2 = 5 which is not the minimum cost.\n```"
+            },
+            {
+                "content": "```\nInput: coins = [1,2,4,-1,2], maxJump = 1\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= coins.length <= 1000\n- -1 <= coins[i] <= 100\n- coins[1] != -1\n- 1 <= maxJump <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "cheapest_jump",
+    "helpers_run_signature": "(solution_class: type, coins: list[int], max_jump: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.cheapest_jump(coins, max_jump)",
+    "helpers_assert_name": "cheapest_jump",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_cheapest_jump, run_cheapest_jump\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CoinPath",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "cheapest_jump",
+                "signature": "(self, coins: list[int], max_jump: int) -> list[int]",
+                "body": "        # TODO: Implement cheapest_jump\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_cheapest_jump",
+                "signature": "(self, coins: list[int], max_jump: int, expected: list[int])",
+                "parametrize": "coins, max_jump, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 4, -1, 2], 2, [1, 3, 5])",
+                        "([1, 2, 4, -1, 2], 1, [])",
+                        "([3], 1, [1])",
+                        "([-1], 1, [])",
+                        "([0, 0, 0], 2, [1, 2, 3])",
+                        "([1, -1, 1], 1, [])",
+                        "([5, -1, 5, -1, 5], 2, [1, 3, 5])",
+                        "([2, 1, 1, 2], 3, [1, 4])",
+                        "([1, 2, 3, 4, 5], 2, [1, 3, 5])",
+                        "([8, -1, 6, -1, 4, -1, 2], 2, [1, 3, 5, 7])",
+                        "([1, 1, 100, 1], 2, [1, 2, 4])",
+                        "([4, 12, 2, 4, 1, -1, 6], 3, [1, 3, 5, 7])",
+                        "([1, -1, -1, 1], 3, [1, 4])",
+                        "([7, 3, -1, 5, 2], 4, [1, 5])",
+                        "([1, 5, 3, 6, 2, -1, 4], 2, [1, 3, 5, 7])"
+                    ]
+                },
+                "body": "        result = run_cheapest_jump(Solution, coins, max_jump)\n        assert_cheapest_jump(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_cheapest_jump, assert_cheapest_jump\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncoins = [1, 2, 4, -1, 2]\nmax_jump = 2\nexpected = [1, 3, 5]",
+    "playground_run": "result = run_cheapest_jump(Solution, coins, max_jump)\nresult",
+    "playground_assert": "assert_cheapest_jump(result, expected)"
+}

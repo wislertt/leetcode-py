@@ -1,0 +1,87 @@
+{
+    "problem_name": "the_earliest_moment_when_everyone_become_friends",
+    "solution_class_name": "Solution",
+    "problem_number": "1101",
+    "problem_title": "The Earliest Moment When Everyone Become Friends",
+    "difficulty": "Medium",
+    "topics": "Array, Union Find, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `n` people in a social group labeled from `0` to `n - 1`. You are given an array `logs` where `logs[i] = [timestampi, xi, yi]` indicates that `xi` and `yi` will be friends at the time `timestampi`.\n\nFriendship is **symmetric**. That means if `a` is friends with `b`, then `b` is friends with `a`. Also, person `a` is **acquainted** with a person `b` if `a` is friends with `b`, or `a` is a friend of someone acquainted with `b`.\n\nReturn *the earliest time for which every person became acquainted with every other person*. If there is no such earliest time, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: logs = [[20190101,0,1],[20190104,3,4],[20190107,2,3],[20190211,1,5],[20190224,2,4],[20190301,0,3],[20190312,1,2],[20190322,4,5]], n = 6\nOutput: 20190301\nExplanation: After the event at timestamp 20190301, every person becomes acquainted with every other person.\n```"
+            },
+            {
+                "content": "```\nInput: logs = [[0,2,0],[1,0,1],[3,0,3],[4,1,2],[7,3,1]], n = 4\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 100\n- 1 <= logs.length <= 10^4\n- logs[i].length == 3\n- 0 <= timestampi <= 10^9\n- 0 <= xi, yi <= n - 1\n- xi != yi\n- All the values timestampi are unique.\n- All the pairs (xi, yi) occur at most one time in the input.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "earliest_acq",
+    "helpers_run_signature": "(solution_class: type, logs: list[list[int]], n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.earliest_acq(logs, n)",
+    "helpers_assert_name": "earliest_acq",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_earliest_acq, run_earliest_acq\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TheEarliestMomentWhenEveryoneBecomeFriends",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "earliest_acq",
+                "signature": "(self, logs: list[list[int]], n: int) -> int",
+                "body": "        # TODO: Implement earliest_acq\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_earliest_acq",
+                "signature": "(self, logs: list[list[int]], n: int, expected: int)",
+                "parametrize": "logs, n, expected",
+                "test_cases": {
+                    "list": [
+                        "([[20190101,0,1],[20190104,3,4],[20190107,2,3],[20190211,1,5],[20190224,2,4],[20190301,0,3],[20190312,1,2],[20190322,4,5]],6,20190301)",
+                        "([[0,2,0],[1,0,1],[3,0,3],[4,1,2],[7,3,1]],4,3)",
+                        "([[1,0,1]],2,1)",
+                        "([[1,0,1],[2,1,2]],3,2)",
+                        "([[5,0,1],[3,1,2]],3,5)",
+                        "([[1,0,1],[2,2,3]],4,-1)",
+                        "([[9,0,1],[3,2,3],[7,1,2]],4,9)",
+                        "([[1,0,1]],3,-1)",
+                        "([[100,0,1],[200,1,2],[300,2,3],[400,3,0]],4,300)",
+                        "([[2,0,1],[1,1,0]],2,1)",
+                        "([[10,0,1],[20,2,3],[30,0,2]],4,30)",
+                        "([[0,0,1],[1,1,2]],3,1)"
+                    ]
+                },
+                "body": "        result = run_earliest_acq(Solution, logs, n)\n        assert_earliest_acq(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_earliest_acq, assert_earliest_acq\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlogs = [[20190101, 0, 1], [20190104, 3, 4], [20190107, 2, 3], [20190211, 1, 5], [20190224, 2, 4], [20190301, 0, 3], [20190312, 1, 2], [20190322, 4, 5]]\nn = 6\nexpected = 20190301",
+    "playground_run": "result = run_earliest_acq(Solution, logs, n)\nresult",
+    "playground_assert": "assert_earliest_acq(result, expected)"
+}

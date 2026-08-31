@@ -1,0 +1,87 @@
+{
+    "problem_name": "find_k_length_substrings_with_no_repeated_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "1100",
+    "problem_title": "Find K-Length Substrings With No Repeated Characters",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` and an integer `k`, return *the number of substrings in* `s` *of length* `k` *with no repeated characters*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"havefunonleetcode\", k = 5\nOutput: 6\nExplanation: There are 6 substrings they are: 'havef','avefu','vefun','efuno','etcod','tcode'.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"home\", k = 5\nOutput: 0\nExplanation: Notice k can be larger than the length of s. In this case, it is not possible to find any substring.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^4\n- s consists of lowercase English letters.\n- 1 <= k <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_k_len_substr_no_repeats",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_k_len_substr_no_repeats(s, k)",
+    "helpers_assert_name": "num_k_len_substr_no_repeats",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_k_len_substr_no_repeats, run_num_k_len_substr_no_repeats\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindKLengthSubstringsWithNoRepeatedCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_k_len_substr_no_repeats",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement num_k_len_substr_no_repeats\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_k_len_substr_no_repeats",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('havefunonleetcode', 5, 6)",
+                        "('home', 5, 0)",
+                        "('abcabc', 3, 4)",
+                        "('aaaa', 2, 0)",
+                        "('a', 1, 1)",
+                        "('abcdefg', 1, 7)",
+                        "('abcdefg', 7, 1)",
+                        "('abcdefg', 8, 0)",
+                        "('abacaba', 3, 2)",
+                        "('xyxyxy', 2, 5)",
+                        "('zyxyxyz', 3, 2)",
+                        "('abcba', 2, 4)"
+                    ]
+                },
+                "body": "        result = run_num_k_len_substr_no_repeats(Solution, s, k)\n        assert_num_k_len_substr_no_repeats(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_k_len_substr_no_repeats, assert_num_k_len_substr_no_repeats\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'havefunonleetcode'\nk = 5\nexpected = 6",
+    "playground_run": "result = run_num_k_len_substr_no_repeats(Solution, s, k)\nresult",
+    "playground_assert": "assert_num_k_len_substr_no_repeats(result, expected)"
+}

@@ -1,0 +1,92 @@
+{
+    "problem_name": "shortest_way_to_form_string",
+    "solution_class_name": "Solution",
+    "problem_number": "1055",
+    "problem_title": "Shortest Way to Form String",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **subsequence** of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., `\"ace\"` is a subsequence of `\"abcde\"` while `\"aec\"` is not).\n\nGiven two strings `source` and `target`, return *the minimum number of subsequences of* `source` *such that their concatenation equals* `target`. If the task is impossible, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: source = \"abc\", target = \"abcbc\"\nOutput: 2\nExplanation: The target \"abcbc\" can be formed by \"abc\" and \"bc\", which are subsequences of source \"abc\".\n```"
+            },
+            {
+                "content": "```\nInput: source = \"abc\", target = \"acdbc\"\nOutput: -1\nExplanation: The target string cannot be constructed from the subsequences of source string due to the character \"d\" in target string.\n```"
+            },
+            {
+                "content": "```\nInput: source = \"xyz\", target = \"xzyxz\"\nOutput: 3\nExplanation: The target string can be constructed as follows \"xz\" + \"y\" + \"xz\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= source.length, target.length <= 1000\n- source and target consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_way",
+    "helpers_run_signature": "(solution_class: type, source: str, target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_way(source, target)",
+    "helpers_assert_name": "shortest_way",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_way, run_shortest_way\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestWayToFormString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_way",
+                "signature": "(self, source: str, target: str) -> int",
+                "body": "        # TODO: Implement shortest_way\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_way",
+                "signature": "(self, source: str, target: str, expected: int)",
+                "parametrize": "source, target, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', 'abcbc', 2)",
+                        "('abc', 'acdbc', -1)",
+                        "('xyz', 'xzyxz', 3)",
+                        "('abc', 'abc', 1)",
+                        "('a', 'aaaa', 4)",
+                        "('abc', 'd', -1)",
+                        "('abc', 'cba', 3)",
+                        "('ab', 'ba', 2)",
+                        "('xyzx', 'xzxyxzxz', 4)",
+                        "('bbbb', 'b', 1)",
+                        "('meat', 'meteoretemtt', -1)",
+                        "('kok', 'kokokok', 3)",
+                        "('abcabc', 'abcabcabcabc', 2)",
+                        "('aaaa', 'aa', 1)"
+                    ]
+                },
+                "body": "        result = run_shortest_way(Solution, source, target)\n        assert_shortest_way(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_way, assert_shortest_way\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsource = 'abc'\ntarget = 'abcbc'\nexpected = 2",
+    "playground_run": "result = run_shortest_way(Solution, source, target)\nresult",
+    "playground_assert": "assert_shortest_way(result, expected)"
+}

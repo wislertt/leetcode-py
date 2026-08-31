@@ -133,6 +133,7 @@ defects — fix the JSON test cases or the solution, then re-run the 6 steps
 - Hit with 273 Integer to English Words: lookup-table lists (`BELOW_20 = [...]`) at class level flagged `RUF012 Mutable default value for class attribute`
 - Hit with 552/576/629 (`MOD` → N806) and 652 (ty `invalid-return-type` on list invariance)
 - E501 also fires on COMMENTS: a complexity comment listing per-method costs (`# Time: get O(index), add_at_index O(index), ...`) overflows col 100 — compress or split it (hit with 707 Design Linked List)
+- Solution-defined doubly-linked `Node` classes (custom linked-list/design problems, e.g. 708 circular list, 716 MaxStack DLL) whose pointer fields are `Node | None` pass `bake p-gen` QA and `bake lint` but fail pre-commit ty with one `unresolved-attribute`/`invalid-assignment` error per pointer access — ty cannot narrow attribute fields, and the dead-node marker `node.prev = None` assignment also fails (`invalid-assignment`). Fix at the solution level with self-linking non-Optional fields: `self.next: Node = next if next is not None else self` in `__init__`, dead marker `node.prev = node.next = node` plus `node.prev is not node` liveness checks (hit with 708/716, 12 errors at once). Recurs on linked-list/design problems in the unscrapable queue (919, 428, 431, 510, 369)
 - Prevention: write solutions ruff-clean from the start (see problem-creation.md, Batch Flow Notes section)
 
 ### Issue: \`null\` vs \`None\` in JSON Templates

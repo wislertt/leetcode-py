@@ -1,0 +1,87 @@
+{
+    "problem_name": "maximum_average_subtree",
+    "solution_class_name": "Solution",
+    "problem_number": "1120",
+    "problem_title": "Maximum Average Subtree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a binary tree, return *the maximum **average** value of a subtree of that tree*. Answers within `10^-5` of the actual answer will be accepted.\n\nA **subtree** of a tree is any node of that tree plus all its descendants.\n\nThe **average** value of a tree is the sum of its values, divided by the number of nodes.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: root = [5,6,1]\nOutput: 6.00000\nExplanation: For the node with value = 5 we have an average of (5 + 6 + 1) / 3 = 4. For the node with value = 6 we have an average of 6 / 1 = 6. So the answer is 6 which is the maximum.\n```"
+            },
+            {
+                "content": "```\nInput: root = [0,null,1]\nOutput: 1.00000\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10^4].\n- 0 <= Node.val <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_average_subtree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    implementation = solution_class()\n    return implementation.maximum_average_subtree(root)",
+    "helpers_assert_name": "maximum_average_subtree",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    assert abs(result - expected) < 10 ** -4\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_average_subtree, run_maximum_average_subtree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumAverageSubtree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_average_subtree",
+                "signature": "(self, root: TreeNode[int] | None) -> float",
+                "body": "        # TODO: Implement maximum_average_subtree\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_average_subtree",
+                "signature": "(self, root_list: list[int | None], expected: float)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([5,6,1], 6.00000)",
+                        "([0,None,1], 1.00000)",
+                        "([1], 1.00000)",
+                        "([2,1,3], 3.00000)",
+                        "([12,8,15,1,None,7,None,None,None,3], 8.33333)",
+                        "([4,2,6,1,3,5,7], 7.00000)",
+                        "([9,5,20,15,7], 20.00000)",
+                        "([1,None,2,None,3,None,4], 4.00000)",
+                        "([0], 0.00000)",
+                        "([100,50,200,25,75,150,250], 250.00000)",
+                        "([3,0,4,0,0,0,0], 1.33333)",
+                        "([6,3,9,None,None,None,0], 4.50000)"
+                    ]
+                },
+                "body": "        result = run_maximum_average_subtree(Solution, root_list)\n        assert_maximum_average_subtree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_average_subtree, assert_maximum_average_subtree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [5, 6, 1]\nexpected = 6.0",
+    "playground_run": "result = run_maximum_average_subtree(Solution, root_list)\nresult",
+    "playground_assert": "assert_maximum_average_subtree(result, expected)"
+}

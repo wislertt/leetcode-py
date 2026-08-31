@@ -14,7 +14,6 @@ UNSCRAPABLE_PROBLEMS = [
     (286, "walls-and-gates"),
     (323, "number-of-connected-components-in-an-undirected-graph"),
     (437, "path-sum-iii"),
-    (1197, "minimum-knight-moves"),
     (1730, "shortest-path-to-get-food"),
     (156, "binary-tree-upside-down"),
     (159, "longest-substring-with-at-most-two-distinct-characters"),
@@ -107,8 +106,6 @@ UNSCRAPABLE_PROBLEMS = [
     (634, "find-the-derangement-of-an-array"),
     (635, "design-log-storage"),
     (642, "design-search-autocomplete-system"),
-    # ======= Add new unscrapable problems below this line.
-    # All problems above this line are already handled.
     (644, "maximum-average-subarray-ii"),
     (651, "4-keys-keyboard"),
     (656, "coin-path"),
@@ -128,17 +125,19 @@ UNSCRAPABLE_PROBLEMS = [
     (1056, "confusing-number"),
     (1057, "campus-bikes"),
     (1058, "minimize-rounding-error-to-meet-target"),
-    (1059, "complete-binary-tree-inserter"),
+    (1059, "all-paths-from-source-lead-to-destination"),
     (1060, "missing-element-in-sorted-array"),
     (1086, "high-five"),
     (1087, "brace-expansion"),
     (1088, "confusing-number-ii"),
     (1099, "two-sum-less-than-k"),
-    (1100, "longest-well-performing-interval"),
+    (1100, "find-k-length-substrings-with-no-repeated-characters"),
     (1101, "the-earliest-moment-when-everyone-become-friends"),
     (1102, "path-with-maximum-minimum-value"),
     (1120, "maximum-average-subtree"),
     (1121, "divide-array-into-increasing-sequences"),
+    # ======= Add new unscrapable problems below this line.
+    # All problems above this line are already handled.
     (1133, "largest-unique-number"),
     (1134, "armstrong-number"),
     (1135, "lowest-common-ancestor-of-deepest-leaves"),

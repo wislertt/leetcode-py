@@ -1,0 +1,85 @@
+{
+    "problem_name": "campus_bikes",
+    "solution_class_name": "Solution",
+    "problem_number": "1057",
+    "problem_title": "Campus Bikes",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "On a campus represented on the X-Y plane, there are `n` workers and `m` bikes, with `n <= m`.\n\nYou are given an array `workers` of length `n` where `workers[i] = [xi, yi]` is the position of the `ith` worker. You are also given an array `bikes` of length `m` where `bikes[j] = [xj, yj]` is the position of the `jth` bike. All the given positions are **unique**.\n\nAssign a bike to each worker. Among the available bikes and workers, we choose the `(workeri, bikej)` pair with the shortest **Manhattan distance** between each other and assign the bike to that worker.\n\nIf there are multiple `(workeri, bikej)` pairs with the same shortest **Manhattan distance**, we choose the pair with the **smallest worker index**. If there are multiple ways to do that, we choose the pair with the **smallest bike index**. Repeat this process until there are no available workers.\n\nReturn an array `answer` of length `n`, where `answer[i]` is the index (**0-indexed**) of the bike that the `ith` worker is assigned to.\n\nThe **Manhattan distance** between two points `p1` and `p2` is `Manhattan(p1, p2) = |p1.x - p2.x| + |p1.y - p2.y|`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: workers = [[0,0],[2,1]], bikes = [[1,2],[3,3]]\nOutput: [1,0]\nExplanation: Worker 1 grabs Bike 0 as they are closest (without ties), and Worker 0 is assigned Bike 1.\n```"
+            },
+            {
+                "content": "```\nInput: workers = [[0,0],[1,1],[2,0]], bikes = [[1,0],[2,2],[2,1]]\nOutput: [0,2,1]\nExplanation: Worker 0 grabs Bike 0 at first. Worker 1 and Worker 2 share the same distance to Bike 2, thus Worker 1 is assigned to Bike 2, and Worker 2 will take Bike 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == workers.length\n- m == bikes.length\n- 1 <= n <= m <= 1000\n- workers[i].length == bikes[j].length == 2\n- 0 <= xi, yi < 1000\n- 0 <= xj, yj < 1000\n- All worker and bike locations are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "assign_bikes",
+    "helpers_run_signature": "(solution_class: type, workers: list[list[int]], bikes: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.assign_bikes(workers, bikes)",
+    "helpers_assert_name": "assign_bikes",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_assign_bikes, run_assign_bikes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CampusBikes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "assign_bikes",
+                "signature": "(self, workers: list[list[int]], bikes: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement assign_bikes\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_assign_bikes",
+                "signature": "(self, workers: list[list[int]], bikes: list[list[int]], expected: list[int])",
+                "parametrize": "workers, bikes, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,0],[2,1]],[[1,2],[3,3]],[1,0])",
+                        "([[0,0],[1,1],[2,0]],[[1,0],[2,2],[2,1]],[0,2,1])",
+                        "([[0,0]],[[0,1]],[0])",
+                        "([[0,0],[0,2]],[[0,1],[1,0]],[0,1])",
+                        "([[1,3],[3,1]],[[1,1],[3,3]],[0,1])",
+                        "([[0,0],[1,0],[2,0],[3,0]],[[0,1],[1,1],[2,1],[3,1]],[0,1,2,3])",
+                        "([[240,446],[725,504],[503,318],[415,224],[818,477]],[[146,785],[185,244],[592,834],[252,698],[318,647],[166,905],[573,506],[118,801],[858,542],[698,733]],[3,6,4,1,8])",
+                        "([[0,0],[1,1]],[[0,1],[1,0]],[0,1])",
+                        "([[5,5]],[[6,6],[4,4],[7,3]],[0])",
+                        "([[0,0],[999,999],[500,500]],[[0,1],[998,998],[501,500],[250,250]],[0,1,2])"
+                    ]
+                },
+                "body": "        result = run_assign_bikes(Solution, workers, bikes)\n        assert_assign_bikes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_assign_bikes, assert_assign_bikes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nworkers = [[0, 0], [2, 1]]\nbikes = [[1, 2], [3, 3]]\nexpected = [1, 0]",
+    "playground_run": "result = run_assign_bikes(Solution, workers, bikes)\nresult",
+    "playground_assert": "assert_assign_bikes(result, expected)"
+}
