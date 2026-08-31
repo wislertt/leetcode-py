@@ -1,0 +1,90 @@
+{
+    "problem_name": "replace_elements_with_greatest_element_on_right_side",
+    "solution_class_name": "Solution",
+    "problem_number": "1299",
+    "problem_title": "Replace Elements with Greatest Element on Right Side",
+    "difficulty": "Easy",
+    "topics": "Array",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.\n\nAfter doing so, return the array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [17,18,5,4,6,1]\nOutput: [18,6,6,6,1,-1]\nExplanation: \n- index 0 --> the greatest element to the right of index 0 is index 1 (18).\n- index 1 --> the greatest element to the right of index 1 is index 4 (6).\n- index 2 --> the greatest element to the right of index 2 is index 4 (6).\n- index 3 --> the greatest element to the right of index 3 is index 4 (6).\n- index 4 --> the greatest element to the right of index 4 is index 5 (1).\n- index 5 --> there are no elements to the right of index 5, so we put -1.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [400]\nOutput: [-1]\nExplanation: There are no elements to the right of index 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 10^4\n- 1 <= arr[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "replace_elements",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.replace_elements(arr)",
+    "helpers_assert_name": "replace_elements",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "replace_elements",
+                "signature": "(self, arr: list[int]) -> list[int]",
+                "body": "        # TODO: Implement replace_elements\n        return []"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_replace_elements, run_replace_elements\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReplaceElementsWithGreatestElementOnRightSide",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_replace_elements",
+                "signature": "(self, arr: list[int], expected: list[int])",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "[[17,18,5,4,6,1],[18,6,6,6,1,-1]]",
+                        "[[400],[-1]]",
+                        "[[1,2],[2,-1]]",
+                        "[[2,1],[1,-1]]",
+                        "[[5,5,5],[5,5,-1]]",
+                        "[[1,2,3,4,5],[5,5,5,5,-1]]",
+                        "[[5,4,3,2,1],[4,3,2,1,-1]]",
+                        "[[100000],[-1]]",
+                        "[[1,100000,2],[100000,2,-1]]",
+                        "[[59835,92782,16572,24076,42336,40575],[92782,42336,42336,42336,40575,-1]]",
+                        "[[85607,47707,93419,79445,39919,47028],[93419,93419,79445,47028,47028,-1]]",
+                        "[[97545,33890],[33890,-1]]",
+                        "[[64355,65034,29695,45777,76321,87310,67281],[87310,87310,87310,87310,87310,67281,-1]]",
+                        "[[9075,89506],[89506,-1]]",
+                        "[[86377,15284,78692,2368,75131,82337,58660,19034],[82337,82337,82337,82337,82337,58660,19034,-1]]"
+                    ]
+                },
+                "body": "        result = run_replace_elements(Solution, arr)\n        assert_replace_elements(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_replace_elements, assert_replace_elements\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [17, 18, 5, 4, 6, 1]\nexpected = [18, 6, 6, 6, 1, -1]",
+    "playground_run": "result = run_replace_elements(Solution, arr)\nresult",
+    "playground_assert": "assert_replace_elements(result, expected)"
+}

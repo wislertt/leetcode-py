@@ -1,0 +1,96 @@
+{
+    "problem_name": "shift_2d_grid",
+    "solution_class_name": "Solution",
+    "problem_number": "1260",
+    "problem_title": "Shift 2D Grid",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a 2D grid of size m x n and an integer k. You need to shift the grid k times.\n\nIn one shift operation:\n\n- Element at grid[i][j] moves to grid[i][j + 1].\n- Element at grid[i][n - 1] moves to grid[i + 1][0].\n- Element at grid[m - 1][n - 1] moves to grid[0][0].\n\nReturn the 2D grid after applying shift operation k times.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/11/05/e1.png)\n\n```\nInput: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 1\nOutput: [[9,1,2],[3,4,5],[6,7,8]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/11/05/e2.png)\n\n```\nInput: grid = [[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], k = 4\nOutput: [[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]]\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9\nOutput: [[1,2,3],[4,5,6],[7,8,9]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m <= 50\n- 1 <= n <= 50\n- -1000 <= grid[i][j] <= 1000\n- 0 <= k <= 100",
+    "readme_additional": "**Follow up:**\n\n- Can you find a O(n * m) solution?\n- Can you find an in-place solution?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shift_grid",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shift_grid(grid, k)",
+    "helpers_assert_name": "shift_grid",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shift_grid",
+                "signature": "(self, grid: list[list[int]], k: int) -> list[list[int]]",
+                "body": "        # TODO: Implement shift_grid\n        return []"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shift_grid, run_shift_grid\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "Shift2dGrid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shift_grid",
+                "signature": "(self, grid: list[list[int]], k: int, expected: list[list[int]])",
+                "parametrize": "grid, k, expected",
+                "test_cases": {
+                    "list": [
+                        "[[[1,2,3],[4,5,6],[7,8,9]],1,[[9,1,2],[3,4,5],[6,7,8]]]",
+                        "[[[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]],4,[[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]]]",
+                        "[[[1,2,3],[4,5,6],[7,8,9]],9,[[1,2,3],[4,5,6],[7,8,9]]]",
+                        "[[[1]],0,[[1]]]",
+                        "[[[1]],5,[[1]]]",
+                        "[[[1,2],[3,4]],2,[[3,4],[1,2]]]",
+                        "[[[1,2],[3,4]],3,[[2,3],[4,1]]]",
+                        "[[[-1000,1000]],1,[[1000,-1000]]]",
+                        "[[[1,2,3]],2,[[2,3,1]]]",
+                        "[[[1],[2],[3]],2,[[2],[3],[1]]]",
+                        "[[[0,-1,5,7],[2,3,-4,9]],6,[[5,7,2,3],[-4,9,0,-1]]]",
+                        "[[[10,20,30,40,50],[60,70,80,90,100]],7,[[40,50,60,70,80],[90,100,10,20,30]]]",
+                        "[[[-330,-111]],7,[[-111,-330]]]",
+                        "[[[489],[-658],[-715],[-877]],3,[[-658],[-715],[-877],[489]]]",
+                        "[[[187,-602,441],[474,-84,-951],[-450,928,-624]],4,[[-951,-450,928],[-624,187,-602],[441,474,-84]]]",
+                        "[[[781,465,821,230],[-476,809,345,537],[-939,-551,-919,769],[99,-631,694,367]],4,[[99,-631,694,367],[781,465,821,230],[-476,809,345,537],[-939,-551,-919,769]]]",
+                        "[[[-795],[366],[-712],[479]],2,[[-712],[479],[-795],[366]]]",
+                        "[[[-728],[-349]],1,[[-349],[-728]]]"
+                    ]
+                },
+                "body": "        result = run_shift_grid(Solution, grid, k)\n        assert_shift_grid(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shift_grid, assert_shift_grid\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nk = 1\nexpected = [[9, 1, 2], [3, 4, 5], [6, 7, 8]]",
+    "playground_run": "result = run_shift_grid(Solution, grid, k)\nresult",
+    "playground_assert": "assert_shift_grid(result, expected)"
+}

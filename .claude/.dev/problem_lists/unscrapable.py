@@ -168,6 +168,14 @@ UNSCRAPABLE_PROBLEMS = [
     (1245, "tree-diameter"),
     (1246, "palindrome-removal"),
     (1251, "average-selling-price"),
+    (1258, "smallest-common-region"),
+    (1259, "hands-on-straights"),
+    (1272, "remove-interval"),
+    (1273, "delete-tree-nodes"),
+    (1274, "number-of-ships-in-a-rectangle"),
+    (1279, "traffic-light-controlled-intersection"),
+    (1265, "print-immutable-linked-list-in-reverse"),
+    (1270, "all-people-report-to-the-given-manager"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
@@ -175,6 +183,8 @@ UNSCRAPABLE_PROBLEMS = [
 # below the divider stays purely actionable.
 NON_PYTHON_PROBLEMS = [
     (262, "trips-and-users"),
+    (1264, "page-recommendations"),
+    (1280, "students-and-examinations"),
     (511, "game-play-analysis-i"),
     (512, "game-play-analysis-ii"),
     (550, "game-play-analysis-iv"),

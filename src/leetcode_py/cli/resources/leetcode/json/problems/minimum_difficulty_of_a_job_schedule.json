@@ -1,0 +1,94 @@
+{
+    "problem_name": "minimum_difficulty_of_a_job_schedule",
+    "solution_class_name": "Solution",
+    "problem_number": "1335",
+    "problem_title": "Minimum Difficulty of a Job Schedule",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You want to schedule a list of jobs in d days. Jobs are dependent (i.e. To work on the ith job, you have to finish all the jobs j where 0 <= j < i).\n\nYou have to finish at least one task every day. The difficulty of a job schedule is the sum of difficulties of each day of the d days. The difficulty of a day is the maximum difficulty of a job done on that day.\n\nYou are given an integer array jobDifficulty and an integer d. The difficulty of the ith job is jobDifficulty[i].\n\nReturn the minimum difficulty of a job schedule. If you cannot find a schedule for the jobs return -1.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/01/16/untitled.png)\n\n```\nInput: jobDifficulty = [6,5,4,3,2,1], d = 2\nOutput: 7\nExplanation: First day you can finish the first 5 jobs, total difficulty = 6.\nSecond day you can finish the last job, total difficulty = 1.\nThe difficulty of the schedule = 6 + 1 = 7 \n```"
+            },
+            {
+                "content": "```\nInput: jobDifficulty = [9,9,9], d = 4\nOutput: -1\nExplanation: If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs.\n```"
+            },
+            {
+                "content": "```\nInput: jobDifficulty = [1,1,1], d = 3\nOutput: 3\nExplanation: The schedule is one job per day, total difficulty = 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= jobDifficulty.length <= 300\n- 0 <= jobDifficulty[i] <= 1000\n- 1 <= d <= 10",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_difficulty",
+    "helpers_run_signature": "(solution_class: type, job_difficulty: list[int], d: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_difficulty(job_difficulty, d)",
+    "helpers_assert_name": "min_difficulty",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_difficulty",
+                "signature": "(self, job_difficulty: list[int], d: int) -> int",
+                "body": "        # TODO: Implement min_difficulty\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_difficulty, run_min_difficulty\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumDifficultyOfAJobSchedule",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_difficulty",
+                "signature": "(self, job_difficulty: list[int], d: int, expected: int)",
+                "parametrize": "job_difficulty, d, expected",
+                "test_cases": {
+                    "list": [
+                        "[[6,5,4,3,2,1],2,7]",
+                        "[[9,9,9],4,-1]",
+                        "[[1,1,1],3,3]",
+                        "[[5],1,5]",
+                        "[[3,2,1],1,3]",
+                        "[[1,2,3],2,4]",
+                        "[[11,111,22,222,33,333],3,455]",
+                        "[[380,302,102,681],1,681]",
+                        "[[7,1,7,1,7,1],3,15]",
+                        "[[0,0],2,0]",
+                        "[[186,64,35,650],2,836]",
+                        "[[1,1000,1,1000,1],3,1002]",
+                        "[[635,228,778],10,-1]",
+                        "[[750],9,-1]",
+                        "[[897],3,-1]",
+                        "[[158,386,684,38,798,894,546],4,1774]"
+                    ]
+                },
+                "body": "        result = run_min_difficulty(Solution, job_difficulty, d)\n        assert_min_difficulty(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_difficulty, assert_min_difficulty\nfrom solution import Solution",
+    "playground_setup": "# Example test case\njob_difficulty = [6, 5, 4, 3, 2, 1]\nd = 2\nexpected = 7",
+    "playground_run": "result = run_min_difficulty(Solution, job_difficulty, d)\nresult",
+    "playground_assert": "assert_min_difficulty(result, expected)"
+}
