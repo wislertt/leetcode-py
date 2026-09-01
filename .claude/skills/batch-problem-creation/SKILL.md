@@ -22,35 +22,46 @@ description: Batch creation workflow for multiple LeetCode problems - loops thro
 
 **GOTCHA — never hand-copy the number into the scrape.** Transcribing `#214` as `257` scrapes the wrong problem silently and wastes a full cycle. Chain everything off script output.
 
-Run all N lookups + scrapes in ONE bash call. Scrape output goes to files — NEVER print it to main context (it is the single largest context cost; the agent reads the file instead). Print only number, tag, slug, title:
+**`next_problem.py --take N` is a waterfall**: it returns N distinct problems, one per line (`NUMBER TAG NAME SOURCE`), virtually consuming each pick so nothing repeats. Source priority: (1) `unscrapable` — the `UNSCRAPABLE_QUEUE` todo list in unscrapable.py, drained FIRST to keep the queue short; (2) `list` — registered problem lists via the best-list rule; (3) `new` — lowest LeetCode number absent from the database entirely (`TAG` is `none`, name unknown until scraped). Non-Python (SQL/shell) numbers are never picked. No-argument mode stays single-pick list-only.
+
+**Route each manifest line by SOURCE**:
+
+| SOURCE                                                | Handling                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list`                                                | `lcpy scrape` → normal flow (template as written)                                                                                                                                                                                                                                                                                 |
+| `new`                                                 | `lcpy scrape` → normal flow, but `_tags: { "list": [] }` (NO tag — the problem belongs to no list) and gate 2.0 skips its tag insert                                                                                                                                                                                              |
+| `unscrapable`                                         | NO `lcpy scrape` — premium/limited problems: fetch via the doocs/curl web flow (Unscrapable Problems Management, step 3), agent builds JSON from that data with the queue's tag (or `_tags: { "list": [] }` if tag is `none`). After creation, move the tuple from `UNSCRAPABLE_QUEUE` to `UNSCRAPABLE_HANDLED` in unscrapable.py |
+| anything scraping as non-Python (SQL/shell statement) | do NOT create — append `(N, "kebab-name")` to `NON_PYTHON_PROBLEMS` in unscrapable.py, pull a replacement via another `--take`                                                                                                                                                                                                    |
+
+Run the lookups + scrapes in ONE bash call. Scrape output goes to files — NEVER print it to main context (it is the single largest context cost; the agent reads the file instead). Print only number, tag, slug, title:
 
 ```bash
-for i in $(seq 1 {count}); do
-  OUT=$(uv run python .claude/.dev/next_problem.py)
-  N=$(echo "$OUT" | grep -oE '#[0-9]+' | tr -d '#')
-  TAG=$(echo "$OUT" | grep -oE 'Tag: [a-z0-9-]+' | cut -d' ' -f2)
+uv run python .claude/.dev/next_problem.py --take {count} | while read -r N TAG NAME SOURCE; do
+  if [ "$SOURCE" = "unscrapable" ]; then
+    echo "QUEUE $N $TAG $NAME unscrapable_web_flow"   # no scrape; agent fetches via doocs/curl
+    continue
+  fi
   uv run lcpy scrape -n "$N" > "/tmp/batch_scrape_${N}.json" 2>&1
   rc=$?
   if [ $rc -ne 0 ] || head -c 1 "/tmp/batch_scrape_${N}.json" | grep -qv '{'; then
-    echo "QUEUE $N $TAG SCRAPE_FAILED"
+    echo "QUEUE $N $TAG SCRAPE_FAILED $NAME $SOURCE"
   else
     META=$(python3 -c "import json; d=json.load(open('/tmp/batch_scrape_${N}.json')); print(d['slug'], '|', d['title'])")
-    echo "QUEUE $N $TAG $META"
+    echo "QUEUE $N $TAG $META $SOURCE"
   fi
 done
 ```
 
 Notes:
 
-- `next_problem.py` automatically excludes known unscrapable problems; running it once per problem consumes queue entries in order
-- A failed scrape (premium signature `Error fetching problem: 'NoneType' object is not iterable`, SQL `Error: Problem number N not found`) does NOT consume the number — handle per Error Handling below, then re-run the loop for that slot
-- The `QUEUE ...` lines are the batch manifest. Keep them; each line becomes one subagent spawn
+- A failed scrape (premium signature `Error fetching problem: 'NoneType' object is not iterable`, SQL `Error: Problem number N not found`) does NOT consume the number — handle per Error Handling below (premium → append to the unscrapable queue), then pull a replacement with another `--take` and scrape it
+- The `QUEUE ...` lines are the batch manifest. Keep them; each line becomes one subagent spawn. Subagent prompts for `unscrapable` lines get the doocs-URL instructions instead of `{SCRAPE_PATH}` (see Unscrapable Problems Management step 3 for the URL pattern); prompts for `new` lines say tag is `none`
 
 ### 1.2: Spawn One Subagent Per Problem (sequential)
 
-For each manifest line, spawn ONE agent with `subagent_type: "general-purpose"` (fresh empty context — NEVER `fork`, it inherits the orchestrator's whole conversation and defeats the purpose). Wait for the agent's report before spawning the next.
+For each manifest line, spawn ONE agent with `subagent_type: "general-purpose"` (fresh empty context — NEVER `fork`, it inherits the orchestrator's whole conversation and defeats the purpose).
 
-**Why sequential in v1**: each agent inserts its own `tags.json5` entry (step 6 of the prompt); concurrent agents would race on that file. Parallel mode (2-3 concurrent) requires pre-inserting all tags main-side first — possible once slugs are known from the manifest, but untested; do not enable without verifying `bake p-gen` tolerates a JSON whose tag is absent from tags.json5.
+**Parallel mode (3 concurrent)**: agents do NOT write `tags.json5` — the tag insert moved to finalization gate 2.0 (main-side, from the agent-reported dir names). That removes the only shared-file write, so agents own disjoint files and can run concurrently. `bake p-gen` tolerates a JSON absent from tags.json5 — verified 2026-09-01 (scratch-problem p-gen run with no tags entry passed clean). Keep 3 in flight: when one agent's report arrives, spawn the next manifest line.
 
 **Subagent prompt template** — fill `{N}`, `{TAG}`, `{SCRAPE_PATH}` (`/tmp/batch_scrape_{N}.json`) from the manifest line, verbatim otherwise:
 
@@ -64,26 +75,33 @@ Follow them exactly — every gotcha in them is there because it cost a real cyc
 
 Input data: the problem is already scraped to {SCRAPE_PATH}. Do NOT re-scrape.
 Read that file (it has description, examples, constraints, topics, python_code signature, image URLs).
+The JSON's _tags should be { "list": ["{TAG}"] } — but do NOT run insert_tag.py; the orchestrator
+inserts all tags at finalization (other agents run concurrently and would race on tags.json5).
 
 Do, in order:
 1. Build the JSON template at src/leetcode_py/cli/resources/leetcode/json/problems/{problem_name}.json
-   per problem-creation.md (images, _tags: { "list": ["{TAG}"] }, 12+ test cases, single-quote
+   per problem-creation.md (images, _tags: { "list": ["{TAG}"] } — if {TAG} is `none` use
+   "list": [] and skip all tagging, 12+ test cases, single-quote
    playground strings, None not null). Write it via a python script that machine-verifies every
    test-case expectation with a reference implementation and asserts BEFORE json.dump — never
    hand-transcribe expectations.
-2. Insert the tag: uv run python .claude/.dev/insert_tag.py {TAG} {problem_name}
-3. bake p-gen -p {problem_name}  (fix the JSON, never generated files, re-run until clean)
-4. Implement ONE optimal solution in the single Solution class in solution.py (design problems:
+2. bake p-gen -p {problem_name}  (fix the JSON, never generated files, re-run until clean)
+3. Implement ONE optimal solution in the single Solution class in solution.py (design problems:
    the custom class only), ruff/ty-clean up front per problem-creation.md Batch Flow Notes.
-5. Run the QA chain from test-quality-assurance.md step 2 (backup -> p-gen -f -> restore
+4. Run the QA chain from test-quality-assurance.md step 2 (backup -> p-gen -f -> restore
    solution -> p-test -> cleanup). lint step is NOT yours — the orchestrator runs repo-wide
    lint at finalization. Tests MUST pass (solution is implemented); a failure means bad JSON
    expectations or a wrong solution — fix it, do not dismiss it.
+5. Write the actual directory name you created (one line) to /tmp/batch_name_{N}.txt, so the
+   orchestrator can insert the tag and re-test by real dir names — do NOT assume the scrape
+   slug (they can differ, e.g. shorter names chosen to satisfy E501).
 
 Boundaries — you own ONLY this problem:
-- Touch only: your JSON file, leetcode/{problem_name}/, your tags.json5 line, /tmp scratch files
-- Do NOT: edit bakefile.py, other problems' files, problem_lists/*.py, unscrapable.py;
-  run `bake lint`, pre-commit, or any repo-wide command; git commit
+- Touch only: your JSON file, leetcode/{problem_name}/, /tmp scratch files (including
+  /tmp/batch_name_{N}.txt)
+- Do NOT: edit bakefile.py, tags.json5, other problems' files, problem_lists/*.py,
+  unscrapable.py; run `bake lint`, `bake check-consistency`, pre-commit, or any repo-wide
+  command; git commit
 - This is a subagent task: skip the brainstorming/superpowers skill ceremony; the two skill
   files above are your complete instructions.
 
@@ -97,19 +115,36 @@ Report back EXACTLY this and nothing else:
 
 ### 1.3: After Each Agent Report (main context)
 
-- PASS: `sed -i '' 's/    problem: str = ".*"/    problem: str = "{problem_name}"/' bakefile.py` — keeps `bake p-test` default pointing at the newest problem
+- PASS: `sed -i '' 's/    problem: str = ".*"/    problem: str = "{problem_name}"/' bakefile.py` — keeps `bake p-test` default pointing at the newest problem. Then spawn the next manifest line to keep 3 in flight. The agent also wrote its real dir name to /tmp/batch_name_{N}.txt — authoritative for tag insert (gate 2.0) and Step 3 re-testing; do NOT derive names from the scrape slug (they can differ)
 - FAIL: log reason for the summary; decide retry once vs skip per Error Handling. Do not debug inline — a failed agent's context is gone; if retrying, spawn a fresh agent including the failure paragraph in the prompt
 - Suppressed-output discipline (the whole point of this design): never print scrape JSON, full p-gen logs, or full test output to main context. `| tail -3` or grep a count. If deeper inspection is needed, it belongs in the NEXT agent's prompt, not this conversation
 
 ### 1.4: What Moved Where (vs inline flow)
 
-- Agent-side (its context, not yours): scrape reading, JSON writing + verification, tag insert, p-gen cycles, solution implementation, QA chain, all gotcha application
-- Orchestrator-side (main context): manifest, spawns, bakefile sed, finalization gates, summary
+- Agent-side (its context, not yours): scrape reading, JSON writing + verification, p-gen cycles, solution implementation, QA chain, all gotcha application
+- Orchestrator-side (main context): manifest, spawns, bakefile sed, tag insert (gate 2.0), finalization gates, summary
 - Unchanged skills: problem-creation.md and test-quality-assurance.md are read BY THE AGENT — do not summarize them into the prompt beyond the pointers above; the files are the source of truth
 
 ## Step 2: Batch Finalization (MANDATORY — after ALL problems)
 
-Three gates in order. Do NOT skip any.
+Four gates in order. Do NOT skip any.
+
+### 2.0: Tag Insert (main-side — agents no longer insert their own)
+
+Agents run concurrently and don't touch tags.json5; insert all batch tags here, then remove the per-agent name files:
+
+```bash
+grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
+  NAME=$(cat "/tmp/batch_name_${N}.txt")
+  if [ "$TAG" != "none" ]; then
+    uv run python .claude/.dev/insert_tag.py "$TAG" "$NAME"
+  fi
+  rm -f "/tmp/batch_name_${N}.txt"
+done
+```
+
+- Before inserting, verify each name file exists (`ls /tmp/batch_name_*.txt | wc -l` equals problem count) — a missing file means that agent never reported; handle per Error Handling before proceeding
+- Gate 2.2 (tag sync) must come out clean afterwards; if a name file's dir differs from the scrape slug, the name file wins
 
 ### 2.1: Pre-Commit (converts notebooks to .py)
 
@@ -166,14 +201,21 @@ cp /tmp/solution_backup.py leetcode/{problem_name}/solution.py
 
 Report: total created, success rate, failed problems with reasons, finalization results. Then re-test all batch problems with `bake p-test -p {name}` and report counts.
 
-### 3.1: Skill Improvement Suggestions
+**GOTCHA — derive re-test names from the agent manifest, not the scrape slug.** The dir name the agent created can differ from the scrape's `slug` (shorter names chosen for E501: 1415 → `k_th_lexicographical_...`, 1524 → `number_of_subarrays_...`, 1662 → `array_strings_are_equal`). Deriving from the slug produced 3/100 false FAILs and a wasted re-verify cycle. Agents append real dir names to `/tmp/batch_names.txt` (prompt step 6); test from that file. On a false-FAIL, check the dir exists under a different name before treating it as a real failure.
+
+### 3.1: Skill Improvement Suggestions (evidence-driven)
 
 After the summary, review the run and **suggest** candidate updates to any skill used this session (batch-problem-creation, problem-creation, test-quality-assurance, update-tags, consistency-fix). Scope is the best overall skill, not just additions: new failure modes AND cuts — sections that wasted effort, duplicated another skill, or went stale. When in doubt, prefer deleting or merging over appending.
 
-- **FIRST: read the suggestion log memory** (`skill-suggestions-log` in auto-memory). A suggestion already recorded there is BLOCKED from re-proposal — if it was applied, re-suggesting means the skill text failed (say which wording); if it was skipped, the user chose not to act (do not resurrect). Aim for ZERO suggestions on a batch that hit no genuinely new failure mode — the list should shrink batch over batch, not stay constant
+- **FIRST: read BOTH records**:
+    - auto-memory `skill-suggestions-log` (machine-local, not in git) — a suggestion already recorded there is BLOCKED from re-proposal; if it was applied, re-suggesting means the skill text failed (say which wording); if it was skipped, the user chose not to act (do not resurrect)
+    - `RUN_HISTORY.md` in this skill folder (git-tracked) — the experiment registry + per-batch run history
+- **Evaluate open experiments against this run's metrics**: for each experiment in `testing` status in RUN_HISTORY.md, compare its success criteria against what this run actually recorded (wall time per problem, gate failures, boundary violations, context use). Move it to `validated` (then propose the skill change it implies) or `rejected` (record why, with numbers). An experiment needs at least one full batch of data before any verdict
+- **Append this run's record** to RUN_HISTORY.md's run history: date, batch size, mode (sequential/parallel, concurrency), agent durations or wall time, FAIL count, gate results, boundary violations. One line per batch — this is the baseline future experiments are measured against. New process changes get registered in RUN_HISTORY.md too
 - **Suggestion only. NEVER edit skill files** — the user decides and updates skills themselves (unless the user explicitly instructs the edit this session; then record the applied change in the log)
 - **Bar for additions**: only what (a) will recur in future runs AND (b) existing skill content misses. Reject re-derivations (an existing gotcha catching the issue = skill working), refinements/widenings of working gotchas, niche one-offs (a greppable reference JSON suffices), run trivia. Test: name the exact step that failed AND the cycle it cost — no cost, no suggestion
 - **Bar for cuts**: anything the run showed to be redundant, misleading, or unused — including steps followed out of habit that added no value
+- **New process changes get proposed as experiments, not direct suggestions**: if a proposed change alters the run's shape (concurrency, flow order, gate structure), register it in RUN_HISTORY.md with a hypothesis, success criteria, and the metric to watch — the next run evaluates it. One-off gotcha fixes stay regular suggestions
 - If nothing new was learned, say so explicitly — do not invent suggestions
 
 ## Error Handling
@@ -192,7 +234,7 @@ The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` 
 
 ### Queue placement
 
-`unscrapable.py` has a divider: `# ======= Add new unscrapable problems below this line.` — entries BELOW it are the todo queue (discovery order), entries above are already handled. **Append new discoveries at the BOTTOM of the below-divider queue** (appending at the top re-orders the queue against discovery order). Format: `(problem_number, "kebab-name")`. `next_problem.py` skips them automatically. Non-Python problems (SQL, shell) go to `NON_PYTHON_PROBLEMS` in the same file — never the queue.
+`unscrapable.py` has two lists: `UNSCRAPABLE_HANDLED` (already created or confirmed not applicable) and `UNSCRAPABLE_QUEUE` (the todo queue, discovery order). **Append new discoveries at the BOTTOM of `UNSCRAPABLE_QUEUE`** (appending at the top re-orders the queue against discovery order). Format: `(problem_number, "kebab-name")`. `next_problem.py` skips them automatically. Non-Python problems (SQL, shell) go to `NON_PYTHON_PROBLEMS` in the same file — never the queue.
 
 ### Premium clusters
 
@@ -209,10 +251,10 @@ Sanity-check with a known-scrapable number first (e.g. `uv run lcpy scrape -n 20
 
 ### Creating Unscrapable Problems from the Web
 
-When triggered via the `unscrapable` keyword, or any explicit request to work through `unscrapable.py` entries (user-driven batch, no `next_problem.py`):
+When triggered via the `unscrapable` keyword, or any explicit request to work through `unscrapable.py` entries. Note: normal batches now drain the queue automatically (`--take` waterfall, source `unscrapable` — routing table in Step 1.1); this section covers the web-fetch details those agents need and the explicit keyword drain:
 
 0. **Fetch ALL problem statements upfront, via `curl` — no Playwright needed.** `raw.githubusercontent.com` serves plain static text; `curl -s '<doocs-url>'` returns the full markdown faster than a browser and keeps the shared Playwright MCP free for other agents (Playwright cannot run parallel sessions). Do NOT use the `web_reader` MCP tool — user rule. Playwright is FALLBACK ONLY, for sources needing a real browser (or if curl is blocked) — when needed, request it as the flow's first tool call so the permission prompt lands before any file work. With either method: fetch every statement back to back at the start, then build the batch offline — no web dependency mid-loop
-1. **Find not-yet-done entries**: entries below the divider are the todo queue; entries above are handled. Still verify against `leetcode/` dirs, `src/.../json/problems/`, and `tags.json5` — the divider may be stale
+1. **Find not-yet-done entries**: `UNSCRAPABLE_QUEUE` is the todo queue; `UNSCRAPABLE_HANDLED` entries are done. Still verify against `leetcode/` dirs, `src/.../json/problems/`, and `tags.json5` — the split may be stale
 2. **Determine tags from source lists**: grep the problem number in `.claude/.dev/problem_lists/*.py` (Python lists, not `.list` files). The matching list gives the tag — usually `neetcode` for the NeetCode All queue. Never stamp roadmap tags the number does not belong to. Verify membership with an unambiguous per-file check (`grep -c "($n," .claude/.dev/problem_lists/neetcode.py`) — a multi-file `grep -lE "\($n," .claude/.dev/problem_lists/*.py | sed ...` one-liner truncated the filename column in one batch and 7 in-neetcode problems were misread as unscrapable-only (`_tags: []`), surfacing only as 7 Missing lines at the tag-sync gate
 3. **Fetch problem data** (see step 0 — fetch upfront via curl):
     - Primary: doocs/leetcode raw markdown mirror — carries the CURRENT official wording, examples, constraints, and topics (front matter `tags:`). URL pattern: `https://raw.githubusercontent.com/doocs/leetcode/main/solution/0100-0199/0156.Binary%20Tree%20Upside%20Down/README_EN.md` (century folder `0100-0199`, zero-padded number, URL-encoded title). `curl -s '<url>' | head -c 4000` — description + first solution. Title-guess 404? List the exact folder via GitHub API: `curl -s https://api.github.com/repos/doocs/leetcode/contents/solution/0200-0299 | grep '"name"'`
@@ -225,4 +267,4 @@ When triggered via the `unscrapable` keyword, or any explicit request to work th
     - **Exponential-output problems** (result list grows 2^n, e.g. 247): use the `n_queens.json` dual-method pattern — method 1 asserts full SORTED lists for small n, method 2 asserts result COUNT only for large n (extra `assert_<name>_count` in `helpers_content`)
 5. **Insert into tags.json5 carefully**: the `neetcode:` block begins with a metadata object (`{ tag: "neetcode-250", },`) before the string entries. Filter to quoted-string lines when bisecting; verify with `git diff` + `bake lint` (sort_tags), not a hand-rolled sort assert
 6. Continue with the normal loop (p-gen, solution, QA, finalization)
-7. **Close the loop in `unscrapable.py`**: once created and finalized, move the tuple ABOVE the divider. Only move what actually got created — non-Python problems go to `NON_PYTHON_PROBLEMS`, never the handled section. Entries found already-created during the step-1 staleness check also move up at close time (verify they actually exist in `leetcode/`, the JSON dir, and tags before moving). If step 3 found the queue entry misnamed, fix the kebab-name in the moved tuple
+7. **Close the loop in `unscrapable.py`**: once created and finalized, move the tuple from `UNSCRAPABLE_QUEUE` to `UNSCRAPABLE_HANDLED`. Only move what actually got created — non-Python problems go to `NON_PYTHON_PROBLEMS`, never the handled list. Entries found already-created during the step-1 staleness check also move at close time (verify they actually exist in `leetcode/`, the JSON dir, and tags before moving). If step 3 found the queue entry misnamed, fix the kebab-name in the moved tuple

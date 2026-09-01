@@ -472,7 +472,7 @@ Apply only when creating problems via `/batch-problem-creation`; the single-prob
 
 ### Premium/unscrapable handling
 
-- **Premium signature**: plain text `Error fetching problem: 'NoneType' object is not iterable` (not JSON) → append `(N, "kebab-name")` to the BOTTOM of the below-divider todo queue in `.claude/.dev/problem_lists/unscrapable.py`, re-run `next_problem.py` — do NOT retry the scrape (queue placement + divider rules: Unscrapable Problems Management in the batch skill)
+- **Premium signature**: plain text `Error fetching problem: 'NoneType' object is not iterable` (not JSON) → append `(N, "kebab-name")` to the BOTTOM of `UNSCRAPABLE_QUEUE` in `.claude/.dev/problem_lists/unscrapable.py`, re-run `next_problem.py` — do NOT retry the scrape (queue placement rules: Unscrapable Problems Management in the batch skill)
 - **SQL/non-Python signature**: `Error: Problem number N not found` → `NON_PYTHON_PROBLEMS` in the same file, never the queue
 - When two neighbors fail premium in a row, probe the whole range with a loop before adding exclusions one-by-one; sanity-check a known-scrapable number first (every number failing = broken session, not a premium cluster)
 

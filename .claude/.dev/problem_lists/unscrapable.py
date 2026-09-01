@@ -1,9 +1,12 @@
 # Unscrapable Problems List
+
 # Problems that cannot be scraped due to being premium, API issues, or other
 # technical limitations.
 
 # Format: (problem_number, problem_name)
-UNSCRAPABLE_PROBLEMS = [
+
+# Already handled (created, or confirmed not applicable).
+UNSCRAPABLE_HANDLED = [
     (252, "meeting-rooms"),
     (253, "meeting-rooms-ii"),
     (261, "graph-valid-tree"),
@@ -136,8 +139,11 @@ UNSCRAPABLE_PROBLEMS = [
     (1102, "path-with-maximum-minimum-value"),
     (1120, "maximum-average-subtree"),
     (1121, "divide-array-into-increasing-sequences"),
-    # ======= Add new unscrapable problems below this line.
-    # All problems above this line are already handled.
+]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = [
     (1133, "largest-unique-number"),
     (1134, "armstrong-number"),
     (1135, "lowest-common-ancestor-of-deepest-leaves"),
@@ -194,8 +200,8 @@ UNSCRAPABLE_PROBLEMS = [
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
-# Never created; kept separate from UNSCRAPABLE_PROBLEMS so the todo queue
-# below the divider stays purely actionable.
+# Never created; kept separate from the unscrapable lists so the todo queue
+# stays purely actionable.
 NON_PYTHON_PROBLEMS = [
     (262, "trips-and-users"),
     (1264, "page-recommendations"),
@@ -206,17 +212,30 @@ NON_PYTHON_PROBLEMS = [
 ]
 
 
-# Helper function to check if a problem is unscrapable
 def is_unscrapable(problem_number: int) -> bool:
     """Check if a problem number is in the unscrapable list."""
-    return any(num == problem_number for num, _ in UNSCRAPABLE_PROBLEMS)
+    return any(num == problem_number for num, _ in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE)
 
 
 def is_unscrapable_by_name(problem_name: str) -> bool:
     """Check if a problem name is in the unscrapable list."""
-    return any(name == problem_name for _, name in UNSCRAPABLE_PROBLEMS)
+    return any(name == problem_name for _, name in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE)
 
 
 def get_unscrapable_numbers() -> set[int]:
     """Get all unscrapable problem numbers as a set."""
-    return {num for num, _ in UNSCRAPABLE_PROBLEMS}
+    return {num for num, _ in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE}
+
+
+def get_non_python_numbers() -> set[int]:
+    """Get all non-Python (SQL, shell, ...) problem numbers as a set."""
+    return {num for num, _ in NON_PYTHON_PROBLEMS}
+
+
+def get_unscrapable_queue() -> list[tuple[int, str]]:
+    """Get the todo queue in discovery order.
+
+    Queue entries that turn out to be already-created are the caller's
+    staleness check.
+    """
+    return list(UNSCRAPABLE_QUEUE)
