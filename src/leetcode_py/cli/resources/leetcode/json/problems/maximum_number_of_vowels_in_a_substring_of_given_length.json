@@ -1,0 +1,94 @@
+{
+    "problem_name": "maximum_number_of_vowels_in_a_substring_of_given_length",
+    "solution_class_name": "Solution",
+    "problem_number": "1456",
+    "problem_title": "Maximum Number of Vowels in a Substring of Given Length",
+    "difficulty": "Medium",
+    "topics": "String, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` and an integer `k`, return *the maximum number of vowel letters in any substring of* `s` *with length* `k`.\n\n**Vowel letters** in English are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abciiidef\", k = 3\nOutput: 3\n```\n**Explanation:** The substring \"iii\" contains 3 vowel letters."
+            },
+            {
+                "content": "```\nInput: s = \"aeiou\", k = 2\nOutput: 2\n```\n**Explanation:** Any substring of length 2 contains 2 vowels."
+            },
+            {
+                "content": "```\nInput: s = \"leetcode\", k = 3\nOutput: 2\n```\n**Explanation:** \"lee\", \"eet\" and \"ode\" contain 2 vowels."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s consists of lowercase English letters.\n- 1 <= k <= s.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_vowels",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_vowels(s, k)",
+    "helpers_assert_name": "max_vowels",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_vowels, run_max_vowels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfVowelsInASubstringOfGivenLength",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_vowels",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement max_vowels\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_vowels",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('abciiidef', 3, 3)",
+                        "('aeiou', 2, 2)",
+                        "('leetcode', 3, 2)",
+                        "('rhythms', 4, 0)",
+                        "('rhythms', 7, 0)",
+                        "('a', 1, 1)",
+                        "('bcd', 2, 0)",
+                        "('ab', 2, 1)",
+                        "('aaa', 1, 1)",
+                        "('aeiou', 5, 5)",
+                        "('bacdef', 4, 2)",
+                        "('queue', 3, 3)",
+                        "('strength', 6, 1)",
+                        "('evanfdjf', 1, 1)",
+                        "('olyl', 4, 1)",
+                        "('gfgmbvsd', 2, 0)"
+                    ]
+                },
+                "body": "        result = run_max_vowels(Solution, s, k)\n        assert_max_vowels(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_vowels, assert_max_vowels\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abciiidef'\nk = 3\nexpected = 3",
+    "playground_run": "result = run_max_vowels(Solution, s, k)\nresult",
+    "playground_assert": "assert_max_vowels(result, expected)"
+}

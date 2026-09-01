@@ -1,0 +1,103 @@
+{
+    "problem_name": "maximum_ascending_subarray_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "1800",
+    "problem_title": "Maximum Ascending Subarray Sum",
+    "difficulty": "Easy",
+    "topics": "Array",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of positive integers `nums`, return the **maximum** possible sum of an **strictly increasing subarray** in `nums`.\n\nA subarray is defined as a contiguous sequence of numbers in an array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [10,20,30,5,10,50]\nOutput: 65\nExplanation: [5,10,50] is the ascending subarray with the maximum sum of 65.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [10,20,30,40,50]\nOutput: 150\nExplanation: [10,20,30,40,50] is the ascending subarray with the maximum sum of 150.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [12,17,15,13,10,11,12]\nOutput: 33\nExplanation: [10,11,12] is the ascending subarray with the maximum sum of 33.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 100\n- 1 <= nums[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_ascending_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_ascending_sum(nums)",
+    "helpers_assert_name": "max_ascending_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_ascending_sum, run_max_ascending_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumAscendingSubarraySum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_ascending_sum",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement max_ascending_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_ascending_sum",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([10,20,30,5,10,50],65)",
+                        "([10,20,30,40,50],150)",
+                        "([12,17,15,13,10,11,12],33)",
+                        "([100],100)",
+                        "([1],1)",
+                        "([1,2],3)",
+                        "([2,1],2)",
+                        "([1,1],1)",
+                        "([5,5,5],5)",
+                        "([1,2,3,4,5,6,7,8,9,10],55)",
+                        "([10,9,8,7,6,5,4,3,2,1],10)",
+                        "([100,1,100],101)",
+                        "([1,100,1,100],101)",
+                        "([3,6,10,1,12,7,9,11],27)",
+                        "([50,51,52,1,2,100,3,4],153)",
+                        "([100,100,100],100)",
+                        "([7,94,15,16,17,1],101)",
+                        "([77,7,24,43,46,78],198)",
+                        "([89,58,30,17,85],102)",
+                        "([8,91,66,100,51,32,6],166)",
+                        "([84,37,3,96,82,42,5,62],99)",
+                        "([19,5,95,1,41,82,24,80,17,24],124)",
+                        "([9,80,88,69,60],177)",
+                        "([75,97,89],172)",
+                        "([98,65,37,4,28,56,77,31,27,20,23,61,62,63,43,43,10,40,46,63,14,74,100,59,23,98,36,57,99,79,12,41,6,72,63,49,93,78,74,31,60,79,74,88,74,2,84,90,66,74,88,24,80,26,64,20,53,22,54,79,53,21,99,52,9,13,72,66,91,95,46,48,97,12,47,4,25,66,99,26,55,51,26,32,97,39,77,47,80,18,40,67,92,26,45,89,15,74,4,35],252)"
+                    ]
+                },
+                "body": "        result = run_max_ascending_sum(Solution, nums)\n        assert_max_ascending_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_ascending_sum, assert_max_ascending_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [10, 20, 30, 5, 10, 50]\nexpected = 65",
+    "playground_run": "result = run_max_ascending_sum(Solution, nums)\nresult",
+    "playground_assert": "assert_max_ascending_sum(result, expected)"
+}

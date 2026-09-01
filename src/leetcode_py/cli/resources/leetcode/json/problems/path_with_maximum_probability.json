@@ -1,0 +1,94 @@
+{
+    "problem_name": "path_with_maximum_probability",
+    "solution_class_name": "Solution",
+    "problem_number": "1514",
+    "problem_title": "Path with Maximum Probability",
+    "difficulty": "Medium",
+    "topics": "Array, Graph Theory, Heap (Priority Queue), Shortest Path, Dijkstra's Algorithm",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an undirected weighted graph of `n` nodes (0-indexed), represented by an edge list where `edges[i] = [a<sub>i</sub>, b<sub>i</sub>]` is an undirected edge connecting the nodes `a<sub>i</sub>` and `b<sub>i</sub>` with a probability of success of traversing that edge `succProb[i]`.\n\nGiven two nodes `start` and `end`, find the path with the maximum probability of success to go from `start` to `end` and return its success probability.\n\nIf there is no path from `start` to `end`, return `0`. Your answer will be accepted if it differs from the correct answer by at most **10<sup>-5</sup>**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/09/20/1558_ex1.png)\n\n```\nInput: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2\nOutput: 0.25000\nExplanation: There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/09/20/1558_ex2.png)\n\n```\nInput: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2\nOutput: 0.30000\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2019/09/20/1558_ex3.png)\n\n```\nInput: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2\nOutput: 0.00000\nExplanation: There is no path between 0 and 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 10^4\n- 0 <= start, end < n\n- start != end\n- 0 <= a<sub>i</sub>, b<sub>i</sub> < n\n- a<sub>i</sub> != b<sub>i</sub>\n- 0 <= succProb.length == edges.length <= 2 * 10^4\n- 0 <= succProb[i] <= 1\n- There is at most one edge between every two nodes.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_probability",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]], succ_prob: list[float], start_node: int, end_node: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_probability(n, edges, succ_prob, start_node, end_node)",
+    "helpers_assert_name": "max_probability",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    # The statement accepts answers within 10^-5 of the actual answer\n    assert abs(result - expected) < 1e-5\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_probability, run_max_probability\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PathWithMaximumProbability",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_probability",
+                "signature": "(self, n: int, edges: list[list[int]], succ_prob: list[float], start_node: int, end_node: int) -> float",
+                "body": "        # TODO: Implement max_probability\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_probability",
+                "signature": "(self, n: int, edges: list[list[int]], succ_prob: list[float], start_node: int, end_node: int, expected: float)",
+                "parametrize": "n, edges, succ_prob, start_node, end_node, expected",
+                "test_cases": {
+                    "list": [
+                        "(3,[[0,1],[1,2],[0,2]],[0.5,0.5,0.2],0,2,0.25)",
+                        "(3,[[0,1],[1,2],[0,2]],[0.5,0.5,0.3],0,2,0.3)",
+                        "(3,[[0,1]],[0.5],0,2,0.0)",
+                        "(2,[[0,1]],[0.0],0,1,0.0)",
+                        "(2,[[1,0]],[0.75],0,1,0.75)",
+                        "(4,[[0,1],[1,2],[2,3]],[1.0,1.0,1.0],0,3,1.0)",
+                        "(3,[[0,1],[0,2],[1,2]],[0.5,0.5,0.5],0,2,0.5)",
+                        "(5,[[0,1],[1,2],[0,2],[2,3],[3,4]],[0.9,0.9,0.5,0.8,0.9],0,4,0.5832)",
+                        "(4,[[0,1],[0,2],[1,2],[2,3]],[0.1,0.1,0.9,0.5],0,3,0.05)",
+                        "(5,[[0,1],[2,3],[3,4]],[0.9,0.9,0.9],0,4,0.0)",
+                        "(6,[[0,1],[1,3],[0,2],[2,3],[3,4],[4,5]],[0.4,0.9,0.7,0.6,0.5,0.2],0,5,0.042)",
+                        "(4,[[0,3],[1,2],[2,3]],[0.0,0.5,0.9],0,3,0.0)",
+                        "(5,[],[],4,3,0.0)",
+                        "(2,[[0,1]],[0.5],0,1,0.5)",
+                        "(4,[[1,3],[1,2],[0,1]],[0.1,0.1,0.25],0,2,0.025)",
+                        "(6,[[2,4],[2,3],[0,5],[1,4],[1,2],[1,3]],[0.5349008200257962,0.5,0.25,0.3457061636606624,1.0,1.0],3,2,1.0)"
+                    ]
+                },
+                "body": "        result = run_max_probability(\n            Solution, n, edges, succ_prob, start_node, end_node\n        )\n        assert_max_probability(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_probability, assert_max_probability\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nedges = [[0, 1], [1, 2], [0, 2]]\nsucc_prob = [0.5, 0.5, 0.2]\nstart_node = 0\nend_node = 2\nexpected = 0.25",
+    "playground_run": "result = run_max_probability(Solution, n, edges, succ_prob, start_node, end_node)\nresult",
+    "playground_assert": "assert_max_probability(result, expected)"
+}

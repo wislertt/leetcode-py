@@ -1,0 +1,87 @@
+{
+    "problem_name": "design_parking_system",
+    "solution_class_name": "ParkingSystem",
+    "problem_number": "1603",
+    "problem_title": "Design Parking System",
+    "difficulty": "Easy",
+    "topics": "Design, Simulation, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a parking system for a parking lot. The parking lot has three kinds of parking spaces: big, medium, and small, with a fixed number of slots for each size.\n\nImplement the `ParkingSystem` class:\n\n- `ParkingSystem(int big, int medium, int small)` Initializes object of the `ParkingSystem` class. The number of slots for each parking space are given as part of the constructor.\n- `bool addCar(int carType)` Checks whether there is a parking space of `carType` for the car that wants to get into the parking lot. `carType` can be of three kinds: big, medium, or small, which are represented by `1`, `2`, and `3` respectively. A car can only park in a parking space of its `carType`. If there is no space available, return `false`, else park the car in that size space and return `true`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"ParkingSystem\", \"addCar\", \"addCar\", \"addCar\", \"addCar\"]\n[[1, 1, 0], [1], [2], [3], [1]]\nOutput\n[null, true, true, false, false]\n\nExplanation\nParkingSystem parkingSystem = new ParkingSystem(1, 1, 0);\nparkingSystem.addCar(1); // return true because there is 1 available slot for a big car\nparkingSystem.addCar(2); // return true because there is 1 available slot for a medium car\nparkingSystem.addCar(3); // return false because there is no available slot for a small car\nparkingSystem.addCar(1); // return false because there is no available slot for a big car. It is already occupied.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= big, medium, small <= 1000`\n- `carType` is `1`, `2`, or `3`\n- At most `1000` calls will be made to `addCar`",
+    "readme_additional": "**Follow up:** Can you implement the `ParkingSystem` class without storing the three capacities in separate variables?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "parking_system",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    system = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'ParkingSystem':\n            system = solution_class(inputs[i][0], inputs[i][1], inputs[i][2])\n            results.append(None)\n        elif op == 'add_car' and system is not None:\n            results.append(system.add_car(inputs[i][0]))\n    return results, system",
+    "helpers_assert_name": "parking_system",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_parking_system, run_parking_system\nfrom .solution import ParkingSystem",
+    "test_content": "",
+    "test_class_name": "DesignParkingSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, big: int, medium: int, small: int) -> None",
+                "body": "        # TODO: Initialize parking system\n        pass"
+            },
+            {
+                "name": "add_car",
+                "signature": "(self, car_type: int) -> bool",
+                "body": "        # TODO: Implement add_car\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_parking_system",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car'],[[1,1,0],[1],[2],[3],[1]],[None,True,True,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car'],[[0,0,0],[1],[2],[3]],[None,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car'],[[1,0,1],[1],[1],[3],[3],[2]],[None,True,False,True,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car'],[[1000,1000,1000],[2],[2],[2],[2]],[None,True,True,True,True]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car'],[[3,0,0],[1],[1],[1],[1]],[None,True,True,True,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car','add_car'],[[2,2,2],[3],[1],[2],[3],[1],[2],[1]],[None,True,True,True,True,True,True,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car'],[[0,1,1],[1],[2],[3],[2]],[None,False,True,True,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car'],[[1,1,1],[1],[2],[3],[1],[2],[3]],[None,True,True,True,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car'],[[2,0,2],[1],[3],[3],[3],[3],[2]],[None,True,True,True,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car'],[[0,0,1],[3],[1],[1],[2]],[None,True,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car'],[[1,2,0],[1],[3],[3],[3],[1]],[None,True,False,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car'],[[0,2,2],[3],[3],[2],[1],[2],[3]],[None,True,True,True,False,True,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car'],[[1,2,1],[2],[2],[3],[2],[2],[3]],[None,True,True,True,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car'],[[1,0,2],[1],[2],[2]],[None,True,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car','add_car'],[[1,1,0],[3],[1],[3],[1],[1],[1]],[None,False,True,False,False,False,False]))",
+                        "((['ParkingSystem','add_car','add_car','add_car','add_car','add_car'],[[1,1,2],[1],[1],[1],[2],[3]],[None,True,False,False,True,True]))"
+                    ]
+                },
+                "body": "        result, _ = run_parking_system(ParkingSystem, operations, inputs)\n        assert_parking_system(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_parking_system, assert_parking_system\nfrom solution import ParkingSystem",
+    "playground_setup": "# Example test case\noperations = ['ParkingSystem','addCar','addCar','addCar','addCar']\ninputs = [[1,1,0],[1],[2],[3],[1]]\nexpected = [None,True,True,False,False]",
+    "playground_run": "result, system = run_parking_system(ParkingSystem, operations, inputs)\nprint(result)\nsystem",
+    "playground_assert": "assert_parking_system(result, expected)"
+}

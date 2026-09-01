@@ -1,0 +1,98 @@
+{
+    "problem_name": "make_sum_divisible_by_p",
+    "solution_class_name": "Solution",
+    "problem_number": "1590",
+    "problem_title": "Make Sum Divisible by P",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of positive integers <code>nums</code>, remove the <strong>smallest</strong> subarray (possibly <strong>empty</strong>) such that the <strong>sum</strong> of the remaining elements is divisible by <code>p</code>. It is <strong>not</strong> allowed to remove the whole array.</p>\n\n<p>Return <em>the length of the smallest subarray that you need to remove, or </em><code>-1</code><em> if it's impossible</em>.</p>\n\n<p>A <strong>subarray</strong> is defined as a contiguous block of elements in the array.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,1,4,2], p = 6\nOutput: 1\nExplanation: The sum of the elements in nums is 10, which is not divisible by 6. We can remove the subarray [4], and the sum of the remaining elements is 6, which is divisible by 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [6,3,5,2], p = 9\nOutput: 2\nExplanation: We cannot remove a single element to get a sum divisible by 9. The best way is to remove the subarray [5,2], leaving us with [6,3] with sum 9.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3], p = 3\nOutput: 0\nExplanation: Here the sum is 6. which is already divisible by 3. Thus we do not need to remove anything.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^9\n- 1 <= p <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_subarray",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], p: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_subarray(nums, p)",
+    "helpers_assert_name": "min_subarray",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_subarray, run_min_subarray\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MakeSumDivisibleByP",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_subarray",
+                "signature": "(self, nums: list[int], p: int) -> int",
+                "body": "        # TODO: Implement min_subarray\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_subarray",
+                "signature": "(self, nums: list[int], p: int, expected: int)",
+                "parametrize": "nums, p, expected",
+                "test_cases": {
+                    "list": [
+                        "([1000000000],1000000000,0)",
+                        "([5],3,-1)",
+                        "([369036771],726693104,-1)",
+                        "([23,38],8,-1)",
+                        "([44913052,744535641],9,-1)",
+                        "([1,2,3],3,0)",
+                        "([1,2,3],7,-1)",
+                        "([4,4,2],7,-1)",
+                        "([9,9,9],3,0)",
+                        "([408969450,275894403,989966710],1,0)",
+                        "([29,23,10],576464984,-1)",
+                        "([3,1,4,2],6,1)",
+                        "([6,3,5,2],9,2)",
+                        "([3,1,2,4],10,0)",
+                        "([2,4,6,8],5,0)",
+                        "([7,4,5,1,2],6,1)",
+                        "([341414726,237972821,733208358,718392026,883354863],281902445,-1)",
+                        "([37,16,29,49,37,15],6,1)",
+                        "([8,32,17,40,28,17,96],24,6)",
+                        "([13,32,48,25,15,36,22],142850692,-1)"
+                    ]
+                },
+                "body": "        result = run_min_subarray(Solution, nums, p)\n        assert_min_subarray(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_subarray, assert_min_subarray\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 1, 4, 2]\np = 6\nexpected = 1",
+    "playground_run": "result = run_min_subarray(Solution, nums, p)\nresult",
+    "playground_assert": "assert_min_subarray(result, expected)"
+}

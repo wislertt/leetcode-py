@@ -1,0 +1,100 @@
+{
+    "problem_name": "range_sum_of_sorted_subarray_sums",
+    "solution_class_name": "Solution",
+    "problem_number": "1508",
+    "problem_title": "Range Sum of Sorted Subarray Sums",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Binary Search, Sorting, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given the array <code>nums</code> consisting of <code>n</code> positive integers. You computed the sum of all non-empty continuous subarrays from the array and then sorted them in non-decreasing order, creating a new array of <code>n * (n + 1) / 2</code> numbers.</p>\n\n<p><em>Return the sum of the numbers from index </em><code>left</code><em> to index </em><code>right</code> (<strong>indexed from 1</strong>)<em>, inclusive, in the new array. </em>Since the answer can be a huge number return it modulo <code>10<sup>9</sup> + 7</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4], n = 4, left = 1, right = 5\nOutput: 13\nExplanation: All subarray sums are 1, 3, 6, 10, 2, 5, 9, 3, 7, 4. After sorting them in non-decreasing order we have the new array [1, 2, 3, 3, 4, 5, 6, 7, 9, 10]. The sum of the numbers from index le = 1 to ri = 5 is 1 + 2 + 3 + 3 + 4 = 13.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4], n = 4, left = 3, right = 4\nOutput: 6\nExplanation: The given array is the same as example 1. We have the new array [1, 2, 3, 3, 4, 5, 6, 7, 9, 10]. The sum of the numbers from index le = 3 to ri = 4 is 3 + 3 = 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4], n = 4, left = 1, right = 10\nOutput: 50\n```"
+            }
+        ]
+    },
+    "readme_constraints": "<ul>\n\t<li><code>n == nums.length</code></li>\n\t<li><code>1 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 100</code></li>\n\t<li><code>1 &lt;= left &lt;= right &lt;= n * (n + 1) / 2</code></li>\n</ul>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "range_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], n: int, left: int, right: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.range_sum(nums, n, left, right)",
+    "helpers_assert_name": "range_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_range_sum, run_range_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RangeSumOfSortedSubarraySums",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "range_sum",
+                "signature": "(self, nums: list[int], n: int, left: int, right: int) -> int",
+                "body": "        # TODO: Implement range_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_range_sum",
+                "signature": "(self, nums: list[int], n: int, left: int, right: int, expected: int)",
+                "parametrize": "nums, n, left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3,4],4,1,5,13)",
+                        "([1,2,3,4],4,3,4,6)",
+                        "([1,2,3,4],4,1,10,50)",
+                        "([1],1,1,1,1)",
+                        "([5],1,1,1,5)",
+                        "([100],1,1,1,100)",
+                        "([1,2],2,1,3,6)",
+                        "([2,2],2,2,2,2)",
+                        "([7,1,3],3,2,5,22)",
+                        "([9,9,9],3,1,6,90)",
+                        "([1,3,2,5,4],5,4,9,31)",
+                        "([10,1,100,1,10],5,1,15,1016)",
+                        "([40,73],2,3,3,113)",
+                        "([23,90,48],3,1,2,71)",
+                        "([32,65,82,5],4,5,9,662)",
+                        "([98,4,23,18,13,48],6,4,21,1503)",
+                        "([86,60,26,99,15,84,54,59],8,19,29,2587)",
+                        "([80,5,72,61,55,36,69,71,77,100],10,55,55,626)",
+                        "([67,99,75,78,94,96,78,31,40,54,81,22],12,18,52,9051)",
+                        "([2,2,2,2,2,2],6,1,21,112)",
+                        "([100,100,100,100],4,6,10,1400)",
+                        "([100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100],450,1,101475,528889993)"
+                    ]
+                },
+                "body": "        result = run_range_sum(Solution, nums, n, left, right)\n        assert_range_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_range_sum, assert_range_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums: list[int] = [1, 2, 3, 4]\nn = 4\nleft = 1\nright = 5\nexpected = 13",
+    "playground_run": "result = run_range_sum(Solution, nums, n, left, right)\nresult",
+    "playground_assert": "assert_range_sum(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "path_crossing",
+    "solution_class_name": "Solution",
+    "problem_number": "1496",
+    "problem_title": "Path Crossing",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `path`, where `path[i] = 'N'`, `'S'`, `'E'` or `'W'`, each representing moving one unit north, south, east, or west, respectively. You start at the origin `(0, 0)` on a 2D plane and walk on the path specified by `path`.\n\nReturn `true` if the path crosses itself at any point, that is, if at any time you are on a location you have previously visited. Return `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/06/10/screen-shot-2020-06-10-at-123929-pm.png)\n\n```\nInput: path = \"NES\"\nOutput: false\nExplanation: Notice that the path doesn't cross any point more than once.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/06/10/screen-shot-2020-06-10-at-123843-pm.png)\n\n```\nInput: path = \"NESWW\"\nOutput: true\nExplanation: Notice that the path visits the origin twice.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= path.length <= 10^4\n- path[i] is either 'N', 'S', 'E', or 'W'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_path_crossing",
+    "helpers_run_signature": "(solution_class: type, path: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_path_crossing(path)",
+    "helpers_assert_name": "is_path_crossing",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_path_crossing, run_is_path_crossing\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PathCrossing",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_path_crossing",
+                "signature": "(self, path: str) -> bool",
+                "body": "        # TODO: Implement is_path_crossing\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_path_crossing",
+                "signature": "(self, path: str, expected: bool)",
+                "parametrize": "path, expected",
+                "test_cases": {
+                    "list": [
+                        "('NES', False)",
+                        "('NESWW', True)",
+                        "('N', False)",
+                        "('S', False)",
+                        "('E', False)",
+                        "('W', False)",
+                        "('NS', True)",
+                        "('SN', True)",
+                        "('EW', True)",
+                        "('WE', True)",
+                        "('NESW', True)",
+                        "('NNEESS', False)",
+                        "('SSSS', False)",
+                        "('NNNN', False)",
+                        "('EN', False)",
+                        "('NWSE', True)",
+                        "('NWSSEE', False)",
+                        "('EESWWN', True)"
+                    ]
+                },
+                "body": "        result = run_is_path_crossing(Solution, path)\n        assert_is_path_crossing(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_path_crossing, assert_is_path_crossing\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npath = 'NESWW'\nexpected = True",
+    "playground_run": "result = run_is_path_crossing(Solution, path)\nresult",
+    "playground_assert": "assert_is_path_crossing(result, expected)"
+}

@@ -1,0 +1,30 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.19.5
+#   kernelspec:
+#     display_name: leetcode-py-py3.13
+#     language: python
+#     name: python3
+# ---
+
+# %%
+from helpers import assert_max_score, run_max_score
+from solution import Solution
+
+# %%
+# Example test case
+card_points = [1, 2, 3, 4, 5, 6, 1]
+k = 3
+expected = 12
+
+# %%
+result = run_max_score(Solution, card_points, k)
+result
+
+# %%
+assert_max_score(result, expected)

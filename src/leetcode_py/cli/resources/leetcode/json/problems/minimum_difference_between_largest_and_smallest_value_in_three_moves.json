@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_difference_between_largest_and_smallest_value_in_three_moves",
+    "solution_class_name": "Solution",
+    "problem_number": "1509",
+    "problem_title": "Minimum Difference Between Largest and Smallest Value in Three Moves",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given an integer array <code>nums</code>.</p>\n\n<p>In one move, you can choose one element of <code>nums</code> and change it to <strong>any value</strong>.</p>\n\n<p>Return <em>the minimum difference between the largest and smallest value of </em><code>nums</code><em> <strong>after performing at most three moves</strong></em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [5,3,2,4]\nOutput: 0\nExplanation: We can make at most 3 moves.\nIn the first move, change 2 to 3. nums becomes [5,3,3,4].\nIn the second move, change 4 to 3. nums becomes [5,3,3,3].\nIn the third move, change 5 to 3. nums becomes [3,3,3,3].\nAfter performing 3 moves, the difference between the minimum and maximum is 3 - 3 = 0.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,5,0,10,14]\nOutput: 1\nExplanation: We can make at most 3 moves.\nIn the first move, change 5 to 0. nums becomes [1,0,0,10,14].\nIn the second move, change 10 to 0. nums becomes [1,0,0,0,14].\nIn the third move, change 14 to 1. nums becomes [1,0,0,0,1].\nAfter performing 3 moves, the difference between the minimum and maximum is 1 - 0 = 1.\nIt can be shown that there is no way to make the difference 0 in 3 moves.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,100,20]\nOutput: 0\nExplanation: We can make at most 3 moves.\nIn the first move, change 100 to 7. nums becomes [3,7,20].\nIn the second move, change 20 to 7. nums becomes [3,7,7].\nIn the third move, change 3 to 7. nums becomes [7,7,7].\nAfter performing 3 moves, the difference between the minimum and maximum is 7 - 7 = 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= nums.length &lt;= 10^5\n- -10^9 &lt;= nums[i] &lt;= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_difference",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_difference(nums)",
+    "helpers_assert_name": "min_difference",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_difference, run_min_difference\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumDifferenceBetweenLargestAndSmallestValueInThreeMoves",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_difference",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement min_difference\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_difference",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 3, 2, 4], 0)",
+                        "([1, 5, 0, 10, 14], 1)",
+                        "([3, 100, 20], 0)",
+                        "([1], 0)",
+                        "([2], 0)",
+                        "([1, 2], 0)",
+                        "([5, 5], 0)",
+                        "([1, 2, 3], 0)",
+                        "([7, 1, 9], 0)",
+                        "([1, 2, 3, 4], 0)",
+                        "([6, 6, 0, 1, 1, 4], 1)",
+                        "([1, 5, 6, 14, 15], 1)",
+                        "([10, 1, 1, 1, 10], 0)",
+                        "([-1, 3, -1, 8, 5, 4], 2)",
+                        "([-1000000000, 1000000000, 0, 0, 0], 0)",
+                        "([9, 9, 9, 9, 9, 9, 9], 0)",
+                        "([0, 0, 1, 2, 3, 100, 101, 102], 3)",
+                        "([4, 3, 2, 1, 0, -1, -2], 3)",
+                        "([100, -100, 50, -50, 25, -25, 0], 75)",
+                        "([1, 1000000000], 0)"
+                    ]
+                },
+                "body": "        result = run_min_difference(Solution, nums)\n        assert_min_difference(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_difference, assert_min_difference\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 5, 0, 10, 14]\nexpected = 1",
+    "playground_run": "result = run_min_difference(Solution, nums)\nresult",
+    "playground_assert": "assert_min_difference(result, expected)"
+}

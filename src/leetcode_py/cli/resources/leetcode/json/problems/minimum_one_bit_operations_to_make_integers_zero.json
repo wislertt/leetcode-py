@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_one_bit_operations_to_make_integers_zero",
+    "solution_class_name": "Solution",
+    "problem_number": "1611",
+    "problem_title": "Minimum One Bit Operations to Make Integers Zero",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming, Bit Manipulation, Recursion, Memoization",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, you must transform it into `0` using the following operations any number of times:\n\n- Change the rightmost (0th) bit in the binary representation of `n`.\n- Change the `ith` bit in the binary representation of `n` if the `(i-1)th` bit is set to `1` and the `(i-2)th` through `0th` bits are set to `0`.\n\nReturn the minimum number of operations to transform `n` into `0`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3\nOutput: 2\nExplanation: The binary representation of 3 is \"11\".\n\"11\" -> \"01\" with the 2nd operation since the 0th bit is 1.\n\"01\" -> \"00\" with the 1st operation.\n```"
+            },
+            {
+                "content": "```\nInput: n = 6\nOutput: 4\nExplanation: The binary representation of 6 is \"110\".\n\"110\" -> \"010\" with the 2nd operation since the 1st bit is 1 and 0th through 0th bits are 0.\n\"010\" -> \"011\" with the 1st operation.\n\"011\" -> \"001\" with the 2nd operation since the 0th bit is 1.\n\"001\" -> \"000\" with the 1st operation.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_one_bit_operations",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_one_bit_operations(n)",
+    "helpers_assert_name": "minimum_one_bit_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_one_bit_operations, run_minimum_one_bit_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumOneBitOperationsToMakeIntegersZero",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_one_bit_operations",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement minimum_one_bit_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_one_bit_operations",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 2)",
+                        "(6, 4)",
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(2, 3)",
+                        "(4, 7)",
+                        "(5, 6)",
+                        "(7, 5)",
+                        "(8, 15)",
+                        "(15, 10)",
+                        "(16, 31)",
+                        "(31, 21)",
+                        "(32, 63)",
+                        "(63, 42)",
+                        "(255, 170)",
+                        "(256, 511)",
+                        "(1023, 682)",
+                        "(1000000000, 756249599)",
+                        "(999999999, 756248917)",
+                        "(536870911, 357913941)",
+                        "(536870912, 1073741823)",
+                        "(123456789, 93489638)",
+                        "(999999998, 756248916)"
+                    ]
+                },
+                "body": "        result = run_minimum_one_bit_operations(Solution, n)\n        assert_minimum_one_bit_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_one_bit_operations, assert_minimum_one_bit_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 6\nexpected = 4",
+    "playground_run": "result = run_minimum_one_bit_operations(Solution, n)\nresult",
+    "playground_assert": "assert_minimum_one_bit_operations(result, expected)"
+}

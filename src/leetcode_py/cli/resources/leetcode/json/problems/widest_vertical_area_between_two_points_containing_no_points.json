@@ -1,0 +1,97 @@
+{
+    "problem_name": "widest_vertical_area_between_two_points_containing_no_points",
+    "solution_class_name": "Solution",
+    "problem_number": "1637",
+    "problem_title": "Widest Vertical Area Between Two Points Containing No Points",
+    "difficulty": "Easy",
+    "topics": "Array, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given `n` points on a 2D plane where `points[i] = [xi, yi]`, return the widest vertical area between two points such that no points are inside the area.\n\nA vertical area is an area of fixed-width extending infinitely along the y-axis (i.e., infinite height). The widest vertical area is the one with the maximum width.\n\nNote that points on the edge of a vertical area are not considered included in the area.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/19/points3.png)\n\n```\nInput: points = [[8,7],[9,9],[7,4],[9,7]]\nOutput: 1\nExplanation: Both the red and the blue area are optimal.\n```"
+            },
+            {
+                "content": "```\nInput: points = [[3,1],[9,0],[1,0],[1,4],[5,3],[8,8]]\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == points.length\n- 2 <= n <= 10^5\n- points[i].length == 2\n- 0 <= xi, yi <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_width_of_vertical_area",
+    "helpers_run_signature": "(solution_class: type, points: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_width_of_vertical_area(points)",
+    "helpers_assert_name": "max_width_of_vertical_area",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_width_of_vertical_area, run_max_width_of_vertical_area\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WidestVerticalAreaBetweenTwoPointsContainingNoPoints",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_width_of_vertical_area",
+                "signature": "(self, points: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_width_of_vertical_area\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_width_of_vertical_area",
+                "signature": "(self, points: list[list[int]], expected: int)",
+                "parametrize": "points, expected",
+                "test_cases": {
+                    "list": [
+                        "([[8, 7], [9, 9], [7, 4], [9, 7]], 1)",
+                        "([[3, 1], [9, 0], [1, 0], [1, 4], [5, 3], [8, 8]], 3)",
+                        "([[1, 1], [1, 2]], 0)",
+                        "([[1, 5], [1, 5], [1, 5]], 0)",
+                        "([[7, 4], [7, 1], [7, 9]], 0)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[0, 0], [1000000000, 1]], 1000000000)",
+                        "([[1000000000, 0], [0, 1000000000]], 1000000000)",
+                        "([[1, 3], [2, 2], [4, 1]], 2)",
+                        "([[2, 1], [1, 1], [4, 1], [6, 1]], 2)",
+                        "([[5, 5], [1, 1], [9, 9], [3, 3]], 4)",
+                        "([[10, 0], [1, 0], [3, 0], [7, 0], [2, 0]], 4)",
+                        "([[1, 1], [3, 1], [3, 2], [6, 1]], 3)",
+                        "([[4, 0], [8, 0], [2, 0], [6, 0], [0, 0], [10, 0]], 2)",
+                        "([[10, 9], [3, 6], [6, 4], [2, 0], [13, 2], [17, 6], [12, 3], [5, 5]], 4)",
+                        "([[19, 0], [13, 1], [3, 0]], 10)",
+                        "([[0, 4], [2, 1], [16, 4], [12, 3], [3, 5]], 9)",
+                        "([[11, 5], [5, 8], [13, 7], [4, 9], [16, 6]], 6)",
+                        "([[8, 3], [1, 1], [14, 7], [15, 0], [3, 8], [9, 6], [18, 3], [10, 1]], 5)",
+                        "([[15, 8], [18, 5], [10, 6], [8, 4], [11, 5]], 4)",
+                        "([[16, 6], [6, 9], [3, 8]], 10)",
+                        "([[8, 2], [11, 9], [3, 7]], 5)"
+                    ]
+                },
+                "body": "        result = run_max_width_of_vertical_area(Solution, points)\n        assert_max_width_of_vertical_area(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_width_of_vertical_area, assert_max_width_of_vertical_area\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npoints: list[list[int]] = [[8, 7], [9, 9], [7, 4], [9, 7]]\nexpected: int = 1",
+    "playground_run": "result = run_max_width_of_vertical_area(Solution, points)\nresult",
+    "playground_assert": "assert_max_width_of_vertical_area(result, expected)"
+}

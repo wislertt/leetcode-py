@@ -1,0 +1,97 @@
+{
+    "problem_name": "design_underground_system",
+    "solution_class_name": "UndergroundSystem",
+    "problem_number": "1396",
+    "problem_title": "Design Underground System",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Design",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An underground railway system is keeping track of customer travel times between different stations. They are using this data to calculate the average time it takes to travel from one station to another.\n\nImplement the `UndergroundSystem` class:\n\n- `UndergroundSystem()` Initializes the object of the underground system.\n- `void checkIn(int id, string stationName, int t)` A customer with a card ID equal to `id`, checks in at the station `stationName` at time `t`. A customer can only be checked into one place at a time.\n- `void checkOut(int id, string stationName, int t)` A customer with a card ID equal to `id`, checks out from the station `stationName` at time `t`.\n- `double getAverageTime(string startStation, string endStation)` Returns the average time it takes to travel from `startStation` to `endStation`. The average time is computed from all the previous traveling times from `startStation` to `endStation` that happened **directly**, meaning a check in at `startStation` followed by a check out from `endStation`. The time it takes to travel from `startStation` to `endStation` **may be different** from the time it takes to travel from `endStation` to `startStation`. There will be at least one customer that has traveled from `startStation` to `endStation` before `getAverageTime` is called.\n\nYou may assume all calls to the `checkIn` and `checkOut` methods are consistent. If a customer checks in at time `t1` then checks out at time `t2`, then `t1 < t2`. All events happen in chronological order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"UndergroundSystem\",\"checkIn\",\"checkIn\",\"checkIn\",\"checkOut\",\"checkOut\",\"checkOut\",\"getAverageTime\",\"getAverageTime\",\"checkIn\",\"getAverageTime\",\"checkOut\",\"getAverageTime\"]\n[[],[45,\"Leyton\",3],[32,\"Paradise\",8],[27,\"Leyton\",10],[45,\"Waterloo\",15],[27,\"Waterloo\",20],[32,\"Cambridge\",22],[\"Paradise\",\"Cambridge\"],[\"Leyton\",\"Waterloo\"],[10,\"Leyton\",24],[\"Leyton\",\"Waterloo\"],[10,\"Waterloo\",38],[\"Leyton\",\"Waterloo\"]]\nOutput\n[null,null,null,null,null,null,null,14.00000,11.00000,null,11.00000,null,12.00000]\n```\n\n**Explanation:**\n```\nundergroundSystem.checkIn(45, \"Leyton\", 3);\nundergroundSystem.checkIn(32, \"Paradise\", 8);\nundergroundSystem.checkIn(27, \"Leyton\", 10);\nundergroundSystem.checkOut(45, \"Waterloo\", 15); // 15-3 = 12\nundergroundSystem.checkOut(27, \"Waterloo\", 20); // 20-10 = 10\nundergroundSystem.checkOut(32, \"Cambridge\", 22); // 22-8 = 14\nundergroundSystem.getAverageTime(\"Paradise\", \"Cambridge\"); // return 14.00000, (14) / 1 = 14\nundergroundSystem.getAverageTime(\"Leyton\", \"Waterloo\"); // return 11.00000, (10 + 12) / 2 = 11\nundergroundSystem.checkIn(10, \"Leyton\", 24);\nundergroundSystem.getAverageTime(\"Leyton\", \"Waterloo\"); // return 11.00000\nundergroundSystem.checkOut(10, \"Waterloo\", 38); // 38-24 = 14\nundergroundSystem.getAverageTime(\"Leyton\", \"Waterloo\"); // return 12.00000, (10 + 12 + 14) / 3 = 12\n```"
+            },
+            {
+                "content": "```\nInput\n[\"UndergroundSystem\",\"checkIn\",\"checkOut\",\"getAverageTime\",\"checkIn\",\"checkOut\",\"getAverageTime\",\"checkIn\",\"checkOut\",\"getAverageTime\"]\n[[],[10,\"Leyton\",3],[10,\"Paradise\",8],[\"Leyton\",\"Paradise\"],[5,\"Leyton\",10],[5,\"Paradise\",16],[\"Leyton\",\"Paradise\"],[2,\"Leyton\",21],[2,\"Paradise\",30],[\"Leyton\",\"Paradise\"]]\nOutput\n[null,null,null,5.00000,null,null,5.50000,null,null,6.66667]\n```\n\n**Explanation:**\n```\nundergroundSystem.checkIn(10, \"Leyton\", 3);\nundergroundSystem.checkOut(10, \"Paradise\", 8); // 8-3 = 5\nundergroundSystem.getAverageTime(\"Leyton\", \"Paradise\"); // return 5.00000, (5) / 1 = 5\nundergroundSystem.checkIn(5, \"Leyton\", 10);\nundergroundSystem.checkOut(5, \"Paradise\", 16); // 16-10 = 6\nundergroundSystem.getAverageTime(\"Leyton\", \"Paradise\"); // return 5.50000, (5 + 6) / 2 = 5.5\nundergroundSystem.checkIn(2, \"Leyton\", 21);\nundergroundSystem.checkOut(2, \"Paradise\", 30); // 30-21 = 9\nundergroundSystem.getAverageTime(\"Leyton\", \"Paradise\"); // return 6.66667, (5 + 6 + 9) / 3 = 6.66667\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= id, t <= 10^6`\n- `1 <= stationName.length, startStation.length, endStation.length <= 10`\n- All strings consist of uppercase and lowercase English letters and digits.\n- There will be at most `2 * 10^4` calls in total to `checkIn`, `checkOut`, and `getAverageTime`.\n- Answers within `10^-5` of the actual value will be accepted.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "underground_system_operations",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    system = None\n    results: list[float | None] = []\n    for i, op in enumerate(operations):\n        if op == 'UndergroundSystem':\n            system = solution_class()\n            results.append(None)\n        elif op == 'check_in' and system is not None:\n            system.check_in(*inputs[i])\n            results.append(None)\n        elif op == 'check_out' and system is not None:\n            system.check_out(*inputs[i])\n            results.append(None)\n        elif op == 'get_average_time' and system is not None:\n            results.append(system.get_average_time(inputs[i][0], inputs[i][1]))\n    return results, system",
+    "helpers_assert_name": "underground_system_operations",
+    "helpers_assert_signature": "(result: list[float | None], expected: list[float | None]) -> bool",
+    "helpers_assert_body": "    assert len(result) == len(expected)\n    for got, want in zip(result, expected, strict=True):\n        if got is None or want is None:\n            assert got == want\n        else:\n            assert abs(got - want) <= 1e-5\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_underground_system_operations, run_underground_system_operations\nfrom .solution import UndergroundSystem",
+    "test_content": "",
+    "test_class_name": "DesignUndergroundSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize underground system\n        pass"
+            },
+            {
+                "name": "check_in",
+                "signature": "(self, id: int, station_name: str, t: int) -> None",
+                "body": "        # TODO: Implement check_in\n        pass"
+            },
+            {
+                "name": "check_out",
+                "signature": "(self, id: int, station_name: str, t: int) -> None",
+                "body": "        # TODO: Implement check_out\n        pass"
+            },
+            {
+                "name": "get_average_time",
+                "signature": "(self, start_station: str, end_station: str) -> float",
+                "body": "        # TODO: Implement get_average_time\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_underground_system",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[float | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','check_in','get_average_time','check_out','get_average_time'],[[],[45,'Leyton',3],[32,'Paradise',8],[27,'Leyton',10],[45,'Waterloo',15],[27,'Waterloo',20],[32,'Cambridge',22],['Paradise','Cambridge'],['Leyton','Waterloo'],[10,'Leyton',24],['Leyton','Waterloo'],[10,'Waterloo',38],['Leyton','Waterloo']],[None,None,None,None,None,None,None,14.0,11.0,None,11.0,None,12.0])",
+                        "(['UndergroundSystem','check_in','check_out','get_average_time','check_in','check_out','get_average_time','check_in','check_out','get_average_time'],[[],[10,'Leyton',3],[10,'Paradise',8],['Leyton','Paradise'],[5,'Leyton',10],[5,'Paradise',16],['Leyton','Paradise'],[2,'Leyton',21],[2,'Paradise',30],['Leyton','Paradise']],[None,None,None,5.0,None,None,5.5,None,None,6.666666666666667])",
+                        "(['UndergroundSystem','check_in','check_out','get_average_time'],[[],[1,'A',5],[1,'B',12],['A','B']],[None,None,None,7.0])",
+                        "(['UndergroundSystem','check_in','check_out','get_average_time','check_in','check_out','get_average_time','get_average_time'],[[],[7,'Alpha',1],[7,'Beta',9],['Alpha','Beta'],[8,'Beta',20],[8,'Alpha',25],['Beta','Alpha'],['Alpha','Beta']],[None,None,None,8.0,None,None,5.0,8.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time'],[[],[100,'King',2],[101,'King',4],[102,'Cross',6],[100,'Park',22],[102,'Queen',30],[101,'Park',34],['King','Park'],['Cross','Queen']],[None,None,None,None,None,None,None,25.0,24.0])",
+                        "(['UndergroundSystem','check_in','check_out','check_in','check_out','get_average_time','get_average_time'],[[],[3,'North',10],[3,'South',40],[3,'East',50],[3,'West',65],['North','South'],['East','West']],[None,None,None,None,None,30.0,15.0])",
+                        "(['UndergroundSystem','check_in','check_out','get_average_time','get_average_time'],[[],[9,'One',100],[9,'Two',110],['One','Two'],['One','Two']],[None,None,None,10.0,10.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_out','check_out','get_average_time','check_in','check_out','get_average_time'],[[],[11,'S1',1],[12,'S1',2],[11,'S2',21],[12,'S2',22],['S1','S2'],[13,'S1',30],[13,'S2',45],['S1','S2']],[None,None,None,None,None,20.0,None,None,18.333333333333332])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time'],[[],[1,'St3',12],[2,'St3',17],[3,'St1',21],[1,'St1',23],[2,'St2',24],[3,'St0',26],['St3','St1'],['St3','St2'],['St1','St0'],[4,'St0',31],[5,'St3',36],[6,'St1',40],[4,'St1',45],[5,'St0',47],[6,'St2',51],['St3','St1'],['St3','St2'],['St1','St0'],['St0','St1'],['St3','St0'],['St1','St2']],[None,None,None,None,None,None,None,11.0,7.0,5.0,None,None,None,None,None,None,11.0,7.0,5.0,14.0,11.0,11.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time'],[[],[1,'St3',13],[2,'St2',16],[3,'St3',18],[1,'St2',19],[2,'St3',23],[3,'St1',28],['St3','St2'],['St2','St3'],['St3','St1'],[4,'St0',33],[5,'St1',38],[6,'St2',42],[4,'St2',44],[5,'St0',46],[6,'St1',51],['St3','St2'],['St2','St3'],['St3','St1'],['St0','St2'],['St1','St0'],['St2','St1']],[None,None,None,None,None,None,None,6.0,7.0,10.0,None,None,None,None,None,None,6.0,7.0,10.0,11.0,8.0,9.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time'],[[],[1,'St2',14],[2,'St1',17],[3,'St1',19],[1,'St1',21],[2,'St0',23],[3,'St2',28],['St2','St1'],['St1','St0'],['St1','St2'],[4,'St3',29],[5,'St0',31],[6,'St1',34],[4,'St2',35],[5,'St3',39],[6,'St2',41],['St2','St1'],['St1','St0'],['St1','St2'],['St3','St2'],['St0','St3']],[None,None,None,None,None,None,None,7.0,6.0,9.0,None,None,None,None,None,None,7.0,6.0,8.0,6.0,8.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time'],[[],[1,'St0',15],[2,'St1',20],[3,'St2',23],[1,'St3',26],[2,'St3',29],[3,'St3',33],['St0','St3'],['St1','St3'],['St2','St3'],[4,'St2',34],[5,'St2',36],[6,'St2',39],[4,'St1',42],[5,'St1',44],[6,'St0',45],['St0','St3'],['St1','St3'],['St2','St3'],['St2','St1'],['St2','St0']],[None,None,None,None,None,None,None,11.0,9.0,10.0,None,None,None,None,None,None,11.0,9.0,10.0,8.0,6.0])",
+                        "(['UndergroundSystem','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','check_in','check_in','check_in','check_out','check_out','check_out','get_average_time','get_average_time','get_average_time','get_average_time','get_average_time'],[[],[1,'St1',16],[2,'St0',17],[3,'St1',19],[1,'St0',20],[2,'St2',22],[3,'St0',24],['St1','St0'],['St0','St2'],[4,'St3',27],[5,'St2',30],[6,'St2',34],[4,'St1',37],[5,'St1',39],[6,'St3',42],['St1','St0'],['St0','St2'],['St3','St1'],['St2','St1'],['St2','St3']],[None,None,None,None,None,None,None,4.5,5.0,None,None,None,None,None,None,4.5,5.0,10.0,9.0,8.0])"
+                    ]
+                },
+                "body": "        result, _ = run_underground_system_operations(UndergroundSystem, operations, inputs)\n        assert_underground_system_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_underground_system_operations, run_underground_system_operations\nfrom solution import UndergroundSystem",
+    "playground_setup": "# Example test case\noperations = ['UndergroundSystem', 'check_in', 'check_in', 'check_in', 'check_out', 'check_out', 'check_out', 'get_average_time']\ninputs = [[], [45, 'Leyton', 3], [32, 'Paradise', 8], [27, 'Leyton', 10], [45, 'Waterloo', 15], [27, 'Waterloo', 20], [32, 'Cambridge', 22], ['Paradise', 'Cambridge']]\nexpected = [None, None, None, None, None, None, None, 14.0]",
+    "playground_run": "result, system = run_underground_system_operations(UndergroundSystem, operations, inputs)\nprint(result)\nsystem",
+    "playground_assert": "assert_underground_system_operations(result, expected)"
+}

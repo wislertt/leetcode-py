@@ -1,0 +1,109 @@
+{
+    "problem_name": "calculate_money_in_leetcode_bank",
+    "solution_class_name": "Solution",
+    "problem_number": "1716",
+    "problem_title": "Calculate Money in Leetcode Bank",
+    "difficulty": "Easy",
+    "topics": "Math",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Hercy wants to save money for his first car. He puts money in the Leetcode bank **every day**.\n\nHe starts by putting in `$1` on Monday, the first day. Every day from Tuesday to Sunday, he will put in `$1` more than the day before. On every subsequent Monday, he will put in `$1` more than the **previous Monday**.\n\nGiven `n`, return *the total amount of money he will have in the Leetcode bank at the end of the* `n^th` *day.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4\nOutput: 10\nExplanation: After the 4th day, the total is 1 + 2 + 3 + 4 = 10.\n```"
+            },
+            {
+                "content": "```\nInput: n = 10\nOutput: 37\nExplanation: After the 10th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4) = 37. Notice that on the 2nd Monday, Hercy only puts in $2.\n```"
+            },
+            {
+                "content": "```\nInput: n = 20\nOutput: 96\nExplanation: After the 20th day, the total is (1 + 2 + 3 + 4 + 5 + 6 + 7) + (2 + 3 + 4 + 5 + 6 + 7 + 8) + (3 + 4 + 5 + 6 + 7 + 8) = 96.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "total_money",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.total_money(n)",
+    "helpers_assert_name": "total_money",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_total_money, run_total_money\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CalculateMoneyInLeetcodeBank",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "total_money",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement total_money\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_total_money",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(4, 10)",
+                        "(10, 37)",
+                        "(20, 96)",
+                        "(1, 1)",
+                        "(2, 3)",
+                        "(3, 6)",
+                        "(5, 15)",
+                        "(6, 21)",
+                        "(7, 28)",
+                        "(8, 30)",
+                        "(9, 33)",
+                        "(13, 55)",
+                        "(14, 63)",
+                        "(15, 66)",
+                        "(21, 105)",
+                        "(26, 135)",
+                        "(27, 144)",
+                        "(28, 154)",
+                        "(29, 159)",
+                        "(49, 343)",
+                        "(50, 351)",
+                        "(51, 360)",
+                        "(100, 1060)",
+                        "(101, 1077)",
+                        "(500, 19602)",
+                        "(999, 74778)",
+                        "(1000, 74926)",
+                        "(23, 114)",
+                        "(46, 307)",
+                        "(63, 504)",
+                        "(70, 595)"
+                    ]
+                },
+                "body": "        result = run_total_money(Solution, n)\n        assert_total_money(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_total_money, assert_total_money\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nexpected = 10",
+    "playground_run": "result = run_total_money(Solution, n)\nresult",
+    "playground_assert": "assert_total_money(result, expected)"
+}

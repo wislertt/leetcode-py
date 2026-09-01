@@ -1,0 +1,96 @@
+{
+    "problem_name": "number_of_ways_to_form_a_target_string_given_a_dictionary",
+    "solution_class_name": "Solution",
+    "problem_number": "1639",
+    "problem_title": "Number of Ways to Form a Target String Given a Dictionary",
+    "difficulty": "Hard",
+    "topics": "Array, String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a list of strings of the same length `words` and a string `target`.\n\nYour task is to form `target` using the given `words` under the following rules:\n\n- `target` should be formed from left to right.\n- To form the `i`th character (0-indexed) of `target`, you can choose the `k`th character of the `j`th string in `words` if `target[i] = words[j][k]`.\n- Once you use the `k`th character of the `j`th string of `words`, you can no longer use the `x`th character of any string in `words` where `x <= k`. In other words, all characters to the left of or at index `k` become unusuable for every string.\n- Repeat the process until you form the string `target`.\n\nNotice that you can use multiple characters from the same string in `words` provided the conditions above are met.\n\nReturn the number of ways to form `target` from `words`. Since the answer may be too large, return it modulo `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"acca\",\"bbbb\",\"caca\"], target = \"aba\"\nOutput: 6\nExplanation: There are 6 ways to form target.\n- index 0 (acca), index 1 (bbbb), index 3 (caca)\n- index 0 (acca), index 2 (bbbb), index 3 (caca)\n- index 0 (acca), index 1 (bbbb), index 3 (acca)\n- index 0 (acca), index 2 (bbbb), index 3 (acca)\n- index 1 (caca), index 2 (bbbb), index 3 (acca)\n- index 1 (caca), index 2 (bbbb), index 3 (caca)\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"abba\",\"baab\"], target = \"bab\"\nOutput: 4\nExplanation: There are 4 ways to form target.\n- index 0 (baab), index 1 (baab), index 2 (abba)\n- index 0 (baab), index 1 (baab), index 3 (baab)\n- index 0 (baab), index 2 (baab), index 3 (baab)\n- index 1 (abba), index 2 (baab), index 3 (baab)\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 1000\n- 1 <= words[i].length <= 1000\n- All strings in `words` have the same length.\n- 1 <= target.length <= 1000\n- `words[i]` and `target` consist of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_ways",
+    "helpers_run_signature": "(solution_class: type, words: list[str], target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_ways(words, target)",
+    "helpers_assert_name": "num_ways",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_ways",
+                "signature": "(self, words: list[str], target: str) -> int",
+                "body": "        # TODO: Implement num_ways\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_ways, run_num_ways\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfWaysToFormATargetStringGivenADictionary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_ways",
+                "signature": "(self, words: list[str], target: str, expected: int)",
+                "parametrize": "words, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(['acca','bbbb','caca'],'aba',6)",
+                        "(['abba','baab'],'bab',4)",
+                        "(['a'],'a',1)",
+                        "(['a'],'b',0)",
+                        "(['ab'],'abc',0)",
+                        "(['ab','ba'],'ab',1)",
+                        "(['abc'],'abc',1)",
+                        "(['aaa','aaa'],'aa',12)",
+                        "(['abab','baba'],'ab',6)",
+                        "(['xy'],'xy',1)",
+                        "(['xyy','yyx'],'yx',3)",
+                        "(['abcd','abcd','abcd','abcd','abcd','abcd','abcd','abcd','abcd','abcd'],'abcd',10000)",
+                        "(['abc','abc','abc','abc','abc'],'cba',0)",
+                        "(['ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab','ab'],'ab',10000)",
+                        "(['b'],'b',1)",
+                        "(['bac','aab'],'ba',2)",
+                        "(['cccba','aaabc','babcc','accba'],'aaaba',24)",
+                        "(['c','c','a','b'],'c',2)",
+                        "(['aa','cc','ca'],'a',3)",
+                        "(['cb','aa'],'aa',1)",
+                        "(['abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij','abcdefghij'],'abcdefghij',999999937)"
+                    ]
+                },
+                "body": "        result = run_num_ways(Solution, words, target)\n        assert_num_ways(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_ways, assert_num_ways\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['acca', 'bbbb', 'caca']\ntarget = 'aba'\nexpected = 6",
+    "playground_run": "result = run_num_ways(Solution, words, target)\nresult",
+    "playground_assert": "assert_num_ways(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "final_prices_with_a_special_discount_in_a_shop",
+    "solution_class_name": "Solution",
+    "problem_number": "1475",
+    "problem_title": "Final Prices With a Special Discount in a Shop",
+    "difficulty": "Easy",
+    "topics": "Array, Stack, Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `prices` where `prices[i]` is the price of the `i<sup>th</sup>` item in a shop.\n\nThere is a special discount for items in the shop. If you buy the `i<sup>th</sup>` item, then you will receive a discount equivalent to `prices[j]` where `j` is the minimum index such that `j > i` and `prices[j] <= prices[i]`. Otherwise, you will not receive any discount at all.\n\nReturn an integer array `answer` where `answer[i]` is the final price you will pay for the `i<sup>th</sup>` item of the shop, considering the special discount.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: prices = [8,4,6,2,3]\nOutput: [4,2,4,2,3]\nExplanation: \nFor item 0 with price[0]=8 you will receive a discount equivalent to prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4.\nFor item 1 with price[1]=4 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2.\nFor item 2 with price[2]=6 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4.\nFor items 3 and 4 you will not receive any discount at all.\n```"
+            },
+            {
+                "content": "```\nInput: prices = [1,2,3,4,5]\nOutput: [1,2,3,4,5]\nExplanation: In this case, for all items, you will not receive any discount at all.\n```"
+            },
+            {
+                "content": "```\nInput: prices = [10,1,1,6]\nOutput: [9,0,1,6]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= prices.length <= 500`\n- `1 <= prices[i] <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "final_prices",
+    "helpers_run_signature": "(solution_class: type, prices: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.final_prices(prices)",
+    "helpers_assert_name": "final_prices",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_final_prices, run_final_prices\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FinalPricesWithASpecialDiscountInAShop",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "final_prices",
+                "signature": "(self, prices: list[int]) -> list[int]",
+                "body": "        # TODO: Implement final_prices\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_final_prices",
+                "signature": "(self, prices: list[int], expected: list[int])",
+                "parametrize": "prices, expected",
+                "test_cases": {
+                    "list": [
+                        "([8,4,6,2,3],[4,2,4,2,3])",
+                        "([1,2,3,4,5],[1,2,3,4,5])",
+                        "([10,1,1,6],[9,0,1,6])",
+                        "([1],[1])",
+                        "([1,1],[0,1])",
+                        "([5,4,3,2,1],[1,1,1,1,1])",
+                        "([1,2,3,2,1],[0,0,1,1,1])",
+                        "([10,10,10],[0,0,10])",
+                        "([1000,999],[1,999])",
+                        "([999,1000],[999,1000])",
+                        "([2,5,1,4],[1,4,1,4])",
+                        "([3,3,3,3],[0,0,0,3])",
+                        "([969,618,171,388,905],[351,447,171,388,905])",
+                        "([604,202,284,938,651,295,756,640,479,997,169,105,545,712],[402,33,115,287,356,126,116,161,310,828,64,105,545,712])",
+                        "([158,261,222,872,351,563,989,623,676,927,263,986,693,669,451,766,508,801],[158,39,222,521,88,300,366,360,413,664,263,293,24,218,451,258,508,801])",
+                        "([891,431,286,696,85],[460,145,201,611,85])",
+                        "([608,470,673,303,362],[138,167,370,303,362])",
+                        "([650,413,883,368,649,172,522,826,556,114,667,954,537,46,483,465,142],[237,45,515,196,477,58,408,270,442,68,130,417,491,46,18,323,142])",
+                        "([577,50,183,134,950,227,240,646,603,815,506,78,795,389,684],[527,50,49,56,723,149,162,43,97,309,428,78,406,389,684])",
+                        "([602,503,863,625,322,438,791,824,55,868,166,498,68],[99,181,238,303,267,383,736,769,55,702,98,430,68])"
+                    ]
+                },
+                "body": "        result = run_final_prices(Solution, prices)\n        assert_final_prices(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_final_prices, assert_final_prices\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nprices = [8, 4, 6, 2, 3]\nexpected = [4, 2, 4, 2, 3]",
+    "playground_run": "result = run_final_prices(Solution, prices)\nresult",
+    "playground_assert": "assert_final_prices(result, expected)"
+}

@@ -1,0 +1,100 @@
+{
+    "problem_name": "minimum_deletions_to_make_character_frequencies_unique",
+    "solution_class_name": "Solution",
+    "problem_number": "1647",
+    "problem_title": "Minimum Deletions to Make Character Frequencies Unique",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A string `s` is called **good** if there are no two different characters in `s` that have the same **frequency**.\n\nGiven a string `s`, return the minimum number of characters you need to delete to make `s` **good**.\n\nThe **frequency** of a character in a string is the number of times it appears in the string. For example, in the string `\"aab\"`, the **frequency** of `'a'` is `2`, while the **frequency** of `'b'` is `1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aab\"\nOutput: 0\nExplanation: s is already good.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaabbbcc\"\nOutput: 2\nExplanation: You can delete two 'b's resulting in the good string \"aaabcc\".\nAnother way it to delete one 'b' and one 'c' resulting in the good string \"aaabbc\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ceabaacb\"\nOutput: 2\nExplanation: You can delete both 'c's resulting in the good string \"eabaab\".\nNote that we only care about characters that are still in the string at the end (i.e. frequency of 0 is ignored).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s contains only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_deletions",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_deletions(s)",
+    "helpers_assert_name": "min_deletions",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_deletions, run_min_deletions\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumDeletionsToMakeCharacterFrequenciesUnique",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_deletions",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement min_deletions\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_deletions",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aab', 0)",
+                        "('aaabbbcc', 2)",
+                        "('ceabaacb', 2)",
+                        "('abcde', 4)",
+                        "('a', 0)",
+                        "('bb', 0)",
+                        "('aabbcc', 3)",
+                        "('abcabc', 3)",
+                        "('aabb', 1)",
+                        "('aaabbb', 1)",
+                        "('abbcccdddd', 0)",
+                        "('abcdefghij', 9)",
+                        "('aabbccdd', 5)",
+                        "('zzzzyyyyxxxx', 3)",
+                        "('oinclabovhnphne', 9)",
+                        "('hztiqq', 3)",
+                        "('zlzt', 1)",
+                        "('bddcqxunzpeulhnsbrgjvata', 21)",
+                        "('qbl', 2)",
+                        "('pwjewoext', 6)",
+                        "('njlqhsgxlkni', 9)",
+                        "('bpivowjyktgfdyddnrw', 13)"
+                    ]
+                },
+                "body": "        result = run_min_deletions(Solution, s)\n        assert_min_deletions(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_deletions, assert_min_deletions\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aaabbbcc'\nexpected = 2",
+    "playground_run": "result = run_min_deletions(Solution, s)\nresult",
+    "playground_assert": "assert_min_deletions(result, expected)"
+}

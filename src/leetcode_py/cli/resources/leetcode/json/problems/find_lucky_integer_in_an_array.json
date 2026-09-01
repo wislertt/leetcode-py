@@ -1,0 +1,105 @@
+{
+    "problem_name": "find_lucky_integer_in_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "1394",
+    "problem_title": "Find Lucky Integer in an Array",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of integers `arr`, a **lucky integer** is an integer that has a frequency in the array equal to its value.\n\nReturn *the largest **lucky integer** in the array*. If there is no **lucky integer** return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [2,2,3,4]\nOutput: 2\nExplanation: The only lucky number in the array is 2 because frequency[2] == 2.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,2,2,3,3,3]\nOutput: 3\nExplanation: 1, 2 and 3 are all lucky numbers, return the largest of them.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [2,2,2,3,3]\nOutput: -1\nExplanation: There are no lucky numbers in the array.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 500\n- 1 <= arr[i] <= 500",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_lucky",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_lucky(arr)",
+    "helpers_assert_name": "find_lucky",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_lucky, run_find_lucky\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindLuckyIntegerInAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_lucky",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement find_lucky\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_lucky",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 2, 3, 4], 2)",
+                        "([1, 2, 2, 3, 3, 3], 3)",
+                        "([2, 2, 2, 3, 3], -1)",
+                        "([1], 1)",
+                        "([5], -1)",
+                        "([2, 2], 2)",
+                        "([1, 1], -1)",
+                        "([3, 3, 3], 3)",
+                        "([4, 4, 4, 4], 4)",
+                        "([7, 7, 7, 7, 7, 7, 7], 7)",
+                        "([1, 1, 2, 2, 2], -1)",
+                        "([1, 2, 2, 1], 2)",
+                        "([4, 5, 5], -1)",
+                        "([1, 1, 2, 2, 2, 2], -1)",
+                        "([10, 10, 10, 10, 10, 10, 10, 10, 10, 10], 10)",
+                        "([1, 3, 3, 3, 5, 5, 5, 5, 5], 5)",
+                        "([1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,500,500,500,500],31)",
+                        "([2, 4, 3, 3, 1, 1, 3], 3)",
+                        "([4, 2, 5, 3, 2, 5], 2)",
+                        "([6, 6, 1, 4, 2, 1], -1)",
+                        "([4, 3, 5, 2, 6, 1, 5], 1)",
+                        "([5, 2, 1], 1)",
+                        "([6, 4, 4, 1, 3, 5, 3, 1], -1)",
+                        "([2, 1, 4, 6, 1, 6, 6], -1)",
+                        "([1, 4, 5, 5, 6, 6, 5, 6], 1)",
+                        "([3, 2], -1)",
+                        "([4], -1)"
+                    ]
+                },
+                "body": "        result = run_find_lucky(Solution, arr)\n        assert_find_lucky(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_lucky, assert_find_lucky\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [2, 2, 3, 4]\nexpected = 2",
+    "playground_run": "result = run_find_lucky(Solution, arr)\nresult",
+    "playground_assert": "assert_find_lucky(result, expected)"
+}

@@ -1,0 +1,102 @@
+{
+    "problem_name": "make_the_string_great",
+    "solution_class_name": "Solution",
+    "problem_number": "1544",
+    "problem_title": "Make The String Great",
+    "difficulty": "Easy",
+    "topics": "String, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` of lower and upper case English letters.\n\nA good string is a string which doesn't have **two adjacent characters** `s[i]` and `s[i + 1]` where:\n\n- `0 <= i <= s.length - 2`\n- `s[i]` is a lower-case letter and `s[i + 1]` is the same letter but in upper-case or **vice-versa**.\n\nTo make the string good, you can choose **two adjacent** characters that make the string bad and remove them. You can keep doing this until the string becomes good.\n\nReturn *the string* after making it good. The answer is guaranteed to be unique under the given constraints.\n\n**Notice** that an empty string is also good.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"leEeetcode\"\nOutput: \"leetcode\"\n```\n**Explanation:** In the first step, either you choose i = 1 or i = 2, both will result \"leEeetcode\" to be reduced to \"leetcode\"."
+            },
+            {
+                "content": "```\nInput: s = \"abBAcC\"\nOutput: \"\"\n```\n**Explanation:** We have many possible scenarios, and all lead to the same answer. For example:\n\"abBAcC\" --> \"aAcC\" --> \"cC\" --> \"\"\n\"abBAcC\" --> \"abBA\" --> \"aA\" --> \"\""
+            },
+            {
+                "content": "```\nInput: s = \"s\"\nOutput: \"s\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 100`\n- `s` contains only lower and upper case English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "make_good",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.make_good(s)",
+    "helpers_assert_name": "make_good",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_make_good, run_make_good\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MakeTheStringGreat",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "make_good",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement make_good\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_make_good",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('leEeetcode', 'leetcode')",
+                        "('abBAcC', '')",
+                        "('s', 's')",
+                        "('Pp', '')",
+                        "('aA', '')",
+                        "('Aa', '')",
+                        "('ab', 'ab')",
+                        "('aAbB', '')",
+                        "('RrLl', '')",
+                        "('McBfD', 'McBfD')",
+                        "('hSbBmmOOoP', 'hSmmOP')",
+                        "('qFxXfqqqQjjg', 'qqqjjg')",
+                        "('mC', 'mC')",
+                        "('kkkcAACc', 'kkkcAA')",
+                        "('ZzYyXxWwVvUu', '')",
+                        "('SSKkaYP', 'SSaYP')",
+                        "('DXpI', 'DXpI')",
+                        "('BurwxLox', 'BurwxLox')",
+                        "('WxivMPwhSLltjVa', 'WxivMPwhStjVa')",
+                        "('PmTNYlSSQd', 'PmTNYlSSQd')",
+                        "('vMuYO', 'vMuYO')",
+                        "('nDkKSmdjYzWbGyzUbS', 'nDSmdjYzWbGyzUbS')",
+                        "('FxrgexHxpuYE', 'FxrgexHxpuYE')",
+                        "('fnsSsQjuZXeMXMFT', 'fnsQjuZXeMXMFT')"
+                    ]
+                },
+                "body": "        result = run_make_good(Solution, s)\n        assert_make_good(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_make_good, assert_make_good\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leEeetcode'\nexpected = 'leetcode'",
+    "playground_run": "result = run_make_good(Solution, s)\nresult",
+    "playground_assert": "assert_make_good(result, expected)"
+}

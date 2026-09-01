@@ -1,0 +1,100 @@
+{
+    "problem_name": "construct_k_palindrome_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "1400",
+    "problem_title": "Construct K Palindrome Strings",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Greedy, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` and an integer `k`, return `true` if you can use all the characters in `s` to construct **non-empty** `k` palindrome strings or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"annabelle\", k = 2\nOutput: true\n```\n**Explanation:** You can construct two palindromes using all characters in `s`. Some possible constructions `\"anna\" + \"elble\"`, `\"anbna\" + \"elle\"`, `\"anellena\" + \"b\"`."
+            },
+            {
+                "content": "```\nInput: s = \"leetcode\", k = 3\nOutput: false\n```\n**Explanation:** It is impossible to construct 3 palindromes using all the characters of `s`."
+            },
+            {
+                "content": "```\nInput: s = \"true\", k = 4\nOutput: true\n```\n**Explanation:** The only possible solution is to put each character in a separate string."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `s` consists of lowercase English letters.\n- `1 <= k <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_construct",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_construct(s, k)",
+    "helpers_assert_name": "can_construct",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_construct, run_can_construct\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructKPalindromeStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_construct",
+                "signature": "(self, s: str, k: int) -> bool",
+                "body": "        # TODO: Implement can_construct\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_construct",
+                "signature": "(self, s: str, k: int, expected: bool)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('annabelle', 2, True)",
+                        "('leetcode', 3, False)",
+                        "('true', 4, True)",
+                        "('a', 1, True)",
+                        "('ab', 1, False)",
+                        "('ab', 2, True)",
+                        "('aa', 1, True)",
+                        "('aaa', 1, True)",
+                        "('abc', 3, True)",
+                        "('abc', 2, False)",
+                        "('aabb', 1, True)",
+                        "('aabbcc', 2, True)",
+                        "('abcde', 5, True)",
+                        "('abcde', 4, False)",
+                        "('aaaa', 3, True)",
+                        "('aaaa', 4, True)",
+                        "('abcabc', 3, True)",
+                        "('racecar', 1, True)",
+                        "('ccb', 3, True)",
+                        "('ddadbadcbaba', 8, True)",
+                        "('bbaccac', 7, True)",
+                        "('cddaaccd', 7, True)"
+                    ]
+                },
+                "body": "        result = run_can_construct(Solution, s, k)\n        assert_can_construct(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_construct, assert_can_construct\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'annabelle'\nk = 2\nexpected = True",
+    "playground_run": "result = run_can_construct(Solution, s, k)\nresult",
+    "playground_assert": "assert_can_construct(result, expected)"
+}

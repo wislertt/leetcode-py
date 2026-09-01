@@ -1,0 +1,91 @@
+{
+    "problem_name": "seat_reservation_manager",
+    "solution_class_name": "SeatManager",
+    "problem_number": "1845",
+    "problem_title": "Seat Reservation Manager",
+    "difficulty": "Medium",
+    "topics": "Design, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a system that manages the reservation state of `n` seats that are numbered from `1` to `n`.\n\nImplement the `SeatManager` class:\n\n- `SeatManager(int n)` Initializes a `SeatManager` object that will manage `n` seats numbered from `1` to `n`. All seats are initially available.\n- `int reserve()` Fetches the **smallest-numbered** unreserved seat, reserves it, and returns its number.\n- `void unreserve(int seatNumber)` Unreserves the seat with the given `seatNumber`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"SeatManager\", \"reserve\", \"reserve\", \"unreserve\", \"reserve\", \"reserve\", \"reserve\", \"reserve\", \"unreserve\"]\n[[5], [], [], [2], [], [], [], [], [5]]\nOutput\n[null, 1, 2, null, 2, 3, 4, 5, null]\n\nExplanation\nSeatManager seatManager = new SeatManager(5); // Initializes a SeatManager with 5 seats.\nseatManager.reserve();    // All seats are available, so return the lowest numbered seat, which is 1.\nseatManager.reserve();    // The available seats are [2,3,4,5], so return the lowest of them, which is 2.\nseatManager.unreserve(2); // Unreserve seat 2, so now the available seats are [2,3,4,5].\nseatManager.reserve();    // The available seats are [2,3,4,5], so return the lowest of them, which is 2.\nseatManager.reserve();    // The available seats are [3,4,5], so return the lowest of them, which is 3.\nseatManager.reserve();    // The available seats are [4,5], so return the lowest of them, which is 4.\nseatManager.reserve();    // The only available seat is seat 5, so return 5.\nseatManager.unreserve(5); // Unreserve seat 5, so now the available seats are [5].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 10^5`\n- `1 <= seatNumber <= n`\n- For each call to `reserve`, it is guaranteed that there will be at least one unreserved seat.\n- For each call to `unreserve`, it is guaranteed that `seatNumber` will be reserved.\n- At most `10^5` calls in total will be made to `reserve` and `unreserve`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "seat_reservation_manager",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    manager = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'SeatManager':\n            manager = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'reserve' and manager is not None:\n            results.append(manager.reserve())\n        elif op == 'unreserve' and manager is not None:\n            manager.unreserve(inputs[i][0])\n            results.append(None)\n    return results, manager",
+    "helpers_assert_name": "seat_reservation_manager",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_seat_reservation_manager, run_seat_reservation_manager\nfrom .solution import SeatManager",
+    "test_content": "",
+    "test_class_name": "SeatManager",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, n: int) -> None",
+                "body": "        # TODO: Initialize seat manager\n        pass"
+            },
+            {
+                "name": "reserve",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement reserve\n        return 0"
+            },
+            {
+                "name": "unreserve",
+                "signature": "(self, seat_number: int) -> None",
+                "body": "        # TODO: Implement unreserve\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_seat_reservation_manager",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['SeatManager','reserve','reserve','unreserve','reserve','reserve','reserve','reserve','unreserve'],[[5],[],[],[2],[],[],[],[],[5]],[None,1,2,None,2,3,4,5,None])",
+                        "(['SeatManager','reserve'],[[1],[]],[None,1])",
+                        "(['SeatManager','reserve','unreserve','reserve'],[[1],[],[1],[]],[None,1,None,1])",
+                        "(['SeatManager','reserve','unreserve','reserve','unreserve','reserve'],[[1],[],[1],[],[1],[]],[None,1,None,1,None,1])",
+                        "(['SeatManager','reserve','reserve','reserve'],[[3],[],[],[]],[None,1,2,3])",
+                        "(['SeatManager','reserve','reserve','unreserve','unreserve','reserve','reserve'],[[2],[],[],[1],[2],[],[]],[None,1,2,None,None,1,2])",
+                        "(['SeatManager','reserve','unreserve','reserve','unreserve','reserve','reserve','reserve'],[[4],[],[1],[],[1],[],[],[]],[None,1,None,1,None,1,2,3])",
+                        "(['SeatManager','reserve','reserve','reserve','unreserve','unreserve','reserve','reserve','reserve'],[[5],[],[],[],[3],[1],[],[],[]],[None,1,2,3,None,None,1,3,4])",
+                        "(['SeatManager','reserve','reserve','unreserve','reserve','unreserve','reserve','reserve'],[[3],[],[],[1],[],[2],[],[]],[None,1,2,None,1,None,2,3])",
+                        "(['SeatManager','reserve','reserve','unreserve','unreserve','reserve','reserve','reserve','reserve','reserve'],[[6],[],[],[2],[1],[],[],[],[],[]],[None,1,2,None,None,1,2,3,4,5])",
+                        "(['SeatManager','reserve','reserve','unreserve','reserve','unreserve','reserve'],[[2],[],[],[1],[],[2],[]],[None,1,2,None,1,None,2])",
+                        "(['SeatManager','reserve','reserve','reserve','reserve','reserve','unreserve','reserve'],[[5],[],[],[],[],[],[5],[]],[None,1,2,3,4,5,None,5])",
+                        "(['SeatManager','reserve','reserve','reserve','unreserve','reserve','unreserve','reserve','reserve'],[[7],[],[],[],[2],[],[3],[],[]],[None,1,2,3,None,2,None,3,4])",
+                        "(['SeatManager','reserve','reserve','unreserve','unreserve','reserve','unreserve','reserve'],[[4],[],[],[1],[2],[],[1],[]],[None,1,2,None,None,1,None,1])",
+                        "(['SeatManager','reserve','reserve','reserve','unreserve','unreserve','unreserve','reserve','reserve','reserve','reserve'],[[5],[],[],[],[3],[2],[1],[],[],[],[]],[None,1,2,3,None,None,None,1,2,3,4])"
+                    ]
+                },
+                "body": "        result, _ = run_seat_reservation_manager(SeatManager, operations, inputs)\n        assert_seat_reservation_manager(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_seat_reservation_manager, assert_seat_reservation_manager\nfrom solution import SeatManager",
+    "playground_setup": "# Example test case\noperations = ['SeatManager', 'reserve', 'reserve', 'unreserve', 'reserve', 'reserve', 'reserve', 'reserve', 'unreserve']\ninputs = [[5], [], [], [2], [], [], [], [], [5]]\nexpected = [None, 1, 2, None, 2, 3, 4, 5, None]",
+    "playground_run": "result, manager = run_seat_reservation_manager(SeatManager, operations, inputs)\nprint(result)\nmanager",
+    "playground_assert": "assert_seat_reservation_manager(result, expected)"
+}

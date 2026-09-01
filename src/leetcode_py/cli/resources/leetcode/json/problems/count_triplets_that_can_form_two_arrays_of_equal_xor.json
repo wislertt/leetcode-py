@@ -1,0 +1,92 @@
+{
+    "problem_name": "count_triplets_that_can_form_two_arrays_of_equal_xor",
+    "solution_class_name": "Solution",
+    "problem_number": "1442",
+    "problem_title": "Count Triplets That Can Form Two Arrays of Equal XOR",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Bit Manipulation, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of integers `arr`.\n\nWe want to select three indices `i`, `j` and `k` where `(0 <= i < j <= k < arr.length)`.\n\nLet's define `a` and `b` as follows:\n\n- `a = arr[i] ^ arr[i + 1] ^ ... ^ arr[j - 1]`\n- `b = arr[j] ^ arr[j + 1] ^ ... ^ arr[k]`\n\nNote that `^` denotes the **bitwise-xor** operation.\n\nReturn *the number of triplets* (`i`, `j` and `k`) Where `a == b`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [2,3,1,6,7]\nOutput: 4\nExplanation: The triplets are (0,1,2), (0,2,2), (2,3,4) and (2,4,4)\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,1,1,1,1]\nOutput: 10\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 300`\n- `1 <= arr[i] <= 10^8`",
+    "readme_additional": "**Follow up:** Can you solve it in `O(n)` time?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_triplets",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_triplets(arr)",
+    "helpers_assert_name": "count_triplets",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_triplets, run_count_triplets\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountTripletsThatCanFormTwoArraysOfEqualXor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_triplets",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement count_triplets\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_triplets",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 3, 1, 6, 7], 4)",
+                        "([1, 1, 1, 1, 1], 10)",
+                        "([1], 0)",
+                        "([2, 2], 1)",
+                        "([1, 1], 1)",
+                        "([1, 2, 3], 2)",
+                        "([4, 4, 4], 2)",
+                        "([1, 2, 1], 0)",
+                        "([2, 3, 1, 6, 7, 7], 5)",
+                        "([6, 6, 6, 6], 6)",
+                        "([1, 100000000, 100000000, 1], 4)",
+                        "([3, 5, 3, 5, 3, 5], 9)",
+                        "([1, 1, 2, 2, 1], 8)",
+                        "([1, 9, 11, 5, 2, 4, 4, 11], 6)",
+                        "([2, 8, 10, 1, 11, 3], 4)",
+                        "([8, 10, 4, 8, 10, 9], 0)",
+                        "([2, 5, 9, 5, 5, 12, 4, 4], 12)"
+                    ]
+                },
+                "body": "        result = run_count_triplets(Solution, arr)\n        assert_count_triplets(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_triplets, assert_count_triplets\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [2, 3, 1, 6, 7]\nexpected = 4",
+    "playground_run": "result = run_count_triplets(Solution, arr)\nresult",
+    "playground_assert": "assert_count_triplets(result, expected)"
+}

@@ -1,0 +1,111 @@
+{
+    "problem_name": "count_of_matches_in_tournament",
+    "solution_class_name": "Solution",
+    "problem_number": "1688",
+    "problem_title": "Count of Matches in Tournament",
+    "difficulty": "Easy",
+    "topics": "Math, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer `n`, the number of teams in a tournament that has strange rules:\n\n- If the current number of teams is **even**, each team gets paired with another team. A total of `n / 2` matches are played, and `n / 2` teams advance to the next round.\n- If the current number of teams is **odd**, one team randomly advances in the tournament, and the rest gets paired. A total of `(n - 1) / 2` matches are played, and `(n - 1) / 2 + 1` teams advance to the next round.\n\nReturn *the number of matches played in the tournament until a winner is decided.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 7\nOutput: 6\nExplanation: Details of the tournament: \n- 1st Round: Teams = 7, Matches = 3, and 4 teams advance.\n- 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.\n- 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.\nTotal number of matches = 3 + 2 + 1 = 6.\n```"
+            },
+            {
+                "content": "```\nInput: n = 14\nOutput: 13\nExplanation: Details of the tournament:\n- 1st Round: Teams = 14, Matches = 7, and 7 teams advance.\n- 2nd Round: Teams = 7, Matches = 3, and 4 teams advance.\n- 3rd Round: Teams = 4, Matches = 2, and 2 teams advance.\n- 4th Round: Teams = 2, Matches = 1, and 1 team is declared the winner.\nTotal number of matches = 7 + 3 + 2 + 1 = 13.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 200`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "number_of_matches",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.number_of_matches(n)",
+    "helpers_assert_name": "number_of_matches",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_number_of_matches, run_number_of_matches\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountOfMatchesInTournament",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "number_of_matches",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement number_of_matches\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_number_of_matches",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 0)",
+                        "(2, 1)",
+                        "(3, 2)",
+                        "(4, 3)",
+                        "(5, 4)",
+                        "(6, 5)",
+                        "(7, 6)",
+                        "(8, 7)",
+                        "(9, 8)",
+                        "(10, 9)",
+                        "(11, 10)",
+                        "(12, 11)",
+                        "(13, 12)",
+                        "(14, 13)",
+                        "(15, 14)",
+                        "(16, 15)",
+                        "(17, 16)",
+                        "(18, 17)",
+                        "(19, 18)",
+                        "(20, 19)",
+                        "(21, 20)",
+                        "(22, 21)",
+                        "(23, 22)",
+                        "(24, 23)",
+                        "(25, 24)",
+                        "(26, 25)",
+                        "(27, 26)",
+                        "(28, 27)",
+                        "(29, 28)",
+                        "(30, 29)",
+                        "(50, 49)",
+                        "(100, 99)",
+                        "(101, 100)",
+                        "(150, 149)",
+                        "(199, 198)",
+                        "(200, 199)"
+                    ]
+                },
+                "body": "        result = run_number_of_matches(Solution, n)\n        assert_number_of_matches(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_number_of_matches, assert_number_of_matches\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 7\nexpected = 6",
+    "playground_run": "result = run_number_of_matches(Solution, n)\nresult",
+    "playground_assert": "assert_number_of_matches(result, expected)"
+}

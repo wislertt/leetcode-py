@@ -1,0 +1,115 @@
+{
+    "problem_name": "minimum_number_of_days_to_disconnect_island",
+    "solution_class_name": "Solution",
+    "problem_number": "1568",
+    "problem_title": "Minimum Number of Days to Disconnect Island",
+    "difficulty": "Hard",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Matrix, Strongly Connected Component, Articulation Point",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` binary grid `grid` where `1` represents land and `0` represents water. An **island** is a maximal 4-directionally (horizontal or vertical) connected group of `1`s.\n\nThe grid is said to be **connected** if we have **exactly one island**, otherwise is said **disconnected**.\n\nIn one day, we are allowed to change **any** single land cell `(1)` into a water cell `(0)`.\n\nReturn *the minimum number of days to disconnect the grid*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/12/24/land1.jpg)\n\n```\nInput: grid = [[0,1,1,0],[0,1,1,0],[0,0,0,0]]\nOutput: 2\nExplanation: We need at least 2 days to get a disconnected grid.\nChange land grid[1][1] and grid[0][2] to water and get 2 disconnected island.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/12/24/land2.jpg)\n\n```\nInput: grid = [[1,1]]\nOutput: 2\nExplanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 islands.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 30\n- grid[i][j] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_days",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_days(grid)",
+    "helpers_assert_name": "min_days",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_days, run_min_days\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfDaysToDisconnectIsland",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_days",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_days\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_days",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1,1,0],[0,1,1,0],[0,0,0,0]],2)",
+                        "([[1,1]],2)",
+                        "([[1]],1)",
+                        "([[0]],0)",
+                        "([[0,0],[0,0]],0)",
+                        "([[1,0],[0,1]],0)",
+                        "([[1,1],[1,1]],2)",
+                        "([[1,0,0],[0,0,1]],0)",
+                        "([[1,1,1],[1,1,1],[1,1,1]],2)",
+                        "([[1,0,1,0,1]],0)",
+                        "([[1],[1],[1]],1)",
+                        "([[1,1,0],[0,0,0],[0,1,1]],0)",
+                        "([[1,0,0,1],[0,0,0,0],[1,0,0,1]],0)",
+                        "([[1,1,1,1]],1)",
+                        "([[1,0,0,0,1],[1,0,0,0,1]],0)",
+                        "([[0,0,1],[0,1,1],[1,1,0]],1)",
+                        "([[0,0,1,1],[1,0,0,1],[1,1,0,0],[0,0,0,1]],0)",
+                        "([[1,1,0,0],[0,1,0,0],[0,1,0,1],[1,1,0,1]],0)",
+                        "([[0,0],[0,0],[1,0],[1,1]],1)",
+                        "([[0,1,0],[1,1,0],[0,0,0]],1)",
+                        "([[0],[1],[1],[1]],1)",
+                        "([[1,1,0,1,0]],0)",
+                        "([[1],[1],[1],[1]],1)",
+                        "([[0,0,0],[1,0,0],[1,0,1],[1,0,1],[0,1,0]],0)",
+                        "([[1,0,1,1,1],[1,0,1,0,0]],0)",
+                        "([[0,0,0,0,1]],1)",
+                        "([[0],[1],[1]],2)",
+                        "([[1],[1],[0],[1]],0)",
+                        "([[1],[0]],1)",
+                        "([[1,1,1],[1,1,0]],1)",
+                        "([[1,1,0,1],[1,1,1,1],[0,0,0,1],[1,0,0,1]],0)",
+                        "([[0,1,1,0]],2)",
+                        "([[0,1]],1)",
+                        "([[1],[1],[1]],1)",
+                        "([[1,0],[0,0],[1,1],[0,0],[0,0]],0)",
+                        "([[1,0],[1,1],[0,1],[0,1],[0,0]],1)",
+                        "([[0],[1],[0],[0],[0]],1)",
+                        "([[1,0,0],[0,0,0],[1,1,0]],0)",
+                        "([[1,1],[1,1]],2)",
+                        "([[0,0,1],[1,0,0]],0)"
+                    ]
+                },
+                "body": "        result = run_min_days(Solution, grid)\n        assert_min_days(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_days, assert_min_days\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]\nexpected = 2",
+    "playground_run": "result = run_min_days(Solution, grid)\nresult",
+    "playground_assert": "assert_min_days(result, expected)"
+}
