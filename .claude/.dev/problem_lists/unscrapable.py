@@ -139,23 +139,21 @@ UNSCRAPABLE_HANDLED = [
     (1102, "path-with-maximum-minimum-value"),
     (1120, "maximum-average-subtree"),
     (1121, "divide-array-into-increasing-sequences"),
-]
-
-# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
-# problem is created; append new discoveries at the bottom.
-UNSCRAPABLE_QUEUE = [
     (1133, "largest-unique-number"),
     (1134, "armstrong-number"),
-    (1135, "lowest-common-ancestor-of-deepest-leaves"),
+    (1135, "connecting-cities-with-minimum-cost"),
     (1136, "parallel-courses"),
-    (1141, "user-activity-for-the-past-30-days-i"),
-    (1142, "user-activity-for-the-past-30-days-ii"),
     (1150, "check-if-a-number-is-majority-element-in-a-sorted-array"),
     (1152, "analyze-user-website-visit-pattern"),
     (1165, "single-row-keyboard"),
     (1166, "design-file-system"),
     (1167, "minimum-cost-to-connect-sticks"),
-    (1168, "minimum-cost-to-cut-sticks"),
+    (1168, "optimize-water-distribution-in-a-village"),
+]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = [
     (1180, "count-substrings-with-only-one-distinct-letter"),
     (1183, "maximum-number-of-ones"),
     (1196, "how-many-apples-can-you-put-into-the-basket"),
@@ -173,7 +171,6 @@ UNSCRAPABLE_QUEUE = [
     (1244, "design-a-leaderboard"),
     (1245, "tree-diameter"),
     (1246, "palindrome-removal"),
-    (1251, "average-selling-price"),
     (1258, "smallest-common-region"),
     (1259, "hands-on-straights"),
     (1272, "remove-interval"),
@@ -196,7 +193,6 @@ UNSCRAPABLE_QUEUE = [
     (1836, "remove-duplicates-from-an-unsorted-linked-list"),
     (1279, "traffic-light-controlled-intersection"),
     (1265, "print-immutable-linked-list-in-reverse"),
-    (1270, "all-people-report-to-the-given-manager"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
@@ -209,6 +205,10 @@ NON_PYTHON_PROBLEMS = [
     (511, "game-play-analysis-i"),
     (512, "game-play-analysis-ii"),
     (550, "game-play-analysis-iv"),
+    (1141, "user-activity-for-the-past-30-days-i"),
+    (1142, "user-activity-for-the-past-30-days-ii"),
+    (1251, "average-selling-price"),
+    (1270, "all-people-report-to-the-given-manager"),
 ]
 
 

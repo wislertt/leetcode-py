@@ -1,0 +1,101 @@
+{
+    "problem_name": "parallel_courses",
+    "solution_class_name": "Solution",
+    "problem_number": "1136",
+    "problem_title": "Parallel Courses",
+    "difficulty": "Medium",
+    "topics": "Graph, Topological Sort",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer `n`, which indicates that there are `n` courses labeled from `1` to `n`. You are also given an array `relations` where `relations[i] = [prevCourse_i, nextCourse_i]`, representing a prerequisite relationship between course `prevCourse_i` and course `nextCourse_i`: course `prevCourse_i` has to be taken before course `nextCourse_i`.\n\nIn one semester, you can take **any number** of courses as long as you have taken all the prerequisites in the **previous** semester for the courses you are taking.\n\nReturn *the **minimum** number of semesters needed to take all courses*. If there is no way to take all the courses, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1100-1199/1136.Parallel%20Courses/images/course1graph.jpg)\n\n```\nInput: n = 3, relations = [[1,3],[2,3]]\nOutput: 2\n```\n**Explanation:** In the first semester, you can take courses 1 and 2. In the second semester, you can take course 3."
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1100-1199/1136.Parallel%20Courses/images/course2graph.jpg)\n\n```\nInput: n = 3, relations = [[1,2],[2,3],[3,1]]\nOutput: -1\n```\n**Explanation:** No course can be studied because they are prerequisites of each other."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 5000`\n- `1 <= relations.length <= 5000`\n- `relations[i].length == 2`\n- `1 <= prevCourse_i, nextCourse_i <= n`\n- `prevCourse_i != nextCourse_i`\n- All the pairs `[prevCourse_i, nextCourse_i]` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_semesters",
+    "helpers_run_signature": "(solution_class: type, n: int, relations: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_semesters(n, relations)",
+    "helpers_assert_name": "minimum_semesters",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_semesters, run_minimum_semesters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ParallelCourses",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_semesters",
+                "signature": "(self, n: int, relations: list[list[int]]) -> int",
+                "body": "        # TODO: Implement minimum_semesters\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_semesters",
+                "signature": "(self, n: int, relations: list[list[int]], expected: int)",
+                "parametrize": "n, relations, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, [[1, 3],[2, 3]], 2)",
+                        "(3, [[1, 2],[2, 3],[3, 1]], -1)",
+                        "(2, [[1, 2]], 2)",
+                        "(2, [[2, 1]], 2)",
+                        "(4, [[1, 2],[2, 3],[3, 4]], 4)",
+                        "(4, [[1, 3],[1, 4],[2, 3],[2, 4]], 2)",
+                        "(3, [[1, 2],[2, 3]], 3)",
+                        "(5, [[2, 1],[3, 1],[4, 1],[1, 5]], 3)",
+                        "(4, [[1, 2],[1, 3],[3, 4],[2, 4]], 3)",
+                        "(5, [[1, 2],[1, 3],[2, 4],[3, 5],[4, 5]], 4)",
+                        "(6, [[1, 2],[1, 3],[2, 4],[3, 5],[4, 6],[5, 6]], 4)",
+                        "(4, [[1, 2],[2, 3],[3, 1]], -1)",
+                        "(5, [[1, 2],[3, 4],[2, 3]], 4)",
+                        "(6, [[1, 3],[2, 3],[3, 4],[5, 6],[4, 5]], 5)",
+                        "(3, [[2, 1],[3, 2]], 3)",
+                        "(7, [[1, 2],[1, 3],[2, 4],[3, 4],[4, 5],[5, 6],[5, 7]], 5)",
+                        "(4, [[1, 2],[1, 4],[3, 4]], 2)",
+                        "(6, [[3, 4]], 2)",
+                        "(4, [[1, 2],[1, 3],[1, 4],[2, 3],[2, 4],[3, 4]], 4)",
+                        "(3, [[1, 2],[1, 3],[2, 3]], 3)",
+                        "(4, [[3, 4]], 2)",
+                        "(6, [[1, 2],[1, 5],[2, 3],[2, 6],[3, 5],[5, 6]], 5)",
+                        "(3, [[1, 2],[2, 1],[3, 1],[3, 2]], -1)",
+                        "(6, [[1, 2],[1, 3],[1, 5],[2, 4],[3, 5],[5, 1],[5, 6],[6, 5]], -1)",
+                        "(5, [[1, 3],[1, 5],[2, 1],[2, 4],[3, 5],[4, 2],[4, 3],[5, 4]], -1)",
+                        "(6, [[1, 3],[1, 4],[1, 5],[2, 1],[3, 6],[4, 3]], 5)"
+                    ]
+                },
+                "body": "        result = run_minimum_semesters(Solution, n, relations)\n        assert_minimum_semesters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_semesters, assert_minimum_semesters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nrelations = [[1, 3], [2, 3]]\nexpected = 2",
+    "playground_run": "result = run_minimum_semesters(Solution, n, relations)\nresult",
+    "playground_assert": "assert_minimum_semesters(result, expected)"
+}

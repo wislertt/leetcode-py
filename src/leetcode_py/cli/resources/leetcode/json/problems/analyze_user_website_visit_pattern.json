@@ -1,0 +1,93 @@
+{
+    "problem_name": "analyze_user_website_visit_pattern",
+    "solution_class_name": "Solution",
+    "problem_number": "1152",
+    "problem_title": "Analyze User Website Visit Pattern",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two string arrays `username` and `website` and an integer array `timestamp`. All the given arrays are of the same length and the tuple `[username[i], website[i], timestamp[i]]` indicates that the user `username[i]` visited the website `website[i]` at time `timestamp[i]`.\n\nA **pattern** is a list of three websites (not necessarily distinct).\n\n- For example, `['home', 'away', 'love']`, `['leetcode', 'love', 'leetcode']`, and `['luffy', 'luffy', 'luffy']` are all patterns.\n\nThe **score** of a **pattern** is the number of users that visited all the websites in the pattern in the same order they appeared in the pattern.\n\n- For example, if the pattern is `['home', 'away', 'love']`, the score is the number of users `x` such that `x` visited `'home'` then visited `'away'` and visited `'love'` after that.\n- Similarly, if the pattern is `['leetcode', 'love', 'leetcode']`, the score is the number of users `x` such that `x` visited `'leetcode'` then visited `'love'` and visited `'leetcode'` one more time after that.\n- Also, if the pattern is `['luffy', 'luffy', 'luffy']`, the score is the number of users `x` such that `x` visited `'luffy'` three different times at different timestamps.\n\nReturn the **pattern** with the largest **score**. If there is more than one pattern with the same largest score, return the lexicographically smallest such pattern.\n\nNote that the websites in a pattern **do not** need to be visited *contiguously*, they only need to be visited in the order they appeared in the pattern.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: username = ['joe','joe','joe','james','james','james','james','mary','mary','mary']\ntimestamp = [1,2,3,4,5,6,7,8,9,10]\nwebsite = ['home','about','career','home','cart','maps','home','home','about','career']\nOutput: ['home','about','career']\nExplanation: The tuples in this example are:\n['joe','home',1],['joe','about',2],['joe','career',3],['james','home',4],['james','cart',5],['james','maps',6],['james','home',7],['mary','home',8],['mary','about',9], and ['mary','career',10].\nThe pattern ('home', 'about', 'career') has score 2 (joe and mary).\nThe pattern ('home', 'cart', 'maps') has score 1 (james).\nThe pattern ('home', 'cart', 'home') has score 1 (james).\nThe pattern ('home', 'maps', 'home') has score 1 (james).\nThe pattern ('cart', 'maps', 'home') has score 1 (james).\nThe pattern ('home', 'home', 'home') has score 0 (no user visited home 3 times).\n```"
+            },
+            {
+                "content": "```\nInput: username = ['ua','ua','ua','ub','ub','ub']\ntimestamp = [1,2,3,4,5,6]\nwebsite = ['a','b','a','a','b','c']\nOutput: ['a','b','a']\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= username.length <= 50\n- 1 <= username[i].length <= 10\n- timestamp.length == username.length\n- 1 <= timestamp[i] <= 10^9\n- website.length == username.length\n- 1 <= website[i].length <= 10\n- username[i] and website[i] consist of lowercase English letters.\n- It is guaranteed that there is at least one user who visited at least three websites.\n- All the tuples `[username[i], timestamp[i], website[i]]` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "most_visited_pattern",
+    "helpers_run_signature": "(solution_class: type, username: list[str], timestamp: list[int], website: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.most_visited_pattern(username, timestamp, website)",
+    "helpers_assert_name": "most_visited_pattern",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_most_visited_pattern, run_most_visited_pattern\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AnalyzeUserWebsiteVisitPattern",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "most_visited_pattern",
+                "signature": "(self, username: list[str], timestamp: list[int], website: list[str]) -> list[str]",
+                "body": "        # TODO: Implement most_visited_pattern\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_most_visited_pattern",
+                "signature": "(self, username: list[str], timestamp: list[int], website: list[str], expected: list[str])",
+                "parametrize": "username, timestamp, website, expected",
+                "test_cases": {
+                    "list": [
+                        "(['joe','joe','joe','james','james','james','james','mary','mary','mary'],[1,2,3,4,5,6,7,8,9,10],['home','about','career','home','cart','maps','home','home','about','career'],['home','about','career'])",
+                        "(['ua','ua','ua','ub','ub','ub'],[1,2,3,4,5,6],['a','b','a','a','b','c'],['a','b','a'])",
+                        "(['u','u','u'],[1,2,3],['a','b','c'],['a','b','c'])",
+                        "(['u','u','u'],[5,6,7],['x','x','x'],['x','x','x'])",
+                        "(['u','u','u','v','v','v'],[1,2,3,4,5,6],['b','a','c','b','a','c'],['b','a','c'])",
+                        "(['u','u','u','u'],[1,2,3,4],['a','z','b','c'],['a','b','c'])",
+                        "(['u','u','u','u','u','v','v','v'],[1,2,3,4,5,6,7,8],['a','b','a','b','c','a','b','c'],['a','b','c'])",
+                        "(['u','u','u','solo','solo'],[1,2,3,4,5],['a','b','c','a','b'],['a','b','c'])",
+                        "(['u','u','u','u','v','v','v','v'],[1,2,3,4,5,6,7,8],['b','d','e','a','b','d','e','a'],['b','d','a'])",
+                        "(['u','u','u','u'],[1,2,3,4],['p','p','p','q'],['p','p','p'])",
+                        "(['u','u','u','v','v','v','w','w','w'],[9,5,7,8,1,4,3,2,6],['m','n','o','m','n','o','m','n','o'],['n','o','m'])",
+                        "(['u','u','u','v','v','v'],[7,1,4,9,3,6],['a','b','c','a','b','c'],['b','c','a'])",
+                        "(['di','di','di','di','el','di','di','cy','di','al','cy','cy'],[603020,652710,91595,976829,358271,521397,64021,747030,800611,921008,594994,520757],['ff','aa','dd','aa','cc','bb','ff','dd','bb','bb','ff','ff'],['aa','bb','aa'])",
+                        "(['al','bo','cy','cy','bo','el','di','bo'],[544567,250943,374132,253964,282276,951921,908030,977450],['bb','aa','ee','cc','aa','dd','dd','ee'],['aa','aa','ee'])",
+                        "(['el','al','bo','al','di','bo','bo','al','cy','el','cy'],[823246,469029,120288,299271,569025,891897,265406,638890,598017,716060,175040],['dd','ff','bb','aa','aa','bb','ee','bb','ff','cc','bb'],['aa','ff','bb'])",
+                        "(['el','el','bo','el','di','bo','di','el','bo'],[676871,577558,787386,835586,112060,527826,40312,420365,917266],['ee','ff','bb','bb','ff','ff','ff','cc','dd'],['cc','ee','bb'])",
+                        "(['bo','el','bo','al','bo','el','el','el','el','cy','di','bo','el','al'],[632866,154801,191766,314729,452595,855151,3190,156397,615788,473505,356326,763532,271730,417923],['cc','aa','dd','dd','ff','ee','ee','dd','cc','aa','aa','cc','ee','ff'],['aa','cc','ee'])",
+                        "(['el','el','bo','bo','cy','el','di','di','al','di','bo','bo','bo'],[460066,678727,744932,677552,496026,980459,121780,821252,942115,980106,940804,971161,841939],['dd','cc','aa','ff','aa','aa','dd','cc','aa','dd','aa','aa','ee'],['aa','aa','aa'])"
+                    ]
+                },
+                "body": "        result = run_most_visited_pattern(Solution, username, timestamp, website)\n        assert_most_visited_pattern(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_most_visited_pattern, assert_most_visited_pattern\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nusername = ['joe', 'joe', 'joe', 'james', 'james', 'james', 'james', 'mary', 'mary', 'mary']\ntimestamp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nwebsite = ['home', 'about', 'career', 'home', 'cart', 'maps', 'home', 'home', 'about', 'career']\nexpected = ['home', 'about', 'career']",
+    "playground_run": "result = run_most_visited_pattern(Solution, username, timestamp, website)\nresult",
+    "playground_assert": "assert_most_visited_pattern(result, expected)"
+}
