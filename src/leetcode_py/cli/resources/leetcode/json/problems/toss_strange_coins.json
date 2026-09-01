@@ -1,0 +1,93 @@
+{
+    "problem_name": "toss_strange_coins",
+    "solution_class_name": "Solution",
+    "problem_number": "1230",
+    "problem_title": "Toss Strange Coins",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Dynamic Programming, Probability and Statistics",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have some coins. The `i`-th coin has a probability `prob[i]` of facing heads when tossed.\n\nReturn the probability that the number of coins facing heads equals `target` if you toss every coin exactly once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: prob = [0.4], target = 1\nOutput: 0.40000\n```"
+            },
+            {
+                "content": "```\nInput: prob = [0.5,0.5,0.5,0.5,0.5], target = 0\nOutput: 0.03125\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= prob.length <= 1000\n- 0 <= prob[i] <= 1\n- 0 <= target <= prob.length\n- Answers will be accepted as correct if they are within `10^-5` of the correct answer.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "probability_of_heads",
+    "helpers_run_signature": "(solution_class: type, prob: list[float], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.probability_of_heads(prob, target)",
+    "helpers_assert_name": "probability_of_heads",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    # Expectations are exact values computed with fractions.Fraction; the\n    # float DP stays far inside this tolerance (statement allows 10^-5)\n    assert abs(result - expected) < 1e-9\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_probability_of_heads, run_probability_of_heads\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TossStrangeCoins",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "probability_of_heads",
+                "signature": "(self, prob: list[float], target: int) -> float",
+                "body": "        # TODO: Implement probability_of_heads\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_probability_of_heads",
+                "signature": "(self, prob: list[float], target: int, expected: float)",
+                "parametrize": "prob, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([0.4], 1, 0.4)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5], 0, 0.03125)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5], 2, 0.3125)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5], 5, 0.03125)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 4, 0.2734375)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 5, 0.24609375)",
+                        "([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 10, 0.0009765625)",
+                        "([1.0, 1.0, 1.0], 3, 1.0)",
+                        "([1.0, 1.0, 1.0], 0, 0.0)",
+                        "([0.0, 0.0, 0.0], 0, 1.0)",
+                        "([0.0, 1.0, 0.0], 1, 1.0)",
+                        "([0.25, 0.25, 0.25, 0.25], 2, 0.2109375)",
+                        "([0.9, 0.2, 0.1, 0.3], 2, 0.3674)",
+                        "([0.7], 0, 0.3)",
+                        "([0.3, 0.6, 0.9, 0.2], 3, 0.2304)",
+                        "([0.125, 0.375, 0.625, 0.875], 3, 0.2412109375)",
+                        "([0.125, 0.375, 0.625, 0.875], 4, 0.025634765625)",
+                        "([0.8,0.2,0.5,0.7,0.9,0.3,0.6,0.2,0.5,0.7,0.7,0.2,0.5,0.3],10,0.05371541936)"
+                    ]
+                },
+                "body": "        result = run_probability_of_heads(Solution, prob, target)\n        assert_probability_of_heads(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_probability_of_heads, assert_probability_of_heads\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nprob = [0.4]\ntarget = 1\nexpected = 0.4",
+    "playground_run": "result = run_probability_of_heads(Solution, prob, target)\nresult",
+    "playground_assert": "assert_probability_of_heads(result, expected)"
+}

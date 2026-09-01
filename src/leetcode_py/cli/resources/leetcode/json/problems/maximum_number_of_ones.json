@@ -1,0 +1,95 @@
+{
+    "problem_name": "maximum_number_of_ones",
+    "solution_class_name": "Solution",
+    "problem_number": "1183",
+    "problem_title": "Maximum Number of Ones",
+    "difficulty": "Hard",
+    "topics": "Math, Greedy, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Consider a matrix `M` with dimensions `width * height`, such that every cell has value `0` or `1`, and any **square** sub-matrix of `M` of size `sideLength * sideLength` has at most `maxOnes` ones.\n\nReturn the maximum possible number of ones that the matrix `M` can have.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: width = 3, height = 3, sideLength = 2, maxOnes = 1\nOutput: 4\n```\n**Explanation:**\nIn a 3*3 matrix, no 2*2 sub-matrix can have more than 1 one.\nThe best solution that has 4 ones is:\n[1,0,1]\n[0,0,0]\n[1,0,1]"
+            },
+            {
+                "content": "```\nInput: width = 3, height = 3, sideLength = 2, maxOnes = 2\nOutput: 6\n```\n**Explanation:**\n[1,0,1]\n[1,0,1]\n[1,0,1]"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= width, height <= 100\n- 1 <= sideLength <= width, height\n- 0 <= maxOnes <= sideLength * sideLength",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_number_of_ones",
+    "helpers_run_signature": "(solution_class: type, width: int, height: int, side_length: int, max_ones: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_number_of_ones(width, height, side_length, max_ones)",
+    "helpers_assert_name": "maximum_number_of_ones",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_number_of_ones, run_maximum_number_of_ones\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfOnes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_number_of_ones",
+                "signature": "(self, width: int, height: int, side_length: int, max_ones: int) -> int",
+                "body": "        # TODO: Implement maximum_number_of_ones\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_number_of_ones",
+                "signature": "(self, width: int, height: int, side_length: int, max_ones: int, expected: int)",
+                "parametrize": "width, height, side_length, max_ones, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3, 2, 1, 4)",
+                        "(3, 3, 2, 2, 6)",
+                        "(1, 1, 1, 0, 0)",
+                        "(1, 1, 1, 1, 1)",
+                        "(2, 2, 2, 1, 1)",
+                        "(2, 2, 2, 4, 4)",
+                        "(3, 3, 1, 1, 9)",
+                        "(2, 3, 2, 2, 4)",
+                        "(5, 5, 2, 1, 9)",
+                        "(4, 5, 2, 2, 12)",
+                        "(7, 7, 3, 3, 21)",
+                        "(1, 100, 1, 1, 100)",
+                        "(100, 1, 1, 1, 100)",
+                        "(10, 10, 3, 0, 0)",
+                        "(100, 100, 10, 1, 100)",
+                        "(100, 100, 10, 50, 5000)",
+                        "(6, 7, 4, 8, 28)",
+                        "(20, 17, 5, 6, 96)",
+                        "(2, 2, 2, 0, 0)",
+                        "(9, 12, 4, 5, 42)"
+                    ]
+                },
+                "body": "        result = run_maximum_number_of_ones(\n            Solution, width, height, side_length, max_ones\n        )\n        assert_maximum_number_of_ones(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_number_of_ones, assert_maximum_number_of_ones\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwidth = 3\nheight = 3\nside_length = 2\nmax_ones = 1\nexpected = 4",
+    "playground_run": "result = run_maximum_number_of_ones(Solution, width, height, side_length, max_ones)\nresult",
+    "playground_assert": "assert_maximum_number_of_ones(result, expected)"
+}

@@ -146,6 +146,15 @@ done
 ```
 
 - Before inserting, verify each name file exists (`ls /tmp/batch_name_*.txt | wc -l` equals problem count) — a missing file means that agent never reported; handle per Error Handling before proceeding
+- **GOTCHA — validate name-file CONTENT before insert, not just existence.** An agent wrote its problem NUMBER (`1180`) instead of the dir name into its name file; `insert_tag.py` happily bisected the numeric string to a bogus position in tags.json5 and the downstream sed fix preserved that position, costing 2 extra cycles (name fix + position fix + pre-commit rerun). Guard: each name must match `^[a-z][a-z0-9_]*$` — on mismatch, look up the real dir in `leetcode/` (or re-ask the agent) before running insert_tag.py:
+
+```bash
+grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
+  NAME=$(cat "/tmp/batch_name_${N}.txt")
+  echo "$NAME" | grep -qE '^[a-z][a-z0-9_]*$' || { echo "BAD NAME FILE for $N: '$NAME'"; exit 1; }
+done
+```
+
 - Gate 2.2 (tag sync) must come out clean afterwards; if a name file's dir differs from the scrape slug, the name file wins
 
 ### 2.1: Pre-Commit (converts notebooks to .py)
@@ -203,7 +212,7 @@ cp /tmp/solution_backup.py leetcode/{problem_name}/solution.py
 
 Report: total created, success rate, failed problems with reasons, finalization results. Then re-test all batch problems with `bake p-test -p {name}` and report counts.
 
-**GOTCHA — derive re-test names from the agent manifest, not the scrape slug.** The dir name the agent created can differ from the scrape's `slug` (shorter names chosen for E501: 1415 → `k_th_lexicographical_...`, 1524 → `number_of_subarrays_...`, 1662 → `array_strings_are_equal`). Deriving from the slug produced 3/100 false FAILs and a wasted re-verify cycle. Agents append real dir names to `/tmp/batch_names.txt` (prompt step 6); test from that file. On a false-FAIL, check the dir exists under a different name before treating it as a real failure.
+**GOTCHA — derive re-test names from the agent manifest, not the scrape slug.** The dir name the agent created can differ from the scrape's `slug` (shorter names chosen for E501: 1415 → `k_th_lexicographical_...`, 1524 → `number_of_subarrays_...`, 1662 → `array_strings_are_equal`). Deriving from the slug produced 3/100 false FAILs and a wasted re-verify cycle. Agents write real dir names to `/tmp/batch_name_{N}.txt` (prompt step 5); test from those files. On a false-FAIL, check the dir exists under a different name before treating it as a real failure.
 
 ### 3.1: Skill Improvement Suggestions (evidence-driven)
 

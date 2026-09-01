@@ -149,22 +149,22 @@ UNSCRAPABLE_HANDLED = [
     (1166, "design-file-system"),
     (1167, "minimum-cost-to-connect-sticks"),
     (1168, "optimize-water-distribution-in-a-village"),
+    (1180, "count-substrings-with-only-one-distinct-letter"),
+    (1183, "maximum-number-of-ones"),
+    (1196, "how-many-apples-can-you-put-into-the-basket"),
+    (1198, "find-smallest-common-element-in-all-rows"),
+    (1214, "two-sum-bsts"),
+    (1215, "stepping-numbers"),
+    (1216, "valid-palindrome-iii"),
+    (1228, "missing-number-in-arithmetic-progression"),
+    (1229, "meeting-scheduler"),
+    (1230, "toss-strange-coins"),
 ]
 
 # Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
 # problem is created; append new discoveries at the bottom.
 UNSCRAPABLE_QUEUE = [
-    (1180, "count-substrings-with-only-one-distinct-letter"),
-    (1183, "maximum-number-of-ones"),
-    (1196, "how-many-apples-can-you-put-into-the-basket"),
     (1197, "minimum-knight-moves"),
-    (1198, "find-smallest-common-element-in-all-rows"),
-    (1214, "two-sum-bsts"),
-    (1215, "lucky-numbers-in-a-matrix"),
-    (1216, "valid-palindrome-iii"),
-    (1228, "missing-number-in-arithmetic-progression"),
-    (1229, "meeting-scheduler"),
-    (1230, "count-triplets-that-can-form-two-arrays-of-equal-xor"),
     (1231, "divide-chocolate"),
     (1236, "web-crawler"),
     (1243, "array-transformation"),

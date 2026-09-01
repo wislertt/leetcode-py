@@ -1,0 +1,95 @@
+{
+    "problem_name": "how_many_apples_can_you_put_into_the_basket",
+    "solution_class_name": "Solution",
+    "problem_number": "1196",
+    "problem_title": "How Many Apples Can You Put into the Basket",
+    "difficulty": "Easy",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have some apples and a basket that can carry up to `5000` units of weight.\n\nGiven an integer array `weight` where `weight[i]` is the weight of the `i-th` apple, return the maximum number of apples you can put in the basket.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: weight = [100,200,150,1000]\nOutput: 4\nExplanation: All 4 apples can be carried by the basket since their sum of weights is 1450.\n```"
+            },
+            {
+                "content": "```\nInput: weight = [900,950,800,1000,700,800]\nOutput: 5\nExplanation: The sum of weights of the 6 apples exceeds 5000 so we choose any 5 of them.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= weight.length <= 10^3`\n- `1 <= weight[i] <= 10^3`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_number_of_apples",
+    "helpers_run_signature": "(solution_class: type, weight: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_number_of_apples(weight)",
+    "helpers_assert_name": "max_number_of_apples",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_number_of_apples, run_max_number_of_apples\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HowManyApplesCanYouPutIntoTheBasket",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_number_of_apples",
+                "signature": "(self, weight: list[int]) -> int",
+                "body": "        # TODO: Implement max_number_of_apples\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_number_of_apples",
+                "signature": "(self, weight: list[int], expected: int)",
+                "parametrize": "weight, expected",
+                "test_cases": {
+                    "list": [
+                        "([100, 200, 150, 1000], 4)",
+                        "([900, 950, 800, 1000, 700, 800], 5)",
+                        "([1], 1)",
+                        "([1000], 1)",
+                        "([1000, 1000, 1000, 1000, 1000], 5)",
+                        "([1000, 1000, 1000, 1000, 1000, 1000], 5)",
+                        "([1, 1, 1], 3)",
+                        "([1000, 1000, 1000, 1000, 1000, 1], 5)",
+                        "([1, 2, 3, 4, 5], 5)",
+                        "([999, 999, 999, 999, 999, 999], 5)",
+                        "([500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500], 10)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10)",
+                        "([1000, 1000, 1000, 1000, 999], 5)",
+                        "([999, 999, 999, 999, 999, 1], 6)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1, 1, 1000], 10)",
+                        "([600, 600, 600, 600, 600, 600, 600, 600, 900], 8)",
+                        "([258, 484, 620], 3)",
+                        "([762, 367, 240, 45, 504, 700, 643, 637, 657], 9)",
+                        "([34, 96, 553, 315, 35, 6], 6)",
+                        "([240, 844, 984, 929, 224], 5)"
+                    ]
+                },
+                "body": "        result = run_max_number_of_apples(Solution, weight)\n        assert_max_number_of_apples(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_number_of_apples, assert_max_number_of_apples\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nweight = [100, 200, 150, 1000]\nexpected = 4",
+    "playground_run": "result = run_max_number_of_apples(Solution, weight)\nresult",
+    "playground_assert": "assert_max_number_of_apples(result, expected)"
+}
