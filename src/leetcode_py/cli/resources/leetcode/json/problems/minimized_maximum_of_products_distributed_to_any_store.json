@@ -1,0 +1,117 @@
+{
+    "problem_name": "minimized_maximum_of_products_distributed_to_any_store",
+    "solution_class_name": "Solution",
+    "problem_number": "2064",
+    "problem_title": "Minimized Maximum of Products Distributed to Any Store",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer `n` indicating there are `n` specialty retail stores. There are `m` product types of varying amounts, which are given as a **0-indexed** integer array `quantities`, where `quantities[i]` represents the number of products of the `i<sup>th</sup>` product type.\n\nYou need to distribute **all products** to the retail stores following these rules:\n\n- A store can only be given **at most one product type** but can be given **any** amount of it.\n- After distribution, each store will have been given some number of products (possibly `0`). Let `x` represent the maximum number of products given to any store. You want `x` to be as small as possible, i.e., you want to **minimize** the **maximum** number of products that are given to any store.\n\nReturn *the minimum possible* `x`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 6, quantities = [11,6]\nOutput: 3\nExplanation: One optimal way is:\n- The 11 products of type 0 are distributed to the first four stores in these amounts: 2, 3, 3, 3\n- The 6 products of type 1 are distributed to the other two stores in these amounts: 3, 3\nThe maximum number of products given to any store is max(2, 3, 3, 3, 3, 3) = 3.\n```"
+            },
+            {
+                "content": "```\nInput: n = 7, quantities = [15,10,10]\nOutput: 5\nExplanation: One optimal way is:\n- The 15 products of type 0 are distributed to the first three stores in these amounts: 5, 5, 5\n- The 10 products of type 1 are distributed to the next two stores in these amounts: 5, 5\n- The 10 products of type 2 are distributed to the last two stores in these amounts: 5, 5\nThe maximum number of products given to any store is max(5, 5, 5, 5, 5, 5, 5) = 5.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1, quantities = [100000]\nOutput: 100000\nExplanation: The only optimal way is:\n- The 100000 products of type 0 are distributed to the only store.\nThe maximum number of products given to any store is max(100000) = 100000.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == quantities.length\n- 1 <= m <= n <= 10^5\n- 1 <= quantities[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimized_maximum",
+    "helpers_run_signature": "(solution_class: type, n: int, quantities: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimized_maximum(n, quantities)",
+    "helpers_assert_name": "minimized_maximum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimized_maximum, run_minimized_maximum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimizedMaximumOfProductsDistributedToAnyStore",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimized_maximum",
+                "signature": "(self, n: int, quantities: list[int]) -> int",
+                "body": "        # TODO: Implement minimized_maximum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimized_maximum",
+                "signature": "(self, n: int, quantities: list[int], expected: int)",
+                "parametrize": "n, quantities, expected",
+                "test_cases": {
+                    "list": [
+                        "(6, [11, 6], 3)",
+                        "(7, [15, 10, 10], 5)",
+                        "(1, [100000], 100000)",
+                        "(1, [1], 1)",
+                        "(2, [1, 1], 1)",
+                        "(5, [1, 1, 1], 1)",
+                        "(3, [100], 34)",
+                        "(4, [11], 3)",
+                        "(2, [7, 7], 7)",
+                        "(5, [1, 1, 1, 1, 1], 1)",
+                        "(6, [12, 6], 3)",
+                        "(2, [100000, 100000], 100000)",
+                        "(10, [3, 3, 4], 1)",
+                        "(10, [10, 10, 10], 4)",
+                        "(4, [1, 2, 3, 4], 4)",
+                        "(5, [15, 10, 1], 8)",
+                        "(11, [11, 11, 11], 4)",
+                        "(9, [1, 1, 1, 1, 1, 1, 1, 1, 1], 1)",
+                        "(8, [3, 15, 16, 20, 11, 15], 15)",
+                        "(4, [7, 10, 9, 18], 18)",
+                        "(6, [11, 12, 1, 5, 3], 11)",
+                        "(3, [19], 7)",
+                        "(7, [15], 3)",
+                        "(8, [4, 11, 1, 9, 14], 7)",
+                        "(7, [16, 16, 8, 19, 14], 16)",
+                        "(4, [14, 15, 15, 4], 15)",
+                        "(4, [3], 1)",
+                        "(5, [18], 4)",
+                        "(6, [16], 3)",
+                        "(4, [1, 9], 3)",
+                        "(5, [2, 11], 3)",
+                        "(4, [1, 7], 3)",
+                        "(7, [18], 3)",
+                        "(4, [14, 11], 7)",
+                        "(4, [12, 12], 6)",
+                        "(5, [12], 3)",
+                        "(6, [8, 8, 5, 8, 17, 12], 17)",
+                        "(4, [12, 3], 4)",
+                        "(100000, [100000, 100000, 100000, 100000, 100000, 99999], 7)"
+                    ]
+                },
+                "body": "        result = run_minimized_maximum(Solution, n, quantities)\n        assert_minimized_maximum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimized_maximum, assert_minimized_maximum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 6\nquantities = [11, 6]\nexpected = 3",
+    "playground_run": "result = run_minimized_maximum(Solution, n, quantities)\nresult",
+    "playground_assert": "assert_minimized_maximum(result, expected)"
+}

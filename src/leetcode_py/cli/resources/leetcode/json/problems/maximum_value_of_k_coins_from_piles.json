@@ -1,0 +1,99 @@
+{
+    "problem_name": "maximum_value_of_k_coins_from_piles",
+    "solution_class_name": "Solution",
+    "problem_number": "2218",
+    "problem_title": "Maximum Value of K Coins From Piles",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `n` **piles** of coins on a table. Each pile consists of a **positive number** of coins of assorted denominations.\n\nIn one move, you can choose any coin on **top** of any pile, remove it, and add it to your wallet.\n\nGiven a list `piles`, where `piles[i]` is a list of integers denoting the composition of the `i`th pile from **top to bottom**, and a positive integer `k`, return *the **maximum total value** of coins you can have in your wallet if you choose **exactly*** `k` *coins optimally*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/11/09/e1.png)\n\n```\nInput: piles = [[1,100,3],[7,8,9]], k = 2\nOutput: 101\nExplanation: The above diagram shows the different ways we can choose k coins. The maximum total we can obtain is 101.\n```"
+            },
+            {
+                "content": "```\nInput: piles = [[100],[100],[100],[100],[100],[100],[1,1,1,1,1,1,700]], k = 7\nOutput: 706\nExplanation: The maximum total can be obtained if we choose all coins from the last pile.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == piles.length\n- 1 <= piles.length <= 10^3\n- 1 <= piles[i][j] <= 10^5\n- 1 <= k <= sum(piles[i].length) <= 2000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_value_of_coins",
+    "helpers_run_signature": "(solution_class: type, piles: list[list[int]], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_value_of_coins(piles, k)",
+    "helpers_assert_name": "max_value_of_coins",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_value_of_coins, run_max_value_of_coins\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumValueOfKCoinsFromPiles",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_value_of_coins",
+                "signature": "(self, piles: list[list[int]], k: int) -> int",
+                "body": "        # TODO: Implement max_value_of_coins\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_value_of_coins",
+                "signature": "(self, piles: list[list[int]], k: int, expected: int)",
+                "parametrize": "piles, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,100,3],[7,8,9]],2,101)",
+                        "([[100],[100],[100],[100],[100],[100],[1,1,1,1,1,1,700]],7,706)",
+                        "([[1,2,3]],1,1)",
+                        "([[1,2,3]],2,3)",
+                        "([[1,2,3]],3,6)",
+                        "([[10]],1,10)",
+                        "([[5],[6]],1,6)",
+                        "([[5],[6]],2,11)",
+                        "([[1,1],[1,1]],2,2)",
+                        "([[1,1],[1,1]],3,3)",
+                        "([[1,1],[1,1]],4,4)",
+                        "([[2,1000,2],[1000,2]],3,2002)",
+                        "([[7]],1,7)",
+                        "([[1],[2],[3],[4]],4,10)",
+                        "([[3,1],[2,5],[4,2]],3,11)",
+                        "([[9,9,9,9]],4,36)",
+                        "([[18,17,12]],2,35)",
+                        "([[17,6],[12,2,17,2]],2,29)",
+                        "([[4,14,16,14],[4,13,15,12]],1,4)",
+                        "([[16,3,6]],1,16)",
+                        "([[8,4,5],[10],[8],[12,11,9,16]],8,78)",
+                        "([[18]],1,18)",
+                        "([[11]],1,11)",
+                        "([[20,17,7,1],[3]],3,44)"
+                    ]
+                },
+                "body": "        result = run_max_value_of_coins(Solution, piles, k)\n        assert_max_value_of_coins(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_value_of_coins, assert_max_value_of_coins\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npiles = [[1, 100, 3], [7, 8, 9]]\nk = 2\nexpected = 101",
+    "playground_run": "result = run_max_value_of_coins(Solution, piles, k)\nresult",
+    "playground_assert": "assert_max_value_of_coins(result, expected)"
+}

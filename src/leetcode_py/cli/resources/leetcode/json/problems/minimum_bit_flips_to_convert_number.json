@@ -1,0 +1,102 @@
+{
+    "problem_name": "minimum_bit_flips_to_convert_number",
+    "solution_class_name": "Solution",
+    "problem_number": "2220",
+    "problem_title": "Minimum Bit Flips to Convert Number",
+    "difficulty": "Easy",
+    "topics": "Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **bit flip** of a number `x` is choosing a bit in the binary representation of `x` and **flipping** it from either `0` to `1` or `1` to `0`.\n\n- For example, for `x = 7`, the binary representation is `111` and we may choose any bit (including any leading zeros not shown) and flip it. We can flip the first bit from the right to get `110`, flip the second bit from the right to get `101`, flip the fifth bit from the right (a leading zero) to get `10111`, etc.\n\nGiven two integers `start` and `goal`, return *the **minimum** number of **bit flips** to convert* `start` *to* `goal`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: start = 10, goal = 7\nOutput: 3\nExplanation: The binary representation of 10 and 7 are 1010 and 0111 respectively. We can convert 10 to 7 in 3 steps:\n- Flip the first bit from the right: 1010 -> 1011.\n- Flip the third bit from the right: 1011 -> 1111.\n- Flip the fourth bit from the right: 1111 -> 0111.\nIt can be shown we cannot convert 10 to 7 in less than 3 steps. Hence, we return 3.\n```"
+            },
+            {
+                "content": "```\nInput: start = 3, goal = 4\nOutput: 3\nExplanation: The binary representation of 3 and 4 are 011 and 100 respectively. We can convert 3 to 4 in 3 steps:\n- Flip the first bit from the right: 011 -> 010.\n- Flip the second bit from the right: 010 -> 000.\n- Flip the third bit from the right: 000 -> 100.\nIt can be shown we cannot convert 3 to 4 in less than 3 steps. Hence, we return 3.\n```"
+            }
+        ]
+    },
+    "constraints": {
+        "list": ["0 <= start, goal <= 10^9"]
+    },
+    "readme_constraints": "- 0 <= start, goal <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_bit_flips",
+    "helpers_run_signature": "(solution_class: type, start: int, goal: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_bit_flips(start, goal)",
+    "helpers_assert_name": "min_bit_flips",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_bit_flips, run_min_bit_flips\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumBitFlipsToConvertNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_bit_flips",
+                "signature": "(self, start: int, goal: int) -> int",
+                "body": "        # TODO: Implement min_bit_flips\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_bit_flips",
+                "signature": "(self, start: int, goal: int, expected: int)",
+                "parametrize": "start, goal, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 7, 3)",
+                        "(3, 4, 3)",
+                        "(0, 0, 0)",
+                        "(1, 0, 1)",
+                        "(0, 1, 1)",
+                        "(1, 1, 0)",
+                        "(2, 1, 2)",
+                        "(2, 4, 2)",
+                        "(7, 10, 3)",
+                        "(5, 5, 0)",
+                        "(0, 109, 5)",
+                        "(1000000000, 999999999, 10)",
+                        "(109, 109, 0)",
+                        "(15, 0, 4)",
+                        "(0, 15, 4)",
+                        "(123456789, 987654321, 15)",
+                        "(634299979, 507333477, 21)",
+                        "(219763584, 981865221, 15)",
+                        "(564858347, 927327245, 19)",
+                        "(806020841, 357252220, 14)",
+                        "(175593312, 297145375, 17)",
+                        "(358957714, 991723447, 17)",
+                        "(83136965, 811909648, 14)",
+                        "(328571609, 119393132, 12)"
+                    ]
+                },
+                "body": "        result = run_min_bit_flips(Solution, start, goal)\n        assert_min_bit_flips(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_bit_flips, assert_min_bit_flips\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstart = 10\ngoal = 7\nexpected = 3",
+    "playground_run": "result = run_min_bit_flips(Solution, start, goal)\nresult",
+    "playground_assert": "assert_min_bit_flips(result, expected)"
+}

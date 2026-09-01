@@ -1,0 +1,92 @@
+{
+    "problem_name": "number_of_ways_to_arrive_at_destination",
+    "solution_class_name": "Solution",
+    "problem_number": "1976",
+    "problem_title": "Number of Ways to Arrive at Destination",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming, Graph Theory, Topological Sort, Shortest Path, Dijkstra's Algorithm",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are in a city that consists of `n` intersections numbered from `0` to `n - 1` with **bi-directional** roads between some intersections. The inputs are generated such that you can reach any intersection from any other intersection and that there is at most one road between any two intersections.\n\nYou are given an integer `n` and a 2D integer array `roads` where `roads[i] = [u<sub>i</sub>, v<sub>i</sub>, time<sub>i</sub>]` means that there is a road between intersections `u<sub>i</sub>` and `v<sub>i</sub>` that takes `time<sub>i</sub>` minutes to travel. You want to know in how many ways you can travel from intersection `0` to intersection `n - 1` in the **shortest amount of time**.\n\nReturn _the **number of ways** you can arrive at your destination in the **shortest amount of time**_. Since the answer may be large, return it **modulo** `10<sup>9</sup> + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2025/02/14/1976_corrected.png)\n\n```\nInput: n = 7, roads = [[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]\nOutput: 4\nExplanation: The shortest amount of time it takes to go from intersection 0 to intersection 6 is 7 minutes.\nThe four ways to get there in 7 minutes are:\n- 0 ➝ 6\n- 0 ➝ 4 ➝ 6\n- 0 ➝ 1 ➝ 2 ➝ 5 ➝ 6\n- 0 ➝ 1 ➝ 3 ➝ 5 ➝ 6\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, roads = [[1,0,10]]\nOutput: 1\nExplanation: There is only one way to go from intersection 0 to intersection 1, and it takes 10 minutes.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 200\n- n - 1 <= roads.length <= n * (n - 1) / 2\n- roads[i].length == 3\n- 0 <= u<sub>i</sub>, v<sub>i</sub> <= n - 1\n- 1 <= time<sub>i</sub> <= 10<sup>9</sup>\n- u<sub>i</sub> != v<sub>i</sub>\n- There is at most one road connecting any two intersections.\n- You can reach any intersection from any other intersection.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_paths",
+    "helpers_run_signature": "(solution_class: type, n: int, roads: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_paths(n, roads)",
+    "helpers_assert_name": "count_paths",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_paths, run_count_paths\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfWaysToArriveAtDestination",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_paths",
+                "signature": "(self, n: int, roads: list[list[int]]) -> int",
+                "body": "        # TODO: Implement count_paths\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_paths",
+                "signature": "(self, n: int, roads: list[list[int]], expected: int)",
+                "parametrize": "n, roads, expected",
+                "test_cases": {
+                    "list": [
+                        "(7, [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1], [0, 4, 5], [4, 6, 2]], 4)",
+                        "(2, [[1, 0, 10]], 1)",
+                        "(1, [], 1)",
+                        "(4, [[0, 1, 1], [0, 2, 1], [1, 3, 1], [2, 3, 1]], 2)",
+                        "(4, [[0, 1, 1], [1, 2, 1], [2, 3, 1]], 1)",
+                        "(4, [[0, 1, 1], [1, 3, 1], [0, 2, 5], [2, 3, 1]], 1)",
+                        "(4, [[0, 1, 1], [1, 3, 1], [0, 2, 1], [2, 3, 1], [0, 3, 2]], 3)",
+                        "(3, [[0, 1, 1000000000], [1, 2, 1000000000]], 1)",
+                        "(5, [[0, 1, 2], [0, 2, 2], [1, 4, 2], [2, 4, 2], [3, 4, 1], [0, 3, 100]], 2)",
+                        "(6, [[0, 1, 1], [1, 2, 1], [2, 5, 1], [0, 3, 1], [3, 4, 1], [4, 5, 1]], 2)",
+                        "(5, [[0, 1, 1], [1, 2, 1], [2, 4, 1], [1, 3, 1], [3, 4, 1], [0, 3, 2]], 3)",
+                        "(5, [[0, 2, 2], [3, 4, 1], [2, 3, 1], [2, 4, 2], [1, 2, 1]], 2)",
+                        "(3, [[0, 1, 1], [1, 2, 2], [0, 2, 3]], 2)",
+                        "(3, [[1, 2, 1], [0, 2, 3], [0, 1, 2]], 2)",
+                        "(5, [[0, 4, 3], [3, 4, 2], [0, 2, 2], [2, 4, 1], [0, 3, 1], [1, 3, 1], [0, 1, 2]], 3)",
+                        "(5, [[3, 4, 2], [1, 4, 2], [1, 2, 1], [0, 2, 3], [0, 1, 1], [2, 3, 3], [2, 4, 1]], 2)",
+                        "(4, [[1, 2, 2], [2, 3, 1], [1, 3, 3], [0, 1, 2]], 2)"
+                    ]
+                },
+                "body": "        result = run_count_paths(Solution, n, roads)\n        assert_count_paths(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_paths, assert_count_paths\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 7\nroads = [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1]]\nexpected = 4",
+    "playground_run": "result = run_count_paths(Solution, n, roads)\nresult",
+    "playground_assert": "assert_count_paths(result, expected)"
+}

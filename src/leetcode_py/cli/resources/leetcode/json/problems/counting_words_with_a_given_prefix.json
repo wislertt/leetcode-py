@@ -1,0 +1,90 @@
+{
+    "problem_name": "counting_words_with_a_given_prefix",
+    "solution_class_name": "Solution",
+    "problem_number": "2185",
+    "problem_title": "Counting Words With a Given Prefix",
+    "difficulty": "Easy",
+    "topics": "Array, String, String Matching",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of strings `words` and a string `pref`.\n\nReturn the number of strings in `words` that contain `pref` as a prefix.\n\nA prefix of a string `s` is any leading contiguous substring of `s`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"pay\",\"attention\",\"practice\",\"attend\"], pref = \"at\"\nOutput: 2\nExplanation: The 2 strings that contain \"at\" as a prefix are: \"attention\" and \"attend\".\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"leetcode\",\"win\",\"loops\",\"success\"], pref = \"code\"\nOutput: 0\nExplanation: There are no strings that contain \"code\" as a prefix.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 100\n- 1 <= words[i].length, pref.length <= 100\n- words[i] and pref consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "prefix_count",
+    "helpers_run_signature": "(solution_class: type, words: list[str], pref: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.prefix_count(words, pref)",
+    "helpers_assert_name": "prefix_count",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_prefix_count, run_prefix_count\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountingWordsWithAGivenPrefix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "prefix_count",
+                "signature": "(self, words: list[str], pref: str) -> int",
+                "body": "        # TODO: Implement prefix_count\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_prefix_count",
+                "signature": "(self, words: list[str], pref: str, expected: int)",
+                "parametrize": "words, pref, expected",
+                "test_cases": {
+                    "list": [
+                        "(['pay', 'attention', 'practice', 'attend'], 'at', 2)",
+                        "(['leetcode', 'win', 'loops', 'success'], 'code', 0)",
+                        "(['at', 'at', 'at'], 'at', 3)",
+                        "(['a', 'b', 'c'], 'a', 1)",
+                        "(['a', 'b', 'c'], 'z', 0)",
+                        "(['attend'], 'attend', 1)",
+                        "(['attend'], 'attention', 0)",
+                        "(['apple', 'apply', 'app', 'apt'], 'app', 3)",
+                        "(['prefix', 'preform', 'prevent', 'pretend'], 'pre', 4)",
+                        "(['misjudge', 'mislead', 'mistake', 'mission'], 'mis', 4)",
+                        "(['unbelievable', 'unclear', 'unfit', 'unjust'], 'un', 4)",
+                        "(['word', 'words', 'wording', 'wordy'], 'wordy', 1)",
+                        "(['aa', 'ab', 'ba'], 'aa', 1)",
+                        "(['hello', 'hel', 'hell', 'helicopter'], 'hell', 2)",
+                        "(['neetcode', 'neet', 'code', 'leet'], 'neet', 2)"
+                    ]
+                },
+                "body": "        result = run_prefix_count(Solution, words, pref)\n        assert_prefix_count(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_prefix_count, assert_prefix_count\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['pay', 'attention', 'practice', 'attend']\npref = 'at'\nexpected = 2",
+    "playground_run": "result = run_prefix_count(Solution, words, pref)\nresult",
+    "playground_assert": "assert_prefix_count(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximum_employees_to_be_invited_to_a_meeting",
+    "solution_class_name": "Solution",
+    "problem_number": "2127",
+    "problem_title": "Maximum Employees to Be Invited to a Meeting",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Depth-First Search, Graph, Topological Sort",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A company is organizing a meeting and has a list of <code>n</code> employees, waiting to be invited. They have arranged for a large <strong>circular</strong> table, capable of seating <strong>any number</strong> of employees.</p>\n\n<p>The employees are numbered from <code>0</code> to <code>n - 1</code>. Each employee has a <strong>favorite</strong> person and they will attend the meeting <strong>only if</strong> they can sit next to their favorite person at the table. The favorite person of an employee is <strong>not</strong> themself.</p>\n\n<p>Given a <strong>0-indexed</strong> integer array <code>favorite</code>, where <code>favorite[i]</code> denotes the favorite person of the <code>i<sup>th</sup></code> employee, return <em>the <strong>maximum number of employees</strong> that can be invited to the meeting</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/12/14/ex1.png)\n\n```\nInput: favorite = [2,2,1,2]\nOutput: 3\nExplanation:\nThe above figure shows how the company can invite employees 0, 1, and 2, and seat them at the round table.\nAll employees cannot be invited because employee 2 cannot sit beside employees 0, 1, and 3, simultaneously.\nNote that the company can also invite employees 1, 2, and 3, and give them their desired seats.\nThe maximum number of employees that can be invited to the meeting is 3.\n```"
+            },
+            {
+                "content": "```\nInput: favorite = [1,2,0]\nOutput: 3\nExplanation:\nEach employee is the favorite person of at least one other employee, and the only way the company can invite them is if they invite every employee.\nThe seating arrangement will be the same as that in the figure given in example 1:\n- Employee 0 will sit between employees 2 and 1.\n- Employee 1 will sit between employees 0 and 2.\n- Employee 2 will sit between employees 1 and 0.\nThe maximum number of employees that can be invited to the meeting is 3.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/12/14/ex2.png)\n\n```\nInput: favorite = [3,0,1,4,1]\nOutput: 4\nExplanation:\nThe above figure shows how the company will invite employees 0, 1, 3, and 4, and seat them at the round table.\nEmployee 2 cannot be invited because the two spots next to their favorite employee 1 are taken.\nSo the company leaves them out of the meeting.\nThe maximum number of employees that can be invited to the meeting is 4.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == favorite.length\n- 2 <= n <= 10^5\n- 0 <= favorite[i] <= n - 1\n- favorite[i] != i",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_invitations",
+    "helpers_run_signature": "(solution_class: type, favorite: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_invitations(favorite)",
+    "helpers_assert_name": "maximum_invitations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_invitations, run_maximum_invitations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumEmployeesToBeInvitedToAMeeting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_invitations",
+                "signature": "(self, favorite: list[int]) -> int",
+                "body": "        # TODO: Implement maximum_invitations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_invitations",
+                "signature": "(self, favorite: list[int], expected: int)",
+                "parametrize": "favorite, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 2, 1, 2], 3)",
+                        "([1, 2, 0], 3)",
+                        "([3, 0, 1, 4, 1], 4)",
+                        "([1, 0], 2)",
+                        "([1, 2, 3, 1], 3)",
+                        "([1, 2, 3, 0], 4)",
+                        "([1, 0, 3, 2, 5, 4], 6)",
+                        "([1, 0, 3, 2], 4)",
+                        "([5, 0, 1, 2, 3, 4], 6)",
+                        "([1, 2, 0, 4, 5, 3], 3)",
+                        "([1, 2, 0, 4, 3], 3)",
+                        "([3, 0, 1, 2, 5, 4, 0], 4)",
+                        "([3, 3, 3, 1], 3)",
+                        "([3, 9, 9, 9, 1, 8, 3, 3, 5, 1], 7)",
+                        "([2, 2, 5, 1, 8, 8, 7, 1, 4], 7)",
+                        "([1, 5, 5, 2, 2, 6, 4, 1, 4, 6], 4)",
+                        "([4, 2, 5, 0, 5, 4, 4, 4], 6)",
+                        "([4, 5, 3, 1, 1, 3], 3)",
+                        "([2, 0, 1, 2], 3)",
+                        "([4, 0, 0, 2, 2], 3)"
+                    ]
+                },
+                "body": "        result = run_maximum_invitations(Solution, favorite)\n        assert_maximum_invitations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_invitations, assert_maximum_invitations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nfavorite = [3, 0, 1, 4, 1]\nexpected = 4",
+    "playground_run": "result = run_maximum_invitations(Solution, favorite)\nresult",
+    "playground_assert": "assert_maximum_invitations(result, expected)"
+}

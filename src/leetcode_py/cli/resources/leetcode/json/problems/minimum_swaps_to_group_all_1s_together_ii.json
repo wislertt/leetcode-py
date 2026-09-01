@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_swaps_to_group_all_1s_together_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "2134",
+    "problem_title": "Minimum Swaps to Group All 1's Together II",
+    "difficulty": "Medium",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A swap is defined as taking two distinct positions in an array and swapping the values in them.\n\nA circular array is defined as an array where we consider the first element and the last element to be adjacent.\n\nGiven a binary circular array `nums`, return *the minimum number of swaps required to group all* `1`*'s present in the array together at any location*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [0,1,0,1,1,0,0]\nOutput: 1\nExplanation: Here are a few of the ways to group all the 1's together:\n[0,0,1,1,1,0,0] using 1 swap.\n[0,1,1,1,0,0,0] using 1 swap.\n[1,1,0,0,0,0,1] using 2 swaps (using the circular property of the array).\nThere is no way to group all 1's together with 0 swaps.\nThus, the minimum number of swaps required is 1.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,1,1,0,0,1,1,0]\nOutput: 2\nExplanation: Here are a few of the ways to group all the 1's together:\n[1,1,1,0,0,0,0,1,1] using 2 swaps (using the circular property of the array).\n[1,1,1,1,1,0,0,0,0] using 2 swaps.\nThere is no way to group all 1's together with 0 or 1 swaps.\nThus, the minimum number of swaps required is 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,1,0,0,1]\nOutput: 0\nExplanation: All the 1's are already grouped together due to the circular property of the array.\nThus, the minimum number of swaps required is 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `nums[i]` is either `0` or `1`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_swaps",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_swaps(nums)",
+    "helpers_assert_name": "min_swaps",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_swaps, run_min_swaps\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumSwapsToGroupAll1sTogetherII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_swaps",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement min_swaps\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_swaps",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 1, 0, 1, 1, 0, 0], 1)",
+                        "([0, 1, 1, 1, 0, 0, 1, 1, 0], 2)",
+                        "([1, 1, 0, 0, 1], 0)",
+                        "([1], 0)",
+                        "([0], 0)",
+                        "([1, 0], 0)",
+                        "([0, 1], 0)",
+                        "([1, 1, 1, 1], 0)",
+                        "([0, 0, 0, 0], 0)",
+                        "([1, 0, 0, 0, 1], 0)",
+                        "([0, 1, 0, 0, 0, 1, 0], 1)",
+                        "([1, 0, 1, 0, 1, 0], 1)",
+                        "([1, 1, 1, 0, 0, 0, 0], 0)",
+                        "([0, 0, 1, 1, 1, 0, 0, 0], 0)",
+                        "([1, 1, 1, 0, 1, 0, 0, 0, 1], 1)",
+                        "([0, 0, 0, 0, 1, 0, 1], 1)",
+                        "([1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0], 2)",
+                        "([0, 0, 1], 0)",
+                        "([0, 1, 1], 0)",
+                        "([0, 0, 1, 0, 0, 0, 1, 1, 1], 1)"
+                    ]
+                },
+                "body": "        result = run_min_swaps(Solution, nums)\n        assert_min_swaps(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_swaps, assert_min_swaps\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [0, 1, 0, 1, 1, 0, 0]\nexpected = 1",
+    "playground_run": "result = run_min_swaps(Solution, nums)\nresult",
+    "playground_assert": "assert_min_swaps(result, expected)"
+}

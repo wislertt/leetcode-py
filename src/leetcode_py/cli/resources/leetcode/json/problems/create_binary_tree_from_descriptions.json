@@ -1,0 +1,91 @@
+{
+    "problem_name": "create_binary_tree_from_descriptions",
+    "solution_class_name": "Solution",
+    "problem_number": "2196",
+    "problem_title": "Create Binary Tree From Descriptions",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Tree, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 2D integer array `descriptions` where `descriptions[i] = [parent<sub>i</sub>, child<sub>i</sub>, isLeft<sub>i</sub>]` indicates that `parent<sub>i</sub>` is the **parent** of `child<sub>i</sub>` in a **binary** tree of **unique** values. Furthermore,\n\n- If `isLeft<sub>i</sub> == 1`, then `child<sub>i</sub>` is the left child of `parent<sub>i</sub>`.\n- If `isLeft<sub>i</sub> == 0`, then `child<sub>i</sub>` is the right child of `parent<sub>i</sub>`.\n\nConstruct the binary tree described by `descriptions` and return its **root**.\n\nThe test cases will be generated such that the binary tree is **valid**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/02/09/example1drawio.png)\n\n```\nInput: descriptions = [[20,15,1],[20,17,0],[50,20,1],[50,80,0],[80,19,1]]\nOutput: [50,20,80,15,17,19]\nExplanation: The root node is the node with value 50 since it has no parent.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/02/09/example2drawio.png)\n\n```\nInput: descriptions = [[1,2,1],[2,3,0],[3,4,1]]\nOutput: [1,2,null,null,3,4]\nExplanation: The root node is the node with value 1 since it has no parent.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= descriptions.length <= 10^4\n- descriptions[i].length == 3\n- 1 <= parent<sub>i</sub>, child<sub>i</sub> <= 10^5\n- 0 <= isLeft<sub>i</sub> <= 1\n- The binary tree described by descriptions is valid.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "create_binary_tree",
+    "helpers_run_signature": "(solution_class: type, descriptions_list: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.create_binary_tree(descriptions_list)",
+    "helpers_assert_name": "create_binary_tree",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_create_binary_tree, run_create_binary_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CreateBinaryTreeFromDescriptions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "create_binary_tree",
+                "signature": "(self, descriptions: list[list[int]]) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement create_binary_tree\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_create_binary_tree",
+                "signature": "(self, descriptions_list: list[list[int]], expected_list: list[int | None])",
+                "parametrize": "descriptions_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([[20,15,1],[20,17,0],[50,20,1],[50,80,0],[80,19,1]],[50,20,80,15,17,19])",
+                        "([[1,2,1],[2,3,0],[3,4,1]],[1,2,None,None,3,4])",
+                        "([[1,2,1],[1,3,0]],[1,2,3])",
+                        "([[1,3,0],[1,2,1]],[1,2,3])",
+                        "([[7,3,1]],[7,3])",
+                        "([[1,2,0]],[1,None,2])",
+                        "([[1,2,1],[2,3,1],[3,4,1]],[1,2,None,3,None,4])",
+                        "([[1,2,0],[2,3,0],[3,4,0]],[1,None,2,None,3,None,4])",
+                        "([[1,2,1],[2,3,0],[3,4,1],[4,5,0]],[1,2,None,None,3,4,None,None,5])",
+                        "([[100000,99999,1],[100000,50000,0]],[100000,99999,50000])",
+                        "([[50,20,1],[20,15,1],[20,17,0],[50,80,0],[80,19,1]],[50,20,80,15,17,19])",
+                        "([[2,1,1],[3,2,0],[4,3,1],[5,4,0],[6,5,1]],[6,5,None,None,4,3,None,None,2,1])",
+                        "([[9,7,1],[9,8,0],[7,6,1],[8,5,0]],[9,7,8,6,None,None,5])",
+                        "([[6,4,1],[6,5,0],[4,3,1],[5,2,0]],[6,4,5,3,None,None,2])",
+                        "([[66975,47924,1],[66975,84909,0]],[66975,47924,84909])",
+                        "([[61408,44298,0],[41100,61408,0]],[41100,None,61408,None,44298])"
+                    ]
+                },
+                "body": "        result = run_create_binary_tree(Solution, descriptions_list)\n        assert_create_binary_tree(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_create_binary_tree, assert_create_binary_tree\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndescriptions_list: list[list[int]] = [[20, 15, 1], [20, 17, 0], [50, 20, 1], [50, 80, 0], [80, 19, 1]]\nexpected_list: list[int | None] = [50, 20, 80, 15, 17, 19]",
+    "playground_run": "result = run_create_binary_tree(Solution, descriptions_list)\nresult",
+    "playground_assert": "assert_create_binary_tree(result, expected_list)"
+}

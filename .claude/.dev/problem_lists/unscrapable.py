@@ -195,6 +195,8 @@ UNSCRAPABLE_HANDLED = [
 # problem is created; append new discoveries at the bottom.
 UNSCRAPABLE_QUEUE = [
     (1197, "minimum-knight-moves"),
+    (1966, "binary-searchable-numbers-in-an-unsorted-array"),
+    (2021, "brightest-position-on-street"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).

@@ -1,0 +1,96 @@
+{
+    "problem_name": "grid_game",
+    "solution_class_name": "Solution",
+    "problem_number": "2017",
+    "problem_title": "Grid Game",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <strong>0-indexed</strong> 2D array <code>grid</code> of size <code>2 x n</code>, where <code>grid[r][c]</code> represents the number of points at position <code>(r, c)</code> on the matrix. Two robots are playing a game on this matrix.\n\nBoth robots initially start at <code>(0, 0)</code> and want to reach <code>(1, n-1)</code>. Each robot may only move to the <strong>right</strong> (<code>(r, c)</code> to <code>(r, c + 1)</code>) or <strong>down</strong> (<code>(r, c)</code> to <code>(r + 1, c)</code>).\n\nAt the start of the game, the <strong>first</strong> robot moves from <code>(0, 0)</code> to <code>(1, n-1)</code>, collecting all the points from the cells on its path. For all cells <code>(r, c)</code> traversed on the path, <code>grid[r][c]</code> is set to <code>0</code>. Then, the <strong>second</strong> robot moves from <code>(0, 0)</code> to <code>(1, n-1)</code>, collecting the points on its path. Note that their paths may intersect with one another.\n\nThe <strong>first</strong> robot wants to <strong>minimize</strong> the number of points collected by the <strong>second</strong> robot. In contrast, the <strong>second</strong> robot wants to <strong>maximize</strong> the number of points it collects. If both robots play <strong>optimally</strong>, return the <em>number of points</em> collected by the <strong>second</strong> robot.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/09/08/a1.png)\n\n```\nInput: grid = [[2,5,4],[1,5,1]]\nOutput: 4\nExplanation: The optimal path taken by the first robot is shown in red, and the optimal path taken by the second robot is shown in blue.\nThe cells visited by the first robot are set to 0.\nThe second robot will collect 0 + 0 + 4 + 0 = 4 points.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/09/08/a2.png)\n\n```\nInput: grid = [[3,3,1],[8,5,2]]\nOutput: 4\nExplanation: The optimal path taken by the first robot is shown in red, and the optimal path taken by the second robot is shown in blue.\nThe cells visited by the first robot are set to 0.\nThe second robot will collect 0 + 3 + 1 + 0 = 4 points.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/09/08/a3.png)\n\n```\nInput: grid = [[1,3,1,15],[1,3,3,1]]\nOutput: 7\nExplanation: The optimal path taken by the first robot is shown in red, and the optimal path taken by the second robot is shown in blue.\nThe cells visited by the first robot are set to 0.\nThe second robot will collect 0 + 1 + 3 + 3 + 0 = 7 points.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- grid.length == 2\n- n == grid[r].length\n- 1 <= n <= 5 * 10^4\n- 1 <= grid[r][c] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "grid_game",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.grid_game(grid)",
+    "helpers_assert_name": "grid_game",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "grid_game",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement grid_game\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_grid_game, run_grid_game\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GridGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_grid_game",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[2, 5, 4], [1, 5, 1]], 4)",
+                        "([[3, 3, 1], [8, 5, 2]], 4)",
+                        "([[1, 3, 1, 15], [1, 3, 3, 1]], 7)",
+                        "([[1], [2]], 0)",
+                        "([[1, 2], [3, 4]], 2)",
+                        "([[100000], [99999]], 0)",
+                        "([[100000, 100000], [100000, 100000]], 100000)",
+                        "([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1]], 2)",
+                        "([[7289, 5621], [5263, 8369]], 5263)",
+                        "([[1091, 8404], [7511, 8764]], 7511)",
+                        "([[3908], [9844]], 0)",
+                        "([[8634, 3971, 106, 1321], [4384, 4006, 2333, 3144]], 4384)",
+                        "([[4520, 3834], [8540, 8220]], 3834)",
+                        "([[9025, 9665, 1774, 4962], [3594, 8034, 8302, 8600]], 6736)",
+                        "([[4787, 1039, 2270], [1896, 2484, 840]], 2270)",
+                        "([[7342, 8966], [1860, 8057]], 1860)",
+                        "([[6793], [3338]], 0)",
+                        "([[5945, 6889], [5800, 4524]], 5800)"
+                    ]
+                },
+                "body": "        result = run_grid_game(Solution, grid)\n        assert_grid_game(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_grid_game, assert_grid_game\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[2, 5, 4], [1, 5, 1]]\nexpected = 4",
+    "playground_run": "result = run_grid_game(Solution, grid)\nresult",
+    "playground_assert": "assert_grid_game(result, expected)"
+}

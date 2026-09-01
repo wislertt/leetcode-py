@@ -1,0 +1,91 @@
+{
+    "problem_name": "partition_array_according_to_given_pivot",
+    "solution_class_name": "Solution",
+    "problem_number": "2161",
+    "problem_title": "Partition Array According to Given Pivot",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** integer array `nums` and an integer `pivot`. Rearrange `nums` such that the following conditions are satisfied:\n\n- Every element less than `pivot` appears **before** every element greater than `pivot`.\n- Every element equal to `pivot` appears **in between** the elements less than and greater than `pivot`.\n- The **relative order** of the elements less than `pivot` and the elements greater than `pivot` is maintained. More formally, consider every `p_i`, `p_j` where `p_i` is the new position of the `i`th element and `p_j` is the new position of the `j`th element. If `i < j` and **both** elements are smaller (or larger) than `pivot`, then `p_i < p_j`.\n\nReturn `nums`* after the rearrangement.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [9,12,5,10,14,3,10], pivot = 10\nOutput: [9,5,3,10,10,12,14]\nExplanation: The elements 9, 5, and 3 are less than the pivot so they are on the left side of the array. The elements 12 and 14 are greater than the pivot so they are on the right side of the array. The relative ordering of the elements less than and greater than pivot is also maintained. [9, 5, 3] and [12, 14] are the respective orderings.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [-3,4,3,2], pivot = 2\nOutput: [-3,2,4,3]\nExplanation: The element -3 is less than the pivot so it is on the left side of the array. The elements 4 and 3 are greater than the pivot so they are on the right side of the array. The relative ordering of the elements less than and greater than pivot is also maintained. [-3] and [4, 3] are the respective orderings.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `-10^6 <= nums[i] <= 10^6`\n- `pivot` equals to an element of `nums`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "pivot_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], pivot: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.pivot_array(nums, pivot)",
+    "helpers_assert_name": "pivot_array",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pivot_array, run_pivot_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestPartitionArrayAccordingToGivenPivot",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pivot_array",
+                "signature": "(self, nums: list[int], pivot: int) -> list[int]",
+                "body": "        # TODO: Implement pivot_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pivot_array",
+                "signature": "(self, nums: list[int], pivot: int, expected: list[int])",
+                "parametrize": "nums, pivot, expected",
+                "test_cases": {
+                    "list": [
+                        "([9, 12, 5, 10, 14, 3, 10], 10, [9, 5, 3, 10, 10, 12, 14])",
+                        "([-3, 4, 3, 2], 2, [-3, 2, 4, 3])",
+                        "([10], 10, [10])",
+                        "([1, 1, 1, 1], 1, [1, 1, 1, 1])",
+                        "([-1, -5, 0, 3, -2], -1, [-5, -2, -1, 0, 3])",
+                        "([5, 9, 3, 5, 2, 5, 8], 5, [3, 2, 5, 5, 5, 9, 8])",
+                        "([4, 2, 4, 1, 4, 3], 4, [2, 1, 3, 4, 4, 4])",
+                        "([1000000, -1000000, 0, 1000000], 0, [-1000000, 0, 1000000, 1000000])",
+                        "([2, 1, 3, 2, 4, 2], 2, [1, 2, 2, 2, 3, 4])",
+                        "([7, 7, 7, 1], 7, [1, 7, 7, 7])",
+                        "([1, 2], 2, [1, 2])",
+                        "([2, 1], 1, [1, 2])",
+                        "([-2, 7], 7, [-2, 7])",
+                        "([0, 4, 8], 4, [0, 4, 8])",
+                        "([-2], -2, [-2])",
+                        "([-9, -5, -10, 9], 9, [-9, -5, -10, 9])"
+                    ]
+                },
+                "body": "        result = run_pivot_array(Solution, nums, pivot)\n        assert_pivot_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_pivot_array, assert_pivot_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [9, 12, 5, 10, 14, 3, 10]\npivot = 10\nexpected = [9, 5, 3, 10, 10, 12, 14]",
+    "playground_run": "result = run_pivot_array(Solution, nums, pivot)\nresult",
+    "playground_assert": "assert_pivot_array(result, expected)"
+}

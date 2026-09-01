@@ -1,0 +1,97 @@
+{
+    "problem_name": "find_all_possible_recipes_from_given_supplies",
+    "solution_class_name": "Solution",
+    "problem_number": "2115",
+    "problem_title": "Find All Possible Recipes from Given Supplies",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Graph Theory, Topological Sort, Directed Acyclic Graph",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have information about `n` different recipes. You are given a string array `recipes` and a 2D string array `ingredients`. The `i`th recipe has the name `recipes[i]`, and you can **create** it if you have **all** the needed ingredients from `ingredients[i]`. A recipe can also be an ingredient for **other** recipes, i.e., `ingredients[i]` may contain a string that is in `recipes`.\n\nYou are also given a string array `supplies` containing all the ingredients that you initially have, and you have an infinite supply of all of them.\n\nReturn *a list of all the recipes that you can create.* You may return the answer in **any order**.\n\nNote that two recipes may contain each other in their ingredients.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: recipes = [\"bread\"], ingredients = [[\"yeast\",\"flour\"]], supplies = [\"yeast\",\"flour\",\"corn\"]\nOutput: [\"bread\"]\nExplanation:\nWe can create \"bread\" since we have the ingredients \"yeast\" and \"flour\".\n```"
+            },
+            {
+                "content": "```\nInput: recipes = [\"bread\",\"sandwich\"], ingredients = [[\"yeast\",\"flour\"],[\"bread\",\"meat\"]], supplies = [\"yeast\",\"flour\",\"meat\"]\nOutput: [\"bread\",\"sandwich\"]\nExplanation:\nWe can create \"bread\" since we have the ingredients \"yeast\" and \"flour\".\nWe can create \"sandwich\" since we have the ingredient \"meat\" and can create the ingredient \"bread\".\n```"
+            },
+            {
+                "content": "```\nInput: recipes = [\"bread\",\"sandwich\",\"burger\"], ingredients = [[\"yeast\",\"flour\"],[\"bread\",\"meat\"],[\"sandwich\",\"meat\",\"bread\"]], supplies = [\"yeast\",\"flour\",\"meat\"]\nOutput: [\"bread\",\"sandwich\",\"burger\"]\nExplanation:\nWe can create \"bread\" since we have the ingredients \"yeast\" and \"flour\".\nWe can create \"sandwich\" since we have the ingredient \"meat\" and can create the ingredient \"bread\".\nWe can create \"burger\" since we have the ingredient \"meat\" and can create the ingredients \"bread\" and \"sandwich\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == recipes.length == ingredients.length`\n- `1 <= n <= 100`\n- `1 <= ingredients[i].length, supplies.length <= 100`\n- `1 <= recipes[i].length, ingredients[i][j].length, supplies[k].length <= 10`\n- `recipes[i]`, `ingredients[i][j]`, and `supplies[k]` consist only of lowercase English letters.\n- All the values of `recipes` and `supplies` combined are unique.\n- Each `ingredients[i]` does not contain any duplicate values.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_all_recipes",
+    "helpers_run_signature": "(solution_class: type, recipes: list[str], ingredients: list[list[str]], supplies: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_all_recipes(recipes, ingredients, supplies)",
+    "helpers_assert_name": "find_all_recipes",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_all_recipes, run_find_all_recipes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindAllPossibleRecipesFromGivenSupplies",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_all_recipes",
+                "signature": "(self, recipes: list[str], ingredients: list[list[str]], supplies: list[str]) -> list[str]",
+                "body": "        # TODO: Implement find_all_recipes\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_all_recipes",
+                "signature": "(self, recipes: list[str], ingredients: list[list[str]], supplies: list[str], expected: list[str])",
+                "parametrize": "recipes, ingredients, supplies, expected",
+                "test_cases": {
+                    "list": [
+                        "(['bread'],[['yeast','flour']],['yeast','flour','corn'],['bread'])",
+                        "(['b','s'],[['y','f'],['b','m']],['y','f','m'],['b','s'])",
+                        "(['b','s','g'],[['y','f'],['b','m'],['s','m','b']],['y','f','m'],['b','g','s'])",
+                        "(['cake'],[['flour','sugar']],['flour'],[])",
+                        "(['a','b'],[['b'],['a']],['c'],[])",
+                        "(['aa'],[['aa']],['zz'],[])",
+                        "(['soup','stew'],[['salt','water'],['soup','beef']],['salt','pepper'],[])",
+                        "(['z','y','x','w'],[['s'],['z'],['y','s'],['nope']],['s'],['x','y','z'])",
+                        "(['d','e'],[['sa','sb'],['sa']],['sa','sb'],['d','e'])",
+                        "(['t','p','s'],[['h'],['d','h'],['h','s']],['h','d','i'],['p','t'])",
+                        "(['k','t','l'],[['l','g'],['k'],['a']],['a','i','g'],['k','l','t'])",
+                        "(['t','p'],[['a'],['t','a','c']],['c','a'],['p','t'])",
+                        "(['q','l','n'],[['l'],['n'],['q','c']],['c'],[])",
+                        "(['l'],[['l','a']],['a'],[])",
+                        "(['o','m','s'],[['s'],['b','m','f'],['b','s']],['f','b'],[])",
+                        "(['l','t','s','p'],[['i','s','l'],['i','p'],['p','s','i'],['p','s','t']],['i'],[])",
+                        "(['k'],[['a','d']],['a','e','d'],['k'])",
+                        "(['n','r','m'],[['b','m','n'],['b','r','m'],['n','r']],['f','b'],[])",
+                        "(['t'],[['t','h']],['a','e','j','h'],[])"
+                    ]
+                },
+                "body": "        result = run_find_all_recipes(Solution, recipes, ingredients, supplies)\n        assert_find_all_recipes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_all_recipes, assert_find_all_recipes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrecipes = ['bread', 'sandwich']\ningredients = [['yeast', 'flour'], ['bread', 'meat']]\nsupplies = ['yeast', 'flour', 'meat']\nexpected = ['bread', 'sandwich']",
+    "playground_run": "result = run_find_all_recipes(Solution, recipes, ingredients, supplies)\nprint(result)\nresult",
+    "playground_assert": "assert_find_all_recipes(result, expected)"
+}

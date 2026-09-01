@@ -1,0 +1,93 @@
+{
+    "problem_name": "second_minimum_time_to_reach_destination",
+    "solution_class_name": "Solution",
+    "problem_number": "2045",
+    "problem_title": "Second Minimum Time to Reach Destination",
+    "difficulty": "Hard",
+    "topics": "Breadth-First Search, Graph Theory, Shortest Path",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A city is represented as a **bi-directional connected** graph with `n` vertices where each vertex is labeled from `1` to `n` (**inclusive**). The edges in the graph are represented as a 2D integer array `edges`, where each `edges[i] = [u<sub>i</sub>, v<sub>i</sub>]` denotes a bi-directional edge between vertex `u<sub>i</sub>` and vertex `v<sub>i</sub>`. Every vertex pair is connected by **at most one** edge, and no vertex has an edge to itself. The time taken to traverse any edge is `time` minutes.\n\nEach vertex has a traffic signal which changes its color from **green** to **red** and vice versa every `change` minutes. All signals change **at the same time**. You can enter a vertex at **any time**, but can leave a vertex **only when the signal is green**. You **cannot wait** at a vertex if the signal is **green**.\n\nThe **second minimum value** is defined as the smallest value **strictly larger** than the minimum value.\n\n- For example the second minimum value of `[2, 3, 4]` is `3`, and the second minimum value of `[2, 2, 4]` is `4`.\n\nGiven `n`, `edges`, `time`, and `change`, return *the **second minimum time** it will take to go from vertex* `1` *to vertex* `n`.\n\n**Notes:**\n\n- You can go through any vertex **any** number of times, **including** `1` and `n`.\n- You can assume that when the journey **starts**, all signals have just turned **green**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/09/29/e1.png) &emsp; &emsp; &emsp; &emsp;![Example 1](https://assets.leetcode.com/uploads/2021/09/29/e2.png)\n\n```\nInput: n = 5, edges = [[1,2],[1,3],[1,4],[3,4],[4,5]], time = 3, change = 5\nOutput: 13\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/09/29/eg2.png)\n\n```\nInput: n = 2, edges = [[1,2]], time = 3, change = 2\nOutput: 11\n```\n**Explanation:** The minimum time path is `1 -> 2` with time = 3 minutes. The second minimum time path is `1 -> 2 -> 1 -> 2` with time = 11 minutes."
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= n <= 10<sup>4</sup>`\n- `n - 1 <= edges.length <= min(2 * 10<sup>4</sup>, n * (n - 1) / 2)`\n- `edges[i].length == 2`\n- `1 <= u<sub>i</sub>, v<sub>i</sub> <= n`\n- `u<sub>i</sub> != v<sub>i</sub>`\n- There are no duplicate edges.\n- Each vertex can be reached directly or indirectly from every other vertex.\n- `1 <= time, change <= 10<sup>3</sup>`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "second_minimum",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]], time: int, change: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.second_minimum(n, edges, time, change)",
+    "helpers_assert_name": "second_minimum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_second_minimum, run_second_minimum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SecondMinimumTimeToReachDestination",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "second_minimum",
+                "signature": "(self, n: int, edges: list[list[int]], time: int, change: int) -> int",
+                "body": "        # TODO: Implement second_minimum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_second_minimum",
+                "signature": "(self, n: int, edges: list[list[int]], time: int, change: int, expected: int)",
+                "parametrize": "n, edges, time, change, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]], 3, 5, 13)",
+                        "(2, [[1, 2]], 3, 2, 11)",
+                        "(2, [[1, 2]], 3, 3, 15)",
+                        "(2, [[1, 2]], 1, 1, 5)",
+                        "(2, [[1, 2]], 1000, 1000, 5000)",
+                        "(3, [[1, 2], [2, 3]], 1, 1, 7)",
+                        "(3, [[1, 2], [2, 3]], 2, 4, 12)",
+                        "(3, [[1, 2], [2, 3]], 1000, 1000, 7000)",
+                        "(3, [[1, 2], [1, 3], [2, 3]], 2, 4, 4)",
+                        "(3, [[1, 2], [1, 3], [2, 3]], 5, 5, 15)",
+                        "(4, [[1, 2], [1, 3], [2, 4], [3, 4]], 1, 2, 6)",
+                        "(4, [[1, 2], [1, 3], [2, 4], [3, 4]], 3, 3, 21)",
+                        "(4, [[1, 2], [1, 3], [1, 4]], 5, 5, 25)",
+                        "(4, [[1, 2], [1, 3], [1, 4]], 2, 3, 8)",
+                        "(5, [[1, 2], [2, 3], [3, 4], [4, 5], [2, 4]], 3, 2, 15)",
+                        "(5, [[1, 2], [1, 3], [2, 4], [3, 5], [4, 5]], 1, 3, 3)",
+                        "(6, [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [3, 6]], 2, 5, 14)",
+                        "(8, [[1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [3, 6]], 2, 3, 20)"
+                    ]
+                },
+                "body": "        result = run_second_minimum(Solution, n, edges, time, change)\n        assert_second_minimum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_second_minimum, assert_second_minimum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nedges = [[1, 2], [1, 3], [1, 4], [3, 4], [4, 5]]\ntime = 3\nchange = 5\nexpected = 13",
+    "playground_run": "result = run_second_minimum(Solution, n, edges, time, change)\nresult",
+    "playground_assert": "assert_second_minimum(result, expected)"
+}

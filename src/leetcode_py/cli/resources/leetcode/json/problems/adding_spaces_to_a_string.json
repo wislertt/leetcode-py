@@ -1,0 +1,98 @@
+{
+    "problem_name": "adding_spaces_to_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "2109",
+    "problem_title": "Adding Spaces to a String",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, String, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** string `s` and a **0-indexed** integer array `spaces` that describes the indices in the original string where spaces will be added. Each space should be inserted **before** the character at the given index.\n\n- For example, given `s = \"EnjoyYourCoffee\"` and `spaces = [5, 9]`, we place spaces before `'Y'` and `'C'`, which are at indices `5` and `9` respectively. Thus, we obtain `\"Enjoy Your Coffee\"`.\n\nReturn the modified string after the spaces have been added.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"LeetcodeHelpsMeLearn\", spaces = [8,13,15]\nOutput: \"Leetcode Helps Me Learn\"\n```\n**Explanation:** The indices 8, 13, and 15 correspond to the underlined characters in \"LeetcodeHelpsMeLearn\". We then place spaces before those characters."
+            },
+            {
+                "content": "```\nInput: s = \"icodeinpython\", spaces = [1,5,7,9]\nOutput: \"i code in py thon\"\n```\n**Explanation:** The indices 1, 5, 7, and 9 correspond to the underlined characters in \"icodeinpython\". We then place spaces before those characters."
+            },
+            {
+                "content": "```\nInput: s = \"spacing\", spaces = [0,1,2,3,4,5,6]\nOutput: \" s p a c i n g\"\n```\n**Explanation:** We are also able to place spaces before the first character of the string."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 3 * 10^5`\n- `s` consists only of lowercase and uppercase English letters.\n- `1 <= spaces.length <= 3 * 10^5`\n- `0 <= spaces[i] <= s.length - 1`\n- All the values of `spaces` are **strictly increasing**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "add_spaces",
+    "helpers_run_signature": "(solution_class: type, s: str, spaces: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.add_spaces(s, spaces)",
+    "helpers_assert_name": "add_spaces",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_add_spaces, run_add_spaces\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AddingSpacesToString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "add_spaces",
+                "signature": "(self, s: str, spaces: list[int]) -> str",
+                "body": "        # TODO: Implement add_spaces\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_add_spaces",
+                "signature": "(self, s: str, spaces: list[int], expected: str)",
+                "parametrize": "s, spaces, expected",
+                "test_cases": {
+                    "list": [
+                        "('LeetcodeHelpsMeLearn', [8, 13, 15], 'Leetcode Helps Me Learn')",
+                        "('icodeinpython', [1, 5, 7, 9], 'i code in py thon')",
+                        "('spacing', [0, 1, 2, 3, 4, 5, 6], ' s p a c i n g')",
+                        "('EnjoyYourCoffee', [5, 9], 'Enjoy Your Coffee')",
+                        "('a', [0], ' a')",
+                        "('ab', [0], ' ab')",
+                        "('ab', [1], 'a b')",
+                        "('abc', [0, 1, 2], ' a b c')",
+                        "('abc', [2], 'ab c')",
+                        "('abcdef', [2], 'ab cdef')",
+                        "('hello', [4], 'hell o')",
+                        "('Coding', [3], 'Cod ing')",
+                        "('AbcDefGhi', [3, 6], 'Abc Def Ghi')",
+                        "('aaaaaaaaaaaa', [0, 6, 11], ' aaaaaa aaaaa a')",
+                        "('IBuRcYu', [0, 1, 2, 3], ' I B u RcYu')",
+                        "('mKvXnf', [1, 4, 5], 'm KvX n f')",
+                        "('Ts', [1], 'T s')",
+                        "('ueegFaMEP', [2, 5, 8], 'ue egF aME P')",
+                        "('JYuklzq', [1, 2, 4, 5], 'J Y uk l zq')",
+                        "('r', [0], ' r')"
+                    ]
+                },
+                "body": "        result = run_add_spaces(Solution, s, spaces)\n        assert_add_spaces(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_add_spaces, assert_add_spaces\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'LeetcodeHelpsMeLearn'\nspaces = [8, 13, 15]\nexpected = 'Leetcode Helps Me Learn'",
+    "playground_run": "result = run_add_spaces(Solution, s, spaces)\nresult",
+    "playground_assert": "assert_add_spaces(result, expected)"
+}

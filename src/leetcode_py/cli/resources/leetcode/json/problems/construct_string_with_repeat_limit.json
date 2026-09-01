@@ -1,0 +1,115 @@
+{
+    "problem_name": "construct_string_with_repeat_limit",
+    "solution_class_name": "Solution",
+    "problem_number": "2182",
+    "problem_title": "Construct String With Repeat Limit",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Greedy, Heap (Priority Queue), Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` and an integer `repeatLimit`. Construct a new string `repeatLimitedString` using the characters of `s` such that no letter appears **more than** `repeatLimit` times **in a row**. You do **not** have to use all characters from `s`.\n\nReturn *the **lexicographically largest*** `repeatLimitedString` *possible*.\n\nA string `a` is **lexicographically larger** than a string `b` if in the first position where `a` and `b` differ, string `a` has a letter that appears later in the alphabet than the corresponding letter in `b`. If the first `min(a.length, b.length)` characters do not differ, then the longer string is the lexicographically larger one.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"cczazcc\", repeatLimit = 3\nOutput: \"zzcccac\"\nExplanation: We use all of the characters from s to construct the repeatLimitedString \"zzcccac\".\nThe letter 'a' appears at most 1 time in a row.\nThe letter 'c' appears at most 3 times in a row.\nThe letter 'z' appears at most 2 times in a row.\nHence, no letter appears more than repeatLimit times in a row and the string is a valid repeatLimitedString.\nThe string is the lexicographically largest repeatLimitedString possible so we return \"zzcccac\".\nNote that the string \"zzcccca\" is lexicographically larger but the letter 'c' appears more than 3 times in a row, so it is not a valid repeatLimitedString.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aababab\", repeatLimit = 2\nOutput: \"bbabaa\"\nExplanation: We use only some of the characters from s to construct the repeatLimitedString \"bbabaa\".\nThe letter 'a' appears at most 2 times in a row.\nThe letter 'b' appears at most 2 times in a row.\nHence, no letter appears more than repeatLimit times in a row and the string is a valid repeatLimitedString.\nThe string is the lexicographically largest repeatLimitedString possible so we return \"bbabaa\".\nNote that the string \"bbabaaa\" is lexicographically larger but the letter 'a' appears more than 2 times in a row, so it is not a valid repeatLimitedString.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= repeatLimit <= s.length <= 10^5`\n- `s` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "repeat_limited_string",
+    "helpers_run_signature": "(solution_class: type, s: str, repeat_limit: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.repeat_limited_string(s, repeat_limit)",
+    "helpers_assert_name": "repeat_limited_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_repeat_limited_string, run_repeat_limited_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructStringWithRepeatLimit",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "repeat_limited_string",
+                "signature": "(self, s: str, repeat_limit: int) -> str",
+                "body": "        # TODO: Implement repeat_limited_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_repeat_limited_string",
+                "signature": "(self, s: str, repeat_limit: int, expected: str)",
+                "parametrize": "s, repeat_limit, expected",
+                "test_cases": {
+                    "list": [
+                        "('cczazcc', 3, 'zzcccac')",
+                        "('aababab', 2, 'bbabaa')",
+                        "('a', 1, 'a')",
+                        "('aa', 1, 'a')",
+                        "('aaa', 2, 'aa')",
+                        "('aaa', 1, 'a')",
+                        "('abc', 1, 'cba')",
+                        "('aabbcc', 2, 'ccbbaa')",
+                        "('zzzz', 4, 'zzzz')",
+                        "('zzzz', 3, 'zzz')",
+                        "('abcabc', 1, 'cbcba')",
+                        "('aaabbbccc', 2, 'ccbcbbaa')",
+                        "('banana', 2, 'nnbaa')",
+                        "('abcde', 1, 'edcba')",
+                        "('aabb', 1, 'baba')",
+                        "('bbbbbbbbbb', 3, 'bbb')",
+                        "('xyxyxyxy', 3, 'yyyxyxxx')",
+                        "('aabbccddeeff', 1, 'fefedcdcbaba')",
+                        "('zzzzaaaa', 2, 'zzazzaa')",
+                        "('abcdefghijklmnop', 5, 'ponmlkjihgfedcba')",
+                        "('ecdda', 3, 'eddca')",
+                        "('eebdcad', 7, 'eeddcba')",
+                        "('dbdbcabcba', 4, 'ddccbbbbaa')",
+                        "('cddcbdca', 3, 'dddcccba')",
+                        "('ebbceabeed', 4, 'eeeedcbbba')",
+                        "('bcbd', 1, 'dcb')",
+                        "('bdcbababdc', 10, 'ddccbbbbaa')",
+                        "('debaeb', 4, 'eedbba')",
+                        "('bcddbadecb', 5, 'edddccbbba')",
+                        "('edbdccc', 2, 'eddccbc')",
+                        "('bdbababebeee', 12, 'eeeedbbbbbaa')",
+                        "('aacecdcc', 6, 'edccccaa')",
+                        "('eeddbceead', 10, 'eeeedddcba')",
+                        "('bcd', 2, 'dcb')",
+                        "('bdbadeeabd', 7, 'eedddbbbaa')",
+                        "('e', 1, 'e')",
+                        "('c', 1, 'c')",
+                        "('deaeaa', 3, 'eedaaa')",
+                        "('edcdbcacaabc', 6, 'eddccccbbaaa')",
+                        "('cd', 2, 'dc')"
+                    ]
+                },
+                "body": "        result = run_repeat_limited_string(Solution, s, repeat_limit)\n        assert_repeat_limited_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_repeat_limited_string, assert_repeat_limited_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cczazcc'\nrepeat_limit = 3\nexpected = 'zzcccac'",
+    "playground_run": "result = run_repeat_limited_string(Solution, s, repeat_limit)\nresult",
+    "playground_assert": "assert_repeat_limited_string(result, expected)"
+}

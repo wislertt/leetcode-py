@@ -1,0 +1,95 @@
+{
+    "problem_name": "merge_nodes_in_between_zeros",
+    "solution_class_name": "Solution",
+    "problem_number": "2181",
+    "problem_title": "Merge Nodes in Between Zeros",
+    "difficulty": "Medium",
+    "topics": "Linked List, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the <code>head</code> of a linked list, which contains a series of integers <strong>separated</strong> by <code>0</code>'s. The <strong>beginning</strong> and <strong>end</strong> of the linked list will have <code>Node.val == 0</code>.\n\nFor <strong>every</strong> two consecutive <code>0</code>'s, <strong>merge</strong> all the nodes lying in between them into a single node whose value is the <strong>sum</strong> of all the merged nodes. The modified list should not contain any <code>0</code>'s.\n\nReturn <em>the head of the modified linked list</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/02/02/ex1-1.png)\n\n```\nInput: head = [0,3,1,0,4,5,2,0]\nOutput: [4,11]\nExplanation: The modified list contains the sum of the nodes marked in green: 3 + 1 = 4, and the sum of the nodes marked in red: 4 + 5 + 2 = 11.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/02/02/ex2-1.png)\n\n```\nInput: head = [0,1,0,3,0,2,2,0]\nOutput: [1,3,4]\nExplanation: The modified list contains the sum of the nodes marked in green: 1 = 1, the sum of the nodes marked in red: 3 = 3, and the sum of the nodes marked in yellow: 2 + 2 = 4.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range `[3, 2 * 10^5]`.\n- `0 <= Node.val <= 1000`\n- There are no two consecutive nodes with `Node.val == 0`.\n- The beginning and end of the linked list have `Node.val == 0`.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "merge_nodes",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_vals)\n    implementation = solution_class()\n    return implementation.merge_nodes(head)",
+    "helpers_assert_name": "merge_nodes",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_vals: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode[int].from_list(expected_vals)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_merge_nodes, run_merge_nodes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MergeNodesInBetweenZeros",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "merge_nodes",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement merge_nodes\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_merge_nodes",
+                "signature": "(self, head_vals: list[int], expected_vals: list[int])",
+                "parametrize": "head_vals, expected_vals",
+                "test_cases": {
+                    "list": [
+                        "([0, 3, 1, 0, 4, 5, 2, 0], [4, 11])",
+                        "([0, 1, 0, 3, 0, 2, 2, 0], [1, 3, 4])",
+                        "([0, 5, 0], [5])",
+                        "([0, 1, 2, 3, 4, 0], [10])",
+                        "([0, 1000, 0, 1000, 0], [1000, 1000])",
+                        "([0, 10, 20, 30, 0, 40, 50, 60, 0], [60, 150])",
+                        "([0, 1, 1, 1, 1, 0], [4])",
+                        "([0, 7, 0, 8, 0, 9, 0], [7, 8, 9])",
+                        "([0, 2, 0, 1, 0, 3, 0, 4, 0, 5, 0], [2, 1, 3, 4, 5])",
+                        "([0, 999, 0, 1000, 0], [999, 1000])",
+                        "([0, 4, 3, 2, 1, 0, 1, 2, 3, 4, 0], [10, 10])",
+                        "([0, 12, 0, 34, 0, 56, 0], [12, 34, 56])",
+                        "([0, 100, 0, 200, 0, 300, 0, 400, 0], [100, 200, 300, 400])",
+                        "([0, 1, 0, 2, 3, 0], [1, 5])",
+                        "([0, 1000, 999, 0, 1, 0], [1999, 1])",
+                        "([0, 98, 76, 4, 9, 0, 20, 61, 2, 0], [187, 83])",
+                        "([0, 53, 75, 54, 0, 21, 35, 0, 10, 76, 33, 1, 0], [182, 56, 120])",
+                        "([0, 78, 11, 44, 0], [133])",
+                        "([0, 60, 87, 0], [147])",
+                        "([0, 16, 41, 69, 0, 79, 70, 0, 100, 0, 35, 0], [126, 149, 100, 35])"
+                    ]
+                },
+                "body": "        result = run_merge_nodes(Solution, head_vals)\n        assert_merge_nodes(result, expected_vals)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_merge_nodes, assert_merge_nodes\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals: list[int] = [0, 3, 1, 0, 4, 5, 2, 0]\nexpected_vals: list[int] = [4, 11]",
+    "playground_run": "result = run_merge_nodes(Solution, head_vals)\nListNode[int].to_list(result) if result else []",
+    "playground_assert": "assert_merge_nodes(result, expected_vals)"
+}

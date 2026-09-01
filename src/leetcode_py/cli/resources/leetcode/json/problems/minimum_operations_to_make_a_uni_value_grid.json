@@ -1,0 +1,96 @@
+{
+    "problem_name": "minimum_operations_to_make_a_uni_value_grid",
+    "solution_class_name": "Solution",
+    "problem_number": "2033",
+    "problem_title": "Minimum Operations to Make a Uni-Value Grid",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Sorting, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 2D integer grid of size m x n and an integer x. In one operation, you can add x to or subtract x from any element in the grid.\n\nA uni-value grid is a grid where all the elements of it are equal.\n\nReturn the minimum number of operations to make the grid uni-value. If it is not possible, return -1.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/09/21/gridtxt.png)\n\n```\nInput: grid = [[2,4],[6,8]], x = 2\nOutput: 4\nExplanation: We can make every element equal to 4 by doing the following: \n- Add x to 2 once.\n- Subtract x from 6 once.\n- Subtract x from 8 twice.\nA total of 4 operations were used.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/09/21/gridtxt-1.png)\n\n```\nInput: grid = [[1,5],[2,3]], x = 1\nOutput: 5\nExplanation: We can make every element equal to 3.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/09/21/gridtxt-2.png)\n\n```\nInput: grid = [[1,2],[3,4]], x = 2\nOutput: -1\nExplanation: It is impossible to make every element equal.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 10^5\n- 1 <= m * n <= 10^5\n- 1 <= x, grid[i][j] <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_operations",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]], x: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_operations(grid, x)",
+    "helpers_assert_name": "min_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_operations",
+                "signature": "(self, grid: list[list[int]], x: int) -> int",
+                "body": "        # TODO: Implement min_operations\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_operations, run_min_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumOperationsToMakeAUniValueGrid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_operations",
+                "signature": "(self, grid: list[list[int]], x: int, expected: int)",
+                "parametrize": "grid, x, expected",
+                "test_cases": {
+                    "list": [
+                        "([[2, 4], [6, 8]], 2, 4)",
+                        "([[1, 5], [2, 3]], 1, 5)",
+                        "([[1, 2], [3, 4]], 2, -1)",
+                        "([[5]], 3, 0)",
+                        "([[7, 7, 7], [7, 7, 7]], 4, 0)",
+                        "([[1, 10000], [2, 9999]], 1, 19996)",
+                        "([[3, 9], [15, 21]], 6, 4)",
+                        "([[2]], 10000, 0)",
+                        "([[9, 1], [5, 5]], 4, 2)",
+                        "([[1, 4], [7, 10]], 3, 4)",
+                        "([[9999, 2]], 3, -1)",
+                        "([[5, 5], [5, 2]], 3, 1)",
+                        "([[10, 20, 30], [40, 50, 60]], 10, 9)",
+                        "([[13, 13], [13, 26]], 13, 1)",
+                        "([[13], [15]], 2, 1)",
+                        "([[26, 49, 51], [52, 46, 47]], 6, -1)",
+                        "([[22, 55, 55]], 11, 3)",
+                        "([[5, 5], [11, 5]], 1, 6)"
+                    ]
+                },
+                "body": "        result = run_min_operations(Solution, grid, x)\n        assert_min_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_operations, assert_min_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[2, 4], [6, 8]]\nx = 2\nexpected = 4",
+    "playground_run": "result = run_min_operations(Solution, grid, x)\nresult",
+    "playground_assert": "assert_min_operations(result, expected)"
+}

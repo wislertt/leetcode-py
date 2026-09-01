@@ -1,0 +1,94 @@
+{
+    "problem_name": "kth_distinct_string_in_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "2053",
+    "problem_title": "Kth Distinct String in an Array",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A <strong>distinct string</strong> is a string that is present only <strong>once</strong> in an array.\n\nGiven an array of strings <code>arr</code>, and an integer <code>k</code>, return <em>the </em><code>k<sup>th</sup></code><em> <strong>distinct string</strong> present in </em><code>arr</code>. If there are <strong>fewer</strong> than <code>k</code> distinct strings, return <em>an <strong>empty string </strong></em><code>&quot;&quot;</code>.\n\nNote that the strings are considered in the <strong>order in which they appear</strong> in the array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [\"d\",\"b\",\"c\",\"b\",\"c\",\"a\"], k = 2\nOutput: \"a\"\nExplanation:\nThe only distinct strings in arr are \"d\" and \"a\".\n\"d\" appears 1st, so it is the 1st distinct string.\n\"a\" appears 2nd, so it is the 2nd distinct string.\nSince k == 2, \"a\" is returned.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [\"aaa\",\"aa\",\"a\"], k = 1\nOutput: \"aaa\"\nExplanation:\nAll strings in arr are distinct, so the 1st string \"aaa\" is returned.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [\"a\",\"b\",\"a\"], k = 3\nOutput: \"\"\nExplanation:\nThe only distinct string is \"b\". Since there are fewer than 3 distinct strings, we return an empty string \"\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= k <= arr.length <= 1000`\n- `1 <= arr[i].length <= 5`\n- `arr[i]` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "kth_distinct",
+    "helpers_run_signature": "(solution_class: type, arr: list[str], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.kth_distinct(arr, k)",
+    "helpers_assert_name": "kth_distinct",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_kth_distinct, run_kth_distinct\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KthDistinctStringInAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "kth_distinct",
+                "signature": "(self, arr: list[str], k: int) -> str",
+                "body": "        # TODO: Implement kth_distinct\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_kth_distinct",
+                "signature": "(self, arr: list[str], k: int, expected: str)",
+                "parametrize": "arr, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(['d', 'b', 'c', 'b', 'c', 'a'], 2, 'a')",
+                        "(['aaa', 'aa', 'a'], 1, 'aaa')",
+                        "(['a', 'b', 'a'], 3, '')",
+                        "(['a'], 1, 'a')",
+                        "(['a', 'a'], 1, '')",
+                        "(['a', 'a'], 2, '')",
+                        "(['abc', 'def'], 2, 'def')",
+                        "(['ab', 'ab', 'cd'], 1, 'cd')",
+                        "(['x', 'y', 'x', 'y', 'z'], 1, 'z')",
+                        "(['e', 'e', 'e'], 1, '')",
+                        "(['abcd', 'efg', 'h'], 3, 'h')",
+                        "(['aa', 'bb', 'cc', 'aa'], 2, 'cc')",
+                        "(['aaaaa', 'bbbbb', 'aaaaa'], 1, 'bbbbb')",
+                        "(['z'], 1, 'z')",
+                        "(['a', 'b', 'a', 'c', 'd', 'b', 'e', 'f', 'g', 'h', 'i'], 5, 'g')",
+                        "(['m', 'n', 'o', 'n', 'm', 'p', 'q'], 2, 'p')"
+                    ]
+                },
+                "body": "        result = run_kth_distinct(Solution, arr, k)\n        assert_kth_distinct(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_kth_distinct, assert_kth_distinct\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = ['d', 'b', 'c', 'b', 'c', 'a']\nk = 2\nexpected = 'a'",
+    "playground_run": "result = run_kth_distinct(Solution, arr, k)\nresult",
+    "playground_assert": "assert_kth_distinct(result, expected)"
+}
