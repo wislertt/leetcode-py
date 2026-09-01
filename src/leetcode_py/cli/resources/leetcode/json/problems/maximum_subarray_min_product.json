@@ -1,0 +1,100 @@
+{
+    "problem_name": "maximum_subarray_min_product",
+    "solution_class_name": "Solution",
+    "problem_number": "1856",
+    "problem_title": "Maximum Subarray Min-Product",
+    "difficulty": "Medium",
+    "topics": "Array, Stack, Monotonic Stack, Prefix Sum, Cartesian Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "The **min-product** of an array is equal to the **minimum value** in the array **multiplied by** the array's **sum**.\n\n- For example, the array `[3,2,5]` (minimum value is `2`) has a min-product of `2 * (3+2+5) = 2 * 10 = 20`.\n\nGiven an array of integers `nums`, return *the **maximum min-product** of any **non-empty subarray** of* `nums`. Since the answer may be large, return it **modulo** `10^9 + 7`.\n\nNote that the min-product should be maximized **before** performing the modulo operation. Testcases are generated such that the maximum min-product **without** modulo will fit in a **64-bit signed integer**.\n\nA **subarray** is a **contiguous** part of an array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,2]\nOutput: 14\nExplanation: The maximum min-product is achieved with the subarray [2,3,2] (minimum value is 2).\n2 * (2+3+2) = 2 * 7 = 14.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,3,3,1,2]\nOutput: 18\nExplanation: The maximum min-product is achieved with the subarray [3,3] (minimum value is 3).\n3 * (3+3) = 3 * 6 = 18.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,1,5,6,4,2]\nOutput: 60\nExplanation: The maximum min-product is achieved with the subarray [5,6,4] (minimum value is 4).\n4 * (5+6+4) = 4 * 15 = 60.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `1 <= nums[i] <= 10^7`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_sum_min_product",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_sum_min_product(nums)",
+    "helpers_assert_name": "max_sum_min_product",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_sum_min_product, run_max_sum_min_product\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumSubarrayMinProduct",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_sum_min_product",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement max_sum_min_product\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_sum_min_product",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 2], 14)",
+                        "([2, 3, 3, 1, 2], 18)",
+                        "([3, 1, 5, 6, 4, 2], 60)",
+                        "([1], 1)",
+                        "([5], 25)",
+                        "([7, 7, 7, 7], 196)",
+                        "([1, 2], 4)",
+                        "([2, 1], 4)",
+                        "([1, 1, 1, 1, 1], 5)",
+                        "([2, 3, 4], 21)",
+                        "([4, 3, 2], 21)",
+                        "([5, 4, 3, 2, 1], 36)",
+                        "([3, 1, 4, 1, 5, 9, 2, 6], 81)",
+                        "([999999, 1000000, 999998, 1000001, 999997, 1000002], 978958016)",
+                        "([2, 9999999, 3, 9999999, 2], 979300008)",
+                        "([1000000, 999999, 1000001, 999998, 1000002], 989965007)",
+                        "([8, 5, 4, 4, 7, 7, 7], 168)",
+                        "([6, 1, 8, 2, 5, 9, 5], 95)",
+                        "([2, 7, 3, 9, 8, 7, 2], 168)",
+                        "([6, 9], 90)",
+                        "([556086, 249542, 66857], 231637233)",
+                        "([286551, 98795, 931218], 166957455)"
+                    ]
+                },
+                "body": "        result = run_max_sum_min_product(Solution, nums)\n        assert_max_sum_min_product(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_sum_min_product, assert_max_sum_min_product\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 2]\nexpected = 14",
+    "playground_run": "result = run_max_sum_min_product(Solution, nums)\nresult",
+    "playground_assert": "assert_max_sum_min_product(result, expected)"
+}

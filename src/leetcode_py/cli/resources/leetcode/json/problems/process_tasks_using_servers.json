@@ -1,0 +1,92 @@
+{
+    "problem_name": "process_tasks_using_servers",
+    "solution_class_name": "Solution",
+    "problem_number": "1882",
+    "problem_title": "Process Tasks Using Servers",
+    "difficulty": "Medium",
+    "topics": "Array, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two **0-indexed** integer arrays `servers` and `tasks` of lengths `n` and `m` respectively. `servers[i]` is the **weight** of the `ith` server, and `tasks[j]` is the **time needed** to process the `jth` task **in seconds**.\n\nTasks are assigned to the servers using a **task queue**. Initially, all servers are free, and the queue is **empty**.\n\nAt second `j`, the `jth` task is **inserted** into the queue (starting with the `0th` task being inserted at second `0`). As long as there are free servers and the queue is not empty, the task in the front of the queue will be assigned to a free server with the **smallest weight**, and in case of a tie, it is assigned to a free server with the **smallest index**.\n\nIf there are no free servers and the queue is not empty, we wait until a server becomes free and immediately assign the next task. If multiple servers become free at the same time, then multiple tasks from the queue will be assigned **in order of insertion** following the weight and index priorities above.\n\nA server that is assigned task `j` at second `t` will be free again at second `t + tasks[j]`.\n\nBuild an array `ans` of length `m`, where `ans[j]` is the **index** of the server the `jth` task will be assigned to.\n\nReturn *the array* `ans`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: servers = [3,3,2], tasks = [1,2,3,2,1,2]\nOutput: [2,2,0,2,1,2]\nExplanation: Events in chronological order go as follows:\n- At second 0, task 0 is added and processed using server 2 until second 1.\n- At second 1, server 2 becomes free. Task 1 is added and processed using server 2 until second 3.\n- At second 2, task 2 is added and processed using server 0 until second 5.\n- At second 3, server 2 becomes free. Task 3 is added and processed using server 2 until second 5.\n- At second 4, task 4 is added and processed using server 1 until second 5.\n- At second 5, all servers become free. Task 5 is added and processed using server 2 until second 7.\n```"
+            },
+            {
+                "content": "```\nInput: servers = [5,1,4,3,2], tasks = [2,1,2,4,5,2,1]\nOutput: [1,4,1,4,1,3,2]\nExplanation: Events in chronological order go as follows:\n- At second 0, task 0 is added and processed using server 1 until second 2.\n- At second 1, task 1 is added and processed using server 4 until second 2.\n- At second 2, servers 1 and 4 become free. Task 2 is added and processed using server 1 until second 4.\n- At second 3, task 3 is added and processed using server 4 until second 7.\n- At second 4, server 1 becomes free. Task 4 is added and processed using server 1 until second 9.\n- At second 5, task 5 is added and processed using server 3 until second 7.\n- At second 6, task 6 is added and processed using server 2 until second 7.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `servers.length == n`\n- `tasks.length == m`\n- `1 <= n, m <= 2 * 10^5`\n- `1 <= servers[i], tasks[j] <= 2 * 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "assign_tasks",
+    "helpers_run_signature": "(solution_class: type, servers: list[int], tasks: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.assign_tasks(servers, tasks)",
+    "helpers_assert_name": "assign_tasks",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_assign_tasks, run_assign_tasks\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ProcessTasksUsingServers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "assign_tasks",
+                "signature": "(self, servers: list[int], tasks: list[int]) -> list[int]",
+                "body": "        # TODO: Implement assign_tasks\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_assign_tasks",
+                "signature": "(self, servers: list[int], tasks: list[int], expected: list[int])",
+                "parametrize": "servers, tasks, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 3, 2], [1, 2, 3, 2, 1, 2], [2, 2, 0, 2, 1, 2])",
+                        "([5, 1, 4, 3, 2], [2, 1, 2, 4, 5, 2, 1], [1, 4, 1, 4, 1, 3, 2])",
+                        "([7], [3], [0])",
+                        "([1], [2, 3, 4], [0, 0, 0])",
+                        "([1, 2, 3], [1], [0])",
+                        "([2, 2, 2], [1, 1, 1, 1], [0, 0, 0, 0])",
+                        "([1, 1], [5, 5, 5], [0, 1, 0])",
+                        "([100000, 1], [1, 100000], [1, 1])",
+                        "([3], [1, 2, 3, 4, 5, 1, 2, 3, 4, 5], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0])",
+                        "([4, 4], [2, 2, 2], [0, 1, 0])",
+                        "([2, 1, 3], [4, 1, 2, 1], [1, 0, 0, 2])",
+                        "([8, 1], [7, 2, 9, 1, 3, 3, 4, 6], [1, 0, 0, 1, 1, 1, 0, 1])",
+                        "([8, 6, 8, 2, 7], [1, 8, 1, 5, 2, 6, 1, 4], [3, 3, 1, 1, 4, 0, 4, 4])",
+                        "([9, 5, 6, 1], [5, 9, 8, 2, 9, 9], [3, 1, 2, 0, 3, 0])",
+                        "([4, 8, 7, 4, 9, 1], [2, 5, 3, 2, 1, 2, 1, 9], [5, 0, 5, 3, 2, 5, 0, 5])",
+                        "([5, 8, 8], [7, 1, 9, 8, 3, 5, 5, 5, 9, 8], [0, 1, 1, 2, 0, 0, 1, 2, 0, 1])",
+                        "([2, 6, 5, 9, 1, 2, 2, 6], [9, 8, 9, 5, 9, 6, 1, 3], [4, 0, 5, 6, 2, 1, 7, 7])"
+                    ]
+                },
+                "body": "        result = run_assign_tasks(Solution, servers, tasks)\n        assert_assign_tasks(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_assign_tasks, assert_assign_tasks\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nservers = [3, 3, 2]\ntasks = [1, 2, 3, 2, 1, 2]\nexpected = [2, 2, 0, 2, 1, 2]",
+    "playground_run": "result = run_assign_tasks(Solution, servers, tasks)\nresult",
+    "playground_assert": "assert_assign_tasks(result, expected)"
+}

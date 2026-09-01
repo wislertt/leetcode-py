@@ -1,0 +1,100 @@
+{
+    "problem_name": "rotating_the_box",
+    "solution_class_name": "Solution",
+    "problem_number": "1861",
+    "problem_title": "Rotating the Box",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` matrix of characters `boxGrid` representing a side-view of a box. Each cell of the box is one of the following:\n\n- A stone `'#'`\n- A stationary obstacle `'*'`\n- Empty `'.'`\n\nThe box is rotated **90 degrees clockwise**, causing some of the stones to fall due to gravity. Each stone falls down until it lands on an obstacle, another stone, or the bottom of the box. Gravity **does not** affect the obstacles' positions, and the inertia from the box's rotation **does not** affect the stones' horizontal positions.\n\nIt is **guaranteed** that each stone in `boxGrid` rests on an obstacle, another stone, or the bottom of the box.\n\nReturn *an* `n x m` *matrix representing the box after the rotation described above*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/08/rotatingtheboxleetcodewithstones.png)\n\n```\nInput: boxGrid = [['#','.','#']]\nOutput: [['.'],['#'],['#']]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/08/rotatingtheboxleetcode2withstones.png)\n\n```\nInput: boxGrid = [['#','.','*','.'],['#','#','*','.']]\nOutput: [['#','.'],['#','#'],['*','*'],['.','.']]\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/04/08/rotatingtheboxleetcode3withstone.png)\n\n```\nInput: boxGrid = [['#','#','*','.','*','.'],['#','#','#','*','.','.'],['#','#','#','.','#','.']]\nOutput: [['.','#','#'],['.','#','#'],['#','#','*'],['#','*','.'],['#','.','*'],['#','.','.']]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == boxGrid.length`\n- `n == boxGrid[i].length`\n- `1 <= m, n <= 500`\n- `boxGrid[i][j]` is either `'#'`, `'*'`, or `'.'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rotate_the_box",
+    "helpers_run_signature": "(solution_class: type, box_grid: list[list[str]])",
+    "helpers_run_body": "    import copy\n    box_copy = copy.deepcopy(box_grid)\n    implementation = solution_class()\n    return implementation.rotate_the_box(box_copy)",
+    "helpers_assert_name": "rotate_the_box",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rotate_the_box, run_rotate_the_box\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RotatingTheBox",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rotate_the_box",
+                "signature": "(self, box_grid: list[list[str]]) -> list[list[str]]",
+                "body": "        # TODO: Implement rotate_the_box\n        return box_grid"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rotate_the_box",
+                "signature": "(self, box_grid: list[list[str]], expected: list[list[str]])",
+                "parametrize": "box_grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([['#','.','#']],[['.'],['#'],['#']])",
+                        "([['#','.','*','.'],['#','#','*','.']],[['#','.'],['#','#'],['*','*'],['.','.']])",
+                        "([['#','#','*','.','*','.'],['#','#','#','*','.','.'],['#','#','#','.','#','.']],[['.','#','#'],['.','#','#'],['#','#','*'],['#','*','.'],['#','.','*'],['#','.','.']])",
+                        "([['#']],[['#']])",
+                        "([['.']],[['.']])",
+                        "([['*']],[['*']])",
+                        "([['.','#']],[['.'],['#']])",
+                        "([['#','.']],[['.'],['#']])",
+                        "([['#','.','*','#']],[['.'],['#'],['*'],['#']])",
+                        "([['*','.','.'],['#','.','#'],['#','#','#']],[['#','.','*'],['#','#','.'],['#','#','.']])",
+                        "([['.','.','.'],['.','.','.']],[['.','.'],['.','.'],['.','.']])",
+                        "([['#','#','#'],['#','#','#']],[['#','#'],['#','#'],['#','#']])",
+                        "([['*','*','*']],[['*'],['*'],['*']])",
+                        "([['#','*','#','*','#']],[['#'],['*'],['#'],['*'],['#']])",
+                        "([['#','#','.','*','#','.','.'],['.','#','.','.','*','.','#']],[['.','.'],['.','#'],['.','#'],['#','*'],['*','.'],['.','.'],['#','#']])",
+                        "([['#','.','#','*','.','#'],['.','#','.','.','#','.'],['*','.','#','.','.','*'],['#','#','.','*','.','.']],[['.','*','.','.'],['#','.','.','#'],['#','.','.','#'],['*','.','.','*'],['.','#','#','.'],['.','*','#','#']])",
+                        "([['#'],['.'],['#'],['*'],['.']],[['.','*','#','.','#']])",
+                        "([['.','#','.'],['#','.','#']],[['.','.'],['#','.'],['#','#']])",
+                        "([['.','#','.','#'],['*','*','.','#'],['#','#','.','.'],['.','#','.','#'],['.','.','.','*']],[['.','.','.','*','.'],['.','.','.','*','.'],['.','#','#','.','#'],['*','#','#','#','#']])",
+                        "([['#','.'],['.','#'],['*','.']],[['*','.','.'],['.','#','#']])",
+                        "([['#'],['.'],['*']],[['*','.','#']])",
+                        "([['.','.'],['.','.'],['#','.']],[['.','.','.'],['#','.','.']])"
+                    ]
+                },
+                "body": "        result = run_rotate_the_box(Solution, box_grid)\n        assert_rotate_the_box(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rotate_the_box, assert_rotate_the_box\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbox_grid = [['#', '.', '#']]\nexpected = [['.'], ['#'], ['#']]",
+    "playground_run": "result = run_rotate_the_box(Solution, box_grid)\nresult",
+    "playground_assert": "assert_rotate_the_box(result, expected)"
+}

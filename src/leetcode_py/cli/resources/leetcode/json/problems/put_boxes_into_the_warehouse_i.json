@@ -1,0 +1,100 @@
+{
+    "problem_name": "put_boxes_into_the_warehouse_i",
+    "solution_class_name": "Solution",
+    "problem_number": "1564",
+    "problem_title": "Put Boxes Into the Warehouse I",
+    "difficulty": "Medium",
+    "topics": "Greedy, Array, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two arrays of positive integers, `boxes` and `warehouse`, representing the heights of some boxes of unit width and the heights of `n` rooms in a warehouse respectively. The warehouse's rooms are labelled from `0` to `n - 1` from left to right where `warehouse[i]` (0-indexed) is the height of the i<sup>th</sup> room.\n\nBoxes are put into the warehouse by the following rules:\n\n- Boxes cannot be stacked.\n- You can rearrange the insertion order of the boxes.\n- Boxes can only be pushed into the warehouse from left to right only.\n- If the height of some room in the warehouse is less than the height of a box, then that box and all other boxes behind it will be stopped before that room.\n\nReturn <em>the maximum number of boxes you can put into the warehouse.</em>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/images/11.png)\n\n```\nInput: boxes = [4,3,4,1], warehouse = [5,3,3,4,1]\nOutput: 3\nExplanation: \n![Explanation 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/images/12.png)\nWe can first put the box of height 1 in room 4. Then we can put the box of height 3 in either of the 3 rooms 1, 2, or 3. Lastly, we can put one box of height 4 in room 0.\nThere is no way we can fit all 4 boxes in the warehouse.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/images/21.png)\n\n```\nInput: boxes = [1,2,2,3,4], warehouse = [3,4,1,2]\nOutput: 3\nExplanation: \n![Explanation 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1564.Put%20Boxes%20Into%20the%20Warehouse%20I/images/22.png)\nNotice that it's not possible to put the box of height 4 into the warehouse since it cannot pass the first room of height 3.\nAlso, for the last two rooms, 2 and 3, only boxes of height 1 can fit.\nWe can fit 3 boxes maximum as shown above. The yellow box can also be put in room 2 instead.\nSwapping the orange and green boxes is also valid, or swapping one of them with the red box.\n```"
+            },
+            {
+                "content": "```\nInput: boxes = [1,2,3], warehouse = [1,2,3,4]\nOutput: 1\nExplanation: Since the first room in the warehouse is of height 1, we can only put boxes of height 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == warehouse.length`\n- `1 <= boxes.length, warehouse.length <= 10^5`\n- `1 <= boxes[i], warehouse[i] <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_boxes_in_warehouse",
+    "helpers_run_signature": "(solution_class: type, boxes: list[int], warehouse: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_boxes_in_warehouse(boxes, warehouse)",
+    "helpers_assert_name": "max_boxes_in_warehouse",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_boxes_in_warehouse, run_max_boxes_in_warehouse\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PutBoxesIntoTheWarehouseI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_boxes_in_warehouse",
+                "signature": "(self, boxes: list[int], warehouse: list[int]) -> int",
+                "body": "        # TODO: Implement max_boxes_in_warehouse\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_boxes_in_warehouse",
+                "signature": "(self, boxes: list[int], warehouse: list[int], expected: int)",
+                "parametrize": "boxes, warehouse, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 3, 4, 1], [5, 3, 3, 4, 1], 3)",
+                        "([1, 2, 2, 3, 4], [3, 4, 1, 2], 3)",
+                        "([1, 2, 3], [1, 2, 3, 4], 1)",
+                        "([1], [1], 1)",
+                        "([2], [1], 0)",
+                        "([1, 2], [2], 1)",
+                        "([3, 1, 2], [2, 2, 2], 2)",
+                        "([4, 4, 4], [5], 1)",
+                        "([1, 1, 1, 1], [2, 1, 2, 1], 4)",
+                        "([5, 3, 2], [4, 5, 1, 3], 2)",
+                        "([2, 2, 5, 1], [3, 1, 4], 2)",
+                        "([1000000000], [1000000000], 1)",
+                        "([1000000000, 1], [999999999, 1], 1)",
+                        "([7, 6, 5, 4, 3, 2, 1], [1, 2, 3, 4, 5, 6, 7], 1)",
+                        "([1, 2, 3, 4, 5], [5, 4, 3, 2, 1], 5)",
+                        "([5], [2], 0)",
+                        "([1, 2], [5, 4], 2)",
+                        "([6, 5], [4, 5, 3, 4, 3, 2], 0)",
+                        "([4, 6], [3, 4, 4, 2, 4], 0)",
+                        "([6, 1, 6, 2, 2], [5, 1, 1, 3, 2], 2)",
+                        "([5, 4, 5, 4, 4], [4, 3, 1], 1)",
+                        "([2, 6, 1], [4, 3, 6, 1, 2], 2)"
+                    ]
+                },
+                "body": "        result = run_max_boxes_in_warehouse(Solution, boxes, warehouse)\n        assert_max_boxes_in_warehouse(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_boxes_in_warehouse, assert_max_boxes_in_warehouse\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboxes = [4, 3, 4, 1]\nwarehouse = [5, 3, 3, 4, 1]\nexpected = 3",
+    "playground_run": "result = run_max_boxes_in_warehouse(Solution, boxes, warehouse)\nresult",
+    "playground_assert": "assert_max_boxes_in_warehouse(result, expected)"
+}

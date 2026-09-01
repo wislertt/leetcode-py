@@ -1,0 +1,100 @@
+{
+    "problem_name": "splitting_a_string_into_descending_consecutive_values",
+    "solution_class_name": "Solution",
+    "problem_number": "1849",
+    "problem_title": "Splitting a String Into Descending Consecutive Values",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking, Enumeration",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` that consists of only digits.\n\nCheck if we can split `s` into **two or more non-empty substrings** such that the **numerical values** of the substrings are in **descending order** and the **difference** between numerical values of every two **adjacent** **substrings** is equal to `1`.\n\nFor example, the string `s = \"0090089\"` can be split into `[\"0090\", \"089\"]` with numerical values `[90,89]`. The values are in descending order and adjacent values differ by `1`, so this way is valid.\nAnother example, the string `s = \"001\"` can be split into `[\"0\", \"01\"]`, `[\"00\", \"1\"]`, or `[\"0\", \"0\", \"1\"]`. However all the ways are invalid because they have numerical values `[0,1]`, `[0,1]`, and `[0,0,1]` respectively, all of which are not in descending order.\n\nReturn `true` if it is possible to split `s` as described above, or `false` otherwise.\n\nA **substring** is a contiguous sequence of characters in a string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"1234\"\nOutput: false\nExplanation: There is no valid way to split s.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"050043\"\nOutput: true\nExplanation: s can be split into [\"05\", \"004\", \"3\"] with numerical values [5,4,3].\nThe values are in descending order with adjacent values differing by 1.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"9080701\"\nOutput: false\nExplanation: There is no valid way to split s.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 20\n- s only consists of digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "split_string",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.split_string(s)",
+    "helpers_assert_name": "split_string",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_split_string, run_split_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplittingAStringIntoDescendingConsecutiveValues",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "split_string",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement split_string\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_split_string",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('1234', False)",
+                        "('050043', True)",
+                        "('9080701', False)",
+                        "('0090089', True)",
+                        "('001', False)",
+                        "('10', True)",
+                        "('21', True)",
+                        "('32', True)",
+                        "('00', False)",
+                        "('5', False)",
+                        "('0', False)",
+                        "('9876543210', True)",
+                        "('321', True)",
+                        "('534', False)",
+                        "('0435', False)",
+                        "('1009998', True)",
+                        "('12345', False)",
+                        "('4321098', False)",
+                        "('99897', False)",
+                        "('0000', False)",
+                        "('20201', False)",
+                        "('1099897', False)"
+                    ]
+                },
+                "body": "        result = run_split_string(Solution, s)\n        assert_split_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_split_string, assert_split_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '050043'\nexpected = True",
+    "playground_run": "result = run_split_string(Solution, s)\nresult",
+    "playground_assert": "assert_split_string(result, expected)"
+}

@@ -1,0 +1,92 @@
+{
+    "problem_name": "count_sub_islands",
+    "solution_class_name": "Solution",
+    "problem_number": "1905",
+    "problem_title": "Count Sub Islands",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Union-Find, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two `m x n` binary matrices `grid1` and `grid2` containing only `0`s (representing water) and `1`s (representing land). An *island* is a group of `1`s connected **4-directionally** (horizontal or vertical). Any cells outside of the grid are considered water cells.\n\nAn island in `grid2` is considered a *sub-island* if there is an island in `grid1` that contains **all** the cells that make up **this** island in `grid2`.\n\nReturn the number of islands in `grid2` that are considered *sub-islands*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/10/test1.png)\n\n```\nInput: grid1 = [[1,1,1,0,0],[0,1,1,1,1],[0,0,0,0,0],[1,0,0,0,0],[1,1,0,1,1]], grid2 = [[1,1,1,0,0],[0,0,1,1,1],[0,1,0,0,0],[1,0,1,1,0],[0,1,0,1,0]]\nOutput: 3\nExplanation: The grid on the left is grid1 and the grid on the right is grid2. The 1s colored red in grid2 are those considered to be part of a sub-island. There are three sub-islands.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/06/03/testcasex2.png)\n\n```\nInput: grid1 = [[1,0,1,0,1],[1,1,1,1,1],[0,0,0,0,0],[1,1,1,1,1],[1,0,1,0,1]], grid2 = [[0,0,0,0,0],[1,1,1,1,1],[0,1,0,1,0],[0,1,0,1,0],[1,0,0,0,1]]\nOutput: 2\nExplanation: The grid on the left is grid1 and the grid on the right is grid2. The 1s colored red in grid2 are those considered to be part of a sub-island. There are two sub-islands.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid1.length == grid2.length`\n- `n == grid1[i].length == grid2[i].length`\n- `1 <= m, n <= 500`\n- `grid1[i][j]` and `grid2[i][j]` are either `0` or `1`.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_sub_islands",
+    "helpers_run_signature": "(solution_class: type, grid1: list[list[int]], grid2: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_sub_islands(grid1, grid2)",
+    "helpers_assert_name": "count_sub_islands",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_sub_islands, run_count_sub_islands\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountSubIslandsTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_sub_islands",
+                "signature": "(self, grid1: list[list[int]], grid2: list[list[int]]) -> int",
+                "body": "        # TODO: Implement count_sub_islands\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_sub_islands",
+                "signature": "(self, grid1: list[list[int]], grid2: list[list[int]], expected: int)",
+                "parametrize": "grid1, grid2, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1]], [[1]], 1)",
+                        "([[0]], [[1]], 0)",
+                        "([[1]], [[0]], 0)",
+                        "([[1,1],[1,1]], [[1,1],[1,1]], 1)",
+                        "([[1,0],[0,1]], [[1,1],[1,0]], 0)",
+                        "([[0,0],[0,0]], [[1,1],[1,1]], 0)",
+                        "([[1,1,1],[1,1,1],[1,1,1]], [[1,0,1],[0,0,0],[1,0,1]], 4)",
+                        "([[1,1,1],[1,1,1],[1,1,1]], [[1,1,1],[1,1,1],[1,1,1]], 1)",
+                        "([[1,1,1,1]], [[1,0,0,1]], 2)",
+                        "([[1,0,1,1,1]], [[1,1,0,1,1]], 1)",
+                        "([[1,0,1,0,1]], [[1,1,0,1,1]], 0)",
+                        "([[1],[1],[1]], [[1],[0],[1]], 2)",
+                        "([[1],[0],[1]], [[1],[1],[1]], 0)",
+                        "([[1,0,0],[1,1,1]], [[1,1,1],[1,1,1]], 0)",
+                        "([[1,1,0],[0,1,0],[0,0,1]], [[1,1,0],[0,1,0],[0,0,0]], 1)",
+                        "([[1,1,0],[0,1,1],[0,0,0]], [[1,1,0],[0,1,0],[0,0,1]], 1)",
+                        "([[1,0,1,0,1],[1,1,1,1,1],[0,0,0,0,0]], [[0,0,0,0,0],[1,1,1,1,1],[0,1,0,1,0]], 0)",
+                        "([[1,0],[1,1],[0,1]], [[1,1],[1,1],[1,1]], 0)"
+                    ]
+                },
+                "body": "        result = run_count_sub_islands(Solution, grid1, grid2)\n        assert_count_sub_islands(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_sub_islands, assert_count_sub_islands\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid1 = [[1, 1, 1], [0, 1, 0], [1, 1, 1]]\ngrid2 = [[1, 1, 1], [0, 0, 0], [1, 1, 1]]\nexpected = 2",
+    "playground_run": "result = run_count_sub_islands(Solution, grid1, grid2)\nresult",
+    "playground_assert": "assert_count_sub_islands(result, expected)"
+}

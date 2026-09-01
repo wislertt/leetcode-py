@@ -1,0 +1,112 @@
+{
+    "problem_name": "eliminate_maximum_number_of_monsters",
+    "solution_class_name": "Solution",
+    "problem_number": "1921",
+    "problem_title": "Eliminate Maximum Number of Monsters",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are playing a video game where you are defending your city from a group of `n` monsters. You are given a **0-indexed** integer array `dist` of size `n`, where `dist[i]` is the **initial distance** in kilometers of the `i`th monster from the city.\n\nThe monsters walk toward the city at a **constant** speed. The speed of each monster is given to you in an integer array `speed` of size `n`, where `speed[i]` is the speed of the `i`th monster in kilometers per minute.\n\nYou have a weapon that, once fully charged, can eliminate a **single** monster. However, the weapon takes **one minute** to charge. The weapon is fully charged at the very start.\n\nYou lose when any monster reaches your city. If a monster reaches the city at the exact moment the weapon is fully charged, it counts as a **loss**, and the game ends before you can use your weapon.\n\nReturn the maximum number of monsters that you can eliminate before you lose, or `n` if you can eliminate all the monsters before they reach the city.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: dist = [1,3,4], speed = [1,1,1]\nOutput: 3\nExplanation:\nIn the beginning, the distances of the monsters are [1,3,4]. You eliminate the first monster.\nAfter a minute, the distances of the monsters are [X,2,3]. You eliminate the second monster.\nAfter a minute, the distances of the monsters are [X,X,2]. You eliminate the third monster.\nAll 3 monsters can be eliminated.\n```"
+            },
+            {
+                "content": "```\nInput: dist = [1,1,2,3], speed = [1,1,1,1]\nOutput: 1\nExplanation:\nIn the beginning, the distances of the monsters are [1,1,2,3]. You eliminate the first monster.\nAfter a minute, the distances of the monsters are [X,0,1,2], so you lose.\nYou can only eliminate 1 monster.\n```"
+            },
+            {
+                "content": "```\nInput: dist = [3,2,4], speed = [5,3,2]\nOutput: 1\nExplanation:\nIn the beginning, the distances of the monsters are [3,2,4]. You eliminate the first monster.\nAfter a minute, the distances of the monsters are [X,0,2], so you lose.\nYou can only eliminate 1 monster.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == dist.length == speed.length\n- 1 <= n <= 10^5\n- 1 <= dist[i], speed[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "eliminate_maximum",
+    "helpers_run_signature": "(solution_class: type, dist: list[int], speed: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.eliminate_maximum(dist, speed)",
+    "helpers_assert_name": "eliminate_maximum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_eliminate_maximum, run_eliminate_maximum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EliminateMaximumNumberOfMonsters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "eliminate_maximum",
+                "signature": "(self, dist: list[int], speed: list[int]) -> int",
+                "body": "        # TODO: Implement eliminate_maximum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_eliminate_maximum",
+                "signature": "(self, dist: list[int], speed: list[int], expected: int)",
+                "parametrize": "dist, speed, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, 4], [1, 1, 1], 3)",
+                        "([1, 1, 2, 3], [1, 1, 1, 1], 1)",
+                        "([3, 2, 4], [5, 3, 2], 1)",
+                        "([1], [1], 1)",
+                        "([100000], [100000], 1)",
+                        "([100000], [1], 1)",
+                        "([1, 1], [1, 1], 1)",
+                        "([2, 2], [1, 1], 2)",
+                        "([5, 4, 3, 2, 1], [1, 1, 1, 1, 1], 5)",
+                        "([1, 3, 5, 7], [1, 1, 1, 1], 4)",
+                        "([4, 2, 3], [1, 1, 1], 3)",
+                        "([1, 2], [1, 1], 2)",
+                        "([1, 1, 1], [1, 1, 1], 1)",
+                        "([2, 3, 4, 5], [1, 1, 1, 1], 4)",
+                        "([7, 8, 9, 10], [2, 3, 4, 5], 4)",
+                        "([5, 5, 5, 5, 5], [5, 5, 5, 5, 5], 1)",
+                        "([3, 1, 4, 1, 5], [2, 7, 1, 8, 2], 1)",
+                        "([9, 9, 9, 9], [10, 1, 5, 3], 4)",
+                        "([8], [2], 1)",
+                        "([1, 3, 8, 1, 4, 1, 8, 4], [5, 1, 1, 3, 6, 5, 1, 4], 1)",
+                        "([3, 6, 3, 6], [3, 6, 4, 4], 1)",
+                        "([2], [5], 1)",
+                        "([1], [5], 1)",
+                        "([8], [4], 1)",
+                        "([7, 10, 4, 5, 9, 1], [1, 6, 5, 5, 4, 4], 1)",
+                        "([2, 10, 7, 3], [2, 6, 5, 4], 1)",
+                        "([8], [5], 1)",
+                        "([1, 7], [4, 5], 2)",
+                        "([1, 6, 3, 4, 3], [6, 3, 3, 1, 3], 1)",
+                        "([5, 5, 2], [6, 6, 4], 1)",
+                        "([3, 7, 10, 8, 5, 2], [5, 3, 6, 4, 4, 5], 1)",
+                        "([2, 5, 1, 3, 7, 5, 6], [1, 5, 2, 3, 4, 1, 5], 1)",
+                        "([5, 1, 2, 8, 6, 7, 4, 4, 1, 8], [5, 4, 6, 5, 1, 5, 6, 1, 7, 8], 1)",
+                        "([1, 5, 9, 9, 1, 2, 2, 8, 6, 7], [8, 9, 9, 9, 4, 6, 6, 8, 9, 7], 1)"
+                    ]
+                },
+                "body": "        result = run_eliminate_maximum(Solution, dist, speed)\n        assert_eliminate_maximum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_eliminate_maximum, assert_eliminate_maximum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndist: list[int] = [1, 3, 4]\nspeed: list[int] = [1, 1, 1]\nexpected: int = 3",
+    "playground_run": "result = run_eliminate_maximum(Solution, dist, speed)\nresult",
+    "playground_assert": "assert_eliminate_maximum(result, expected)"
+}

@@ -1,0 +1,106 @@
+{
+    "problem_name": "minimum_number_of_flips_to_make_the_binary_string_alternating",
+    "solution_class_name": "Solution",
+    "problem_number": "1888",
+    "problem_title": "Minimum Number of Flips to Make the Binary String Alternating",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a binary string `s`. You are allowed to perform two types of operations on the string in any sequence:\n\n- **Type-1: Remove** the character at the start of the string `s` and **append** it to the end of the string.\n- **Type-2: Pick** any character in `s` and **flip** its value, i.e., if its value is `'0'` it becomes `'1'` and vice-versa.\n\nReturn *the **minimum** number of **type-2** operations you need to perform* *such that* `s` *becomes **alternating**.*\n\nThe string is called **alternating** if no two adjacent characters are equal.\n\n- For example, the strings `\"010\"` and `\"1010\"` are alternating, while the string `\"0100\"` is not.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"111000\"\nOutput: 2\nExplanation: Use the first operation two times to make s = \"100011\".\nThen, use the second operation on the third and sixth elements to make s = \"101010\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"010\"\nOutput: 0\nExplanation: The string is already alternating.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"1110\"\nOutput: 1\nExplanation: Use the second operation on the second element to make s = \"1010\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `s[i]` is either `'0'` or `'1'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_flips",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_flips(s)",
+    "helpers_assert_name": "min_flips",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_flips, run_min_flips\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfFlipsToMakeTheBinaryStringAlternating",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_flips",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement min_flips\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_flips",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('111000', 2)",
+                        "('010', 0)",
+                        "('1110', 1)",
+                        "('0', 0)",
+                        "('1', 0)",
+                        "('00', 1)",
+                        "('11', 1)",
+                        "('01', 0)",
+                        "('10', 0)",
+                        "('0000', 2)",
+                        "('1111', 2)",
+                        "('0101', 0)",
+                        "('1010', 0)",
+                        "('1100', 2)",
+                        "('000111', 2)",
+                        "('1001', 2)",
+                        "('10010010100', 3)",
+                        "('10101110', 1)",
+                        "('000', 1)",
+                        "('10010110000110', 7)",
+                        "('1101001100', 4)",
+                        "('1010001011001', 3)",
+                        "('100011', 2)",
+                        "('00110011', 4)",
+                        "('111000111000', 4)",
+                        "('010010', 3)",
+                        "('110100', 2)",
+                        "('0011', 2)"
+                    ]
+                },
+                "body": "        result = run_min_flips(Solution, s)\n        assert_min_flips(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_flips, assert_min_flips\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '111000'\nexpected = 2",
+    "playground_run": "result = run_min_flips(Solution, s)\nresult",
+    "playground_assert": "assert_min_flips(result, expected)"
+}

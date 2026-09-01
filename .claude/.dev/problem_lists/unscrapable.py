@@ -179,12 +179,6 @@ UNSCRAPABLE_HANDLED = [
     (1506, "find-root-of-n-ary-tree"),
     (1522, "diameter-of-n-ary-tree"),
     (1533, "find-the-index-of-the-large-integer"),
-]
-
-# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
-# problem is created; append new discoveries at the bottom.
-UNSCRAPABLE_QUEUE = [
-    (1197, "minimum-knight-moves"),
     (1538, "guess-the-majority-in-a-hidden-array"),
     (1564, "put-boxes-into-the-warehouse-i"),
     (1570, "dot-product-of-two-sparse-vectors"),
@@ -193,6 +187,14 @@ UNSCRAPABLE_QUEUE = [
     (1836, "remove-duplicates-from-an-unsorted-linked-list"),
     (1279, "traffic-light-controlled-intersection"),
     (1265, "print-immutable-linked-list-in-reverse"),
+    (1868, "product-of-two-run-length-encoded-arrays"),
+    (1891, "cutting-ribbons"),
+]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = [
+    (1197, "minimum-knight-moves"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).

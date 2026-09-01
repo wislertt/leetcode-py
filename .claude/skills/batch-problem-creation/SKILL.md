@@ -91,9 +91,15 @@ Do, in order:
 3. Implement ONE optimal solution in the single Solution class in solution.py (design problems:
    the custom class only), ruff/ty-clean up front per problem-creation.md Batch Flow Notes.
 4. Run the QA chain from test-quality-assurance.md step 2 (backup -> p-gen -f -> restore
-   solution -> p-test -> cleanup). lint step is NOT yours — the orchestrator runs repo-wide
-   lint at finalization. Tests MUST pass (solution is implemented); a failure means bad JSON
-   expectations or a wrong solution — fix it, do not dismiss it.
+   solution -> p-test -> cleanup). Repo-wide `bake lint` is NOT yours — the orchestrator runs
+   it at finalization; but scoped lint IS yours: `uv run ruff check leetcode/{problem_name}`,
+   `uv run ruff format --check leetcode/{problem_name}`, `uv run ty check leetcode/{problem_name}`
+   must all be clean before you report PASS. Tests MUST pass (solution is implemented); a
+   failure means bad JSON expectations or a wrong solution — fix it, do not dismiss it.
+   SPIN GUARD: if p-test exceeds ~1 min on your 12-20 tiny cases, kill it — that is an
+   infinite loop in the solution/helper, not slowness (check `ps` for a ~100% CPU pytest);
+   find the spinning case by running cases individually and fix the root cause. Never report
+   PASS off a truncated or early-ended output file.
 5. Write the actual directory name you created (one line) to /tmp/batch_name_{N}.txt, so the
    orchestrator can insert the tag and re-test by real dir names — do NOT assume the scrape
    slug (they can differ, e.g. shorter names chosen to satisfy E501).
@@ -133,7 +139,7 @@ Four gates in order. Do NOT skip any.
 
 ### 2.0: Tag Insert (main-side — agents no longer insert their own)
 
-Agents run concurrently and don't touch tags.json5; insert all batch tags here, then remove the per-agent name files:
+Agents run concurrently and don't touch tags.json5; insert all batch tags here. Keep the name files — the Step 3 re-test still reads them (deleting them here cost a full wasted re-test cycle in one batch: all 30 problems printed MISSING_NAMEFILE and the mapping had to be rebuilt by hand). Cleanup happens at the END of Step 3:
 
 ```bash
 grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
@@ -141,7 +147,6 @@ grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
   if [ "$TAG" != "none" ]; then
     uv run python .claude/.dev/insert_tag.py "$TAG" "$NAME"
   fi
-  rm -f "/tmp/batch_name_${N}.txt"
 done
 ```
 
@@ -213,6 +218,12 @@ cp /tmp/solution_backup.py leetcode/{problem_name}/solution.py
 Report: total created, success rate, failed problems with reasons, finalization results. Then re-test all batch problems with `bake p-test -p {name}` and report counts.
 
 **GOTCHA — derive re-test names from the agent manifest, not the scrape slug.** The dir name the agent created can differ from the scrape's `slug` (shorter names chosen for E501: 1415 → `k_th_lexicographical_...`, 1524 → `number_of_subarrays_...`, 1662 → `array_strings_are_equal`). Deriving from the slug produced 3/100 false FAILs and a wasted re-verify cycle. Agents write real dir names to `/tmp/batch_name_{N}.txt` (prompt step 5); test from those files. On a false-FAIL, check the dir exists under a different name before treating it as a real failure.
+
+After the re-test loop completes, remove the name files (they are still needed until here — gate 2.0 deliberately does not delete them):
+
+```bash
+grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N _; do rm -f "/tmp/batch_name_${N}.txt"; done
+```
 
 ### 3.1: Skill Improvement Suggestions (evidence-driven)
 

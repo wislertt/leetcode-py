@@ -1,0 +1,121 @@
+{
+    "problem_name": "unique_length_3_palindromic_subsequences",
+    "solution_class_name": "Solution",
+    "problem_number": "1930",
+    "problem_title": "Unique Length-3 Palindromic Subsequences",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Bit Manipulation, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string s, return the number of unique palindromes of length three that are a subsequence of s.\n\nNote that even if there are multiple ways to obtain the same subsequence, it is still only counted once.\n\nA palindrome is a string that reads the same forwards and backwards.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\n- For example, `\"ace\"` is a subsequence of `\"abcde\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aabca\"\nOutput: 3\nExplanation: The 3 palindromic subsequences of length 3 are:\n- \"aba\" (subsequence of \"aabca\")\n- \"aaa\" (subsequence of \"aabca\")\n- \"aca\" (subsequence of \"aabca\")\n```"
+            },
+            {
+                "content": "```\nInput: s = \"adc\"\nOutput: 0\nExplanation: There are no palindromic subsequences of length 3 in \"adc\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"bbcbaba\"\nOutput: 4\nExplanation: The 4 palindromic subsequences of length 3 are:\n- \"bbb\" (subsequence of \"bbcbaba\")\n- \"bcb\" (subsequence of \"bbcbaba\")\n- \"bab\" (subsequence of \"bbcbaba\")\n- \"aba\" (subsequence of \"bbcbaba\")\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= s.length <= 10^5\n- s consists of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_palindromic_subsequence",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_palindromic_subsequence(s)",
+    "helpers_assert_name": "count_palindromic_subsequence",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_palindromic_subsequence, run_count_palindromic_subsequence\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UniqueLength3PalindromicSubsequences",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_palindromic_subsequence",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement count_palindromic_subsequence\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_palindromic_subsequence",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aabca', 3)",
+                        "('adc', 0)",
+                        "('bbcbaba', 4)",
+                        "('aba', 1)",
+                        "('aaa', 1)",
+                        "('abc', 0)",
+                        "('abcba', 3)",
+                        "('abccba', 3)",
+                        "('aaaaa', 1)",
+                        "('aabb', 0)",
+                        "('ababa', 3)",
+                        "('racecar', 6)",
+                        "('abab', 2)",
+                        "('xyzzyx', 3)",
+                        "('zzz', 1)",
+                        "('aazzaa', 2)",
+                        "('abaa', 2)",
+                        "('babb', 2)",
+                        "('bbabb', 2)",
+                        "('bbbaa', 1)",
+                        "('bbaaaa', 1)",
+                        "('ccccab', 1)",
+                        "('aabacabb', 6)",
+                        "('bccbcccb', 4)",
+                        "('baaaabaaba', 4)",
+                        "('abbabbbbbb', 3)",
+                        "('qreobrjrskrk', 8)",
+                        "('plxsgxjepzuq', 8)",
+                        "('elokasjkoljejr', 23)",
+                        "('zmftczwnbqotdx', 11)",
+                        "('babcabbcbbcabcca', 9)",
+                        "('cbacbbccaccbbbab', 9)",
+                        "('cbdbadbdaccaccbadadc', 16)",
+                        "('abdacabaacddadcbaadb', 16)",
+                        "('bcdeabbcdedabbcdbdaeaddbdd', 25)",
+                        "('ecebcdbccbdaaacbadaccaddab', 18)",
+                        "('lqrdfoukqdydnxfgfonizclmgsfgtm', 70)",
+                        "('hipfogykahwapnhijhfkusvbhplckm', 70)",
+                        "('bbcbcacbabbacabbbabcbababcbababcbbab', 9)",
+                        "('caaabaacaccacbaccbabaabbbaacbccccbca', 9)"
+                    ]
+                },
+                "body": "        result = run_count_palindromic_subsequence(Solution, s)\n        assert_count_palindromic_subsequence(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_palindromic_subsequence, assert_count_palindromic_subsequence\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aabca'\nexpected = 3",
+    "playground_run": "result = run_count_palindromic_subsequence(Solution, s)\nresult",
+    "playground_assert": "assert_count_palindromic_subsequence(result, expected)",
+    "playground_test_case": "s = 'aabca'",
+    "playground_execution": "result = run_count_palindromic_subsequence(Solution, s)",
+    "playground_assertion": "assert_count_palindromic_subsequence(result, 3)"
+}

@@ -35,6 +35,14 @@ bake p-test -p {problem_name}
 # step, so tests MUST pass here. A failure = real defect: wrong expected values in
 # the JSON test_cases (most common — see problem-creation.md tree gotchas) or a
 # wrong solution. Debug it; do not dismiss it as "incomplete solution".
+# SPIN GUARD: 12-20 tiny cases finish in well under a minute. If a pytest run
+# exceeds ~1 min wall, it is an INFINITE LOOP in the solution or helper, not
+# slowness — kill it (check `ps aux` for a pytest process burning ~100% CPU),
+# run the parametrize cases one by one to find the spinner, fix the root cause.
+# Never trust a truncated/backgrounded output file as a pass: an exit code
+# observed on a run that ended early after logging only the first test is NOT
+# a pass (hit with 1265 — a spinning pytest burned ~34 min and an early-truncated
+# "exit 0" output masqueraded as green).
 
 # Step 6: Cleanup
 rm -rf leetcode/{problem_name}_backup
@@ -135,6 +143,7 @@ defects — fix the JSON test cases or the solution, then re-run the 6 steps
 - E501 also fires on COMMENTS: a complexity comment listing per-method costs (`# Time: get O(index), add_at_index O(index), ...`) overflows col 100 — compress or split it (hit with 707 Design Linked List)
 - Solution-defined doubly-linked `Node` classes (custom linked-list/design problems, e.g. 708 circular list, 716 MaxStack DLL) whose pointer fields are `Node | None` pass `bake p-gen` QA and `bake lint` but fail pre-commit ty with one `unresolved-attribute`/`invalid-assignment` error per pointer access — ty cannot narrow attribute fields, and the dead-node marker `node.prev = None` assignment also fails (`invalid-assignment`). Fix at the solution level with self-linking non-Optional fields: `self.next: Node = next if next is not None else self` in `__init__`, dead marker `node.prev = node.next = node` plus `node.prev is not node` liveness checks (hit with 708/716, 12 errors at once). Recurs on linked-list/design problems in the unscrapable queue (919, 428, 431, 510, 369)
 - Prevention: write solutions ruff-clean from the start (see problem-creation.md, Batch Flow Notes section)
+- Prevention (batch flow, where `bake lint` is orchestrator-owned and skipped in the QA chain): scoped lint is STILL REQUIRED before reporting PASS, and it must read the repo config — from the repo root run `uv run ruff check leetcode/{problem_name}`, `uv run ruff format --check leetcode/{problem_name}`, and `uv run ty check leetcode/{problem_name}` (uv resolves the pyproject ruff/ty settings, so these mirror what pre-commit's repo-wide run enforces). A bare `ruff check` outside `uv run`, or skipping the scoped lint entirely because the step was "not yours", lets SIM110/E501-class issues surface first at batch pre-commit and cost a fix + full pre-commit rerun (hit with 1849, whose agent skipped scoped lint and shipped a SIM110 `for`-loop-return that pre-commit caught)
 
 ### Issue: \`null\` vs \`None\` in JSON Templates
 

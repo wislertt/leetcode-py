@@ -1,0 +1,106 @@
+{
+    "problem_name": "guess_the_majority_in_a_hidden_array",
+    "solution_class_name": "Solution",
+    "problem_number": "1538",
+    "problem_title": "Guess the Majority in a Hidden Array",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "We have an integer array `nums`, where all the integers in `nums` are **0** or **1**. You will not be given direct access to the array, instead, you will have an **API** `ArrayReader` which has the following functions:\n\n- `int query(int a, int b, int c, int d)`: where `0 <= a < b < c < d < ArrayReader.length()`. The function returns the distribution of the value of the 4 elements:\n  - **4**: if the values of the 4 elements are the same (0 or 1).\n  - **2**: if three elements have a value equal to 0 and one element has value equal to 1 or vice versa.\n  - **0**: if two elements have a value equal to 0 and two elements have a value equal to 1.\n- `int length()`: Returns the size of the array.\n\nYou are allowed to call `query()` **2 * n times** at most where n is equal to `ArrayReader.length()`.\n\nReturn **any** index of the most frequent value in `nums`, in case of tie, return -1.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [0,0,1,0,1,1,1,1]\nOutput: 5\nExplanation: The following calls to the API\nreader.length() // returns 8 because there are 8 elements in the hidden array.\nreader.query(0,1,2,3) // returns 2 this is a query that compares the elements nums[0], nums[1], nums[2], nums[3]\n// Three elements have a value equal to 0 and one element has value equal to 1 or vice versa.\nreader.query(4,5,6,7) // returns 4 because nums[4], nums[5], nums[6], nums[7] have the same value.\nWe can infer that the most frequent value is found in the last 4 elements.\nIndex 2, 4, 6, 7 is also a correct answer.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,0,1,1,0]\nOutput: 0\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,0,1,0,1,0,1,0]\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `5 <= nums.length <= 10^5`\n- `0 <= nums[i] <= 1`",
+    "readme_additional": "**Follow up:** What is the minimum number of calls needed to find the majority element?",
+    "helpers_imports": "from .solution import ArrayReader",
+    "helpers_content": "",
+    "helpers_run_name": "guess_majority",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    reader = ArrayReader(nums)\n    return solution_class().guess_majority(reader)",
+    "helpers_assert_name": "guess_majority",
+    "helpers_assert_signature": "(result: int, expected: int, nums: list[int]) -> bool",
+    "helpers_assert_body": "    # Any index of the most frequent value is valid;\n    # -1 is the only valid answer on a tie\n    if expected == -1:\n        assert result == -1\n        return True\n    assert 0 <= result < len(nums)\n    assert nums[result] == nums[expected]\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class ArrayReader:\n    # Test-harness API: backs the query/length interface with the hidden array\n    def __init__(self, nums: list[int]) -> None:\n        self.nums = nums\n\n    def query(self, a: int, b: int, c: int, d: int) -> int:\n        total = sum(self.nums[i] for i in (a, b, c, d))\n        return 4 if total in (0, 4) else 2 if total in (1, 3) else 0\n\n    def length(self) -> int:\n        return len(self.nums)\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_guess_majority, run_guess_majority\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GuessTheMajorityInAHiddenArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "guess_majority",
+                "signature": "(self, reader: ArrayReader) -> int",
+                "body": "        # TODO: Implement guess_majority\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_guess_majority",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 0, 1, 0, 1, 1, 1, 1], 2)",
+                        "([0, 0, 1, 1, 0], 0)",
+                        "([1, 0, 1, 0, 1, 0, 1, 0], -1)",
+                        "([1, 1, 1, 1, 1], 0)",
+                        "([0, 0, 0, 0, 0], 0)",
+                        "([0, 0, 0, 0, 1], 0)",
+                        "([1, 0, 0, 0, 0], 1)",
+                        "([1, 1, 1, 0, 1, 1], 0)",
+                        "([0, 1, 1, 0, 0], 0)",
+                        "([1, 1, 0, 0, 1, 1], 0)",
+                        "([0, 0, 1, 0, 0], 0)",
+                        "([1, 0, 0, 1, 0, 0, 1], 1)",
+                        "([0, 1, 1, 1, 1, 0, 1], 1)",
+                        "([0, 1, 0, 1, 0, 1], -1)",
+                        "([1, 1, 0, 0, 0, 0, 1, 1], -1)",
+                        "([1, 0, 1, 1, 0, 1, 1, 0, 1], 0)",
+                        "([0, 0, 0, 1, 0, 0, 0, 0, 0], 0)",
+                        "([1, 0, 1, 0, 1, 1], 0)",
+                        "([0, 1, 1, 0, 1, 0], -1)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0], 0)",
+                        "([0, 1, 1, 0, 0, 1, 1, 0], -1)",
+                        "([1, 0, 0, 1, 1, 0, 1], 0)",
+                        "([0, 0, 0, 0, 1, 0, 0, 1, 1], 0)",
+                        "([0, 0, 1, 1, 1], 2)",
+                        "([1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0], 2)",
+                        "([0, 0, 1, 0, 1, 0, 0], 0)",
+                        "([0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1], -1)",
+                        "([0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0], 0)"
+                    ]
+                },
+                "body": "        result = run_guess_majority(Solution, nums)\n        assert_guess_majority(result, expected, nums)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_guess_majority, run_guess_majority\nfrom solution import ArrayReader, Solution",
+    "playground_setup": "# Example test case\nnums = [0, 0, 1, 0, 1, 1, 1, 1]\nexpected = 5",
+    "playground_run": "result = run_guess_majority(Solution, nums)\nresult",
+    "playground_assert": "assert_guess_majority(result, expected, nums)"
+}

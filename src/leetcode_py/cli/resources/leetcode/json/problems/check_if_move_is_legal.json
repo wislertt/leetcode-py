@@ -1,0 +1,93 @@
+{
+    "problem_name": "check_if_move_is_legal",
+    "solution_class_name": "Solution",
+    "problem_number": "1958",
+    "problem_title": "Check if Move is Legal",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix, Enumeration",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 0-indexed 8 x 8 grid board, where board[r][c] represents the cell (r, c) on a game board. On the board, free cells are represented by '.', white cells are represented by 'W', and black cells are represented by 'B'.\n\nEach move in this game consists of choosing a free cell and changing it to the color you are playing as (either white or black). However, a move is only legal if, after changing it, the cell becomes the endpoint of a good line (horizontal, vertical, or diagonal).\n\nA good line is a line of three or more cells (including the endpoints) where the endpoints of the line are one color, and the remaining cells in the middle are the opposite color (no cells in the line are free). You can find examples for good lines in the figure below:\n\n![Good lines](https://assets.leetcode.com/uploads/2021/07/22/goodlines5.png)\n\nGiven two integers rMove and cMove and a character color representing the color you are playing as (white or black), return true if changing cell (rMove, cMove) to color color is a legal move, or false if it is not legal.\n\n\u00a0\nExample 1:\n\n\nInput: board = [[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\"W\",\"B\",\"B\",\".\",\"W\",\"W\",\"W\",\"B\"],[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"]], rMove = 4, cMove = 3, color = \"B\"\nOutput: true\nExplanation: '.', 'W', and 'B' are represented by the colors blue, white, and black respectively, and cell (rMove, cMove) is marked with an 'X'.\nThe two good lines with the chosen cell as an endpoint are annotated above with the red rectangles.\n\n\nExample 2:\n\n\nInput: board = [[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\".\",\"B\",\".\",\".\",\"W\",\".\",\".\",\".\"],[\".\",\".\",\"W\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\"B\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\"B\",\"W\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\"W\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\"B\"]], rMove = 4, cMove = 4, color = \"W\"\nOutput: false\nExplanation: While there are good lines with the chosen cell as a middle cell, there are no good lines with the chosen cell as an endpoint.\n\n\n\u00a0\nConstraints:\n\n\n\tboard.length == board[r].length == 8\n\t0 <= rMove, cMove < 8\n\tboard[rMove][cMove] == '.'\n\tcolor is either 'B' or 'W'.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/10/grid11.png)\n\n```\nInput: board = [[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"],[\"W\",\"B\",\"B\",\".\",\"W\",\"W\",\"W\",\"B\"],[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"B\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\".\",\".\",\".\",\".\"]], rMove = 4, cMove = 3, color = \"B\"\nOutput: true\nExplanation: The two good lines with the chosen cell as an endpoint are annotated above with the red rectangles.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/07/10/grid2.png)\n\n```\nInput: board = [[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\".\",\"B\",\".\",\".\",\"W\",\".\",\".\",\".\"],[\".\",\".\",\"W\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\"W\",\"B\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\".\"],[\".\",\".\",\".\",\".\",\"B\",\"W\",\".\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\"W\",\".\"],[\".\",\".\",\".\",\".\",\".\",\".\",\".\",\"B\"]], rMove = 4, cMove = 4, color = \"W\"\nOutput: false\nExplanation: While there are good lines with the chosen cell as a middle cell, there are no good lines with the chosen cell as an endpoint.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- board.length == board[r].length == 8\n- 0 <= rMove, cMove < 8\n- board[rMove][cMove] == '.'\n- color is either 'B' or 'W'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_move",
+    "helpers_run_signature": "(solution_class: type, board: list[list[str]], r_move: int, c_move: int, color: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_move(board, r_move, c_move, color)",
+    "helpers_assert_name": "check_move",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_move, run_check_move\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckIfMoveIsLegal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_move",
+                "signature": "(self, board: list[list[str]], r_move: int, c_move: int, color: str) -> bool",
+                "body": "        # TODO: Implement check_move\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_move",
+                "signature": "(self, board: list[list[str]], r_move: int, c_move: int, color: str, expected: bool)",
+                "parametrize": "board, r_move, c_move, color, expected",
+                "test_cases": {
+                    "list": [
+                        "([['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['W', 'B', 'B', '.', 'W', 'W', 'W', 'B'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.']], 4, 3, 'B', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', 'B', '.', '.', 'W', '.', '.', '.'], ['.', '.', 'W', '.', '.', '.', '.', '.'], ['.', '.', '.', 'W', 'B', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', 'B', 'W', '.', '.'], ['.', '.', '.', '.', '.', '.', 'W', '.'], ['.', '.', '.', '.', '.', '.', '.', 'B']], 4, 4, 'W', False)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'B', 'W', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'W', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', 'W', 'B', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 4, 'W', True)",
+                        "([['.', '.', '.', '.', 'W', '.', '.', '.'], ['.', '.', '.', '.', 'B', '.', '.', '.'], ['.', '.', '.', '.', 'B', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 4, 'W', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', 'W', '.', '.'], ['.', '.', '.', '.', '.', '.', 'W', '.'], ['.', '.', '.', '.', '.', '.', '.', 'B']], 4, 4, 'B', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', 'B', '.', '.'], ['.', '.', '.', '.', '.', '.', 'W', '.'], ['.', '.', '.', '.', '.', '.', '.', 'W']], 4, 4, 'W', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'W', False)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'W', 'W', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'W', False)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'B', 'B', 'B', 'B', 'B'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'W', False)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'W', 'B', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'B', True)",
+                        "([['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'W', 'W', 'W', 'W', 'W'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 3, 2, 'B', False)",
+                        "([['.', 'W', 'W', 'W', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 0, 0, 'B', False)",
+                        "([['.', 'B', 'B', 'W', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.']], 0, 0, 'W', True)",
+                        "([['.', '.', 'W', 'W', 'B', '.', '.', 'B'], ['.', '.', 'B', '.', 'B', 'B', '.', 'B'], ['.', 'W', '.', '.', 'B', '.', '.', '.'], ['W', 'W', 'W', 'W', '.', 'B', '.', '.'], ['.', '.', '.', '.', 'W', 'B', '.', '.'], ['.', '.', 'B', 'B', '.', '.', '.', 'B'], ['B', 'B', '.', 'W', 'W', '.', '.', 'W'], ['.', '.', 'B', '.', '.', 'W', '.', '.']], 6, 5, 'W', False)",
+                        "([['W', '.', 'W', '.', '.', 'W', '.', '.'], ['.', '.', '.', '.', '.', 'W', '.', '.'], ['W', '.', '.', 'W', 'W', 'W', 'B', 'W'], ['B', 'B', 'B', 'B', '.', '.', 'B', 'B'], ['.', '.', '.', 'W', 'B', '.', '.', '.'], ['.', '.', 'B', 'W', '.', 'W', 'B', '.'], ['.', '.', 'W', 'W', 'B', 'W', '.', '.'], ['B', 'B', 'B', '.', '.', '.', '.', '.']], 0, 6, 'B', True)",
+                        "([['.', 'W', 'W', 'B', 'W', '.', '.', '.'], ['W', '.', 'B', '.', 'W', '.', 'B', '.'], ['.', 'B', 'W', '.', 'W', '.', '.', '.'], ['.', 'W', '.', 'W', '.', 'W', '.', 'W'], ['.', '.', '.', 'W', '.', 'B', '.', '.'], ['B', '.', 'W', '.', 'W', '.', '.', 'W'], ['.', '.', '.', '.', 'B', '.', '.', 'W'], ['B', '.', 'B', '.', '.', 'W', 'B', '.']], 3, 6, 'B', False)",
+                        "([['B', '.', '.', 'W', '.', 'W', '.', '.'], ['B', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['B', '.', '.', 'B', '.', '.', '.', '.'], ['.', 'W', '.', '.', 'W', '.', 'W', 'W'], ['.', '.', 'W', 'W', 'B', 'W', '.', '.'], ['.', '.', '.', 'B', '.', 'W', '.', '.'], ['.', 'B', 'W', '.', 'B', '.', '.', '.']], 5, 0, 'W', False)"
+                    ]
+                },
+                "body": "        result = run_check_move(Solution, board, r_move, c_move, color)\n        assert_check_move(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_move, assert_check_move\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard: list[list[str]] = [['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.'], ['W', 'B', 'B', '.', 'W', 'W', 'W', 'B'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'B', '.', '.', '.', '.'], ['.', '.', '.', 'W', '.', '.', '.', '.']]\nr_move = 4\nc_move = 3\ncolor = 'B'\nexpected = True",
+    "playground_run": "result = run_check_move(Solution, board, r_move, c_move, color)\nresult",
+    "playground_assert": "assert_check_move(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "buildings_with_an_ocean_view",
+    "solution_class_name": "Solution",
+    "problem_number": "1762",
+    "problem_title": "Buildings With an Ocean View",
+    "difficulty": "Medium",
+    "topics": "Array, Stack, Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>There are <code>n</code> buildings in a line. You are given an integer array <code>heights</code> of size <code>n</code> that represents the heights of the buildings in the line.</p>\n\n<p>The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without obstructions. Formally, a building has an ocean view if all the buildings to its right have a <strong>smaller</strong> height.</p>\n\n<p>Return a list of indices <strong>(0-indexed)</strong> of buildings that have an ocean view, sorted in increasing order.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: heights = [4,2,3,1]\nOutput: [0,2,3]\n```\n**Explanation:** Building 1 (0-indexed) does not have an ocean view because building 2 is taller."
+            },
+            {
+                "content": "```\nInput: heights = [4,3,2,1]\nOutput: [0,1,2,3]\n```\n**Explanation:** All the buildings have an ocean view."
+            },
+            {
+                "content": "```\nInput: heights = [1,3,2,4]\nOutput: [3]\n```\n**Explanation:** Only building 3 has an ocean view."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= heights.length <= 10^5\n- 1 <= heights[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_buildings",
+    "helpers_run_signature": "(solution_class: type, heights: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_buildings(heights)",
+    "helpers_assert_name": "find_buildings",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_buildings, run_find_buildings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BuildingsWithAnOceanView",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_buildings",
+                "signature": "(self, heights: list[int]) -> list[int]",
+                "body": "        # TODO: Implement find_buildings\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_buildings",
+                "signature": "(self, heights: list[int], expected: list[int])",
+                "parametrize": "heights, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 2, 3, 1], [0, 2, 3])",
+                        "([4, 3, 2, 1], [0, 1, 2, 3])",
+                        "([1, 3, 2, 4], [3])",
+                        "([1], [0])",
+                        "([2, 2, 2], [2])",
+                        "([5, 4, 3, 2, 1], [0, 1, 2, 3, 4])",
+                        "([1, 2, 3, 4, 5], [4])",
+                        "([3, 1, 4, 1, 5, 9, 2, 6], [5, 7])",
+                        "([7, 7, 6, 5, 4, 8], [5])",
+                        "([1000000000, 1, 1000000000], [2])",
+                        "([2, 1, 2, 1], [2, 3])",
+                        "([1, 1], [1])",
+                        "([2, 3, 1, 2, 3, 4, 1, 5], [7])",
+                        "([9, 1, 1, 1, 9, 1, 8], [4, 6])",
+                        "([9, 3, 3, 1, 1], [0, 2, 4])",
+                        "([2, 5, 1, 7, 5, 3, 8, 3, 9, 7, 8], [8, 10])",
+                        "([2, 7, 6, 4, 2, 9, 10, 10, 3, 5, 8, 10], [11])",
+                        "([5, 8, 3, 4, 3, 5, 6, 9, 10, 10, 1, 9], [9, 11])",
+                        "([8, 5, 1, 2, 3, 1, 2, 7], [0, 7])",
+                        "([6, 1, 5, 9, 8, 1, 5, 7, 7, 1], [3, 4, 8, 9])"
+                    ]
+                },
+                "body": "        result = run_find_buildings(Solution, heights)\n        assert_find_buildings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_buildings, assert_find_buildings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheights = [4, 2, 3, 1]\nexpected = [0, 2, 3]",
+    "playground_run": "result = run_find_buildings(Solution, heights)\nresult",
+    "playground_assert": "assert_find_buildings(result, expected)"
+}

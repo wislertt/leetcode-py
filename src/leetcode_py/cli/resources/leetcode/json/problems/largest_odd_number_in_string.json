@@ -1,0 +1,94 @@
+{
+    "problem_name": "largest_odd_number_in_string",
+    "solution_class_name": "Solution",
+    "problem_number": "1903",
+    "problem_title": "Largest Odd Number in String",
+    "difficulty": "Easy",
+    "topics": "Math, String, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `num`, representing a large integer. Return *the **largest-valued odd** integer (as a string) that is a **non-empty substring** of* `num`*, or an empty string* `\"\"` *if no odd integer exists*.\n\nA **substring** is a contiguous sequence of characters within a string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = \"52\"\nOutput: \"5\"\nExplanation: The only non-empty substrings are \"5\", \"2\", and \"52\". \"5\" is the only odd number.\n```"
+            },
+            {
+                "content": "```\nInput: num = \"4206\"\nOutput: \"\"\nExplanation: There are no odd numbers in \"4206\".\n```"
+            },
+            {
+                "content": "```\nInput: num = \"35427\"\nOutput: \"35427\"\nExplanation: \"35427\" is already an odd number.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= num.length <= 10^5\n- num only consists of digits and does not contain any leading zeros.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_odd_number",
+    "helpers_run_signature": "(solution_class: type, num: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_odd_number(num)",
+    "helpers_assert_name": "largest_odd_number",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_odd_number, run_largest_odd_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestOddNumberInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_odd_number",
+                "signature": "(self, num: str) -> str",
+                "body": "        # TODO: Implement largest_odd_number\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_odd_number",
+                "signature": "(self, num: str, expected: str)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "('52', '5')",
+                        "('4206', '')",
+                        "('35427', '35427')",
+                        "('7', '7')",
+                        "('8', '')",
+                        "('2468', '')",
+                        "('13579', '13579')",
+                        "('101', '101')",
+                        "('234', '23')",
+                        "('999', '999')",
+                        "('1000', '1')",
+                        "('0', '')",
+                        "('1234567890', '123456789')",
+                        "('987654321', '987654321')",
+                        "('20', '')",
+                        "('354270000000000000000000000000', '35427')"
+                    ]
+                },
+                "body": "        result = run_largest_odd_number(Solution, num)\n        assert_largest_odd_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_odd_number, assert_largest_odd_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = '52'\nexpected = '5'",
+    "playground_run": "result = run_largest_odd_number(Solution, num)\nresult",
+    "playground_assert": "assert_largest_odd_number(result, expected)"
+}
