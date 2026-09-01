@@ -1,0 +1,96 @@
+{
+    "problem_name": "longest_subarray_with_maximum_bitwise_and",
+    "solution_class_name": "Solution",
+    "problem_number": "2419",
+    "problem_title": "Longest Subarray With Maximum Bitwise AND",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation, Brainteaser",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `nums` of size `n`.\n\nConsider a **non-empty** subarray from `nums` that has the **maximum** possible **bitwise AND**.\n\n- In other words, let `k` be the maximum value of the bitwise AND of **any** subarray of `nums`. Then, only subarrays with a bitwise AND equal to `k` should be considered.\n\nReturn *the length of the **longest** such subarray*.\n\nThe bitwise AND of an array is the bitwise AND of all the numbers in it.\n\nA **subarray** is a contiguous sequence of elements within an array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,3,2,2]\nOutput: 2\nExplanation:\nThe maximum possible bitwise AND of a subarray is 3.\nThe longest subarray with that value is [3,3], so we return 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4]\nOutput: 1\nExplanation:\nThe maximum possible bitwise AND of a subarray is 4.\nThe longest subarray with that value is [4], so we return 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "1 <= nums.length <= 10^5\n1 <= nums[i] <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_subarray",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_subarray(nums)",
+    "helpers_assert_name": "longest_subarray",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_subarray, run_longest_subarray\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestSubarrayWithMaximumBitwiseAnd",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_subarray",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement longest_subarray\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_subarray",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 3, 2, 2], 2)",
+                        "([1, 2, 3, 4], 1)",
+                        "([1], 1)",
+                        "([1000000], 1)",
+                        "([5, 5, 5], 3)",
+                        "([5, 5, 1, 5, 5], 2)",
+                        "([1, 1, 2, 2, 1], 2)",
+                        "([7, 7, 7, 7], 4)",
+                        "([4, 5, 4, 5, 4], 1)",
+                        "([1, 2, 1, 2, 1], 1)",
+                        "([1000000, 1000000, 999999], 2)",
+                        "([3, 3, 2, 2, 3, 3, 3], 3)",
+                        "([6, 6, 7, 7, 7, 6], 3)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 1)",
+                        "([9, 9, 9, 1, 9, 9], 3)",
+                        "([2, 2, 2, 2, 2, 2], 6)",
+                        "([10, 20, 20, 10, 10, 20], 2)",
+                        "([1, 1, 1, 1, 1000000, 1], 1)"
+                    ]
+                },
+                "body": "        result = run_longest_subarray(Solution, nums)\n        assert_longest_subarray(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_subarray, assert_longest_subarray\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 3, 2, 2]\nexpected = 2",
+    "playground_run": "result = run_longest_subarray(Solution, nums)\nresult",
+    "playground_assert": "assert_longest_subarray(result, expected)",
+    "playground_test_case": "nums = [1, 2, 3, 3, 2, 2]",
+    "playground_execution": "result = run_longest_subarray(Solution, nums)",
+    "playground_assertion": "assert_longest_subarray(result, 2)"
+}

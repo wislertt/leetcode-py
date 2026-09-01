@@ -1,0 +1,102 @@
+{
+    "problem_name": "binary_searchable_numbers_in_an_unsorted_array",
+    "solution_class_name": "Solution",
+    "problem_number": "1966",
+    "problem_title": "Binary Searchable Numbers in an Unsorted Array",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Stack, Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>Consider a function that implements an algorithm <strong>similar</strong> to <a href=\"https://leetcode.com/explore/learn/card/binary-search/\" target=\"_blank\">Binary Search</a>. The function has two input parameters: <code>sequence</code> is a sequence of integers, and <code>target</code> is an integer value. The purpose of the function is to find if the <code>target</code> exists in the <code>sequence</code>.</p>\n\n<p>The pseudocode of the function is as follows:</p>\n\n<pre>\nfunc(sequence, target)\n  while sequence is not empty\n    <strong>randomly</strong> choose an element from sequence as the pivot\n    if pivot = target, return <strong>true</strong>\n    else if pivot &lt; target, remove pivot and all elements to its left from the sequence\n    else, remove pivot and all elements to its right from the sequence\n  end while\n  return <strong>false</strong>\n</pre>\n\n<p>When the <code>sequence</code> is sorted, the function works correctly for <strong>all</strong> values. When the <code>sequence</code> is not sorted, the function does not work for all values, but may still work for <strong>some</strong> values.</p>\n\n<p>Given an integer array <code>nums</code>, representing the <code>sequence</code>, that contains <strong>unique</strong> numbers and <strong>may or may not be sorted</strong>, return <em>the number of values that are <strong>guaranteed</strong> to be found using the function, for <strong>every possible</strong> pivot selection</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [7]\nOutput: 1\nExplanation: \nSearching for value 7 is guaranteed to be found.\nSince the sequence has only one element, 7 will be chosen as the pivot. Because the pivot equals the target, the function will return true.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [-1,5,2]\nOutput: 1\nExplanation: \nSearching for value -1 is guaranteed to be found.\nIf -1 was chosen as the pivot, the function would return true.\nIf 5 was chosen as the pivot, 5 and 2 would be removed. In the next loop, the sequence would have only -1 and the function would return true.\nIf 2 was chosen as the pivot, 2 would be removed. In the next loop, the sequence would have -1 and 5. No matter which number was chosen as the next pivot, the function would find -1 and return true.\n\nSearching for value 5 is NOT guaranteed to be found.\nIf 2 was chosen as the pivot, -1, 5 and 2 would be removed. The sequence would be empty and the function would return false.\n\nSearching for value 2 is NOT guaranteed to be found.\nIf 5 was chosen as the pivot, 5 and 2 would be removed. In the next loop, the sequence would have only -1 and the function would return false.\n\nBecause only -1 is guaranteed to be found, you should return 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= nums.length &lt;= 10<sup>5</sup>\n- -10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup>\n- All the values of <code>nums</code> are <strong>unique</strong>.",
+    "readme_additional": "<p><strong>Follow-up:</strong> If <code>nums</code> has <strong>duplicates</strong>, would you modify your algorithm? If so, how?</p>",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "binary_searchable_numbers",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.binary_searchable_numbers(nums)",
+    "helpers_assert_name": "binary_searchable_numbers",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_binary_searchable_numbers, run_binary_searchable_numbers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinarySearchableNumbersInAnUnsortedArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "binary_searchable_numbers",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement binary_searchable_numbers\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_binary_searchable_numbers",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([7], 1)",
+                        "([-1, 5, 2], 1)",
+                        "([1, 2, 3, 4, 5], 5)",
+                        "([5, 4, 3, 2, 1], 0)",
+                        "([1], 1)",
+                        "([2, 1], 0)",
+                        "([1, 2], 2)",
+                        "([3, 1, 2], 0)",
+                        "([1, 3, 2], 1)",
+                        "([2, 3, 1], 0)",
+                        "([4, 2, 3, 1], 0)",
+                        "([1, 5, 2, 6, 3, 7], 2)",
+                        "([-3, 0, -1, 4, 2, 9], 2)",
+                        "([100000, -100000], 0)",
+                        "([-100000, 100000], 2)",
+                        "([0, -1, 1], 1)",
+                        "([10, 20, 30, 15, 40], 2)",
+                        "([-6, 5, 1, 3, 6, -3, 2], 1)",
+                        "([3, -1, 0, -4, -5, 6], 1)",
+                        "([-3, -2, 4, 0, 2], 2)",
+                        "([0, -5, -2, 1, 5], 2)",
+                        "([-1], 1)",
+                        "([2, 5, -2, -6, 3], 0)",
+                        "([6, 0, 4, -1, -6, 5], 0)",
+                        "([3, 4, -1, 6], 1)",
+                        "([0, -4, 5, -3, 2, 3], 0)",
+                        "([2, 1, 6, -6, 3], 0)"
+                    ]
+                },
+                "body": "        result = run_binary_searchable_numbers(Solution, nums)\n        assert_binary_searchable_numbers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_binary_searchable_numbers, assert_binary_searchable_numbers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [-1, 5, 2]\nexpected = 1",
+    "playground_run": "result = run_binary_searchable_numbers(Solution, nums)\nresult",
+    "playground_assert": "assert_binary_searchable_numbers(result, expected)"
+}

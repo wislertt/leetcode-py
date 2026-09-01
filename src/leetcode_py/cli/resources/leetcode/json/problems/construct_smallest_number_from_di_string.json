@@ -1,0 +1,93 @@
+{
+    "problem_name": "construct_smallest_number_from_di_string",
+    "solution_class_name": "Solution",
+    "problem_number": "2375",
+    "problem_title": "Construct Smallest Number From DI String",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking, Stack, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 0-indexed string `pattern` of length `n` consisting of the characters `'I'` meaning increasing and `'D'` meaning decreasing.\n\nA 0-indexed string `num` of length `n + 1` is created using the following conditions:\n\n- `num` consists of the digits `'1'` to `'9'`, where each digit is used at most once.\n- If `pattern[i] == 'I'`, then `num[i] < num[i + 1]`.\n- If `pattern[i] == 'D'`, then `num[i] > num[i + 1]`.\n\nReturn the lexicographically smallest possible string `num` that meets the conditions.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: pattern = \"IIIDIDDD\"\nOutput: \"123549876\"\nExplanation:\nAt indices 0, 1, 2, and 4 we must have that num[i] < num[i+1].\nAt indices 3, 5, 6, and 7 we must have that num[i] > num[i+1].\nSome possible values of num are \"245639871\", \"135749862\", and \"123849765\".\nIt can be proven that \"123549876\" is the smallest possible num that meets the conditions.\n```"
+            },
+            {
+                "content": "```\nInput: pattern = \"DDD\"\nOutput: \"4321\"\nExplanation:\nSome possible values of num are \"9876\", \"7321\", and \"8742\".\nIt can be proven that \"4321\" is the smallest possible num that meets the conditions.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= pattern.length <= 8\n- pattern consists of only the letters 'I' and 'D'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_number",
+    "helpers_run_signature": "(solution_class: type, pattern: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.smallest_number(pattern)",
+    "helpers_assert_name": "smallest_number",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_number, run_smallest_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConstructSmallestNumberFromDiString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_number",
+                "signature": "(self, pattern: str) -> str",
+                "body": "        # TODO: Implement smallest_number\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_number",
+                "signature": "(self, pattern: str, expected: str)",
+                "parametrize": "pattern, expected",
+                "test_cases": {
+                    "list": [
+                        "('D', '21')",
+                        "('I', '12')",
+                        "('DD', '321')",
+                        "('DI', '213')",
+                        "('ID', '132')",
+                        "('II', '123')",
+                        "('DDD', '4321')",
+                        "('DID', '2143')",
+                        "('IDI', '1324')",
+                        "('DDDD', '54321')",
+                        "('IDID', '13254')",
+                        "('IIID', '12354')",
+                        "('IIII', '12345')",
+                        "('IDDII', '143256')",
+                        "('IIDDD', '126543')",
+                        "('DDDIID', '4321576')",
+                        "('IIDDID', '1254376')",
+                        "('IIIDIDDD', '123549876')"
+                    ]
+                },
+                "body": "        result = run_smallest_number(Solution, pattern)\n        assert_smallest_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_number, assert_smallest_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npattern = 'IIIDIDDD'\nexpected = '123549876'",
+    "playground_run": "result = run_smallest_number(Solution, pattern)\nresult",
+    "playground_assert": "assert_smallest_number(result, expected)"
+}

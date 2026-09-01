@@ -1,0 +1,98 @@
+{
+    "problem_name": "largest_3_same_digit_number_in_string",
+    "solution_class_name": "Solution",
+    "problem_number": "2264",
+    "problem_title": "Largest 3-Same-Digit Number in String",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `num` representing a large integer. An integer is **good** if it meets the following conditions:\n\n- It is a **substring** of `num` with length `3`.\n- It consists of only one unique digit.\n\nReturn *the **maximum good** integer as a **string** or an empty string* `\"\"` *if no such integer exists*.\n\n**Note:**\n\n- A **substring** is a contiguous sequence of characters within a string.\n- There may be **leading zeroes** in `num` or a good integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = \"6777133339\"\nOutput: \"777\"\nExplanation: There are two distinct good integers: \"777\" and \"333\". \"777\" is the largest, so we return \"777\".\n```"
+            },
+            {
+                "content": "```\nInput: num = \"2300019\"\nOutput: \"000\"\nExplanation: \"000\" is the only good integer.\n```"
+            },
+            {
+                "content": "```\nInput: num = \"42352338\"\nOutput: \"\"\nExplanation: No substring of length 3 consists of only one unique digit. Therefore, there are no good integers.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= num.length <= 1000\n- num only consists of digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_good_integer",
+    "helpers_run_signature": "(solution_class: type, num: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_good_integer(num)",
+    "helpers_assert_name": "largest_good_integer",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_good_integer, run_largest_good_integer\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "Largest3SameDigitNumberInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_good_integer",
+                "signature": "(self, num: str) -> str",
+                "body": "        # TODO: Implement largest_good_integer\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_good_integer",
+                "signature": "(self, num: str, expected: str)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "('6777133339', '777')",
+                        "('2300019', '000')",
+                        "('42352338', '')",
+                        "('999', '999')",
+                        "('000', '000')",
+                        "('111222', '222')",
+                        "('222111', '222')",
+                        "('123456', '')",
+                        "('112233', '')",
+                        "('777123777', '777')",
+                        "('8888', '888')",
+                        "('1000', '000')",
+                        "('909999', '999')",
+                        "('121212', '')",
+                        "('555333444', '555')",
+                        "('999000', '999')",
+                        "('7777', '777')",
+                        "('0011002', '')",
+                        "('77777777777777777777777777777777777777777', '777')",
+                        "('123456789012345678901234567890999', '999')"
+                    ]
+                },
+                "body": "        result = run_largest_good_integer(Solution, num)\n        assert_largest_good_integer(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_good_integer, assert_largest_good_integer\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = '6777133339'\nexpected = '777'",
+    "playground_run": "result = run_largest_good_integer(Solution, num)\nresult",
+    "playground_assert": "assert_largest_good_integer(result, expected)"
+}

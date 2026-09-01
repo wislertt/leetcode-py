@@ -1,0 +1,93 @@
+{
+    "problem_name": "apply_operations_to_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "2460",
+    "problem_title": "Apply Operations to an Array",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** array `nums` of size `n` consisting of **non-negative** integers.\n\nYou need to apply `n - 1` operations to this array where, in the `i<sup>th</sup>` operation (**0-indexed**), you will apply the following on the `i<sup>th</sup>` element of `nums`:\n\n- If `nums[i] == nums[i + 1]`, then multiply `nums[i]` by `2` and set `nums[i + 1]` to `0`. Otherwise, you skip this operation.\n\nAfter performing **all** the operations, **shift** all the `0`'s to the **end** of the array.\n\n- For example, the array `[1,0,2,0,0,1]` after shifting all its `0`'s to the end, is `[1,2,1,0,0,0]`.\n\nReturn *the resulting array*.\n\n**Note** that the operations are applied **sequentially**, not all at once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,2,1,1,0]\nOutput: [1,4,2,0,0,0]\nExplanation: We do the following operations:\n- i = 0: nums[0] and nums[1] are not equal, so we skip this operation.\n- i = 1: nums[1] and nums[2] are equal, we multiply nums[1] by 2 and change nums[2] to 0. The array becomes [1,4,0,1,1,0].\n- i = 2: nums[2] and nums[3] are not equal, so we skip this operation.\n- i = 3: nums[3] and nums[4] are equal, we multiply nums[3] by 2 and change nums[4] to 0. The array becomes [1,4,0,2,0,0].\n- i = 4: nums[4] and nums[5] are equal, we multiply nums[4] by 2 and change nums[5] to 0. The array becomes [1,4,0,2,0,0].\nAfter that, we shift the 0's to the end, which gives the array [1,4,2,0,0,0].\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1]\nOutput: [1,0]\nExplanation: No operation can be applied, we just shift the 0 to the end.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 2000\n- 0 <= nums[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "apply_operations",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    nums_copy = nums.copy()\n    implementation = solution_class()\n    return implementation.apply_operations(nums_copy)",
+    "helpers_assert_name": "apply_operations",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_apply_operations, run_apply_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ApplyOperationsToAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "apply_operations",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement apply_operations\n        return nums"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_apply_operations",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 2, 1, 1, 0], [1, 4, 2, 0, 0, 0])",
+                        "([0, 1], [1, 0])",
+                        "([1, 1], [2, 0])",
+                        "([0, 0], [0, 0])",
+                        "([1, 0], [1, 0])",
+                        "([2, 2, 2], [4, 2, 0])",
+                        "([3, 3, 3, 3], [6, 6, 0, 0])",
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])",
+                        "([0, 0, 0, 0], [0, 0, 0, 0])",
+                        "([847, 847, 0, 0, 378, 378], [1694, 756, 0, 0, 0, 0])",
+                        "([1000, 1000, 1000, 1000], [2000, 2000, 0, 0])",
+                        "([5, 0, 5, 0], [5, 5, 0, 0])",
+                        "([1, 1, 0, 0, 0, 2, 2, 3], [2, 4, 3, 0, 0, 0, 0, 0])",
+                        "([7, 3, 3, 4, 4, 0, 1, 1, 6], [7, 6, 8, 2, 6, 0, 0, 0, 0])",
+                        "([3, 1, 4], [3, 1, 4])",
+                        "([4, 2], [4, 2])",
+                        "([1, 4], [1, 4])",
+                        "([2, 3, 3, 4, 4], [2, 6, 8, 0, 0])"
+                    ]
+                },
+                "body": "        result = run_apply_operations(Solution, nums)\n        assert_apply_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_apply_operations, assert_apply_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 2, 1, 1, 0]\nexpected = [1, 4, 2, 0, 0, 0]",
+    "playground_run": "result = run_apply_operations(Solution, nums)\nresult",
+    "playground_assert": "assert_apply_operations(result, expected)"
+}

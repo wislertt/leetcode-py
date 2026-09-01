@@ -7,6 +7,9 @@
 
 # Already handled (created, or confirmed not applicable).
 UNSCRAPABLE_HANDLED = [
+    (1197, "minimum-knight-moves"),
+    (1966, "binary-searchable-numbers-in-an-unsorted-array"),
+    (2021, "brightest-position-on-street"),
     (252, "meeting-rooms"),
     (253, "meeting-rooms-ii"),
     (261, "graph-valid-tree"),
@@ -194,9 +197,7 @@ UNSCRAPABLE_HANDLED = [
 # Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
 # problem is created; append new discoveries at the bottom.
 UNSCRAPABLE_QUEUE = [
-    (1197, "minimum-knight-moves"),
-    (1966, "binary-searchable-numbers-in-an-unsorted-array"),
-    (2021, "brightest-position-on-street"),
+    (2393, "count-strictly-increasing-subarrays"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).

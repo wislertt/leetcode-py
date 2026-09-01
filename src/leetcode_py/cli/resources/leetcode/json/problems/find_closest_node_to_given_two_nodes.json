@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_closest_node_to_given_two_nodes",
+    "solution_class_name": "Solution",
+    "problem_number": "2359",
+    "problem_title": "Find Closest Node to Given Two Nodes",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Graph Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **directed** graph of `n` nodes numbered from `0` to `n - 1`, where each node has **at most one** outgoing edge.\n\nThe graph is represented with a given **0-indexed** array `edges` of size `n`, indicating that there is a directed edge from node `i` to node `edges[i]`. If there is no outgoing edge from `i`, then `edges[i] == -1`.\n\nYou are also given two integers `node1` and `node2`.\n\nReturn the **index** of the node that can be reached from both `node1` and `node2`, such that the **maximum** between the distance from `node1` to that node, and from `node2` to that node is **minimized**. If there are multiple answers, return the node with the **smallest** index, and if no possible answer exists, return `-1`.\n\nNote that `edges` may contain cycles.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/06/07/graph4drawio-2.png)\n\n```\nInput: edges = [2,2,3,-1], node1 = 0, node2 = 1\nOutput: 2\nExplanation: The distance from node 0 to node 2 is 1, and the distance from node 1 to node 2 is 1. The maximum of those two distances is 1. It can be proven that we cannot get a node with a smaller maximum distance than 1, so we return node 2.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/06/07/graph4drawio-4.png)\n\n```\nInput: edges = [1,2,-1], node1 = 0, node2 = 2\nOutput: 2\nExplanation: The distance from node 0 to node 2 is 2, and the distance from node 2 to itself is 0. The maximum of those two distances is 2. It can be proven that we cannot get a node with a smaller maximum distance than 2, so we return node 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == edges.length`\n- `2 <= n <= 10^5`\n- `-1 <= edges[i] < n`\n- `edges[i] != i`\n- `0 <= node1, node2 < n`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "closest_meeting_node",
+    "helpers_run_signature": "(solution_class: type, edges: list[int], node1: int, node2: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.closest_meeting_node(edges, node1, node2)",
+    "helpers_assert_name": "closest_meeting_node",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_closest_meeting_node, run_closest_meeting_node\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindClosestNodeToGivenTwoNodes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "closest_meeting_node",
+                "signature": "(self, edges: list[int], node1: int, node2: int) -> int",
+                "body": "        # TODO: Implement closest_meeting_node\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_closest_meeting_node",
+                "signature": "(self, edges: list[int], node1: int, node2: int, expected: int)",
+                "parametrize": "edges, node1, node2, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 2, 3, -1], 0, 1, 2)",
+                        "([1, 2, -1], 0, 2, 2)",
+                        "([4, 4, 8, -1, 9, -1, -1, -1, -1, -1], 0, 1, 4)",
+                        "([1, 2, -1], 0, 0, 0)",
+                        "([1, -1], 0, 1, 1)",
+                        "([-1, 0], 0, 1, 0)",
+                        "([1, 2, 0], 0, 1, 1)",
+                        "([-1, 3, -1, -1], 0, 1, -1)",
+                        "([1, 2, 3, 1], 0, 2, 1)",
+                        "([1, -1], 1, 0, 1)",
+                        "([2, 2, -1, -1], 0, 2, 2)",
+                        "([-1, -1], 0, 1, -1)",
+                        "([4, 4, 8, -1, 9, -1, -1, -1, -1, -1], 1, 1, 1)",
+                        "([-1, -1, 0, 4, 5, 1], 3, 1, 1)",
+                        "([5, 4, -1, 4, 0, 4], 0, 0, 0)",
+                        "([-1, 0], 1, 1, 1)",
+                        "([1, 0], 0, 1, 0)",
+                        "([2, 0, -1], 0, 0, 0)"
+                    ]
+                },
+                "body": "        result = run_closest_meeting_node(Solution, edges, node1, node2)\n        assert_closest_meeting_node(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_closest_meeting_node, assert_closest_meeting_node\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nedges = [2, 2, 3, -1]\nnode1 = 0\nnode2 = 1\nexpected = 2",
+    "playground_run": "result = run_closest_meeting_node(Solution, edges, node1, node2)\nresult",
+    "playground_assert": "assert_closest_meeting_node(result, expected)"
+}

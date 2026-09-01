@@ -1,0 +1,93 @@
+{
+    "problem_name": "number_of_flowers_in_full_bloom",
+    "solution_class_name": "Solution",
+    "problem_number": "2251",
+    "problem_title": "Number of Flowers in Full Bloom",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Binary Search, Sorting, Prefix Sum, Ordered Set",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** 2D integer array `flowers`, where `flowers[i] = [starti, endi]` means the `ith` flower will be in **full bloom** from `starti` to `endi` (**inclusive**). You are also given a **0-indexed** integer array `people` of size `n`, where `people[i]` is the time that the `ith` person will arrive to see the flowers.\n\nReturn an integer array `answer` of size `n`, where `answer[i]` is the **number** of flowers that are in full bloom when the `ith` person arrives.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/03/02/ex1new.jpg)\n\n```\nInput: flowers = [[1,6],[3,7],[9,12],[4,13]], people = [2,3,7,11]\nOutput: [1,2,2,2]\n```\n**Explanation:** The figure above shows the times when the flowers are in full bloom and when the people arrive. For each person, we return the number of flowers in full bloom during their arrival."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/03/02/ex2new.jpg)\n\n```\nInput: flowers = [[1,10],[3,3]], people = [3,3,2]\nOutput: [2,2,1]\n```\n**Explanation:** The figure above shows the times when the flowers are in full bloom and when the people arrive. For each person, we return the number of flowers in full bloom during their arrival."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= flowers.length <= 5 * 10^4`\n- `flowers[i].length == 2`\n- `1 <= starti <= endi <= 10^9`\n- `1 <= people.length <= 5 * 10^4`\n- `1 <= people[i] <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "full_bloom_flowers",
+    "helpers_run_signature": "(solution_class: type, flowers: list[list[int]], people: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.full_bloom_flowers(flowers, people)",
+    "helpers_assert_name": "full_bloom_flowers",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_full_bloom_flowers, run_full_bloom_flowers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfFlowersInFullBloom",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "full_bloom_flowers",
+                "signature": "(self, flowers: list[list[int]], people: list[int]) -> list[int]",
+                "body": "        # TODO: Implement full_bloom_flowers\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_full_bloom_flowers",
+                "signature": "(self, flowers: list[list[int]], people: list[int], expected: list[int])",
+                "parametrize": "flowers, people, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 6], [3, 7], [9, 12], [4, 13]], [2, 3, 7, 11], [1, 2, 2, 2])",
+                        "([[1, 10], [3, 3]], [3, 3, 2], [2, 2, 1])",
+                        "([[5, 5]], [5], [1])",
+                        "([[1, 3], [2, 6]], [1, 2, 3, 4, 5, 6, 7], [1, 2, 2, 1, 1, 1, 0])",
+                        "([[10, 20]], [1, 10, 20, 21], [0, 1, 1, 0])",
+                        "([[1, 1000000000]], [1, 500000000, 1000000000], [1, 1, 1])",
+                        "([[1, 2], [3, 4], [5, 6], [7, 8]], [2, 3, 5, 7, 9], [1, 1, 1, 1, 0])",
+                        "([[1, 1], [2, 2], [3, 3]], [1, 2, 3, 4], [1, 1, 1, 0])",
+                        "([[1, 4], [2, 3]], [3], [2])",
+                        "([[2, 3], [4, 5], [6, 7]], [1, 8], [0, 0])",
+                        "([[1, 5], [1, 5], [1, 5]], [3], [3])",
+                        "([[1, 5], [2, 7], [6, 9], [3, 4]], [1, 3, 5, 7, 9, 10], [1, 3, 2, 2, 1, 0])",
+                        "([[3, 12]], [22, 7, 21, 10], [0, 1, 0, 1])",
+                        "([[8, 18], [16, 20], [5, 11]], [17, 7, 5, 3, 8], [2, 1, 1, 0, 2])",
+                        "([[1, 14], [4, 4], [15, 16], [7, 17]], [1, 6, 18, 6], [1, 1, 0, 1])",
+                        "([[12, 19], [11, 18]], [7, 6, 11, 4, 5], [0, 0, 1, 0, 0])",
+                        "([[3, 12]], [4, 9, 15], [1, 1, 0])",
+                        "([[17, 18], [2, 5], [8, 20], [17, 19], [4, 5], [16, 16]], [16], [2])"
+                    ]
+                },
+                "body": "        result = run_full_bloom_flowers(Solution, flowers, people)\n        assert_full_bloom_flowers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_full_bloom_flowers, assert_full_bloom_flowers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nflowers = [[1,6],[3,7],[9,12],[4,13]]\npeople = [2,3,7,11]\nexpected = [1,2,2,2]",
+    "playground_run": "result = run_full_bloom_flowers(Solution, flowers, people)\nresult",
+    "playground_assert": "assert_full_bloom_flowers(result, expected)"
+}

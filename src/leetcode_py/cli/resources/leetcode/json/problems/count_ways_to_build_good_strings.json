@@ -1,0 +1,95 @@
+{
+    "problem_name": "count_ways_to_build_good_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "2466",
+    "problem_title": "Count Ways To Build Good Strings",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the integers `zero`, `one`, `low`, and `high`, we can construct a string by starting with an empty string, and then at each step perform either of the following:\n\n- Append the character `'0'` `zero` times.\n- Append the character `'1'` `one` times.\n\nThis can be performed any number of times.\n\nA **good** string is a string constructed by the above process having a **length** between `low` and `high` (**inclusive**).\n\nReturn *the number of **different** good strings that can be constructed satisfying these properties.* Since the answer can be large, return it **modulo** `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: low = 3, high = 3, zero = 1, one = 1\nOutput: 8\nExplanation: One possible valid good string is \"011\". \nIt can be constructed as follows: \"\" -> \"0\" -> \"01\" -> \"011\". \nAll binary strings from \"000\" to \"111\" are good strings in this example.\n```"
+            },
+            {
+                "content": "```\nInput: low = 2, high = 3, zero = 1, one = 2\nOutput: 5\nExplanation: The good strings are \"00\", \"11\", \"000\", \"110\", and \"011\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= low <= high <= 10^5\n- 1 <= zero, one <= low",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_good_strings",
+    "helpers_run_signature": "(solution_class: type, low: int, high: int, zero: int, one: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_good_strings(low, high, zero, one)",
+    "helpers_assert_name": "count_good_strings",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_good_strings, run_count_good_strings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountWaysToBuildGoodStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_good_strings",
+                "signature": "(self, low: int, high: int, zero: int, one: int) -> int",
+                "body": "        # TODO: Implement count_good_strings\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_good_strings",
+                "signature": "(self, low: int, high: int, zero: int, one: int, expected: int)",
+                "parametrize": "low, high, zero, one, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3, 1, 1, 8)",
+                        "(2, 3, 1, 2, 5)",
+                        "(1, 1, 1, 1, 2)",
+                        "(1, 2, 1, 1, 6)",
+                        "(2, 2, 1, 1, 4)",
+                        "(4, 4, 1, 2, 5)",
+                        "(5, 5, 2, 2, 0)",
+                        "(7, 9, 3, 4, 4)",
+                        "(10, 12, 2, 3, 28)",
+                        "(15, 20, 5, 6, 9)",
+                        "(2, 10, 1, 2, 230)",
+                        "(100, 100, 50, 50, 4)",
+                        "(1000, 1000, 500, 500, 4)",
+                        "(50, 60, 7, 11, 93)",
+                        "(3, 30, 2, 3, 7736)",
+                        "(200, 250, 13, 17, 153968)",
+                        "(1, 100000, 1, 1, 215447031)",
+                        "(100000, 100000, 1, 1, 607723520)",
+                        "(99999, 100000, 3, 5, 393881602)",
+                        "(100000, 100000, 99999, 99999, 0)"
+                    ]
+                },
+                "body": "        result = run_count_good_strings(Solution, low, high, zero, one)\n        assert_count_good_strings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_good_strings, assert_count_good_strings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlow = 3\nhigh = 3\nzero = 1\none = 1\nexpected = 8",
+    "playground_run": "result = run_count_good_strings(Solution, low, high, zero, one)\nresult",
+    "playground_assert": "assert_count_good_strings(result, expected)"
+}

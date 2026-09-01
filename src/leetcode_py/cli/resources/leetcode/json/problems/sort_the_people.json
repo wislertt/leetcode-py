@@ -1,0 +1,89 @@
+{
+    "problem_name": "sort_the_people",
+    "solution_class_name": "Solution",
+    "problem_number": "2418",
+    "problem_title": "Sort the People",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of strings `names`, and an array `heights` that consists of **distinct** positive integers. Both arrays are of length `n`.\n\nFor each index `i`, `names[i]` and `heights[i]` denote the name and height of the `i<sup>th</sup>` person.\n\nReturn `names`* sorted in **descending** order by the people's heights*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: names = [\"Mary\",\"John\",\"Emma\"], heights = [180,165,170]\nOutput: [\"Mary\",\"Emma\",\"John\"]\nExplanation: Mary is the tallest, followed by Emma and John.\n```"
+            },
+            {
+                "content": "```\nInput: names = [\"Alice\",\"Bob\",\"Bob\"], heights = [155,185,150]\nOutput: [\"Bob\",\"Alice\",\"Bob\"]\nExplanation: The first Bob is the tallest, followed by Alice and the second Bob.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == names.length == heights.length`\n- `1 <= n <= 10^3`\n- `1 <= names[i].length <= 20`\n- `1 <= heights[i] <= 10^5`\n- `names[i]` consists of lower and upper case English letters.\n- All the values of `heights` are distinct.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sort_people",
+    "helpers_run_signature": "(solution_class: type, names: list[str], heights: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sort_people(names, heights)",
+    "helpers_assert_name": "sort_people",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sort_people, run_sort_people\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortThePeople",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sort_people",
+                "signature": "(self, names: list[str], heights: list[int]) -> list[str]",
+                "body": "        # TODO: Implement sort_people\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sort_people",
+                "signature": "(self, names: list[str], heights: list[int], expected: list[str])",
+                "parametrize": "names, heights, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Mary', 'John', 'Emma'], [180, 165, 170], ['Mary', 'Emma', 'John'])",
+                        "(['Alice', 'Bob', 'Bob'], [155, 185, 150], ['Bob', 'Alice', 'Bob'])",
+                        "(['A'], [1], ['A'])",
+                        "(['Zed'], [100000], ['Zed'])",
+                        "(['a', 'b'], [2, 1], ['a', 'b'])",
+                        "(['a', 'b'], [1, 2], ['b', 'a'])",
+                        "(['Tom', 'Sue', 'Ann', 'Bob'], [170, 165, 180, 150], ['Ann', 'Tom', 'Sue', 'Bob'])",
+                        "(['Al', 'Be', 'Cy', 'Di', 'Ed'], [5, 4, 3, 2, 1], ['Al', 'Be', 'Cy', 'Di', 'Ed'])",
+                        "(['Aa', 'Bb', 'Cc'], [7, 9, 8], ['Bb', 'Cc', 'Aa'])",
+                        "(['Neo','Tank','Apoc','Dozer'],[100,300,400,200],['Apoc','Tank','Dozer','Neo'])",
+                        "(['xy','ab','qq','zz','mm'],[11,22,44,33,55],['mm','qq','zz','ab','xy'])",
+                        "(['Kim', 'Lee', 'Park', 'Choi'], [60, 10, 50, 20], ['Kim', 'Park', 'Choi', 'Lee'])",
+                        "(['One'], [99999], ['One'])",
+                        "(['An', 'Bo', 'Cy', 'Di', 'Ed'], [7, 6, 5, 4, 3], ['An', 'Bo', 'Cy', 'Di', 'Ed'])"
+                    ]
+                },
+                "body": "        result = run_sort_people(Solution, names, heights)\n        assert_sort_people(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sort_people, assert_sort_people\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnames = ['Mary', 'John', 'Emma']\nheights = [180, 165, 170]\nexpected = ['Mary', 'Emma', 'John']",
+    "playground_run": "result = run_sort_people(Solution, names, heights)\nresult",
+    "playground_assert": "assert_sort_people(result, expected)"
+}

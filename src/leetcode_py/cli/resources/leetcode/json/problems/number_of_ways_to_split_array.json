@@ -1,0 +1,95 @@
+{
+    "problem_name": "number_of_ways_to_split_array",
+    "solution_class_name": "Solution",
+    "problem_number": "2270",
+    "problem_title": "Number of Ways to Split Array",
+    "difficulty": "Medium",
+    "topics": "Array, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <strong>0-indexed</strong> integer array <code>nums</code> of length <code>n</code>.\n\n<p><code>nums</code> contains a <strong>valid split</strong> at index <code>i</code> if the following are true:</p>\n\n<ul>\n\t<li>The sum of the first <code>i + 1</code> elements is <strong>greater than or equal to</strong> the sum of the last <code>n - i - 1</code> elements.</li>\n\t<li>There is <strong>at least one</strong> element to the right of <code>i</code>. That is, <code>0 &lt;= i &lt; n - 1</code>.</li>\n</ul>\n\n<p>Return <em>the number of <strong>valid splits</strong> in</em> <code>nums</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [10,4,-8,7]\nOutput: 2\nExplanation: \nThere are three ways of splitting nums into two non-empty parts:\n- Split nums at index 0. Then, the first part is [10], and its sum is 10. The second part is [4,-8,7], and its sum is 3. Since 10 >= 3, i = 0 is a valid split.\n- Split nums at index 1. Then, the first part is [10,4], and its sum is 14. The second part is [-8,7], and its sum is -1. Since 14 >= -1, i = 1 is a valid split.\n- Split nums at index 2. Then, the first part is [10,4,-8], and its sum is 6. The second part is [7], and its sum is 7. Since 6 < 7, i = 2 is not a valid split.\nThus, the number of valid splits in nums is 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,3,1,0]\nOutput: 2\nExplanation: \nThere are two valid splits in nums:\n- Split nums at index 1. Then, the first part is [2,3], and its sum is 5. The second part is [1,0], and its sum is 1. Since 5 >= 1, i = 1 is a valid split. \n- Split nums at index 2. Then, the first part is [2,3,1], and its sum is 6. The second part is [0], and its sum is 0. Since 6 >= 0, i = 2 is a valid split.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 10^5\n- -10^5 <= nums[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "ways_to_split_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.ways_to_split_array(nums)",
+    "helpers_assert_name": "ways_to_split_array",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_ways_to_split_array, run_ways_to_split_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfWaysToSplitArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "ways_to_split_array",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement ways_to_split_array\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_ways_to_split_array",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([10, 4, -8, 7], 2)",
+                        "([2, 3, 1, 0], 2)",
+                        "([1, 1], 1)",
+                        "([0, 0], 1)",
+                        "([-1, 1], 0)",
+                        "([100000, -100000], 1)",
+                        "([-100000, 100000], 0)",
+                        "([0, 5], 0)",
+                        "([5, 0], 1)",
+                        "([3, -1, 2, 1, 4], 1)",
+                        "([-2, -1, -3, 10], 0)",
+                        "([1, 2, 3, 4, 5], 1)",
+                        "([5, 4, 3, 2, 1], 3)",
+                        "([0, 0, 0, 0, 0], 4)",
+                        "([-1, -1, 5, -1, -1], 2)",
+                        "([7, -7, 7, -7, 7, -7], 5)",
+                        "([9, 1, -5, 7, 3, 6], 2)",
+                        "([2, -2, 2, -5, 9, 3, -7, -8, 0, 10], 5)",
+                        "([-8, 2, -7, 9, 5, 10], 0)",
+                        "([-3, 8, -3, 8, -9, 8, 4], 2)"
+                    ]
+                },
+                "body": "        result = run_ways_to_split_array(Solution, nums)\n        assert_ways_to_split_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_ways_to_split_array, assert_ways_to_split_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [10, 4, -8, 7]\nexpected = 2",
+    "playground_run": "result = run_ways_to_split_array(Solution, nums)\nresult",
+    "playground_assert": "assert_ways_to_split_array(result, expected)"
+}
