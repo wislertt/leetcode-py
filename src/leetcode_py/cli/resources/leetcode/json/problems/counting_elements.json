@@ -1,0 +1,101 @@
+{
+    "problem_name": "counting_elements",
+    "solution_class_name": "Solution",
+    "problem_number": "1426",
+    "problem_title": "Counting Elements",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `arr`, count how many elements `x` there are, such that `x + 1` is also in `arr`. If there are duplicates in `arr`, count them separately.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,2,3]\nOutput: 2\nExplanation: 1 and 2 are counted cause 2 and 3 are in arr.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,1,3,3,5,5,7,7]\nOutput: 0\nExplanation: No numbers are counted, cause there is no 2, 4, 6, or 8 in arr.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 1000\n- 0 <= arr[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_elements",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_elements(arr)",
+    "helpers_assert_name": "count_elements",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_elements, run_count_elements\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountingElements",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_elements",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement count_elements\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_elements",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], 2)",
+                        "([1, 1, 3, 3, 5, 5, 7, 7], 0)",
+                        "([1, 1, 2], 2)",
+                        "([1, 3], 0)",
+                        "([1], 0)",
+                        "([0], 0)",
+                        "([0, 1], 1)",
+                        "([1000], 0)",
+                        "([999, 1000], 1)",
+                        "([1, 2, 2, 3], 3)",
+                        "([1, 1, 2, 2], 2)",
+                        "([7, 7, 7, 7, 7], 0)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([10, 9, 8, 7, 6], 4)",
+                        "([2, 9, 0, 1], 2)",
+                        "([3, 1, 4, 1, 5, 9, 2, 6], 6)",
+                        "([500, 501, 502, 499], 3)",
+                        "([0, 0, 1, 1, 2, 2], 4)",
+                        "([5, 4, 3, 2, 1, 1, 2, 3], 7)",
+                        "([100, 101, 200, 201, 300], 2)",
+                        "([6, 3], 0)",
+                        "([10], 0)",
+                        "([0, 8, 10, 1], 1)",
+                        "([3], 0)",
+                        "([8, 8], 0)",
+                        "([15, 12, 14, 14, 12], 2)"
+                    ]
+                },
+                "body": "        result = run_count_elements(Solution, arr)\n        assert_count_elements(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_elements, assert_count_elements\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr: list[int] = [1, 2, 3]\nexpected = 2",
+    "playground_run": "result = run_count_elements(Solution, arr)\nresult",
+    "playground_assert": "assert_count_elements(result, expected)"
+}

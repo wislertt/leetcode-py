@@ -1,0 +1,96 @@
+{
+    "problem_name": "design_a_leaderboard",
+    "solution_class_name": "Leaderboard",
+    "problem_number": "1244",
+    "problem_title": "Design A Leaderboard",
+    "difficulty": "Medium",
+    "topics": "Design, Hash Table, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a Leaderboard class, which has 3 functions:\n\n- `addScore(playerId, score)`: Update the leaderboard by adding `score` to the given player's score. If there is no player with such id in the leaderboard, add him to the leaderboard with the given `score`.\n- `top(K)`: Return the score sum of the top `K` players.\n- `reset(playerId)`: Reset the score of the player with the given id to 0 (in other words erase it from the leaderboard). It is guaranteed that the player was added to the leaderboard before calling this function.\n\nInitially, the leaderboard is empty.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput:\n[\"Leaderboard\",\"addScore\",\"addScore\",\"addScore\",\"addScore\",\"addScore\",\"top\",\"reset\",\"reset\",\"addScore\",\"top\"]\n[[],[1,73],[2,56],[3,39],[4,51],[5,4],[1],[1],[2],[2,51],[3]]\nOutput:\n[null,null,null,null,null,null,73,null,null,null,141]\n\nExplanation\nLeaderboard leaderboard = new Leaderboard();\nleaderboard.addScore(1,73);   // leaderboard = [[1,73]];\nleaderboard.addScore(2,56);   // leaderboard = [[1,73],[2,56]];\nleaderboard.addScore(3,39);   // leaderboard = [[1,73],[2,56],[3,39]];\nleaderboard.addScore(4,51);   // leaderboard = [[1,73],[2,56],[3,39],[4,51]];\nleaderboard.addScore(5,4);    // leaderboard = [[1,73],[2,56],[3,39],[4,51],[5,4]];\nleaderboard.top(1);           // returns 73;\nleaderboard.reset(1);         // leaderboard = [[2,56],[3,39],[4,51],[5,4]];\nleaderboard.reset(2);         // leaderboard = [[3,39],[4,51],[5,4]];\nleaderboard.addScore(2,51);   // leaderboard = [[2,51],[3,39],[4,51],[5,4]];\nleaderboard.top(3);           // returns 141 = 51 + 51 + 39;\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= playerId, K <= 10^4`\n- It's guaranteed that `K` is less than or equal to the current number of players.\n- `1 <= score <= 100`\n- At most `1000` function calls will be made.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "leaderboard",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    board = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Leaderboard':\n            board = solution_class()\n            results.append(None)\n        elif op == 'add_score' and board is not None:\n            board.add_score(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'top' and board is not None:\n            results.append(board.top(inputs[i][0]))\n        elif op == 'reset' and board is not None:\n            board.reset(inputs[i][0])\n            results.append(None)\n    return results, board",
+    "helpers_assert_name": "leaderboard",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_leaderboard, run_leaderboard\nfrom .solution import Leaderboard",
+    "test_content": "",
+    "test_class_name": "DesignALeaderboard",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize leaderboard\n        pass"
+            },
+            {
+                "name": "add_score",
+                "signature": "(self, player_id: int, score: int) -> None",
+                "body": "        # TODO: Implement add_score\n        pass"
+            },
+            {
+                "name": "top",
+                "signature": "(self, k: int) -> int",
+                "body": "        # TODO: Implement top\n        return 0"
+            },
+            {
+                "name": "reset",
+                "signature": "(self, player_id: int) -> None",
+                "body": "        # TODO: Implement reset\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_leaderboard",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Leaderboard','add_score','add_score','add_score','add_score','add_score','top','reset','reset','add_score','top'],[[],[1,73],[2,56],[3,39],[4,51],[5,4],[1],[1],[2],[2,51],[3]],[None,None,None,None,None,None,73,None,None,None,141])",
+                        "(['Leaderboard', 'add_score', 'top'], [[], [1, 10], [1]], [None, None, 10])",
+                        "(['Leaderboard','add_score','add_score','add_score','top'],[[],[1,50],[2,50],[3,50],[2]],[None,None,None,None,100])",
+                        "(['Leaderboard','add_score','add_score','top'],[[],[1,10],[1,10],[1]],[None,None,None,20])",
+                        "(['Leaderboard','add_score','reset','add_score','top'],[[],[1,50],[1],[1,5],[1]],[None,None,None,None,5])",
+                        "(['Leaderboard','add_score','add_score','add_score','top'],[[],[1,1],[2,2],[3,3],[3]],[None,None,None,None,6])",
+                        "(['Leaderboard','add_score','add_score','reset','top'],[[],[1,30],[2,20],[1],[1]],[None,None,None,None,20])",
+                        "(['Leaderboard','add_score','add_score','add_score','add_score','reset','reset','top'],[[],[1,10],[2,20],[3,30],[4,40],[1],[2],[2]],[None,None,None,None,None,None,None,70])",
+                        "(['Leaderboard','add_score','add_score','top','top'],[[],[1,100],[2,1],[2],[1]],[None,None,None,101,100])",
+                        "(['Leaderboard','add_score','add_score','top','reset','add_score','top'],[[],[1,5],[2,6],[2],[1],[1,7],[2]],[None,None,None,11,None,None,13])",
+                        "(['Leaderboard','add_score','top','add_score','top','top'],[[],[1,7],[1],[2,9],[2],[1]],[None,None,7,None,16,9])",
+                        "(['Leaderboard','add_score','add_score','reset','reset','add_score','top'],[[],[1,99],[2,99],[1],[2],[3,4],[1]],[None,None,None,None,None,None,4])",
+                        "(['Leaderboard','add_score','add_score','add_score','add_score','top','add_score','top','reset','top'],[[],[1,3],[2,6],[3,9],[4,12],[3],[2,1],[3],[1],[3]],[None,None,None,None,None,27,None,28,None,28])",
+                        "(['Leaderboard','add_score','add_score','add_score','reset','add_score','add_score','add_score','top','reset','top'],[[],[1,10],[2,20],[3,30],[2],[2,5],[4,40],[2,15],[3],[3],[3]],[None,None,None,None,None,None,None,None,90,None,70])",
+                        "(['Leaderboard','add_score','reset','add_score','add_score','reset','add_score','add_score','reset','add_score','add_score','add_score','add_score','add_score','top','reset','add_score','reset','add_score','add_score','top','top','reset','reset','top','add_score','add_score','add_score','add_score','add_score','add_score','add_score','top','top','add_score','add_score','reset','add_score','top','add_score','top'],[[],[5,16],[5],[3,83],[3,46],[3],[5,90],[1,84],[1],[5,53],[5,38],[4,67],[6,69],[4,38],[1],[4],[5,6],[6],[1,37],[6,54],[3],[3],[1],[6],[1],[5,34],[5,24],[4,20],[4,31],[5,99],[3,71],[2,39],[1],[2],[2,82],[2,54],[2],[2,12],[3],[6,18],[5]],[None,None,None,None,None,None,None,None,None,None,None,None,None,None,181,None,None,None,None,None,278,278,None,None,187,None,None,None,None,None,None,None,344,415,None,None,None,None,466,None,496])"
+                    ]
+                },
+                "body": "        result, _ = run_leaderboard(Leaderboard, operations, inputs)\n        assert_leaderboard(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_leaderboard, assert_leaderboard\nfrom solution import Leaderboard",
+    "playground_setup": "# Example test case\noperations = ['Leaderboard', 'add_score', 'add_score', 'add_score', 'add_score', 'add_score', 'top', 'reset', 'reset', 'add_score', 'top']\ninputs = [[], [1, 73], [2, 56], [3, 39], [4, 51], [5, 4], [1], [1], [2], [2, 51], [3]]\nexpected = [None, None, None, None, None, None, 73, None, None, None, 141]",
+    "playground_run": "result, board = run_leaderboard(Leaderboard, operations, inputs)\nprint(result)\nboard",
+    "playground_assert": "assert_leaderboard(result, expected)"
+}

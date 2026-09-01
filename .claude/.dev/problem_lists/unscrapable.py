@@ -159,32 +159,32 @@ UNSCRAPABLE_HANDLED = [
     (1228, "missing-number-in-arithmetic-progression"),
     (1229, "meeting-scheduler"),
     (1230, "toss-strange-coins"),
-]
-
-# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
-# problem is created; append new discoveries at the bottom.
-UNSCRAPABLE_QUEUE = [
-    (1197, "minimum-knight-moves"),
     (1231, "divide-chocolate"),
     (1236, "web-crawler"),
     (1243, "array-transformation"),
     (1244, "design-a-leaderboard"),
     (1245, "tree-diameter"),
     (1246, "palindrome-removal"),
-    (1258, "smallest-common-region"),
-    (1259, "hands-on-straights"),
+    (1258, "synonymous-sentences"),
+    (1259, "handshakes-that-dont-cross"),
     (1272, "remove-interval"),
     (1273, "delete-tree-nodes"),
     (1274, "number-of-ships-in-a-rectangle"),
     (1426, "counting-elements"),
     (1427, "perform-string-shifts"),
-    (1428, "leftmost-column-with-at-least-a-one"),
+    (1428, "leftmost-column-with-one"),
     (1429, "first-unique-number"),
     (1474, "delete-n-nodes-after-m-nodes-of-a-linked-list"),
     (1490, "clone-n-ary-tree"),
     (1506, "find-root-of-n-ary-tree"),
     (1522, "diameter-of-n-ary-tree"),
     (1533, "find-the-index-of-the-large-integer"),
+]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = [
+    (1197, "minimum-knight-moves"),
     (1538, "guess-the-majority-in-a-hidden-array"),
     (1564, "put-boxes-into-the-warehouse-i"),
     (1570, "dot-product-of-two-sparse-vectors"),

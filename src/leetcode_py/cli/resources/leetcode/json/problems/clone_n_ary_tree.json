@@ -1,0 +1,96 @@
+{
+    "problem_name": "clone_n_ary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "1490",
+    "problem_title": "Clone N-ary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Hash Table",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a `root` of an N-ary tree, return a **deep copy** (clone) of the tree.\n\nEach node in the n-ary tree contains a val (`int`) and a list (`List[Node]`) of its children.\n\n```\nclass Node {\n    public int val;\n    public List<Node> children;\n}\n```\n\n*Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)\n\n```\nInput: root = [1,null,3,2,4,null,5,6]\nOutput: [1,null,3,2,4,null,5,6]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/11/08/sample_4_964.png)\n\n```\nInput: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\nOutput: [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The depth of the n-ary tree is less than or equal to 1000.\n- The total number of nodes is between [0, 10^4].",
+    "readme_additional": "**Follow up:** Can your solution work for the graph problem?",
+    "helpers_imports": "from .solution import NaryNode",
+    "helpers_content": "def _nary_nodes(root: NaryNode | None) -> list[NaryNode]:\n    if root is None:\n        return []\n    out: list[NaryNode] = []\n    stack: list[NaryNode] = [root]\n    while stack:\n        node = stack.pop()\n        out.append(node)\n        stack.extend(node.children)\n    return out\n\n\ndef _nary_from_list(vals: list[int | None]) -> NaryNode | None:\n    if not vals:\n        return None\n    v0 = vals[0]\n    assert v0 is not None\n    root = NaryNode(v0)\n    queue: list[NaryNode] = [root]\n    i = 2\n    while queue:\n        node = queue.pop(0)\n        while i < len(vals) and vals[i] is not None:\n            v = vals[i]\n            assert v is not None\n            child = NaryNode(v)\n            node.children.append(child)\n            queue.append(child)\n            i += 1\n        i += 1\n    return root\n\n\ndef _nary_to_list(root: NaryNode | None) -> list[int | None]:\n    if root is None:\n        return []\n    out: list[int | None] = [root.val, None]\n    queue: list[NaryNode] = [root]\n    while queue:\n        node = queue.pop(0)\n        for child in node.children:\n            out.append(child.val)\n            queue.append(child)\n        if queue:\n            out.append(None)\n    while out and out[-1] is None:\n        out.pop()\n    return out",
+    "helpers_run_name": "clone_tree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = _nary_from_list(root_list)\n    clone = solution_class().clone_tree(root)\n    for node in _nary_nodes(root):\n        node.children = []\n    return clone",
+    "helpers_assert_name": "clone_tree",
+    "helpers_assert_signature": "(result: NaryNode | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert _nary_to_list(result) == expected_list\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class NaryNode:\n    def __init__(self, val: int = 0, children: list[NaryNode] | None = None) -> None:\n        self.val = val\n        self.children = children if children is not None else []\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_clone_tree, run_clone_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CloneNAryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "clone_tree",
+                "signature": "(self, root: NaryNode | None) -> NaryNode | None",
+                "body": "        # TODO: Implement clone_tree\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_clone_tree",
+                "signature": "(self, root_list: list[int | None], expected: list[int | None])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,None,3,2,4,None,5,6],[1,None,3,2,4,None,5,6])",
+                        "([1,None,2,3,4,5,None,None,6,7,None,8,None,9,10,None,None,11,None,12,None,13,None,None,14],[1,None,2,3,4,5,None,None,6,7,None,8,None,9,10,None,None,11,None,12,None,13,None,None,14])",
+                        "([],[])",
+                        "([1],[1])",
+                        "([1,None,2],[1,None,2])",
+                        "([1,None,2,3],[1,None,2,3])",
+                        "([1,None,2,None,3,None,4,None,5],[1,None,2,None,3,None,4,None,5])",
+                        "([1,None,3,2,4],[1,None,3,2,4])",
+                        "([1,None,2,3,None,4,5,6],[1,None,2,3,None,4,5,6])",
+                        "([5,None,4,None,2,None,3,1],[5,None,4,None,2,None,3,1])",
+                        "([1,None,10,2,None,20,30,40],[1,None,10,2,None,20,30,40])",
+                        "([1,None,2,3,4,5],[1,None,2,3,4,5])",
+                        "([1,None,2,None,3,4,None,5,None,6],[1,None,2,None,3,4,None,5,None,6])",
+                        "([4,None,1,None,2,None,3,None,7,8,9],[4,None,1,None,2,None,3,None,7,8,9])",
+                        "([7,None,3,None,9,1,2,None,5,6],[7,None,3,None,9,1,2,None,5,6])",
+                        "([1,None,2,3,5,8,None,9,None,4,7,None,6],[1,None,2,3,5,8,None,9,None,4,7,None,6])",
+                        "([1,None,2,5,7,None,3,4,None,8,None,None,6],[1,None,2,5,7,None,3,4,None,8,None,None,6])",
+                        "([1,None,2,3,None,None,4],[1,None,2,3,None,None,4])",
+                        "([1,None,2,None,3,4,5],[1,None,2,None,3,4,5])",
+                        "([1,None,2,5,None,3,4,6],[1,None,2,5,None,3,4,6])",
+                        "([1,None,2,5,None,3,None,None,4,6,None,None,7,8],[1,None,2,5,None,3,None,None,4,6,None,None,7,8])"
+                    ]
+                },
+                "body": "        result = run_clone_tree(Solution, root_list)\n        assert_clone_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_clone_tree, assert_clone_tree\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 3, 2, 4, None, 5, 6]\nexpected = [1, None, 3, 2, 4, None, 5, 6]",
+    "playground_run": "result = run_clone_tree(Solution, root_list)\nresult",
+    "playground_assert": "assert_clone_tree(result, expected)"
+}

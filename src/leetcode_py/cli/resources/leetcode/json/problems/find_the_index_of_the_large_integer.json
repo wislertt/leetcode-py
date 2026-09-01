@@ -1,0 +1,96 @@
+{
+    "problem_name": "find_the_index_of_the_large_integer",
+    "solution_class_name": "Solution",
+    "problem_number": "1533",
+    "problem_title": "Find the Index of the Large Integer",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "We have an integer array `arr`, where all the integers in `arr` are equal except for one integer which is **larger** than the rest of the integers. You will not be given direct access to the array, instead, you will have an **API** `ArrayReader` which has the following functions:\n\n- `int compareSub(int l, int r, int x, int y)`: where `0 <= l, r, x, y < ArrayReader.length()`, `l <= r` and `x <= y`. The function compares the sum of sub-array `arr[l..r]` with the sum of the sub-array `arr[x..y]` and returns:\n  - **1** if `arr[l]+arr[l+1]+...+arr[r] > arr[x]+arr[x+1]+...+arr[y]`.\n  - **0** if `arr[l]+arr[l+1]+...+arr[r] == arr[x]+arr[x+1]+...+arr[y]`.\n  - **-1** if `arr[l]+arr[l+1]+...+arr[r] < arr[x]+arr[x+1]+...+arr[y]`.\n- `int length()`: Returns the size of the array.\n\nYou are allowed to call `compareSub()` **20 times** at most. You can assume both functions work in `O(1)` time.\n\nReturn *the index of the array `arr` which has the largest integer*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [7,7,7,7,10,7,7,7]\nOutput: 4\nExplanation: The following calls to the API\nreader.compareSub(0, 0, 1, 1) // returns 0, this is a query comparing the sub-array (0, 0) with the sub array (1, 1), (i.e. compares arr[0] with arr[1]).\nThus we know that arr[0] and arr[1] doesn't contain the largest element.\nreader.compareSub(2, 2, 3, 3) // returns 0, we can exclude arr[2] and arr[3].\nreader.compareSub(4, 4, 5, 5) // returns 1, thus for sure arr[4] is the largest element in the array.\nNotice that we made only 3 calls, so the answer is valid.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [6,6,12]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= arr.length <= 5 * 10^5`\n- `1 <= arr[i] <= 100`\n- All elements of `arr` are equal except for one element which is larger than all other elements.",
+    "readme_additional": "**Follow up:**\n\n- What if there are two numbers in `arr` that are bigger than all other numbers?\n- What if there is one number that is bigger than other numbers and one number that is smaller than other numbers?",
+    "helpers_imports": "from .solution import ArrayReader",
+    "helpers_content": "",
+    "helpers_run_name": "get_index",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    reader = ArrayReader(arr)\n    return solution_class().get_index(reader)",
+    "helpers_assert_name": "get_index",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class ArrayReader:\n    # Test-harness API: backs the compareSub/length interface with the array\n    def __init__(self, arr: list[int]) -> None:\n        self.arr = arr\n\n    def compare_sub(self, lo1: int, hi1: int, lo2: int, hi2: int) -> int:\n        left = sum(self.arr[lo1 : hi1 + 1])\n        right = sum(self.arr[lo2 : hi2 + 1])\n        return (left > right) - (left < right)\n\n    def length(self) -> int:\n        return len(self.arr)\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_index, run_get_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheIndexOfTheLargeInteger",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_index",
+                "signature": "(self, reader: ArrayReader) -> int",
+                "body": "        # TODO: Implement get_index\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_index",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([7, 7, 7, 7, 10, 7, 7, 7], 4)",
+                        "([6, 6, 12], 2)",
+                        "([1, 2], 1)",
+                        "([3, 1], 0)",
+                        "([5, 5, 5, 9], 3)",
+                        "([9, 5, 5, 5], 0)",
+                        "([4, 4, 7, 4], 2)",
+                        "([2, 2, 2, 2, 2, 2, 8, 2], 6)",
+                        "([100, 1], 0)",
+                        "([1, 100], 1)",
+                        "([53, 92, 53, 53], 1)",
+                        "([60, 69, 60, 60, 60, 60, 60, 60], 1)",
+                        "([40, 40, 40, 40, 40, 40, 88, 40], 6)",
+                        "([60, 60, 60, 72, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60], 3)",
+                        "([5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 34, 5, 5, 5, 5], 11)",
+                        "([17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 49, 17, 17, 17, 17], 11)",
+                        "([4, 4, 4, 77, 4, 4, 4, 4], 3)",
+                        "([83, 88, 83, 83, 83, 83, 83, 83], 1)",
+                        "([89, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84], 0)",
+                        "([30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 42, 30, 30, 30, 30], 11)",
+                        "([81, 81, 81, 81, 81, 81, 81, 81, 100, 81, 81, 81, 81, 81, 81, 81], 8)"
+                    ]
+                },
+                "body": "        result = run_get_index(Solution, arr)\n        assert_get_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_get_index, run_get_index\nfrom solution import ArrayReader, Solution",
+    "playground_setup": "# Example test case\narr = [7, 7, 7, 7, 10, 7, 7, 7]\nexpected = 4",
+    "playground_run": "result = run_get_index(Solution, arr)\nresult",
+    "playground_assert": "assert_get_index(result, expected)"
+}

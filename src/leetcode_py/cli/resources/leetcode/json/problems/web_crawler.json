@@ -1,0 +1,93 @@
+{
+    "problem_name": "web_crawler",
+    "solution_class_name": "Solution",
+    "problem_number": "1236",
+    "problem_title": "Web Crawler",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, String, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a url `startUrl` and an interface `HtmlParser`, implement a web crawler to crawl all links that are under the same hostname as `startUrl`.\n\nReturn all urls obtained by your web crawler in **any** order.\n\nYour crawler should:\n\n- Start from the page: `startUrl`\n- Call `HtmlParser.getUrls(url)` to get all urls from a webpage of given url.\n- Do not crawl the same link twice.\n- Explore only the links that are under the same hostname as `startUrl`.\n\n![Hostname](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1236.Web%20Crawler/images/urlhostname.png)\n\nAs shown in the example url above, the hostname is `example.org`. For simplicity sake, you may assume all urls use http protocol without any port specified. For example, the urls `http://leetcode.com/problems` and `http://leetcode.com/contest` are under the same hostname, while urls `http://example.org/test` and `http://example.com/abc` are not under the same hostname.\n\nThe `HtmlParser` interface is defined as such:\n\n```\ninterface HtmlParser {\n  // Return a list of all urls from a webpage of given url.\n  public List<String> getUrls(String url);\n}\n```\n\nBelow are two examples explaining the functionality of the problem, for custom testing purposes you'll have three variables `urls`, `edges` and `startUrl`. Notice that you will only have access to `startUrl` in your code, while `urls` and `edges` are not directly accessible to you in code.\n\nNote: Consider the same URL with the trailing slash `/` as a different URL. For example, `http://news.yahoo.com`, and `http://news.yahoo.com/` are different urls.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1236.Web%20Crawler/images/sample_2_1497.png)\n\n```\nInput:\nurls = [\n  \"http://news.yahoo.com\",\n  \"http://news.yahoo.com/news\",\n  \"http://news.yahoo.com/news/topics/\",\n  \"http://news.google.com\",\n  \"http://news.yahoo.com/us\"\n]\nedges = [[2,0],[2,1],[3,2],[3,1],[0,4]]\nstartUrl = \"http://news.yahoo.com/news/topics/\"\nOutput:\n[\n  \"http://news.yahoo.com\",\n  \"http://news.yahoo.com/news\",\n  \"http://news.yahoo.com/news/topics/\",\n  \"http://news.yahoo.com/us\"\n]\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1236.Web%20Crawler/images/sample_3_1497.png)\n\n```\nInput:\nurls = [\n  \"http://news.yahoo.com\",\n  \"http://news.yahoo.com/news\",\n  \"http://news.yahoo.com/news/topics/\",\n  \"http://news.google.com\"\n]\nedges = [[0,2],[2,1],[3,2],[3,1],[3,0]]\nstartUrl = \"http://news.google.com\"\nOutput: [\"http://news.google.com\"]\nExplanation: The startUrl links to all other pages that do not share the same hostname.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= urls.length <= 1000`\n- `1 <= urls[i].length <= 300`\n- `startUrl` is one of the `urls`.\n- Hostname label must be from 1 to 63 characters long, including the dots, may contain only the ASCII letters from 'a' to 'z', digits from '0' to '9' and the hyphen-minus character ('-').\n- The hostname may not start or end with the hyphen-minus character ('-').\n- You may assume there're no duplicates in url library.",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import HtmlParser",
+    "helpers_content": "",
+    "helpers_run_name": "crawl",
+    "helpers_run_signature": "(solution_class: type, urls: list[str], edges: list[list[int]], start_url: str)",
+    "helpers_run_body": "    parser = HtmlParser(urls, edges)\n    return solution_class().crawl(start_url, parser)",
+    "helpers_assert_name": "crawl",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class HtmlParser:\n    # Test-harness API: backs the getUrls interface with the url library\n    def __init__(self, urls: list[str], edges: list[list[int]]) -> None:\n        self.adj: dict[str, list[str]] = {u: [] for u in urls}\n        for a, b in edges:\n            self.adj[urls[a]].append(urls[b])\n\n    def get_urls(self, url: str) -> list[str]:\n        return self.adj[url]\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_crawl, run_crawl\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WebCrawler",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "crawl",
+                "signature": "(self, start_url: str, html_parser: HtmlParser) -> list[str]",
+                "body": "        # TODO: Implement crawl\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_crawl",
+                "signature": "(self, urls: list[str], edges: list[list[int]], start_url: str, expected: list[str])",
+                "parametrize": "urls, edges, start_url, expected",
+                "test_cases": {
+                    "list": [
+                        "(['http://news.yahoo.com','http://news.yahoo.com/news','http://news.yahoo.com/news/topics/','http://news.google.com','http://news.yahoo.com/us'],[[2,0],[2,1],[3,2],[3,1],[0,4]],'http://news.yahoo.com/news/topics/',['http://news.yahoo.com','http://news.yahoo.com/news','http://news.yahoo.com/news/topics/','http://news.yahoo.com/us'])",
+                        "(['http://news.yahoo.com','http://news.yahoo.com/news','http://news.yahoo.com/news/topics/','http://news.google.com'],[[0,2],[2,1],[3,2],[3,1],[3,0]],'http://news.google.com',['http://news.google.com'])",
+                        "(['http://a.com'],[],'http://a.com',['http://a.com'])",
+                        "(['http://a.com','http://a.com/b','http://a.com/b/c'],[[0,1],[1,2]],'http://a.com',['http://a.com','http://a.com/b','http://a.com/b/c'])",
+                        "(['http://a.com','http://b.com','http://a.com/c'],[[0,1],[1,2]],'http://a.com',['http://a.com'])",
+                        "(['http://a.com','http://b.com','http://a.com/x'],[[0,1],[1,2]],'http://b.com',['http://b.com'])",
+                        "(['http://a.com','http://a.com.evil.com','http://a.com/x'],[[0,1],[1,2],[0,2]],'http://a.com',['http://a.com','http://a.com/x'])",
+                        "(['http://a.com','http://a.com/','http://a.com/home'],[[0,1],[1,2]],'http://a.com',['http://a.com','http://a.com/','http://a.com/home'])",
+                        "(['http://a.com/1','http://a.com/2','http://a.com/3'],[[0,1],[1,2],[2,0]],'http://a.com/1',['http://a.com/1','http://a.com/2','http://a.com/3'])",
+                        "(['http://a.com','http://a.com/z'],[[0,0],[0,1]],'http://a.com',['http://a.com','http://a.com/z'])",
+                        "(['http://a.com','http://a.com/dup','http://a.com/other'],[[0,1],[0,1],[0,2]],'http://a.com',['http://a.com','http://a.com/dup','http://a.com/other'])",
+                        "(['http://a.com','http://a.com/1','http://a.com/2'],[[1,2]],'http://a.com',['http://a.com'])",
+                        "(['http://a.com/1','http://a.com','http://a.com/2'],[[0,1],[1,2]],'http://a.com',['http://a.com','http://a.com/2'])",
+                        "(['http://a.com/1','http://a.com/2','http://b.com/1','http://a.com/3','http://a.com/4'],[[0,1],[1,2],[2,3],[3,4]],'http://a.com/1',['http://a.com/1','http://a.com/2'])",
+                        "(['http://c.net','http://b.org/x1','http://c.net/p2','http://news.a.com','http://c.net/x4','http://c.net/p6'],[[0,3]],'http://c.net/p2',['http://c.net/p2'])",
+                        "(['http://a.com/p0','http://b.org/us1','http://b.org','http://a.com/us3','http://b.org/topics4','http://b.org/p5'],[[2,5],[5,1],[4,5],[3,0],[4,2],[4,5],[0,3],[5,0],[3,4],[1,5],[2,0]],'http://b.org/p5',['http://b.org/p5','http://b.org/us1'])",
+                        "(['http://b.org','http://c.net/topics1','http://a.com/topics2','http://c.net/news3','http://b.org/x5'],[[0,1],[4,3],[4,2],[1,1],[1,3]],'http://b.org/x5',['http://b.org/x5'])",
+                        "(['http://b.org','http://a.com/topics1','http://news.a.com','http://b.org/us5','http://a.com','http://news.a.com/x7'],[[2,0],[0,5],[1,0],[1,3],[0,5],[2,1],[3,2],[0,5],[0,4]],'http://b.org',['http://b.org'])"
+                    ]
+                },
+                "body": "        result = run_crawl(Solution, urls, edges, start_url)\n        assert_crawl(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_crawl, run_crawl\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nurls = [\n    'http://news.yahoo.com',\n    'http://news.yahoo.com/news',\n    'http://news.yahoo.com/news/topics/',\n    'http://news.google.com',\n    'http://news.yahoo.com/us',\n]\nedges = [[2, 0], [2, 1], [3, 2], [3, 1], [0, 4]]\nstart_url = 'http://news.yahoo.com/news/topics/'\nexpected = sorted(\n    [\n        'http://news.yahoo.com',\n        'http://news.yahoo.com/news',\n        'http://news.yahoo.com/news/topics/',\n        'http://news.yahoo.com/us',\n    ]\n)",
+    "playground_run": "result = run_crawl(Solution, urls, edges, start_url)\nresult",
+    "playground_assert": "assert_crawl(result, expected)"
+}

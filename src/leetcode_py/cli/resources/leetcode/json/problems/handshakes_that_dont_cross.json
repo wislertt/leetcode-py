@@ -1,0 +1,93 @@
+{
+    "problem_name": "handshakes_that_dont_cross",
+    "solution_class_name": "Solution",
+    "problem_number": "1259",
+    "problem_title": "Handshakes That Don't Cross",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an **even** number of people `numPeople` that stand around a circle and each person shakes hands with someone else so that there are `numPeople / 2` handshakes total.\n\nReturn *the number of ways these handshakes could occur such that none of the handshakes cross*.\n\nSince the answer could be very large, return it **modulo** `10<sup>9</sup> + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1259.Handshakes%20That%20Don%27t%20Cross/images/5125_example_2.png)\n\n```\nInput: numPeople = 4\nOutput: 2\n```\n**Explanation:** There are two ways to do it, the first way is [(1,2),(3,4)] and the second one is [(2,3),(4,1)]."
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1259.Handshakes%20That%20Don%27t%20Cross/images/5125_example_3.png)\n\n```\nInput: numPeople = 6\nOutput: 5\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= numPeople <= 1000`\n- `numPeople` is even.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "number_of_ways",
+    "helpers_run_signature": "(solution_class: type, num_people: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.number_of_ways(num_people)",
+    "helpers_assert_name": "number_of_ways",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_number_of_ways, run_number_of_ways\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HandshakesThatDontCross",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "number_of_ways",
+                "signature": "(self, num_people: int) -> int",
+                "body": "        # TODO: Implement number_of_ways\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_number_of_ways",
+                "signature": "(self, num_people: int, expected: int)",
+                "parametrize": "num_people, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 1)",
+                        "(4, 2)",
+                        "(6, 5)",
+                        "(8, 14)",
+                        "(10, 42)",
+                        "(12, 132)",
+                        "(14, 429)",
+                        "(16, 1430)",
+                        "(18, 4862)",
+                        "(20, 16796)",
+                        "(22, 58786)",
+                        "(24, 208012)",
+                        "(30, 9694845)",
+                        "(40, 564120378)",
+                        "(60, 475387402)",
+                        "(100, 265470434)",
+                        "(500, 217193473)",
+                        "(1000, 591137401)"
+                    ]
+                },
+                "body": "        result = run_number_of_ways(Solution, num_people)\n        assert_number_of_ways(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_number_of_ways, assert_number_of_ways\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum_people = 4\nexpected = 2",
+    "playground_run": "result = run_number_of_ways(Solution, num_people)\nresult",
+    "playground_assert": "assert_number_of_ways(result, expected)"
+}

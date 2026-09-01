@@ -1,0 +1,108 @@
+{
+    "problem_name": "divide_chocolate",
+    "solution_class_name": "Solution",
+    "problem_number": "1231",
+    "problem_title": "Divide Chocolate",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have one chocolate bar that consists of some chunks. Each chunk has its own sweetness given by the array `sweetness`.\n\nYou want to share the chocolate with your `k` friends so you start cutting the chocolate bar into `k + 1` pieces using `k` cuts, each piece consists of some <strong>consecutive</strong> chunks.\n\nBeing generous, you will eat the piece with the <strong>minimum total sweetness</strong> and give the other pieces to your friends.\n\nFind the <strong>maximum total sweetness</strong> of the piece you can get by cutting the chocolate bar optimally.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sweetness = [1,2,3,4,5,6,7,8,9], k = 5\nOutput: 6\nExplanation: You can divide the chocolate to [1,2,3], [4,5], [6], [7], [8], [9]\n```"
+            },
+            {
+                "content": "```\nInput: sweetness = [5,6,7,8,9,1,2,3,4], k = 8\nOutput: 1\nExplanation: There is only one way to cut the bar into 9 pieces.\n```"
+            },
+            {
+                "content": "```\nInput: sweetness = [1,2,2,1,2,2,1,2,2], k = 2\nOutput: 5\nExplanation: You can divide the chocolate to [1,2,2], [1,2,2], [1,2,2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= k < sweetness.length <= 10<sup>4</sup>\n- 1 <= sweetness[i] <= 10<sup>5</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximize_sweetness",
+    "helpers_run_signature": "(solution_class: type, sweetness: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximize_sweetness(sweetness, k)",
+    "helpers_assert_name": "maximize_sweetness",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximize_sweetness, run_maximize_sweetness\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DivideChocolate",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximize_sweetness",
+                "signature": "(self, sweetness: list[int], k: int) -> int",
+                "body": "        # TODO: Implement maximize_sweetness\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximize_sweetness",
+                "signature": "(self, sweetness: list[int], k: int, expected: int)",
+                "parametrize": "sweetness, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9], 5, 6)",
+                        "([5, 6, 7, 8, 9, 1, 2, 3, 4], 8, 1)",
+                        "([1, 2, 2, 1, 2, 2, 1, 2, 2], 2, 5)",
+                        "([1], 0, 1)",
+                        "([10], 0, 10)",
+                        "([5, 5], 0, 10)",
+                        "([3, 1, 4], 2, 1)",
+                        "([7, 2, 9, 5], 3, 2)",
+                        "([1, 2, 3, 4], 1, 4)",
+                        "([4, 3, 2, 1], 1, 4)",
+                        "([2, 2, 2, 2], 2, 2)",
+                        "([9, 9, 9, 9, 9], 4, 9)",
+                        "([1, 1, 1, 1, 1, 1], 2, 2)",
+                        "([8, 1, 1, 8], 1, 9)",
+                        "([100000], 0, 100000)",
+                        "([100000, 100000, 100000], 2, 100000)",
+                        "([6, 1, 2, 7, 3, 5], 1, 9)",
+                        "([5, 4, 3, 2, 1, 5, 4, 3, 2, 1], 3, 6)",
+                        "([19, 9, 2, 14, 13, 8, 17, 6], 5, 8)",
+                        "([12, 7, 20, 11, 19, 12], 1, 39)",
+                        "([9, 6, 2, 7, 15, 11, 16, 12], 4, 11)",
+                        "([5, 19, 8, 6, 7, 5, 2, 9, 17, 5], 4, 11)",
+                        "([4, 5], 1, 4)",
+                        "([8, 14], 0, 22)",
+                        "([14, 6, 4, 1, 6, 16, 1, 19, 11], 5, 7)",
+                        "([20, 4, 18, 4], 3, 4)",
+                        "([10, 1, 17, 13, 13, 19], 1, 32)",
+                        "([13, 16, 11], 1, 13)",
+                        "([1, 2, 4, 14, 10], 0, 31)",
+                        "([3, 6, 11], 2, 3)"
+                    ]
+                },
+                "body": "        result = run_maximize_sweetness(Solution, sweetness, k)\n        assert_maximize_sweetness(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximize_sweetness, assert_maximize_sweetness\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsweetness = [1, 2, 3, 4, 5, 6, 7, 8, 9]\nk = 5\nexpected = 6",
+    "playground_run": "result = run_maximize_sweetness(Solution, sweetness, k)\nresult",
+    "playground_assert": "assert_maximize_sweetness(result, expected)"
+}
