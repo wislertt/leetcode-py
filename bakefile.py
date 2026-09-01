@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "divide_nodes_into_the_maximum_number_of_groups"
+    problem: str = "minimum_index_of_a_valid_split"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

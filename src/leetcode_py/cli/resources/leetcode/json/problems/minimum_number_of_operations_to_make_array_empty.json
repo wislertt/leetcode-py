@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_number_of_operations_to_make_array_empty",
+    "solution_class_name": "Solution",
+    "problem_number": "2870",
+    "problem_title": "Minimum Number of Operations to Make Array Empty",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Greedy, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given a <strong>0-indexed</strong> array <code>nums</code> consisting of positive integers.</p>\n\n<p>There are two types of operations that you can apply on the array <strong>any</strong> number of times:</p>\n\n<ul>\n\t<li>Choose <strong>two</strong> elements with <strong>equal</strong> values and <strong>delete</strong> them from the array.</li>\n\t<li>Choose <strong>three</strong> elements with <strong>equal</strong> values and <strong>delete</strong> them from the array.</li>\n</ul>\n\n<p>Return <em>the <strong>minimum</strong> number of operations required to make the array empty, or </em><code>-1</code><em> if it is not possible</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,3,3,2,2,4,2,3,4]\nOutput: 4\nExplanation: We can apply the following operations to make the array empty:\n- Apply the first operation on the elements at indices 0 and 3. The resulting array is nums = [3,3,2,4,2,3,4].\n- Apply the first operation on the elements at indices 2 and 4. The resulting array is nums = [3,3,4,3,4].\n- Apply the second operation on the elements at indices 0, 1, and 3. The resulting array is nums = [4,4].\n- Apply the first operation on the elements at indices 0 and 1. The resulting array is nums = [].\nIt can be shown that we cannot make the array empty in less than 4 operations.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,1,2,2,3,3]\nOutput: -1\nExplanation: It is impossible to empty the array.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^6",
+    "readme_additional": "**Note:** This question is the same as 2244: Minimum Rounds to Complete All Tasks.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_operations",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_operations(nums)",
+    "helpers_assert_name": "min_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_operations, run_min_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfOperationsToMakeArrayEmpty",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_operations",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement min_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_operations",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 3, 3, 2, 2, 4, 2, 3, 4], 4)",
+                        "([2, 1, 2, 2, 3, 3], -1)",
+                        "([1, 1], 1)",
+                        "([1, 1, 1], 1)",
+                        "([1, 1, 1, 1], 2)",
+                        "([1, 1, 1, 1, 1], 2)",
+                        "([1, 1, 1, 1, 1, 1], 2)",
+                        "([1, 2], -1)",
+                        "([1, 2, 2], -1)",
+                        "([2, 2, 2], 1)",
+                        "([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 4)",
+                        "([1, 1, 2, 2, 3, 3, 4, 4], 4)",
+                        "([5, 5, 5, 5, 5, 5, 5], 3)",
+                        "([7, 7, 7, 7, 7], 2)",
+                        "([1, 1, 2, 2, 3, 3, 3, 4, 4, 4], 4)",
+                        "([9, 9, 9, 9, 9, 9, 9, 9], 3)",
+                        "([1, 2, 3, 4, 4], -1)",
+                        "([20, 16, 7, 16, 20, 16, 7, 20, 20], 4)",
+                        "([15, 1, 8, 1, 1, 15, 8, 8], 3)",
+                        "([3, 6, 3, 3, 6, 3, 3], 3)",
+                        "([16, 7, 10, 2, 10, 16, 7, 16, 2], 4)",
+                        "([6, 22, 19, 6, 15, 6, 6, 19, 6, 15, 6, 15, 22, 6], 6)",
+                        "([1, 1, 1, 42, 2, 2, 3, 3], -1)"
+                    ]
+                },
+                "body": "        result = run_min_operations(Solution, nums)\n        assert_min_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_operations, assert_min_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 3, 3, 2, 2, 4, 2, 3, 4]\nexpected = 4",
+    "playground_run": "result = run_min_operations(Solution, nums)\nresult",
+    "playground_assert": "assert_min_operations(result, expected)"
+}

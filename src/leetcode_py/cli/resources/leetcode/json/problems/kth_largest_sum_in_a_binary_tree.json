@@ -1,0 +1,93 @@
+{
+    "problem_name": "kth_largest_sum_in_a_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "2583",
+    "problem_title": "Kth Largest Sum in a Binary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Breadth-First Search, Sorting, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `root` of a binary tree and a positive integer `k`.\n\nThe **level sum** in the tree is the sum of the values of the nodes that are on the **same** level.\n\nReturn *the* `kth` *largest level sum in the tree (not necessarily distinct)*. If there are fewer than `k` levels in the tree, return `-1`.\n\nNote that two nodes are on the same level if they have the same distance from the root.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/12/14/binaryytreeedrawio-2.png)\n\n```\nInput: root = [5,8,9,2,1,3,7,4,6], k = 2\nOutput: 13\nExplanation: The level sums are the following:\n- Level 1: 5.\n- Level 2: 8 + 9 = 17.\n- Level 3: 2 + 1 + 3 + 7 = 13.\n- Level 4: 4 + 6 = 10.\nThe 2nd largest level sum is 13.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/12/14/treedrawio-3.png)\n\n```\nInput: root = [1,2,null,3], k = 1\nOutput: 3\nExplanation: The largest level sum is 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is `n`.\n- `2 <= n <= 10^5`\n- `1 <= Node.val <= 10^6`\n- `1 <= k <= n`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "kth_largest_level_sum",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], k: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.kth_largest_level_sum(root, k)",
+    "helpers_assert_name": "kth_largest_level_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_kth_largest_level_sum, run_kth_largest_level_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KthLargestSumInABinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "kth_largest_level_sum",
+                "signature": "(self, root: TreeNode[int] | None, k: int) -> int",
+                "body": "        # TODO: Implement kth_largest_level_sum\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_kth_largest_level_sum",
+                "signature": "(self, root_list: list[int | None], k: int, expected: int)",
+                "parametrize": "root_list, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 8, 9, 2, 1, 3, 7, 4, 6], 2, 13)",
+                        "([1, 2, None, 3], 1, 3)",
+                        "([5, 8, 9, 2, 1, 3, 7, 4, 6], 4, 5)",
+                        "([5, 8, 9, 2, 1, 3, 7, 4, 6], 5, -1)",
+                        "([1, 2], 1, 2)",
+                        "([1, 2], 2, 1)",
+                        "([1, 2, 3], 3, -1)",
+                        "([10, 20, 30, 40, 50, 60, 70], 2, 50)",
+                        "([1, None, 2, None, 3], 3, 1)",
+                        "([999999, 1000000, 999998], 1, 1999998)",
+                        "([7, 7, 7, 7], 2, 7)",
+                        "([3, 1, 4, None, 2, None, 5], 1, 7)",
+                        "([57, 47, 81, 89, 62, 78, 56], 2, 128)",
+                        "([80, 100, 70, None, 42, 14, 91, 49, 86, None, 47, 47, 90, 10], 5, 10)",
+                        "([24, 97], 2, 24)",
+                        "([68, 78, 83, 85, 92, None, 49, None, 86, 40, 49, None, 75], 4, 68)",
+                        "([3, 74, None, 40, 68, 82, 100], 2, 108)",
+                        "([65, 36, 61, 36, 14, 80, 32], 1, 162)"
+                    ]
+                },
+                "body": "        result = run_kth_largest_level_sum(Solution, root_list, k)\n        assert_kth_largest_level_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_kth_largest_level_sum, assert_kth_largest_level_sum\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [5, 8, 9, 2, 1, 3, 7, 4, 6]\nk = 2\nexpected = 13",
+    "playground_run": "result = run_kth_largest_level_sum(Solution, root_list, k)\nresult",
+    "playground_assert": "assert_kth_largest_level_sum(result, expected)"
+}

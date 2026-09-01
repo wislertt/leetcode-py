@@ -1,0 +1,100 @@
+{
+    "problem_name": "minimum_cost_to_convert_string_i",
+    "solution_class_name": "Solution",
+    "problem_number": "2976",
+    "problem_title": "Minimum Cost to Convert String I",
+    "difficulty": "Medium",
+    "topics": "Array, String, Graph Theory, Shortest Path",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two **0-indexed** strings `source` and `target`, both of length `n` and consisting of **lowercase** English letters. You are also given two **0-indexed** character arrays `original` and `changed`, and an integer array `cost`, where `cost[i]` represents the cost of changing the character `original[i]` to the character `changed[i]`.\n\nYou start with the string `source`. In one operation, you can pick a character `x` from the string and change it to the character `y` at a cost of `z` **if** there exists **any** index `j` such that `cost[j] == z`, `original[j] == x`, and `changed[j] == y`.\n\nReturn _the **minimum** cost to convert the string_ `source` _to the string_ `target` _using **any** number of operations_. If it is impossible to convert `source` to `target`, return `-1`.\n\n**Note** that there may exist indices `i`, `j` such that `original[j] == original[i]` and `changed[j] == changed[i]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: source = \"abcd\", target = \"acbe\", original = [\"a\",\"b\",\"c\",\"c\",\"e\",\"d\"], changed = [\"b\",\"c\",\"b\",\"e\",\"b\",\"e\"], cost = [2,5,5,1,2,20]\nOutput: 28\nExplanation: To convert the string \"abcd\" to string \"acbe\":\n- Change value at index 1 from 'b' to 'c' at a cost of 5.\n- Change value at index 2 from 'c' to 'e' at a cost of 1.\n- Change value at index 2 from 'e' to 'b' at a cost of 2.\n- Change value at index 3 from 'd' to 'e' at a cost of 20.\nThe total cost incurred is 5 + 1 + 2 + 20 = 28.\nIt can be shown that this is the minimum possible cost.\n```"
+            },
+            {
+                "content": "```\nInput: source = \"aaaa\", target = \"bbbb\", original = [\"a\",\"c\"], changed = [\"c\",\"b\"], cost = [1,2]\nOutput: 12\nExplanation: To change the character 'a' to 'b' change the character 'a' to 'c' at a cost of 1, followed by changing the character 'c' to 'b' at a cost of 2, for a total cost of 1 + 2 = 3. To change all occurrences of 'a' to 'b', a total cost of 3 * 4 = 12 is incurred.\n```"
+            },
+            {
+                "content": "```\nInput: source = \"abcd\", target = \"abce\", original = [\"a\"], changed = [\"e\"], cost = [10000]\nOutput: -1\nExplanation: It is impossible to convert source to target because the value at index 3 cannot be changed from 'd' to 'e'.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= source.length == target.length <= 10^5\n- source, target consist of lowercase English letters.\n- 1 <= cost.length == original.length == changed.length <= 2000\n- original[i], changed[i] are lowercase English letters.\n- 1 <= cost[i] <= 10^6\n- original[i] != changed[i]",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_cost",
+    "helpers_run_signature": "(solution_class: type, source: str, target: str, original: list[str], changed: list[str], cost: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_cost(source, target, original, changed, cost)",
+    "helpers_assert_name": "minimum_cost",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_cost, run_minimum_cost\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumCostToConvertStringI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_cost",
+                "signature": "(self, source: str, target: str, original: list[str], changed: list[str], cost: list[int]) -> int",
+                "body": "        # TODO: Implement minimum_cost\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_cost",
+                "signature": "(self, source: str, target: str, original: list[str], changed: list[str], cost: list[int], expected: int)",
+                "parametrize": "source, target, original, changed, cost, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcd', 'acbe', ['a', 'b', 'c', 'c', 'e', 'd'], ['b', 'c', 'b', 'e', 'b', 'e'], [2, 5, 5, 1, 2, 20], 28)",
+                        "('aaaa', 'bbbb', ['a', 'c'], ['c', 'b'], [1, 2], 12)",
+                        "('abcd', 'abce', ['a'], ['e'], [10000], -1)",
+                        "('a', 'a', ['b'], ['a'], [1], 0)",
+                        "('a', 'b', ['a'], ['b'], [5], 5)",
+                        "('a', 'c', ['a', 'b'], ['b', 'c'], [10, 1], 11)",
+                        "('a', 'b', ['a', 'a'], ['c', 'b'], [3, 10], 10)",
+                        "('a', 'c', ['a', 'b'], ['b', 'd'], [1, 1], -1)",
+                        "('ab', 'ba', ['a', 'a', 'b'], ['b', 'b', 'a'], [4, 2, 3], 5)",
+                        "('a', 'd', ['a', 'b', 'c'], ['b', 'c', 'd'], [1, 1, 1], 3)",
+                        "('a', 'z', ['a', 'b', 'a', 'm'], ['b', 'z', 'm', 'z'], [100, 100, 1, 1], 2)",
+                        "('a', 'm', ['a', 'n', 'm'], ['b', 'a', 'n'], [1, 1, 1], -1)",
+                        "('a', 'b', ['a', 'a', 'b'], ['b', 'c', 'a'], [9, 1, 1], 9)",
+                        "('a', 'b', ['a', 'a'], ['b', 'b'], [7, 3], 3)",
+                        "('a', 'b', ['a'], ['b'], [1000000], 1000000)",
+                        "('xyz', 'zyx', ['x', 'y', 'z', 'z'], ['y', 'z', 'x', 'a'], [2, 3, 4, 1], 9)",
+                        "('ttka', 'nrxt', ['j', 'k', 'p', 'p', 'o', 'd', 'z'], ['p', 'q', 'w', 'g', 't', 'o', 'c'], [6, 34, 35, 4, 3, 37, 9], -1)",
+                        "('bgft', 'sihs', ['e', 'm', 'a', 'g', 'y', 'a', 'z'], ['f', 'c', 's', 'f', 'm', 'z', 'q'], [43, 35, 3, 41, 38, 15, 33], -1)",
+                        "('oifl', 'nwte', ['a', 'l', 'l', 't', 'u', 'd', 'q', 'o', 'j', 'd', 'v', 'u'], ['q', 'k', 'o', 'n', 'g', 'z', 'w', 'p', 's', 'h', 'w', 'x'], [32, 26, 48, 27, 21, 29, 8, 31, 43, 1, 25, 12], -1)",
+                        "('vmqo', 'lgqe', ['l', 'm', 'w', 'o', 'm', 'i', 'e', 'f'], ['o', 'v', 's', 'f', 'w', 'f', 'c', 'z'], [14, 27, 49, 17, 23, 20, 47, 24], -1)",
+                        "('mckj', 'qquj', ['f', 't', 'm'], ['r', 'r', 't'], [42, 5, 19], -1)",
+                        "('ftpk', 'wyjm', ['h', 'l', 'm', 'n', 'n', 'x', 'q', 'r', 'f', 'm', 'r', 'p'], ['p', 'a', 'i', 'v', 'g', 's', 'b', 'g', 'k', 'a', 'c', 'l'], [33, 10, 30, 5, 28, 44, 40, 6, 4, 26, 49, 7], -1)"
+                    ]
+                },
+                "body": "        result = run_minimum_cost(Solution, source, target, original, changed, cost)\n        assert_minimum_cost(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_cost, assert_minimum_cost\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsource = 'abcd'\ntarget = 'acbe'\noriginal = ['a', 'b', 'c', 'c', 'e', 'd']\nchanged = ['b', 'c', 'b', 'e', 'b', 'e']\ncost = [2, 5, 5, 1, 2, 20]\nexpected = 28",
+    "playground_run": "result = run_minimum_cost(Solution, source, target, original, changed, cost)\nresult",
+    "playground_assert": "assert_minimum_cost(result, expected)"
+}

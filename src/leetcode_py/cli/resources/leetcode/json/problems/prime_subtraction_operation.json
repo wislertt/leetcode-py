@@ -1,0 +1,104 @@
+{
+    "problem_name": "prime_subtraction_operation",
+    "solution_class_name": "Solution",
+    "problem_number": "2601",
+    "problem_title": "Prime Subtraction Operation",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Binary Search, Greedy, Number Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** integer array `nums` of length `n`.\n\nYou can perform the following operation as many times as you want:\n\n- Pick an index `i` that you haven't picked before, and pick a prime `p` **strictly less than** `nums[i]`, then subtract `p` from `nums[i]`.\n\nReturn *true if you can make `nums` a strictly increasing array using the above operation and false otherwise.*\n\nA **strictly increasing array** is an array whose each element is strictly greater than its preceding element.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,9,6,10]\nOutput: true\nExplanation: In the first operation: Pick i = 0 and p = 3, and then subtract 3 from nums[0], so that nums becomes [1,9,6,10].\nIn the second operation: i = 1, p = 7, subtract 7 from nums[1], so nums becomes equal to [1,2,6,10].\nAfter the second operation, nums is sorted in strictly increasing order, so the answer is true.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [6,8,11,12]\nOutput: true\nExplanation: Initially nums is sorted in strictly increasing order, so we don't need to make any operations.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [5,8,3]\nOutput: false\nExplanation: It can be proven that there is no way to perform operations to make nums sorted in strictly increasing order, so the answer is false.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 1000`\n- `1 <= nums[i] <= 1000`\n- `nums.length == n`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "prime_sub_operation",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.prime_sub_operation(nums)",
+    "helpers_assert_name": "prime_sub_operation",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_prime_sub_operation, run_prime_sub_operation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PrimeSubtractionOperation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "prime_sub_operation",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement prime_sub_operation\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_prime_sub_operation",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 9, 6, 10], True)",
+                        "([6, 8, 11, 12], True)",
+                        "([5, 8, 3], False)",
+                        "([1], True)",
+                        "([2], True)",
+                        "([1, 2, 3, 4], True)",
+                        "([4, 3, 2, 1], False)",
+                        "([2, 2], False)",
+                        "([3, 3], True)",
+                        "([5, 5], True)",
+                        "([7, 7], True)",
+                        "([1, 1], False)",
+                        "([999, 1000], True)",
+                        "([1000, 2], False)",
+                        "([5, 11, 5], True)",
+                        "([10, 15, 6], True)",
+                        "([2, 4, 6, 8], True)",
+                        "([20, 21, 22, 23], True)",
+                        "([24, 21, 14, 6, 13, 79, 5], False)",
+                        "([10, 20, 3, 792, 503, 51], False)",
+                        "([506, 236], True)",
+                        "([389, 254, 565, 10, 22], False)",
+                        "([20, 12], True)",
+                        "([18, 24, 795, 924], True)",
+                        "([15, 57, 22, 24, 11], True)",
+                        "([7, 373, 988, 13], True)"
+                    ]
+                },
+                "body": "        result = run_prime_sub_operation(Solution, nums)\n        assert_prime_sub_operation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_prime_sub_operation, assert_prime_sub_operation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 9, 6, 10]\nexpected = True",
+    "playground_run": "result = run_prime_sub_operation(Solution, nums)\nresult",
+    "playground_assert": "assert_prime_sub_operation(result, expected)"
+}

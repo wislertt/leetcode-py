@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_building_where_alice_and_bob_can_meet",
+    "solution_class_name": "Solution",
+    "problem_number": "2940",
+    "problem_title": "Find Building Where Alice and Bob Can Meet",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Stack, Binary Indexed Tree, Segment Tree, Heap (Priority Queue), Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** array `heights` of positive integers, where `heights[i]` represents the height of the `i`th building.\n\nIf a person is in building `i`, they can move to any other building `j` if and only if `i < j` and `heights[i] < heights[j]`.\n\nYou are also given another array `queries` where `queries[i] = [a_i, b_i]`. On the `i`th query, Alice is in building `a_i` while Bob is in building `b_i`.\n\nReturn *an array* `ans` where `ans[i]` is **the index of the leftmost building** where Alice and Bob can meet on the `i`th query. If Alice and Bob cannot move to a common building on query `i`, set `ans[i]` to `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: heights = [6,4,8,5,2,7], queries = [[0,1],[0,3],[2,4],[3,4],[2,2]]\nOutput: [2,5,-1,5,2]\nExplanation: In the first query, Alice and Bob can move to building 2 since heights[0] < heights[2] and heights[1] < heights[2].\nIn the second query, Alice and Bob can move to building 5 since heights[0] < heights[5] and heights[3] < heights[5].\nIn the third query, Alice cannot meet Bob since Alice cannot move to any other building.\nIn the fourth query, Alice and Bob can move to building 5 since heights[3] < heights[5] and heights[4] < heights[5].\nIn the fifth query, Alice and Bob are already in the same building.\nFor ans[i] != -1, It can be shown that ans[i] is the leftmost building where Alice and Bob can meet.\nFor ans[i] == -1, It can be shown that there is no building where Alice and Bob can meet.\n```"
+            },
+            {
+                "content": "```\nInput: heights = [5,3,8,2,6,1,4,6], queries = [[0,7],[3,5],[5,2],[3,0],[1,6]]\nOutput: [7,6,-1,4,6]\nExplanation: In the first query, Alice can directly move to Bob's building since heights[0] < heights[7].\nIn the second query, Alice and Bob can move to building 6 since heights[3] < heights[6] and heights[5] < heights[6].\nIn the third query, Alice cannot meet Bob since Bob cannot move to any other building.\nIn the fourth query, Alice and Bob can move to building 4 since heights[3] < heights[4] and heights[0] < heights[4].\nIn the fifth query, Alice can directly move to Bob's building since heights[1] < heights[6].\nFor ans[i] != -1, It can be shown that ans[i] is the leftmost building where Alice and Bob can meet.\nFor ans[i] == -1, It can be shown that there is no building where Alice and Bob can meet.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= heights.length <= 5 * 10^4\n- 1 <= heights[i] <= 10^9\n- 1 <= queries.length <= 5 * 10^4\n- queries[i] = [a_i, b_i]\n- 0 <= a_i, b_i <= heights.length - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "leftmost_building_queries",
+    "helpers_run_signature": "(solution_class: type, heights: list[int], queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.leftmost_building_queries(heights, queries)",
+    "helpers_assert_name": "leftmost_building_queries",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_leftmost_building_queries, run_leftmost_building_queries\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindBuildingWhereAliceAndBobCanMeet",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "leftmost_building_queries",
+                "signature": "(self, heights: list[int], queries: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement leftmost_building_queries\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_leftmost_building_queries",
+                "signature": "(self, heights: list[int], queries: list[list[int]], expected: list[int])",
+                "parametrize": "heights, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "([6,4,8,5,2,7],[[0,1],[0,3],[2,4],[3,4],[2,2]],[2,5,-1,5,2])",
+                        "([5,3,8,2,6,1,4,6],[[0,7],[3,5],[5,2],[3,0],[1,6]],[7,6,-1,4,6])",
+                        "([1],[[0,0]],[0])",
+                        "([3,3],[[0,1]],[-1])",
+                        "([3,3],[[1,0],[0,1]],[-1,-1])",
+                        "([1,2],[[0,1],[1,0]],[1,1])",
+                        "([2,2,2,2],[[0,1],[0,3],[2,2]],[-1,-1,2])",
+                        "([1,2,3,4,5],[[0,1],[0,4],[2,3]],[1,4,3])",
+                        "([5,4,3,2,1],[[0,1],[0,4]],[-1,-1])",
+                        "([7,1,9,5,3,8],[[5,2]],[-1])",
+                        "([2,9],[[0,1],[1,1]],[1,1])",
+                        "([3,6,5,1],[[2,1]],[-1])",
+                        "([7,1,9,4],[[1,1],[0,1],[2,0]],[1,2,2])",
+                        "([6,6,6,1,6,6],[[0,0],[0,1],[4,5]],[0,-1,-1])",
+                        "([5,2,8],[[0,2]],[2])",
+                        "([2,6,2],[[1,1]],[1])",
+                        "([4,8,9,7],[[2,2]],[2])",
+                        "([8,2],[[1,0],[0,0]],[-1,0])"
+                    ]
+                },
+                "body": "        result = run_leftmost_building_queries(Solution, heights, queries)\n        assert_leftmost_building_queries(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_leftmost_building_queries, assert_leftmost_building_queries\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheights = [6, 4, 8, 5, 2, 7]\nqueries = [[0, 1], [0, 3], [2, 4], [3, 4], [2, 2]]\nexpected = [2, 5, -1, 5, 2]",
+    "playground_run": "result = run_leftmost_building_queries(Solution, heights, queries)\nresult",
+    "playground_assert": "assert_leftmost_building_queries(result, expected)"
+}

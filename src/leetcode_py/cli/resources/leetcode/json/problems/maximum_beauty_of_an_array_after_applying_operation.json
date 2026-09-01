@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_beauty_of_an_array_after_applying_operation",
+    "solution_class_name": "Solution",
+    "problem_number": "2779",
+    "problem_title": "Maximum Beauty of an Array After Applying Operation",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Sliding Window, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** array `nums` and a **non-negative** integer `k`.\n\nIn one operation, you can do the following:\n\n- Choose an index `i` that **hasn't been chosen before** from the range `[0, nums.length - 1]`.\n- Replace `nums[i]` with any integer from the range `[nums[i] - k, nums[i] + k]`.\n\nThe **beauty** of the array is the length of the longest subsequence consisting of equal elements.\n\nReturn *the **maximum** possible beauty of the array* `nums` *after applying the operation any number of times.*\n\n**Note** that you can apply the operation to each index **only once**.\n\nA **subsequence** of an array is a new array generated from the original array by deleting some elements (possibly none) without changing the order of the remaining elements.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,6,1,2], k = 2\nOutput: 3\n```\n**Explanation:** Choose index 1, replace it with 4 (from range [4,8]), nums = [4,4,1,2]. Choose index 3, replace it with 4 (from range [0,4]), nums = [4,4,1,4]. The beauty of the array nums is 3 (subsequence consisting of indices 0, 1, and 3). It can be proven that 3 is the maximum possible length we can achieve."
+            },
+            {
+                "content": "```\nInput: nums = [1,1,1,1], k = 10\nOutput: 4\n```\n**Explanation:** In this example we don't have to apply any operations. The beauty of the array nums is 4 (whole array)."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `0 <= nums[i], k <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_beauty",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_beauty(nums, k)",
+    "helpers_assert_name": "maximum_beauty",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_beauty, run_maximum_beauty\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumBeautyOfAnArrayAfterApplyingOperation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_beauty",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement maximum_beauty\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_beauty",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 6, 1, 2], 2, 3)",
+                        "([1, 1, 1, 1], 10, 4)",
+                        "([1], 0, 1)",
+                        "([5], 100000, 1)",
+                        "([0, 0], 0, 2)",
+                        "([1, 2], 0, 1)",
+                        "([1, 3], 1, 2)",
+                        "([1, 4], 1, 1)",
+                        "([2, 4, 6, 8], 1, 2)",
+                        "([2, 4, 6, 8], 2, 3)",
+                        "([10, 1, 10, 1], 0, 2)",
+                        "([3, 1, 2], 1, 3)",
+                        "([0, 100000], 50000, 2)",
+                        "([0, 100000], 49999, 1)",
+                        "([100000, 0], 100000, 2)",
+                        "([7, 7, 7], 0, 3)",
+                        "([6, 15, 13, 9, 1, 14, 12], 4, 5)",
+                        "([20, 8, 10], 2, 2)"
+                    ]
+                },
+                "body": "        result = run_maximum_beauty(Solution, nums, k)\n        assert_maximum_beauty(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_beauty, assert_maximum_beauty\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 6, 1, 2]\nk = 2\nexpected = 3",
+    "playground_run": "result = run_maximum_beauty(Solution, nums, k)\nresult",
+    "playground_assert": "assert_maximum_beauty(result, expected)"
+}

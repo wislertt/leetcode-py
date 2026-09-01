@@ -1,0 +1,89 @@
+{
+    "problem_name": "maximum_odd_binary_number",
+    "solution_class_name": "Solution",
+    "problem_number": "2864",
+    "problem_title": "Maximum Odd Binary Number",
+    "difficulty": "Easy",
+    "topics": "Math, String, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **binary** string `s` that contains at least one `'1'`.\n\nYou have to **rearrange** the bits in such a way that the resulting binary number is the **maximum odd binary number** that can be created from this combination.\n\nReturn *a string representing the maximum odd binary number that can be created from the given combination.*\n\n**Note** that the resulting string **can** have leading zeros.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"010\"\nOutput: \"001\"\nExplanation: Because there is just one '1', it must be in the last position. So the answer is \"001\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"0101\"\nOutput: \"1001\"\nExplanation: One of the '1's must be in the last position. The maximum number that can be made with the remaining digits is \"100\". So the answer is \"1001\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 100`\n- `s` consists only of `'0'` and `'1'`.\n- `s` contains at least one `'1'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_odd_binary_number",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_odd_binary_number(s)",
+    "helpers_assert_name": "maximum_odd_binary_number",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_odd_binary_number, run_maximum_odd_binary_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumOddBinaryNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_odd_binary_number",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement maximum_odd_binary_number\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_odd_binary_number",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('010', '001')",
+                        "('0101', '1001')",
+                        "('1', '1')",
+                        "('0011100', '1100001')",
+                        "('11100000', '11000001')",
+                        "('1000', '0001')",
+                        "('011111', '111101')",
+                        "('010101010101', '111110000001')",
+                        "('00001', '00001')",
+                        "('11111111111111111111', '11111111111111111111')",
+                        "('00000000000000000001', '00000000000000000001')",
+                        "('110000000', '100000001')",
+                        "('011000', '100001')",
+                        "('01', '01')"
+                    ]
+                },
+                "body": "        result = run_maximum_odd_binary_number(Solution, s)\n        assert_maximum_odd_binary_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_odd_binary_number, assert_maximum_odd_binary_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '0101'\nexpected = '1001'",
+    "playground_run": "result = run_maximum_odd_binary_number(Solution, s)\nresult",
+    "playground_assert": "assert_maximum_odd_binary_number(result, expected)"
+}

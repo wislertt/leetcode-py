@@ -1,0 +1,101 @@
+{
+    "problem_name": "neighboring_bitwise_xor",
+    "solution_class_name": "Solution",
+    "problem_number": "2683",
+    "problem_title": "Neighboring Bitwise XOR",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **0-indexed** array `derived` with length `n` is derived by computing the **bitwise XOR** (`⊕`) of adjacent values in a **binary array** `original` of length `n`.\n\nSpecifically, for each index `i` in the range `[0, n - 1]`:\n\n- If `i = n - 1`, then `derived[i] = original[i] ⊕ original[0]`.\n- Otherwise, `derived[i] = original[i] ⊕ original[i + 1]`.\n\nGiven an array `derived`, your task is to determine whether there exists a **valid binary array** `original` that could have formed `derived`.\n\nReturn `true` if such an array exists or `false` otherwise.\n\n- A binary array is an array containing only `0`'s and `1`'s",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: derived = [1,1,0]\nOutput: true\nExplanation: A valid original array that gives derived is [0,1,0].\nderived[0] = original[0] ⊕ original[1] = 0 ⊕ 1 = 1\nderived[1] = original[1] ⊕ original[2] = 1 ⊕ 0 = 1\nderived[2] = original[2] ⊕ original[0] = 0 ⊕ 0 = 0\n```"
+            },
+            {
+                "content": "```\nInput: derived = [1,1]\nOutput: true\nExplanation: A valid original array that gives derived is [0,1].\nderived[0] = original[0] ⊕ original[1] = 1\nderived[1] = original[1] ⊕ original[0] = 1\n```"
+            },
+            {
+                "content": "```\nInput: derived = [1,0]\nOutput: false\nExplanation: There is no valid original array that gives derived.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == derived.length\n- 1 <= n <= 10^5\n- The values in derived are either 0's or 1's",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "does_valid_array_exist",
+    "helpers_run_signature": "(solution_class: type, derived: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.does_valid_array_exist(derived)",
+    "helpers_assert_name": "does_valid_array_exist",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_does_valid_array_exist, run_does_valid_array_exist\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NeighboringBitwiseXor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "does_valid_array_exist",
+                "signature": "(self, derived: list[int]) -> bool",
+                "body": "        # TODO: Implement does_valid_array_exist\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_does_valid_array_exist, assert_does_valid_array_exist\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nderived = [1,1,0]\nexpected = True",
+    "playground_run": "result = run_does_valid_array_exist(Solution, derived)\nresult",
+    "playground_assert": "assert_does_valid_array_exist(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_does_valid_array_exist",
+                "signature": "(self, derived: list[int], expected: bool)",
+                "parametrize": "derived, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 0], True)",
+                        "([1, 1], True)",
+                        "([1, 0], False)",
+                        "([0], True)",
+                        "([1], False)",
+                        "([0, 0], True)",
+                        "([0, 1], False)",
+                        "([1, 0, 1], True)",
+                        "([0, 0, 0], True)",
+                        "([1, 1, 1, 1], True)",
+                        "([1, 1, 1], False)",
+                        "([0, 1, 0, 1], True)",
+                        "([1, 0, 0, 1], True)",
+                        "([0, 1, 1, 0, 0], True)",
+                        "([1, 0, 0, 0, 1, 0], True)",
+                        "([0, 1, 1, 0], True)",
+                        "([1, 1, 1, 1, 0, 0, 0], True)",
+                        "([1], False)",
+                        "([1, 1, 0, 1, 1, 0], True)",
+                        "([1, 0, 0, 0, 0, 1], True)"
+                    ]
+                },
+                "body": "        result = run_does_valid_array_exist(Solution, derived)\n        assert_does_valid_array_exist(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "derived = [1,1,0]",
+    "playground_execution": "result = run_does_valid_array_exist(Solution, derived)",
+    "playground_assertion": "assert_does_valid_array_exist(result, True)"
+}

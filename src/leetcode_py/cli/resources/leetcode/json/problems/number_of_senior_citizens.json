@@ -1,0 +1,91 @@
+{
+    "problem_name": "number_of_senior_citizens",
+    "solution_class_name": "Solution",
+    "problem_number": "2678",
+    "problem_title": "Number of Senior Citizens",
+    "difficulty": "Easy",
+    "topics": "Array, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given a <strong>0-indexed</strong> array of strings <code>details</code>. Each element of <code>details</code> provides information about a given passenger compressed into a string of length <code>15</code>. The system is such that:</p>\n\n<ul>\n\t<li>The first ten characters consist of the phone number of passengers.</li>\n\t<li>The next character denotes the gender of the person.</li>\n\t<li>The following two characters are used to indicate the age of the person.</li>\n\t<li>The last two characters determine the seat allotted to that person.</li>\n</ul>\n\n<p>Return <em>the number of passengers who are <strong>strictly more than 60 years old</strong></em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: details = [\"7868190130M7522\",\"5303914400F9211\",\"9273338290F4010\"]\nOutput: 2\nExplanation: The passengers at indices 0, 1, and 2 have ages 75, 92, and 40. Thus, there are 2 people who are over 60 years old.\n```"
+            },
+            {
+                "content": "```\nInput: details = [\"1313579440F2036\",\"2921522980M5644\"]\nOutput: 0\nExplanation: None of the passengers are older than 60.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= details.length <= 100`\n- `details[i].length == 15`\n- `details[i]` consists of digits from `'0'` to `'9'`.\n- `details[i][10]` is either `'M'`, `'F'`, or `'O'`.\n- The phone numbers and seat numbers of the passengers are distinct.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_seniors",
+    "helpers_run_signature": "(solution_class: type, details: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_seniors(details)",
+    "helpers_assert_name": "count_seniors",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_seniors, run_count_seniors\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSeniorCitizens",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_seniors",
+                "signature": "(self, details: list[str]) -> int",
+                "body": "        # TODO: Implement count_seniors\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_seniors",
+                "signature": "(self, details: list[str], expected: int)",
+                "parametrize": "details, expected",
+                "test_cases": {
+                    "list": [
+                        "(['7000000000M7511', '7000000137F9218', '7000000274O4025'], 2)",
+                        "(['7000000000M2011', '7000000137F5618'], 0)",
+                        "(['7000000000M6111'], 1)",
+                        "(['7000000000M6011'], 0)",
+                        "(['7000000000M5911', '7000000137F6018', '7000000274O6125', '7000000411M9932'], 2)",
+                        "(['7000000000M0011', '7000000137F0118', '7000000274O9925'], 1)",
+                        "(['7000000000M6111', '7000000137F6218', '7000000274O6325', '7000000411M6432'], 4)",
+                        "(['7000000000M1011', '7000000137F2018', '7000000274O3025', '7000000411M4032'], 0)",
+                        "(['7000000000M7011', '7000000137F7118', '7000000274O7225', '7000000411M8032'], 4)",
+                        "(['7000000000M6111', '7000000137F6018'], 1)",
+                        "(['7000000000M1311', '7000000137F6118', '7000000274O4525', '7000000411M6132'], 2)",
+                        "(['7000000000M9911', '7000000137F0018'], 1)",
+                        "(['1234567890M6599'], 1)",
+                        "(['9876543210M1600'], 0)",
+                        "(['1111111111O6101', '2222222222F3523', '3333333333M7045'], 2)",
+                        "(['4567890123M6012', '5678901234F6134', '6789012345O6056', '7890123456M6178'], 2)"
+                    ]
+                },
+                "body": "        result = run_count_seniors(Solution, details)\n        assert_count_seniors(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_seniors, assert_count_seniors\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndetails = ['7868190130M7522', '5303914400F9211', '9273338290F4010']\nexpected = 2",
+    "playground_run": "result = run_count_seniors(Solution, details)\nresult",
+    "playground_assert": "assert_count_seniors(result, expected)"
+}

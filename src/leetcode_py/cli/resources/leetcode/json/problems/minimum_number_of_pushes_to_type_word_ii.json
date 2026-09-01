@@ -1,0 +1,94 @@
+{
+    "problem_name": "minimum_number_of_pushes_to_type_word_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "3016",
+    "problem_title": "Minimum Number of Pushes to Type Word II",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Greedy, Sorting, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `word` containing lowercase English letters.\n\nTelephone keypads have keys mapped with **distinct** collections of lowercase English letters, which can be used to form words by pushing them. For example, the key `2` is mapped with `[\"a\",\"b\",\"c\"]`, we need to push the key one time to type `\"a\"`, two times to type `\"b\"`, and three times to type `\"c\"` .\n\nIt is allowed to remap the keys numbered `2` to `9` to **distinct** collections of letters. The keys can be remapped to **any** amount of letters, but each letter **must** be mapped to **exactly** one key. You need to find the **minimum** number of times the keys will be pushed to type the string `word`.\n\nReturn *the **minimum** number of pushes needed to type* `word` *after remapping the keys*.\n\nAn example mapping of letters to keys on a telephone keypad is given below. Note that `1`, `*`, `#`, and `0` do **not** map to any letters.\n\n![Keypad](https://assets.leetcode.com/uploads/2023/12/26/keypaddesc.png)",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/12/26/keypadv1e1.png)\n\n```\nInput: word = \"abcde\"\nOutput: 5\nExplanation: The remapped keypad given in the image provides the minimum cost.\n\"a\" -> one push on key 2\n\"b\" -> one push on key 3\n\"c\" -> one push on key 4\n\"d\" -> one push on key 5\n\"e\" -> one push on key 6\nTotal cost is 1 + 1 + 1 + 1 + 1 = 5.\nIt can be shown that no other mapping can provide a lower cost.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/08/20/edited.png)\n\n```\nInput: word = \"xyzxyzxyzxyz\"\nOutput: 12\nExplanation: The remapped keypad given in the image provides the minimum cost.\n\"x\" -> one push on key 2\n\"y\" -> one push on key 3\n\"z\" -> one push on key 4\nTotal cost is 1 * 4 + 1 * 4 + 1 * 4 = 12\nIt can be shown that no other mapping can provide a lower cost.\nNote that the key 9 is not mapped to any letter: it is not necessary to map letters to every key, but to map all the letters.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2023/12/27/keypadv2.png)\n\n```\nInput: word = \"aabbccddeeffgghhiiiiii\"\nOutput: 24\nExplanation: The remapped keypad given in the image provides the minimum cost.\n\"a\" -> one push on key 2\n\"b\" -> one push on key 3\n\"c\" -> one push on key 4\n\"d\" -> one push on key 5\n\"e\" -> one push on key 6\n\"f\" -> one push on key 7\n\"g\" -> one push on key 8\n\"h\" -> two pushes on key 9\n\"i\" -> one push on key 9\nTotal cost is 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 2 * 2 + 6 * 1 = 24.\nIt can be shown that no other mapping can provide a lower cost.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= word.length <= 10^5`\n- `word` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_pushes",
+    "helpers_run_signature": "(solution_class: type, word: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_pushes(word)",
+    "helpers_assert_name": "minimum_pushes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_pushes, run_minimum_pushes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfPushesToTypeWordII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_pushes",
+                "signature": "(self, word: str) -> int",
+                "body": "        # TODO: Implement minimum_pushes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_pushes",
+                "signature": "(self, word: str, expected: int)",
+                "parametrize": "word, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcde', 5)",
+                        "('xyzxyzxyzxyz', 12)",
+                        "('aabbccddeeffgghhiiiiii', 24)",
+                        "('a', 1)",
+                        "('z', 1)",
+                        "('aa', 2)",
+                        "('ab', 2)",
+                        "('abcdefgh', 8)",
+                        "('abcdefghi', 10)",
+                        "('abcdefghijklmnop', 24)",
+                        "('abcdefghijklmnopqrstuvwxyz', 56)",
+                        "('aaaaaaaaaaaaaaaaaaaa', 20)",
+                        "('abababababababababab', 20)",
+                        "('aaaaaaaaaaaaaaaaaaaaaaaa', 24)",
+                        "('zzzyyyxxx', 9)",
+                        "('qwertyuiopasdfghjklzxcvbnm', 56)"
+                    ]
+                },
+                "body": "        result = run_minimum_pushes(Solution, word)\n        assert_minimum_pushes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_pushes, assert_minimum_pushes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword = 'abcde'\nexpected = 5",
+    "playground_run": "result = run_minimum_pushes(Solution, word)\nresult",
+    "playground_assert": "assert_minimum_pushes(result, expected)"
+}

@@ -192,12 +192,13 @@ UNSCRAPABLE_HANDLED = [
     (1265, "print-immutable-linked-list-in-reverse"),
     (1868, "product-of-two-run-length-encoded-arrays"),
     (1891, "cutting-ribbons"),
+    (2393, "count-strictly-increasing-subarrays"),
 ]
 
 # Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
 # problem is created; append new discoveries at the bottom.
 UNSCRAPABLE_QUEUE = [
-    (2393, "count-strictly-increasing-subarrays"),
+    (2534, "time-taken-to-cross-the-door"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
