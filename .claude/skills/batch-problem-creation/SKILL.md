@@ -152,12 +152,14 @@ done
 ```
 
 - Before inserting, verify each name file exists (`ls /tmp/batch_name_*.txt | wc -l` equals problem count) — a missing file means that agent never reported; handle per Error Handling before proceeding
-- **GOTCHA — validate name-file CONTENT before insert, not just existence.** An agent wrote its problem NUMBER (`1180`) instead of the dir name into its name file; `insert_tag.py` happily bisected the numeric string to a bogus position in tags.json5 and the downstream sed fix preserved that position, costing 2 extra cycles (name fix + position fix + pre-commit rerun). Guard: each name must match `^[a-z][a-z0-9_]*$` — on mismatch, look up the real dir in `leetcode/` (or re-ask the agent) before running insert_tag.py:
+- **GOTCHA — validate name-file CONTENT before insert, not just existence.** An agent wrote its problem NUMBER (`1180`) instead of the dir name into its name file; `insert_tag.py` happily bisected the numeric string to a bogus position in tags.json5 and the downstream sed fix preserved that position, costing 2 extra cycles (name fix + position fix + pre-commit rerun). Guard: each name must match `^[a-z][a-z0-9_]*$` — on mismatch, look up the real dir in `leetcode/` (or re-ask the agent) before running insert_tag.py. A second variant (453): the agent wrote a plausible but ABBREVIATED dir name (`min_moves_...`) while the real dir was `minimum_moves_...` — regex-clean but nonexistent. So also verify the dir and JSON actually exist (the re-test sweep would otherwise false-FAIL on the wrong name):
 
 ```bash
 grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
   NAME=$(cat "/tmp/batch_name_${N}.txt")
   echo "$NAME" | grep -qE '^[a-z][a-z0-9_]*$' || { echo "BAD NAME FILE for $N: '$NAME'"; exit 1; }
+  [ -d "leetcode/$NAME" ] || echo "MISSING DIR for $N: $NAME"
+  [ -f "src/leetcode_py/cli/resources/leetcode/json/problems/${NAME}.json" ] || echo "MISSING JSON for $N: $NAME"
 done
 ```
 
@@ -226,6 +228,8 @@ After the re-test loop completes, remove the name files (they are still needed u
 grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N _; do rm -f "/tmp/batch_name_${N}.txt"; done
 ```
 
+Finally, invoke the `commit-message` skill and show the user the ready-to-paste `git commit` command for the batch (do NOT execute it — the user stages and commits themselves).
+
 ### 3.1: Skill Improvement Suggestions (evidence-driven)
 
 After the summary, review the run and **suggest** candidate updates to any skill used this session (batch-problem-creation, problem-creation, test-quality-assurance, update-tags, consistency-fix). Scope is the best overall skill, not just additions: new failure modes AND cuts — sections that wasted effort, duplicated another skill, or went stale. When in doubt, prefer deleting or merging over appending.
@@ -245,7 +249,7 @@ After the summary, review the run and **suggest** candidate updates to any skill
 
 - **Continue the batch** when a problem fails — log the reason, move to the next, note it in the summary
 - **NEVER edit generated files** (helpers.py, test_solution.py, README.md, ...) — fix the JSON template and regenerate. The ONLY exception is `solution.py`
-- **Scrape failures**: premium → unscrapable queue; SQL → `NON_PYTHON_PROBLEMS`; transient API → retry once
+- **Scrape failures**: premium → unscrapable queue; SQL → `NON_PYTHON_PROBLEMS`; transient API → retry once. For `new`-source failures the name is unknown until classified — fetch each failed number's title and file accordingly: `curl -s https://leetcode.ca/all/{N}.html | grep -o '<title>[^<]*'`; SQL/shell titles (Combine Two Tables, Word Frequency, ...) go to `NON_PYTHON_PROBLEMS`, premium Python titles to `UNSCRAPABLE_QUEUE` (batch 16: 21 numbers classified in one pass this way)
 
 ## Success Criteria
 
