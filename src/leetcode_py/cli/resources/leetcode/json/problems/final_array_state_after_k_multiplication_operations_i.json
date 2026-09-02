@@ -1,0 +1,93 @@
+{
+    "problem_name": "final_array_state_after_k_multiplication_operations_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3264",
+    "problem_title": "Final Array State After K Multiplication Operations I",
+    "difficulty": "Easy",
+    "topics": "Array, Math, Heap (Priority Queue), Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `nums`, an integer `k`, and an integer `multiplier`.\n\nYou need to perform `k` operations on `nums`. In each operation:\n\n- Find the **minimum** value `x` in `nums`. If there are multiple occurrences of the minimum value, select the one that appears **first**.\n- Replace the selected minimum value `x` with `x * multiplier`.\n\nReturn an integer array denoting the final state of `nums` after performing all `k` operations.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,1,3,5,6], k = 5, multiplier = 2\nOutput: [8,4,6,5,6]\n```\n**Explanation:**\n\n| Operation | Result |\n| --- | --- |\n| After operation 1 | [2, 2, 3, 5, 6] |\n| After operation 2 | [4, 2, 3, 5, 6] |\n| After operation 3 | [4, 4, 3, 5, 6] |\n| After operation 4 | [4, 4, 6, 5, 6] |\n| After operation 5 | [8, 4, 6, 5, 6] |"
+            },
+            {
+                "content": "```\nInput: nums = [1,2], k = 3, multiplier = 4\nOutput: [16,8]\n```\n**Explanation:**\n\n| Operation | Result |\n| --- | --- |\n| After operation 1 | [4, 2] |\n| After operation 2 | [4, 8] |\n| After operation 3 | [16, 8] |"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 100\n- 1 <= nums[i] <= 100\n- 1 <= k <= 10\n- 1 <= multiplier <= 5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_final_state",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int, multiplier: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_final_state(nums, k, multiplier)",
+    "helpers_assert_name": "get_final_state",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_final_state, run_get_final_state\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FinalArrayStateAfterKMultiplicationOperationsI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_final_state",
+                "signature": "(self, nums: list[int], k: int, multiplier: int) -> list[int]",
+                "body": "        # TODO: Implement get_final_state\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_final_state",
+                "signature": "(self, nums: list[int], k: int, multiplier: int, expected: list[int])",
+                "parametrize": "nums, k, multiplier, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 3, 5, 6], 5, 2, [8, 4, 6, 5, 6])",
+                        "([1, 2], 3, 4, [16, 8])",
+                        "([5], 10, 3, [295245])",
+                        "([1], 1, 1, [1])",
+                        "([7, 7, 7, 7], 4, 2, [14, 14, 14, 14])",
+                        "([3, 3, 3], 2, 5, [15, 15, 3])",
+                        "([10, 2, 2, 8], 3, 2, [10, 8, 4, 8])",
+                        "([100, 99, 98], 10, 5, [12500, 12375, 61250])",
+                        "([1, 100], 10, 5, [15625, 62500])",
+                        "([4, 1, 5, 1, 2], 10, 3, [12, 27, 15, 27, 18])",
+                        "([6, 5, 4, 3, 2, 1], 6, 4, [6, 20, 16, 12, 8, 16])",
+                        "([2, 2, 1, 1, 3], 7, 2, [4, 4, 4, 4, 6])",
+                        "([9, 8, 7], 1, 5, [9, 8, 35])",
+                        "([12, 50, 3], 7, 5, [300, 1250, 375])",
+                        "([44, 28, 41, 26, 43, 38, 22, 12], 1, 1, [44, 28, 41, 26, 43, 38, 22, 12])",
+                        "([16, 35, 4, 47], 5, 5, [80, 175, 100, 235])",
+                        "([37], 9, 1, [37])",
+                        "([47, 34, 20, 3, 15, 26], 10, 2, [47, 68, 80, 48, 60, 52])"
+                    ]
+                },
+                "body": "        result = run_get_final_state(Solution, nums, k, multiplier)\n        assert_get_final_state(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_final_state, assert_get_final_state\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 1, 3, 5, 6]\nk = 5\nmultiplier = 2\nexpected = [8, 4, 6, 5, 6]",
+    "playground_run": "result = run_get_final_state(Solution, nums, k, multiplier)\nresult",
+    "playground_assert": "assert_get_final_state(result, expected)"
+}

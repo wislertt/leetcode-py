@@ -1,0 +1,94 @@
+{
+    "problem_name": "flatten_binary_tree_to_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "114",
+    "problem_title": "Flatten Binary Tree to Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Stack, Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, flatten the tree into a \"linked list\":\n\n- The \"linked list\" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always `null`.\n- The \"linked list\" should be in the same order as a **pre-order traversal** of the binary tree.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/14/flaten.jpg)\n\n```\nInput: root = [1,2,5,3,4,null,6]\nOutput: [1,null,2,null,3,null,4,null,5,null,6]\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: root = [0]\nOutput: [0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 2000]`.\n- `-100 <= Node.val <= 100`",
+    "readme_additional": "**Follow up:** Can you flatten the tree in-place (with `O(1)` extra space)?",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "flatten",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    implementation = solution_class()\n    root = TreeNode.from_list(root_list)\n    implementation.flatten(root)\n    if root is None:\n        return []\n    return root.to_list()",
+    "helpers_assert_name": "flatten",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flatten, run_flatten\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FlattenBinaryTreeToLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "flatten",
+                "signature": "(self, root: TreeNode[int] | None) -> None",
+                "body": "        # TODO: Implement flatten\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flatten",
+                "signature": "(self, root_list: list[int | None], expected: list[int | None])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 5, 3, 4, None, 6], [1, None, 2, None, 3, None, 4, None, 5, None, 6])",
+                        "([], [])",
+                        "([0], [0])",
+                        "([1, 2, 3], [1, None, 2, None, 3])",
+                        "([1, None, 2], [1, None, 2])",
+                        "([1, 2, None, 3, None, 4], [1, None, 2, None, 3, None, 4])",
+                        "([1, None, 2, None, 3], [1, None, 2, None, 3])",
+                        "([3, 1, 2], [3, None, 1, None, 2])",
+                        "([-10, 9, 20, None, None, 15, 7], [-10, None, 9, None, 20, None, 15, None, 7])",
+                        "([1, 2, 5, 3, None, None, None, 4], [1, None, 2, None, 3, None, 4, None, 5])",
+                        "([44, -75], [44, None, -75])",
+                        "([60, 59], [60, None, 59])",
+                        "([35, 72, None, None, 32], [35, None, 72, None, 32])",
+                        "([53], [53])",
+                        "([35, -23, -6, None, None, None, 34], [35, None, -23, None, -6, None, 34])",
+                        "([47, 69], [47, None, 69])"
+                    ]
+                },
+                "body": "        result = run_flatten(Solution, root_list)\n        assert_flatten(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flatten, assert_flatten\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 5, 3, 4, None, 6]\nexpected = [1, None, 2, None, 3, None, 4, None, 5, None, 6]",
+    "playground_run": "result = run_flatten(Solution, root_list)\nresult",
+    "playground_assert": "assert_flatten(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "minimum_time_to_repair_cars",
+    "solution_class_name": "Solution",
+    "problem_number": "2594",
+    "problem_title": "Minimum Time to Repair Cars",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array <code>ranks</code> representing the <strong>ranks</strong> of some mechanics. <code>ranks[i]</code> is the rank of the <code>i<sup>th</sup></code> mechanic. A mechanic with a rank <code>r</code> can repair <code>n</code> cars in <code>r * n<sup>2</sup></code> minutes.\n\nYou are also given an integer <code>cars</code> representing the total number of cars waiting in the garage to be repaired.\n\nReturn <em>the <strong>minimum</strong> time taken to repair all the cars.</em>\n\n<strong>Note:</strong> All the mechanics can repair the cars simultaneously.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: ranks = [4,2,3,1], cars = 10\nOutput: 16\nExplanation: \n- The first mechanic will repair two cars. The time required is 4 * 2 * 2 = 16 minutes.\n- The second mechanic will repair two cars. The time required is 2 * 2 * 2 = 8 minutes.\n- The third mechanic will repair two cars. The time required is 3 * 2 * 2 = 12 minutes.\n- The fourth mechanic will repair four cars. The time required is 1 * 4 * 4 = 16 minutes.\nIt can be proved that the cars cannot be repaired in less than 16 minutes.\n```"
+            },
+            {
+                "content": "```\nInput: ranks = [5,1,8], cars = 6\nOutput: 16\nExplanation: \n- The first mechanic will repair one car. The time required is 5 * 1 * 1 = 5 minutes.\n- The second mechanic will repair four cars. The time required is 1 * 4 * 4 = 16 minutes.\n- The third mechanic will repair one car. The time required is 8 * 1 * 1 = 8 minutes.\nIt can be proved that the cars cannot be repaired in less than 16 minutes.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= ranks.length <= 10<sup>5</sup>\n- 1 <= ranks[i] <= 100\n- 1 <= cars <= 10<sup>6</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "repair_cars",
+    "helpers_run_signature": "(solution_class: type, ranks: list[int], cars: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.repair_cars(ranks, cars)",
+    "helpers_assert_name": "repair_cars",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_repair_cars, run_repair_cars\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumTimeToRepairCars",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "repair_cars",
+                "signature": "(self, ranks: list[int], cars: int) -> int",
+                "body": "        # TODO: Implement repair_cars\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_repair_cars",
+                "signature": "(self, ranks: list[int], cars: int, expected: int)",
+                "parametrize": "ranks, cars, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 2, 3, 1], 10, 16)",
+                        "([5, 1, 8], 6, 16)",
+                        "([1], 1, 1)",
+                        "([1], 2, 4)",
+                        "([1], 3, 9)",
+                        "([100], 1000000, 100000000000000)",
+                        "([1], 1000000, 1000000000000)",
+                        "([10, 10, 10], 1, 10)",
+                        "([1, 2, 3], 7, 12)",
+                        "([2, 2], 5, 18)",
+                        "([7, 1, 3, 5], 12, 28)",
+                        "([1, 1, 1, 1], 100, 625)",
+                        "([100, 1], 100, 8281)",
+                        "([2, 2, 2, 2, 2], 25, 50)",
+                        "([3], 10, 300)",
+                        "([50, 25, 75], 40, 8100)",
+                        "([4, 4, 4, 4], 3, 4)",
+                        "([6, 2, 8, 4, 1], 11, 18)"
+                    ]
+                },
+                "body": "        result = run_repair_cars(Solution, ranks, cars)\n        assert_repair_cars(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_repair_cars, assert_repair_cars\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nranks = [4, 2, 3, 1]\ncars = 10\nexpected = 16",
+    "playground_run": "result = run_repair_cars(Solution, ranks, cars)\nresult",
+    "playground_assert": "assert_repair_cars(result, expected)"
+}

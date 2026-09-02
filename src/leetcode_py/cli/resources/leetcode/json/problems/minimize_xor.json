@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimize_xor",
+    "solution_class_name": "Solution",
+    "problem_number": "2429",
+    "problem_title": "Minimize XOR",
+    "difficulty": "Medium",
+    "topics": "Greedy, Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two positive integers `num1` and `num2`, find the positive integer `x` such that:\n\n- `x` has the same number of set bits as `num2`, and\n- The value `x XOR num1` is **minimal**.\n\nNote that XOR is the bitwise XOR operation.\n\nReturn the integer `x`. The test cases are generated such that `x` is uniquely determined.\n\nThe number of set bits of an integer is the number of `1`'s in its binary representation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num1 = 3, num2 = 5\nOutput: 3\nExplanation:\nThe binary representations of num1 and num2 are 0011 and 0101, respectively.\nThe integer 3 has the same number of set bits as num2, and the value 3 XOR 3 = 0 is minimal.\n```"
+            },
+            {
+                "content": "```\nInput: num1 = 1, num2 = 12\nOutput: 3\nExplanation:\nThe binary representations of num1 and num2 are 0001 and 1100, respectively.\nThe integer 3 has the same number of set bits as num2, and the value 3 XOR 1 = 2 is minimal.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= num1, num2 <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimize_xor",
+    "helpers_run_signature": "(solution_class: type, num1: int, num2: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimize_xor(num1, num2)",
+    "helpers_assert_name": "minimize_xor",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimize_xor, run_minimize_xor\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimizeXor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimize_xor",
+                "signature": "(self, num1: int, num2: int) -> int",
+                "body": "        # TODO: Implement minimize_xor\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimize_xor",
+                "signature": "(self, num1: int, num2: int, expected: int)",
+                "parametrize": "num1, num2, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2, 1)",
+                        "(1, 1, 1)",
+                        "(2, 1, 2)",
+                        "(3, 1, 2)",
+                        "(4, 1, 4)",
+                        "(1000000000, 536870912, 536870912)",
+                        "(1000000000, 1, 536870912)",
+                        "(1, 12, 3)",
+                        "(3, 5, 3)",
+                        "(5, 3, 5)",
+                        "(65, 65, 65)",
+                        "(93, 40, 80)",
+                        "(7, 7, 7)",
+                        "(11, 23, 15)",
+                        "(1, 1000000000, 8191)",
+                        "(1000000000, 1000000000, 1000000000)",
+                        "(377557700, 830082661, 377557759)",
+                        "(123456789, 987654321, 123456791)",
+                        "(79707355, 871857972, 79953919)",
+                        "(536870911, 536870911, 536870911)"
+                    ]
+                },
+                "body": "        result = run_minimize_xor(Solution, num1, num2)\n        assert_minimize_xor(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimize_xor, assert_minimize_xor\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum1 = 3\nnum2 = 5\nexpected = 3",
+    "playground_run": "result = run_minimize_xor(Solution, num1, num2)\nresult",
+    "playground_assert": "assert_minimize_xor(result, expected)",
+    "playground_test_case": "num1 = 3\nnum2 = 5",
+    "playground_execution": "result = run_minimize_xor(Solution, num1, num2)",
+    "playground_assertion": "assert_minimize_xor(result, 3)"
+}

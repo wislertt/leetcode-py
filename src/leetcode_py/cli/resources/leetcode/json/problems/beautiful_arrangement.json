@@ -1,0 +1,90 @@
+{
+    "problem_name": "beautiful_arrangement",
+    "solution_class_name": "Solution",
+    "problem_number": "526",
+    "problem_title": "Beautiful Arrangement",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Suppose you have `n` integers labeled `1` through `n`. A permutation of those `n` integers `perm` (**1-indexed**) is considered a **beautiful arrangement** if for every `i` (`1 <= i <= n`), **either** of the following is true:\n\n- `perm[i]` is divisible by `i`.\n- `i` is divisible by `perm[i]`.\n\nGiven an integer `n`, return *the **number** of the **beautiful arrangements** that you can construct*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: 2\nExplanation: \nThe first beautiful arrangement is [1,2]:\n    - perm[1] = 1 is divisible by i = 1\n    - perm[2] = 2 is divisible by i = 2\nThe second beautiful arrangement is [2,1]:\n    - perm[1] = 2 is divisible by i = 1\n    - i = 2 is divisible by perm[2] = 1\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 15`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_arrangement",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_arrangement(n)",
+    "helpers_assert_name": "count_arrangement",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_arrangement, run_count_arrangement\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BeautifulArrangement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_arrangement",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement count_arrangement\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_arrangement",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 8)",
+                        "(5, 10)",
+                        "(6, 36)",
+                        "(7, 41)",
+                        "(8, 132)",
+                        "(9, 250)",
+                        "(10, 700)",
+                        "(11, 750)",
+                        "(12, 4010)",
+                        "(13, 4237)",
+                        "(14, 10680)",
+                        "(15, 24679)"
+                    ]
+                },
+                "body": "        result = run_count_arrangement(Solution, n)\n        assert_count_arrangement(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_arrangement, assert_count_arrangement\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nexpected = 2",
+    "playground_run": "result = run_count_arrangement(Solution, n)\nresult",
+    "playground_assert": "assert_count_arrangement(result, expected)"
+}

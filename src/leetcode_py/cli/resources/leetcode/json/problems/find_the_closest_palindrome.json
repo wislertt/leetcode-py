@@ -1,0 +1,102 @@
+{
+    "problem_name": "find_the_closest_palindrome",
+    "solution_class_name": "Solution",
+    "problem_number": "564",
+    "problem_title": "Find the Closest Palindrome",
+    "difficulty": "Hard",
+    "topics": "Math, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `n` representing an integer, return *the closest integer (not including itself), which is a palindrome*. If there is a tie, return *the smaller one*.\n\nThe closest is defined as the absolute difference minimized between two integers.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = \"123\"\nOutput: \"121\"\n```"
+            },
+            {
+                "content": "```\nInput: n = \"1\"\nOutput: \"0\"\n```\n**Explanation:** 0 and 2 are the closest palindromes but we return the smallest which is 0."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n.length <= 18`\n- `n` consists of only digits.\n- `n` does not have leading zeros.\n- `n` is representing an integer in the range `[1, 10^18 - 1]`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "nearest_palindromic",
+    "helpers_run_signature": "(solution_class: type, n: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.nearest_palindromic(n)",
+    "helpers_assert_name": "nearest_palindromic",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_nearest_palindromic, run_nearest_palindromic\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheClosestPalindrome",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "nearest_palindromic",
+                "signature": "(self, n: str) -> str",
+                "body": "        # TODO: Implement nearest_palindromic\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_nearest_palindromic",
+                "signature": "(self, n: str, expected: str)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "('123', '121')",
+                        "('1', '0')",
+                        "('9', '8')",
+                        "('10', '9')",
+                        "('11', '9')",
+                        "('12', '11')",
+                        "('19', '22')",
+                        "('88', '77')",
+                        "('99', '101')",
+                        "('100', '99')",
+                        "('101', '99')",
+                        "('119', '121')",
+                        "('121', '111')",
+                        "('122', '121')",
+                        "('1234', '1221')",
+                        "('1000', '999')",
+                        "('9999', '10001')",
+                        "('12345', '12321')",
+                        "('99800', '99799')",
+                        "('1000001', '999999')",
+                        "('1234567', '1234321')",
+                        "('12932', '12921')",
+                        "('1805170081', '1805115081')",
+                        "('884753610', '884757488')",
+                        "('100000000000000000', '99999999999999999')",
+                        "('999999999999999999', '1000000000000000001')",
+                        "('123456789012345678', '123456788887654321')"
+                    ]
+                },
+                "body": "        result = run_nearest_palindromic(Solution, n)\n        assert_nearest_palindromic(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_nearest_palindromic, assert_nearest_palindromic\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = '123'\nexpected = '121'",
+    "playground_run": "result = run_nearest_palindromic(Solution, n)\nresult",
+    "playground_assert": "assert_nearest_palindromic(result, expected)"
+}

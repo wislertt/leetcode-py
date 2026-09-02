@@ -1,0 +1,152 @@
+{
+    "problem_name": "max_stack",
+    "solution_class_name": "MaxStack",
+    "problem_number": "716",
+    "problem_title": "Max Stack",
+    "difficulty": "Hard",
+    "topics": "Linked List, Stack, Design, Doubly-Linked List, Ordered Set",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a max stack data structure that supports the stack operations and supports finding the stack's maximum element.\n\nImplement the `MaxStack` class:\n\n- `MaxStack()` Initializes the stack object.\n- `void push(int x)` Pushes element x onto the stack.\n- `int pop()` Removes the element on top of the stack and returns it.\n- `int top()` Gets the element on the top of the stack without removing it.\n- `int peekMax()` Retrieves the maximum element in the stack without removing it.\n- `int popMax()` Retrieves the maximum element in the stack and removes it. If there is more than one maximum element, only remove the top-most one.\n\nYou must come up with a solution that supports `O(1)` for each `top` call and `O(logn)` for each other call.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n['MaxStack', 'push', 'push', 'push', 'top', 'pop_max', 'top', 'peek_max', 'pop', 'top']\n[[], [5], [1], [5], [], [], [], [], [], []]\nOutput\n[null, null, null, null, 5, 5, 1, 5, 1, 5]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -10^7 <= x <= 10^7\n- At most 10^5 calls will be made to push, pop, top, peek_max, and pop_max.\n- There will be at least one element in the stack when pop, top, peek_max, or pop_max is called.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_stack",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    stack = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MaxStack':\n            stack = solution_class()\n            results.append(None)\n        elif op == 'push' and stack is not None:\n            stack.push(inputs[i][0])\n            results.append(None)\n        elif stack is not None:\n            results.append(getattr(stack, op)())\n    return results, stack",
+    "helpers_assert_name": "max_stack",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_stack, run_max_stack\nfrom .solution import MaxStack",
+    "test_content": "",
+    "test_class_name": "MaxStack",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "push",
+                "signature": "(self, x: int) -> None",
+                "body": "        # TODO: Implement push\n        pass"
+            },
+            {
+                "name": "pop",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement pop\n        return 0"
+            },
+            {
+                "name": "top",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement top\n        return 0"
+            },
+            {
+                "name": "peek_max",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement peek_max\n        return 0"
+            },
+            {
+                "name": "pop_max",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement pop_max\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_stack",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MaxStack','push','push','push','top','pop_max','top','peek_max','pop','top'], [[],[5],[1],[5],[],[],[],[],[],[]], [None,None,None,None,5,5,1,5,1,5])",
+                        "(['MaxStack','push','push','push','pop','pop','push','push','push','pop_max','push','push','top','peek_max','push','peek_max','push','push','pop','pop','pop_max','push','peek_max','pop','push','pop'], [[],[-72],[-30],[-65],[],[],[-45],[54],[-50],[],[50],[-99],[],[],[-45],[],[-3],[-12],[],[],[],[-25],[],[],[-42],[]], [None,None,None,None,-65,-30,None,None,None,54,None,None,-99,50,None,50,None,None,-12,-3,50,None,-25,-25,None,-42])",
+                        "(['MaxStack','push','pop_max','push','top','top','pop','push','top','push','push','top','pop'], [[],[-75],[],[62],[],[],[],[55],[],[-3],[63],[],[]], [None,None,-75,None,62,62,62,None,55,None,None,63,63])",
+                        "(['MaxStack','push','pop_max','push','push','peek_max','push','pop_max','push','push','pop_max','pop_max','top'], [[],[-92],[],[-32],[45],[],[27],[],[-65],[43],[],[],[]], [None,None,-92,None,None,45,None,45,None,None,43,27,-65])",
+                        "(['MaxStack','push','push','top','pop_max','pop_max','push','pop_max','push','push','pop','pop','push','peek_max','peek_max','push','push','peek_max','top','pop','peek_max','top'], [[],[26],[-88],[],[],[],[-3],[],[35],[41],[],[],[74],[],[],[11],[-100],[],[],[],[],[]], [None,None,None,-88,26,-88,None,-3,None,None,41,35,None,74,74,None,None,74,-100,-100,74,11])",
+                        "(['MaxStack','push','pop','push','push','push','peek_max','push','pop','push'], [[],[-5],[],[53],[-96],[-8],[],[-39],[],[24]], [None,None,-5,None,None,None,53,None,-39,None])",
+                        "(['MaxStack','push','top','push','top','push','top','top'], [[],[94],[],[21],[],[55],[],[]], [None,None,94,None,21,None,55,55])",
+                        "(['MaxStack','push','peek_max','pop_max','push','push','push','top','push','top','push','pop','peek_max','top','pop_max','push','top','push','pop_max','pop','pop','push','push','push','top','peek_max','pop','pop'], [[],[-21],[],[],[-70],[-84],[50],[],[81],[],[-92],[],[],[],[],[21],[],[68],[],[],[],[86],[-73],[-52],[],[],[],[]], [None,None,-21,-21,None,None,None,50,None,81,None,-92,81,81,81,None,21,None,68,21,50,None,None,None,-52,86,-52,-73])",
+                        "(['MaxStack','push','pop','push','top','push','pop_max'], [[],[66],[],[-77],[],[24],[]], [None,None,66,None,-77,None,24])",
+                        "(['MaxStack','push','pop_max','push','pop_max','push','pop_max'], [[],[-58],[],[-33],[],[-27],[]], [None,None,-58,None,-33,None,-27])",
+                        "(['MaxStack','push','push','pop','pop','push','top','push','push','push'], [[],[-52],[-86],[],[],[-88],[],[30],[-53],[-83]], [None,None,None,-86,-52,None,-88,None,None,None])",
+                        "(['MaxStack','push','top','pop','push','push','peek_max','top','peek_max','push','push','push','pop','push','pop','push','top','pop','peek_max','push','peek_max','pop','peek_max','pop','top','push','top'], [[],[-40],[],[],[58],[68],[],[],[],[1],[65],[-20],[],[59],[],[-46],[],[],[],[12],[],[],[],[],[],[-73],[]], [None,None,-40,-40,None,None,68,68,68,None,None,None,-20,None,59,None,-46,-46,68,None,68,12,68,65,1,None,-73])",
+                        "(['MaxStack','push','peek_max','push','pop_max','push','push','pop','push','push','push','pop_max','pop','push'], [[],[-28],[],[62],[],[-87],[8],[],[97],[-33],[13],[],[],[76]], [None,None,-28,None,62,None,None,8,None,None,None,97,13,None])",
+                        "(['MaxStack','push','push','top','pop','push','top','pop','pop_max','push'], [[],[39],[-6],[],[],[-90],[],[],[],[58]], [None,None,None,-6,-6,None,-90,-90,39,None])",
+                        "(['MaxStack','push','top','top','pop','push','peek_max','pop_max','push','top','push','push','top','push','push','push','push','push','peek_max','pop_max','peek_max','pop','peek_max','push','push','peek_max','pop','top','push'], [[],[-61],[],[],[],[-55],[],[],[71],[],[79],[-91],[],[17],[-42],[68],[-16],[-83],[],[],[],[],[],[-33],[52],[],[],[],[81]], [None,None,-61,-61,-61,None,-55,-55,None,71,None,None,-91,None,None,None,None,None,79,79,71,-83,71,None,None,71,52,-33,None])",
+                        "(['MaxStack','push','top','pop','push','peek_max','pop','push','peek_max','peek_max','peek_max','top','pop_max','push','top','peek_max','pop','push','push'], [[],[-100],[],[],[70],[],[],[84],[],[],[],[],[],[73],[],[],[],[-23],[10]], [None,None,-100,-100,None,70,70,None,84,84,84,84,84,None,73,73,73,None,None])",
+                        "(['MaxStack','push','peek_max','pop_max','push','push','top','peek_max','peek_max','push','push','push','push','push','pop','top','pop_max','top','push','push','pop','top','push','pop','pop','pop_max','peek_max','pop_max','pop_max','pop_max','pop_max'], [[],[48],[],[],[72],[21],[],[],[],[92],[-21],[-50],[-89],[21],[],[],[],[],[76],[92],[],[],[78],[],[],[],[],[],[],[],[]], [None,None,48,48,None,None,21,72,72,None,None,None,None,None,21,-89,92,-89,None,None,92,76,None,78,76,72,21,21,-21,-50,-89])",
+                        "(['MaxStack','push','peek_max','pop_max','push','push','push','push','push','push','push','push','push','push','top','pop_max','pop','pop_max','peek_max','push'], [[],[-34],[],[],[60],[12],[-27],[-15],[38],[-62],[77],[-46],[4],[19],[],[],[],[],[],[-1]], [None,None,-34,-34,None,None,None,None,None,None,None,None,None,None,19,77,19,60,38,None])",
+                        "(['MaxStack','push','top','peek_max','pop','push','push','top','top','pop','pop','push','top','top','push','push','push','peek_max','pop_max'], [[],[37],[],[],[],[-1],[73],[],[],[],[],[-79],[],[],[-3],[16],[94],[],[]], [None,None,37,37,37,None,None,73,73,73,-1,None,-79,-79,None,None,None,94,94])",
+                        "(['MaxStack','push','pop','push','push','pop','top','push','top','push','push','peek_max','top','pop'], [[],[-80],[],[-11],[-83],[],[],[-95],[],[71],[-45],[],[],[]], [None,None,-80,None,None,-83,-11,None,-95,None,None,71,-45,-45])",
+                        "(['MaxStack','push','pop','push','push','pop_max','top','push','top','push','push','pop','pop','push','pop','peek_max','push','pop','peek_max','pop_max','pop_max','push','peek_max','pop_max','push','peek_max','push','pop','push','push'], [[],[-59],[],[48],[-21],[],[],[76],[],[97],[75],[],[],[9],[],[],[7],[],[],[],[],[-55],[],[],[19],[],[-38],[],[15],[18]], [None,None,-59,None,None,48,-21,None,76,None,None,75,97,None,9,76,None,7,76,76,-21,None,-55,-55,None,19,None,-38,None,None])",
+                        "(['MaxStack','push','peek_max','push','push','peek_max','push','peek_max','top','push','top','pop_max','pop','push','top','push','peek_max','peek_max','pop_max','push','push','push','top','push'], [[],[56],[],[-17],[-46],[],[52],[],[],[84],[],[],[],[-44],[],[48],[],[],[],[-36],[84],[-70],[],[89]], [None,None,56,None,None,56,None,56,52,None,84,84,52,None,-44,None,56,56,56,None,None,None,-70,None])",
+                        "(['MaxStack','push','peek_max','top','push','push','top','push','top','pop_max','push','pop_max','peek_max','push','push','push','pop','pop','push','pop','pop'], [[],[-30],[],[],[-8],[-97],[],[-87],[],[],[-97],[],[],[-87],[22],[-84],[],[],[44],[],[]], [None,None,-30,-30,None,None,-97,None,-87,-8,None,-30,-87,None,None,None,-84,22,None,44,-87])",
+                        "(['MaxStack','push','top','pop_max','push','peek_max','pop_max','push','pop','push','pop','push','push','push','push','top','push','pop_max','push','push','pop_max','push','top'], [[],[95],[],[],[15],[],[],[-22],[],[56],[],[95],[-46],[-80],[-56],[],[15],[],[-41],[-28],[],[-41],[]], [None,None,95,95,None,15,15,None,-22,None,56,None,None,None,None,-56,None,95,None,None,15,None,-41])",
+                        "(['MaxStack','push','top','top','push','peek_max','pop_max','pop_max','push','pop_max','push','push','peek_max','pop','push','pop','peek_max','top','pop_max'], [[],[-71],[],[],[-58],[],[],[],[-31],[],[12],[-90],[],[],[72],[],[],[],[]], [None,None,-71,-71,None,-58,-58,-71,None,-31,None,None,12,-90,None,72,12,12,12])",
+                        "(['MaxStack','push','pop_max','push','pop','push','push','push','peek_max','pop_max','push','pop','peek_max','push'], [[],[-54],[],[62],[],[20],[-15],[-74],[],[],[2],[],[],[-71]], [None,None,-54,None,62,None,None,None,20,20,None,2,-15,None])",
+                        "(['MaxStack','push','pop','push','pop_max','push','push','pop_max','pop','push','push','pop_max','pop_max','push','push','top','peek_max','pop_max','push','pop','top','peek_max','peek_max','pop_max','push','push','push','top','peek_max','pop_max'], [[],[3],[],[68],[],[5],[32],[],[],[-48],[-67],[],[],[-69],[61],[],[],[],[-71],[],[],[],[],[],[20],[41],[-52],[],[],[]], [None,None,3,None,68,None,None,32,5,None,None,-48,-67,None,None,61,61,61,None,-71,-69,-69,-69,-69,None,None,None,-52,41,41])",
+                        "(['MaxStack','push','push','push','pop_max','pop_max','peek_max','push','pop_max','top','top','top','pop_max','push','push','pop_max'], [[],[29],[-100],[-24],[],[],[],[95],[],[],[],[],[],[-89],[21],[]], [None,None,None,None,29,-24,-100,None,95,-100,-100,-100,-100,None,None,21])",
+                        "(['MaxStack','push','top','pop','push','peek_max','pop_max','push','pop_max','push','pop_max','push','pop','push','peek_max','push','pop','pop_max'], [[],[69],[],[],[-68],[],[],[-75],[],[-97],[],[67],[],[20],[],[77],[],[]], [None,None,69,69,None,-68,-68,None,-75,None,-97,None,67,None,20,None,77,20])",
+                        "(['MaxStack','push','pop_max','push','push','push','top','pop_max','pop','peek_max','pop','push','peek_max','pop_max','push','push'], [[],[60],[],[38],[-83],[75],[],[],[],[],[],[-17],[],[],[-63],[5]], [None,None,60,None,None,None,75,75,-83,38,38,None,-17,-17,None,None])",
+                        "(['MaxStack','push','top','push','top','top','push','push','pop_max','top','push','peek_max','pop_max','pop_max','top','pop_max','push','peek_max','peek_max','push','pop','pop','pop_max','push'], [[],[74],[],[56],[],[],[63],[-35],[],[],[-12],[],[],[],[],[],[-3],[],[],[68],[],[],[],[-27]], [None,None,74,None,56,56,None,None,74,-35,None,63,63,56,-12,-12,None,-3,-3,None,68,-3,-35,None])",
+                        "(['MaxStack','push','peek_max','push','top','pop','push','push','pop','peek_max','top','push','peek_max','peek_max','peek_max','pop_max','peek_max','peek_max','pop_max','top','top','pop_max','push','pop_max','push','push','peek_max','peek_max','push','peek_max'], [[],[-42],[],[-52],[],[],[12],[-7],[],[],[],[38],[],[],[],[],[],[],[],[],[],[],[42],[],[-97],[-69],[],[],[-41],[]], [None,None,-42,None,-52,-52,None,None,-7,12,12,None,38,38,38,38,12,12,12,-42,-42,-42,None,42,None,None,-69,-69,None,-41])",
+                        "(['MaxStack','push','pop_max','push','push','push','peek_max','pop','push','push','pop_max','top','pop','pop_max','peek_max','push','push','peek_max','push','peek_max','push','push','pop_max','push','pop'], [[],[-44],[],[79],[4],[-89],[],[],[37],[16],[],[],[],[],[],[-6],[13],[],[75],[],[-30],[-69],[],[-46],[]], [None,None,-44,None,None,None,79,-89,None,None,79,16,16,37,4,None,None,13,None,75,None,None,75,None,-46])",
+                        "(['MaxStack','push','push','top','push','top','top'], [[],[-15],[-68],[],[95],[],[]], [None,None,None,-68,None,95,95])",
+                        "(['MaxStack','push','push','push','peek_max','pop','pop','push','top','pop','push','push','pop','peek_max','pop','top'], [[],[98],[52],[-63],[],[],[],[-9],[],[],[-87],[7],[],[],[],[]], [None,None,None,None,98,-63,52,None,-9,-9,None,None,7,98,-87,98])",
+                        "(['MaxStack','push','peek_max','pop','push','pop_max','push','pop_max','push','pop','push','push','push','peek_max','peek_max','pop_max','push','push','top','top','pop_max','pop','push','peek_max','pop_max'], [[],[-89],[],[],[-85],[],[9],[],[82],[],[-80],[-63],[-30],[],[],[],[79],[67],[],[],[],[],[-20],[],[]], [None,None,-89,-89,None,-85,None,9,None,82,None,None,None,-30,-30,-30,None,None,67,67,79,67,None,-20,-20])",
+                        "(['MaxStack','push','pop','push','push','top','peek_max','pop_max'], [[],[-77],[],[10],[89],[],[],[]], [None,None,-77,None,None,89,89,89])",
+                        "(['MaxStack','push','pop_max','push','push','peek_max','push','push','pop','peek_max','push','pop_max','pop','peek_max','push','peek_max','peek_max'], [[],[70],[],[84],[-27],[],[29],[68],[],[],[-29],[],[],[],[-31],[],[]], [None,None,70,None,None,84,None,None,68,84,None,84,-29,29,None,29,29])",
+                        "(['MaxStack','push','pop_max','push','push','pop'], [[],[-54],[],[-83],[62],[]], [None,None,-54,None,None,62])",
+                        "(['MaxStack','push','push','top','peek_max','pop','top','push','push','push','pop_max','top','pop','push','push','peek_max','push','pop','push','top','peek_max','push','pop_max','push','top','peek_max','push','push','pop'], [[],[35],[7],[],[],[],[],[58],[-80],[69],[],[],[],[-72],[73],[],[1],[],[-23],[],[],[-99],[],[-3],[],[],[89],[-96],[]], [None,None,None,7,35,7,35,None,None,None,69,-80,-80,None,None,73,None,1,None,-23,73,None,73,None,-3,58,None,None,-96])",
+                        "(['MaxStack','push','pop_max','push','peek_max','push','top','pop_max','peek_max','push','push','pop','peek_max','top','push','push'], [[],[47],[],[81],[],[-95],[],[],[],[-73],[50],[],[],[],[-57],[62]], [None,None,47,None,81,None,-95,81,-95,None,None,50,-73,-73,None,None])",
+                        "(['MaxStack','push','peek_max','top','push','push','pop','push','pop_max'], [[],[35],[],[],[-63],[-56],[],[97],[]], [None,None,35,35,None,None,-56,None,97])",
+                        "(['MaxStack','push','pop_max','push','peek_max','peek_max','push','peek_max','pop','pop','push','pop','push','peek_max','push','pop_max','pop','push','top','push','pop','peek_max','pop','push','pop','push','pop_max','push','top','peek_max'], [[],[44],[],[74],[],[],[-83],[],[],[],[-21],[],[-86],[],[-77],[],[],[15],[],[21],[],[],[],[29],[],[-37],[],[34],[],[]], [None,None,44,None,74,74,None,74,-83,74,None,-21,None,-86,None,-77,-86,None,15,None,21,15,15,None,29,None,-37,None,34,34])",
+                        "(['MaxStack','push','pop','push','pop','push','push','peek_max','top','push','peek_max','push','pop_max','push','peek_max','peek_max','pop','pop_max'], [[],[4],[],[61],[],[-16],[73],[],[],[49],[],[67],[],[81],[],[],[],[]], [None,None,4,None,61,None,None,73,73,None,73,None,73,None,81,81,81,67])",
+                        "(['MaxStack','push','push','push','push','top','top','push','pop','top','top','push','top','pop','top','peek_max','pop_max','push','push','top','pop_max','peek_max'], [[],[-8],[-21],[-46],[96],[],[],[-75],[],[],[],[77],[],[],[],[],[],[-39],[100],[],[],[]], [None,None,None,None,None,96,96,None,-75,96,96,None,77,77,96,96,96,None,None,100,100,-8])",
+                        "(['MaxStack','push','pop_max','push','top','pop','push','peek_max','pop','push','pop','push','push','push','push','push','peek_max','pop_max','push','pop_max','peek_max','push','peek_max','top','push','top','pop_max','pop','pop','push'], [[],[-3],[],[-59],[],[],[64],[],[],[82],[],[-28],[-59],[31],[11],[-44],[],[],[28],[],[],[-19],[],[],[20],[],[],[],[],[-62]], [None,None,-3,None,-59,-59,None,64,64,None,82,None,None,None,None,None,31,31,None,28,11,None,11,-19,None,20,20,-19,-44,None])",
+                        "(['MaxStack','push','pop_max','push','top','push','push','pop_max','push','pop','top','peek_max','peek_max','push','push','push','push','pop','pop_max','push','peek_max','peek_max','peek_max'], [[],[86],[],[-72],[],[-88],[63],[],[27],[],[],[],[],[6],[71],[-8],[34],[],[],[-1],[],[],[]], [None,None,86,None,-72,None,None,63,None,27,-88,-72,-72,None,None,None,None,34,71,None,6,6,6])",
+                        "(['MaxStack','push','pop','push','peek_max','push','top','pop_max','pop_max','push','push','push','pop'], [[],[87],[],[97],[],[-10],[],[],[],[61],[-66],[98],[]], [None,None,87,None,97,None,-10,97,-10,None,None,None,98])",
+                        "(['MaxStack','push','push','peek_max','pop_max','pop_max','push','push','push','pop','peek_max','push','pop_max','pop_max','push'], [[],[-49],[-49],[],[],[],[-36],[65],[-9],[],[],[-6],[],[],[-53]], [None,None,None,-49,-49,-49,None,None,None,-9,65,None,65,-6,None])",
+                        "(['MaxStack','push','peek_max','pop_max','push','top','peek_max','push','peek_max','pop_max','push','pop','peek_max','pop_max','push','pop','push','pop_max','push','top','top'], [[],[77],[],[],[-80],[],[],[-17],[],[],[13],[],[],[],[-30],[],[-81],[],[-7],[],[]], [None,None,77,77,None,-80,-80,None,-17,-17,None,13,-80,-80,None,-30,None,-81,None,-7,-7])",
+                        "(['MaxStack','push','pop','push','push','peek_max','pop','pop_max','push','pop','push','push','peek_max','push','push','pop_max','pop','push','top','peek_max','pop_max','push','pop_max','push','pop'], [[],[73],[],[-68],[99],[],[],[],[-6],[],[46],[-7],[],[-71],[-53],[],[],[-34],[],[],[],[-66],[],[82],[]], [None,None,73,None,None,99,99,-68,None,-6,None,None,46,None,None,46,-53,None,-34,-7,-7,None,-34,None,82])",
+                        "(['MaxStack','push','peek_max','pop','push','peek_max','top','top','push','top','pop','peek_max','top','pop','push','push','pop_max','pop','push','pop','push','peek_max','push','top','top','pop','top','push','push','push','pop'], [[],[74],[],[],[40],[],[],[],[-49],[],[],[],[],[],[-84],[83],[],[],[-68],[],[15],[],[99],[],[],[],[],[-59],[81],[32],[]], [None,None,74,74,None,40,40,40,None,-49,-49,40,40,40,None,None,83,-84,None,-68,None,15,None,99,99,99,15,None,None,None,32])",
+                        "(['MaxStack','push','peek_max','push','pop','top','top','push','peek_max','pop','pop','push','push','peek_max'], [[],[-50],[],[-23],[],[],[],[59],[],[],[],[-80],[64],[]], [None,None,-50,None,-23,-50,-50,None,59,59,-50,None,None,64])",
+                        "(['MaxStack','push','pop_max','push','pop_max','push','peek_max','pop_max','push','pop','push','pop_max','push','push','push','push','top','pop','push','push','push','push','pop_max','push','peek_max','push'], [[],[-47],[],[58],[],[60],[],[],[-24],[],[-60],[],[18],[55],[83],[-12],[],[],[19],[15],[-76],[-2],[],[-60],[],[-60]], [None,None,-47,None,58,None,60,60,None,-24,None,-60,None,None,None,None,-12,-12,None,None,None,None,83,None,55,None])",
+                        "(['MaxStack','push','peek_max','pop','push','top','push','push','pop_max','push','pop_max','push','pop_max','pop_max','push','push','push','peek_max','pop','push','peek_max'], [[],[31],[],[],[0],[],[-10],[-28],[],[-98],[],[-33],[],[],[43],[41],[-2],[],[],[-76],[]], [None,None,31,31,None,0,None,None,0,None,-10,None,-28,-33,None,None,None,43,-2,None,43])",
+                        "(['MaxStack','push','top','pop_max','push','push','push','pop_max','push','push','push','peek_max','pop_max','peek_max','pop','pop','peek_max','pop','peek_max','top','pop_max','push','pop_max'], [[],[-7],[],[],[28],[-91],[-15],[],[31],[56],[0],[],[],[],[],[],[],[],[],[],[],[-57],[]], [None,None,-7,-7,None,None,None,28,None,None,None,56,56,31,0,31,-15,-15,-91,-91,-91,None,-57])",
+                        "(['MaxStack','push','push','pop','push','push','top','pop_max','pop','top'], [[],[74],[46],[],[12],[-62],[],[],[],[]], [None,None,None,46,None,None,-62,74,-62,12])",
+                        "(['MaxStack','push','pop_max','push','top','peek_max','peek_max','top','peek_max','top','peek_max','top','pop_max','push','peek_max','push','pop_max','pop_max','push','top','push','pop','push'], [[],[-17],[],[34],[],[],[],[],[],[],[],[],[],[-19],[],[46],[],[],[-12],[],[-27],[],[13]], [None,None,-17,None,34,34,34,34,34,34,34,34,34,None,-19,None,46,-19,None,-12,None,-27,None])",
+                        "(['MaxStack','push','top','push','push','top','push','top','push','push','push','push','push','push','top','pop_max','top','peek_max','push','push','push','push','pop','top','top','pop'], [[],[-35],[],[37],[43],[],[89],[],[35],[-41],[5],[20],[97],[40],[],[],[],[],[65],[96],[46],[89],[],[],[],[]], [None,None,-35,None,None,43,None,89,None,None,None,None,None,None,40,97,40,89,None,None,None,None,89,46,46,46])",
+                        "(['MaxStack','push','push','peek_max','pop','push','push','push','pop_max','top','pop_max','push','push','peek_max','pop','peek_max','top','push'], [[],[26],[91],[],[],[54],[-15],[64],[],[],[],[-72],[87],[],[],[],[],[63]], [None,None,None,91,91,None,None,None,64,-15,54,None,None,87,87,26,-72,None])",
+                        "(['MaxStack','push','pop','push','top','pop_max','push','pop','push','pop_max','push','push','push','peek_max','top','push','top','peek_max'], [[],[9],[],[2],[],[],[-18],[],[-34],[],[92],[-16],[85],[],[],[-70],[],[]], [None,None,9,None,2,2,None,-18,None,-34,None,None,None,92,85,None,-70,92])"
+                    ]
+                },
+                "body": "        result, _ = run_max_stack(MaxStack, operations, inputs)\n        assert_max_stack(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_stack, assert_max_stack\nfrom solution import MaxStack",
+    "playground_setup": "# Example test case\noperations = ['MaxStack', 'push', 'push', 'push', 'top', 'pop_max', 'top', 'peek_max', 'pop', 'top']\ninputs = [[], [5], [1], [5], [], [], [], [], [], []]\nexpected = [None, None, None, None, 5, 5, 1, 5, 1, 5]",
+    "playground_run": "result, stack = run_max_stack(MaxStack, operations, inputs)\nprint(result)\nstack",
+    "playground_assert": "assert_max_stack(result, expected)"
+}

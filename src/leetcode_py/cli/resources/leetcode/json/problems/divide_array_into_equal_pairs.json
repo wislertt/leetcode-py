@@ -1,0 +1,93 @@
+{
+    "problem_name": "divide_array_into_equal_pairs",
+    "solution_class_name": "Solution",
+    "problem_number": "2206",
+    "problem_title": "Divide Array Into Equal Pairs",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Bit Manipulation, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `nums` consisting of `2 * n` integers.\n\nYou need to divide `nums` into `n` pairs such that:\n\n- Each element belongs to **exactly one** pair.\n- The elements present in a pair are **equal**.\n\nReturn `true` if nums can be divided into `n` pairs, otherwise return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,2,3,2,2,2]\nOutput: true\nExplanation: \nThere are 6 elements in nums, so they should be divided into 6 / 2 = 3 pairs.\nIf nums is divided into the pairs (2, 2), (3, 3), and (2, 2), it will satisfy all the conditions.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4]\nOutput: false\nExplanation: \nThere is no way to divide nums into 4 / 2 = 2 pairs such that the pairs satisfy every condition.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- nums.length == 2 * n\n- 1 <= n <= 500\n- 1 <= nums[i] <= 500",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "divide_array_into_equal_pairs",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.divide_array_into_equal_pairs(nums)",
+    "helpers_assert_name": "divide_array_into_equal_pairs",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_divide_array_into_equal_pairs, run_divide_array_into_equal_pairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DivideArrayIntoEqualPairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "divide_array_into_equal_pairs",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement divide_array_into_equal_pairs\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_divide_array_into_equal_pairs",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 2, 3, 2, 2, 2], True)",
+                        "([1, 2, 3, 4], False)",
+                        "([1, 1], True)",
+                        "([1, 2], False)",
+                        "([5, 5, 5, 5], True)",
+                        "([1, 2, 3, 1], False)",
+                        "([10, 10], True)",
+                        "([1, 1, 2, 2, 3, 3], True)",
+                        "([1, 1, 1, 1, 2, 2], True)",
+                        "([1, 1, 1, 2, 2, 2], False)",
+                        "([500, 500], True)",
+                        "([1, 500], False)",
+                        "([2, 2, 2, 2, 3, 3, 4, 4], True)",
+                        "([1, 1, 1, 1, 1, 1], True)",
+                        "([448, 460, 362, 448, 460, 362, 211, 211], True)",
+                        "([443, 225, 443, 225], True)",
+                        "([80, 383, 131, 131, 80, 383], True)",
+                        "([491, 395, 491, 395, 321, 321], True)"
+                    ]
+                },
+                "body": "        result = run_divide_array_into_equal_pairs(Solution, nums)\n        assert_divide_array_into_equal_pairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_divide_array_into_equal_pairs, assert_divide_array_into_equal_pairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 2, 3, 2, 2, 2]\nexpected = True",
+    "playground_run": "result = run_divide_array_into_equal_pairs(Solution, nums)\nresult",
+    "playground_assert": "assert_divide_array_into_equal_pairs(result, expected)"
+}

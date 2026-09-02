@@ -1,0 +1,102 @@
+{
+    "problem_name": "additive_number",
+    "solution_class_name": "Solution",
+    "problem_number": "306",
+    "problem_title": "Additive Number",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "An <strong>additive number</strong> is a string whose digits can form an <strong>additive sequence</strong>.\n\n<p>A valid <strong>additive sequence</strong> should contain <strong>at least</strong> three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.</p>\n\n<p>Given a string containing only digits, return <code>true</code> if it is an <strong>additive number</strong> or <code>false</code> otherwise.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \"112358\"\nOutput: true\nExplanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.\n1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8\n```"
+            },
+            {
+                "content": "```\nInput: \"199100199\"\nOutput: true\nExplanation: The additive sequence is: 1, 99, 100, 199.\n1 + 99 = 100, 99 + 100 = 199\n```"
+            },
+            {
+                "content": "```\nInput: \"1023\"\nOutput: false\nExplanation: No valid additive sequence exists.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num.length <= 35`\n- `num` consists only of digits.\n\n\n<p><strong>Note:</strong> Numbers in the additive sequence <strong>cannot</strong> have leading zeros, so sequence <code>1, 2, 03</code> or <code>1, 02, 3</code> is invalid.</p>",
+    "readme_additional": "**Follow up:** How would you handle overflow for very large input integers?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_additive_number",
+    "helpers_run_signature": "(solution_class: type, num: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_additive_number(num)",
+    "helpers_assert_name": "is_additive_number",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_additive_number, run_is_additive_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AdditiveNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_additive_number",
+                "signature": "(self, num: str) -> bool",
+                "body": "        # TODO: Implement is_additive_number\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_additive_number",
+                "signature": "(self, num: str, expected: bool)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "('112358',True)",
+                        "('199100199',True)",
+                        "('1023',False)",
+                        "('000',True)",
+                        "('0000',True)",
+                        "('101',True)",
+                        "('011235',True)",
+                        "('1123581321',True)",
+                        "('1203',False)",
+                        "('211738',True)",
+                        "('112',True)",
+                        "('111',False)",
+                        "('0235',False)",
+                        "('347',True)",
+                        "('13',False)",
+                        "('0',False)",
+                        "('10235',False)",
+                        "('1120',False)",
+                        "('355287139226365591956154725034050',True)",
+                        "('95141933528513722235958194015212461',True)",
+                        "('9974241421184532665111',True)",
+                        "('1016955197129264897782312720',True)",
+                        "('984546',False)",
+                        "('37985807484380683024',False)"
+                    ]
+                },
+                "body": "        result = run_is_additive_number(Solution, num)\n        assert_is_additive_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_additive_number, assert_is_additive_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = '112358'\nexpected = True",
+    "playground_run": "result = run_is_additive_number(Solution, num)\nresult",
+    "playground_assert": "assert_is_additive_number(result, expected)"
+}

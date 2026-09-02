@@ -1,0 +1,105 @@
+{
+    "problem_name": "longest_ideal_subsequence",
+    "solution_class_name": "Solution",
+    "problem_number": "2370",
+    "problem_title": "Longest Ideal Subsequence",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` consisting of lowercase letters and an integer `k`. We call a string `t` **ideal** if the following conditions are satisfied:\n\n- `t` is a **subsequence** of the string `s`.\n- The absolute difference in the alphabet order of every two **adjacent** letters in `t` is less than or equal to `k`.\n\nReturn *the length of the **longest** ideal string*.\n\nA **subsequence** is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.\n\n**Note** that the alphabet order is not cyclic. For example, the absolute difference in the alphabet order of `'a'` and `'z'` is `25`, not `1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"acfgbd\", k = 2\nOutput: 4\n```\n**Explanation:** The longest ideal string is `\"acbd\"`. The length of this string is `4`, so `4` is returned.\nNote that `\"acfgbd\"` is not ideal because `'c'` and `'f'` have a difference of `3` in alphabet order."
+            },
+            {
+                "content": "```\nInput: s = \"abcd\", k = 3\nOutput: 4\n```\n**Explanation:** The longest ideal string is `\"abcd\"`. The length of this string is `4`, so `4` is returned."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `0 <= k <= 25`\n- `s` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_ideal_string",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_ideal_string(s, k)",
+    "helpers_assert_name": "longest_ideal_string",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_ideal_string, run_longest_ideal_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestIdealSubsequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_ideal_string",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement longest_ideal_string\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_ideal_string",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('acfgbd', 2, 4)",
+                        "('abcd', 3, 4)",
+                        "('a', 0, 1)",
+                        "('a', 25, 1)",
+                        "('abc', 0, 1)",
+                        "('aaa', 0, 3)",
+                        "('ab', 0, 1)",
+                        "('ab', 1, 2)",
+                        "('az', 25, 2)",
+                        "('az', 24, 1)",
+                        "('babcd', 1, 5)",
+                        "('acfgbd', 0, 1)",
+                        "('zyxwvu', 2, 6)",
+                        "('zyxwvu', 25, 6)",
+                        "('abcdcba', 2, 7)",
+                        "('eaahoheh', 23, 8)",
+                        "('jjtfoslruajtu', 7, 9)",
+                        "('xxlzdjriwkigni', 6, 7)",
+                        "('atlrxrfvcwbsxd', 15, 9)",
+                        "('pyqqgcquzzlhtb', 6, 8)",
+                        "('qundowfcenl', 7, 6)",
+                        "('giqa', 14, 3)",
+                        "('myfzvkulfw', 22, 10)",
+                        "('bacn', 12, 4)",
+                        "('dstqwqeclgopwp', 5, 8)",
+                        "('vfsmudpwmvllg', 21, 13)",
+                        "('yhnkezxltz', 14, 7)"
+                    ]
+                },
+                "body": "        result = run_longest_ideal_string(Solution, s, k)\n        assert_longest_ideal_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_ideal_string, assert_longest_ideal_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'acfgbd'\nk = 2\nexpected = 4",
+    "playground_run": "result = run_longest_ideal_string(Solution, s, k)\nresult",
+    "playground_assert": "assert_longest_ideal_string(result, expected)",
+    "playground_test_case": "s = 'acfgbd', k = 2",
+    "playground_execution": "result = run_longest_ideal_string(Solution, s, k)",
+    "playground_assertion": "assert_longest_ideal_string(result, 4)"
+}

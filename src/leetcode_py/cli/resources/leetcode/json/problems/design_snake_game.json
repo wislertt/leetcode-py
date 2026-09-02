@@ -1,0 +1,85 @@
+{
+    "problem_name": "design_snake_game",
+    "solution_class_name": "SnakeGame",
+    "problem_number": "353",
+    "problem_title": "Design Snake Game",
+    "difficulty": "Medium",
+    "topics": "Design, Queue, Array, Hash Table, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a [Snake game](https://en.wikipedia.org/wiki/Snake_(video_game)) that is played on a device with screen size `height x width`.\n\nThe snake is initially positioned at the top left corner `(0, 0)` with a length of `1` unit.\n\nYou are given an array `food` where `food[i] = (r_i, c_i)` is the row and column position of a piece of food that the snake can eat. When a snake eats a piece of food, its length and the game's score both increase by `1`.\n\nEach piece of food appears one by one on the screen, meaning the second piece of food will not appear until the snake eats the first piece of food.\n\nWhen a piece of food appears on the screen, it is **guaranteed** that it will not appear on a block occupied by the snake.\n\nThe game is over if the snake goes out of bounds (hits a wall) or if its head occupies a space that its body occupies **after** moving (i.e. a snake of length 4 cannot run into itself).\n\nImplement the `SnakeGame` class:\n\n- `SnakeGame(int width, int height, int[][] food)` Initializes the object with a screen of size `height x width` and the positions of the `food`.\n- `int move(String direction)` Returns the score of the game after applying one `direction` move by the snake. If the game is over, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0300-0399/0353.Design%20Snake%20Game/images/snake.jpg)\n\n```\nInput\n[\"SnakeGame\", \"move\", \"move\", \"move\", \"move\", \"move\", \"move\"]\n[[3, 2, [[1, 2], [0, 1]]], [\"R\"], [\"D\"], [\"R\"], [\"U\"], [\"L\"], [\"U\"]]\nOutput\n[null, 0, 0, 1, 1, 2, -1]\n\nExplanation\nSnakeGame snakeGame = new SnakeGame(3, 2, [[1, 2], [0, 1]]);\nsnakeGame.move(\"R\"); // return 0\nsnakeGame.move(\"D\"); // return 0\nsnakeGame.move(\"R\"); // return 1, snake eats the first piece of food. The second piece of food appears at (0, 1).\nsnakeGame.move(\"U\"); // return 1\nsnakeGame.move(\"L\"); // return 2, snake eats the second food. No more food appears.\nsnakeGame.move(\"U\"); // return -1, game over because snake collides with border\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= width, height <= 10^4`\n- `1 <= food.length <= 50`\n- `food[i].length == 2`\n- `0 <= r_i < height`\n- `0 <= c_i < width`\n- `direction.length == 1`\n- `direction` is `'U'`, `'D'`, `'L'`, or `'R'`.\n- At most `10^4` calls will be made to `move`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "design_snake_game",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    game = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'SnakeGame':\n            game = solution_class(inputs[i][0], inputs[i][1], inputs[i][2])\n            results.append(None)\n        elif op == 'move' and game is not None:\n            results.append(game.move(inputs[i][0]))\n    return results, game",
+    "helpers_assert_name": "design_snake_game",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_design_snake_game, run_design_snake_game\nfrom .solution import SnakeGame",
+    "test_content": "",
+    "test_class_name": "DesignSnakeGame",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, width: int, height: int, food: list[list[int]]) -> None",
+                "body": "        # TODO: Initialize snake game\n        pass"
+            },
+            {
+                "name": "move",
+                "signature": "(self, direction: str) -> int",
+                "body": "        # TODO: Implement move\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_design_snake_game",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['SnakeGame','move','move','move','move','move','move'], [[3,2,[[1,2],[0,1]]],['R'],['D'],['R'],['U'],['L'],['U']], [None,0,0,1,1,2,-1])",
+                        "(['SnakeGame','move'], [[1,1,[]],['D']], [None,-1])",
+                        "(['SnakeGame','move','move'], [[3,1,[[0,1]]],['R'],['L']], [None,1,1])",
+                        "(['SnakeGame','move','move'], [[2,2,[[0,1],[1,1]]],['R'],['D']], [None,1,2])",
+                        "(['SnakeGame','move','move','move','move'], [[3,3,[]],['R'],['D'],['L'],['U']], [None,0,0,0,0])",
+                        "(['SnakeGame','move','move'], [[2,2,[[1,0]]],['R'],['D']], [None,0,0])",
+                        "(['SnakeGame','move','move','move','move','move','move','move'], [[4,4,[[0,3],[1,3],[2,3],[3,3]]],['R'],['R'],['R'],['D'],['D'],['D'],['D']], [None,0,0,1,2,3,4,-1])",
+                        "(['SnakeGame','move','move','move','move','move'], [[3,3,[[2,0],[2,1],[2,2],[1,2]]],['D'],['D'],['R'],['R'],['U']], [None,0,1,2,3,4])",
+                        "(['SnakeGame','move','move'], [[1,3,[[1,0],[2,0]]],['D'],['D']], [None,1,2])",
+                        "(['SnakeGame','move'], [[3,3,[]],['L']], [None,-1])",
+                        "(['SnakeGame'], [[3,3,[[0,0]]]], [None])",
+                        "(['SnakeGame','move','move','move','move'], [[5,5,[[2,2]]],['D'],['R'],['R'],['D']], [None,0,0,0,1])",
+                        "(['SnakeGame','move','move','move'], [[2,3,[[2,1]]],['D'],['D'],['L']], [None,0,0,-1])",
+                        "(['SnakeGame','move','move'], [[3,3,[[1,2]]],['R'],['R']], [None,0,0])"
+                    ]
+                },
+                "body": "        result, _ = run_design_snake_game(SnakeGame, operations, inputs)\n        assert_design_snake_game(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_design_snake_game, assert_design_snake_game\nfrom solution import SnakeGame",
+    "playground_setup": "# Example test case\noperations = ['SnakeGame', 'move', 'move', 'move', 'move', 'move', 'move']\ninputs = [[3, 2, [[1, 2], [0, 1]]], ['R'], ['D'], ['R'], ['U'], ['L'], ['U']]\nexpected = [None, 0, 0, 1, 1, 2, -1]",
+    "playground_run": "result, game = run_design_snake_game(SnakeGame, operations, inputs)\nprint(result)\ngame",
+    "playground_assert": "assert_design_snake_game(result, expected)"
+}

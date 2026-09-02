@@ -1,0 +1,95 @@
+{
+    "problem_name": "detect_capital",
+    "solution_class_name": "Solution",
+    "problem_number": "520",
+    "problem_title": "Detect Capital",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "We define the usage of capitals in a word to be right when one of the following cases holds:\n\n- All letters in this word are capitals, like `\"USA\"`.\n- All letters in this word are not capitals, like `\"leetcode\"`.\n- Only the first letter in this word is capital, like `\"Google\"`.\n\nGiven a string `word`, return `true` if the usage of capitals in it is right.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: word = \"USA\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: word = \"FlaG\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= word.length <= 100\n- word consists of lowercase and uppercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "detect_capital_use",
+    "helpers_run_signature": "(solution_class: type, word: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.detect_capital_use(word)",
+    "helpers_assert_name": "detect_capital_use",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_detect_capital_use, run_detect_capital_use\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DetectCapital",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "detect_capital_use",
+                "signature": "(self, word: str) -> bool",
+                "body": "        # TODO: Implement detect_capital_use\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_detect_capital_use",
+                "signature": "(self, word: str, expected: bool)",
+                "parametrize": "word, expected",
+                "test_cases": {
+                    "list": [
+                        "('USA', True)",
+                        "('FlaG', False)",
+                        "('leetcode', True)",
+                        "('Google', True)",
+                        "('A', True)",
+                        "('a', True)",
+                        "('AB', True)",
+                        "('Ab', True)",
+                        "('aB', False)",
+                        "('ABC', True)",
+                        "('aBC', False)",
+                        "('ABc', False)",
+                        "('Leetcode', True)",
+                        "('leetcodE', False)",
+                        "('AaA', False)",
+                        "('g', True)",
+                        "('ALLCAPS', True)",
+                        "('alllower', True)",
+                        "('Capitalized', True)",
+                        "('mIxEd', False)"
+                    ]
+                },
+                "body": "        result = run_detect_capital_use(Solution, word)\n        assert_detect_capital_use(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_detect_capital_use, assert_detect_capital_use\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword = 'USA'\nexpected = True",
+    "playground_run": "result = run_detect_capital_use(Solution, word)\nresult",
+    "playground_assert": "assert_detect_capital_use(result, expected)"
+}

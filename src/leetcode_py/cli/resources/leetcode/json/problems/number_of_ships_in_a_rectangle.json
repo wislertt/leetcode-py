@@ -1,0 +1,93 @@
+{
+    "problem_name": "number_of_ships_in_a_rectangle",
+    "solution_class_name": "Solution",
+    "problem_number": "1274",
+    "problem_title": "Number of Ships in a Rectangle",
+    "difficulty": "Hard",
+    "topics": "Array, Divide and Conquer, Interactive",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "(This problem is an **interactive problem**.)\n\nEach ship is located at an integer point on the sea represented by a cartesian plane, and each integer point may contain at most 1 ship.\n\nYou have a function `Sea.has_ships(top_right, bottom_left)` which takes two points as arguments and returns `true` if there is at least one ship in the rectangle represented by the two points, including on the boundary.\n\nGiven two points: the top right and bottom left corners of a rectangle, return the number of ships present in that rectangle. It is guaranteed that there are **at most 10 ships** in that rectangle.\n\nSubmissions making **more than 400 calls** to `has_ships` will be judged **Wrong Answer**. Also, any solutions that attempt to circumvent the judge will be disqualified.\n\nThe API is:\n\n```\nclass Sea:\n    def has_ships(self, top_right: 'Point', bottom_left: 'Point') -> bool: ...\n\nclass Point:\n    def __init__(self, x: int, y: int) -> None:\n        self.x = x\n        self.y = y\n```",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/images/1445_example_1.png)\n\n```\nInput: \nships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]\nOutput: 3\nExplanation: From [0,0] to [4,4] we can count 3 ships within the range.\n```"
+            },
+            {
+                "content": "```\nInput: \nships = [[1,1],[2,2],[3,3]], topRight = [1000,1000], bottomLeft = [0,0]\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- On the input `ships` is only given to initialize the map internally. You must solve this problem \"blindfolded\". In other words, you must find the answer using the given `has_ships` API, without knowing the `ships` position.\n- `0 <= bottomLeft[0] <= topRight[0] <= 1000`\n- `0 <= bottomLeft[1] <= topRight[1] <= 1000`\n- `topRight != bottomLeft`",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import Point, Sea",
+    "helpers_content": "",
+    "helpers_run_name": "count_ships",
+    "helpers_run_signature": "(solution_class: type, ships: list[list[int]], top_right: list[int], bottom_left: list[int])",
+    "helpers_run_body": "    sea = Sea(ships)\n    top = Point(top_right[0], top_right[1])\n    bottom = Point(bottom_left[0], bottom_left[1])\n    return solution_class().count_ships(sea, top, bottom)",
+    "helpers_assert_name": "count_ships",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class Point:\n    # Test-harness value type for a cartesian point on the sea\n    def __init__(self, x: int, y: int) -> None:\n        self.x = x\n        self.y = y\n\n\nclass Sea:\n    # Test-harness API: backs the interactive has_ships query with the ships\n    def __init__(self, ships: list[list[int]]) -> None:\n        self.ships = {(x, y) for x, y in ships}\n        self.calls = 0\n\n    def has_ships(self, top_right: Point, bottom_left: Point) -> bool:\n        self.calls += 1\n        if self.calls > 400:\n            msg = 'has_ships exceeded the 400-call judge limit'\n            raise RuntimeError(msg)\n        return any(\n            bottom_left.x <= x <= top_right.x\n            and bottom_left.y <= y <= top_right.y\n            for x, y in self.ships\n        )\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_ships, run_count_ships\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfShipsInARectangle",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_ships",
+                "signature": "(self, sea: Sea, top_right: Point, bottom_left: Point) -> int",
+                "body": "        # TODO: Implement count_ships\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_ships",
+                "signature": "(self, ships: list[list[int]], top_right: list[int], bottom_left: list[int], expected: int)",
+                "parametrize": "ships, top_right, bottom_left, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,1],[2,2],[3,3],[5,5]],[4,4],[0,0],3)",
+                        "([[1,1],[2,2],[3,3]],[1000,1000],[0,0],3)",
+                        "([[0,0]],[1,1],[0,0],1)",
+                        "([],[10,10],[0,0],0)",
+                        "([[5,5]],[4,4],[0,0],0)",
+                        "([[0,0]],[0,1],[0,0],1)",
+                        "([[7,7]],[7,7],[3,3],1)",
+                        "([[0,0],[0,4],[4,0],[4,4]],[4,4],[0,0],4)",
+                        "([[2,2]],[1000,1000],[0,0],1)",
+                        "([[1,1],[1,2],[2,1],[2,2],[3,3],[3,4],[4,4],[5,5],[6,6],[7,7]],[7,7],[0,0],10)",
+                        "([[0,0],[3,0],[3,1]],[5,0],[0,0],2)",
+                        "([[1,1],[0,5]],[0,9],[0,0],1)",
+                        "([[999,999],[500,500]],[1000,1000],[999,999],1)",
+                        "([[10,10],[20,20],[30,30]],[25,25],[15,15],1)",
+                        "([[389,497]],[889,790],[125,402],1)",
+                        "([[456,612]],[571,975],[335,416],1)",
+                        "([[745,404],[766,500],[632,864]],[769,798],[685,67],2)",
+                        "([[913,293]],[938,706],[823,2],1)"
+                    ]
+                },
+                "body": "        result = run_count_ships(Solution, ships, top_right, bottom_left)\n        assert_count_ships(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_count_ships, run_count_ships\nfrom solution import Point, Sea, Solution",
+    "playground_setup": "# Example test case\nships = [[1, 1], [2, 2], [3, 3], [5, 5]]\ntop_right = [4, 4]\nbottom_left = [0, 0]\nexpected = 3",
+    "playground_run": "result = run_count_ships(Solution, ships, top_right, bottom_left)\nresult",
+    "playground_assert": "assert_count_ships(result, expected)"
+}

@@ -1,0 +1,91 @@
+{
+    "problem_name": "search_suggestions_system",
+    "solution_class_name": "Solution",
+    "problem_number": "1268",
+    "problem_title": "Search Suggestions System",
+    "difficulty": "Medium",
+    "topics": "Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of strings products and a string searchWord.\n\nDesign a system that suggests at most three product names from products after each character of searchWord is typed. Suggested products should have common prefix with searchWord. If there are more than three products with a common prefix return the three lexicographically minimums products.\n\nReturn a list of lists of the suggested products after each character of searchWord is typed.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: products = [\"mobile\",\"mouse\",\"moneypot\",\"monitor\",\"mousepad\"], searchWord = \"mouse\"\nOutput: [[\"mobile\",\"moneypot\",\"monitor\"],[\"mobile\",\"moneypot\",\"monitor\"],[\"mouse\",\"mousepad\"],[\"mouse\",\"mousepad\"],[\"mouse\",\"mousepad\"]]\nExplanation: products sorted lexicographically = [\"mobile\",\"moneypot\",\"monitor\",\"mouse\",\"mousepad\"].\nAfter typing m and mo all products match and we show user [\"mobile\",\"moneypot\",\"monitor\"].\nAfter typing mou, mous and mouse the system suggests [\"mouse\",\"mousepad\"].\n```"
+            },
+            {
+                "content": "```\nInput: products = [\"havana\"], searchWord = \"havana\"\nOutput: [[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"],[\"havana\"]]\nExplanation: The only word \"havana\" will be always suggested while typing the search word.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= products.length <= 1000\n- 1 <= products[i].length <= 3000\n- 1 <= sum(products[i].length) <= 2 * 10^4\n- All the strings of products are unique.\n- products[i] consists of lowercase English letters.\n- 1 <= searchWord.length <= 1000\n- searchWord consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "suggested_products",
+    "helpers_run_signature": "(solution_class: type, products: list[str], search_word: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.suggested_products(products, search_word)",
+    "helpers_assert_name": "suggested_products",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "suggested_products",
+                "signature": "(self, products: list[str], search_word: str) -> list[list[str]]",
+                "body": "        # TODO: Implement suggested_products\n        return []"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_suggested_products, run_suggested_products\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SearchSuggestionsSystem",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_suggested_products",
+                "signature": "(self, products: list[str], search_word: str, expected: list[list[str]])",
+                "parametrize": "products, search_word, expected",
+                "test_cases": {
+                    "list": [
+                        "[['mobile','mouse','moneypot','monitor','mousepad'],'mouse',[['mobile','moneypot','monitor'],['mobile','moneypot','monitor'],['mouse','mousepad'],['mouse','mousepad'],['mouse','mousepad']]]",
+                        "[['havana'],'havana',[['havana'],['havana'],['havana'],['havana'],['havana'],['havana']]]",
+                        "[['bags','bagend','baggage','bagger','baguette'],'bags',[['bagend','baggage','bagger'],['bagend','baggage','bagger'],['bagend','baggage','bagger'],['bags']]]",
+                        "[['abc'],'abcd',[['abc'],['abc'],['abc'],[]]]",
+                        "[['a'],'a',[['a']]]",
+                        "[['apple','app','application'],'app',[['app','apple','application'],['app','apple','application'],['app','apple','application']]]",
+                        "[['zebra','zip','zoo'],'z',[['zebra','zip','zoo']]]",
+                        "[['cat','cattle','caterpillar'],'catx',[['cat','caterpillar','cattle'],['cat','caterpillar','cattle'],['cat','caterpillar','cattle'],[]]]",
+                        "[['p'],'p',[['p']]]",
+                        "[['data','date','database','datetime'],'dat',[['data','database','date'],['data','database','date'],['data','database','date']]]",
+                        "[['a','aabab'],'ba',[[],[]]]",
+                        "[['abbb','a','aab','b'],'bab',[['b'],[],[]]]",
+                        "[['abab','a','bb','b','ab'],'aaaa',[['a','ab','abab'],[],[],[]]]",
+                        "[['bbab','babaa','baaab','baba','abb','aabaa','ababb'],'babb',[['baaab','baba','babaa'],['baaab','baba','babaa'],['baba','babaa'],[]]]",
+                        "[['ba','a','aaaa','abaaa','b','ab','bbbbb'],'bb',[['b','ba','bbbbb'],['bbbbb']]]",
+                        "[['a','b','bb'],'ab',[['a'],[]]]"
+                    ]
+                },
+                "body": "        result = run_suggested_products(Solution, products, search_word)\n        assert_suggested_products(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_suggested_products, assert_suggested_products\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nproducts = ['mobile', 'mouse', 'moneypot', 'monitor', 'mousepad']\nsearch_word = 'mouse'\nexpected = [['mobile', 'moneypot', 'monitor'], ['mobile', 'moneypot', 'monitor'], ['mouse', 'mousepad'], ['mouse', 'mousepad'], ['mouse', 'mousepad']]",
+    "playground_run": "result = run_suggested_products(Solution, products, search_word)\nresult",
+    "playground_assert": "assert_suggested_products(result, expected)"
+}

@@ -1,0 +1,97 @@
+{
+    "problem_name": "maximum_candies_allocated_to_k_children",
+    "solution_class_name": "Solution",
+    "problem_number": "2226",
+    "problem_title": "Maximum Candies Allocated to K Children",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <strong>0-indexed</strong> integer array <code>candies</code>. Each element in the array denotes a pile of candies of size <code>candies[i]</code>. You can divide each pile into any number of <strong>sub piles</strong>, but you <strong>cannot</strong> merge two piles together.\n\nYou are also given an integer <code>k</code>. You should allocate piles of candies to <code>k</code> children such that each child gets the <strong>same</strong> number of candies. Each child can be allocated candies from <strong>only one</strong> pile of candies and some piles of candies may go unused.\n\nReturn <em>the <strong>maximum number of candies</strong> each child can get.</em>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: candies = [5,8,6], k = 3\nOutput: 5\nExplanation: We can divide candies[1] into 2 piles of size 5 and 3, and candies[2] into 2 piles of size 5 and 1. We now have five piles of candies of sizes 5, 5, 3, 5, and 1. We can allocate the 3 piles of size 5 to 3 children. It can be proven that each child cannot receive more than 5 candies.\n```"
+            },
+            {
+                "content": "```\nInput: candies = [2,5], k = 11\nOutput: 0\nExplanation: There are 11 children but only 7 candies in total, so it is impossible to ensure each child receives at least one candy. Thus, each child gets no candy and the answer is 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= candies.length <= 10<sup>5</sup>\n- 1 <= candies[i] <= 10<sup>7</sup>\n- 1 <= k <= 10<sup>12</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_candies",
+    "helpers_run_signature": "(solution_class: type, candies: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_candies(candies, k)",
+    "helpers_assert_name": "maximum_candies",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_candies, run_maximum_candies\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumCandiesAllocatedToKChildren",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_candies",
+                "signature": "(self, candies: list[int], k: int) -> int",
+                "body": "        # TODO: Implement maximum_candies\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_candies",
+                "signature": "(self, candies: list[int], k: int, expected: int)",
+                "parametrize": "candies, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 8, 6], 3, 5)",
+                        "([2, 5], 11, 0)",
+                        "([1], 1, 1)",
+                        "([1], 2, 0)",
+                        "([10000000], 1, 10000000)",
+                        "([10000000], 10000000, 1)",
+                        "([10000000], 10000001, 0)",
+                        "([4, 7, 5], 4, 3)",
+                        "([1, 2, 3, 4, 5], 5, 2)",
+                        "([8, 8, 8, 8], 8, 4)",
+                        "([3, 3, 3], 10, 0)",
+                        "([5, 6, 4, 11, 9], 6, 4)",
+                        "([1000000, 1000000, 1000000, 1000000, 1000000], 5000000, 1)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 1000000000000, 0)",
+                        "([9999999, 9999999, 9999999, 9999999], 7, 4999999)",
+                        "([10, 10, 10], 9, 3)",
+                        "([6, 2, 9, 4, 1], 12, 1)",
+                        "([10000000, 10000000, 10000000], 3000000, 10)",
+                        "([34], 6, 5)",
+                        "([18, 21, 18], 16, 3)",
+                        "([25, 15, 12], 30, 1)",
+                        "([48, 27], 17, 4)"
+                    ]
+                },
+                "body": "        result = run_maximum_candies(Solution, candies, k)\n        assert_maximum_candies(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_candies, assert_maximum_candies\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncandies = [5, 8, 6]\nk = 3\nexpected = 5",
+    "playground_run": "result = run_maximum_candies(Solution, candies, k)\nresult",
+    "playground_assert": "assert_maximum_candies(result, expected)"
+}

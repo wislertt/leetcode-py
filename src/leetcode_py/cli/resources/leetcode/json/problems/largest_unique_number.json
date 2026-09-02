@@ -1,0 +1,95 @@
+{
+    "problem_name": "largest_unique_number",
+    "solution_class_name": "Solution",
+    "problem_number": "1133",
+    "problem_title": "Largest Unique Number",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer array `nums`, return *the largest integer that only occurs once*. If no integer occurs once, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [5,7,3,9,4,9,8,3,1]\nOutput: 8\n```\n**Explanation:** The maximum integer in the array is 9 but it is repeated. The number 8 occurs only once, so it is the answer."
+            },
+            {
+                "content": "```\nInput: nums = [9,9,8,8]\nOutput: -1\n```\n**Explanation:** There is no number that occurs only once."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 2000\n- 0 <= nums[i] <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_unique_number",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_unique_number(nums)",
+    "helpers_assert_name": "largest_unique_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_unique_number, run_largest_unique_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestUniqueNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_unique_number",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement largest_unique_number\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_unique_number",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 7, 3, 9, 4, 9, 8, 3, 1], 8)",
+                        "([9, 9, 8, 8], -1)",
+                        "([1], 1)",
+                        "([0], 0)",
+                        "([0, 0], -1)",
+                        "([1, 1, 1], -1)",
+                        "([7, 7, 7, 3], 3)",
+                        "([3, 7, 7, 7], 3)",
+                        "([1000, 1000, 999], 999)",
+                        "([1000, 999, 1000], 999)",
+                        "([1000], 1000)",
+                        "([0, 1, 2, 3, 4, 5], 5)",
+                        "([5, 4, 3, 2, 1, 0], 5)",
+                        "([10, 10, 5, 5, 3, 3, 1, 1], -1)",
+                        "([2, 2, 8, 8, 9, 9, 12, 12, 1000], 1000)",
+                        "([6, 6, 4, 4, 4, 2], 2)",
+                        "([999, 999, 1000, 1000, 998, 1, 1], 998)",
+                        "([13, 13, 13, 2, 2, 2, 5], 5)",
+                        "([14, 8, 6, 4, 15, 15, 5], 14)",
+                        "([0, 12, 3, 0, 15, 5, 15, 5, 9, 5, 13, 6], 13)"
+                    ]
+                },
+                "body": "        result = run_largest_unique_number(Solution, nums)\n        assert_largest_unique_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_unique_number, assert_largest_unique_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [5, 7, 3, 9, 4, 9, 8, 3, 1]\nexpected = 8",
+    "playground_run": "result = run_largest_unique_number(Solution, nums)\nresult",
+    "playground_assert": "assert_largest_unique_number(result, expected)"
+}

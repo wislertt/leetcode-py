@@ -1,0 +1,98 @@
+{
+    "problem_name": "divide_array_into_arrays_with_max_difference",
+    "solution_class_name": "Solution",
+    "problem_number": "2966",
+    "problem_title": "Divide Array Into Arrays With Max Difference",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `nums` of size `n` where `n` is a multiple of 3 and a positive integer `k`.\n\nDivide the array `nums` into `n / 3` arrays of size **3** satisfying the following condition:\n\n- The difference between **any** two elements in one array is **less than or equal** to `k`.\n\nReturn a **2D** array containing the arrays. If it is impossible to satisfy the conditions, return an empty array. And if there are multiple answers, return **any** of them.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,3,4,8,7,9,3,5,1], k = 2\nOutput: [[1,1,3],[3,4,5],[7,8,9]]\nExplanation: The difference between any two elements in each array is less than or equal to 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,4,2,2,5,2], k = 2\nOutput: []\nExplanation: Because there are four 2s there will be an array with the elements 2 and 5 no matter how we divide it. Since 5 - 2 = 3 > k, the condition is not satisfied and so there is no valid division.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [4,2,9,8,2,12,7,12,10,5,8,5,5,7,9,2,5,11], k = 14\nOutput: [[2,2,2],[4,5,5],[5,5,7],[7,8,8],[9,9,10],[11,12,12]]\nExplanation: The difference between any two elements in each array is less than or equal to 14.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == nums.length`\n- `1 <= n <= 10^5`\n- `n` is a multiple of 3\n- `1 <= nums[i] <= 10^5`\n- `1 <= k <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "divide_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.divide_array(nums, k)",
+    "helpers_assert_name": "divide_array",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]], k: int) -> bool",
+    "helpers_assert_body": "    # Multiple valid divisions exist; verify the result is a valid\n    # partition of the same multiset with every group within k\n    if not expected:\n        assert result == []\n        return True\n    assert len(result) == len(expected)\n    assert all(len(group) == 3 for group in result)\n    assert sorted(x for group in result for x in group) == sorted(\n        x for group in expected for x in group\n    )\n    assert all(max(group) - min(group) <= k for group in result)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_divide_array, run_divide_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DivideArrayIntoArraysWithMaxDifference",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "divide_array",
+                "signature": "(self, nums: list[int], k: int) -> list[list[int]]",
+                "body": "        # TODO: Implement divide_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_divide_array",
+                "signature": "(self, nums: list[int], k: int, expected: list[list[int]])",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, 4, 8, 7, 9, 3, 5, 1], 2, [[1, 1, 3], [3, 4, 5], [7, 8, 9]])",
+                        "([2, 4, 2, 2, 5, 2], 2, [])",
+                        "([5, 1, 3], 2, [])",
+                        "([10, 1, 11], 10, [[1, 10, 11]])",
+                        "([10, 1, 12], 10, [])",
+                        "([7, 7, 7], 1, [[7, 7, 7]])",
+                        "([1, 2, 3, 4, 5, 6], 1, [])",
+                        "([1, 1, 1, 1, 1, 1], 1, [[1, 1, 1], [1, 1, 1]])",
+                        "([8, 1, 2, 3, 4, 5], 2, [])",
+                        "([1, 2, 3, 4, 5, 9], 3, [])",
+                        "([3, 9, 1, 2, 4, 10], 8, [[1, 2, 3], [4, 9, 10]])",
+                        "([100000, 1, 99999], 100000, [[1, 99999, 100000]])",
+                        "([15, 1, 2, 2, 16, 14, 7, 10, 6], 5, [[1, 2, 2], [6, 7, 10], [14, 15, 16]])",
+                        "([9, 2, 18], 6, [])",
+                        "([1, 8, 20, 18, 4, 19], 9, [[1, 4, 8], [18, 19, 20]])",
+                        "([8, 2, 19, 9, 6, 8, 17, 10, 11], 4, [])",
+                        "([7, 18, 17, 1, 9, 17], 6, [])",
+                        "([18, 6, 4, 14, 15, 8, 9, 8, 16], 9, [[4, 6, 8], [8, 9, 14], [15, 16, 18]])",
+                        "([12, 12, 3, 13, 19, 8], 1, [])",
+                        "([9, 16, 9], 4, [])"
+                    ]
+                },
+                "body": "        result = run_divide_array(Solution, nums, k)\n        assert_divide_array(result, expected, k)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_divide_array, assert_divide_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 3, 4, 8, 7, 9, 3, 5, 1]\nk = 2\nexpected = [[1, 1, 3], [3, 4, 5], [7, 8, 9]]",
+    "playground_run": "result = run_divide_array(Solution, nums, k)\nresult",
+    "playground_assert": "assert_divide_array(result, expected, k)"
+}

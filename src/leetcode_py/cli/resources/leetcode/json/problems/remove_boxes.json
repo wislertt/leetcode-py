@@ -1,0 +1,104 @@
+{
+    "problem_name": "remove_boxes",
+    "solution_class_name": "Solution",
+    "problem_number": "546",
+    "problem_title": "Remove Boxes",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Memoization",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given several boxes with different colors represented by different positive numbers.\n\nYou may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e., composed of `k` boxes, `k >= 1`), remove them and get `k * k` points.\n\nReturn *the maximum points you can get*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: boxes = [1,3,2,2,2,3,4,3,1]\nOutput: 23\nExplanation:\n[1, 3, 2, 2, 2, 3, 4, 3, 1] \n----> [1, 3, 3, 4, 3, 1] (3*3=9 points) \n----> [1, 3, 3, 3, 1] (1*1=1 points) \n----> [1, 1] (3*3=9 points) \n----> [] (2*2=4 points)\n```"
+            },
+            {
+                "content": "```\nInput: boxes = [1,1,1]\nOutput: 9\n```"
+            },
+            {
+                "content": "```\nInput: boxes = [1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= boxes.length <= 100`\n- `1 <= boxes[i] <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_boxes",
+    "helpers_run_signature": "(solution_class: type, boxes: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_boxes(boxes)",
+    "helpers_assert_name": "remove_boxes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_boxes, run_remove_boxes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveBoxes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_boxes",
+                "signature": "(self, boxes: list[int]) -> int",
+                "body": "        # TODO: Implement remove_boxes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_boxes",
+                "signature": "(self, boxes: list[int], expected: int)",
+                "parametrize": "boxes, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,3,2,2,2,3,4,3,1], 23)",
+                        "([1,1,1], 9)",
+                        "([1], 1)",
+                        "([2,2,2,2], 16)",
+                        "([1,2], 2)",
+                        "([1,1,2,2,1,1], 20)",
+                        "([1,2,2,2,1], 13)",
+                        "([3,3,3,1,2,2,2,3], 26)",
+                        "([1,2,3,1,2,3], 8)",
+                        "([5], 1)",
+                        "([1,2,1,2], 6)",
+                        "([4,4,1,1,4,4], 20)",
+                        "([1,3,1,3,1], 11)",
+                        "([2,1,2,1,2,2,1], 19)",
+                        "([1,1,9,9,9,1,8,8], 22)",
+                        "([2,2], 4)",
+                        "([2,2,3], 5)",
+                        "([1,2,1,1,2,1,1,2,1], 39)",
+                        "([2,2,2,1,3,2,3,3,2,1,1,3], 36)",
+                        "([2,1], 2)",
+                        "([1,1,1,2,1], 17)",
+                        "([1,1,2,2,1], 13)",
+                        "([1,1,1,2,2,1,1,1,1,1,2,2], 72)",
+                        "([3,2,1,3,3,2], 12)",
+                        "([1,1,1,1,1], 25)",
+                        "([1,1,1,1,1,1,1,1], 64)"
+                    ]
+                },
+                "body": "        result = run_remove_boxes(Solution, boxes)\n        assert_remove_boxes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_boxes, assert_remove_boxes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboxes: list[int] = [1, 3, 2, 2, 2, 3, 4, 3, 1]\nexpected = 23",
+    "playground_run": "result = run_remove_boxes(Solution, boxes)\nresult",
+    "playground_assert": "assert_remove_boxes(result, expected)"
+}

@@ -1,0 +1,99 @@
+{
+    "problem_name": "check_if_a_parentheses_string_can_be_valid",
+    "solution_class_name": "Solution",
+    "problem_number": "2116",
+    "problem_title": "Check if a Parentheses String Can Be Valid",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Greedy, Bracket Sequences",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A parentheses string is a **non-empty** string consisting only of `'('` and `')'`. It is valid if **any** of the following conditions is **true**:\n\n- It is `()`.\n- It can be written as `AB` (`A` concatenated with `B`), where `A` and `B` are valid parentheses strings.\n- It can be written as `(A)`, where `A` is a valid parentheses string.\n\nYou are given a parentheses string `s` and a string `locked`, both of length `n`. `locked` is a binary string consisting only of `'0'`s and `'1'`s. For **each** index `i` of `locked`,\n\n- If `locked[i]` is `'1'`, you **cannot** change `s[i]`.\n- But if `locked[i]` is `'0'`, you **can** change `s[i]` to either `'('` or `')'`.\n\nReturn `true` if you can make `s` a valid parentheses string. Otherwise, return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/11/06/eg1.png)\n\n```\nInput: s = \"))()))\", locked = \"010100\"\nOutput: true\nExplanation: locked[1] == '1' and locked[3] == '1', so we cannot change s[1] or s[3].\nWe change s[0] and s[4] to '(' while leaving s[2] and s[5] unchanged to make s valid.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"()()\", locked = \"0000\"\nOutput: true\nExplanation: We do not need to make any changes because s is already valid.\n```"
+            },
+            {
+                "content": "```\nInput: s = \")\", locked = \"0\"\nOutput: false\nExplanation: locked permits us to change s[0].\nChanging s[0] to either '(' or ')' will not make s valid.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(((())(((())\", locked = \"111111010111\"\nOutput: true\nExplanation: locked permits us to change s[6] and s[8].\nWe change s[6] and s[8] to ')' to make s valid.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == s.length == locked.length`\n- `1 <= n <= 10^5`\n- `s[i]` is either `'('` or `')'`.\n- `locked[i]` is either `'0'` or `'1'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_be_valid",
+    "helpers_run_signature": "(solution_class: type, s: str, locked: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_be_valid(s, locked)",
+    "helpers_assert_name": "can_be_valid",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_be_valid, run_can_be_valid\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckIfAParenthesesStringCanBeValid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_be_valid",
+                "signature": "(self, s: str, locked: str) -> bool",
+                "body": "        # TODO: Implement can_be_valid\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_be_valid",
+                "signature": "(self, s: str, locked: str, expected: bool)",
+                "parametrize": "s, locked, expected",
+                "test_cases": {
+                    "list": [
+                        "('))()))', '010100', True)",
+                        "('()()', '0000', True)",
+                        "('(((())(((())', '111111010111', True)",
+                        "('()', '11', True)",
+                        "(')(', '00', True)",
+                        "('()', '00', True)",
+                        "('((((', '0000', True)",
+                        "('))))', '0000', True)",
+                        "('(()())((()', '1000111010', True)",
+                        "(')', '0', False)",
+                        "('(', '0', False)",
+                        "('(', '1', False)",
+                        "(')', '1', False)",
+                        "(')(', '11', False)",
+                        "('(()', '000', False)",
+                        "('())', '000', False)",
+                        "('((((', '0011', False)",
+                        "('((', '01', False)"
+                    ]
+                },
+                "body": "        result = run_can_be_valid(Solution, s, locked)\n        assert_can_be_valid(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_be_valid, assert_can_be_valid\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '))()))'\nlocked = '010100'\nexpected = True",
+    "playground_run": "result = run_can_be_valid(Solution, s, locked)\nresult",
+    "playground_assert": "assert_can_be_valid(result, expected)"
+}

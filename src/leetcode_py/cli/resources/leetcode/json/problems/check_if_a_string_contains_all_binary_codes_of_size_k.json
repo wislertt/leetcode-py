@@ -1,0 +1,103 @@
+{
+    "problem_name": "check_if_a_string_contains_all_binary_codes_of_size_k",
+    "solution_class_name": "Solution",
+    "problem_number": "1461",
+    "problem_title": "Check If a String Contains All Binary Codes of Size K",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Bit Manipulation, Rolling Hash, Hash Function, Directed Acyclic Graph",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a binary string `s` and an integer `k`, return `true` if every binary code of length `k` is a substring of `s`. Otherwise, return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"00110110\", k = 2\nOutput: true\nExplanation: The binary codes of length 2 are \"00\", \"01\", \"10\" and \"11\". They can be all found as substrings at indices 0, 1, 3 and 2 respectively.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"0110\", k = 1\nOutput: true\nExplanation: The binary codes of length 1 are \"0\" and \"1\", it is clear that both exist as a substring.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"0110\", k = 2\nOutput: false\nExplanation: The binary code \"00\" is of length 2 and does not exist in the array.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 5 * 10^5`\n- `s[i]` is either `'0'` or `'1'`.\n- `1 <= k <= 20`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "has_all_codes",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.has_all_codes(s, k)",
+    "helpers_assert_name": "has_all_codes",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_has_all_codes, run_has_all_codes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckIfAStringContainsAllBinaryCodesOfSizeK",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "has_all_codes",
+                "signature": "(self, s: str, k: int) -> bool",
+                "body": "        # TODO: Implement has_all_codes\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_has_all_codes",
+                "signature": "(self, s: str, k: int, expected: bool)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('00110110',2,True)",
+                        "('0110',1,True)",
+                        "('0110',2,False)",
+                        "('0',1,False)",
+                        "('1',1,False)",
+                        "('01',1,True)",
+                        "('10',1,True)",
+                        "('0000',1,False)",
+                        "('0000',2,False)",
+                        "('00110',2,True)",
+                        "('011100',3,False)",
+                        "('000111010100',3,True)",
+                        "('00',1,False)",
+                        "('110',1,True)",
+                        "('1011',2,False)",
+                        "('000001',2,False)",
+                        "('00100011',3,False)",
+                        "('1100110110',3,False)",
+                        "('100000111100000',4,False)",
+                        "('101001011110110111',4,False)",
+                        "('01010',2,False)",
+                        "('1101010110',3,False)",
+                        "('010101001',3,False)",
+                        "('1010001010101101101',4,False)",
+                        "('1010111000101001',4,False)"
+                    ]
+                },
+                "body": "        result = run_has_all_codes(Solution, s, k)\n        assert_has_all_codes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_has_all_codes, assert_has_all_codes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '00110110'\nk = 2\nexpected = True",
+    "playground_run": "result = run_has_all_codes(Solution, s, k)\nresult",
+    "playground_assert": "assert_has_all_codes(result, expected)"
+}

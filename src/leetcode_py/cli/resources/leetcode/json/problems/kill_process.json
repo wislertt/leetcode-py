@@ -1,0 +1,87 @@
+{
+    "problem_name": "kill_process",
+    "solution_class_name": "Solution",
+    "problem_number": "582",
+    "problem_title": "Kill Process",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Array, Hash Table",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have `n` processes forming a rooted tree structure. You are given two integer arrays `pid` and `ppid`, where `pid[i]` is the ID of the `i^th` process and `ppid[i]` is the ID of the `i^th` process's parent process.\n\nEach process has only **one parent process** but may have multiple children processes. Only one process has `ppid[i] = 0`, which means this process has **no parent process** (the root of the tree).\n\nWhen a process is **killed**, all of its children processes will also be killed.\n\nGiven an integer `kill` representing the ID of a process you want to kill, return a list of the IDs of the processes that will be killed. You may return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0582.Kill%20Process/images/ptree.jpg)\n\n```\nInput: pid = [1,3,10,5], ppid = [3,0,5,3], kill = 5\nOutput: [5,10]\nExplanation: The processes colored in red are the processes that should be killed.\n```"
+            },
+            {
+                "content": "```\nInput: pid = [1], ppid = [0], kill = 1\nOutput: [1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == pid.length`\n- `n == ppid.length`\n- `1 <= n <= 5 * 10^4`\n- `1 <= pid[i] <= 5 * 10^4`\n- `0 <= ppid[i] <= 5 * 10^4`\n- Only one process has no parent.\n- All the values of `pid` are **unique**.\n- `kill` is **guaranteed** to be in `pid`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "kill_process",
+    "helpers_run_signature": "(solution_class: type, pid: list[int], ppid: list[int], kill: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.kill_process(pid, ppid, kill)",
+    "helpers_assert_name": "kill_process",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Order-independent comparison\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_kill_process, run_kill_process\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KillProcess",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "kill_process",
+                "signature": "(self, pid: list[int], ppid: list[int], kill: int) -> list[int]",
+                "body": "        # TODO: Implement kill_process\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_kill_process",
+                "signature": "(self, pid: list[int], ppid: list[int], kill: int, expected: list[int])",
+                "parametrize": "pid, ppid, kill, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,3,10,5],[3,0,5,3],5,[5,10])",
+                        "([1],[0],1,[1])",
+                        "([1,2,3],[0,1,1],1,[1,2,3])",
+                        "([1,2,3],[0,1,1],2,[2])",
+                        "([1,2,3,4,5,6],[0,1,1,2,2,3],1,[1,2,3,4,5,6])",
+                        "([1,2,3,4,5,6],[0,1,1,2,2,3],3,[3,6])",
+                        "([2,4,6,8],[0,2,2,6],6,[6,8])",
+                        "([5,23,39,47,19,6,33,48,26],[0,5,5,5,5,47,6,23,6],23,[23,48])",
+                        "([28,27,44,37],[0,28,27,27],44,[44])",
+                        "([10,20,48,38,42,31,26,40,7],[0,10,10,20,20,48,10,42,26],48,[31,48])",
+                        "([1,49,2,26,27],[0,1,49,1,2],1,[1,2,26,27,49])",
+                        "([1,41],[0,1],1,[1,41])"
+                    ]
+                },
+                "body": "        result = run_kill_process(Solution, pid, ppid, kill)\n        assert_kill_process(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_kill_process, assert_kill_process\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npid = [1, 3, 10, 5]\nppid = [3, 0, 5, 3]\nkill = 5\nexpected = [5, 10]",
+    "playground_run": "result = run_kill_process(Solution, pid, ppid, kill)\nresult",
+    "playground_assert": "assert_kill_process(result, expected)"
+}

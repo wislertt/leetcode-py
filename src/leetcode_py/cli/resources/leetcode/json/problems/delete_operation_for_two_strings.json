@@ -1,0 +1,95 @@
+{
+    "problem_name": "delete_operation_for_two_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "583",
+    "problem_title": "Delete Operation for Two Strings",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Longest Common Subsequence",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two strings `word1` and `word2`, return *the minimum number of steps* required to make `word1` and `word2` the same.\n\nIn one step, you can delete exactly one character in either string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: word1 = \"sea\", word2 = \"eat\"\nOutput: 2\nExplanation: You need one step to make \"sea\" to \"ea\" and another step to make \"eat\" to \"ea\".\n```"
+            },
+            {
+                "content": "```\nInput: word1 = \"leetcode\", word2 = \"etco\"\nOutput: 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= word1.length, word2.length <= 500\n- word1 and word2 consist of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_distance",
+    "helpers_run_signature": "(solution_class: type, word1: str, word2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_distance(word1, word2)",
+    "helpers_assert_name": "min_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_distance, run_min_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DeleteOperationForTwoStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_distance",
+                "signature": "(self, word1: str, word2: str) -> int",
+                "body": "        # TODO: Implement min_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_distance",
+                "signature": "(self, word1: str, word2: str, expected: int)",
+                "parametrize": "word1, word2, expected",
+                "test_cases": {
+                    "list": [
+                        "('sea', 'eat', 2)",
+                        "('leetcode', 'etco', 4)",
+                        "('a', 'a', 0)",
+                        "('a', 'b', 2)",
+                        "('ab', 'ab', 0)",
+                        "('ab', 'ba', 2)",
+                        "('abc', 'abc', 0)",
+                        "('abc', 'def', 6)",
+                        "('abcde', 'ace', 2)",
+                        "('horse', 'ros', 4)",
+                        "('abcdef', 'azced', 5)",
+                        "('intention', 'execution', 8)",
+                        "('xy', 'x', 1)",
+                        "('aa', 'aaa', 1)",
+                        "('abcabc', 'bcbcca', 4)",
+                        "('mississippi', 'ssippi', 5)",
+                        "('acbcb', 'cdcbab', 5)",
+                        "('babbdd', 'bcadda', 4)",
+                        "('bd', 'cadd', 4)",
+                        "('c', 'bdddd', 6)"
+                    ]
+                },
+                "body": "        result = run_min_distance(Solution, word1, word2)\n        assert_min_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_distance, assert_min_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nword1 = 'sea'\nword2 = 'eat'\nexpected = 2",
+    "playground_run": "result = run_min_distance(Solution, word1, word2)\nresult",
+    "playground_assert": "assert_min_distance(result, expected)"
+}

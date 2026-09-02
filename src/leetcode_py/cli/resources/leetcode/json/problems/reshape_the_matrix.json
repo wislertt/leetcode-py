@@ -1,0 +1,95 @@
+{
+    "problem_name": "reshape_the_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "566",
+    "problem_title": "Reshape the Matrix",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "In MATLAB, there is a handy function called `reshape` which can reshape an `m x n` matrix into a new one with a different size `r x c` keeping its original data.\n\nYou are given an `m x n` matrix `mat` and two integers `r` and `c` representing the number of rows and the number of columns of the wanted reshaped matrix.\n\nThe reshaped matrix should be filled with all the elements of the original matrix in the same row-traversing order as they were.\n\nIf the `reshape` operation with given parameters is possible and legal, output the new reshaped matrix; Otherwise, output the original matrix.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/24/reshape1-grid.jpg)\n\n```\nInput: mat = [[1,2],[3,4]], r = 1, c = 4\nOutput: [[1,2,3,4]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/24/reshape2-grid.jpg)\n\n```\nInput: mat = [[1,2],[3,4]], r = 2, c = 4\nOutput: [[1,2],[3,4]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == mat.length\n- n == mat[i].length\n- 1 <= m, n <= 100\n- -1000 <= mat[i][j] <= 1000\n- 1 <= r, c <= 300",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "matrix_reshape",
+    "helpers_run_signature": "(solution_class: type, mat: list[list[int]], r: int, c: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.matrix_reshape(mat, r, c)",
+    "helpers_assert_name": "matrix_reshape",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_matrix_reshape, run_matrix_reshape\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReshapeTheMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "matrix_reshape",
+                "signature": "(self, mat: list[list[int]], r: int, c: int) -> list[list[int]]",
+                "body": "        # TODO: Implement matrix_reshape\n        return [[]]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_matrix_reshape",
+                "signature": "(self, mat: list[list[int]], r: int, c: int, expected: list[list[int]])",
+                "parametrize": "mat, r, c, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2], [3, 4]], 1, 4, [[1, 2, 3, 4]])",
+                        "([[1, 2], [3, 4]], 2, 4, [[1, 2], [3, 4]])",
+                        "([[1, 2], [3, 4]], 2, 2, [[1, 2], [3, 4]])",
+                        "([[1, 2], [3, 4]], 4, 1, [[1], [2], [3], [4]])",
+                        "([[1, 2], [3, 4]], 1, 2, [[1, 2], [3, 4]])",
+                        "([[1, 2], [3, 4]], 3, 2, [[1, 2], [3, 4]])",
+                        "([[1]], 1, 1, [[1]])",
+                        "([[1, 2, 3]], 3, 1, [[1], [2], [3]])",
+                        "([[1], [2], [3]], 1, 3, [[1, 2, 3]])",
+                        "([[-1, 0], [5, -1000]], 1, 4, [[-1, 0, 5, -1000]])",
+                        "([[0, 0], [0, 0]], 4, 1, [[0], [0], [0], [0]])",
+                        "([[7, 8, 9, 10]], 2, 2, [[7, 8], [9, 10]])",
+                        "([[1000, -1000]], 2, 1, [[1000], [-1000]])",
+                        "([[1, 2, 3], [4, 5, 6]], 2, 3, [[1, 2, 3], [4, 5, 6]])",
+                        "([[1, 2, 3], [4, 5, 6]], 3, 2, [[1, 2], [3, 4], [5, 6]])",
+                        "([[1, 2, 3], [4, 5, 6]], 6, 1, [[1], [2], [3], [4], [5], [6]])",
+                        "([[1, 2, 3], [4, 5, 6]], 2, 6, [[1, 2, 3], [4, 5, 6]])",
+                        "([[5]], 2, 3, [[5]])",
+                        "([[-20, -67, 11], [-80, 2, -84]], 2, 3, [[-20, -67, 11], [-80, 2, -84]])",
+                        "([[-7]], 1, 1, [[-7]])"
+                    ]
+                },
+                "body": "        result = run_matrix_reshape(Solution, mat, r, c)\n        assert_matrix_reshape(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_matrix_reshape, assert_matrix_reshape\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmat = [[1, 2], [3, 4]]\nr = 1\nc = 4\nexpected = [[1, 2, 3, 4]]",
+    "playground_run": "result = run_matrix_reshape(Solution, mat, r, c)\nresult",
+    "playground_assert": "assert_matrix_reshape(result, expected)"
+}

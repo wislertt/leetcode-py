@@ -1,0 +1,86 @@
+{
+    "problem_name": "random_point_in_non_overlapping_rectangles",
+    "solution_class_name": "Solution",
+    "problem_number": "497",
+    "problem_title": "Random Point in Non-overlapping Rectangles",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Binary Search, Reservoir Sampling, Prefix Sum, Randomized",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of non-overlapping axis-aligned rectangles `rects` where `rects[i] = [ai, bi, xi, yi]` indicates that `(ai, bi)` is the bottom-left corner point of the `ith` rectangle and `(xi, yi)` is the top-right corner point of the `ith` rectangle. Design an algorithm to pick a random integer point inside the space covered by one of the given rectangles. A point on the perimeter of a rectangle is included in the space covered by the rectangle.\n\nAny integer point inside the space covered by one of the given rectangles should be equally likely to be returned.\n\nNote that an integer point is a point that has integer coordinates.\n\nImplement the `Solution` class:\n\n- `Solution(int[][] rects)` Initializes the object with the given rectangles `rects`.\n- `int[] pick()` Returns a random integer point `[u, v]` inside the space covered by one of the given rectangles.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/24/lc-pickrandomrec.jpg)\n\n```\nInput\n[\"Solution\", \"pick\", \"pick\", \"pick\", \"pick\", \"pick\"]\n[[[[-2, -2, 1, 1], [2, 2, 4, 6]]], [], [], [], [], []]\nOutput\n[null, [1, -2], [1, -1], [-1, -2], [-2, -2], [0, 0]]\n\nExplanation\nSolution solution = new Solution([[-2, -2, 1, 1], [2, 2, 4, 6]]);\nsolution.pick(); // return [1, -2]\nsolution.pick(); // return [1, -1]\nsolution.pick(); // return [-1, -2]\nsolution.pick(); // return [-2, -2]\nsolution.pick(); // return [0, 0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= rects.length <= 100`\n- `rects[i].length == 4`\n- `-10^9 <= ai < xi <= 10^9`\n- `-10^9 <= bi < yi <= 10^9`\n- `xi - ai <= 2000`\n- `yi - bi <= 2000`\n- All the rectangles do not overlap.\n- At most `10^4` calls will be made to `pick`.",
+    "readme_additional": "**Follow up:** What is the time and space complexity of your solution? Could you do it with `O(log n)` pick time using binary search?",
+    "helpers_imports": "import random",
+    "helpers_content": "",
+    "helpers_run_name": "pick",
+    "helpers_run_signature": "(solution_class: type, rects: list[list[int]], seed: int, n: int) -> list[list[int]]",
+    "helpers_run_body": "    random.seed(seed)\n    implementation = solution_class(rects)\n    return [implementation.pick() for _ in range(n)]",
+    "helpers_assert_name": "pick",
+    "helpers_assert_signature": "(result: list[list[int]], rects: list[list[int]], n: int) -> bool",
+    "helpers_assert_body": "    total = sum((x - a + 1) * (y - b + 1) for a, b, x, y in rects)\n    assert result\n    for u, v in result:\n        assert any(a <= u <= x and b <= v <= y for a, b, x, y in rects)\n    # Every integer point must be reachable, and each rectangle's share of the\n    # draws must track its share of the integer points\n    if n >= 2000 and total <= 40:\n        assert len({(u, v) for u, v in result}) == total\n        for a, b, x, y in rects:\n            share = (x - a + 1) * (y - b + 1) / total\n            got = sum(1 for u, v in result if a <= u <= x and b <= v <= y) / n\n            assert abs(got - share) < 0.05\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\n\nfrom leetcode_py import logged_test\n\nfrom .helpers import assert_pick, run_pick\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RandomPointInNonOverlappingRectangles",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, rects: list[list[int]]) -> None",
+                "body": "        # TODO: Initialize Solution\n        pass"
+            },
+            {
+                "name": "pick",
+                "signature": "(self) -> list[int]",
+                "body": "        # TODO: Implement pick\n        return [0, 0]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pick",
+                "signature": "(self, rects: list[list[int]], seed: int, n: int)",
+                "parametrize": "rects, seed, n",
+                "test_cases": {
+                    "list": [
+                        "([[-2, -2, 1, 1], [2, 2, 4, 6]], 0, 2000)",
+                        "([[-2, -2, 1, 1], [2, 2, 4, 6]], 1, 31)",
+                        "([[1, 1, 2, 2]], 2, 100)",
+                        "([[1, 1, 5, 5]], 3, 500)",
+                        "([[0, 0, 3, 3]], 4, 400)",
+                        "([[-5, -4, 5, 4]], 5, 2000)",
+                        "([[0, 0, 1, 1], [-3, -3, -1, -1]], 6, 2000)",
+                        "([[0, 0, 2, 2], [3, 3, 5, 7]], 7, 2000)",
+                        "([[-100, -100, 100, 100]], 8, 2000)",
+                        "([[1, 2, 3, 4]], 9, 20)",
+                        "([[0, 0, 2000, 2000]], 10, 50)",
+                        "([[0, 0, 1, 1], [2, 2, 3, 3], [5, 5, 9, 9]], 11, 2000)",
+                        "([[1, 1, 2, 5], [-1, -1, 0, 3]], 12, 2000)",
+                        "([[-1000, -1000, 1000, 1000]], 13, 10)",
+                        "([[0, 0, 1, 1], [-3, -1, -2, 0], [2, -1, 3, 0]], 14, 2000)"
+                    ]
+                },
+                "body": "        result = run_pick(Solution, rects, seed, n)\n        assert_pick(result, rects, n)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_pick, run_pick\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrects = [[-2, -2, 1, 1], [2, 2, 4, 6]]\nseed = 0\nn = 20",
+    "playground_run": "result = run_pick(Solution, rects, seed, n)\nprint(result)\nresult",
+    "playground_assert": "assert_pick(result, rects, n)"
+}

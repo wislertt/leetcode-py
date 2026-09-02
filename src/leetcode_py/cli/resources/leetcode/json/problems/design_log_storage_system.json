@@ -1,0 +1,88 @@
+{
+    "problem_name": "design_log_storage_system",
+    "solution_class_name": "LogSystem",
+    "problem_number": "635",
+    "problem_title": "Design Log Storage System",
+    "difficulty": "Medium",
+    "topics": "Design, Hash Table, String, Ordered Set",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given several logs, where each log contains a unique ID and timestamp. Timestamp is a string that has the following format: `Year:Month:Day:Hour:Minute:Second`, for example, `2017:01:01:23:59:59`. All domains are zero-padded decimal numbers.\n\nImplement the `LogSystem` class:\n\n- `LogSystem()` Initializes the `LogSystem` object.\n- `void put(int id, string timestamp)` Stores the given log `(id, timestamp)` in your storage system.\n- `int[] retrieve(string start, string end, string granularity)` Returns the IDs of the logs whose timestamps are within the range from `start` to `end` inclusive. `start` and `end` all have the same format as `timestamp`, and `granularity` means how precise the range should be (i.e. to the exact `Day`, `Minute`, etc.).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"LogSystem\", \"put\", \"put\", \"put\", \"retrieve\", \"retrieve\"]\n[[1, \"2017:01:01:23:59:59\"], ...]\nOutput\n[null, null, null, null, [3, 2, 1], [2, 1]]\n\nExplanation\nLogSystem logSystem = new LogSystem();\nlogSystem.put(1, \"2017:01:01:23:59:59\");\nlogSystem.put(2, \"2017:01:01:22:59:59\");\nlog.put(3, \"2016:01:01:00:00:00\");\nlogSystem.retrieve(\"2016:01:01:01:01:01\", \"2017:01:01:23:00:00\", \"Year\"); // return [3,2,1], all logs between 2016 and 2017.\nlogSystem.retrieve(\"2016:01:01:01:01:01\", \"2017:01:01:23:00:00\", \"Hour\"); // return [2,1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= id <= 500`\n- `2000 <= Year <= 2017`\n- `1 <= Month <= 12`\n- `1 <= Day <= 31`\n- `0 <= Hour <= 23`\n- `0 <= Minute, Second <= 59`\n- `granularity` is one of the values `[\"Year\", \"Month\", \"Day\", \"Hour\", \"Minute\", \"Second\"]`.\n- At most `500` calls will be made to `put` and `retrieve`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "log_storage",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    log_system = None\n    results: list[list[int] | None] = []\n    for i, op in enumerate(operations):\n        if op == 'LogSystem':\n            log_system = solution_class()\n            results.append(None)\n        elif op == 'put' and log_system is not None:\n            log_system.put(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'retrieve' and log_system is not None:\n            results.append(log_system.retrieve(inputs[i][0], inputs[i][1], inputs[i][2]))\n    return results, log_system",
+    "helpers_assert_name": "log_storage",
+    "helpers_assert_signature": "(result: list[list[int] | None], expected: list[list[int] | None]) -> bool",
+    "helpers_assert_body": "    # Order-independent comparison for retrieve results\n    result_sorted = [sorted(r) if isinstance(r, list) else r for r in result]\n    expected_sorted = [sorted(r) if isinstance(r, list) else r for r in expected]\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_log_storage, run_log_storage\nfrom .solution import LogSystem",
+    "test_content": "",
+    "test_class_name": "DesignLogStorageSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "put",
+                "signature": "(self, log_id: int, timestamp: str) -> None",
+                "body": "        # TODO: Implement put\n        return None"
+            },
+            {
+                "name": "retrieve",
+                "signature": "(self, start: str, end: str, granularity: str) -> list[int]",
+                "body": "        # TODO: Implement retrieve\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_log_storage",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[list[int] | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['LogSystem','put','put','put','retrieve','retrieve'],[[],[1,'2017:01:01:23:59:59'],[2,'2017:01:01:22:59:59'],[3,'2016:01:01:00:00:00'],['2016:01:01:01:01:01','2017:01:01:23:00:00','Year'],['2016:01:01:01:01:01','2017:01:01:23:00:00','Hour']],[None,None,None,None,[1,2,3],[1,2]])",
+                        "(['LogSystem','put','retrieve'],[[],[1,'2017:01:01:00:00:00'],['2017:01:01:00:00:00','2017:01:01:00:00:00','Second']],[None,None,[1]])",
+                        "(['LogSystem','put','put','retrieve','retrieve'],[[],[5,'2015:06:15:12:30:45'],[7,'2015:06:15:12:30:45'],['2015:06:15:12:30:45','2015:06:15:12:30:45','Second'],['2015:01:01:00:00:00','2015:12:31:23:59:59','Year']],[None,None,None,[5,7],[5,7]])",
+                        "(['LogSystem','put','put','retrieve','retrieve','retrieve'],[[],[10,'2017:12:31:23:59:59'],[11,'2018:01:01:00:00:00'],['2017:01:01:00:00:00','2017:12:31:23:59:59','Year'],['2016:01:01:00:00:00','2018:12:31:23:59:59','Year'],['2017:12:01:00:00:00','2018:01:31:23:59:59','Month']],[None,None,None,[10],[10,11],[10,11]])",
+                        "(['LogSystem','put','retrieve','retrieve'],[[],[3,'2013:05:15:10:00:00'],['2013:05:15:10:00:00','2013:05:15:10:00:00','Second'],['2000:01:01:00:00:00','2020:01:01:00:00:00','Year']],[None,None,[3],[3]])",
+                        "(['LogSystem','put','put','retrieve'],[[],[1,'2010:01:01:00:00:00'],[2,'2012:01:01:00:00:00'],['2011:01:01:00:00:00','2011:01:01:00:00:00','Second']],[None,None,None,[]])",
+                        "(['LogSystem','put','put','retrieve','retrieve'],[[],[1,'2000:01:01:00:00:00'],[2,'2000:01:02:00:00:00'],['2000:01:01:00:00:00','2000:01:02:23:59:59','Day'],['2000:01:01:00:00:00','2000:01:02:23:59:59','Hour']],[None,None,None,[1,2],[1,2]])",
+                        "(['LogSystem','put','retrieve','retrieve','retrieve','retrieve'],[[],[9,'2011:03:07:05:13:42'],['2011:03:07:05:13:42','2011:03:07:05:13:42','Minute'],['2011:03:07:05:13:42','2011:03:07:05:13:42','Hour'],['2011:03:07:05:13:42','2011:03:07:05:13:41','Minute'],['2011:03:07:05:13:42','2011:03:07:05:13:41','Second']],[None,None,[9],[9],[9],[]])",
+                        "(['LogSystem','put','put','put','retrieve'],[[],[1,'2005:03:05:00:00:00'],[2,'2005:03:05:00:00:00'],[3,'2004:03:05:00:00:00'],['2005:03:05:00:00:00','2005:03:05:00:00:00','Second']],[None,None,None,None,[1,2]])",
+                        "(['LogSystem','put','retrieve'],[[],[1,'2017:06:02:07:09:22'],['2017:06:02:07:09:21','2017:06:02:07:09:22','Second']],[None,None,[1]])",
+                        "(['LogSystem','put','put','retrieve','retrieve'],[[],[1,'2000:01:01:00:00:00'],[2,'1999:12:31:23:59:59'],['1999:12:31:23:59:59','2000:01:01:00:00:00','Second'],['1999:12:31:23:59:59','2000:01:01:00:00:00','Minute']],[None,None,None,[1,2],[1,2]])",
+                        "(['LogSystem','retrieve'],[[],['2000:01:01:00:00:00','2017:01:01:00:00:00','Year']],[None,[]])"
+                    ]
+                },
+                "body": "        result, _ = run_log_storage(LogSystem, operations, inputs)\n        assert_log_storage(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_log_storage, assert_log_storage\nfrom solution import LogSystem",
+    "playground_setup": "# Example test case\noperations = ['LogSystem', 'put', 'retrieve']\ninputs = [[], [1, '2017:01:01:23:59:59'], ['2016:01:01:01:01:01', '2017:01:01:23:00:00', 'Year']]\nexpected = [None, None, [1]]",
+    "playground_run": "result, log_system = run_log_storage(LogSystem, operations, inputs)\nprint(result)\nlog_system",
+    "playground_assert": "assert_log_storage(result, expected)"
+}

@@ -1,0 +1,97 @@
+{
+    "problem_name": "maximize_ysum_by_picking_a_triplet_of_distinct_xvalues",
+    "solution_class_name": "Solution",
+    "problem_number": "3572",
+    "problem_title": "Maximize Y-Sum by Picking a Triplet of Distinct X-Values",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Greedy, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two integer arrays <code>x</code> and <code>y</code>, each of length <code>n</code>. You must choose three <strong>distinct</strong> indices <code>i</code>, <code>j</code>, and <code>k</code> such that:\n\n<ul>\n\t<li><code>x[i] != x[j]</code></li>\n\t<li><code>x[j] != x[k]</code></li>\n\t<li><code>x[k] != x[i]</code></li>\n</ul>\n\nYour goal is to <strong>maximize</strong> the value of <code>y[i] + y[j] + y[k]</code> under these conditions. Return the <strong>maximum</strong> possible sum that can be obtained by choosing such a triplet of indices.\n\nIf no such triplet exists, return -1.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: x = [1,2,1,3,2], y = [5,3,4,6,2]\nOutput: 14\nExplanation: Choose i = 0 (x[i] = 1, y[i] = 5), j = 1 (x[j] = 2, y[j] = 3), k = 3 (x[k] = 3, y[k] = 6). All three values chosen from x are distinct. 5 + 3 + 6 = 14 is the maximum we can obtain.\n```"
+            },
+            {
+                "content": "```\nInput: x = [1,2,1,2], y = [4,5,6,7]\nOutput: -1\nExplanation: There are only two distinct values in x. Hence, the output is -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == x.length == y.length\n- 3 <= n <= 10^5\n- 1 <= x[i], y[i] <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_sum_distinct_triplet",
+    "helpers_run_signature": "(solution_class: type, x: list[int], y: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_sum_distinct_triplet(x, y)",
+    "helpers_assert_name": "max_sum_distinct_triplet",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_sum_distinct_triplet, run_max_sum_distinct_triplet\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximizeYSumByPickingATripletOfDistinctXValues",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_sum_distinct_triplet",
+                "signature": "(self, x: list[int], y: list[int]) -> int",
+                "body": "        # TODO: Implement max_sum_distinct_triplet\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_sum_distinct_triplet",
+                "signature": "(self, x: list[int], y: list[int], expected: int)",
+                "parametrize": "x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 1, 3, 2], [5, 3, 4, 6, 2], 14)",
+                        "([1, 2, 1, 2], [4, 5, 6, 7], -1)",
+                        "([1, 2, 3], [1, 2, 3], 6)",
+                        "([1, 1, 1], [5, 5, 5], -1)",
+                        "([1, 2, 1], [10, 20, 30], -1)",
+                        "([3, 1, 2, 3], [4, 5, 6, 1], 15)",
+                        "([1, 1, 2, 2, 3, 3], [1, 9, 2, 8, 3, 7], 24)",
+                        "([5, 5, 4, 4, 3, 3], [1, 2, 3, 4, 5, 6], 12)",
+                        "([2, 2, 1, 1, 3, 3], [7, 6, 5, 4, 3, 2], 15)",
+                        "([1, 3, 2, 1, 3, 2], [10, 1, 1, 1, 10, 1], 21)",
+                        "([4, 1, 3, 2, 4, 3, 4, 3], [8, 3, 6, 3, 8, 6, 2, 10], 21)",
+                        "([1, 1, 1, 3, 4, 3], [2, 8, 8, 9, 7, 8], 24)",
+                        "([2, 1, 3, 2, 3, 3, 1], [10, 3, 10, 7, 2, 9, 6], 26)",
+                        "([4, 1, 2, 1, 4], [10, 4, 2, 4, 6], 16)",
+                        "([1, 4, 2], [7, 2, 5], 14)",
+                        "([2, 1, 4, 1, 3, 3, 4, 1], [5, 7, 7, 5, 4, 5, 4, 1], 19)",
+                        "([4, 2, 3, 2, 1, 3], [7, 6, 5, 3, 7, 1], 20)",
+                        "([1, 4, 3, 1, 3, 3], [5, 6, 10, 2, 3, 1], 21)",
+                        "([1, 2, 4], [6, 9, 9], 24)",
+                        "([1, 4, 4, 4, 3], [3, 8, 7, 5, 3], 14)",
+                        "([1000000, 999999, 999998], [1000000, 1000000, 1000000], 3000000)",
+                        "([1, 1, 1, 2, 2, 3], [1000000, 999999, 1, 2, 3, 4], 1000007)"
+                    ]
+                },
+                "body": "        result = run_max_sum_distinct_triplet(Solution, x, y)\n        assert_max_sum_distinct_triplet(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_sum_distinct_triplet, assert_max_sum_distinct_triplet\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = [1, 2, 1, 3, 2]\ny = [5, 3, 4, 6, 2]\nexpected = 14",
+    "playground_run": "result = run_max_sum_distinct_triplet(Solution, x, y)\nresult",
+    "playground_assert": "assert_max_sum_distinct_triplet(result, expected)"
+}

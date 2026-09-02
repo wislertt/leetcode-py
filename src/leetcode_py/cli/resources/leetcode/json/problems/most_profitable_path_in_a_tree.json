@@ -1,0 +1,95 @@
+{
+    "problem_name": "most_profitable_path_in_a_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "2467",
+    "problem_title": "Most Profitable Path in a Tree",
+    "difficulty": "Medium",
+    "topics": "Array, Tree, Depth-First Search, Breadth-First Search, Graph Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is an undirected tree with `n` nodes labeled from `0` to `n - 1`, rooted at node `0`. You are given a 2D integer array `edges` of length `n - 1` where `edges[i] = [a<sub>i</sub>, b<sub>i</sub>]` indicates that there is an edge between nodes `a<sub>i</sub>` and `b<sub>i</sub>` in the tree.\n\nAt every node `i`, there is a gate. You are also given an array of even integers `amount`, where `amount[i]` represents:\n\n- the price needed to open the gate at node `i`, if `amount[i]` is negative, or,\n- the cash reward obtained on opening the gate at node `i`, otherwise.\n\nThe game goes on as follows:\n\n- Initially, Alice is at node `0` and Bob is at node `bob`.\n- At every second, Alice and Bob **each** move to an adjacent node. Alice moves towards some **leaf node**, while Bob moves towards node `0`.\n- For **every** node along their path, Alice and Bob either spend money to open the gate at that node, or accept the reward. Note that:\n  - If the gate is **already open**, no price will be required, nor will there be any cash reward.\n  - If Alice and Bob reach the node **simultaneously**, they share the price/reward for opening the gate there. In other words, if the price to open the gate is `c`, then both Alice and Bob pay `c / 2` each. Similarly, if the reward at the gate is `c`, both of them receive `c / 2` each.\n- If Alice reaches a leaf node, she stops moving. Similarly, if Bob reaches node `0`, he stops moving. Note that these events are **independent** of each other.\n\nReturn the **maximum** net income Alice can have if she travels towards the optimal leaf node.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/10/29/eg1.png)\n\n```\nInput: edges = [[0,1],[1,2],[1,3],[3,4]], bob = 3, amount = [-2,4,2,-4,6]\nOutput: 6\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/10/29/eg2.png)\n\n```\nInput: edges = [[0,1]], bob = 1, amount = [-7280,2350]\nOutput: -7280\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 10<sup>5</sup>\n- edges.length == n - 1\n- edges[i].length == 2\n- 0 <= a<sub>i</sub>, b<sub>i</sub> < n\n- a<sub>i</sub> != b<sub>i</sub>\n- edges represents a valid tree.\n- 1 <= bob < n\n- amount.length == n\n- amount[i] is an even integer in the range [-10<sup>4</sup>, 10<sup>4</sup>].",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "most_profitable_path",
+    "helpers_run_signature": "(solution_class: type, edges: list[list[int]], bob: int, amount: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.most_profitable_path(edges, bob, amount)",
+    "helpers_assert_name": "most_profitable_path",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_most_profitable_path, run_most_profitable_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MostProfitablePathInATree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "most_profitable_path",
+                "signature": "(self, edges: list[list[int]], bob: int, amount: list[int]) -> int",
+                "body": "        # TODO: Implement most_profitable_path\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_most_profitable_path",
+                "signature": "(self, edges: list[list[int]], bob: int, amount: list[int], expected: int)",
+                "parametrize": "edges, bob, amount, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1],[1,2],[1,3],[3,4]], 3, [-2,4,2,-4,6], 6)",
+                        "([[0,1]], 1, [-7280,2350], -7280)",
+                        "([[0,1],[1,2]], 2, [-4,6,8], -1)",
+                        "([[0,1]], 1, [0,10000], 0)",
+                        "([[0,1]], 1, [0,-10000], 0)",
+                        "([[0,1],[0,2]], 2, [4,-6,8], 4)",
+                        "([[0,1],[0,2]], 1, [4,6,-8], 4)",
+                        "([[0,1],[1,2],[2,3]], 3, [2,-2,-2,-2], 0)",
+                        "([[0,1],[1,2],[1,3],[2,4],[2,5]], 3, [-2,-4,4,0,8,-6], 8)",
+                        "([[0,1],[1,2],[2,3],[3,4],[4,5],[3,6]], 5, [2,-2,4,6,-8,10,12], 16)",
+                        "([[0,1],[0,2],[1,3],[1,4],[2,5],[2,6]], 6, [0,2,-4,6,-8,10,-12], 8)",
+                        "([[0,1],[1,2],[1,3],[3,4]], 4, [-2,4,2,-4,6], 4)",
+                        "([[0,1],[1,3],[3,4],[0,2]], 4, [-18,16,-6,-6,-6], -2)",
+                        "([[2,3],[0,1],[0,2]], 2, [0,14,-2,-8], 14)",
+                        "([[2,3],[1,4],[0,1],[2,6],[3,5],[1,2]], 3, [12,-12,2,-4,4,-2,2], 4)",
+                        "([[0,2],[0,5],[1,3],[0,4],[0,1]], 1, [6,2,10,14,2,-12], 20)",
+                        "([[0,6],[0,4],[1,2],[4,5],[0,3],[0,1]], 4, [6,-8,-16,-4,-2,-18,16], 22)",
+                        "([[1,2],[0,1]], 1, [2,8,12], 14)",
+                        "([[0,2],[0,1],[0,3]], 1, [-10,8,12,2], 2)",
+                        "([[0,2],[1,4],[1,3],[0,1]], 1, [2,-18,18,-10,12], 20)"
+                    ]
+                },
+                "body": "        result = run_most_profitable_path(Solution, edges, bob, amount)\n        assert_most_profitable_path(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_most_profitable_path, assert_most_profitable_path\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nedges = [[0,1],[1,2],[1,3],[3,4]]\nbob = 3\namount = [-2,4,2,-4,6]\nexpected = 6",
+    "playground_run": "result = run_most_profitable_path(Solution, edges, bob, amount)\nresult",
+    "playground_assert": "assert_most_profitable_path(result, expected)"
+}

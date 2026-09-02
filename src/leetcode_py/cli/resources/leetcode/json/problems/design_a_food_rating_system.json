@@ -1,0 +1,91 @@
+{
+    "problem_name": "design_a_food_rating_system",
+    "solution_class_name": "FoodRatings",
+    "problem_number": "2353",
+    "problem_title": "Design a Food Rating System",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Design, Heap (Priority Queue), Ordered Set",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a food rating system that can do the following:\n\n- Modify the rating of a food item listed in the system.\n- Return the highest-rated food item for a type of cuisine in the system.\n\nImplement the `FoodRatings` class:\n\n- `FoodRatings(String[] foods, String[] cuisines, int[] ratings)` Initializes the system. The food items are described by `foods`, `cuisines`, and `ratings`, all of which have a length of `n`.\n    - `foods[i]` is the name of the `i`th food,\n    - `cuisines[i]` is the type of cuisine of the `i`th food, and\n    - `ratings[i]` is the initial rating of the `i`th food.\n- `void changeRating(String food, int newRating)` Changes the rating of the food item with the name `food`.\n- `String highestRated(String cuisine)` Returns the name of the food item that has the highest rating for the given type of cuisine. If there is a tie, return the item with the **lexicographically smaller** name.\n\nNote that a string `x` is lexicographically smaller than string `y` if `x` comes before `y` in dictionary order, that is, either `x` is a prefix of `y`, or if `i` is the first position such that `x[i] != y[i]`, then `x[i]` comes before `y[i]` in alphabetic order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"FoodRatings\", \"highestRated\", \"highestRated\", \"changeRating\", \"highestRated\", \"changeRating\", \"highestRated\"]\n[[[\"kimchi\", \"miso\", \"sushi\", \"moussaka\", \"ramen\", \"bulgogi\"], [\"korean\", \"japanese\", \"japanese\", \"greek\", \"japanese\", \"korean\"], [9, 12, 8, 15, 14, 7]], [\"korean\"], [\"japanese\"], [\"sushi\", 16], [\"japanese\"], [\"ramen\", 16], [\"japanese\"]]\nOutput\n[null, \"kimchi\", \"ramen\", null, \"sushi\", null, \"ramen\"]\n\nExplanation\nfoodRatings.highestRated(\"korean\"); // return \"kimchi\"\n// \"kimchi\" is the highest rated korean food with a rating of 9.\nfoodRatings.highestRated(\"japanese\"); // return \"ramen\"\n// \"ramen\" is the highest rated japanese food with a rating of 14.\nfoodRatings.changeRating(\"sushi\", 16); // \"sushi\" now has a rating of 16.\nfoodRatings.highestRated(\"japanese\"); // return \"sushi\"\nfoodRatings.changeRating(\"ramen\", 16); // \"ramen\" now has a rating of 16.\nfoodRatings.highestRated(\"japanese\"); // return \"ramen\"\n// Both \"sushi\" and \"ramen\" have a rating of 16.\n// However, \"ramen\" is lexicographically smaller than \"sushi\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 2 * 10^4`\n- `n == foods.length == cuisines.length == ratings.length`\n- `1 <= foods[i].length, cuisines[i].length <= 10`\n- `foods[i]`, `cuisines[i]` consist of lowercase English letters.\n- `1 <= ratings[i] <= 10^8`\n- All the strings in `foods` are **distinct**.\n- `food` will be the name of a food item in the system across all calls to `changeRating`.\n- `cuisine` will be a type of cuisine of **at least one** food item in the system across all calls to `highestRated`.\n- At most `2 * 10^4` calls **in total** will be made to `changeRating` and `highestRated`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "food_ratings",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    system = None\n    results: list[str | None] = []\n    for i, op in enumerate(operations):\n        if op == 'FoodRatings':\n            system = solution_class(*inputs[i])\n            results.append(None)\n        elif op == 'change_rating' and system is not None:\n            system.change_rating(*inputs[i])\n            results.append(None)\n        elif op == 'highest_rated' and system is not None:\n            results.append(system.highest_rated(*inputs[i]))\n    return results, system",
+    "helpers_assert_name": "food_ratings",
+    "helpers_assert_signature": "(result: list[str | None], expected: list[str | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_food_ratings, run_food_ratings\nfrom .solution import FoodRatings",
+    "test_content": "",
+    "test_class_name": "DesignAFoodRatingSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, foods: list[str], cuisines: list[str], ratings: list[int]) -> None",
+                "body": "        # TODO: Initialize food rating system\n        pass"
+            },
+            {
+                "name": "change_rating",
+                "signature": "(self, food: str, new_rating: int) -> None",
+                "body": "        # TODO: Implement change_rating\n        pass"
+            },
+            {
+                "name": "highest_rated",
+                "signature": "(self, cuisine: str) -> str",
+                "body": "        # TODO: Implement highest_rated\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_food_ratings",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[str | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['FoodRatings', 'highest_rated', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated'], [[['kimchi', 'miso', 'sushi', 'moussaka', 'ramen', 'bulgogi'], ['korean', 'japanese', 'japanese', 'greek', 'japanese', 'korean'], [9, 12, 8, 15, 14, 7]], ['korean'], ['japanese'], ['sushi', 16], ['japanese'], ['ramen', 16], ['japanese']], [None, 'kimchi', 'ramen', None, 'sushi', None, 'ramen'])",
+                        "(['FoodRatings', 'highest_rated', 'highest_rated'], [[['maki', 'udon', 'taco'], ['jp', 'jp', 'mx'], [10, 10, 4]], ['jp'], ['mx']], [None, 'maki', 'taco'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated'], [[['soba', 'ramen'], ['jp', 'jp'], [5, 9]], ['jp'], ['soba', 9], ['jp'], ['ramen', 3], ['jp']], [None, 'ramen', None, 'ramen', None, 'soba'])",
+                        "(['FoodRatings', 'highest_rated', 'highest_rated'], [[['soup'], ['warm'], [3]], ['warm'], ['warm']], [None, 'soup', 'soup'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated', 'highest_rated'], [[['cake', 'pie', 'tart'], ['sweet', 'sweet', 'sweet'], [8, 5, 2]], ['sweet'], ['cake', 1], ['sweet'], ['sweet']], [None, 'cake', None, 'pie', 'pie'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated'], [[['naan', 'pita'], ['bread', 'bread'], [7, 7]], ['bread'], ['naan', 7], ['bread']], [None, 'naan', None, 'naan'])",
+                        "(['FoodRatings', 'highest_rated', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated', 'highest_rated'], [[['falafel', 'hummus', 'salsa', 'queso'], ['mid', 'mid', 'lat', 'lat'], [6, 9, 8, 3]], ['mid'], ['lat'], ['queso', 12], ['lat'], ['queso', 1], ['lat'], ['mid']], [None, 'hummus', 'salsa', None, 'queso', None, 'salsa', 'hummus'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated'], [[['tofu', 'seaweed'], ['vegan', 'vegan'], [2, 20]], ['vegan'], ['tofu', 21], ['vegan'], ['tofu', 20], ['vegan']], [None, 'seaweed', None, 'tofu', None, 'seaweed'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated', 'highest_rated'], [[['aa', 'ab', 'ba', 'bb'], ['c', 'c', 'c', 'c'], [4, 6, 6, 2]], ['c'], ['bb', 9], ['c'], ['aa', 9], ['c'], ['bb', 9], ['c'], ['c']], [None, 'ab', None, 'bb', None, 'aa', None, 'aa', 'aa'])",
+                        "(['FoodRatings', 'change_rating', 'change_rating', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated'], [[['ba', 'dd', 'bb', 'cc'], ['y', 'x', 'x', 'y'], [63, 99, 67, 33]], ['dd', 97], ['dd', 76], ['ba', 28], ['x'], ['cc', 47], ['y']], [None, None, None, None, 'dd', None, 'cc'])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'highest_rated', 'highest_rated', 'change_rating'], [[['ba', 'bb'], ['x', 'y'], [1, 37]], ['x'], ['bb', 97], ['x'], ['y'], ['bb', 51]], [None, 'ba', None, 'ba', 'bb', None])",
+                        "(['FoodRatings', 'highest_rated', 'highest_rated', 'highest_rated', 'change_rating', 'change_rating'], [[['cc', 'ba'], ['z', 'y'], [18, 84]], ['z'], ['y'], ['y'], ['cc', 14], ['cc', 61]], [None, 'cc', 'ba', 'ba', None, None])",
+                        "(['FoodRatings', 'highest_rated', 'change_rating', 'change_rating', 'highest_rated', 'change_rating', 'highest_rated', 'highest_rated'], [[['ba', 'dd', 'cc', 'bb'], ['z', 'x', 'z', 'x'], [31, 59, 26, 100]], ['x'], ['cc', 49], ['cc', 29], ['z'], ['dd', 4], ['z'], ['x']], [None, 'bb', None, None, 'ba', None, 'ba', 'bb'])",
+                        "(['FoodRatings', 'change_rating', 'change_rating', 'change_rating', 'highest_rated'], [[['ab', 'dd', 'ba', 'cc'], ['x', 'y', 'y', 'y'], [41, 60, 27, 42]], ['ab', 65], ['ba', 37], ['cc', 91], ['y']], [None, None, None, None, 'cc'])",
+                        "(['FoodRatings', 'highest_rated', 'highest_rated', 'change_rating', 'change_rating'], [[['dd', 'ba'], ['y', 'z'], [88, 36]], ['z'], ['y'], ['ba', 62], ['ba', 89]], [None, 'ba', 'dd', None, None])"
+                    ]
+                },
+                "body": "        result, _ = run_food_ratings(FoodRatings, operations, inputs)\n        assert_food_ratings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_food_ratings, run_food_ratings\nfrom solution import FoodRatings",
+    "playground_setup": "# Example test case\noperations = ['FoodRatings', 'highest_rated', 'highest_rated', 'change_rating', 'highest_rated']\ninputs = [[['kimchi', 'miso'], ['korean', 'japanese'], [9, 12]], [['korean']], [['japanese']], [['miso', 15]], [['japanese']]]\nexpected = [None, 'kimchi', 'miso', None, 'miso']",
+    "playground_run": "result, system = run_food_ratings(FoodRatings, operations, inputs)\nprint(result)\nsystem",
+    "playground_assert": "assert_food_ratings(result, expected)"
+}

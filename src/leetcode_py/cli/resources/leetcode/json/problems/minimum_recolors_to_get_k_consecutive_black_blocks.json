@@ -1,0 +1,93 @@
+{
+    "problem_name": "minimum_recolors_to_get_k_consecutive_black_blocks",
+    "solution_class_name": "Solution",
+    "problem_number": "2379",
+    "problem_title": "Minimum Recolors to Get K Consecutive Black Blocks",
+    "difficulty": "Easy",
+    "topics": "String, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a 0-indexed string `blocks` of length `n`, where `blocks[i]` is either `'W'` or `'B'`, representing the color of the ith block. The characters `'W'` and `'B'` denote the colors white and black, respectively.\n\nYou are also given an integer `k`, which is the desired number of consecutive black blocks.\n\nIn one operation, you can recolor a white block such that it becomes a black block.\n\nReturn the minimum number of operations needed such that there is at least one occurrence of k consecutive black blocks.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: blocks = \"WBBWWBBWBW\", k = 7\nOutput: 3\nExplanation:\nOne way to achieve 7 consecutive black blocks is to recolor the 0th, 3rd, and 4th blocks\nso that blocks = \"BBBBBBBWBW\".\nIt can be shown that there is no way to achieve 7 consecutive black blocks in less than 3 operations.\nTherefore, we return 3.\n```"
+            },
+            {
+                "content": "```\nInput: blocks = \"WBWBBBW\", k = 2\nOutput: 0\nExplanation:\nNo changes need to be made, since 2 consecutive black blocks already exist.\nTherefore, we return 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == blocks.length\n- 1 <= n <= 100\n- blocks[i] is either 'W' or 'B'.\n- 1 <= k <= n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_recolors",
+    "helpers_run_signature": "(solution_class: type, blocks: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_recolors(blocks, k)",
+    "helpers_assert_name": "minimum_recolors",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_recolors, run_minimum_recolors\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumRecolorsToGetKConsecutiveBlackBlocks",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_recolors",
+                "signature": "(self, blocks: str, k: int) -> int",
+                "body": "        # TODO: Implement minimum_recolors\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_recolors",
+                "signature": "(self, blocks: str, k: int, expected: int)",
+                "parametrize": "blocks, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('WBBWWBBWBW', 7, 3)",
+                        "('WBWBBBW', 2, 0)",
+                        "('B', 1, 0)",
+                        "('W', 1, 1)",
+                        "('WB', 2, 1)",
+                        "('BB', 2, 0)",
+                        "('WWWW', 4, 4)",
+                        "('BBBB', 4, 0)",
+                        "('WBBW', 3, 1)",
+                        "('BWBWBWBW', 2, 1)",
+                        "('WBWBWBWB', 3, 1)",
+                        "('WWBBWWBB', 5, 2)",
+                        "('BBBWWBB', 4, 1)",
+                        "('WB', 1, 0)",
+                        "('BWBBBWBBWBWBWBBW', 7, 2)",
+                        "('BWBW', 2, 1)",
+                        "('WBW', 1, 0)",
+                        "('W', 1, 1)"
+                    ]
+                },
+                "body": "        result = run_minimum_recolors(Solution, blocks, k)\n        assert_minimum_recolors(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_recolors, assert_minimum_recolors\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nblocks = 'WBBWWBBWBW'\nk = 7\nexpected = 3",
+    "playground_run": "result = run_minimum_recolors(Solution, blocks, k)\nresult",
+    "playground_assert": "assert_minimum_recolors(result, expected)"
+}

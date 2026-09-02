@@ -1,0 +1,98 @@
+{
+    "problem_name": "word_ladder_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "126",
+    "problem_title": "Word Ladder II",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Backtracking, Breadth-First Search, Bidirectional Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A **transformation sequence** from word `beginWord` to word `endWord` using a dictionary `wordList` is a sequence of words `beginWord -> s1 -> s2 -> ... -> sk` such that:\n\n- Every adjacent pair of words differs by a single letter.\n- Every `si` for `1 <= i <= k` is in `wordList`. Note that `beginWord` does not need to be in `wordList`.\n- `sk == endWord`\n\nGiven two words, `beginWord` and `endWord`, and a dictionary `wordList`, return *all the **shortest transformation sequences** from* `beginWord` *to* `endWord`*, or an empty list if no such sequence exists. Each sequence should be returned as a list of the words* `[beginWord, s1, s2, ..., sk]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]\nOutput: [[\"hit\",\"hot\",\"dot\",\"dog\",\"cog\"],[\"hit\",\"hot\",\"lot\",\"log\",\"cog\"]]\n```\n**Explanation:** There are 2 shortest transformation sequences: \"hit\" -> \"hot\" -> \"dot\" -> \"dog\" -> \"cog\" and \"hit\" -> \"hot\" -> \"lot\" -> \"log\" -> \"cog\"."
+            },
+            {
+                "content": "```\nInput: beginWord = \"hit\", endWord = \"cog\", wordList = [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]\nOutput: []\n```\n**Explanation:** The endWord \"cog\" is not in wordList, therefore there is no valid transformation sequence."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= beginWord.length <= 5\n- endWord.length == beginWord.length\n- 1 <= wordList.length <= 500\n- wordList[i].length == beginWord.length\n- beginWord, endWord, and wordList[i] consist of lowercase English letters.\n- beginWord != endWord\n- All the words in wordList are unique.\n- The sum of all shortest transformation sequences does not exceed 10^5.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_ladders",
+    "helpers_run_signature": "(solution_class: type, begin_word: str, end_word: str, word_list: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_ladders(begin_word, end_word, word_list)",
+    "helpers_assert_name": "find_ladders",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "from string import ascii_lowercase",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_ladders, run_find_ladders\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordLadderII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_ladders",
+                "signature": "(self, begin_word: str, end_word: str, word_list: list[str]) -> list[list[str]]",
+                "body": "        # TODO: Implement find_ladders\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_ladders",
+                "signature": "(self, begin_word: str, end_word: str, word_list: list[str], expected: list[list[str]])",
+                "parametrize": "begin_word, end_word, word_list, expected",
+                "test_cases": {
+                    "list": [
+                        "('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log', 'cog'], [['hit', 'hot', 'dot', 'dog', 'cog'], ['hit', 'hot', 'lot', 'log', 'cog']])",
+                        "('hit', 'cog', ['hot', 'dot', 'dog', 'lot', 'log'], [])",
+                        "('hot', 'dot', ['dot'], [['hot', 'dot']])",
+                        "('hot', 'dot', [], [])",
+                        "('hot', 'dog', ['hot', 'dog'], [])",
+                        "('hot', 'dog', ['hot', 'hog', 'dog'], [['hot', 'hog', 'dog']])",
+                        "('a', 'c', ['a', 'b', 'c'], [['a', 'c']])",
+                        "('aa', 'bb', ['ab', 'ba', 'bb'], [['aa', 'ba', 'bb'], ['aa', 'ab', 'bb']])",
+                        "('aa', 'ad', ['ab', 'ac', 'ad'], [['aa', 'ad']])",
+                        "('lost', 'miss', ['most', 'mist', 'miss', 'lost', 'fist', 'fish'], [['lost', 'most', 'mist', 'miss']])",
+                        "('hit', 'cog', ['hot', 'dot', 'dog', 'cog'], [['hit', 'hot', 'dot', 'dog', 'cog']])",
+                        "('hot', 'dot', ['hot', 'dot'], [['hot', 'dot']])",
+                        "('ab', 'ba', ['ab', 'bb', 'cb', 'ba'], [['ab', 'bb', 'ba']])",
+                        "('aa', 'cc', ['ab', 'ac', 'bb', 'bc', 'cc'], [['aa', 'ac', 'cc']])",
+                        "('red', 'tax', ['ted', 'tex', 'red', 'tax'], [['red', 'ted', 'tex', 'tax']])",
+                        "('bc', 'ac', ['ab', 'ac', 'ba', 'cb', 'cc'], [['bc', 'ac']])",
+                        "('cb', 'aa', ['aa', 'ac', 'bc', 'cc'], [['cb', 'cc', 'ac', 'aa']])",
+                        "('cc', 'bb', ['ab', 'bb', 'bc', 'ca', 'cb'], [['cc', 'bc', 'bb'], ['cc', 'cb', 'bb']])",
+                        "('bb', 'cc', ['ab', 'cb', 'cc'], [['bb', 'cb', 'cc']])",
+                        "('ac', 'ab', ['aa', 'ab', 'bc', 'cb', 'cc'], [['ac', 'ab']])",
+                        "('cc', 'ac', ['ab', 'ac', 'ba'], [['cc', 'ac']])",
+                        "('ac', 'ba', ['aa', 'ac', 'ba', 'bb', 'bc', 'cc'], [['ac', 'bc', 'ba'], ['ac', 'aa', 'ba']])",
+                        "('cb', 'ab', ['ab', 'ac', 'ba', 'bc', 'cb'], [['cb', 'ab']])"
+                    ]
+                },
+                "body": "        result = run_find_ladders(Solution, begin_word, end_word, word_list)\n        assert_find_ladders(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_ladders, assert_find_ladders\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbegin_word = 'hit'\nend_word = 'cog'\nword_list = ['hot', 'dot', 'dog', 'lot', 'log', 'cog']\nexpected = [['hit', 'hot', 'dot', 'dog', 'cog'], ['hit', 'hot', 'lot', 'log', 'cog']]",
+    "playground_run": "result = run_find_ladders(Solution, begin_word, end_word, word_list)\nresult",
+    "playground_assert": "assert_find_ladders(result, expected)"
+}

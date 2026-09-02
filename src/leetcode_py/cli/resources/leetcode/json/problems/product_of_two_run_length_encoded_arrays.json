@@ -1,0 +1,99 @@
+{
+    "problem_name": "product_of_two_run_length_encoded_arrays",
+    "solution_class_name": "Solution",
+    "problem_number": "1868",
+    "problem_title": "Product of Two Run-Length Encoded Arrays",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "**Run-length encoding** is a compression algorithm that allows for an integer array `nums` with many segments of **consecutive repeated** numbers to be represented by a (generally smaller) 2D array `encoded`. Each `encoded[i] = [val_i, freq_i]` describes the `i`-th segment of repeated numbers in `nums` where `val_i` is the value that is repeated `freq_i` times.\n\n- For example, `nums = [1,1,1,2,2,2,2,2]` is represented by the **run-length encoded** array `encoded = [[1,3],[2,5]]`. Another way to read this is \"three `1`'s followed by five `2`'s\".\n\nThe **product** of two run-length encoded arrays `encoded1` and `encoded2` can be calculated using the following steps:\n\n1. **Expand** both `encoded1` and `encoded2` into the full arrays `nums1` and `nums2` respectively.\n2. Create a new array `prodNums` of length `nums1.length` and set `prodNums[i] = nums1[i] * nums2[i]`.\n3. **Compress** `prodNums` into a run-length encoded array and return it.\n\nYou are given two **run-length encoded** arrays `encoded1` and `encoded2` representing full arrays `nums1` and `nums2` respectively. Both `nums1` and `nums2` have the **same length**. Each `encoded1[i] = [val_i, freq_i]` describes the `i`-th segment of `nums1`, and each `encoded2[j] = [val_j, freq_j]` describes the `j`-th segment of `nums2`.\n\nReturn *the **product** of* `encoded1` *and* `encoded2`.\n\n**Note:** Compression should be done such that the run-length encoded array has the **minimum** possible length.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: encoded1 = [[1,3],[2,3]], encoded2 = [[6,3],[3,3]]\nOutput: [[6,6]]\nExplanation: encoded1 expands to [1,1,1,2,2,2] and encoded2 expands to [6,6,6,3,3,3].\nprodNums = [6,6,6,6,6,6], which is compressed into the run-length encoded array [[6,6]].\n```"
+            },
+            {
+                "content": "```\nInput: encoded1 = [[1,3],[2,1],[3,2]], encoded2 = [[2,3],[3,3]]\nOutput: [[2,3],[6,1],[9,2]]\nExplanation: encoded1 expands to [1,1,1,2,3,3] and encoded2 expands to [2,2,2,3,3,3].\nprodNums = [2,2,2,6,9,9], which is compressed into the run-length encoded array [[2,3],[6,1],[9,2]].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= encoded1.length, encoded2.length <= 10^5\n- encoded1[i].length == 2\n- encoded2[j].length == 2\n- 1 <= val_i, freq_i <= 10^4 for each encoded1[i]\n- 1 <= val_j, freq_j <= 10^4 for each encoded2[j]\n- The full arrays that encoded1 and encoded2 represent are the same length.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_rle_array",
+    "helpers_run_signature": "(solution_class: type, encoded1: list[list[int]], encoded2: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_rle_array(encoded1, encoded2)",
+    "helpers_assert_name": "find_rle_array",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_rle_array, run_find_rle_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ProductOfTwoRunLengthEncodedArrays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_rle_array",
+                "signature": "(self, encoded1: list[list[int]], encoded2: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement find_rle_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_rle_array",
+                "signature": "(self, encoded1: list[list[int]], encoded2: list[list[int]], expected: list[list[int]])",
+                "parametrize": "encoded1, encoded2, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 3], [2, 3]], [[6, 3], [3, 3]], [[6, 6]])",
+                        "([[1, 3], [2, 1], [3, 2]], [[2, 3], [3, 3]], [[2, 3], [6, 1], [9, 2]])",
+                        "([[2, 3]], [[4, 3]], [[8, 3]])",
+                        "([[5, 1]], [[7, 1]], [[35, 1]])",
+                        "([[1, 2], [2, 2]], [[3, 2], [2, 2]], [[3, 2], [4, 2]])",
+                        "([[2, 2], [3, 1]], [[3, 2], [2, 1]], [[6, 3]])",
+                        "([[1, 1], [2, 2], [1, 1]], [[1, 1], [2, 2], [1, 1]], [[1, 1], [4, 2], [1, 1]])",
+                        "([[4, 2], [6, 1], [8, 3]], [[2, 4], [3, 2]], [[8, 2], [12, 1], [16, 1], [24, 2]])",
+                        "([[1, 1], [3, 1], [5, 1]], [[2, 2], [4, 1]], [[2, 1], [6, 1], [20, 1]])",
+                        "([[10, 2], [20, 2]], [[10, 3], [20, 1]], [[100, 2], [200, 1], [400, 1]])",
+                        "([[3, 3], [1, 2]], [[1, 2], [3, 3]], [[3, 2], [9, 1], [3, 2]])",
+                        "([[2, 1], [4, 1], [6, 1]], [[1, 2], [2, 1]], [[2, 1], [4, 1], [12, 1]])",
+                        "([[7, 1], [14, 2], [21, 1]], [[1, 1], [2, 3]], [[7, 1], [28, 2], [42, 1]])",
+                        "([[9, 4]], [[1, 1], [3, 3]], [[9, 1], [27, 3]])",
+                        "([[12, 2], [6, 3]], [[2, 4], [4, 1]], [[24, 2], [12, 2], [24, 1]])",
+                        "([[1, 4], [2, 4]], [[1, 2], [2, 2], [4, 4]], [[1, 2], [2, 2], [8, 4]])",
+                        "([[6, 4], [2, 2]], [[3, 4], [5, 1], [6, 1]], [[18, 4], [10, 1], [12, 1]])",
+                        "([[5, 1], [2, 1]], [[4, 2]], [[20, 1], [8, 1]])",
+                        "([[6, 1], [2, 1]], [[6, 2]], [[36, 1], [12, 1]])",
+                        "([[3, 6]], [[3, 4], [4, 1], [6, 1]], [[9, 4], [12, 1], [18, 1]])",
+                        "([[1, 4], [2, 1]], [[6, 1], [1, 4]], [[6, 1], [1, 3], [2, 1]])",
+                        "([[4, 6]], [[4, 6]], [[16, 6]])",
+                        "([[2, 1], [1, 2]], [[2, 1], [3, 1], [6, 1]], [[4, 1], [3, 1], [6, 1]])",
+                        "([[2, 2]], [[1, 2]], [[2, 2]])"
+                    ]
+                },
+                "body": "        result = run_find_rle_array(Solution, encoded1, encoded2)\n        assert_find_rle_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_rle_array, assert_find_rle_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nencoded1 = [[1, 3], [2, 3]]\nencoded2 = [[6, 3], [3, 3]]\nexpected = [[6, 6]]",
+    "playground_run": "result = run_find_rle_array(Solution, encoded1, encoded2)\nresult",
+    "playground_assert": "assert_find_rle_array(result, expected)"
+}

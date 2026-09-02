@@ -1,0 +1,104 @@
+{
+    "problem_name": "water_and_jug_problem",
+    "solution_class_name": "Solution",
+    "problem_number": "365",
+    "problem_title": "Water and Jug Problem",
+    "difficulty": "Medium",
+    "topics": "Math, Depth-First Search, Breadth-First Search, Greatest Common Divisor",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two jugs with capacities `x` liters and `y` liters. You have an infinite water supply. Return *whether the total amount of water in both jugs may reach* `target` *using the following operations*:\n\n- Fill either jug completely with water.\n- Completely empty either jug.\n- Pour water from one jug into another until the receiving jug is full, or the transferring jug is empty.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: x = 3, y = 5, target = 4\nOutput: true\nExplanation:\nFill the 5-liter jug (0, 5). Pour from the 5-liter jug into the 3-liter jug, leaving 2 liters (3, 2). Empty the 3-liter jug (0, 2). Transfer the 2 liters from the 5-liter jug to the 3-liter jug (2, 0). Fill the 5-liter jug again (2, 5). Pour from the 5-liter jug into the 3-liter jug until the 3-liter jug is full. This leaves 4 liters in the 5-liter jug (3, 4). Empty the 3-liter jug. Now, you have exactly 4 liters in the 5-liter jug (0, 4).\n```"
+            },
+            {
+                "content": "```\nInput: x = 2, y = 6, target = 5\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: x = 1, y = 2, target = 3\nOutput: true\nExplanation: Fill both jugs. The total amount of water in both jugs is equal to 3 now.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= x, y, target <= 10^3`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_measure_water",
+    "helpers_run_signature": "(solution_class: type, x: int, y: int, target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_measure_water(x, y, target)",
+    "helpers_assert_name": "can_measure_water",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_measure_water, run_can_measure_water\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WaterAndJugProblem",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_measure_water",
+                "signature": "(self, x: int, y: int, target: int) -> bool",
+                "body": "        # TODO: Implement can_measure_water\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_measure_water",
+                "signature": "(self, x: int, y: int, target: int, expected: bool)",
+                "parametrize": "x, y, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 5, 4, True)",
+                        "(2, 6, 5, False)",
+                        "(1, 2, 3, True)",
+                        "(1, 1, 1, True)",
+                        "(1, 1, 2, True)",
+                        "(1, 2, 4, False)",
+                        "(3, 5, 8, True)",
+                        "(3, 5, 9, False)",
+                        "(4, 6, 8, True)",
+                        "(4, 6, 3, False)",
+                        "(11, 13, 12, True)",
+                        "(34, 58, 7, False)",
+                        "(7, 9, 5, True)",
+                        "(6, 9, 4, False)",
+                        "(220, 330, 550, True)",
+                        "(220, 330, 110, True)",
+                        "(220, 330, 115, False)",
+                        "(999, 998, 998, True)",
+                        "(1000, 999, 1, True)",
+                        "(1000, 1000, 999, False)",
+                        "(11, 5, 5, True)",
+                        "(5, 10, 7, False)",
+                        "(9, 7, 13, True)",
+                        "(11, 9, 6, True)",
+                        "(1, 4, 7, False)",
+                        "(2, 1, 1, True)"
+                    ]
+                },
+                "body": "        result = run_can_measure_water(Solution, x, y, target)\n        assert_can_measure_water(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_measure_water, assert_can_measure_water\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 3\ny = 5\ntarget = 4\nexpected = True",
+    "playground_run": "result = run_can_measure_water(Solution, x, y, target)\nresult",
+    "playground_assert": "assert_can_measure_water(result, expected)"
+}

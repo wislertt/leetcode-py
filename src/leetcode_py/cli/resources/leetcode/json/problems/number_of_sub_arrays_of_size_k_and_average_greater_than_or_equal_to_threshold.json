@@ -1,0 +1,91 @@
+{
+    "problem_name": "number_of_sub_arrays_of_size_k_and_average_greater_than_or_equal_to_threshold",
+    "solution_class_name": "Solution",
+    "problem_number": "1343",
+    "problem_title": "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold",
+    "difficulty": "Medium",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of integers arr and two integers k and threshold, return the number of sub-arrays of size k and average greater than or equal to threshold.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4\nOutput: 3\nExplanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All other sub-arrays of size 3 have averages less than 4 (the threshold).\n```"
+            },
+            {
+                "content": "```\nInput: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5\nOutput: 6\nExplanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages are not integers.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 10^5\n- 1 <= arr[i] <= 10^4\n- 1 <= k <= arr.length\n- 0 <= threshold <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_of_subarrays",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], k: int, threshold: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_of_subarrays(arr, k, threshold)",
+    "helpers_assert_name": "num_of_subarrays",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_of_subarrays",
+                "signature": "(self, arr: list[int], k: int, threshold: int) -> int",
+                "body": "        # TODO: Implement num_of_subarrays\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_of_subarrays, run_num_of_subarrays\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSubArraysOfSizeKAndAverageGreaterThanOrEqualToThreshold",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_of_subarrays",
+                "signature": "(self, arr: list[int], k: int, threshold: int, expected: int)",
+                "parametrize": "arr, k, threshold, expected",
+                "test_cases": {
+                    "list": [
+                        "[[2,2,2,2,5,5,5,8],3,4,3]",
+                        "[[11,13,17,23,29,31,7,5,2,3],3,5,6]",
+                        "[[1,1,1,1],1,1,4]",
+                        "[[1,1,1,1],4,1,1]",
+                        "[[1,1,1,1],4,2,0]",
+                        "[[4],1,4,1]",
+                        "[[4],1,5,0]",
+                        "[[2,2,2],3,2,1]",
+                        "[[0,10,0,10,0],2,5,4]",
+                        "[[10000,10000,10000,10000,10000],5,10000,1]",
+                        "[[9681,5765,5388,8099,9662,9261,5524,8812,2781],6,6164,4]",
+                        "[[3433,5652,4397,5846,183,5997,7942,1734,4017],3,5681,0]",
+                        "[[8553,3271,3327,2401,9591],2,3802,2]",
+                        "[[330,2410,5935,1295],2,4529,0]",
+                        "[[903,1018,5987,817,2119,3590,3028,1592],1,819,7]",
+                        "[[7473,1134,9588,6964,410,2796,5493,3610,4746],8,6932,0]"
+                    ]
+                },
+                "body": "        result = run_num_of_subarrays(Solution, arr, k, threshold)\n        assert_num_of_subarrays(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_of_subarrays, assert_num_of_subarrays\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [2, 2, 2, 2, 5, 5, 5, 8]\nk = 3\nthreshold = 4\nexpected = 3",
+    "playground_run": "result = run_num_of_subarrays(Solution, arr, k, threshold)\nresult",
+    "playground_assert": "assert_num_of_subarrays(result, expected)"
+}

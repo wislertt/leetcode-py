@@ -1,0 +1,91 @@
+{
+    "problem_name": "plus_one_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "369",
+    "problem_title": "Plus One Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Math",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a non-negative integer represented as a linked list of digits, *plus one to the integer*.\n\nThe digits are stored such that the most significant digit is at the `head` of the list.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: head = [1,2,3]\nOutput: [1,2,4]\n```"
+            },
+            {
+                "content": "```\nInput: head = [0]\nOutput: [1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the linked list is in the range `[1, 100]`.\n- `0 <= Node.val <= 9`\n- The number represented by the linked list does not contain leading zeros except for the zero itself.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "plus_one",
+    "helpers_run_signature": "(solution_class: type, head_vals: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_vals)\n    implementation = solution_class()\n    return implementation.plus_one(head)",
+    "helpers_assert_name": "plus_one",
+    "helpers_assert_signature": "(result: ListNode[int] | None, expected_vals: list[int]) -> bool",
+    "helpers_assert_body": "    expected = ListNode.from_list(expected_vals)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_plus_one, run_plus_one\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PlusOneLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "plus_one",
+                "signature": "(self, head: ListNode[int] | None) -> ListNode[int] | None",
+                "body": "        # TODO: Implement plus_one\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_plus_one",
+                "signature": "(self, head_vals: list[int], expected_vals: list[int])",
+                "parametrize": "head_vals, expected_vals",
+                "test_cases": {
+                    "list": [
+                        "([1,2,3], [1,2,4])",
+                        "([0], [1])",
+                        "([9], [1,0])",
+                        "([9,9,9], [1,0,0,0])",
+                        "([1,9,9], [2,0,0])",
+                        "([1,0,0], [1,0,1])",
+                        "([7,8,9,9], [7,9,0,0])",
+                        "([9,8,7], [9,8,8])",
+                        "([1], [2])",
+                        "([5], [6])",
+                        "([9,9,1,9,9], [9,9,2,0,0])",
+                        "([1,2,3,4,5,6,7,8,9], [1,2,3,4,5,6,7,9,0])",
+                        "([9,9,9,9,9,9,9,9,9,9], [1,0,0,0,0,0,0,0,0,0,0])",
+                        "([8,9], [9,0])",
+                        "([2,4,9], [2,5,0])",
+                        "([1,8,9], [1,9,0])"
+                    ]
+                },
+                "body": "        result = run_plus_one(Solution, head_vals)\n        assert_plus_one(result, expected_vals)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_plus_one, assert_plus_one\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_vals = [1, 2, 3]\nexpected_vals = [1, 2, 4]",
+    "playground_run": "result = run_plus_one(Solution, head_vals)\nresult",
+    "playground_assert": "assert_plus_one(result, expected_vals)"
+}

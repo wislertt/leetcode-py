@@ -1,0 +1,90 @@
+{
+    "problem_name": "xor_queries_of_a_subarray",
+    "solution_class_name": "Solution",
+    "problem_number": "1310",
+    "problem_title": "XOR Queries of a Subarray",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array arr of positive integers. You are also given the array queries where queries[i] = [lefti, righti].\n\nFor each query i, compute the XOR of elements from lefti to righti (that is, arr[lefti] XOR arr[lefti + 1] XOR ... XOR arr[righti]).\n\nReturn an array answer where answer[i] is the answer to the ith query.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]\nOutput: [2,7,14,8]\nExplanation: \nThe binary representation of the elements in the array are:\n1 = 0001 \n3 = 0011 \n4 = 0100 \n8 = 1000 \nThe XOR values for queries are:\n[0,1] = 1 xor 3 = 2 \n[1,2] = 3 xor 4 = 7 \n[0,3] = 1 xor 3 xor 4 xor 8 = 14 \n[3,3] = 8\n```"
+            },
+            {
+                "content": "```\nInput: arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]\nOutput: [8,0,4,4]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length, queries.length <= 3 * 10^4\n- 1 <= arr[i] <= 10^9\n- queries[i].length == 2\n- 0 <= lefti <= righti < arr.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "xor_queries",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.xor_queries(arr, queries)",
+    "helpers_assert_name": "xor_queries",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "xor_queries",
+                "signature": "(self, arr: list[int], queries: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement xor_queries\n        return []"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_xor_queries, run_xor_queries\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "XorQueriesOfASubarray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_xor_queries",
+                "signature": "(self, arr: list[int], queries: list[list[int]], expected: list[int])",
+                "parametrize": "arr, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "[[1,3,4,8],[[0,1],[1,2],[0,3],[3,3]],[2,7,14,8]]",
+                        "[[4,8,2,10],[[2,3],[1,3],[0,0],[0,3]],[8,0,4,4]]",
+                        "[[1],[[0,0]],[1]]",
+                        "[[7],[[0,0],[0,0]],[7,7]]",
+                        "[[2,4],[[0,0],[1,1],[0,1]],[2,4,6]]",
+                        "[[16],[[0,0]],[16]]",
+                        "[[1,2,3,4,5,6,7],[[0,6],[0,0],[6,6],[3,4]],[0,1,7,1]]",
+                        "[[618864309,712969580,600451365,290114598],[[3,3]],[290114598]]",
+                        "[[480291473,795282407,190875221,582215987],[[2,2],[2,2],[0,1]],[190875221,190875221,868721014]]",
+                        "[[771831971,180300899,371160077,867457017,816038876,851767939,312406762],[[5,5]],[851767939]]",
+                        "[[821232111,988268944,585125832,225207499,301707083,735846319,149627920,288887196],[[0,3],[1,1]],[630776700,988268944]]",
+                        "[[41547932,949815157,613626828,74551704,649468482],[[0,3],[2,4],[0,1]],[436624829,106215446,988086249]]",
+                        "[[831855709,28657318,292211166,474572978],[[3,3],[2,3],[0,1]],[474572978,220438892,807426811]]",
+                        "[[288942518,922121017],[[0,1]],[667851407]]",
+                        "[[67071233,176792769,38633592,936674425,228852365,340711363,164644484,834734461],[[5,7],[5,6],[3,5],[6,7]],[744462394,496931143,775835959,940658681]]"
+                    ]
+                },
+                "body": "        result = run_xor_queries(Solution, arr, queries)\n        assert_xor_queries(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_xor_queries, assert_xor_queries\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 3, 4, 8]\nqueries = [[0, 1], [1, 2], [0, 3], [3, 3]]\nexpected = [2, 7, 14, 8]",
+    "playground_run": "result = run_xor_queries(Solution, arr, queries)\nresult",
+    "playground_assert": "assert_xor_queries(result, expected)"
+}

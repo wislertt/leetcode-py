@@ -1,0 +1,104 @@
+{
+    "problem_name": "defuse_the_bomb",
+    "solution_class_name": "Solution",
+    "problem_number": "1652",
+    "problem_title": "Defuse the Bomb",
+    "difficulty": "Easy",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have a bomb to defuse, and your time is running out! Your informer will provide you with a **circular** array `code` of length of `n` and a key `k`.\n\nTo decrypt the code, you must replace every number. All the numbers are replaced **simultaneously**.\n\n- If `k > 0`, replace the `i<sup>th</sup>` number with the sum of the **next** `k` numbers.\n- If `k < 0`, replace the `i<sup>th</sup>` number with the sum of the **previous** `-k` numbers.\n- If `k == 0`, replace the `i<sup>th</sup>` number with `0`.\n\nAs `code` is circular, the next element of `code[n-1]` is `code[0]`, and the previous element of `code[0]` is `code[n-1]`.\n\nGiven the **circular** array `code` and an integer key `k`, return *the decrypted code to defuse the bomb*!",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: code = [5,7,1,4], k = 3\nOutput: [12,10,16,13]\nExplanation: Each number is replaced by the sum of the next 3 numbers. The decrypted code is [7+1+4, 1+4+5, 4+5+7, 5+7+1]. Notice that the numbers wrap around.\n```"
+            },
+            {
+                "content": "```\nInput: code = [1,2,3,4], k = 0\nOutput: [0,0,0,0]\nExplanation: When k is zero, the numbers are replaced by 0.\n```"
+            },
+            {
+                "content": "```\nInput: code = [2,4,9,3], k = -2\nOutput: [12,5,6,13]\nExplanation: The decrypted code is [3+9, 2+3, 4+2, 9+4]. Notice that the numbers wrap around again. If k is negative, the sum is of the previous numbers.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == code.length\n- 1 <= n <= 100\n- 1 <= code[i] <= 100\n- -(n - 1) <= k <= n - 1",
+    "readme_additional": "**Follow up:** Could you solve it in `O(n)` time without scanning the window from scratch for every index?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "decrypt",
+    "helpers_run_signature": "(solution_class: type, code: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.decrypt(code, k)",
+    "helpers_assert_name": "decrypt",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_decrypt, run_decrypt\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DefuseTheBomb",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "decrypt",
+                "signature": "(self, code: list[int], k: int) -> list[int]",
+                "body": "        # TODO: Implement decrypt\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_decrypt",
+                "signature": "(self, code: list[int], k: int, expected: list[int])",
+                "parametrize": "code, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([5,7,1,4],3,[12,10,16,13])",
+                        "([1,2,3,4],0,[0,0,0,0])",
+                        "([2,4,9,3],-2,[12,5,6,13])",
+                        "([1],0,[0])",
+                        "([10],0,[0])",
+                        "([4,5],1,[5,4])",
+                        "([4,5],-1,[5,4])",
+                        "([1,2,3],1,[2,3,1])",
+                        "([1,2,3],-1,[3,1,2])",
+                        "([1,2,3],2,[5,4,3])",
+                        "([1,2,3],-2,[5,4,3])",
+                        "([5,5,5,5],2,[10,10,10,10])",
+                        "([5,5,5,5],-3,[15,15,15,15])",
+                        "([100,100,100,100,100,100],3,[300,300,300,300,300,300])",
+                        "([1,2,3,4,5],0,[0,0,0,0,0])",
+                        "([9,1,8,2],3,[11,19,12,18])",
+                        "([7,3,6,1,9],-4,[19,23,20,25,17])",
+                        "([2,2,2,2,2,2],5,[10,10,10,10,10,10])",
+                        "([3,1,4,1,5,9],1,[1,4,1,5,9,3])",
+                        "([3,1,4,1,5,9],-1,[9,3,1,4,1,5])",
+                        "([24,42,88,53,52,46],0,[0,0,0,0,0,0])",
+                        "([97,2,6,6,38,30,61],-3,[129,188,160,105,14,50,74])",
+                        "([2,65,27,7,26,1,71],6,[197,134,172,192,173,198,128])",
+                        "([90,72,38,34,74,5],-1,[5,90,72,38,34,74])",
+                        "([44],0,[0])",
+                        "([38,57,17,53,5,12,10,88,38,8,24],6,[154,185,206,161,180,206,253,182,197,194,182])"
+                    ]
+                },
+                "body": "        result = run_decrypt(Solution, code, k)\n        assert_decrypt(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_decrypt, assert_decrypt\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncode = [5, 7, 1, 4]\nk = 3\nexpected = [12, 10, 16, 13]",
+    "playground_run": "result = run_decrypt(Solution, code, k)\nresult",
+    "playground_assert": "assert_decrypt(result, expected)"
+}

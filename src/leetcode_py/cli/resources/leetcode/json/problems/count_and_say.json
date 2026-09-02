@@ -1,0 +1,89 @@
+{
+    "problem_name": "count_and_say",
+    "solution_class_name": "Solution",
+    "problem_number": "38",
+    "problem_title": "Count and Say",
+    "difficulty": "Medium",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The **count-and-say** sequence is a sequence of digit strings defined by the recursive formula:\n\n- `countAndSay(1) = \"1\"`\n- `countAndSay(n)` is the run-length encoding of `countAndSay(n - 1)`.\n\n[Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding) (RLE) is a string compression method that works by replacing each maximal group of consecutive identical characters with the concatenation of the length of the group followed by the character itself. For example, to compress the string `\"3322251\"` we replace `\"33\"` with `\"23\"`, replace `\"222\"` with `\"32\"`, replace `\"5\"` with `\"15\"`, and replace `\"1\"` with `\"11\"`. Thus the compressed string becomes `\"23321511\"`.\n\nGiven a positive integer `n`, return the `nth` element of the **count-and-say** sequence.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4\nOutput: \"1211\"\nExplanation:\ncountAndSay(1) = \"1\"\ncountAndSay(2) = RLE of \"1\" = \"11\"\ncountAndSay(3) = RLE of \"11\" = \"21\"\ncountAndSay(4) = RLE of \"21\" = \"1211\"\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: \"1\"\nExplanation:\nThis is the base case.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 30",
+    "readme_additional": "**Follow up:** Could you solve it iteratively?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_and_say",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_and_say(n)",
+    "helpers_assert_name": "count_and_say",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_and_say, run_count_and_say\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountAndSay",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_and_say",
+                "signature": "(self, n: int) -> str",
+                "body": "        # TODO: Implement count_and_say\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_and_say",
+                "signature": "(self, n: int, expected: str)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, '1')",
+                        "(2, '11')",
+                        "(3, '21')",
+                        "(4, '1211')",
+                        "(5, '111221')",
+                        "(6, '312211')",
+                        "(7, '13112221')",
+                        "(8, '1113213211')",
+                        "(9, '31131211131221')",
+                        "(10, '13211311123113112211')",
+                        "(11, '11131221133112132113212221')",
+                        "(12, '3113112221232112111312211312113211')",
+                        "(13, '1321132132111213122112311311222113111221131221')",
+                        "(14, '11131221131211131231121113112221121321132132211331222113112211')"
+                    ]
+                },
+                "body": "        result = run_count_and_say(Solution, n)\n        assert_count_and_say(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_and_say, assert_count_and_say\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nexpected = '1211'",
+    "playground_run": "result = run_count_and_say(Solution, n)\nresult",
+    "playground_assert": "assert_count_and_say(result, expected)"
+}

@@ -1,0 +1,97 @@
+{
+    "problem_name": "optimize_water_distribution_in_a_village",
+    "solution_class_name": "Solution",
+    "problem_number": "1168",
+    "problem_title": "Optimize Water Distribution in a Village",
+    "difficulty": "Hard",
+    "topics": "Union Find, Graph, Minimum Spanning Tree, Heap (Priority Queue)",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There are `n` houses in a village. We want to supply water for all the houses by building wells and laying pipes.\n\nFor each house `i`, we can either build a well inside it directly with cost `wells[i - 1]` (note the `-1` due to **0-indexing**), or pipe in water from another well to it. The costs to lay pipes between houses are given by the array `pipes` where each `pipes[j] = [house1_j, house2_j, cost_j]` represents the cost to connect `house1_j` and `house2_j` together using a pipe. Connections are bidirectional, and there could be multiple valid connections between the same two houses with different costs.\n\nReturn *the minimum total cost to supply water to all houses*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1100-1199/1168.Optimize%20Water%20Distribution%20in%20a%20Village/images/1359_ex1.png)\n\n```\nInput: n = 3, wells = [1,2,2], pipes = [[1,2,1],[2,3,1]]\nOutput: 3\nExplanation: The image shows the costs of connecting houses using pipes.\nThe best strategy is to build a well in the first house with cost 1 and connect the other houses to it with cost 2 so the total cost is 3.\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, wells = [1,1], pipes = [[1,2,1],[1,2,2]]\nOutput: 2\nExplanation: We can supply water with cost two using one of the three options:\nOption 1:\n  - Build a well inside house 1 with cost 1.\n  - Build a well inside house 2 with cost 1.\nThe total cost will be 2.\nOption 2:\n  - Build a well inside house 1 with cost 1.\n  - Connect house 2 with house 1 with cost 1.\nThe total cost will be 2.\nOption 3:\n  - Build a well inside house 2 with cost 1.\n  - Connect house 1 with house 2 with cost 1.\nThe total cost will be 2.\nNote that we can connect houses 1 and 2 with cost 1 or with cost 2 but we will always choose **the cheapest option**.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 10^4\n- wells.length == n\n- 0 <= wells[i] <= 10^5\n- 1 <= pipes.length <= 10^4\n- pipes[j].length == 3\n- 1 <= house1_j, house2_j <= n\n- 0 <= cost_j <= 10^5\n- house1_j != house2_j",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_cost_to_supply_water",
+    "helpers_run_signature": "(solution_class: type, n: int, wells: list[int], pipes: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_cost_to_supply_water(n, wells, pipes)",
+    "helpers_assert_name": "min_cost_to_supply_water",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_cost_to_supply_water, run_min_cost_to_supply_water\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OptimizeWaterDistributionInAVillage",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_cost_to_supply_water",
+                "signature": "(self, n: int, wells: list[int], pipes: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_cost_to_supply_water\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_cost_to_supply_water, assert_min_cost_to_supply_water\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nwells = [1,2,2]\npipes = [[1,2,1],[2,3,1]]\nexpected = 3",
+    "playground_run": "result = run_min_cost_to_supply_water(Solution, n, wells, pipes)\nresult",
+    "playground_assert": "assert_min_cost_to_supply_water(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_cost_to_supply_water",
+                "signature": "(self, n: int, wells: list[int], pipes: list[list[int]], expected: int)",
+                "parametrize": "n, wells, pipes, expected",
+                "test_cases": {
+                    "list": [
+                        "(3,[1,2,2],[[1,2,1],[2,3,1]],3)",
+                        "(2,[1,1],[[1,2,1],[1,2,2]],2)",
+                        "(2,[5,7],[[1,2,100]],12)",
+                        "(3,[10,10,10],[[1,2,1],[2,3,1],[1,3,2]],12)",
+                        "(2,[3,3],[[1,2,0]],3)",
+                        "(2,[0,5],[[1,2,1]],1)",
+                        "(2,[4,4],[[1,2,3],[1,2,1],[1,2,2]],5)",
+                        "(4,[100,100,100,100],[[1,2,1],[2,3,1],[3,4,1]],103)",
+                        "(4,[1,50,1,50],[[1,2,10],[3,4,10]],22)",
+                        "(2,[1,1],[[1,2,100]],2)",
+                        "(2,[2,2],[[1,2,2]],4)",
+                        "(5,[7,3,9,2,8],[[1,2,6],[2,3,4],[3,4,5],[4,5,3],[1,5,20],[2,5,1]],16)",
+                        "(6,[15,15,15,15,15,15],[[1,2,7],[2,3,5],[3,4,9],[4,5,6],[5,6,2],[1,4,100]],44)",
+                        "(6,[9,1,8,11,9,10],[[5,1,4],[6,3,8],[6,3,11],[6,1,1]],33)",
+                        "(6,[12,3,7,2,4,0],[[1,3,1],[1,2,2],[3,1,12]],12)",
+                        "(6,[10,12,8,3,1,1],[[2,4,3],[4,5,11],[4,3,2],[6,1,8],[3,4,6],[4,6,5],[4,1,8],[1,6,1],[3,2,12]],11)",
+                        "(4,[0,8,8,9],[[3,4,4],[3,2,3]],15)",
+                        "(7,[4,5,2,8,10,0,4],[[2,5,11],[5,3,12],[4,5,11],[1,4,1],[6,1,12],[4,1,12],[3,1,7],[7,4,6],[3,4,9]],26)",
+                        "(7,[5,1,1,11,9,11,11],[[6,1,6],[7,5,5],[7,6,5],[6,7,5],[5,7,7],[6,1,5],[3,5,6]],33)"
+                    ]
+                },
+                "body": "        result = run_min_cost_to_supply_water(Solution, n, wells, pipes)\n        assert_min_cost_to_supply_water(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "n = 3\nwells = [1,2,2]\npipes = [[1,2,1],[2,3,1]]",
+    "playground_execution": "result = run_min_cost_to_supply_water(Solution, n, wells, pipes)",
+    "playground_assertion": "assert_min_cost_to_supply_water(result, 3)"
+}

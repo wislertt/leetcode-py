@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximum_performance_of_a_team",
+    "solution_class_name": "Solution",
+    "problem_number": "1383",
+    "problem_title": "Maximum Performance of a Team",
+    "difficulty": "Hard",
+    "topics": "Array, Greedy, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two integers `n` and `k` and two integer arrays `speed` and `efficiency` both of length `n`. There are `n` engineers numbered from `1` to `n`. `speed[i]` and `efficiency[i]` represent the speed and efficiency of the `i`th engineer respectively.\n\nChoose **at most** `k` different engineers out of the `n` engineers to form a team with the maximum **performance**.\n\nThe performance of a team is the sum of its engineers' speeds multiplied by the minimum efficiency among its engineers.\n\nReturn the maximum performance of this team. Since the answer can be a huge number, return it **modulo** `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 2\nOutput: 60\n```\n**Explanation:** We have the maximum performance of the team by selecting engineer 2 (with speed=10 and efficiency=4) and engineer 5 (with speed=5 and efficiency=7). That is, performance = (10 + 5) * min(4, 7) = 60."
+            },
+            {
+                "content": "```\nInput: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 3\nOutput: 68\n```\n**Explanation:** This is the same example as the first but k = 3. We can select engineer 1, engineer 2 and engineer 5 to get the maximum performance of the team. That is, performance = (2 + 10 + 5) * min(5, 4, 7) = 68."
+            },
+            {
+                "content": "```\nInput: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 4\nOutput: 72\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= k <= n <= 10^5`\n- `speed.length == n`\n- `efficiency.length == n`\n- `1 <= speed[i] <= 10^5`\n- `1 <= efficiency[i] <= 10^8`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_performance",
+    "helpers_run_signature": "(solution_class: type, n: int, speed: list[int], efficiency: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_performance(n, speed, efficiency, k)",
+    "helpers_assert_name": "max_performance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_performance, run_max_performance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumPerformanceOfATeam",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_performance",
+                "signature": "(self, n: int, speed: list[int], efficiency: list[int], k: int) -> int",
+                "body": "        # TODO: Implement max_performance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_performance",
+                "signature": "(self, n: int, speed: list[int], efficiency: list[int], k: int, expected: int)",
+                "parametrize": "n, speed, efficiency, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(6, [2, 10, 3, 1, 5, 8], [5, 4, 3, 9, 7, 2], 2, 60)",
+                        "(6, [2, 10, 3, 1, 5, 8], [5, 4, 3, 9, 7, 2], 3, 68)",
+                        "(6, [2, 10, 3, 1, 5, 8], [5, 4, 3, 9, 7, 2], 4, 72)",
+                        "(6, [2, 10, 3, 1, 5, 8], [5, 4, 3, 9, 7, 2], 6, 72)",
+                        "(1, [5], [7], 1, 35)",
+                        "(2, [3, 4], [1, 2], 1, 8)",
+                        "(2, [3, 4], [1, 2], 2, 8)",
+                        "(3, [1, 1, 1], [5, 5, 5], 2, 10)",
+                        "(4, [4, 2, 3, 5], [1, 8, 6, 2], 2, 30)",
+                        "(4, [10, 10, 10, 1], [9, 8, 1, 8], 3, 168)",
+                        "(5, [7, 1, 9, 3, 5], [2, 6, 4, 8, 3], 2, 48)",
+                        "(5, [7, 1, 9, 3, 5], [2, 6, 4, 8, 3], 5, 54)",
+                        "(3, [100000, 100000, 100000], [100000000, 1, 1], 1, 999930007)",
+                        "(3, [100000, 100000, 100000], [100000000, 100000000, 100000000], 3, 999790007)",
+                        "(2, [1, 100000], [100000000, 1], 2, 100000000)",
+                        "(1, [10], [23], 1, 230)",
+                        "(1, [18], [8], 1, 144)",
+                        "(6, [8, 13, 14, 12, 13, 5], [20, 12, 17, 15, 29, 24], 6, 780)",
+                        "(3, [3, 14, 13], [6, 12, 16], 2, 324)",
+                        "(3, [3, 18, 3], [9, 21, 4], 3, 378)"
+                    ]
+                },
+                "body": "        result = run_max_performance(Solution, n, speed, efficiency, k)\n        assert_max_performance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_performance, assert_max_performance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 6\nspeed = [2, 10, 3, 1, 5, 8]\nefficiency = [5, 4, 3, 9, 7, 2]\nk = 2\nexpected = 60",
+    "playground_run": "result = run_max_performance(Solution, n, speed, efficiency, k)\nresult",
+    "playground_assert": "assert_max_performance(result, expected)"
+}

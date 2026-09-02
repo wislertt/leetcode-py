@@ -1,0 +1,98 @@
+{
+    "problem_name": "find_first_palindromic_string_in_the_array",
+    "solution_class_name": "Solution",
+    "problem_number": "2108",
+    "problem_title": "Find First Palindromic String in the Array",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `words`, return the first **palindromic** string in the array. If there is no such string, return an **empty string** `\"\"`.\n\nA string is **palindromic** if it reads the same forward and backward.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"abc\",\"car\",\"ada\",\"racecar\",\"cool\"]\nOutput: \"ada\"\n```\n**Explanation:** The first string that is palindromic is \"ada\". Note that \"racecar\" is also palindromic, but it is not the first."
+            },
+            {
+                "content": "```\nInput: words = [\"notapalindrome\",\"racecar\"]\nOutput: \"racecar\"\n```\n**Explanation:** The first and only string that is palindromic is \"racecar\"."
+            },
+            {
+                "content": "```\nInput: words = [\"def\",\"ghi\"]\nOutput: \"\"\n```\n**Explanation:** There are no palindromic strings, so the empty string is returned."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 100`\n- `1 <= words[i].length <= 100`\n- `words[i]` consists only of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "first_palindrome",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.first_palindrome(words)",
+    "helpers_assert_name": "first_palindrome",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_first_palindrome, run_first_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindFirstPalindromicStringInTheArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "first_palindrome",
+                "signature": "(self, words: list[str]) -> str",
+                "body": "        # TODO: Implement first_palindrome\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_first_palindrome",
+                "signature": "(self, words: list[str], expected: str)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abc', 'car', 'ada', 'racecar', 'cool'], 'ada')",
+                        "(['notapalindrome', 'racecar'], 'racecar')",
+                        "(['def', 'ghi'], '')",
+                        "(['a'], 'a')",
+                        "(['ab', 'ba'], '')",
+                        "(['aa', 'ab'], 'aa')",
+                        "(['x'], 'x')",
+                        "(['abc', 'aba', 'xyz'], 'aba')",
+                        "(['racecar'], 'racecar')",
+                        "(['ab'], '')",
+                        "(['abc', 'def', 'ada'], 'ada')",
+                        "(['noon', 'level', 'word'], 'noon')",
+                        "(['abcba'], 'abcba')",
+                        "(['abccba'], 'abccba')",
+                        "(['zz'], 'zz')",
+                        "(['abc', 'cb', 'dd'], 'dd')",
+                        "(['abba', 'xy'], 'abba')",
+                        "(['abc', 'abcd', 'abcde'], '')",
+                        "(['q', 'qq', 'qqq'], 'q')",
+                        "(['zxyx', 'abcba', 'hello'], 'abcba')"
+                    ]
+                },
+                "body": "        result = run_first_palindrome(Solution, words)\n        assert_first_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_first_palindrome, assert_first_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['abc', 'car', 'ada', 'racecar', 'cool']\nexpected = 'ada'",
+    "playground_run": "result = run_first_palindrome(Solution, words)\nresult",
+    "playground_assert": "assert_first_palindrome(result, expected)"
+}

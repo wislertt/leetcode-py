@@ -1,0 +1,104 @@
+{
+    "problem_name": "find_root_of_n_ary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "1506",
+    "problem_title": "Find Root of N-Ary Tree",
+    "difficulty": "Medium",
+    "topics": "Bit Manipulation, Tree, Depth-First Search, Hash Table",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given all the nodes of an **N-ary tree** as an array of `Node` objects, where each node has a **unique value**.\n\nReturn *the **root** of the N-ary tree*.\n\n**Custom testing:**\n\nAn N-ary tree can be serialized as represented in its level order traversal where each group of children is separated by the `null` value (see examples).\n\n![Example 1](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)\n\nFor example, the above tree is serialized as `[1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]`.\n\nThe testing will be done in the following way:\n\n1. The **input data** should be provided as a serialization of the tree.\n2. The driver code will construct the tree from the serialized input data and put each `Node` object into an array **in an arbitrary order**.\n3. The driver code will pass the array to `findRoot`, and your function should find and return the root `Node` object in the array.\n4. The driver code will take the returned `Node` object and serialize it. If the serialized value and the input data are the **same**, the test **passes**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/10/12/narytreeexample.png)\n\n```\nInput: tree = [1,null,3,2,4,null,5,6]\nOutput: [1,null,3,2,4,null,5,6]\nExplanation: The tree from the input data is shown above.\nThe driver code creates the tree and gives findRoot the Node objects in an arbitrary order.\nFor example, the passed array could be [Node(5),Node(4),Node(3),Node(6),Node(2),Node(1)] or [Node(2),Node(6),Node(1),Node(3),Node(5),Node(4)].\nThe findRoot function should return the root Node(1), and the driver code will serialize it and compare with the input data.\nThe input data and serialized Node(1) are the same, so the test passes.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/11/08/sample_4_964.png)\n\n```\nInput: tree = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\nOutput: [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The total number of nodes is between `[1, 5 * 10^4]`.\n- Each node has a **unique** value.",
+    "readme_additional": "**Follow up:** Could you solve this problem in constant space complexity with a linear time algorithm?",
+    "helpers_imports": "import random\n\nfrom .solution import Node",
+    "helpers_content": "def _nary_from_list(vals: list[int | None]) -> Node | None:\n    if not vals or vals[0] is None:\n        return None\n    root = Node(vals[0])\n    queue: list[Node] = [root]\n    i = 2\n    while queue and i < len(vals):\n        node = queue.pop(0)\n        children: list[Node] = []\n        while i < len(vals):\n            val = vals[i]\n            i += 1\n            if val is None:\n                break\n            child = Node(val)\n            children.append(child)\n            queue.append(child)\n        node.children = children\n    return root\n\n\ndef _nary_to_list(root: Node | None) -> list[int | None]:\n    if root is None:\n        return []\n    out: list[int | None] = [root.val, None]\n    queue: list[Node] = [root]\n    while queue:\n        node = queue.pop(0)\n        for child in node.children:\n            out.append(child.val)\n            queue.append(child)\n        if queue:\n            out.append(None)\n    while out and out[-1] is None:\n        out.pop()\n    return out\n\n\ndef _shuffled_nodes(root: Node) -> list[Node]:\n    nodes: list[Node] = []\n    queue: list[Node] = [root]\n    while queue:\n        node = queue.pop(0)\n        nodes.append(node)\n        queue.extend(node.children)\n    random.Random(len(nodes) * 31 + 7).shuffle(nodes)\n    return nodes\n",
+    "helpers_run_name": "find_root",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = _nary_from_list(root_list)\n    if root is None:\n        return []\n    nodes = _shuffled_nodes(root)\n    result = solution_class().find_root(nodes)\n    return _nary_to_list(result)",
+    "helpers_assert_name": "find_root",
+    "helpers_assert_signature": "(result: list[int | None], expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected_list\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class Node:\n    def __init__(self, val: int = 0, children: list[Node] | None = None) -> None:\n        self.val = val\n        self.children = children if children is not None else []\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_root, run_find_root\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindRootOfNAryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_root",
+                "signature": "(self, tree: list[Node]) -> Node",
+                "body": "        # TODO: Implement find_root\n        return tree[0]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_root",
+                "signature": "(self, root_list: list[int | None])",
+                "parametrize": "root_list",
+                "test_cases": {
+                    "list": [
+                        "([1,None,3,2,4,None,5,6])",
+                        "([1,None,2,3,4,5,None,None,6,7,None,8,None,9,10,None,None,11,None,12,None,13,None,None,14])",
+                        "([1])",
+                        "([10])",
+                        "([999])",
+                        "([1,None,2])",
+                        "([3,None,7])",
+                        "([1,None,2,None,3,None,4,None,5,None,6])",
+                        "([2,None,1,None,3,None,4,None,5])",
+                        "([5,None,9,None,1,None,8])",
+                        "([1,None,2,3,4,5,6])",
+                        "([100,None,200,300,None,400,500,600])",
+                        "([7,None,3,9,1,None,None,4,None,2])",
+                        "([9,None,8,7,6,5,4,3,2,1])",
+                        "([10,None,1,2,3,None,None,4,5,None,6,7,8,9])",
+                        "([4,None,2,6,None,None,1,5,7])",
+                        "([50,None,25,None,75,None,12,None,88])",
+                        "([492,None,592,833,958])",
+                        "([822,None,381,525,None,634,48,None,None,723,414,32,346,None,382,None,None,None,None,None,883])",
+                        "([192,None,902,None,406,122,None,420,752,None,262,39])",
+                        "([621,None,838])",
+                        "([208,None,63,145,147,470,None,223,250,773,None,598,None,929,None,21,None,367,16,None,None,None,None,None,None,576])",
+                        "([807,None,591,444,None,994,None,743,None,997,990,434,None,430])",
+                        "([644,None,398,671,676,None,613,None,982,110])",
+                        "([252,None,732,672,147,475,None,None,703,None,None,None,476,451,None,None,894])",
+                        "([265,None,106,None,226,448,None,902,592,414])",
+                        "([860,None,700,644,None,833,608])",
+                        "([795,None,997,None,512])",
+                        "([514,None,125,None,563,661])"
+                    ]
+                },
+                "body": "        result = run_find_root(Solution, root_list)\n        assert_find_root(result, root_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_root, assert_find_root\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 3, 2, 4, None, 5, 6]",
+    "playground_run": "result = run_find_root(Solution, root_list)\nresult",
+    "playground_assert": "assert_find_root(result, root_list)"
+}

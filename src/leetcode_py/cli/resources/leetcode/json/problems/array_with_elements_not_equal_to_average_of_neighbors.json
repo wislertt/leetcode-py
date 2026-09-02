@@ -1,0 +1,91 @@
+{
+    "problem_name": "array_with_elements_not_equal_to_average_of_neighbors",
+    "solution_class_name": "Solution",
+    "problem_number": "1968",
+    "problem_title": "Array With Elements Not Equal to Average of Neighbors",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** array `nums` of **distinct** integers. You want to rearrange the elements in the array such that every element in the rearranged array is **not** equal to the **average** of its neighbors.\n\nMore formally, the rearranged array should have the property such that for every `i` in the range `1 <= i < nums.length - 1`, `(nums[i-1] + nums[i+1]) / 2` is **not** equal to `nums[i]`.\n\nReturn **any** rearrangement of `nums` that meets the requirements.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5]\nOutput: [1,2,4,5,3]\nExplanation: When i=1, nums[i] = 2, and the average of its neighbors is (1+4) / 2 = 2.5. When i=2, nums[i] = 4, and the average of its neighbors is (2+5) / 2 = 3.5. When i=3, nums[i] = 5, and the average of its neighbors is (4+3) / 2 = 3.5.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [6,2,0,9,7]\nOutput: [9,7,6,2,0]\nExplanation: When i=1, nums[i] = 7, and the average of its neighbors is (9+6) / 2 = 7.5. When i=2, nums[i] = 6, and the average of its neighbors is (7+2) / 2 = 4.5. When i=3, nums[i] = 2, and the average of its neighbors is (6+0) / 2 = 3. Note that the original array [6,2,0,9,7] also satisfies the conditions.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= nums.length <= 10^5`\n- `0 <= nums[i] <= 10^5`\n- All elements of `nums` are **distinct**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rearrange_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.rearrange_array(nums)",
+    "helpers_assert_name": "rearrange_array",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Multiple valid answers exist; verify the non-average property and that the\n    # result is a permutation of the input instead of exact equality\n    assert all(\n        2 * result[i] != result[i - 1] + result[i + 1]\n        for i in range(1, len(result) - 1)\n    )\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rearrange_array, run_rearrange_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ArrayWithElementsNotEqualToAverageOfNeighbors",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rearrange_array",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement rearrange_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rearrange_array",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])",
+                        "([6, 2, 0, 9, 7], [6, 2, 0, 9, 7])",
+                        "([1, 2, 3], [1, 2, 3])",
+                        "([3, 2, 1], [3, 2, 1])",
+                        "([5, 4, 3, 2, 1], [5, 4, 3, 2, 1])",
+                        "([0, 100000, 50000], [0, 100000, 50000])",
+                        "([1, 3, 2, 4], [1, 3, 2, 4])",
+                        "([2, 4, 6, 8, 10, 12], [2, 4, 6, 8, 10, 12])",
+                        "([7, 1, 5, 3, 9], [7, 1, 5, 3, 9])",
+                        "([10, 20, 30], [10, 20, 30])",
+                        "([4, 1, 3, 2, 5, 0], [4, 1, 3, 2, 5, 0])",
+                        "([100, 200, 300, 400, 500, 600, 700], [100, 200, 300, 400, 500, 600, 700])",
+                        "([1, 16, 13, 3], [1, 16, 13, 3])",
+                        "([4, 8, 10, 2], [4, 8, 10, 2])",
+                        "([1, 10, 9, 20], [1, 10, 9, 20])",
+                        "([20, 9, 0, 1, 18, 19], [20, 9, 0, 1, 18, 19])"
+                    ]
+                },
+                "body": "        result = run_rearrange_array(Solution, nums)\n        assert_rearrange_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rearrange_array, assert_rearrange_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4, 5]\nexpected = [1, 2, 4, 5, 3]",
+    "playground_run": "result = run_rearrange_array(Solution, nums)\nresult",
+    "playground_assert": "assert_rearrange_array(result, expected)"
+}

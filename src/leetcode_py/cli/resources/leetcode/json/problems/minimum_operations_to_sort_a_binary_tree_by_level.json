@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_operations_to_sort_a_binary_tree_by_level",
+    "solution_class_name": "Solution",
+    "problem_number": "2471",
+    "problem_title": "Minimum Number of Operations to Sort a Binary Tree by Level",
+    "difficulty": "Medium",
+    "topics": "Tree, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `root` of a binary tree with **unique values**.\n\nIn one operation, you can choose any two nodes **at the same level** and swap their values.\n\nReturn the minimum number of operations needed to make the values at each level sorted in a **strictly increasing order**.\n\nThe **level** of a node is the number of edges along the path between it and the root node.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/09/18/image-20220918174006-2.png)\n\n```\nInput: root = [1,4,3,7,6,8,5,null,null,null,null,9,null,10]\nOutput: 3\nExplanation:\n- Swap 4 and 3. The 2nd level becomes [3,4].\n- Swap 7 and 5. The 3rd level becomes [5,6,8,7].\n- Swap 8 and 7. The 3rd level becomes [5,6,7,8].\nWe used 3 operations so return 3.\nIt can be proven that 3 is the minimum number of operations needed.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/09/18/image-20220918174026-3.png)\n\n```\nInput: root = [1,3,2,7,6,5,4]\nOutput: 3\nExplanation:\n- Swap 3 and 2. The 2nd level becomes [2,3].\n- Swap 7 and 4. The 3rd level becomes [4,6,5,7].\n- Swap 6 and 5. The 3rd level becomes [4,5,6,7].\nWe used 3 operations so return 3.\nIt can be proven that 3 is the minimum number of operations needed.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2022/09/18/image-20220918174052-4.png)\n\n```\nInput: root = [1,2,3,4,5,6]\nOutput: 0\nExplanation: Each level is already sorted in increasing order so return 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10^5]\n- 1 <= Node.val <= 10^5\n- All the values of the tree are unique",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_operations",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    implementation = solution_class()\n    root = TreeNode.from_list(root_list) if root_list else None\n    return implementation.minimum_operations(root)",
+    "helpers_assert_name": "minimum_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_operations, run_minimum_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumOperationsToSortBinaryTreeByLevel",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_operations",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement minimum_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_operations",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 4, 3, 7, 6, 8, 5, None, None, None, None, 9, None, 10], 3)",
+                        "([1, 3, 2, 7, 6, 5, 4], 3)",
+                        "([1, 2, 3, 4, 5, 6], 0)",
+                        "([1], 0)",
+                        "([2, 1], 0)",
+                        "([1, 2], 0)",
+                        "([3, 1, 2], 0)",
+                        "([1, 3, 2, 4], 1)",
+                        "([4, 1, 6, 3, 2, 5], 1)",
+                        "([1, 2, 3, 4, 6, 5, 7], 1)",
+                        "([5, 3, 8, 1, 4, 7, 9, 2, 6], 0)",
+                        "([10, 5, 15, 3, 8, 12, 20, 1, 4, 6, 9, 11, 14, 19, 21], 0)",
+                        "([92, 17, 55, None, 28, 31, None, 39, 56, 65], 0)",
+                        "([42, 92, 68], 1)",
+                        "([58, 52, 8, 5, 2, 42, 60, 30, None, 57, 48], 3)",
+                        "([96, 49, None, 10, 93, 30, 56, 88, None, 34], 0)",
+                        "([60, 77, 35, 34, 87, None, 70], 2)",
+                        "([5, 88, 21, 65, 96], 1)",
+                        "([34, None, 25, 37, 23, None, 29, 9, 33, 11, 74, 10, 81], 4)",
+                        "([69, 61, 84, 97, None, 26, 31, 4], 2)"
+                    ]
+                },
+                "body": "        result = run_minimum_operations(Solution, root_list)\n        assert_minimum_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_operations, assert_minimum_operations\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 4, 3, 7, 6, 8, 5, None, None, None, None, 9, None, 10]\nexpected = 3",
+    "playground_run": "result = run_minimum_operations(Solution, root_list)\nresult",
+    "playground_assert": "assert_minimum_operations(result, expected)"
+}

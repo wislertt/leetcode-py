@@ -1,0 +1,97 @@
+{
+    "problem_name": "water_bottles",
+    "solution_class_name": "Solution",
+    "problem_number": "1518",
+    "problem_title": "Water Bottles",
+    "difficulty": "Easy",
+    "topics": "Math, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `numBottles` water bottles that are initially full of water. You can exchange `numExchange` empty water bottles from the market with one full water bottle.\n\nThe operation of drinking a full water bottle turns it into an empty bottle.\n\nGiven the two integers `numBottles` and `numExchange`, return *the **maximum** number of water bottles you can drink*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/07/01/sample_1_1875.png)\n\n```\nInput: numBottles = 9, numExchange = 3\nOutput: 13\nExplanation: You can exchange 3 empty bottles to get 1 full water bottle.\nNumber of water bottles you can drink: 9 + 3 + 1 = 13.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/07/01/sample_2_1875.png)\n\n```\nInput: numBottles = 15, numExchange = 4\nOutput: 19\nExplanation: You can exchange 4 empty bottles to get 1 full water bottle.\nNumber of water bottles you can drink: 15 + 3 + 1 = 19.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= numBottles <= 100`\n- `2 <= numExchange <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_water_bottles",
+    "helpers_run_signature": "(solution_class: type, num_bottles: int, num_exchange: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_water_bottles(num_bottles, num_exchange)",
+    "helpers_assert_name": "num_water_bottles",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_water_bottles, run_num_water_bottles\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WaterBottles",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_water_bottles",
+                "signature": "(self, num_bottles: int, num_exchange: int) -> int",
+                "body": "        # TODO: Implement num_water_bottles\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_water_bottles",
+                "signature": "(self, num_bottles: int, num_exchange: int, expected: int)",
+                "parametrize": "num_bottles, num_exchange, expected",
+                "test_cases": {
+                    "list": [
+                        "(9, 3, 13)",
+                        "(15, 4, 19)",
+                        "(1, 2, 1)",
+                        "(1, 100, 1)",
+                        "(2, 2, 3)",
+                        "(2, 3, 2)",
+                        "(3, 2, 5)",
+                        "(4, 2, 7)",
+                        "(5, 5, 6)",
+                        "(10, 10, 11)",
+                        "(11, 5, 13)",
+                        "(13, 4, 17)",
+                        "(29, 9, 32)",
+                        "(100, 2, 199)",
+                        "(100, 100, 101)",
+                        "(100, 99, 101)",
+                        "(61, 3, 91)",
+                        "(32, 5, 39)",
+                        "(26, 65, 26)",
+                        "(95, 34, 97)",
+                        "(31, 14, 33)",
+                        "(91, 9, 102)"
+                    ]
+                },
+                "body": "        result = run_num_water_bottles(Solution, num_bottles, num_exchange)\n        assert_num_water_bottles(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_water_bottles, assert_num_water_bottles\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum_bottles = 9\nnum_exchange = 3\nexpected = 13",
+    "playground_run": "result = run_num_water_bottles(Solution, num_bottles, num_exchange)\nresult",
+    "playground_assert": "assert_num_water_bottles(result, expected)"
+}

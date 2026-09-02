@@ -1,0 +1,99 @@
+{
+    "problem_name": "separate_black_and_white_balls",
+    "solution_class_name": "Solution",
+    "problem_number": "2938",
+    "problem_title": "Separate Black and White Balls",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `n` balls on a table, each ball has a color black or white.\n\nYou are given a 0-indexed binary string `s` of length `n`, where `1` and `0` represent black and white balls, respectively.\n\nIn each step, you can choose two adjacent balls and swap them.\n\nReturn *the minimum number of steps to group all the black balls to the right and all the white balls to the left*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"101\"\nOutput: 1\nExplanation: We can group all the black balls to the right in the following way:\n- Swap s[0] and s[1], s = \"011\".\nInitially, 1s are not grouped together, requiring at least 1 step to group them to the right.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"100\"\nOutput: 2\nExplanation: We can group all the black balls to the right in the following way:\n- Swap s[0] and s[1], s = \"010\".\n- Swap s[1] and s[2], s = \"001\".\nIt can be proven that the minimum number of steps needed is 2.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"0111\"\nOutput: 0\nExplanation: All the black balls are already grouped to the right.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n == s.length <= 10^5\n- s[i] is either '0' or '1'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_steps",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_steps(s)",
+    "helpers_assert_name": "minimum_steps",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_steps, run_minimum_steps\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SeparateBlackAndWhiteBalls",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_steps",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement minimum_steps\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_steps",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('101', 1)",
+                        "('100', 2)",
+                        "('0111', 0)",
+                        "('1', 0)",
+                        "('0', 0)",
+                        "('10', 1)",
+                        "('01', 0)",
+                        "('110', 2)",
+                        "('1100', 4)",
+                        "('111000', 9)",
+                        "('011010', 5)",
+                        "('1010101', 6)",
+                        "('1111', 0)",
+                        "('0000', 0)",
+                        "('0011', 0)",
+                        "('0101010101010101010101010101010101010101', 190)",
+                        "('1101111000110100010101111000000111', 166)",
+                        "('0110100', 8)",
+                        "('00101001', 5)",
+                        "('00010', 1)",
+                        "('00011100011110', 16)"
+                    ]
+                },
+                "body": "        result = run_minimum_steps(Solution, s)\n        assert_minimum_steps(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_steps, assert_minimum_steps\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '101'\nexpected = 1",
+    "playground_run": "result = run_minimum_steps(Solution, s)\nresult",
+    "playground_assert": "assert_minimum_steps(result, expected)"
+}

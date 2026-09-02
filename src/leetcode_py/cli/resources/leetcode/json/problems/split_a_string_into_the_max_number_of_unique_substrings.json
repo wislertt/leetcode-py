@@ -1,0 +1,96 @@
+{
+    "problem_name": "split_a_string_into_the_max_number_of_unique_substrings",
+    "solution_class_name": "Solution",
+    "problem_number": "1593",
+    "problem_title": "Split a String Into the Max Number of Unique Substrings",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s`, return the maximum number of unique substrings that the given string can be split into.\n\nYou can split string `s` into any list of **non-empty substrings**, where the concatenation of the substrings forms the original string. However, you must split the substrings such that all of them are **unique**.\n\nA **substring** is a contiguous sequence of characters within a string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ababccc\"\nOutput: 5\nExplanation: One way to split maximally is ['a', 'b', 'ab', 'c', 'cc']. Splitting like ['a', 'b', 'a', 'b', 'c', 'cc'] is not valid as you have 'a' and 'b' multiple times.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aba\"\nOutput: 2\nExplanation: One way to split maximally is ['a', 'ba'].\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aa\"\nOutput: 1\nExplanation: It is impossible to split the string any further.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 16`\n- `s` contains only lower case English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_unique_split",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_unique_split(s)",
+    "helpers_assert_name": "max_unique_split",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_unique_split, run_max_unique_split\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplitAStringIntoTheMaxNumberOfUniqueSubstringsTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_unique_split",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement max_unique_split\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_unique_split",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('ababccc', 5)",
+                        "('aba', 2)",
+                        "('aa', 1)",
+                        "('a', 1)",
+                        "('ab', 2)",
+                        "('abc', 3)",
+                        "('aaaa', 2)",
+                        "('aaaaaa', 3)",
+                        "('abab', 3)",
+                        "('abcabc', 4)",
+                        "('aabb', 3)",
+                        "('abcde', 5)",
+                        "('aaaaaaaaaaaaaaaa', 5)",
+                        "('abcdefghijklmnop', 16)",
+                        "('cgabbf', 5)",
+                        "('adabggbdbg', 7)",
+                        "('b', 1)",
+                        "('agad', 3)"
+                    ]
+                },
+                "body": "        result = run_max_unique_split(Solution, s)\n        assert_max_unique_split(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_unique_split, assert_max_unique_split\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ababccc'\nexpected = 5",
+    "playground_run": "result = run_max_unique_split(Solution, s)\nresult",
+    "playground_assert": "assert_max_unique_split(result, expected)"
+}

@@ -1,0 +1,100 @@
+{
+    "problem_name": "minimum_time_to_visit_a_cell_in_a_grid",
+    "solution_class_name": "Solution",
+    "problem_number": "2577",
+    "problem_title": "Minimum Time to Visit a Cell In a Grid",
+    "difficulty": "Hard",
+    "topics": "Array, Breadth-First Search, Graph Theory, Heap (Priority Queue), Matrix, Shortest Path",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a `m x n` matrix `grid` consisting of non-negative integers where `grid[row][col]` represents the minimum time required to be able to visit the cell `(row, col)`, which means you can visit the cell `(row, col)` only when the time you visit it is greater than or equal to `grid[row][col]`.\n\nYou are standing in the top-left cell of the matrix in the `0th` second, and you must move to any adjacent cell in the four directions: **up**, **down**, **left**, and **right**. Each move you make takes `1` second.\n\nReturn the minimum time required in which you can visit the bottom-right cell of the matrix. If you cannot visit the bottom-right cell, then return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-8.png)\n\n```\nInput: grid = [[0,1,3,2],[5,1,2,5],[4,3,8,6]]\nOutput: 7\nExplanation: One of the paths that we can take is the following:\n- at t = 0, we are on the cell (0,0).\n- at t = 1, we move to the cell (0,1). It is possible because grid[0][1] <= 1.\n- at t = 2, we move to the cell (1,1). It is possible because grid[1][1] <= 2.\n- at t = 3, we move to the cell (1,2). It is possible because grid[1][2] <= 3.\n- at t = 4, we move to the cell (1,1). It is possible because grid[1][1] <= 4.\n- at t = 5, we move to the cell (1,2). It is possible because grid[1][2] <= 5.\n- at t = 6, we move to the cell (1,3). It is possible because grid[1][3] <= 6.\n- at t = 7, we move to the cell (2,3). It is possible because grid[2][3] <= 7.\nThe final time is 7. It can be shown that it is the minimum time possible.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2023/02/14/yetgriddrawio-9.png)\n\n```\nInput: grid = [[0,2,4],[3,2,1],[1,0,4]]\nOutput: -1\nExplanation: There is no path from the top left to the bottom-right cell.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 2 <= m, n <= 1000\n- 4 <= m * n <= 10^5\n- 0 <= grid[i][j] <= 10^5\n- grid[0][0] == 0",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_time",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_time(grid)",
+    "helpers_assert_name": "minimum_time",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_time, run_minimum_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumTimeToVisitACellInAGrid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_time",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement minimum_time\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_time, assert_minimum_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1, 3, 2], [5, 1, 2, 5], [4, 3, 8, 6]]\nexpected = 7",
+    "playground_run": "result = run_minimum_time(Solution, grid)\nresult",
+    "playground_assert": "assert_minimum_time(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_time",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1, 3, 2], [5, 1, 2, 5], [4, 3, 8, 6]], 7)",
+                        "([[0, 2, 4], [3, 2, 1], [1, 0, 4]], -1)",
+                        "([[0, 5], [5, 0]], -1)",
+                        "([[0, 1], [2, 1]], 2)",
+                        "([[0, 1, 1], [1, 1, 1], [1, 1, 1]], 4)",
+                        "([[0, 9, 9], [9, 9, 9], [9, 9, 0]], -1)",
+                        "([[0, 100000], [100000, 0]], -1)",
+                        "([[0, 2], [3, 0]], -1)",
+                        "([[0, 1, 100000], [1, 100000, 1], [1, 1, 0]], 4)",
+                        "([[0, 4, 3], [4, 4, 4], [4, 4, 4]], -1)",
+                        "([[0, 3], [2, 0]], -1)",
+                        "([[0, 1, 2], [3, 4, 5], [6, 7, 0]], 6)",
+                        "([[0, 1, 0], [1, 1, 0], [1, 1, 7]], 8)",
+                        "([[0, 1, 1], [1, 1, 1], [1, 1, 8]], 8)",
+                        "([[0, 9, 3], [1, 1, 9], [5, 0, 3], [12, 2, 11]], 11)",
+                        "([[0, 6], [4, 5]], -1)",
+                        "([[0, 1, 2], [2, 2, 0], [0, 3, 3], [0, 2, 3]], 5)",
+                        "([[0, 1], [0, 1]], 2)",
+                        "([[0, 4], [3, 8]], -1)",
+                        "([[0, 1], [2, 2], [0, 1]], 3)",
+                        "([[0, 2, 2], [0, 1, 1], [2, 1, 1]], 4)",
+                        "([[0, 1], [0, 2], [1, 1]], 3)"
+                    ]
+                },
+                "body": "        result = run_minimum_time(Solution, grid)\n        assert_minimum_time(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "grid = [[0, 1, 3, 2], [5, 1, 2, 5], [4, 3, 8, 6]]",
+    "playground_execution": "result = run_minimum_time(Solution, grid)",
+    "playground_assertion": "assert_minimum_time(result, 7)"
+}

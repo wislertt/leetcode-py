@@ -1,0 +1,94 @@
+{
+    "problem_name": "find_valid_matrix_given_row_and_column_sums",
+    "solution_class_name": "Solution",
+    "problem_number": "1605",
+    "problem_title": "Find Valid Matrix Given Row and Column Sums",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Matrix, Flow Network",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two arrays `rowSum` and `colSum` of non-negative integers where `rowSum[i]` is the sum of the elements in the `i<sup>th</sup>` row and `colSum[j]` is the sum of the elements of the `j<sup>th</sup>` column of a 2D matrix. In other words, you do not know the elements of the matrix, but you do know the sums of each row and column.\n\nFind any matrix of **non-negative** integers of size `rowSum.length x colSum.length` that satisfies the `rowSum` and `colSum` requirements.\n\nReturn a 2D array representing **any** matrix that fulfills the requirements. It's guaranteed that **at least one** matrix that fulfills the requirements exists.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: rowSum = [3,8], colSum = [4,7]\nOutput: [[3,0],\n         [1,7]]\nExplanation: \n0th row: 3 + 0 = 3 == rowSum[0]\n1st row: 1 + 7 = 8 == rowSum[1]\n0th column: 3 + 1 = 4 == colSum[0]\n1st column: 0 + 7 = 7 == colSum[1]\nThe row and column sums match, and all matrix elements are non-negative.\nAnother possible matrix is: [[1,2],\n                             [3,5]]\n```"
+            },
+            {
+                "content": "```\nInput: rowSum = [5,7,10], colSum = [8,6,8]\nOutput: [[0,5,0],\n         [6,1,0],\n         [2,0,8]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= rowSum.length, colSum.length <= 500`\n- `0 <= rowSum[i], colSum[i] <= 10^8`\n- `sum(rowSum) == sum(colSum)`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "restore_matrix",
+    "helpers_run_signature": "(solution_class: type, row_sum: list[int], col_sum: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.restore_matrix(row_sum, col_sum)",
+    "helpers_assert_name": "restore_matrix",
+    "helpers_assert_signature": "(result: list[list[int]], row_sum: list[int], col_sum: list[int], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Multiple valid matrices exist: validate the returned one instead of\n    # comparing it with the sample output\n    assert len(result) == len(row_sum)\n    assert len(expected) == len(row_sum)\n    for i, row in enumerate(result):\n        assert len(row) == len(col_sum)\n        assert all(value >= 0 for value in row)\n        assert sum(row) == row_sum[i]\n    for j, col_total in enumerate(col_sum):\n        assert sum(row[j] for row in result) == col_total\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_restore_matrix, run_restore_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindValidMatrixGivenRowAndColumnSums",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "restore_matrix",
+                "signature": "(self, row_sum: list[int], col_sum: list[int]) -> list[list[int]]",
+                "body": "        # TODO: Implement restore_matrix\n        return [[]]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_restore_matrix",
+                "signature": "(self, row_sum: list[int], col_sum: list[int], expected: list[list[int]])",
+                "parametrize": "row_sum, col_sum, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 8], [4, 7], [[3, 0], [1, 7]])",
+                        "([5, 7, 10], [8, 6, 8], [[0, 5, 0], [6, 1, 0], [2, 0, 8]])",
+                        "([1], [1], [[1]])",
+                        "([0], [0], [[0]])",
+                        "([4], [2, 2], [[2, 2]])",
+                        "([2, 2], [4], [[2], [2]])",
+                        "([0, 5], [5, 0], [[0, 0], [5, 0]])",
+                        "([1, 2, 3], [2, 2, 2], [[1, 0, 0], [1, 1, 0], [0, 1, 2]])",
+                        "([10, 10, 10], [30], [[10], [10], [10]])",
+                        "([100000000], [100000000], [[100000000]])",
+                        "([1, 0, 1], [2, 0, 0], [[1, 0, 0], [0, 0, 0], [1, 0, 0]])",
+                        "([6, 6], [3, 3, 3, 3], [[3, 3, 0, 0], [0, 0, 3, 3]])",
+                        "([100000000,100000000,100000000],[100000000,100000000,100000000],[[100000000,0,0],[0,100000000,0],[0,0,100000000]])",
+                        "([99999999, 1], [100000000], [[99999999], [1]])",
+                        "([2, 3, 4, 5], [1, 4, 9], [[1, 1, 0], [0, 3, 0], [0, 0, 4], [0, 0, 5]])",
+                        "([6, 11, 3], [17, 3], [[6, 0], [11, 0], [0, 3]])",
+                        "([12,4,5,7,5],[3,27,3,0],[[3,9,0,0],[0,4,0,0],[0,5,0,0],[0,7,0,0],[0,2,3,0]])",
+                        "([10, 8], [1, 6, 11], [[1, 6, 3], [0, 0, 8]])",
+                        "([6, 12], [2, 13, 1, 2], [[2, 4, 0, 0], [0, 9, 1, 2]])"
+                    ]
+                },
+                "body": "        result = run_restore_matrix(Solution, row_sum, col_sum)\n        assert_restore_matrix(result, row_sum, col_sum, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_restore_matrix, assert_restore_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrow_sum = [3, 8]\ncol_sum = [4, 7]\nexpected = [[3, 0], [1, 7]]",
+    "playground_run": "result = run_restore_matrix(Solution, row_sum, col_sum)\nresult",
+    "playground_assert": "assert_restore_matrix(result, row_sum, col_sum, expected)"
+}

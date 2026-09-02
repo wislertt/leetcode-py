@@ -1,0 +1,93 @@
+{
+    "problem_name": "design_file_system",
+    "solution_class_name": "FileSystem",
+    "problem_number": "1166",
+    "problem_title": "Design File System",
+    "difficulty": "Medium",
+    "topics": "Design, Trie, Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are asked to design a file system that allows you to create new paths and associate them with different values.\n\nThe format of a path is one or more concatenated strings of the form: `/` followed by one or more lowercase English letters. For example, `'/leetcode'` and `'/leetcode/problems'` are valid paths while an empty string `''` and `'/'` are not.\n\nImplement the `FileSystem` class:\n\n- `bool createPath(string path, int value)` Creates a new `path` and associates a `value` to it if possible and returns `true`. Returns `false` if the path **already exists** or its parent path **doesn't exist**.\n- `int get(string path)` Returns the value associated with `path` or returns `-1` if the path doesn't exist.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: \n[\"FileSystem\",\"createPath\",\"get\"]\n[[],[\"/a\",1],[\"/a\"]]\nOutput: \n[null,true,1]\nExplanation: \nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/a\", 1); // return true\nfileSystem.get(\"/a\"); // return 1\n```"
+            },
+            {
+                "content": "```\nInput: \n[\"FileSystem\",\"createPath\",\"createPath\",\"get\",\"createPath\",\"get\"]\n[[],[\"/leet\",1],[\"/leet/code\",2],[\"/leet/code\"],[\"/c/d\",1],[\"/c\"]]\nOutput: \n[null,true,true,2,false,-1]\nExplanation: \nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/leet\", 1); // return true\nfileSystem.createPath(\"/leet/code\", 2); // return true\nfileSystem.get(\"/leet/code\"); // return 2\nfileSystem.createPath(\"/c/d\", 1); // return false because the parent path \"/c\" doesn't exist.\nfileSystem.get(\"/c\"); // return -1 because this path doesn't exist.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= path.length <= 100`\n- `1 <= value <= 10^9`\n- Each `path` is **valid** and consists of lowercase English letters and `'/'`.\n- At most `10^4` calls **in total** will be made to `createPath` and `get`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "file_system",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    from typing import Any\n\n    fs: Any = None\n    results: list[bool | int | None] = []\n    for i, operation in enumerate(operations):\n        if operation == 'FileSystem':\n            fs = solution_class()\n            results.append(None)\n        elif operation == 'createPath' and fs is not None:\n            results.append(fs.create_path(inputs[i][0], inputs[i][1]))\n        elif operation == 'get' and fs is not None:\n            results.append(fs.get(inputs[i][0]))\n    return results, fs",
+    "helpers_assert_name": "file_system",
+    "helpers_assert_signature": "(result: list[bool | int | None], expected: list[bool | int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_file_system, run_file_system\nfrom .solution import FileSystem",
+    "test_content": "",
+    "test_class_name": "DesignFileSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize file system\n        pass"
+            },
+            {
+                "name": "create_path",
+                "signature": "(self, path: str, value: int) -> bool",
+                "body": "        # TODO: Implement create_path\n        return False"
+            },
+            {
+                "name": "get",
+                "signature": "(self, path: str) -> int",
+                "body": "        # TODO: Implement get\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_file_system",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[bool | int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['FileSystem', 'createPath', 'get'], [[], ['/a', 1], ['/a']], [None, True, 1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'get', 'createPath', 'get'], [[], ['/leet', 1], ['/leet/code', 2], ['/leet/code'], ['/c/d', 1], ['/c']], [None, True, True, 2, False, -1])",
+                        "(['FileSystem', 'createPath', 'get'], [[], ['/a', 5], ['/b']], [None, True, -1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'get'], [[], ['/a', 1], ['/a', 2], ['/a']], [None, True, False, 1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'createPath', 'get', 'get', 'get'], [[], ['/a', 1], ['/a/b', 2], ['/a/b/c', 3], ['/a'], ['/a/b'], ['/a/b/c']], [None, True, True, True, 1, 2, 3])",
+                        "(['FileSystem', 'createPath', 'get'], [[], ['/a/b/c/d', 9], ['/a/b/c/d']], [None, False, -1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'get', 'get'], [[], ['/x', 1], ['/x/y/z', 7], ['/x/y'], ['/x/y/z']], [None, True, False, -1, -1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'createPath', 'createPath', 'get', 'get', 'get'], [[], ['/a', 1], ['/b', 2], ['/a/x', 3], ['/b/y', 4], ['/a/x'], ['/b/y'], ['/a/y']], [None, True, True, True, True, 3, 4, -1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'createPath', 'get', 'get'], [[], ['/c/d', 1], ['/c', 2], ['/c/d', 3], ['/c'], ['/c/d']], [None, False, True, True, 2, 3])",
+                        "(['FileSystem', 'createPath', 'get'], [[], ['/min', 1], ['/min']], [None, True, 1])",
+                        "(['FileSystem', 'createPath', 'get'], [[], ['/max', 1000000000], ['/max']], [None, True, 1000000000])",
+                        "(['FileSystem', 'createPath', 'createPath', 'get', 'get', 'get'], [[], ['/ab', 1], ['/ab/cd', 2], ['/ab'], ['/ab/cd'], ['/a']], [None, True, True, 1, 2, -1])",
+                        "(['FileSystem', 'createPath', 'createPath', 'createPath', 'get', 'get', 'createPath', 'get'], [[], ['/a', 1], ['/a', 1], ['/a/b/c', 1], ['/a/b'], ['/a/b/c'], ['/a/b', 2], ['/a/b']], [None, True, False, False, -1, -1, True, 2])",
+                        "(['FileSystem', 'createPath', 'createPath', 'createPath', 'get', 'get'], [[], ['/p', 1], ['/p/q', 2], ['/p', 3], ['/p'], ['/p/q']], [None, True, True, False, 1, 2])"
+                    ]
+                },
+                "body": "        result, _ = run_file_system(FileSystem, operations, inputs)\n        assert_file_system(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_file_system, assert_file_system\nfrom solution import FileSystem",
+    "playground_setup": "# Example test case\noperations = ['FileSystem', 'createPath', 'get']\ninputs = [[], ['/a', 1], ['/a']]\nexpected = [None, True, 1]",
+    "playground_run": "result, fs = run_file_system(FileSystem, operations, inputs)\nprint(result)\nfs",
+    "playground_assert": "assert_file_system(result, expected)"
+}

@@ -1,0 +1,97 @@
+{
+    "problem_name": "number_complement",
+    "solution_class_name": "Solution",
+    "problem_number": "476",
+    "problem_title": "Number Complement",
+    "difficulty": "Easy",
+    "topics": "Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The <strong>complement</strong> of an integer is the integer you get when you flip all the <code>0</code>'s to <code>1</code>'s and all the <code>1</code>'s to <code>0</code>'s in its binary representation.\n\n<ul>\n\t<li>For example, The integer <code>5</code> is <code>\"101\"</code> in binary and its <strong>complement</strong> is <code>\"010\"</code> which is the integer <code>2</code>.</li>\n</ul>\n\n<p>Given an integer <code>num</code>, return <em>its complement</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 5\nOutput: 2\nExplanation: The binary representation of 5 is 101 (no leading zero bits), and its complement is 010. So you need to output 2.\n```"
+            },
+            {
+                "content": "```\nInput: num = 1\nOutput: 0\nExplanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num < 2^31`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_complement",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_complement(num)",
+    "helpers_assert_name": "find_complement",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_complement, run_find_complement\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberComplement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_complement",
+                "signature": "(self, num: int) -> int",
+                "body": "        # TODO: Implement find_complement\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_complement",
+                "signature": "(self, num: int, expected: int)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 0)",
+                        "(2, 1)",
+                        "(3, 0)",
+                        "(4, 3)",
+                        "(5, 2)",
+                        "(6, 1)",
+                        "(7, 0)",
+                        "(8, 7)",
+                        "(10, 5)",
+                        "(100, 27)",
+                        "(999, 24)",
+                        "(1000, 23)",
+                        "(12345, 4038)",
+                        "(65535, 0)",
+                        "(65536, 65535)",
+                        "(1073741824, 1073741823)",
+                        "(1073741823, 0)",
+                        "(2147483647, 0)",
+                        "(2147483646, 1)",
+                        "(536870912, 536870911)",
+                        "(4681, 3510)",
+                        "(26, 5)"
+                    ]
+                },
+                "body": "        result = run_find_complement(Solution, num)\n        assert_find_complement(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_complement, assert_find_complement\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 5\nexpected = 2",
+    "playground_run": "result = run_find_complement(Solution, num)\nresult",
+    "playground_assert": "assert_find_complement(result, expected)"
+}

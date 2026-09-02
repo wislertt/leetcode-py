@@ -1,0 +1,95 @@
+{
+    "problem_name": "maximum_matrix_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "1975",
+    "problem_title": "Maximum Matrix Sum",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `n x n` integer `matrix`. You can do the following operation **any** number of times:\n\n- Choose any two **adjacent** elements of `matrix` and **multiply** each of them by `-1`.\n\nTwo elements are considered **adjacent** if and only if they share a **border**.\n\nYour goal is to **maximize** the summation of the matrix's elements. Return *the **maximum** sum of the matrix's elements using the operation mentioned above.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/16/pc79-q2ex1.png)\n\n```\nInput: matrix = [[1,-1],[-1,1]]\nOutput: 4\nExplanation: We can follow the following steps to reach sum equals 4:\n- Multiply the 2 elements in the first row by -1.\n- Multiply the 2 elements in the first column by -1.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/07/16/pc79-q2ex2.png)\n\n```\nInput: matrix = [[1,2,3],[-1,-2,-3],[1,2,3]]\nOutput: 16\nExplanation: We can follow the following step to reach sum equals 16:\n- Multiply the 2 last elements in the second row by -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == matrix.length == matrix[i].length`\n- `2 <= n <= 250`\n- `-10^5 <= matrix[i][j] <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_matrix_sum",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_matrix_sum(matrix)",
+    "helpers_assert_name": "max_matrix_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_matrix_sum, run_max_matrix_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumMatrixSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_matrix_sum",
+                "signature": "(self, matrix: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_matrix_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_matrix_sum",
+                "signature": "(self, matrix: list[list[int]], expected: int)",
+                "parametrize": "matrix, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,-1],[-1,1]], 4)",
+                        "([[1,2,3],[-1,-2,-3],[1,2,3]], 16)",
+                        "([[1,2],[3,4]], 10)",
+                        "([[-1,-2],[-3,-4]], 10)",
+                        "([[-1,-1],[-1,-1]], 4)",
+                        "([[1,-1],[1,-1]], 4)",
+                        "([[0,0],[0,0]], 0)",
+                        "([[-1,0],[0,-1]], 2)",
+                        "([[100000,-100000],[-100000,100000]], 400000)",
+                        "([[1,-1,1],[-1,1,-1],[1,-1,1]], 9)",
+                        "([[-1,-1,-1],[-1,-1,-1],[-1,-1,-1]], 7)",
+                        "([[2,-2,2],[2,2,2],[-2,2,-2]], 14)",
+                        "([[-5,3],[2,-7]], 17)",
+                        "([[9,-9,9],[-9,9,-9],[9,-9,8]], 80)",
+                        "([[-1,2,-3,4],[5,-6,7,-8],[-9,10,-11,12],[13,-14,15,-16]], 136)",
+                        "([[-2,-3,0,-3],[-2,2,-3,-2],[-2,2,0,-1],[-1,-1,1,1]], 26)",
+                        "([[-1,0,3,0],[-1,2,3,0],[0,-3,2,-2],[1,-1,1,-2]], 22)",
+                        "([[3,-1,0],[1,-3,0],[-1,2,-1]], 12)",
+                        "([[-3,-2],[1,-1]], 5)",
+                        "([[0,-2,0],[0,-3,-1],[0,3,-3]], 12)"
+                    ]
+                },
+                "body": "        result = run_max_matrix_sum(Solution, matrix)\n        assert_max_matrix_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_matrix_sum, assert_max_matrix_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1, 2, 3], [-1, -2, -3], [1, 2, 3]]\nexpected = 16",
+    "playground_run": "result = run_max_matrix_sum(Solution, matrix)\nresult",
+    "playground_assert": "assert_max_matrix_sum(result, expected)"
+}

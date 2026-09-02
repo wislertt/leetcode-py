@@ -1,0 +1,95 @@
+{
+    "problem_name": "super_washing_machines",
+    "solution_class_name": "Solution",
+    "problem_number": "517",
+    "problem_title": "Super Washing Machines",
+    "difficulty": "Hard",
+    "topics": "Array, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have `n` super washing machines on a line. Initially, each washing machine has some dresses or is empty.\n\nFor each move, you could choose any `m` (`1 <= m <= n`) washing machines, and pass one dress of each washing machine to one of its adjacent washing machines at the same time.\n\nGiven an integer array `machines` representing the number of dresses in each washing machine from left to right on the line, return the minimum number of moves to make all the washing machines have the same number of dresses. If it is not possible to do it, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: machines = [1,0,5]\nOutput: 3\nExplanation:\n1st move:    1     0 <-- 5    =>    1     1     4\n2nd move:    1 <-- 1 <-- 4    =>    2     1     3\n3rd move:    2     1 <-- 3    =>    2     2     2\n```"
+            },
+            {
+                "content": "```\nInput: machines = [0,3,0]\nOutput: 2\nExplanation:\n1st move:    0 <-- 3     0    =>    1     2     0\n2nd move:    1     2 --> 0    =>    1     1     1\n```"
+            },
+            {
+                "content": "```\nInput: machines = [0,2,0]\nOutput: -1\nExplanation:\nIt's impossible to make all three washing machines have the same number of dresses.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == machines.length\n- 1 <= n <= 10^4\n- 0 <= machines[i] <= 10^5",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_min_moves",
+    "helpers_run_signature": "(solution_class: type, machines: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_min_moves(machines)",
+    "helpers_assert_name": "find_min_moves",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_min_moves, run_find_min_moves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SuperWashingMachines",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_min_moves",
+                "signature": "(self, machines: list[int]) -> int",
+                "body": "        # TODO: Implement find_min_moves\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_min_moves",
+                "signature": "(self, machines: list[int], expected: int)",
+                "parametrize": "machines, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 5], 3)",
+                        "([0, 3, 0], 2)",
+                        "([0, 2, 0], -1)",
+                        "([0, 0, 0], 0)",
+                        "([1], 0)",
+                        "([0, 0, 11, 5], 8)",
+                        "([4, 0, 0, 4], 2)",
+                        "([0, 5, 0, 0, 0], 4)",
+                        "([100000, 0, 0, 0], 75000)",
+                        "([0, 0, 100000, 0, 0], 80000)",
+                        "([9, 1, 8, 2], 4)",
+                        "([4, 1, 1, 2], 2)",
+                        "([4, 1, 2, 1], 2)",
+                        "([1, 1, 3], -1)",
+                        "([2, 4, 4, 2], 1)",
+                        "([4, 1, 2], -1)",
+                        "([4, 3, 0, 2], -1)"
+                    ]
+                },
+                "body": "        result = run_find_min_moves(Solution, machines)\n        assert_find_min_moves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_min_moves, assert_find_min_moves\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmachines: list[int] = [1, 0, 5]\nexpected = 3",
+    "playground_run": "result = run_find_min_moves(Solution, machines)\nresult",
+    "playground_assert": "assert_find_min_moves(result, expected)"
+}

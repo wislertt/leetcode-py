@@ -1,0 +1,95 @@
+{
+    "problem_name": "minimum_obstacle_removal_to_reach_corner",
+    "solution_class_name": "Solution",
+    "problem_number": "2290",
+    "problem_title": "Minimum Obstacle Removal to Reach Corner",
+    "difficulty": "Hard",
+    "topics": "Array, Breadth-First Search, Graph Theory, Heap (Priority Queue), Matrix, Shortest Path, 0-1 BFS, Dijkstra's Algorithm",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** 2D integer array `grid` of size `m x n`. Each cell has one of two values:\n\n- `0` represents an **empty** cell,\n- `1` represents an **obstacle** that may be removed.\n\nYou can move up, down, left, or right from and to an empty cell.\n\nReturn the **minimum** number of **obstacles** to **remove** so you can move from the upper left corner `(0, 0)` to the lower right corner `(m - 1, n - 1)`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/04/06/example1drawio-1.png)\n\n```\nInput: grid = [[0,1,1],[1,1,0],[1,1,0]]\nOutput: 2\nExplanation: We can remove the obstacles at (0, 1) and (0, 2) to create a path from (0, 0) to (2, 2).\nIt can be shown that we need to remove at least 2 obstacles, so we return 2.\nNote that there may be other ways to remove 2 obstacles to create a path.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/04/06/example1drawio.png)\n\n```\nInput: grid = [[0,1,0,0,0],[0,1,0,1,0],[0,0,0,1,0]]\nOutput: 0\nExplanation: We can move from (0, 0) to (2, 4) without removing any obstacles, so we return 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 10^5`\n- `2 <= m * n <= 10^5`\n- `grid[i][j]` is either `0` or `1`.\n- `grid[0][0] == grid[m - 1][n - 1] == 0`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_obstacles",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_obstacles(grid)",
+    "helpers_assert_name": "minimum_obstacles",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_obstacles, run_minimum_obstacles\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumObstacleRemovalToReachCorner",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_obstacles",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement minimum_obstacles\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_obstacles, assert_minimum_obstacles\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0, 1, 1], [1, 1, 0], [1, 1, 0]]\nexpected = 2",
+    "playground_run": "result = run_minimum_obstacles(Solution, grid)\nresult",
+    "playground_assert": "assert_minimum_obstacles(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_obstacles",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1, 1], [1, 1, 0], [1, 1, 0]], 2)",
+                        "([[0, 1, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 1, 0]], 0)",
+                        "([[0, 0]], 0)",
+                        "([[0], [0]], 0)",
+                        "([[0, 1], [1, 1], [0, 0]], 1)",
+                        "([[0, 0], [1, 1], [1, 0]], 1)",
+                        "([[0, 0], [1, 0]], 0)",
+                        "([[0, 1], [1, 0]], 1)",
+                        "([[0, 1, 1], [1, 1, 1], [1, 1, 0]], 3)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 0)",
+                        "([[0, 1], [1, 1], [1, 0]], 2)",
+                        "([[0, 1, 1], [0, 0, 1], [1, 0, 0]], 0)",
+                        "([[0, 1, 0], [1, 1, 0], [0, 0, 0]], 1)",
+                        "([[0, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 0]], 4)",
+                        "([[0, 0, 1], [1, 0, 1], [1, 0, 0]], 0)",
+                        "([[0, 1, 0, 1], [1, 1, 0, 1], [0, 0, 0, 0]], 1)",
+                        "([[0, 0, 0, 1], [1, 1, 1, 1], [0, 1, 0, 1], [1, 0, 0, 0]], 1)",
+                        "([[0, 0], [0, 0], [0, 0], [0, 0]], 0)",
+                        "([[0, 1, 1, 1], [0, 0, 0, 0]], 0)",
+                        "([[0, 1, 1, 0], [0, 1, 0, 0], [0, 0, 0, 0]], 0)"
+                    ]
+                },
+                "body": "        result = run_minimum_obstacles(Solution, grid)\n        assert_minimum_obstacles(result, expected)"
+            }
+        ]
+    }
+}

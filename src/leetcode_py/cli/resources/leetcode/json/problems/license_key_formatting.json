@@ -1,0 +1,93 @@
+{
+    "problem_name": "license_key_formatting",
+    "solution_class_name": "Solution",
+    "problem_number": "482",
+    "problem_title": "License Key Formatting",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a license key represented as a string `s` that consists of only alphanumeric characters and dashes. The string is separated into `n + 1` groups by `n` dashes. You are also given an integer `k`.\n\nWe want to reformat the string `s` such that each group contains exactly `k` characters, except for the first group, which could be shorter than `k` but still must contain at least one character. Furthermore, there must be a dash inserted between two groups, and you should convert all lowercase letters to uppercase.\n\nReturn *the reformatted license key*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"5F3Z-2e-9-w\", k = 4\nOutput: \"5F3Z-2E9W\"\nExplanation: The string s has been split into two parts, each part has 4 characters. Note that the two extra dashes are not needed and can be removed.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"2-5g-3-J\", k = 2\nOutput: \"2-5G-3J\"\nExplanation: The string s has been split into three parts, each part has 2 characters except the first part as it could be shorter as mentioned above.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s consists of English letters, digits, and dashes '-'.\n- 1 <= k <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "license_key_formatting",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.license_key_formatting(s, k)",
+    "helpers_assert_name": "license_key_formatting",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_license_key_formatting, run_license_key_formatting\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LicenseKeyFormatting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "license_key_formatting",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement license_key_formatting\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_license_key_formatting",
+                "signature": "(self, s: str, k: int, expected: str)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('5F3Z-2e-9-w', 4, '5F3Z-2E9W')",
+                        "('2-5g-3-J', 2, '2-5G-3J')",
+                        "('2-4A0r7-4k', 4, '24A0-R74K')",
+                        "('2-4A0r7-4k', 3, '24-A0R-74K')",
+                        "('a-a-a-a-', 1, 'A-A-A-A')",
+                        "('a', 1, 'A')",
+                        "('AB', 2, 'AB')",
+                        "('AB', 1, 'A-B')",
+                        "('abc', 5, 'ABC')",
+                        "('5F3Z-2e-9-w', 3, '5F-3Z2-E9W')",
+                        "('2-5g-3-J', 3, '25-G3J')",
+                        "('0-0', 1, '0-0')",
+                        "('---A---B', 2, 'AB')",
+                        "('---A---B', 1, 'A-B')",
+                        "('AbCdEfGh', 2, 'AB-CD-EF-GH')",
+                        "('J-5k-3z-Q-9', 4, 'J5K-3ZQ9')",
+                        "('8-5g-3-J-1', 2, '85-G3-J1')",
+                        "('ZZ-YY-XX', 3, 'ZZY-YXX')"
+                    ]
+                },
+                "body": "        result = run_license_key_formatting(Solution, s, k)\n        assert_license_key_formatting(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_license_key_formatting, assert_license_key_formatting\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '5F3Z-2e-9-w'\nk = 4\nexpected = '5F3Z-2E9W'",
+    "playground_run": "result = run_license_key_formatting(Solution, s, k)\nresult",
+    "playground_assert": "assert_license_key_formatting(result, expected)"
+}

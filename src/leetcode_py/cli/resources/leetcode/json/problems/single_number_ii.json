@@ -1,0 +1,93 @@
+{
+    "problem_name": "single_number_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "137",
+    "problem_title": "Single Number II",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `nums` where every element appears **three times** except for one, which appears **exactly once**. *Find the single element and return it*.\n\nYou must implement a solution with a linear runtime complexity and use only constant extra space.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,2,3,2]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,0,1,0,1,99]\nOutput: 99\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 3 * 10^4\n- -2^31 <= nums[i] <= 2^31 - 1\n- Each element in nums appears exactly three times except for one element which appears once.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "single_number",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.single_number(nums)",
+    "helpers_assert_name": "single_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_single_number, run_single_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SingleNumberII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "single_number",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement single_number\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_single_number",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 2, 3, 2], 3)",
+                        "([0, 1, 0, 1, 0, 1, 99], 99)",
+                        "([1], 1)",
+                        "([7, 7, 7, 8], 8)",
+                        "([-1, -1, -1, -2], -2)",
+                        "([-2147483648], -2147483648)",
+                        "([2147483647], 2147483647)",
+                        "([2147483647, 2147483647, 2147483647, -2147483648], -2147483648)",
+                        "([-2147483648, -2147483648, -2147483648, 2147483647], 2147483647)",
+                        "([0, 0, 0, -5], -5)",
+                        "([100, 99, 100, 100], 99)",
+                        "([1, 2, 3, 1, 2, 1, 2], 3)",
+                        "([-334, -606, -606, -1836671566, -606, -334, -334], -1836671566)",
+                        "([-721, -721, -721, 1983358728, -126, -126, -126], 1983358728)",
+                        "([809424842, 833, -263, 833, -263, -263, 833], 809424842)",
+                        "([485, -431203817, 485, 485], -431203817)",
+                        "([938, 938, -1298594836, 859, 938, 859, 859], -1298594836)",
+                        "([418, -1722992034, 418, 418], -1722992034)"
+                    ]
+                },
+                "body": "        result = run_single_number(Solution, nums)\n        assert_single_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_single_number, assert_single_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 2, 3, 2]\nexpected = 3",
+    "playground_run": "result = run_single_number(Solution, nums)\nresult",
+    "playground_assert": "assert_single_number(result, expected)"
+}

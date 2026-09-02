@@ -1,0 +1,93 @@
+{
+    "problem_name": "rectangle_area",
+    "solution_class_name": "Solution",
+    "problem_number": "223",
+    "problem_title": "Rectangle Area",
+    "difficulty": "Medium",
+    "topics": "Math, Geometry",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the coordinates of two rectilinear rectangles in a 2D plane, return the total area covered by the two rectangles.\n\nThe first rectangle is defined by its bottom-left corner `(ax1, ay1)` and its top-right corner `(ax2, ay2)`.\n\nThe second rectangle is defined by its bottom-left corner `(bx1, by1)` and its top-right corner `(bx2, by2)`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/08/rectangle-plane.png)\n\n```\nInput: ax1 = -3, ay1 = 0, ax2 = 3, ay2 = 4, bx1 = 0, by1 = -1, bx2 = 9, by2 = 2\nOutput: 45\n```"
+            },
+            {
+                "content": "```\nInput: ax1 = -2, ay1 = -2, ax2 = 2, ay2 = 2, bx1 = -2, by1 = -2, bx2 = 2, by2 = 2\nOutput: 16\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -10^4 <= ax1 <= ax2 <= 10^4\n- -10^4 <= ay1 <= ay2 <= 10^4\n- -10^4 <= bx1 <= bx2 <= 10^4\n- -10^4 <= by1 <= by2 <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "compute_area",
+    "helpers_run_signature": "(solution_class: type, ax1: int, ay1: int, ax2: int, ay2: int, bx1: int, by1: int, bx2: int, by2: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.compute_area(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2)",
+    "helpers_assert_name": "compute_area",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_compute_area, run_compute_area\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RectangleArea",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "compute_area",
+                "signature": "(self, ax1: int, ay1: int, ax2: int, ay2: int, bx1: int, by1: int, bx2: int, by2: int) -> int",
+                "body": "        # TODO: Implement compute_area\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_compute_area",
+                "signature": "(self, ax1: int, ay1: int, ax2: int, ay2: int, bx1: int, by1: int, bx2: int, by2: int, expected: int)",
+                "parametrize": "ax1, ay1, ax2, ay2, bx1, by1, bx2, by2, expected",
+                "test_cases": {
+                    "list": [
+                        "(-3, 0, 3, 4, 0, -1, 9, 2, 45)",
+                        "(-2, -2, 2, 2, -2, -2, 2, 2, 16)",
+                        "(0, 0, 0, 0, 0, 0, 0, 0, 0)",
+                        "(0, 0, 1, 1, 2, 2, 3, 3, 2)",
+                        "(0, 0, 1, 1, -1, -1, 0, 0, 2)",
+                        "(0, 0, 2, 2, 2, 0, 4, 2, 8)",
+                        "(0, 0, 4, 4, 1, 1, 2, 2, 16)",
+                        "(0, 0, 4, 4, 4, 4, 8, 8, 32)",
+                        "(-5, -5, -1, -1, -3, -3, 1, 1, 28)",
+                        "(10000, -10000, 10000, 10000, -10000, -10000, 10000, 10000, 400000000)",
+                        "(-10000, -10000, 10000, 10000, -10000, -10000, 10000, 10000, 400000000)",
+                        "(-10000, -10000, 10000, 10000, 0, 0, 1, 1, 400000000)",
+                        "(0, 2, 1, 7, -4, 6, 4, 10, 36)",
+                        "(-7, 0, 7, 9, -10, -10, 9, -7, 183)",
+                        "(-8, 1, 1, 2, -2, -8, 1, -5, 18)",
+                        "(2, -2, 3, -2, -10, -8, 8, -4, 72)",
+                        "(-7, -9, 10, 5, 1, 1, 6, 8, 253)",
+                        "(-7, 2, 7, 7, 2, -6, 8, 0, 106)"
+                    ]
+                },
+                "body": "        result = run_compute_area(Solution, ax1, ay1, ax2, ay2, bx1, by1, bx2, by2)\n        assert_compute_area(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_compute_area, assert_compute_area\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nax1 = -3\nay1 = 0\nax2 = 3\nay2 = 4\nbx1 = 0\nby1 = -1\nbx2 = 9\nby2 = 2\nexpected = 45",
+    "playground_run": "result = run_compute_area(Solution, ax1, ay1, ax2, ay2, bx1, by1, bx2, by2)\nresult",
+    "playground_assert": "assert_compute_area(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "path_with_maximum_minimum_value",
+    "solution_class_name": "Solution",
+    "problem_number": "1102",
+    "problem_title": "Path With Maximum Minimum Value",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Depth-First Search, Breadth-First Search, Union Find, Heap (Priority Queue), Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an `m x n` integer matrix `grid`, return *the maximum **score** of a path starting at* `(0, 0)` *and ending at* `(m - 1, n - 1)` moving in the **4** cardinal directions.\n\nThe **score** of a path is the minimum value in that path.\n\n- For example, the score of the path `8 \u2192 4 \u2192 5 \u2192 9` is `4`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[5,4,5],[1,2,6],[7,4,6]]\nOutput: 4\nExplanation: The path with the maximum score is highlighted in yellow.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[2,2,1,2,2,2],[1,2,2,2,1,2]]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[3,4,6,3,4],[0,2,1,1,7],[8,8,3,2,7],[3,2,4,9,8],[4,1,2,0,0],[4,6,5,4,3]]\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 100\n- 0 <= grid[i][j] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_minimum_path",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_minimum_path(grid)",
+    "helpers_assert_name": "maximum_minimum_path",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_minimum_path, run_maximum_minimum_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PathWithMaximumMinimumValue",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_minimum_path",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement maximum_minimum_path\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_minimum_path",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[5,4,5],[1,2,6],[7,4,6]],4)",
+                        "([[2,2,1,2,2,2],[1,2,2,2,1,2]],2)",
+                        "([[3,4,6,3,4],[0,2,1,1,7],[8,8,3,2,7],[3,2,4,9,8],[4,1,2,0,0],[4,6,5,4,3]],3)",
+                        "([[1]],1)",
+                        "([[0,0],[0,0]],0)",
+                        "([[1,2,3],[6,5,4]],1)",
+                        "([[9,9,9],[9,0,9],[9,9,9]],9)",
+                        "([[5,0],[0,5]],0)",
+                        "([[4,3,1],[3,2,4],[1,4,5]],2)",
+                        "([[7,6,5,4],[8,7,6,5],[9,8,7,6]],6)",
+                        "([[0,10,0],[10,0,10],[0,10,0]],0)",
+                        "([[2,0,2,0],[1,9,9,1],[2,0,2,0]],0)"
+                    ]
+                },
+                "body": "        result = run_maximum_minimum_path(Solution, grid)\n        assert_maximum_minimum_path(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_minimum_path, assert_maximum_minimum_path\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[5, 4, 5], [1, 2, 6], [7, 4, 6]]\nexpected = 4",
+    "playground_run": "result = run_maximum_minimum_path(Solution, grid)\nresult",
+    "playground_assert": "assert_maximum_minimum_path(result, expected)"
+}

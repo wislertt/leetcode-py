@@ -1,0 +1,105 @@
+{
+    "problem_name": "confusing_number_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "1088",
+    "problem_title": "Confusing Number II",
+    "difficulty": "Hard",
+    "topics": "Math, Backtracking, Depth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A **confusing number** is a number that when rotated `180` degrees becomes a **different** number with each digit valid.\n\nWe can rotate digits of a number by `180` degrees to form new digits.\n\n- When `0, 1, 6, 8,` and `9` are rotated `180` degrees, they become `0, 1, 9, 8,` and `6` respectively.\n- When `2, 3, 4, 5,` and `7` are rotated `180` degrees, they become **invalid**.\n\nNote that after rotating a number, we can ignore leading zeros.\n\n- For example, after rotating `8000`, we have `0008` which is considered as just `8`.\n\nGiven an integer `n`, return *the number of **confusing numbers** in the inclusive range* `[1, n]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 20\nOutput: 6\nExplanation: The confusing numbers are [6,9,10,16,18,19].\n6 converts to 9.\n9 converts to 6.\n10 converts to 01 which is just 1.\n16 converts to 91.\n18 converts to 81.\n19 converts to 61.\n```"
+            },
+            {
+                "content": "```\nInput: n = 100\nOutput: 19\nExplanation: The confusing numbers are [6,9,10,16,18,19,60,61,66,68,80,81,86,89,90,91,98,99,100].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "confusing_number_ii",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.confusing_number_ii(n)",
+    "helpers_assert_name": "confusing_number_ii",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_confusing_number_ii, run_confusing_number_ii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConfusingNumberII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "confusing_number_ii",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement confusing_number_ii\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_confusing_number_ii",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 0)",
+                        "(5, 0)",
+                        "(6, 1)",
+                        "(9, 2)",
+                        "(10, 3)",
+                        "(11, 3)",
+                        "(15, 3)",
+                        "(19, 6)",
+                        "(20, 6)",
+                        "(25, 6)",
+                        "(50, 6)",
+                        "(59, 6)",
+                        "(60, 7)",
+                        "(65, 8)",
+                        "(85, 12)",
+                        "(89, 14)",
+                        "(99, 18)",
+                        "(100, 19)",
+                        "(101, 19)",
+                        "(116, 24)",
+                        "(150, 26)",
+                        "(200, 40)",
+                        "(500, 40)",
+                        "(689, 57)",
+                        "(1000, 107)",
+                        "(2000, 226)",
+                        "(5000, 226)",
+                        "(10000, 587)",
+                        "(15000, 830)",
+                        "(20000, 1196)"
+                    ]
+                },
+                "body": "        result = run_confusing_number_ii(Solution, n)\n        assert_confusing_number_ii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_confusing_number_ii, assert_confusing_number_ii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 20\nexpected = 6",
+    "playground_run": "result = run_confusing_number_ii(Solution, n)\nresult",
+    "playground_assert": "assert_confusing_number_ii(result, expected)"
+}

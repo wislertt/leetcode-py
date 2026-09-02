@@ -1,0 +1,95 @@
+{
+    "problem_name": "perform_string_shifts",
+    "solution_class_name": "Solution",
+    "problem_number": "1427",
+    "problem_title": "Perform String Shifts",
+    "difficulty": "Easy",
+    "topics": "Array, Math, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` containing lowercase English letters, and a matrix `shift`, where `shift[i] = [direction<sub>i</sub>, amount<sub>i</sub>]`:\n\n- `direction<sub>i</sub>` can be `0` (for left shift) or `1` (for right shift).\n- `amount<sub>i</sub>` is the amount by which string `s` is to be shifted.\n- A left shift by 1 means remove the first character of `s` and append it to the end.\n- Similarly, a right shift by 1 means remove the last character of `s` and add it to the beginning.\n\nReturn the final string after all operations.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abc\", shift = [[0,1],[1,2]]\nOutput: \"cab\"\nExplanation:\n[0,1] means shift to left by 1. \"abc\" -> \"bca\"\n[1,2] means shift to right by 2. \"bca\" -> \"cab\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcdefg\", shift = [[1,1],[1,1],[0,2],[1,3]]\nOutput: \"efgabcd\"\nExplanation:\n[1,1] means shift to right by 1. \"abcdefg\" -> \"gabcdef\"\n[1,1] means shift to right by 1. \"gabcdef\" -> \"fgabcde\"\n[0,2] means shift to left by 2. \"fgabcde\" -> \"abcdefg\"\n[1,3] means shift to right by 3. \"abcdefg\" -> \"efgabcd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 100`\n- `s` only contains lower case English letters.\n- `1 <= shift.length <= 100`\n- `shift[i].length == 2`\n- `direction<sub>i</sub>` is either `0` or `1`.\n- `0 <= amount<sub>i</sub> <= 100`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "string_shift",
+    "helpers_run_signature": "(solution_class: type, s: str, shift: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.string_shift(s, shift)",
+    "helpers_assert_name": "string_shift",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_string_shift, run_string_shift\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PerformStringShifts",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "string_shift",
+                "signature": "(self, s: str, shift: list[list[int]]) -> str",
+                "body": "        # TODO: Implement string_shift\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_string_shift",
+                "signature": "(self, s: str, shift: list[list[int]], expected: str)",
+                "parametrize": "s, shift, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc',[[0,1],[1,2]],'cab')",
+                        "('abcdefg',[[1,1],[1,1],[0,2],[1,3]],'efgabcd')",
+                        "('a',[[0,0]],'a')",
+                        "('a',[[1,100]],'a')",
+                        "('ab',[[1,1]],'ba')",
+                        "('ab',[[0,1]],'ba')",
+                        "('abc',[[0,3]],'abc')",
+                        "('abc',[[1,4]],'cab')",
+                        "('abc',[[0,0],[1,0]],'abc')",
+                        "('abcd',[[0,1],[0,1],[0,1],[0,1]],'abcd')",
+                        "('xyz',[[1,5],[0,3]],'yzx')",
+                        "('mwkxyz',[[0,2],[1,3],[1,1],[0,5]],'xyzmwk')",
+                        "('abcdefghij',[[1,7],[0,2],[1,13],[0,0]],'cdefghijab')",
+                        "('zzz',[[0,100],[1,100]],'zzz')",
+                        "('b',[[1,77],[0,9],[1,71],[0,16]],'b')",
+                        "('ecaeeaddda',[[1,30]],'ecaeeaddda')",
+                        "('bdeabaabca',[[1,13],[0,6],[0,10],[0,62]],'aabcabdeab')",
+                        "('a',[[1,40]],'a')",
+                        "('decebeaeee',[[1,52],[0,76],[1,70],[1,47]],'eeedecebea')",
+                        "('ebbcbbcadc',[[0,60],[1,30],[0,8]],'dcebbcbbca')"
+                    ]
+                },
+                "body": "        result = run_string_shift(Solution, s, shift)\n        assert_string_shift(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_string_shift, assert_string_shift\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abc'\nshift = [[0, 1], [1, 2]]\nexpected = 'cab'",
+    "playground_run": "result = run_string_shift(Solution, s, shift)\nresult",
+    "playground_assert": "assert_string_shift(result, expected)"
+}

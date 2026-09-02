@@ -1,0 +1,104 @@
+{
+    "problem_name": "create_maximum_number",
+    "solution_class_name": "Solution",
+    "problem_number": "321",
+    "problem_title": "Create Maximum Number",
+    "difficulty": "Hard",
+    "topics": "Array, Two Pointers, Stack, Greedy, Monotonic Stack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two integer arrays `nums1` and `nums2` of lengths `m` and `n` respectively. `nums1` and `nums2` represent the digits of two numbers. You are also given an integer `k`.\n\nCreate the maximum number of length `k <= m + n` from digits of the two numbers. The relative order of the digits from the same array must be preserved.\n\nReturn an array of the `k` digits representing the answer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums1 = [3,4,6,5], nums2 = [9,1,2,5,8,3], k = 5\nOutput: [9,8,6,5,3]\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [6,7], nums2 = [6,0,4], k = 5\nOutput: [6,7,6,0,4]\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [3,9], nums2 = [8,9], k = 3\nOutput: [9,8,9]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == nums1.length`\n- `n == nums2.length`\n- `1 <= m, n <= 500`\n- `0 <= nums1[i], nums2[i] <= 9`\n- `1 <= k <= m + n`\n- `nums1` and `nums2` do not have leading zeros.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_number",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_number(nums1, nums2, k)",
+    "helpers_assert_name": "max_number",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_number, run_max_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CreateMaximumNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_number",
+                "signature": "(self, nums1: list[int], nums2: list[int], k: int) -> list[int]",
+                "body": "        # TODO: Implement max_number\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_number",
+                "signature": "(self, nums1: list[int], nums2: list[int], k: int, expected: list[int])",
+                "parametrize": "nums1, nums2, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 4, 6, 5], [9, 1, 2, 5, 8, 3], 5, [9, 8, 6, 5, 3])",
+                        "([6, 7], [6, 0, 4], 5, [6, 7, 6, 0, 4])",
+                        "([3, 9], [8, 9], 3, [9, 8, 9])",
+                        "([2, 5, 6, 4, 4, 0], [7, 5, 4, 8, 3, 8, 6], 5, [8, 8, 6, 6, 4])",
+                        "([5, 5, 1], [4, 0, 1], 3, [5, 5, 4])",
+                        "([3, 4, 8, 9, 4, 3], [6, 1, 9, 1, 1, 9, 6], 6, [9, 9, 9, 6, 4, 3])",
+                        "([9, 9, 9], [9], 4, [9, 9, 9, 9])",
+                        "([1], [1], 1, [1])",
+                        "([7, 6, 5], [8, 7, 6], 6, [8, 7, 7, 6, 6, 5])",
+                        "([1, 2, 3, 4, 5], [6, 7, 8, 9], 9, [6, 7, 8, 9, 1, 2, 3, 4, 5])",
+                        "([9, 1, 2], [1, 2, 9], 4, [9, 9, 1, 2])",
+                        "([4, 4, 4], [4, 4], 5, [4, 4, 4, 4, 4])",
+                        "([2, 2, 0], [2, 0, 2], 4, [2, 2, 2, 2])",
+                        "([8, 9], [3, 4], 4, [8, 9, 3, 4])",
+                        "([1, 6, 7, 8], [2, 3, 4], 6, [6, 7, 8, 2, 3, 4])",
+                        "([5, 6, 8], [9, 1], 4, [9, 6, 8, 1])",
+                        "([3, 5, 8], [8, 5, 3, 9], 4, [9, 3, 5, 8])",
+                        "([7, 7, 3, 0], [9, 4, 6, 0, 6, 9], 8, [9, 7, 7, 6, 6, 9, 3, 0])",
+                        "([4, 3], [6], 3, [6, 4, 3])",
+                        "([9, 5, 1, 4], [8, 5, 3, 8, 6, 3], 9, [9, 8, 5, 8, 6, 5, 3, 1, 4])",
+                        "([4], [8, 4, 8], 1, [8])",
+                        "([6, 7, 4], [2, 2, 0, 2, 7, 8], 7, [7, 4, 2, 2, 2, 7, 8])",
+                        "([6, 4, 2, 8, 0, 1], [9], 3, [9, 8, 1])",
+                        "([9, 7, 7, 5, 5], [6, 6, 3, 4], 9, [9, 7, 7, 6, 6, 5, 5, 3, 4])",
+                        "([3, 4, 7, 4], [2], 2, [7, 4])",
+                        "([4, 9, 2, 8, 9, 2], [9, 9, 5, 0, 9, 9], 5, [9, 9, 9, 9, 9])"
+                    ]
+                },
+                "body": "        result = run_max_number(Solution, nums1, nums2, k)\n        assert_max_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_number, assert_max_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums1 = [3, 4, 6, 5]\nnums2 = [9, 1, 2, 5, 8, 3]\nk = 5\nexpected = [9, 8, 6, 5, 3]",
+    "playground_run": "result = run_max_number(Solution, nums1, nums2, k)\nresult",
+    "playground_assert": "assert_max_number(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_number_of_balloons",
+    "solution_class_name": "Solution",
+    "problem_number": "1189",
+    "problem_title": "Maximum Number of Balloons",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `text`, you want to use the characters of `text` to form as many instances of the word **\"balloon\"** as possible.\n\nYou can use each character in `text` **at most once**. Return the maximum number of instances that can be formed.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/09/05/1536_ex1_upd.JPG)\n\n```\nInput: text = \"nlaebolko\"\nOutput: 1\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/09/05/1536_ex2_upd.JPG)\n\n```\nInput: text = \"loonbalxballpoon\"\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: text = \"leetcode\"\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= text.length <= 10^4`\n- `text` consists of lower case English letters only.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_number_of_balloons",
+    "helpers_run_signature": "(solution_class: type, text: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_number_of_balloons(text)",
+    "helpers_assert_name": "max_number_of_balloons",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_number_of_balloons, run_max_number_of_balloons\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfBalloonsTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_number_of_balloons",
+                "signature": "(self, text: str) -> int",
+                "body": "        # TODO: Implement max_number_of_balloons\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_number_of_balloons",
+                "signature": "(self, text: str, expected: int)",
+                "parametrize": "text, expected",
+                "test_cases": {
+                    "list": [
+                        "('nlaebolko', 1)",
+                        "('loonbalxballpoon', 2)",
+                        "('leetcode', 0)",
+                        "('balloon', 1)",
+                        "('balloonballoon', 2)",
+                        "('balon', 0)",
+                        "('a', 0)",
+                        "('b', 0)",
+                        "('l', 0)",
+                        "('o', 0)",
+                        "('n', 0)",
+                        "('bnl', 0)",
+                        "('nooln', 0)",
+                        "('balllllllllllloooooooooooon', 1)",
+                        "('abcabcabc', 0)",
+                        "('balloonlo', 1)"
+                    ]
+                },
+                "body": "        result = run_max_number_of_balloons(Solution, text)\n        assert_max_number_of_balloons(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_number_of_balloons, assert_max_number_of_balloons\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntext = 'loonbalxballpoon'\nexpected = 2",
+    "playground_run": "result = run_max_number_of_balloons(Solution, text)\nresult",
+    "playground_assert": "assert_max_number_of_balloons(result, expected)"
+}

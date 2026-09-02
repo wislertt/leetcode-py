@@ -1,0 +1,94 @@
+{
+    "problem_name": "count_prefix_and_suffix_pairs_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3042",
+    "problem_title": "Count Prefix and Suffix Pairs I",
+    "difficulty": "Easy",
+    "topics": "Array, String, Trie, Rolling Hash, String Matching, Hash Function",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** string array `words`.\n\nLet's define a **boolean** function `isPrefixAndSuffix` that takes two strings, `str1` and `str2`:\n\n- `isPrefixAndSuffix(str1, str2)` returns `true` if `str1` is **both** a prefix and a suffix of `str2`, and `false` otherwise.\n\nFor example, `isPrefixAndSuffix(\"aba\", \"ababa\")` is `true` because `\"aba\"` is a prefix of `\"ababa\"` and also a suffix, but `isPrefixAndSuffix(\"abc\", \"abcd\")` is `false`.\n\nReturn *an integer denoting the **number** of index pairs* `(i, j)` *such that* `i < j` *and* `isPrefixAndSuffix(words[i], words[j])` *is* `true`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"a\",\"aba\",\"ababa\",\"aa\"]\nOutput: 4\nExplanation: In this example, the counted index pairs are:\ni = 0 and j = 1 because isPrefixAndSuffix(\"a\", \"aba\") is true.\ni = 0 and j = 2 because isPrefixAndSuffix(\"a\", \"ababa\") is true.\ni = 0 and j = 3 because isPrefixAndSuffix(\"a\", \"aa\") is true.\ni = 1 and j = 2 because isPrefixAndSuffix(\"aba\", \"ababa\") is true.\nTherefore, the answer is 4.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"pa\",\"papa\",\"ma\",\"mama\"]\nOutput: 2\nExplanation: In this example, the counted index pairs are:\ni = 0 and j = 1 because isPrefixAndSuffix(\"pa\", \"papa\") is true.\ni = 2 and j = 3 because isPrefixAndSuffix(\"ma\", \"mama\") is true.\nTherefore, the answer is 2.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"abab\",\"ab\"]\nOutput: 0\nExplanation: In this example, the only valid index pair is i = 0 and j = 1, and isPrefixAndSuffix(\"abab\", \"ab\") is false.\nTherefore, the answer is 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 50\n- 1 <= words[i].length <= 10\n- words[i] consists only of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_prefix_suffix_pairs",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_prefix_suffix_pairs(words)",
+    "helpers_assert_name": "count_prefix_suffix_pairs",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_prefix_suffix_pairs, run_count_prefix_suffix_pairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountPrefixAndSuffixPairsI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_prefix_suffix_pairs",
+                "signature": "(self, words: list[str]) -> int",
+                "body": "        # TODO: Implement count_prefix_suffix_pairs\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_prefix_suffix_pairs",
+                "signature": "(self, words: list[str], expected: int)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['a','aba','ababa','aa'],4)",
+                        "(['pa','papa','ma','mama'],2)",
+                        "(['abab','ab'],0)",
+                        "(['a'],0)",
+                        "(['a','a'],1)",
+                        "(['abc','abc','abc'],3)",
+                        "(['ab','ba'],0)",
+                        "(['aba','ababa','aba'],2)",
+                        "(['a','b','c','d'],0)",
+                        "(['aa','a','aaa'],2)",
+                        "(['abc','abcd','abcde'],0)",
+                        "(['zz','azz','aza'],0)",
+                        "(['bb','baba','aabb','b'],0)",
+                        "(['baab','aba','a'],0)",
+                        "(['bbaa','bbaa','a','b'],1)",
+                        "(['bb','bb','b','a','bbab'],2)"
+                    ]
+                },
+                "body": "        result = run_count_prefix_suffix_pairs(Solution, words)\n        assert_count_prefix_suffix_pairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_prefix_suffix_pairs, assert_count_prefix_suffix_pairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['a', 'aba', 'ababa', 'aa']\nexpected = 4",
+    "playground_run": "result = run_count_prefix_suffix_pairs(Solution, words)\nresult",
+    "playground_assert": "assert_count_prefix_suffix_pairs(result, expected)"
+}

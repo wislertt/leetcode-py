@@ -1,0 +1,108 @@
+{
+    "problem_name": "minimum_length_of_string_after_deleting_similar_ends",
+    "solution_class_name": "Solution",
+    "problem_number": "1750",
+    "problem_title": "Minimum Length of String After Deleting Similar Ends",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>Given a string <code>s</code> consisting only of characters <code>'a'</code>, <code>'b'</code>, and <code>'c'</code>. You are asked to apply the following algorithm on the string any number of times:</p>\n\n<ol>\n\t<li>Pick a <strong>non-empty</strong> prefix from the string <code>s</code> where all the characters in the prefix are equal.</li>\n\t<li>Pick a <strong>non-empty</strong> suffix from the string <code>s</code> where all the characters in this suffix are equal.</li>\n\t<li>The prefix and the suffix should not intersect at any index.</li>\n\t<li>The characters from the prefix and suffix must be the same.</li>\n\t<li>Delete both the prefix and the suffix.</li>\n</ol>\n\n<p>Return <em>the <strong>minimum length</strong> of </em><code>s</code> <em>after performing the above operation any number of times (possibly zero times)</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ca\"\nOutput: 2\n```\n**Explanation:** You can't remove any characters, so the string stays as is."
+            },
+            {
+                "content": "```\nInput: s = \"cabaabac\"\nOutput: 0\n```\n**Explanation:** An optimal sequence of operations is:\n- Take prefix = \"c\" and suffix = \"c\" and remove them, s = \"abaaba\".\n- Take prefix = \"a\" and suffix = \"a\" and remove them, s = \"baab\".\n- Take prefix = \"b\" and suffix = \"b\" and remove them, s = \"aa\".\n- Take prefix = \"a\" and suffix = \"a\" and remove them, s = \"\"."
+            },
+            {
+                "content": "```\nInput: s = \"aabccabba\"\nOutput: 3\n```\n**Explanation:** An optimal sequence of operations is:\n- Take prefix = \"aa\" and suffix = \"a\" and remove them, s = \"bccabb\".\n- Take prefix = \"b\" and suffix = \"bb\" and remove them, s = \"cca\"."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `s` consists only of characters `'a'`, `'b'`, and `'c'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_length",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_length(s)",
+    "helpers_assert_name": "minimum_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_length, run_minimum_length\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumLengthOfStringAfterDeletingSimilarEnds",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_length",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement minimum_length\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_length",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('ca', 2)",
+                        "('cabaabac', 0)",
+                        "('aabccabba', 3)",
+                        "('a', 1)",
+                        "('b', 1)",
+                        "('c', 1)",
+                        "('aa', 0)",
+                        "('ab', 2)",
+                        "('abc', 3)",
+                        "('aba', 1)",
+                        "('abca', 2)",
+                        "('aabaa', 1)",
+                        "('abcba', 1)",
+                        "('abccba', 0)",
+                        "('aaabbb', 6)",
+                        "('aaabbbccc', 9)",
+                        "('aabbcc', 6)",
+                        "('ccbbbaaa', 8)",
+                        "('abcabc', 6)",
+                        "('cabacc', 1)",
+                        "('aabbccaa', 4)",
+                        "('abccbaabc', 9)",
+                        "('cac', 1)",
+                        "('bbacabb', 1)",
+                        "('cccabccc', 2)",
+                        "('abab', 4)",
+                        "('babcac', 6)",
+                        "('baba', 4)",
+                        "('abbacb', 6)",
+                        "('accaacaacc', 10)"
+                    ]
+                },
+                "body": "        result = run_minimum_length(Solution, s)\n        assert_minimum_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_length, assert_minimum_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cabaabac'\nexpected = 0",
+    "playground_run": "result = run_minimum_length(Solution, s)\nresult",
+    "playground_assert": "assert_minimum_length(result, expected)"
+}

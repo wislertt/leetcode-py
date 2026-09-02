@@ -1,0 +1,95 @@
+{
+    "problem_name": "minesweeper",
+    "solution_class_name": "Solution",
+    "problem_number": "529",
+    "problem_title": "Minesweeper",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Let's play the minesweeper game ([Wikipedia](<https://en.wikipedia.org/wiki/Minesweeper_(video_game)>), [online game](http://minesweeperonline.com))!\n\nYou are given an `m x n` char matrix `board` representing the game board where:\n\n- `'M'` represents an unrevealed mine,\n- `'E'` represents an unrevealed empty square,\n- `'B'` represents a revealed blank square that has no adjacent mines (i.e., above, below, left, right, and all 4 diagonals),\n- digit (`'1'` to `'8'`) represents how many mines are adjacent to this revealed square, and\n- `'X'` represents a revealed mine.\n\nYou are also given an integer array `click` where `click = [clickr, clickc]` represents the next click position among all the unrevealed squares (`'M'` or `'E'`).\n\nReturn *the board after revealing this position according to the following rules*:\n\n1. If a mine `'M'` is revealed, then the game is over. You should change it to `'X'`.\n2. If an empty square `'E'` with no adjacent mines is revealed, then change it to a revealed blank `'B'` and all of its adjacent unrevealed squares should be revealed recursively.\n3. If an empty square `'E'` with at least one adjacent mine is revealed, then change it to a digit (`'1'` to `'8'`) representing the number of adjacent mines.\n4. Return the board when no more squares will be revealed.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/08/09/untitled.jpeg)\n\n```\nInput: board = [[\"E\",\"E\",\"E\",\"E\",\"E\"],[\"E\",\"E\",\"M\",\"E\",\"E\"],[\"E\",\"E\",\"E\",\"E\",\"E\"],[\"E\",\"E\",\"E\",\"E\",\"E\"]], click = [3,0]\nOutput: [[\"B\",\"1\",\"E\",\"1\",\"B\"],[\"B\",\"1\",\"M\",\"1\",\"B\"],[\"B\",\"1\",\"1\",\"1\",\"B\"],[\"B\",\"B\",\"B\",\"B\",\"B\"]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2023/08/09/untitled-2.jpeg)\n\n```\nInput: board = [[\"B\",\"1\",\"E\",\"1\",\"B\"],[\"B\",\"1\",\"M\",\"1\",\"B\"],[\"B\",\"1\",\"1\",\"1\",\"B\"],[\"B\",\"B\",\"B\",\"B\",\"B\"]], click = [1,2]\nOutput: [[\"B\",\"1\",\"E\",\"1\",\"B\"],[\"B\",\"1\",\"X\",\"1\",\"B\"],[\"B\",\"1\",\"1\",\"1\",\"B\"],[\"B\",\"B\",\"B\",\"B\",\"B\"]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == board.length`\n- `n == board[i].length`\n- `1 <= m, n <= 50`\n- `board[i][j]` is either `'M'`, `'E'`, `'B'`, or a digit from `'1'` to `'8'`.\n- `click.length == 2`\n- `0 <= clickr < m`\n- `0 <= clickc < n`\n- `board[clickr][clickc]` is either `'M'` or `'E'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "update_board",
+    "helpers_run_signature": "(solution_class: type, board: list[list[str]], click: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.update_board(board, click)",
+    "helpers_assert_name": "update_board",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\n\nfrom .helpers import assert_update_board, run_update_board\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "Minesweeper",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "update_board",
+                "signature": "(self, board: list[list[str]], click: list[int]) -> list[list[str]]",
+                "body": "        # TODO: Implement update_board\n        return board"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_update_board",
+                "signature": "(self, board: list[list[str]], click: list[int], expected: list[list[str]])",
+                "parametrize": "board, click, expected",
+                "test_cases": {
+                    "list": [
+                        "([['E','E','E','E','E'],['E','E','M','E','E'],['E','E','E','E','E'],['E','E','E','E','E']],[3,0],[['B','1','E','1','B'],['B','1','M','1','B'],['B','1','1','1','B'],['B','B','B','B','B']])",
+                        "([['B','1','E','1','B'],['B','1','M','1','B'],['B','1','1','1','B'],['B','B','B','B','B']],[1,2],[['B','1','E','1','B'],['B','1','X','1','B'],['B','1','1','1','B'],['B','B','B','B','B']])",
+                        "([['E']],[0,0],[['B']])",
+                        "([['M']],[0,0],[['X']])",
+                        "([['E','M']],[0,0],[['1','M']])",
+                        "([['E','E','E','M']],[0,1],[['B','B','1','M']])",
+                        "([['E','E'],['E','M']],[0,0],[['1','E'],['E','M']])",
+                        "([['E','E','E'],['E','M','E'],['E','E','E']],[2,2],[['E','E','E'],['E','M','E'],['E','E','1']])",
+                        "([['E','E','E'],['E','E','E'],['E','E','E']],[1,1],[['B','B','B'],['B','B','B'],['B','B','B']])",
+                        "([['E','E','M'],['E','E','E'],['M','E','E']],[1,1],[['E','E','M'],['E','2','E'],['M','E','E']])",
+                        "([['M','M','M'],['E','E','E'],['M','M','M']],[1,1],[['M','M','M'],['E','6','E'],['M','M','M']])",
+                        "([['E','E','E','E'],['E','M','E','E'],['E','E','E','E']],[0,0],[['1','E','E','E'],['E','M','E','E'],['E','E','E','E']])",
+                        "([['E','E','E','E'],['E','E','E','E'],['E','E','E','M']],[0,0],[['B','B','B','B'],['B','B','1','1'],['B','B','1','M']])",
+                        "([['M','E','E'],['E','E','E'],['E','E','E']],[2,2],[['M','1','B'],['1','1','B'],['B','B','B']])",
+                        "([['E','M'],['E','E'],['E','M']],[2,0],[['E','M'],['E','E'],['1','M']])",
+                        "([['E','E','E','E'],['E','M','M','E'],['1','2','2','E'],['B','B','B','E']],[3,3],[['E','E','E','E'],['E','M','M','E'],['1','2','2','1'],['B','B','B','B']])",
+                        "([['E','E','E','E'],['E','M','M','E'],['1','2','2','1'],['E','E','B','B']],[3,1],[['E','E','E','E'],['E','M','M','E'],['1','2','2','1'],['B','B','B','B']])",
+                        "([['B','B','E'],['B','1','1'],['B','E','M']],[2,1],[['B','B','E'],['B','1','1'],['B','1','M']])",
+                        "([['E','B','B'],['E','1','1'],['B','1','M']],[0,0],[['B','B','B'],['B','1','1'],['B','1','M']])",
+                        "([['E','M','E','E','E'],['E','E','E','M','E'],['E','E','E','E','E']],[2,2],[['E','M','E','E','E'],['E','E','E','M','E'],['E','E','1','E','E']])"
+                    ]
+                },
+                "body": "        result = run_update_board(Solution, board, click)\n        assert_update_board(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_update_board, run_update_board\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [['E', 'E', 'E', 'E', 'E'], ['E', 'E', 'M', 'E', 'E'], ['E', 'E', 'E', 'E', 'E'], ['E', 'E', 'E', 'E', 'E']]\nclick = [3, 0]\nexpected = [['B', '1', 'E', '1', 'B'], ['B', '1', 'M', '1', 'B'], ['B', '1', '1', '1', 'B'], ['B', 'B', 'B', 'B', 'B']]",
+    "playground_run": "result = run_update_board(Solution, board, click)\nresult",
+    "playground_assert": "assert_update_board(result, expected)"
+}

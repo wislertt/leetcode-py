@@ -1,0 +1,139 @@
+{
+    "problem_name": "confusing_number",
+    "solution_class_name": "Solution",
+    "problem_number": "1056",
+    "problem_title": "Confusing Number",
+    "difficulty": "Easy",
+    "topics": "Math",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **confusing number** is a number that when rotated `180` degrees becomes a **different** number with each digit valid.\n\nWe can rotate digits of a number by `180` degrees to form new digits.\n\n- When `0, 1, 6, 8,` and `9` are rotated `180` degrees, they become `0, 1, 9, 8,` and `6` respectively.\n- When `2, 3, 4, 5,` and `7` are rotated `180` degrees, they become **invalid**.\n\nNote that after rotating a number, we can ignore leading zeros.\n\n- For example, after rotating `8000`, we have `0008` which is considered as just `8`.\n\nGiven an integer `n`, return `true` *if it is a* **confusing number***, or* `false` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 6\nOutput: true\nExplanation: We get 9 after rotating 6, 9 is a valid number, and 9 != 6.\n```"
+            },
+            {
+                "content": "```\nInput: n = 89\nOutput: true\nExplanation: We get 68 after rotating 89, 68 is a valid number and 68 != 89.\n```"
+            },
+            {
+                "content": "```\nInput: n = 11\nOutput: false\nExplanation: We get 11 after rotating 11, 11 is a valid number but the value remains the same, thus 11 is not a confusing number.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "confusing_number",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.confusing_number(n)",
+    "helpers_assert_name": "confusing_number",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_confusing_number, run_confusing_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConfusingNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "confusing_number",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement confusing_number\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_confusing_number",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, False)",
+                        "(1, False)",
+                        "(2, False)",
+                        "(3, False)",
+                        "(4, False)",
+                        "(5, False)",
+                        "(6, True)",
+                        "(7, False)",
+                        "(8, False)",
+                        "(9, True)",
+                        "(10, True)",
+                        "(11, False)",
+                        "(12, False)",
+                        "(13, False)",
+                        "(14, False)",
+                        "(15, False)",
+                        "(16, True)",
+                        "(17, False)",
+                        "(18, True)",
+                        "(19, True)",
+                        "(20, False)",
+                        "(21, False)",
+                        "(22, False)",
+                        "(23, False)",
+                        "(24, False)",
+                        "(25, False)",
+                        "(26, False)",
+                        "(27, False)",
+                        "(28, False)",
+                        "(29, False)",
+                        "(30, False)",
+                        "(31, False)",
+                        "(32, False)",
+                        "(33, False)",
+                        "(34, False)",
+                        "(35, False)",
+                        "(36, False)",
+                        "(37, False)",
+                        "(38, False)",
+                        "(39, False)",
+                        "(69, False)",
+                        "(88, False)",
+                        "(96, False)",
+                        "(916, False)",
+                        "(619, False)",
+                        "(8000, True)",
+                        "(6109, True)",
+                        "(986, False)",
+                        "(1111, False)",
+                        "(25, False)",
+                        "(404, False)",
+                        "(6089, True)",
+                        "(9106, True)",
+                        "(689, False)",
+                        "(1069818, True)",
+                        "(999999999, True)",
+                        "(1000000000, True)",
+                        "(609, False)",
+                        "(11, False)",
+                        "(89, True)",
+                        "(6, True)"
+                    ]
+                },
+                "body": "        result = run_confusing_number(Solution, n)\n        assert_confusing_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_confusing_number, assert_confusing_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 89\nexpected = True",
+    "playground_run": "result = run_confusing_number(Solution, n)\nresult",
+    "playground_assert": "assert_confusing_number(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "student_attendance_record_i",
+    "solution_class_name": "Solution",
+    "problem_number": "551",
+    "problem_title": "Student Attendance Record I",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string `s` representing an attendance record for a student where each character signifies whether the student was absent, late, or present on that day.\n\nThe record only contains the following three characters:\n\n- `'A'`: Absent.\n- `'L'`: Late.\n- `'P'`: Present.\n\nThe student is eligible for an attendance award if they meet **both** of the following criteria:\n\n- The student was absent (`'A'`) for **strictly** fewer than 2 days **total**.\n- The student was **never** late (`'L'`) for 3 or more **consecutive** days.\n\nReturn `true` if the student is eligible for an attendance award, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"PPALLP\"\nOutput: true\nExplanation: The student has fewer than 2 absences and was never late 3 or more consecutive days.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"PPALLL\"\nOutput: false\nExplanation: The student was late 3 consecutive days in the last 3 days, so is not eligible for the award.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 1000\n- s[i] is either 'A', 'L', or 'P'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_record",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_record(s)",
+    "helpers_assert_name": "check_record",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_record, run_check_record\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StudentAttendanceRecordI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_record",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement check_record\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_record",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('PPALLP', True)",
+                        "('PPALLL', False)",
+                        "('A', True)",
+                        "('L', True)",
+                        "('P', True)",
+                        "('AA', False)",
+                        "('LL', True)",
+                        "('LLL', False)",
+                        "('ALLAP', False)",
+                        "('PAPPLP', True)",
+                        "('LALL', True)",
+                        "('PPALLPALL', False)",
+                        "('LLLP', False)",
+                        "('APPP', True)",
+                        "('PPPPPP', True)",
+                        "('ALLL', False)",
+                        "('LLLALLL', False)",
+                        "('AAALL', False)",
+                        "('PPAAAALLL', False)",
+                        "('AAPLPPLAL', False)"
+                    ]
+                },
+                "body": "        result = run_check_record(Solution, s)\n        assert_check_record(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_record, assert_check_record\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'PPALLP'\nexpected = True",
+    "playground_run": "result = run_check_record(Solution, s)\nresult",
+    "playground_assert": "assert_check_record(result, expected)"
+}

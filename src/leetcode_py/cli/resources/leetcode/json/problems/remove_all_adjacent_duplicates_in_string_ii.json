@@ -1,0 +1,93 @@
+{
+    "problem_name": "remove_all_adjacent_duplicates_in_string_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "1209",
+    "problem_title": "Remove All Adjacent Duplicates in String II",
+    "difficulty": "Medium",
+    "topics": "String, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` and an integer `k`, a `k` **duplicate removal** consists of choosing `k` adjacent and equal letters from `s` and removing them, causing the left and the right side of the deleted substring to concatenate together.\n\nWe repeatedly make `k` **duplicate removals** on `s` until we no longer can.\n\nReturn *the final string after all such duplicate removals have been made*. It is guaranteed that the answer is **unique**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcd\", k = 2\nOutput: \"abcd\"\nExplanation: There's nothing to delete.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"deeedbbcccbdaa\", k = 3\nOutput: \"aa\"\nExplanation: First delete \"eee\" and \"ccc\", get \"ddbbbdaa\"\nThen delete \"bbb\", get \"dddaa\"\nFinally delete \"ddd\", get \"aa\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"pbbcggttciiippooaais\", k = 2\nOutput: \"ps\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `2 <= k <= 10^4`\n- `s` only contains lowercase English letters.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_duplicates",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_duplicates(s, k)",
+    "helpers_assert_name": "remove_duplicates",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_duplicates, run_remove_duplicates\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveAllAdjacentDuplicatesInStringIiTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_duplicates",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement remove_duplicates\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_duplicates",
+                "signature": "(self, s: str, k: int, expected: str)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcd', 2, 'abcd')",
+                        "('deeedbbcccbdaa', 3, 'aa')",
+                        "('pbbcggttciiippooaais', 2, 'ps')",
+                        "('aa', 2, '')",
+                        "('aaa', 2, 'a')",
+                        "('aaa', 3, '')",
+                        "('aabb', 2, '')",
+                        "('aabbaa', 2, '')",
+                        "('abccba', 2, '')",
+                        "('mississippi', 2, 'm')",
+                        "('aaaa', 3, 'a')",
+                        "('aaaaa', 3, 'aa')",
+                        "('abbcc', 2, 'a')",
+                        "('abcddcba', 2, '')",
+                        "('yyyyyyy', 4, 'yyy')",
+                        "('abcdeedcba', 2, '')"
+                    ]
+                },
+                "body": "        result = run_remove_duplicates(Solution, s, k)\n        assert_remove_duplicates(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_duplicates, assert_remove_duplicates\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'deeedbbcccbdaa'\nk = 3\nexpected = 'aa'",
+    "playground_run": "result = run_remove_duplicates(Solution, s, k)\nresult",
+    "playground_assert": "assert_remove_duplicates(result, expected)"
+}

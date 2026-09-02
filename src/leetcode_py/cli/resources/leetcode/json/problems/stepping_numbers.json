@@ -1,0 +1,96 @@
+{
+    "problem_name": "stepping_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "1215",
+    "problem_title": "Stepping Numbers",
+    "difficulty": "Medium",
+    "topics": "Breadth-First Search, Math, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A **stepping number** is an integer such that all of its adjacent digits have an absolute difference of exactly `1`.\n\n- For example, `321` is a **stepping number** while `421` is not.\n\nGiven two integers `low` and `high`, return *a sorted list of all the **stepping numbers** in the inclusive range* `[low, high]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: low = 0, high = 21\nOutput: [0,1,2,3,4,5,6,7,8,9,10,12,21]\n```"
+            },
+            {
+                "content": "```\nInput: low = 10, high = 15\nOutput: [10,12]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= low <= high <= 2 * 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_stepping_numbers",
+    "helpers_run_signature": "(solution_class: type, low: int, high: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_stepping_numbers(low, high)",
+    "helpers_assert_name": "count_stepping_numbers",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_stepping_numbers, run_count_stepping_numbers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SteppingNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_stepping_numbers",
+                "signature": "(self, low: int, high: int) -> list[int]",
+                "body": "        # TODO: Implement count_stepping_numbers\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_stepping_numbers",
+                "signature": "(self, low: int, high: int, expected: list[int])",
+                "parametrize": "low, high, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 21, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21])",
+                        "(10, 15, [10, 12])",
+                        "(0, 0, [0])",
+                        "(0, 9, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(1, 1, [1])",
+                        "(5, 5, [5])",
+                        "(44, 44, [])",
+                        "(89, 89, [89])",
+                        "(0,200,[0,1,2,3,4,5,6,7,8,9,10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98,101,121,123])",
+                        "(58, 199, [65, 67, 76, 78, 87, 89, 98, 101, 121, 123])",
+                        "(100, 150, [101, 121, 123])",
+                        "(90, 110, [98, 101])",
+                        "(65, 321, [65, 67, 76, 78, 87, 89, 98, 101, 121, 123, 210, 212, 232, 234, 321])",
+                        "(1000, 2000, [1010, 1012, 1210, 1212, 1232, 1234])",
+                        "(12345, 13000, [12345])",
+                        "(99990, 100021, [])",
+                        "(0,1000,[0,1,2,3,4,5,6,7,8,9,10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98,101,121,123,210,212,232,234,321,323,343,345,432,434,454,456,543,545,565,567,654,656,676,678,765,767,787,789,876,878,898,987,989])",
+                        "(1000000000, 1000000010, [])",
+                        "(198765430, 198765432, [])",
+                        "(2000000000, 2000000000, [])",
+                        "(1212121212, 1212121212, [1212121212])"
+                    ]
+                },
+                "body": "        result = run_count_stepping_numbers(Solution, low, high)\n        assert_count_stepping_numbers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_stepping_numbers, assert_count_stepping_numbers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlow: int = 0\nhigh: int = 21\nexpected: list[int] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21]",
+    "playground_run": "result = run_count_stepping_numbers(Solution, low, high)\nresult",
+    "playground_assert": "assert_count_stepping_numbers(result, expected)"
+}

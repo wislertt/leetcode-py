@@ -1,0 +1,91 @@
+{
+    "problem_name": "minimum_unique_word_abbreviation",
+    "solution_class_name": "Solution",
+    "problem_number": "411",
+    "problem_title": "Minimum Unique Word Abbreviation",
+    "difficulty": "Hard",
+    "topics": "Bit Manipulation, Array, String, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A string can be **abbreviated** by replacing any number of **non-adjacent** substrings with their lengths. For example, a string such as `\"substitution\"` could be abbreviated as (but not limited to):\n\n- `\"s10n\"` (`\"s ubstitutio n\"`)\n- `\"sub4u4\"` (`\"sub stit u tion\"`)\n- `\"12\"` (`\"substitution\"`)\n- `\"su3i1u2on\"` (`\"su bst i t u ti on\"`)\n- `\"substitution\"` (no substrings replaced)\n\nNote that `\"s55n\"` (`\"s ubsti tutio n\"`) is not a valid abbreviation of `\"substitution\"` because the replaced substrings are adjacent.\n\nThe **length** of an abbreviation is the number of letters that were not replaced plus the number of substrings that were replaced. For example, the abbreviation `\"s10n\"` has a length of `3` (`2` letters + `1` substring) and `\"su3i1u2on\"` has a length of `9` (`6` letters + `3` substrings).\n\nGiven a target string `target` and an array of strings `dictionary`, return *an **abbreviation** of* `target`* with the **shortest possible length** such that it is **not an abbreviation** of **any** string in* `dictionary`*. If there are multiple shortest abbreviations, return any of them*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: target = \"apple\", dictionary = [\"blade\"]\nOutput: \"a4\"\nExplanation: The shortest abbreviation of \"apple\" is \"5\", but this is also an abbreviation of \"blade\".\nThe next shortest abbreviations are \"a4\" and \"4e\". \"4e\" is an abbreviation of blade while \"a4\" is not.\nHence, return \"a4\".\n```"
+            },
+            {
+                "content": "```\nInput: target = \"apple\", dictionary = [\"blade\",\"plain\",\"amber\"]\nOutput: \"1p3\"\nExplanation: \"5\" is an abbreviation of both \"apple\" but also every word in the dictionary.\n\"a4\" is an abbreviation of \"apple\" but also \"amber\".\n\"4e\" is an abbreviation of \"apple\" but also \"blade\".\n\"1p3\", \"2p2\", and \"3l1\" are the next shortest abbreviations of \"apple\".\nSince none of them are abbreviations of words in the dictionary, returning any of them is correct.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == target.length`\n- `n == dictionary.length`\n- `1 <= m <= 21`\n- `0 <= n <= 1000`\n- `1 <= dictionary[i].length <= 100`\n- `log_2(n) + m <= 21` if `n > 0`\n- `target` and `dictionary[i]` consist of lowercase English letters.\n- `dictionary` does not contain `target`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def _abbr_len(abbr: str) -> int:\n    return sum(1 for c in abbr if c.isalpha()) + sum(1 for c in abbr if c.isdigit())\n\n\ndef _abbr_matches(abbr: str, word: str) -> bool:\n    i = j = 0\n    while i < len(abbr) and j < len(word):\n        if abbr[i].isdigit():\n            if abbr[i] == '0':\n                return False\n            k = 0\n            while i < len(abbr) and abbr[i].isdigit():\n                k = k * 10 + int(abbr[i])\n                i += 1\n            j += k\n        else:\n            if word[j] != abbr[i]:\n                return False\n            i += 1\n            j += 1\n    return i == len(abbr) and j == len(word)\n\n\ndef _min_abbreviation(target: str, dictionary: list[str]) -> str:\n    m = len(target)\n    words = [w for w in dictionary if len(w) == m]\n    best_abbr = None\n    best_len = None\n    for mask in range(1 << m):\n        parts: list[str] = []\n        run = 0\n        for i, ch in enumerate(target):\n            if mask >> i & 1:\n                if run:\n                    parts.append(str(run))\n                    run = 0\n                parts.append(ch)\n            else:\n                run += 1\n        if run:\n            parts.append(str(run))\n        candidate = ''.join(parts)\n        candidate_len = _abbr_len(candidate)\n        if best_len is not None and candidate_len > best_len:\n            continue\n        if (best_len is None or candidate_len < best_len) and not any(\n            _abbr_matches(candidate, w) for w in words\n        ):\n            best_abbr, best_len = candidate, candidate_len\n    return best_abbr or ''\n",
+    "helpers_run_name": "min_abbreviation",
+    "helpers_run_signature": "(solution_class: type, target: str, dictionary: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_abbreviation(target, dictionary)",
+    "helpers_assert_name": "min_abbreviation",
+    "helpers_assert_signature": "(result: str, target: str, dictionary: list[str]) -> bool",
+    "helpers_assert_body": "    # result must be a shortest abbreviation of target conflicting with no dictionary word.\n    best_abbr = _min_abbreviation(target, dictionary)\n    assert _abbr_matches(result, target)\n    assert all(not _abbr_matches(result, w) for w in dictionary)\n    assert len(result) == len(best_abbr)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_abbreviation, run_min_abbreviation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumUniqueWordAbbreviation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_abbreviation",
+                "signature": "(self, target: str, dictionary: list[str]) -> str",
+                "body": "        # TODO: Implement min_abbreviation\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_abbreviation",
+                "signature": "(self, target: str, dictionary: list[str])",
+                "parametrize": "target, dictionary",
+                "test_cases": {
+                    "list": [
+                        "('apple', ['blade'])",
+                        "('apple', ['blade','plain','amber'])",
+                        "('a', [])",
+                        "('abc', [])",
+                        "('abc', ['xbc'])",
+                        "('abcd', ['abzz','zzcd'])",
+                        "('aaaa', ['aaab','baaa'])",
+                        "('target', [])",
+                        "('leet', ['code'])",
+                        "('sword', [])",
+                        "('abcd', [])",
+                        "('goat', ['gate','goal','boat'])",
+                        "('world', ['would','wound','words'])",
+                        "('abcdefghij', ['abcdefghia','zbcdefghij'])",
+                        "('ab', [])",
+                        "('solve', ['salve','solce','solye'])"
+                    ]
+                },
+                "body": "        result = run_min_abbreviation(Solution, target, dictionary)\n        assert_min_abbreviation(result, target, dictionary)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_abbreviation, assert_min_abbreviation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntarget = 'apple'\ndictionary = ['blade']",
+    "playground_run": "result = run_min_abbreviation(Solution, target, dictionary)\nresult",
+    "playground_assert": "assert_min_abbreviation(result, target, dictionary)"
+}

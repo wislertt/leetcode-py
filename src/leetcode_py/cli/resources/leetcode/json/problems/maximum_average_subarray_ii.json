@@ -1,0 +1,90 @@
+{
+    "problem_name": "maximum_average_subarray_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "644",
+    "problem_title": "Maximum Average Subarray II",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `nums` consisting of `n` elements, and an integer `k`.\n\nFind a contiguous subarray whose **length is greater than or equal to** `k` that has the maximum average value and return *this value*. Any answer with a calculation error less than `10^-5` will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,12,-5,-6,50,3], k = 4\nOutput: 12.75000\nExplanation: When the length is 4, averages are [0.5, 12.75, 10.5] and the maximum average is 12.75. We do not consider subarrays of length < 4.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [5], k = 1\nOutput: 5.00000\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == nums.length\n- 1 <= k <= n <= 10^4\n- -10^4 <= nums[i] <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_max_average",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_max_average(nums, k)",
+    "helpers_assert_name": "find_max_average",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    assert abs(result - expected) < 10 ** -4\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_max_average, run_find_max_average\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumAverageSubarrayII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_max_average",
+                "signature": "(self, nums: list[int], k: int) -> float",
+                "body": "        # TODO: Implement find_max_average\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_max_average",
+                "signature": "(self, nums: list[int], k: int, expected: float)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 12, -5, -6, 50, 3], 4, 12.75)",
+                        "([5], 1, 5)",
+                        "([1, 2, 3], 2, 2.5)",
+                        "([4, 2, 1, 7], 2, 4)",
+                        "([0, 0, 0], 1, 0)",
+                        "([-1, -2, -3], 2, -1.5)",
+                        "([1, 12, -5, -6, 50, 3], 1, 50)",
+                        "([10, 10, 10], 3, 10)",
+                        "([7, 4, 5, 8, 8, 3, 2], 3, 7)",
+                        "([1, 2], 2, 1.5)",
+                        "([-6, -7, -8, -9], 1, -6)",
+                        "([3, 1, 4, 1, 5], 4, 2.8)",
+                        "([100, -100, 100, -100, 100], 2, 33.33333)",
+                        "([2, 2, 2, 2, 9], 5, 3.4)",
+                        "([9, -1, -5, -4, -11, 10, -6, -6, -8, 6], 4, -0.25)"
+                    ]
+                },
+                "body": "        result = run_find_max_average(Solution, nums, k)\n        assert_find_max_average(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_max_average, assert_find_max_average\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 12, -5, -6, 50, 3]\nk = 4\nexpected = 12.75",
+    "playground_run": "result = run_find_max_average(Solution, nums, k)\nresult",
+    "playground_assert": "assert_find_max_average(result, expected)"
+}

@@ -118,11 +118,15 @@
                 "pages": [
                     "catalog/index",
                     "catalog/all",
+                    "catalog/easy",
+                    "catalog/medium",
+                    "catalog/hard",
                     "catalog/grind-75",
                     "catalog/grind",
                     "catalog/blind-75",
                     "catalog/neetcode-150",
                     "catalog/neetcode-250",
+                    "catalog/neetcode",
                     "catalog/algo-master-75"
                 ]
             },

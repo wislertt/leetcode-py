@@ -1,0 +1,94 @@
+{
+    "problem_name": "sentence_screen_fitting",
+    "solution_class_name": "Solution",
+    "problem_number": "418",
+    "problem_title": "Sentence Screen Fitting",
+    "difficulty": "Medium",
+    "topics": "Array, String, Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a\u00a0`rows x cols` screen and a `sentence` represented as a list of strings, return *the number of\u00a0times the given sentence can be fitted on the screen*.\n\nThe order of words in the sentence must remain unchanged, and a word cannot be split into two lines. A single space must separate two consecutive words in a line.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sentence = [\"hello\",\"world\"], rows = 2, cols = 8\nOutput: 1\nExplanation:\nhello---\nworld---\nThe character '-' signifies an empty space on the screen.\n```"
+            },
+            {
+                "content": "```\nInput: sentence = [\"a\", \"bcd\", \"e\"], rows = 3, cols = 6\nOutput: 2\nExplanation:\na-bcd-\ne-a---\nbcd-e-\nThe character '-' signifies an empty space on the screen.\n```"
+            },
+            {
+                "content": "```\nInput: sentence = [\"i\",\"had\",\"apple\",\"pie\"], rows = 4, cols = 5\nOutput: 1\nExplanation:\ni-had\napple\npie-i\nhad--\nThe character '-' signifies an empty space on the screen.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= sentence.length`\n- `1 <= rows, cols <= 4 * 10^4`\n- `1 <= sentence[i].length <= 10`\n- `sentence[i]` consists of only lower-case English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "words_typing",
+    "helpers_run_signature": "(solution_class: type, sentence: list[str], rows: int, cols: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.words_typing(sentence, rows, cols)",
+    "helpers_assert_name": "words_typing",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_words_typing, run_words_typing\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SentenceScreenFitting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "words_typing",
+                "signature": "(self, sentence: list[str], rows: int, cols: int) -> int",
+                "body": "        # TODO: Implement words_typing\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_words_typing",
+                "signature": "(self, sentence: list[str], rows: int, cols: int, expected: int)",
+                "parametrize": "sentence, rows, cols, expected",
+                "test_cases": {
+                    "list": [
+                        "(['hello','world'], 2, 8, 1)",
+                        "(['a','bcd','e'], 3, 6, 2)",
+                        "(['i','had','apple','pie'], 4, 5, 1)",
+                        "(['a'], 1, 1, 1)",
+                        "(['a'], 5, 3, 10)",
+                        "(['ab'], 2, 3, 2)",
+                        "(['a'], 2, 2, 2)",
+                        "(['hello','world'], 1, 15, 1)",
+                        "(['a','b'], 3, 5, 4)",
+                        "(['f','p','a'], 8, 7, 10)",
+                        "(['hello'], 1000, 6, 1000)",
+                        "(['abc','de'], 4, 5, 2)",
+                        "(['xy'], 3, 2, 3)",
+                        "(['ab','cd'], 2, 2, 1)",
+                        "(['a','bcd'], 4, 4, 2)",
+                        "(['ab','cd','e'], 5, 4, 2)"
+                    ]
+                },
+                "body": "        result = run_words_typing(Solution, sentence, rows, cols)\n        assert_words_typing(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_words_typing, assert_words_typing\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsentence = ['hello', 'world']\nrows = 2\ncols = 8\nexpected = 1",
+    "playground_run": "result = run_words_typing(Solution, sentence, rows, cols)\nresult",
+    "playground_assert": "assert_words_typing(result, expected)"
+}

@@ -1,0 +1,91 @@
+{
+    "problem_name": "ternary_expression_parser",
+    "solution_class_name": "Solution",
+    "problem_number": "439",
+    "problem_title": "Ternary Expression Parser",
+    "difficulty": "Medium",
+    "topics": "Stack, Recursion, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `expression` representing arbitrarily nested ternary expressions, evaluate the expression, and return the result of it.\n\nYou can always assume that the given expression is valid and only contains digits, `'?'`, `':'`, `'T',` and `'F'` where `'T'` is true and `'F'` is false. All the numbers in the expression are **one-digit** numbers (i.e., in the range `[0, 9]`).\n\nThe conditional expressions group right-to-left (as usual in most languages), and the result of the expression will always evaluate to either a digit, `'T'` or `'F'`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: expression = \"T?2:3\"\nOutput: \"2\"\nExplanation: If true, then result is 2; otherwise result is 3.\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"F?1:T?4:5\"\nOutput: \"4\"\nExplanation: The conditional expressions group right-to-left. Using parenthesis, it is read/evaluated as: \"(F ? 1 : (T ? 4 : 5))\" --> \"(F ? 1 : 4)\" --> \"4\".\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"T?T?F:5:3\"\nOutput: \"F\"\nExplanation: The conditional expressions group right-to-left. Using parenthesis, it is read/evaluated as: \"(T ? (T ? F : 5) : 3)\" --> \"(T ? F : 5)\" --> \"F\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `5 <= expression.length <= 10^4`.\n- `expression` consists of digits, `'?'`, `':'`, `'T'`, and `'F'`.\n- It is **guaranteed** that `expression` is a valid ternary expression and that each number is a **one-digit number**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "parse_ternary",
+    "helpers_run_signature": "(solution_class: type, expression: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.parse_ternary(expression)",
+    "helpers_assert_name": "parse_ternary",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_parse_ternary, run_parse_ternary\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TernaryExpressionParser",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "parse_ternary",
+                "signature": "(self, expression: str) -> str",
+                "body": "        # TODO: Implement parse_ternary\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_parse_ternary",
+                "signature": "(self, expression: str, expected: str)",
+                "parametrize": "expression, expected",
+                "test_cases": {
+                    "list": [
+                        "('T?2:3', '2')",
+                        "('F?1:T?4:5', '4')",
+                        "('T?T?F:5:3', 'F')",
+                        "('T?6:9', '6')",
+                        "('F?2:0', '0')",
+                        "('T?T?T?1:2:3:4', '1')",
+                        "('F?F?F?8:9:7:6', '6')",
+                        "('T?5:T?3:2', '5')",
+                        "('F?1:F?1:F?1:2', '2')",
+                        "('T?7:F?4:3', '7')",
+                        "('F?T?9:0:1', '1')",
+                        "('T?F?4:8:T?2:6', '8')",
+                        "('T?8:3', '8')"
+                    ]
+                },
+                "body": "        result = run_parse_ternary(Solution, expression)\n        assert_parse_ternary(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_parse_ternary, assert_parse_ternary\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nexpression = 'T?2:3'\nexpected = '2'",
+    "playground_run": "result = run_parse_ternary(Solution, expression)\nresult",
+    "playground_assert": "assert_parse_ternary(result, expected)"
+}

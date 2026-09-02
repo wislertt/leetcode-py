@@ -1,0 +1,100 @@
+{
+    "problem_name": "number_of_subsequences_that_satisfy_the_given_sum_condition",
+    "solution_class_name": "Solution",
+    "problem_number": "1498",
+    "problem_title": "Number of Subsequences That Satisfy the Given Sum Condition",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Binary Search, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of integers `nums` and an integer `target`.\n\nReturn *the number of **non-empty** subsequences of* `nums` *such that the sum of the minimum and maximum element on it is less or equal to* `target`. Since the answer may be too large, return it **modulo** `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,5,6,7], target = 9\nOutput: 4\nExplanation: There are 4 subsequences that satisfy the condition.\n[3] -> Min value + max value <= target (3 + 3 <= 9)\n[3,5] -> (3 + 5 <= 9)\n[3,5,6] -> (3 + 6 <= 9)\n[3,6] -> (3 + 6 <= 9)\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,3,6,8], target = 10\nOutput: 6\nExplanation: There are 6 subsequences that satisfy the condition. (nums can have repeated numbers).\n[3] , [3] , [3,3], [3,6] , [3,6] , [3,3,6]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,3,3,4,6,7], target = 12\nOutput: 61\nExplanation: There are 63 non-empty subsequences, two of them do not satisfy the condition ([6,7], [7]).\nNumber of valid subsequences (63 - 2 = 61).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^6\n- 1 <= target <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_subseq",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_subseq(nums, target)",
+    "helpers_assert_name": "num_subseq",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_subseq, run_num_subseq\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSubsequencesThatSatisfyTheGivenSumCondition",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_subseq",
+                "signature": "(self, nums: list[int], target: int) -> int",
+                "body": "        # TODO: Implement num_subseq\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_subseq",
+                "signature": "(self, nums: list[int], target: int, expected: int)",
+                "parametrize": "nums, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 5, 6, 7], 9, 4)",
+                        "([3, 3, 6, 8], 10, 6)",
+                        "([2, 3, 3, 4, 6, 7], 12, 61)",
+                        "([1, 1], 1, 0)",
+                        "([1, 2, 3, 4, 5], 9, 30)",
+                        "([2, 2, 2, 2], 4, 15)",
+                        "([5], 5, 0)",
+                        "([1], 1, 0)",
+                        "([1, 1, 1, 1, 1], 2, 31)",
+                        "([4, 5, 6, 7], 3, 0)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11, 682)",
+                        "([6, 5, 4, 3, 2, 1], 7, 42)",
+                        "([3, 8, 5], 10, 3)",
+                        "([1000000], 1000000, 0)",
+                        "([999999, 1], 1000000, 2)",
+                        "([1, 2], 1000000, 3)",
+                        "([9, 9, 9, 9, 9, 9, 9, 9], 18, 255)",
+                        "([14, 4, 6, 3], 9, 5)",
+                        "([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],1000000,294967267)",
+                        "([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42],45,519366802)",
+                        "([7, 1, 4, 3, 8, 2, 5, 6], 9, 170)",
+                        "([5, 5, 5, 5, 5, 5], 10, 63)"
+                    ]
+                },
+                "body": "        result = run_num_subseq(Solution, nums, target)\n        assert_num_subseq(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_subseq, assert_num_subseq\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 5, 6, 7]\ntarget = 9\nexpected = 4",
+    "playground_run": "result = run_num_subseq(Solution, nums, target)\nresult",
+    "playground_assert": "assert_num_subseq(result, expected)"
+}

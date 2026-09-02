@@ -1,0 +1,96 @@
+{
+    "problem_name": "diameter_of_n_ary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "1522",
+    "problem_title": "Diameter of N-Ary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Tree DP",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a `root` of an `N-ary tree`, you need to compute the length of the diameter of the tree.\n\nThe diameter of an N-ary tree is the length of the **longest** path between any two nodes in the tree. This path may or may not pass through the `root`.\n\n*(Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value.)*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1522.Diameter%20of%20N-Ary%20Tree/images/sample_2_1897.png)\n\n```\nInput: root = [1,null,3,2,4,null,5,6]\nOutput: 3\nExplanation: Diameter is shown in red color.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1522.Diameter%20of%20N-Ary%20Tree/images/sample_1_1897.png)\n\n```\nInput: root = [1,null,2,null,3,4,null,5,null,6]\nOutput: 4\n```"
+            },
+            {
+                "content": "![Example 3](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1500-1599/1522.Diameter%20of%20N-Ary%20Tree/images/sample_3_1897.png)\n\n```\nInput: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]\nOutput: 7\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The depth of the n-ary tree is less than or equal to `1000`.\n- The total number of nodes is between `[1, 10^4]`.",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import NaryNode",
+    "helpers_content": "def _nary_from_list(vals: list[int | None]) -> NaryNode | None:\n    \"\"\"Build an n-ary tree from LeetCode level-order form (None separates child groups).\"\"\"\n    if not vals or vals[0] is None:\n        return None\n    root = NaryNode(vals[0])\n    queue: list[NaryNode] = [root]\n    i = 2\n    while queue and i < len(vals):\n        node = queue.pop(0)\n        children: list[NaryNode] = []\n        while i < len(vals):\n            val = vals[i]\n            i += 1\n            if val is None:\n                break\n            child = NaryNode(val)\n            children.append(child)\n            queue.append(child)\n        node.children = children\n    return root",
+    "helpers_run_name": "diameter",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = _nary_from_list(root_list)\n    implementation = solution_class()\n    return implementation.diameter(root)",
+    "helpers_assert_name": "diameter",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class NaryNode:\n    def __init__(self, val: int = 0, children: list[NaryNode] | None = None) -> None:\n        self.val = val\n        self.children = children if children is not None else []\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_diameter, run_diameter\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DiameterOfNAryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "diameter",
+                "signature": "(self, root: NaryNode | None) -> int",
+                "body": "        # TODO: Implement diameter\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_diameter",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,None,3,2,4,None,5,6],3)",
+                        "([1,None,2,None,3,4,None,5,None,6],4)",
+                        "([1,None,2,3,4,5,None,None,6,7,None,8,None,9,10,None,None,11,None,12,None,13,None,None,14],7)",
+                        "([1],0)",
+                        "([1,None,2],1)",
+                        "([1,None,2,3],2)",
+                        "([1,None,2,3,4],2)",
+                        "([1,None,2,None,3],2)",
+                        "([1,None,2,None,3,None,4],3)",
+                        "([1,None,2,None,3,4],2)",
+                        "([1,None,2,3,None,4,5],3)",
+                        "([1,None,2,3,4,5,None,6],3)",
+                        "([1,None,2,3,None,4,None,None,5],4)",
+                        "([1,None,2,4,5,6,None,3,None,None,7],4)",
+                        "([1,None,2,3,4,8,None,None,None,5,None,9,None,6,7],5)",
+                        "([1,None,2,7,8,None,3,None,12,None,None,4,6,None,None,5,None,9,None,10,None,None,11],8)",
+                        "([1,None,2,5,7,None,3,6,None,10,None,13,None,4,8,None,9,None,None,None,None,11,None,15,None,12,14],7)",
+                        "([1,None,2,3,4,5,7,10,None,None,11,12,15,None,None,6,9,14,17,None,None,None,18,None,None,16,19,20,None,8,None,13],6)"
+                    ]
+                },
+                "body": "        result = run_diameter(Solution, root_list)\n        assert_diameter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_diameter, assert_diameter\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 3, 2, 4, None, 5, 6]\nexpected = 3",
+    "playground_run": "result = run_diameter(Solution, root_list)\nresult",
+    "playground_assert": "assert_diameter(result, expected)"
+}

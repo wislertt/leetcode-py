@@ -1,0 +1,97 @@
+{
+    "problem_name": "first_unique_number",
+    "solution_class_name": "FirstUnique",
+    "problem_number": "1429",
+    "problem_title": "First Unique Number",
+    "difficulty": "Medium",
+    "topics": "Design, Queue, Array, Hash Table, Data Stream",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have a queue of integers, you need to retrieve the first unique integer in the queue.\n\nImplement the `FirstUnique` class:\n\n- `FirstUnique(int[] nums)` Initializes the object with the numbers in the queue.\n- `int showFirstUnique()` returns the value of **the first unique** integer of the queue, and returns **-1** if there is no such integer.\n- `void add(int value)` insert value to the queue.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"FirstUnique\", \"showFirstUnique\", \"add\", \"showFirstUnique\", \"add\", \"showFirstUnique\", \"add\", \"showFirstUnique\"]\n[[[2, 3, 5]], [], [5], [], [2], [], [3], []]\nOutput\n[null, 2, null, 2, null, 3, null, -1]\n```"
+            },
+            {
+                "content": "```\nInput\n[\"FirstUnique\", \"showFirstUnique\", \"add\", \"add\", \"add\", \"add\", \"add\", \"showFirstUnique\"]\n[[[7, 7, 7, 7, 7, 7]], [], [7], [3], [3], [7], [17], []]\nOutput\n[null, -1, null, null, null, null, null, 17]\n```"
+            },
+            {
+                "content": "```\nInput\n[\"FirstUnique\", \"showFirstUnique\", \"add\", \"showFirstUnique\"]\n[[[809]], [], [809], []]\nOutput\n[null, 809, null, -1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^5`\n- `1 <= nums[i] <= 10^8`\n- `1 <= value <= 10^8`\n- At most `50000` calls will be made to `showFirstUnique` and `add`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "first_unique",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    first_unique = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'FirstUnique':\n            first_unique = solution_class(inputs[i])\n            results.append(None)\n        elif op == 'show_first_unique' and first_unique is not None:\n            results.append(first_unique.show_first_unique())\n        elif op == 'add' and first_unique is not None:\n            first_unique.add(inputs[i][0])\n            results.append(None)\n    return results, first_unique",
+    "helpers_assert_name": "first_unique",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_first_unique, run_first_unique\nfrom .solution import FirstUnique",
+    "test_content": "",
+    "test_class_name": "FirstUniqueNumber",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize first unique tracker\n        pass"
+            },
+            {
+                "name": "show_first_unique",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement show_first_unique\n        return 0"
+            },
+            {
+                "name": "add",
+                "signature": "(self, value: int) -> None",
+                "body": "        # TODO: Implement add\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_first_unique",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['FirstUnique','show_first_unique','add','show_first_unique','add','show_first_unique','add','show_first_unique'],[[2,3,5],[],[5],[],[2],[],[3],[]],[None,2,None,2,None,3,None,-1])",
+                        "(['FirstUnique','show_first_unique','add','add','add','add','add','show_first_unique'],[[7,7,7,7,7,7],[],[7],[3],[3],[7],[17],[]],[None,-1,None,None,None,None,None,17])",
+                        "(['FirstUnique','show_first_unique','add','show_first_unique'],[[809],[],[809],[]],[None,809,None,-1])",
+                        "(['FirstUnique','add','add','add','show_first_unique'],[[1,2,3],[1],[2],[3],[]],[None,None,None,None,-1])",
+                        "(['FirstUnique','show_first_unique','show_first_unique','add','show_first_unique'],[[5,5],[],[],[5],[]],[None,-1,-1,None,-1])",
+                        "(['FirstUnique','add','show_first_unique','add','show_first_unique','add','show_first_unique'],[[4,4,6],[4],[],[6],[],[9],[]],[None,None,6,None,-1,None,9])",
+                        "(['FirstUnique','show_first_unique','add','show_first_unique','add','show_first_unique'],[[42],[],[42],[],[42],[]],[None,42,None,-1,None,-1])",
+                        "(['FirstUnique','show_first_unique','add','show_first_unique','add','show_first_unique'],[[100000000],[],[100000000],[],[1],[]],[None,100000000,None,-1,None,1])",
+                        "(['FirstUnique','show_first_unique','add','show_first_unique','add','show_first_unique'],[[1,1,2],[],[2],[],[3],[]],[None,2,None,-1,None,3])",
+                        "(['FirstUnique','add','show_first_unique','add','add','add','show_first_unique','show_first_unique'],[[9,9,9,9],[19],[],[9],[19],[9],[],[]],[None,None,19,None,None,None,-1,-1])",
+                        "(['FirstUnique','show_first_unique','add','add','add','show_first_unique'],[[9,9,9,6,9,9,6,8],[],[8],[8],[9],[]],[None,8,None,None,None,-1])",
+                        "(['FirstUnique','add','show_first_unique','show_first_unique','add','add','add','add','show_first_unique'],[[9,9],[8],[],[],[12],[8],[11],[9],[]],[None,None,8,8,None,None,None,None,12])",
+                        "(['FirstUnique','add','show_first_unique','show_first_unique','add','show_first_unique','add','add','show_first_unique'],[[11,4,8,4,8,4,7],[18],[],[],[8],[],[7],[19],[]],[None,None,11,11,None,11,None,None,11])",
+                        "(['FirstUnique','show_first_unique','add','show_first_unique','add','show_first_unique','show_first_unique','add','show_first_unique'],[[4,7,3],[],[11],[],[7],[],[],[13],[]],[None,4,None,4,None,4,4,None,4])",
+                        "(['FirstUnique','show_first_unique','show_first_unique','add','add','add','show_first_unique'],[[7,1,5,2],[],[],[7],[1],[7],[]],[None,7,7,None,None,None,5])"
+                    ]
+                },
+                "body": "        result, _ = run_first_unique(FirstUnique, operations, inputs)\n        assert_first_unique(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_first_unique, assert_first_unique\nfrom solution import FirstUnique",
+    "playground_setup": "# Example test case\noperations = ['FirstUnique', 'show_first_unique', 'add', 'show_first_unique', 'add', 'show_first_unique', 'add', 'show_first_unique']\ninputs = [[2, 3, 5], [], [5], [], [2], [], [3], []]\nexpected = [None, 2, None, 2, None, 3, None, -1]",
+    "playground_run": "result, first_unique = run_first_unique(FirstUnique, operations, inputs)\nprint(result)\nfirst_unique",
+    "playground_assert": "assert_first_unique(result, expected)"
+}

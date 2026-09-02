@@ -1,0 +1,95 @@
+{
+    "problem_name": "minimum_depth_of_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "111",
+    "problem_title": "Minimum Depth of Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a binary tree, find its minimum depth.\n\nThe minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.\n\n**Note:** A leaf is a node with no children.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/12/ex_depth.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: root = [2,null,3,null,4,null,5,null,6]\nOutput: 5\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 10^5]`.\n- `-1000 <= Node.val <= 1000`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "min_depth",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.min_depth(root)",
+    "helpers_assert_name": "min_depth",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_depth, run_min_depth\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumDepthOfBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_depth",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement min_depth\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_depth",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], 2)",
+                        "([2, None, 3, None, 4, None, 5, None, 6], 5)",
+                        "([], 0)",
+                        "([1], 1)",
+                        "([1, 2], 2)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, 3, 4], 2)",
+                        "([1, None, 2, None, 3], 3)",
+                        "([1, 2, None, 3], 3)",
+                        "([1, 2, 3, 4, 5], 2)",
+                        "([-100, None, 1000], 2)",
+                        "([1, 2, 3, None, None, None, 4, 5], 2)",
+                        "([886, 930, -353, None, 11], 2)",
+                        "([463, None, -432, None, -226, None, -548, 651, 466, None, None, 484], 5)",
+                        "([800], 1)",
+                        "([921, 754, None, 111, -780, 434, None, 397, None, 574, 473], 4)",
+                        "([-998, 946], 2)",
+                        "([-790, 65, -183, None, -188, None, None, -565, 318, -752, None, -383], 2)",
+                        "([837, None, 311, 740, 182], 3)",
+                        "([687, None, 213, None, -132, -805, None, None, -192, 698], 6)"
+                    ]
+                },
+                "body": "        result = run_min_depth(Solution, root_list)\n        assert_min_depth(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_depth, assert_min_depth\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list = [3, 9, 20, None, None, 15, 7]\nexpected = 2",
+    "playground_run": "result = run_min_depth(Solution, root_list)\nresult",
+    "playground_assert": "assert_min_depth(result, expected)"
+}

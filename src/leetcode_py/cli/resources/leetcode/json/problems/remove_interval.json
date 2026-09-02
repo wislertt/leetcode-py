@@ -1,0 +1,113 @@
+{
+    "problem_name": "remove_interval",
+    "solution_class_name": "Solution",
+    "problem_number": "1272",
+    "problem_title": "Remove Interval",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A set of real numbers can be represented as the union of several disjoint intervals, where each interval is in the form `[a, b)`. A real number `x` is in the set if one of its intervals `[a, b)` contains `x` (i.e. `a <= x < b`).\n\nYou are given a **sorted** list of disjoint intervals `intervals` representing a set of real numbers as described above, where `intervals[i] = [ai, bi]` represents the interval `[ai, bi)`. You are also given another interval `toBeRemoved`.\n\nReturn *the set of real numbers with the interval* `toBeRemoved` *removed* from* `intervals`*. In other words, return the set of real numbers such that every `x` in the set is in `intervals` but **not** in `toBeRemoved`. Your answer should be a **sorted** list of disjoint intervals as described above.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1272.Remove%20Interval/images/removeintervalex1.png)\n\n```\nInput: intervals = [[0,2],[3,4],[5,7]], toBeRemoved = [1,6]\nOutput: [[0,1],[6,7]]\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1272.Remove%20Interval/images/removeintervalex2.png)\n\n```\nInput: intervals = [[0,5]], toBeRemoved = [2,3]\nOutput: [[0,2],[3,5]]\n```"
+            },
+            {
+                "content": "```\nInput: intervals = [[-5,-4],[-3,-2],[1,2],[3,5],[8,9]], toBeRemoved = [-1,4]\nOutput: [[-5,-4],[-3,-2],[4,5],[8,9]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= intervals.length <= 10^4\n- -10^9 <= ai < bi <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_interval",
+    "helpers_run_signature": "(solution_class: type, intervals: list[list[int]], to_be_removed: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_interval(intervals, to_be_removed)",
+    "helpers_assert_name": "remove_interval",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_interval, run_remove_interval\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveInterval",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_interval",
+                "signature": "(self, intervals: list[list[int]], to_be_removed: list[int]) -> list[list[int]]",
+                "body": "        # TODO: Implement remove_interval\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_interval",
+                "signature": "(self, intervals: list[list[int]], to_be_removed: list[int], expected: list[list[int]])",
+                "parametrize": "intervals, to_be_removed, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,2],[3,4],[5,7]],[1,6],[[0,1],[6,7]])",
+                        "([[0,5]],[2,3],[[0,2],[3,5]])",
+                        "([[1,2]],[1,2],[])",
+                        "([[1,3],[5,7]],[3,5],[[1,3],[5,7]])",
+                        "([[0,10]],[0,10],[])",
+                        "([[1,2],[2,3],[3,4]],[2,3],[[1,2],[3,4]])",
+                        "([[0,1000000000]],[999999999,1000000000],[[0,999999999]])",
+                        "([[-1000000000,1000000000]],[-5,5],[[-1000000000,-5],[5,1000000000]])",
+                        "([[1,2]],[5,6],[[1,2]])",
+                        "([[5,6]],[1,2],[[5,6]])",
+                        "([[1,4],[6,8],[10,12]],[2,11],[[1,2],[11,12]])",
+                        "([[1,3]],[3,4],[[1,3]])",
+                        "([[-3,-1],[0,2],[4,6]],[-1,4],[[-3,-1],[4,6]])",
+                        "([[-2,-1],[0,3],[5,7]],[-1,5],[[-2,-1],[5,7]])",
+                        "([[-4,-2],[0,1],[3,6],[8,9],[11,14]],[1,8],[[-4,-2],[0,1],[8,9],[11,14]])",
+                        "([[-6,-4],[-2,0],[2,4]],[-5,3],[[-6,-5],[3,4]])",
+                        "([[-30,-19],[3,7]],[-6,19],[[-30,-19]])",
+                        "([[-29,-3],[15,29]],[-32,28],[[28,29]])",
+                        "([[-17,-13],[10,11]],[-8,-4],[[-17,-13],[10,11]])",
+                        "([[-29,-5]],[-28,-15],[[-29,-28],[-15,-5]])",
+                        "([[-19,25]],[-11,-2],[[-19,-11],[-2,25]])",
+                        "([[-29,-6]],[-12,26],[[-29,-12]])",
+                        "([[-23,-21],[-18,-15],[11,16],[22,25]],[-24,19],[[22,25]])",
+                        "([[-27,-22],[-15,-4],[2,15],[19,27]],[1,22],[[-27,-22],[-15,-4],[22,27]])",
+                        "([[-20,-17],[-16,0],[19,23],[26,29]],[10,11],[[-20,-17],[-16,0],[19,23],[26,29]])",
+                        "([[-22,-1],[17,26]],[28,31],[[-22,-1],[17,26]])",
+                        "([[-25,-19],[-17,-12],[-3,12]],[-27,-12],[[-3,12]])",
+                        "([[-23,-10],[0,1],[7,22]],[-32,-9],[[0,1],[7,22]])",
+                        "([[0,5],[6,16]],[-13,8],[[8,16]])",
+                        "([[-8,-4],[5,9],[22,30]],[28,29],[[-8,-4],[5,9],[22,28],[29,30]])",
+                        "([[-30,-25],[-23,-3],[0,19],[28,30]],[23,32],[[-30,-25],[-23,-3],[0,19]])",
+                        "([[17,22]],[10,12],[[17,22]])",
+                        "([[-24,-11],[7,15],[17,20]],[-14,15],[[-24,-14],[17,20]])",
+                        "([[4,23]],[-17,-12],[[4,23]])",
+                        "([[-29,-21],[-4,-1],[7,24]],[25,29],[[-29,-21],[-4,-1],[7,24]])"
+                    ]
+                },
+                "body": "        result = run_remove_interval(Solution, intervals, to_be_removed)\n        assert_remove_interval(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_interval, assert_remove_interval\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nintervals = [[0, 2], [3, 4], [5, 7]]\nto_be_removed = [1, 6]\nexpected = [[0, 1], [6, 7]]",
+    "playground_run": "result = run_remove_interval(Solution, intervals, to_be_removed)\nresult",
+    "playground_assert": "assert_remove_interval(result, expected)"
+}

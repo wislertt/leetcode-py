@@ -1,0 +1,108 @@
+{
+    "problem_name": "circular_sentence",
+    "solution_class_name": "Solution",
+    "problem_number": "2490",
+    "problem_title": "Circular Sentence",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>A <strong>sentence</strong> is a list of words that are separated by a<strong> single</strong> space with no leading or trailing spaces.</p>\n\n<ul>\n\t<li>For example, <code>\"Hello World\"</code>, <code>\"HELLO\"</code>, <code>\"hello world hello world\"</code> are all sentences.</li>\n</ul>\n\n<p>Words consist of <strong>only</strong> uppercase and lowercase English letters. Uppercase and lowercase English letters are considered different.</p>\n\n<p>A sentence is <strong>circular </strong>if:</p>\n\n<ul>\n\t<li>The last character of each word in the sentence is equal to the first character of its next word.</li>\n\t<li>The last character of the last word is equal to the first character of the first word.</li>\n</ul>\n\n<p>For example, <code>\"leetcode exercises sound delightful\"</code>, <code>\"eetcode\"</code>, <code>\"leetcode eats soul\" </code>are all circular sentences. However, <code>\"Leetcode is cool\"</code>, <code>\"happy Leetcode\"</code>, <code>\"Leetcode\"</code> and <code>\"I like Leetcode\"</code> are <strong>not</strong> circular sentences.</p>\n\n<p>Given a string <code>sentence</code>, return <code>true</code><em> if it is circular</em>. Otherwise, return <code>false</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sentence = \"leetcode exercises sound delightful\"\nOutput: true\nExplanation: The words in sentence are [\"leetcode\", \"exercises\", \"sound\", \"delightful\"].\n- leetcode's last character is equal to exercises's first character.\n- exercises's last character is equal to sound's first character.\n- sound's last character is equal to delightful's first character.\n- delightful's last character is equal to leetcode's first character.\nThe sentence is circular.\n```"
+            },
+            {
+                "content": "```\nInput: sentence = \"eetcode\"\nOutput: true\nExplanation: The words in sentence are [\"eetcode\"].\n- eetcode's last character is equal to eetcode's first character.\nThe sentence is circular.\n```"
+            },
+            {
+                "content": "```\nInput: sentence = \"Leetcode is cool\"\nOutput: false\nExplanation: The words in sentence are [\"Leetcode\", \"is\", \"cool\"].\n- Leetcode's last character is not equal to is's first character.\nThe sentence is not circular.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= sentence.length &lt;= 500\n- sentence consist of only lowercase and uppercase English letters and spaces.\n- The words in sentence are separated by a single space.\n- There are no leading or trailing spaces.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_circular_sentence",
+    "helpers_run_signature": "(solution_class: type, sentence: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_circular_sentence(sentence)",
+    "helpers_assert_name": "is_circular_sentence",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_circular_sentence, run_is_circular_sentence\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CircularSentence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_circular_sentence",
+                "signature": "(self, sentence: str) -> bool",
+                "body": "        # TODO: Implement is_circular_sentence\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_circular_sentence",
+                "signature": "(self, sentence: str, expected: bool)",
+                "parametrize": "sentence, expected",
+                "test_cases": {
+                    "list": [
+                        "('leetcode exercises sound delightful', True)",
+                        "('eetcode', True)",
+                        "('Leetcode is cool', False)",
+                        "('hello world hello world', False)",
+                        "('a', True)",
+                        "('ab', False)",
+                        "('aa', True)",
+                        "('aba', True)",
+                        "('happy Leetcode', False)",
+                        "('I like Leetcode', False)",
+                        "('leetcode eats soul', True)",
+                        "('HELLO', False)",
+                        "('ab ba', True)",
+                        "('abc cba', True)",
+                        "('aaa aaa', True)",
+                        "('ab cd', False)",
+                        "('xyz zyx', True)",
+                        "('Ala', False)",
+                        "('Leetcode', False)",
+                        "('aeiou uoiea', True)",
+                        "('snake elixir ruin nice', False)",
+                        "('nice lace echo onion', False)",
+                        "('qbbjqnc c cbbijjb', False)",
+                        "('l l', True)",
+                        "('l ltb blu', False)",
+                        "('niyh hctks shpaq', False)",
+                        "('wjmpi iy ynfcr r ra', False)",
+                        "('jr rd d dczjrd', False)",
+                        "('pd', False)",
+                        "('q q', True)"
+                    ]
+                },
+                "body": "        result = run_is_circular_sentence(Solution, sentence)\n        assert_is_circular_sentence(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_circular_sentence, assert_is_circular_sentence\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsentence = 'leetcode exercises sound delightful'\nexpected = True",
+    "playground_run": "result = run_is_circular_sentence(Solution, sentence)\nresult",
+    "playground_assert": "assert_is_circular_sentence(result, expected)"
+}

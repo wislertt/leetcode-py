@@ -1,0 +1,102 @@
+{
+    "problem_name": "check_if_one_string_swap_can_make_strings_equal",
+    "solution_class_name": "Solution",
+    "problem_number": "1790",
+    "problem_title": "Check if One String Swap Can Make Strings Equal",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two strings `s1` and `s2` of equal length. A **string swap** is an operation where you choose two indices in a string (not necessarily different) and swap the characters at these indices.\n\nReturn `true` if it is possible to make both strings equal by performing **at most one string swap** on **exactly one** of the strings. Otherwise, return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s1 = \"bank\", s2 = \"kanb\"\nOutput: true\nExplanation: For example, swap the first character with the last character of s2 to make \"bank\".\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"attack\", s2 = \"defend\"\nOutput: false\nExplanation: It is impossible to make them equal with one string swap.\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"kelb\", s2 = \"kelb\"\nOutput: true\nExplanation: The two strings are already equal, so no string swap operation is required.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s1.length, s2.length <= 100\n- s1.length == s2.length\n- s1 and s2 consist of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "are_almost_equal",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.are_almost_equal(s1, s2)",
+    "helpers_assert_name": "are_almost_equal",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_are_almost_equal, run_are_almost_equal\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckIfOneStringSwapCanMakeStringsEqual",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "are_almost_equal",
+                "signature": "(self, s1: str, s2: str) -> bool",
+                "body": "        # TODO: Implement are_almost_equal\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_are_almost_equal",
+                "signature": "(self, s1: str, s2: str, expected: bool)",
+                "parametrize": "s1, s2, expected",
+                "test_cases": {
+                    "list": [
+                        "('bank', 'kanb', True)",
+                        "('attack', 'defend', False)",
+                        "('kelb', 'kelb', True)",
+                        "('a', 'a', True)",
+                        "('a', 'b', False)",
+                        "('ab', 'ba', True)",
+                        "('ab', 'cd', False)",
+                        "('aa', 'aa', True)",
+                        "('ab', 'aa', False)",
+                        "('abcd', 'dcba', False)",
+                        "('abcd', 'badc', False)",
+                        "('abcd', 'abcd', True)",
+                        "('abcd', 'abce', False)",
+                        "('aab', 'aba', True)",
+                        "('aab', 'baa', True)",
+                        "('abc', 'cba', True)",
+                        "('abcd', 'cbad', True)",
+                        "('aaab', 'aaba', True)",
+                        "('aaab', 'aabb', False)",
+                        "('abcde', 'abced', True)",
+                        "('converse', 'conserve', True)",
+                        "('longerstring', 'longerstrnig', True)",
+                        "('bb', 'ab', False)",
+                        "('ababb', 'babba', False)"
+                    ]
+                },
+                "body": "        result = run_are_almost_equal(Solution, s1, s2)\n        assert_are_almost_equal(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_are_almost_equal, assert_are_almost_equal\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'bank'\ns2 = 'kanb'\nexpected = True",
+    "playground_run": "result = run_are_almost_equal(Solution, s1, s2)\nresult",
+    "playground_assert": "assert_are_almost_equal(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "optimal_division",
+    "solution_class_name": "Solution",
+    "problem_number": "553",
+    "problem_title": "Optimal Division",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums`. The adjacent integers in `nums` will perform the float division.\n\n- For example, for `nums = [2,3,4]`, we will evaluate the expression `\"2/3/4\"`.\n\nHowever, you can add any number of parenthesis at any position to change the priority of operations. You want to add these parentheses such the value of the expression after the evaluation is maximum.\n\nReturn *the corresponding expression that has the maximum value in string format*.\n\n**Note:** your expression should not contain redundant parenthesis.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1000,100,10,2]\nOutput: \"1000/(100/10/2)\"\nExplanation: 1000/(100/10/2) = 1000/((100/10)/2) = 200\nHowever, the bold parenthesis in \"1000/((100/10)/2)\" are redundant since they do not influence the operation priority.\nSo you should return \"1000/(100/10/2)\".\nOther cases:\n1000/(100/10)/2 = 50\n1000/(100/(10/2)) = 50\n1000/100/10/2 = 0.5\n1000/100/(10/2) = 2\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,3,4]\nOutput: \"2/(3/4)\"\nExplanation: (2/(3/4)) = 8/3 = 2.667\nIt can be shown that after trying all possibilities, we cannot get an expression with evaluation greater than 2.667\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10\n- 2 <= nums[i] <= 1000\n- There is only one optimal division for the given input.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "optimal_division",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.optimal_division(nums)",
+    "helpers_assert_name": "optimal_division",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_optimal_division, run_optimal_division\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OptimalDivision",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "optimal_division",
+                "signature": "(self, nums: list[int]) -> str",
+                "body": "        # TODO: Implement optimal_division\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_optimal_division",
+                "signature": "(self, nums: list[int], expected: str)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1000, 100, 10, 2], '1000/(100/10/2)')",
+                        "([2, 3, 4], '2/(3/4)')",
+                        "([5], '5')",
+                        "([2], '2')",
+                        "([1000], '1000')",
+                        "([2, 3], '2/3')",
+                        "([1000, 999], '1000/999')",
+                        "([2, 2], '2/2')",
+                        "([3, 2, 5], '3/(2/5)')",
+                        "([1000, 2, 1000], '1000/(2/1000)')",
+                        "([5, 4, 3, 2], '5/(4/3/2)')",
+                        "([2, 1000, 2, 1000, 2], '2/(1000/2/1000/2)')",
+                        "([28, 467, 140, 465, 29, 421, 396, 950], '28/(467/140/465/29/421/396/950)')",
+                        "([180, 188, 845, 469, 636, 756, 586, 962], '180/(188/845/469/636/756/586/962)')",
+                        "([462], '462')",
+                        "([593, 704, 1000], '593/(704/1000)')",
+                        "([49, 353, 13, 282, 866, 957, 395], '49/(353/13/282/866/957/395)')",
+                        "([77, 879, 29], '77/(879/29)')",
+                        "([2, 3, 4, 5, 6, 7, 8, 9, 10, 11], '2/(3/4/5/6/7/8/9/10/11)')"
+                    ]
+                },
+                "body": "        result = run_optimal_division(Solution, nums)\n        assert_optimal_division(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_optimal_division, assert_optimal_division\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1000, 100, 10, 2]\nexpected = '1000/(100/10/2)'",
+    "playground_run": "result = run_optimal_division(Solution, nums)\nresult",
+    "playground_assert": "assert_optimal_division(result, expected)"
+}

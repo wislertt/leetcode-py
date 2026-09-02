@@ -1,0 +1,93 @@
+{
+    "problem_name": "number_of_closed_islands",
+    "solution_class_name": "Solution",
+    "problem_number": "1254",
+    "problem_title": "Number of Closed Islands",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Union-Find, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a 2D `grid` consists of `0s` (land) and `1s` (water). An *island* is a maximal 4-directionally connected group of `0`s and a *closed island* is an island **totally** (all left, top, right, bottom) surrounded by `1s.`\n\nReturn the number of *closed islands*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/10/31/sample_3_1610.png)\n\n```\nInput: grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]\nOutput: 2\nExplanation: Islands in gray are closed because they are completely surrounded by water (group of 1s).\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/10/31/sample_4_1610.png)\n\n```\nInput: grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,1,1,1,1,1,1],[1,0,0,0,0,0,1],[1,0,1,1,1,0,1],[1,0,1,0,1,0,1],[1,0,1,1,1,0,1],[1,0,0,0,0,0,1],[1,1,1,1,1,1,1]]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= grid.length, grid[0].length <= 100`\n- `0 <= grid[i][j] <= 1`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "closed_islands",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.closed_islands(grid)",
+    "helpers_assert_name": "closed_islands",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_closed_islands, run_closed_islands\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfClosedIslandsTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "closed_islands",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement closed_islands\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_closed_islands",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]], 2)",
+                        "([[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]], 1)",
+                        "([[1,1,1,1,1,1,1],[1,0,0,0,0,0,1],[1,0,1,1,1,0,1],[1,0,1,0,1,0,1],[1,0,1,1,1,0,1],[1,0,0,0,0,0,1],[1,1,1,1,1,1,1]], 2)",
+                        "([[1,1,1],[1,1,1],[1,1,1]], 0)",
+                        "([[0,0],[0,0]], 0)",
+                        "([[1]], 0)",
+                        "([[0]], 0)",
+                        "([[1,0,1],[0,0,0],[1,0,1]], 0)",
+                        "([[1,1,0],[1,0,1],[0,1,1]], 1)",
+                        "([[1,0],[0,1]], 0)",
+                        "([[1,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,1]], 1)",
+                        "([[0,1,0],[1,0,1],[0,1,0]], 1)",
+                        "([[1,1,1,1,1],[1,0,1,0,1],[1,1,1,1,1]], 2)",
+                        "([[1,0,1,0,1],[1,0,1,0,1],[1,1,1,1,1]], 0)",
+                        "([[1,1],[1,0]], 0)",
+                        "([[0,0,1,1],[1,1,1,1],[1,0,0,0],[1,1,0,1],[1,1,0,1],[0,1,1,1]], 0)"
+                    ]
+                },
+                "body": "        result = run_closed_islands(Solution, grid)\n        assert_closed_islands(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_closed_islands, assert_closed_islands\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 1, 1, 1, 1, 1, 1, 0], [1, 0, 0, 0, 0, 1, 1, 0], [1, 0, 1, 0, 1, 1, 1, 0], [1, 0, 0, 0, 0, 1, 0, 1], [1, 1, 1, 1, 1, 1, 1, 0]]\nexpected = 2",
+    "playground_run": "result = run_closed_islands(Solution, grid)\nresult",
+    "playground_assert": "assert_closed_islands(result, expected)"
+}

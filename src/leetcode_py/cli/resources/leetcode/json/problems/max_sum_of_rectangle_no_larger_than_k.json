@@ -1,0 +1,95 @@
+{
+    "problem_name": "max_sum_of_rectangle_no_larger_than_k",
+    "solution_class_name": "Solution",
+    "problem_number": "363",
+    "problem_title": "Max Sum of Rectangle No Larger Than K",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Matrix, Prefix Sum, Ordered Set",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an <code>m x n</code> matrix <code>matrix</code> and an integer <code>k</code>, return <em>the max sum of a rectangle in the matrix such that its sum is no larger than</em> <code>k</code>.\n\nIt is <strong>guaranteed</strong> that there will be a rectangle with a sum no larger than <code>k</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/18/sum-grid.jpg)\n\n```\nInput: matrix = [[1,0,1],[0,-2,3]], k = 2\nOutput: 2\nExplanation: Because the sum of the blue rectangle [[0, 1], [-2, 3]] is 2, and 2 is the max number no larger than k (k = 2).\n```"
+            },
+            {
+                "content": "```\nInput: matrix = [[2,2,-1]], k = 3\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 100\n- -100 <= matrix[i][j] <= 100\n- -10^5 <= k <= 10^5",
+    "readme_additional": "**Follow up:** What if the number of rows is much larger than the number of columns?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_sum_submatrix",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_sum_submatrix(matrix, k)",
+    "helpers_assert_name": "max_sum_submatrix",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_sum_submatrix, run_max_sum_submatrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaxSumOfRectangleNoLargerThanK",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_sum_submatrix",
+                "signature": "(self, matrix: list[list[int]], k: int) -> int",
+                "body": "        # TODO: Implement max_sum_submatrix\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_sum_submatrix",
+                "signature": "(self, matrix: list[list[int]], k: int, expected: int)",
+                "parametrize": "matrix, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 0, 1], [0, -2, 3]], 2, 2)",
+                        "([[2, 2, -1]], 3, 3)",
+                        "([[1]], 1, 1)",
+                        "([[-5]], -5, -5)",
+                        "([[1, 2], [3, 4]], 4, 4)",
+                        "([[2, 2], [-1, 3]], 4, 4)",
+                        "([[5, -3], [2, 1]], 3, 3)",
+                        "([[-1, -2], [-3, -4]], -3, -3)",
+                        "([[0, 0], [0, 0]], 0, 0)",
+                        "([[1, -1, 2]], 1, 1)",
+                        "([[10, -10, 10]], 5, 0)",
+                        "([[3, 3], [3, 3]], 7, 6)",
+                        "([[100, -100]], 0, 0)",
+                        "([[4, -4, 4], [-4, 4, -4]], 4, 4)",
+                        "([[3], [-3]], -1, -3)",
+                        "([[3]], 3, 3)",
+                        "([[-3, -2, 0, -2]], -7, -7)",
+                        "([[3, 2]], 3, 3)",
+                        "([[1, -3, 5], [0, 4, -5]], 0, 0)",
+                        "([[2, 5, -3], [1, -3, -4]], -3, -3)"
+                    ]
+                },
+                "body": "        result = run_max_sum_submatrix(Solution, matrix, k)\n        assert_max_sum_submatrix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_sum_submatrix, assert_max_sum_submatrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1, 0, 1], [0, -2, 3]]\nk = 2\nexpected = 2",
+    "playground_run": "result = run_max_sum_submatrix(Solution, matrix, k)\nresult",
+    "playground_assert": "assert_max_sum_submatrix(result, expected)"
+}

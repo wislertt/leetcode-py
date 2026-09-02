@@ -1,0 +1,108 @@
+{
+    "problem_name": "magical_string",
+    "solution_class_name": "Solution",
+    "problem_number": "481",
+    "problem_title": "Magical String",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A magical string `s` consists of only `'1'` and `'2'` and obeys the following rules:\n\n- Concatenating the sequence of lengths of its consecutive groups of identical characters `'1'` and `'2'` generates the string `s` itself.\n\nThe first few elements of `s` is `s = \"1221121221221121122......\"`. If we group the consecutive 1's and 2's in `s`, it will be `\"1 22 11 2 1 22 1 22 11 2 11 22 ......\"` and counting the occurrences of 1's or 2's in each group yields the sequence `\"1 2 2 1 1 2 1 2 2 1 2 2 ......\"`.\n\nYou can see that concatenating the occurrence sequence gives us `s` itself.\n\nGiven an integer `n`, return the number of 1's in the first n number in the magical string `s`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 6\nOutput: 3\nExplanation: The first 6 elements of magical string s is \"122112\" and it contains three 1's, so return 3.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10<sup>5</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "magical_string",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.magical_string(n)",
+    "helpers_assert_name": "magical_string",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_magical_string, run_magical_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MagicalString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "magical_string",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement magical_string\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_magical_string",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 1)",
+                        "(3, 1)",
+                        "(4, 2)",
+                        "(5, 3)",
+                        "(6, 3)",
+                        "(7, 4)",
+                        "(8, 4)",
+                        "(9, 4)",
+                        "(10, 5)",
+                        "(11, 5)",
+                        "(12, 5)",
+                        "(13, 6)",
+                        "(14, 7)",
+                        "(15, 7)",
+                        "(16, 8)",
+                        "(17, 9)",
+                        "(18, 9)",
+                        "(19, 9)",
+                        "(20, 10)",
+                        "(21, 10)",
+                        "(22, 11)",
+                        "(23, 12)",
+                        "(24, 12)",
+                        "(30, 15)",
+                        "(50, 25)",
+                        "(100, 49)",
+                        "(499, 248)",
+                        "(1000, 502)",
+                        "(4999, 2500)",
+                        "(10000, 4996)",
+                        "(99999, 49972)",
+                        "(100000, 49972)"
+                    ]
+                },
+                "body": "        result = run_magical_string(Solution, n)\n        assert_magical_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_magical_string, assert_magical_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn: int = 6\nexpected: int = 3",
+    "playground_run": "result = run_magical_string(Solution, n)\nresult",
+    "playground_assert": "assert_magical_string(result, expected)"
+}

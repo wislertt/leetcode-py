@@ -1,0 +1,93 @@
+{
+    "problem_name": "reverse_substrings_between_each_pair_of_parentheses",
+    "solution_class_name": "Solution",
+    "problem_number": "1190",
+    "problem_title": "Reverse Substrings Between Each Pair of Parentheses",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Bracket Sequences",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` that consists of lower case English letters and brackets.\n\nReverse the strings in each pair of matching parentheses, starting from the innermost one.\n\nYour result should **not** contain any brackets.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"(abcd)\"\nOutput: \"dcba\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(u(love)i)\"\nOutput: \"iloveu\"\nExplanation: The substring \"love\" is reversed first, then the whole string is reversed.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(ed(et(oc))el)\"\nOutput: \"leetcode\"\nExplanation: First, we reverse the substring \"oc\", then \"etco\", and finally, the whole string.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 2000`\n- `s` only contains lower case English characters and parentheses.\n- It is guaranteed that all parentheses are balanced.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_parentheses",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_parentheses(s)",
+    "helpers_assert_name": "reverse_parentheses",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_parentheses, run_reverse_parentheses\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseSubstringsBetweenEachPairOfParenthesesTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_parentheses",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reverse_parentheses\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_parentheses",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('(abcd)', 'dcba')",
+                        "('(u(love)i)', 'iloveu')",
+                        "('(ed(et(oc))el)', 'leetcode')",
+                        "('a(bcdefghijkl(mno)p)q', 'apmnolkjihgfedcbq')",
+                        "('(abc)', 'cba')",
+                        "('abc', 'abc')",
+                        "('(())', '')",
+                        "('((ab))', 'ab')",
+                        "('(ab(cd)ef)', 'fecdba')",
+                        "('ta()usw((((a))))', 'tauswa')",
+                        "('(a)b(c)d', 'abcd')",
+                        "('(ab)', 'ba')",
+                        "('(b)x(az)', 'bxza')",
+                        "('co(de(fight)s)', 'cosfighted')",
+                        "('(nvqzikme)(qqhlashx)', 'emkizqvnxhsalhqq')",
+                        "('(eqkjhjkgi)(mnkjhgfre)', 'igkjhjkqeerfghjknm')"
+                    ]
+                },
+                "body": "        result = run_reverse_parentheses(Solution, s)\n        assert_reverse_parentheses(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_parentheses, assert_reverse_parentheses\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '(u(love)i)'\nexpected = 'iloveu'",
+    "playground_run": "result = run_reverse_parentheses(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_parentheses(result, expected)"
+}

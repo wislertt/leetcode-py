@@ -110,6 +110,19 @@ COLLECTION_INTRO: dict[str, str] = {
 
 DIFFICULTIES = ["Easy", "Medium", "Hard"]
 
+# Difficulty pages split their rows into sequential chunks of at most this
+# many rows, so no catalog page renders more than a screenful-of-screens
+# worth of table (1164 rows on one page made the DOM enormous).
+CHUNK_SIZE = 200
+
+# SEO title per difficulty: part 1 gets the full query-shaped title, later
+# parts append ", Part N" (Mintlify appends " - leetcode-py" on top).
+DIFFICULTY_TITLES = {
+    "Easy": "Easy LeetCode Problems in Python with Tests",
+    "Medium": "Medium LeetCode Problems in Python with Tests",
+    "Hard": "Hard LeetCode Problems in Python with Tests",
+}
+
 # Hand-written files whose problem count is injected between markers so the
 # number never goes stale. README.md is plain markdown (HTML comment); .mdx
 # files need JSX comments since MDX does not support HTML comments.
@@ -177,6 +190,27 @@ def split_phrase(split: dict[str, int]) -> str:
     return ", ".join(f"{split[d]} {d}" for d in DIFFICULTIES if split[d])
 
 
+def chunked(names: list[str]) -> list[list[str]]:
+    """Split into sequential chunks of at most CHUNK_SIZE rows."""
+    return [names[i : i + CHUNK_SIZE] for i in range(0, len(names), CHUNK_SIZE)] or [[]]
+
+
+def table_div(header: list[str], rows: list[str]) -> list[str]:
+    """Markdown table wrapped in a div so custom.css can control column widths."""
+    lines = [
+        "",
+        '<div className="sd-catalog-table">',
+        "",
+        "| " + " | ".join(header) + " |",
+        "| " + " | ".join("---" for _ in header) + " |",
+        *rows,
+        "",
+        "</div>",
+        "",
+    ]
+    return lines
+
+
 def render_collection_page(
     tag: str,
     names: list[str],
@@ -217,60 +251,122 @@ def render_collection_page(
         f"lcpy gen -t {tag}",
         "```",
         "",
-        "| # | Problem | Difficulty | Solution |",
-        "| --- | --- | --- | --- |",
     ]
-    for name in rows:
-        p = problems[name]
-        lines.append(
-            f"| {p['number']} | [{p['title']}]({problem_url(name)}) "
-            f"| {p['difficulty']} | [solution.py]({solution_url(name)}) |"
-        )
+    table_rows = [
+        f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
+        f"| {problems[name]['difficulty']} | [solution.py]({solution_url(name)}) |"
+        for name in rows
+    ]
+    lines += table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)
     lines.append("")
     return "\n".join(lines)
 
 
-def render_all_page(
-    collections: dict[str, list[str]],
-    problems: dict[str, dict],
-) -> str:
+def difficulty_slug(difficulty: str, part: int) -> str:
+    return difficulty.lower() if part == 1 else f"{difficulty.lower()}-{part}"
+
+
+def pagination_lines(base: str, part_count: int, current: int) -> list[str]:
+    links = [
+        f"[{j}](/catalog/{difficulty_slug(base, j)})" if j != current else str(j)
+        for j in range(1, part_count + 1)
+    ]
+    return ["", "Pages: " + ", ".join(links), ""]
+
+
+def render_all_pages(problems: dict[str, dict]) -> dict[Path, str]:
+    """All-problems pages: the full list, paginated like the difficulty pages."""
     split = difficulty_split(list(problems), problems)
-    lines = [
-        "---",
-        f'title: "{ALL_PAGE_TITLE}"',
-        "sidebarTitle: All Problems",
-        'description: "Every LeetCode problem in the catalog with difficulty, '
-        'collections, and tested Python solutions."',
-        "---",
-        "",
-        GENERATED_HEADER,
-        "",
-        f"Every problem shipped in this repository: {len(problems)} problems "
-        f"({split_phrase(split)}).",
-        "",
-        "Generate every problem directory into the current directory:",
-        "",
-        "```bash",
-        "lcpy gen --all",
-        "```",
-        "",
-        "| # | Problem | Difficulty | Collections | Solution |",
-        "| --- | --- | --- | --- | --- |",
-    ]
-    for name in sorted(problems, key=lambda n: problems[n]["number"]):
-        p = problems[name]
-        member_of = (
-            ", ".join(
-                COLLECTION_META[tag]["label"] for tag, names in collections.items() if name in names
+    parts = chunked(sorted(problems, key=lambda n: problems[n]["number"]))
+    intro_links = ", ".join(
+        f"[{difficulty}](/catalog/{difficulty_slug(difficulty, 1)})" for difficulty in DIFFICULTIES
+    )
+    pages: dict[Path, str] = {}
+    for i, chunk in enumerate(parts, start=1):
+        start = sum(len(c) for c in parts[: i - 1]) + 1
+        end = start + len(chunk) - 1
+        title = ALL_PAGE_TITLE if i == 1 else "All LeetCode Problems in Python, Part " + str(i)
+        description = (
+            "Every LeetCode problem in the catalog with difficulty, collections, "
+            f"and tested Python solutions. Part {i} of {len(parts)}: problems "
+            f"{start}-{end}."
+        )
+        lines = [
+            "---",
+            f'title: "{title}"',
+            f"sidebarTitle: {'All Problems' if i == 1 else f'All ({start}-{end})'}",
+            f'description: "{description}"',
+            "---",
+            "",
+            GENERATED_HEADER,
+            "",
+            f"Every problem shipped in this repository: {len(problems)} problems "
+            f"({split_phrase(split)}).",
+        ]
+        if i == 1:
+            lines += [
+                "",
+                "Generate every problem directory into the current directory:",
+                "",
+                "```bash",
+                "lcpy gen --all",
+                "```",
+                "",
+                f"Browse by difficulty: {intro_links}.",
+            ]
+        table_rows = [
+            f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
+            f"| {problems[name]['difficulty']} | [solution.py]({solution_url(name)}) |"
+            for name in chunk
+        ]
+        lines += ["", *table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)]
+        lines += pagination_lines("All", len(parts), i)
+        pages[CATALOG_DIR / f"{difficulty_slug('All', i)}.mdx"] = "\n".join(lines)
+    return pages
+
+
+def render_difficulty_pages(problems: dict[str, dict]) -> dict[Path, str]:
+    pages: dict[Path, str] = {}
+    for difficulty in DIFFICULTIES:
+        rows = sorted(
+            (n for n in problems if problems[n]["difficulty"] == difficulty),
+            key=lambda n: problems[n]["number"],
+        )
+        parts = chunked(rows)
+        for i, chunk in enumerate(parts, start=1):
+            slug = difficulty_slug(difficulty, i)
+            title = (
+                DIFFICULTY_TITLES[difficulty]
+                if i == 1
+                else f"{difficulty} LeetCode Problems in Python, Part {i}"
             )
-            or "-"
-        )
-        lines.append(
-            f"| {p['number']} | [{p['title']}]({problem_url(name)}) "
-            f"| {p['difficulty']} | {member_of} | [solution.py]({solution_url(name)}) |"
-        )
-    lines.append("")
-    return "\n".join(lines)
+            start = sum(len(c) for c in parts[: i - 1]) + 1
+            end = start + len(chunk) - 1
+            description = (
+                f"All {len(rows)} {difficulty} LeetCode problems with tested Python "
+                f"solutions. Part {i} of {len(parts)}: problems {start}-{end}."
+            )
+            lines = [
+                "---",
+                f'title: "{title}"',
+                f"sidebarTitle: {difficulty if i == 1 else f'{difficulty} ({start}-{end})'}",
+                f'description: "{description}"',
+                "---",
+                "",
+                GENERATED_HEADER,
+                "",
+                f"{difficulty} holds {len(rows)} problems.",
+            ]
+
+            table_rows = [
+                f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
+                f"| {difficulty} | [solution.py]({solution_url(name)}) |"
+                for name in chunk
+            ]
+            lines += table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)
+            lines += pagination_lines(difficulty, len(parts), i)
+            pages[CATALOG_DIR / f"{slug}.mdx"] = "\n".join(lines)
+    return pages
 
 
 def render_index_page(
@@ -293,19 +389,19 @@ def render_index_page(
         "generated straight from the templates so counts never go stale. "
         "See [Collections](/cli/collections) for what each list is.",
         "",
-        "| Collection | Problems | Easy | Medium | Hard |",
-        "| --- | --- | --- | --- | --- |",
+    ]
+    index_rows = [
         f"| [All Problems](/catalog/all) | {len(problems)} "
-        f"| {total_split['Easy']} | {total_split['Medium']} | {total_split['Hard']} |",
+        f"| {total_split['Easy']} | {total_split['Medium']} | {total_split['Hard']} |"
     ]
     for tag, names in collections.items():
-        display = COLLECTION_META[tag]["label"]
         split = difficulty_split(names, problems)
-        lines.append(
+        display = COLLECTION_META[tag]["label"]
+        index_rows.append(
             f"| [{display}](/catalog/{tag}) | {len(names)} "
             f"| {split['Easy']} | {split['Medium']} | {split['Hard']} |"
         )
-
+    lines += table_div(["Collection", "Problems", "Easy", "Medium", "Hard"], index_rows)
     lines += [
         "",
         "Every problem directory ships the same [six files](/practice/problem-anatomy).",
@@ -334,6 +430,7 @@ def render_all() -> dict[Path, str]:
     seo_titles = [meta["title"] for meta in COLLECTION_META.values()] + [
         ALL_PAGE_TITLE,
         INDEX_PAGE_TITLE,
+        *DIFFICULTY_TITLES.values(),
     ]
     assert len(set(seo_titles)) == len(seo_titles), "collection titles must be unique"
     assert all(len(t) <= 46 for t in seo_titles), (
@@ -355,12 +452,16 @@ def render_all() -> dict[Path, str]:
 
     pages: dict[Path, str] = {
         CATALOG_DIR / "index.mdx": render_index_page(collections, problems),
-        CATALOG_DIR / "all.mdx": render_all_page(collections, problems),
     }
+    pages.update(render_all_pages(problems))
+    pages.update(render_difficulty_pages(problems))
     for tag, names in collections.items():
         pages[CATALOG_DIR / f"{tag}.mdx"] = render_collection_page(tag, names, problems, tags)
     pages.update(render_count_patches(len(problems)))
-    return pages
+    # End every file at exactly one newline so pre-commit's end-of-file-fixer
+    # agrees with regeneration (JSX-wrapped tables otherwise end in a blank
+    # line, and the fixer and lint hook would fight over it forever).
+    return {path: content.rstrip("\n") + "\n" for path, content in pages.items()}
 
 
 def main() -> None:

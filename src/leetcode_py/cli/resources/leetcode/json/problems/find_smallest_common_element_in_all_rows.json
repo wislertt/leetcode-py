@@ -1,0 +1,95 @@
+{
+    "problem_name": "find_smallest_common_element_in_all_rows",
+    "solution_class_name": "Solution",
+    "problem_number": "1198",
+    "problem_title": "Find Smallest Common Element in All Rows",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Binary Search, Counting, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an `m x n` matrix `mat` where every row is sorted in **strictly increasing** order, return the **smallest common element** in all rows.\n\nIf there is no common element, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: mat = [[1,2,3,4,5],[2,4,5,8,10],[3,5,7,9,11],[1,3,5,7,9]]\nOutput: 5\n```"
+            },
+            {
+                "content": "```\nInput: mat = [[1,2,3],[2,3,4],[2,3,5]]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == mat.length\n- n == mat[i].length\n- 1 <= m, n <= 500\n- 1 <= mat[i][j] <= 10^4\n- mat[i] is sorted in strictly increasing order.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_common_element",
+    "helpers_run_signature": "(solution_class: type, mat: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.smallest_common_element(mat)",
+    "helpers_assert_name": "smallest_common_element",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_common_element, run_smallest_common_element\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindSmallestCommonElementInAllRows",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_common_element",
+                "signature": "(self, mat: list[list[int]]) -> int",
+                "body": "        # TODO: Implement smallest_common_element\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_common_element",
+                "signature": "(self, mat: list[list[int]], expected: int)",
+                "parametrize": "mat, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,2,3,4,5],[2,4,5,8,10],[3,5,7,9,11],[1,3,5,7,9]],5)",
+                        "([[1,2,3],[2,3,4],[2,3,5]],2)",
+                        "([[7]],7)",
+                        "([[1,2,3]],1)",
+                        "([[1],[2],[3]],-1)",
+                        "([[5],[5],[5]],5)",
+                        "([[1,2],[3,4]],-1)",
+                        "([[1,2,3],[1,4,5],[1,6,7]],1)",
+                        "([[1,2,9],[3,4,9],[5,6,9]],9)",
+                        "([[9999,10000],[9998,10000],[9997,10000]],10000)",
+                        "([[1,2],[1,3]],1)",
+                        "([[2,4],[1,4],[3,4]],4)",
+                        "([[10,20,30],[15,20,35],[20,40,50]],20)",
+                        "([[1,3,5,7],[2,3,6,7],[3,4,5,7],[1,2,3,7]],3)",
+                        "([[4,5],[1,5],[2,5],[3,5]],5)",
+                        "([[2,3],[1,3],[3,4]],3)",
+                        "([[11,12,28,54,56],[7,24,36,38,58],[31,45,49,52,55],[10,19,20,27,39]],-1)",
+                        "([[7,11,34],[26,34,40],[16,26,34],[26,34,49]],34)",
+                        "([[1,25,38],[1,5,25],[1,14,25],[1,22,25],[1,25,31]],1)",
+                        "([[2,9,14,24,25],[9,12,20,29,42],[3,9,29,30,37],[9,21,29,38,39],[6,7,9,23,29]],9)"
+                    ]
+                },
+                "body": "        result = run_smallest_common_element(Solution, mat)\n        assert_smallest_common_element(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_common_element, assert_smallest_common_element\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmat = [[1, 2, 3, 4, 5], [2, 4, 5, 8, 10], [3, 5, 7, 9, 11], [1, 3, 5, 7, 9]]\nexpected = 5",
+    "playground_run": "result = run_smallest_common_element(Solution, mat)\nresult",
+    "playground_assert": "assert_smallest_common_element(result, expected)"
+}

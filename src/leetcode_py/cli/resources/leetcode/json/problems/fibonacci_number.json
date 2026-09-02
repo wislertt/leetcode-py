@@ -1,0 +1,96 @@
+{
+    "problem_name": "fibonacci_number",
+    "solution_class_name": "Solution",
+    "problem_number": "509",
+    "problem_title": "Fibonacci Number",
+    "difficulty": "Easy",
+    "topics": "Math, Dynamic Programming, Recursion, Memoization",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The <b>Fibonacci numbers</b>, commonly denoted <code>F(n)</code> form a sequence, called the <b>Fibonacci sequence</b>, such that each number is the sum of the two preceding ones, starting from <code>0</code> and <code>1</code>. That is,\n\n<pre>\nF(0) = 0, F(1) = 1\nF(n) = F(n - 1) + F(n - 2), for n &gt; 1.\n</pre>\n\n<p>Given <code>n</code>, calculate <code>F(n)</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 2\nOutput: 1\nExplanation: F(2) = F(1) + F(0) = 1 + 0 = 1.\n```"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: 2\nExplanation: F(3) = F(2) + F(1) = 1 + 1 = 2.\n```"
+            },
+            {
+                "content": "```\nInput: n = 4\nOutput: 3\nExplanation: F(4) = F(3) + F(2) = 2 + 1 = 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 30",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "fib",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.fib(n)",
+    "helpers_assert_name": "fib",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_fib, run_fib\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FibonacciNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "fib",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement fib\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_fib",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 1)",
+                        "(3, 2)",
+                        "(4, 3)",
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(5, 5)",
+                        "(6, 8)",
+                        "(7, 13)",
+                        "(8, 21)",
+                        "(9, 34)",
+                        "(10, 55)",
+                        "(11, 89)",
+                        "(12, 144)",
+                        "(15, 610)",
+                        "(18, 2584)",
+                        "(20, 6765)",
+                        "(25, 75025)",
+                        "(30, 832040)"
+                    ]
+                },
+                "body": "        result = run_fib(Solution, n)\n        assert_fib(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_fib, assert_fib\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nexpected = 1",
+    "playground_run": "result = run_fib(Solution, n)\nresult",
+    "playground_assert": "assert_fib(result, expected)"
+}

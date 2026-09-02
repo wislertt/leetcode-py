@@ -1,0 +1,93 @@
+{
+    "problem_name": "convert_a_number_to_hexadecimal",
+    "solution_class_name": "Solution",
+    "problem_number": "405",
+    "problem_title": "Convert a Number to Hexadecimal",
+    "difficulty": "Easy",
+    "topics": "Math, String, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a 32-bit integer `num`, return *a string representing its hexadecimal representation*. For negative integers, [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) method is used.\n\nAll the letters in the answer string should be lowercase characters, and there should not be any leading zeros in the answer except for the zero itself.\n\n**Note:** You are not allowed to use any built-in library method to directly solve this problem.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 26\nOutput: \"1a\"\n```"
+            },
+            {
+                "content": "```\nInput: num = -1\nOutput: \"ffffffff\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= num <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "to_hex",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.to_hex(num)",
+    "helpers_assert_name": "to_hex",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_to_hex, run_to_hex\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConvertANumberToHexadecimal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "to_hex",
+                "signature": "(self, num: int) -> str",
+                "body": "        # TODO: Implement to_hex\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_to_hex",
+                "signature": "(self, num: int, expected: str)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(26, '1a')",
+                        "(-1, 'ffffffff')",
+                        "(0, '0')",
+                        "(1, '1')",
+                        "(15, 'f')",
+                        "(16, '10')",
+                        "(255, 'ff')",
+                        "(4096, '1000')",
+                        "(2147483647, '7fffffff')",
+                        "(-2, 'fffffffe')",
+                        "(-16, 'fffffff0')",
+                        "(-2147483648, '80000000')",
+                        "(-2147483647, '80000001')",
+                        "(536870911, '1fffffff')",
+                        "(-1960523826, '8b24c7ce')",
+                        "(952878404, '38cbc544')",
+                        "(1428206383, '5520b32f')",
+                        "(395488441, '1792acb9')"
+                    ]
+                },
+                "body": "        result = run_to_hex(Solution, num)\n        assert_to_hex(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_to_hex, assert_to_hex\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 26\nexpected = '1a'",
+    "playground_run": "result = run_to_hex(Solution, num)\nresult",
+    "playground_assert": "assert_to_hex(result, expected)"
+}

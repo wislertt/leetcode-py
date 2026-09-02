@@ -1,0 +1,101 @@
+{
+    "problem_name": "binary_watch",
+    "solution_class_name": "Solution",
+    "problem_number": "401",
+    "problem_title": "Binary Watch",
+    "difficulty": "Easy",
+    "topics": "Backtracking, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A binary watch has 4 LEDs on the top to represent the hours (0-11), and 6 LEDs on the bottom to represent the minutes (0-59). Each LED represents a zero or one, with the least significant bit on the right.\n\nFor example, the below binary watch reads `\"4:51\"`.\n\nGiven an integer `turnedOn` which represents the number of LEDs that are currently on (ignoring the PM), return *all possible times the watch could represent*. You may return the answer in **any order**.\n\nThe hour must not contain a leading zero.\n\n- For example, `\"01:00\"` is not valid. It should be `\"1:00\"`.\n\nThe minute must consist of two digits and may contain a leading zero.\n\n- For example, `\"10:2\"` is not valid. It should be `\"10:02\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/08/binarywatch.jpg)\n\n```\nInput: turnedOn = 1\nOutput: [\"0:01\",\"0:02\",\"0:04\",\"0:08\",\"0:16\",\"0:32\",\"1:00\",\"2:00\",\"4:00\",\"8:00\"]\n```"
+            },
+            {
+                "content": "```\nInput: turnedOn = 9\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= turnedOn <= 10",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def assert_read_binary_watch_count(result: list[str], turned_on: int, expected_count: int) -> bool:\n    assert len(result) == expected_count\n    assert len(set(result)) == len(result)\n    for time in result:\n        hour_str, minute_str = time.split(':')\n        hour = int(hour_str)\n        minute = int(minute_str)\n        assert hour_str == str(hour)\n        assert len(minute_str) == 2\n        assert 0 <= hour <= 11\n        assert 0 <= minute <= 59\n        assert hour.bit_count() + minute.bit_count() == turned_on\n    return True",
+    "helpers_run_name": "read_binary_watch",
+    "helpers_run_signature": "(solution_class: type, turned_on: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.read_binary_watch(turned_on)",
+    "helpers_assert_name": "read_binary_watch",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import (\n    assert_read_binary_watch,\n    assert_read_binary_watch_count,\n    run_read_binary_watch,\n)\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryWatch",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "read_binary_watch",
+                "signature": "(self, turned_on: int) -> list[str]",
+                "body": "        # TODO: Implement read_binary_watch\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_read_binary_watch",
+                "signature": "(self, turned_on: int, expected: list[str])",
+                "parametrize": "turned_on, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, ['0:00'])",
+                        "(1, ['0:01', '0:02', '0:04', '0:08', '0:16', '0:32', '1:00', '2:00', '4:00', '8:00'])",
+                        "(8, ['7:31', '7:47', '7:55', '7:59', '11:31', '11:47', '11:55', '11:59'])",
+                        "(9, [])",
+                        "(10, [])"
+                    ]
+                },
+                "body": "        result = run_read_binary_watch(Solution, turned_on)\n        assert_read_binary_watch(result, expected)"
+            },
+            {
+                "name": "test_read_binary_watch_count",
+                "signature": "(self, turned_on: int, expected_count: int)",
+                "parametrize": "turned_on, expected_count",
+                "test_cases": {
+                    "list": [
+                        "(0, 1)",
+                        "(1, 10)",
+                        "(2, 44)",
+                        "(3, 112)",
+                        "(4, 181)",
+                        "(5, 190)",
+                        "(6, 126)",
+                        "(7, 48)",
+                        "(8, 8)",
+                        "(9, 0)",
+                        "(10, 0)"
+                    ]
+                },
+                "body": "        result = run_read_binary_watch(Solution, turned_on)\n        assert_read_binary_watch_count(result, turned_on, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_read_binary_watch, run_read_binary_watch\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nturned_on = 1\nexpected = ['0:01', '0:02', '0:04', '0:08', '0:16', '0:32', '1:00', '2:00', '4:00', '8:00']",
+    "playground_run": "result = run_read_binary_watch(Solution, turned_on)\nresult",
+    "playground_assert": "assert_read_binary_watch(result, expected)"
+}

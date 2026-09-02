@@ -1,0 +1,92 @@
+{
+    "problem_name": "print_immutable_linked_list_in_reverse",
+    "solution_class_name": "Solution",
+    "problem_number": "1265",
+    "problem_title": "Print Immutable Linked List in Reverse",
+    "difficulty": "Medium",
+    "topics": "Stack, Recursion, Linked List, Two Pointers",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an immutable linked list, print out all values of each node in reverse with the help of the following interface:\n\n- `ImmutableListNode`: An interface of immutable linked list, you are given the head of the list.\n\nYou need to use the following functions to access the linked list (you **can't** access the `ImmutableListNode` directly):\n\n- `ImmutableListNode.printValue()`: Print value of the current node.\n- `ImmutableListNode.getNext()`: Return the next node.\n\nThe input is only given to initialize the linked list internally. You must solve this problem without modifying the linked list. In other words, you must operate the linked list using only the mentioned APIs.\n\nThe Python harness models the judge: each `print_value()` call records the node value, and the recorded values are compared with the expected reversed sequence.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: head = [1,2,3,4]\nOutput: [4,3,2,1]\n```"
+            },
+            {
+                "content": "```\nInput: head = [0,-4,-1,3,-5]\nOutput: [-5,3,-1,-4,0]\n```"
+            },
+            {
+                "content": "```\nInput: head = [-2,0,6,4,4,-6]\nOutput: [-6,4,4,6,0,-2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The length of the linked list is between `[1, 1000]`.\n- The value of each node in the linked list is between `[-1000, 1000]`.",
+    "readme_additional": "**Follow up:**\n\n- Could you solve this problem in constant space complexity?\n- Could you solve this problem in linear time complexity and less than linear space complexity?",
+    "helpers_imports": "from .solution import ImmutableListNode, Solution",
+    "helpers_content": "",
+    "helpers_run_name": "print_linked_list_in_reverse",
+    "helpers_run_signature": "(solution_class: type, values: list[int])",
+    "helpers_run_body": "    ImmutableListNode.printed = []\n    node: ImmutableListNode | None = None\n    for value in reversed(values):\n        node = ImmutableListNode(value, node)\n    solution_class().print_linked_list_in_reverse(node)\n    return ImmutableListNode.printed\n",
+    "helpers_assert_name": "print_linked_list_in_reverse",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True\n",
+    "solution_imports": "from __future__ import annotations\n\nfrom typing import ClassVar",
+    "solution_contents": "class ImmutableListNode:\n    # Test-harness API: immutable list node; print_value records the value\n    printed: ClassVar[list[int]] = []\n\n    def __init__(self, value: int, next_node: ImmutableListNode | None = None) -> None:\n        self.value = value\n        self.next_node = next_node\n\n    def get_next(self) -> ImmutableListNode | None:\n        return self.next_node\n\n    def print_value(self) -> None:\n        ImmutableListNode.printed.append(self.value)\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_print_linked_list_in_reverse, run_print_linked_list_in_reverse\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PrintImmutableLinkedListInReverse",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "print_linked_list_in_reverse",
+                "signature": "(self, head: ImmutableListNode) -> None",
+                "body": "        # TODO: Implement print_linked_list_in_reverse\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_print_linked_list_in_reverse",
+                "signature": "(self, values: list[int], expected: list[int])",
+                "parametrize": "values, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4], [4, 3, 2, 1])",
+                        "([0, -4, -1, 3, -5], [-5, 3, -1, -4, 0])",
+                        "([-2, 0, 6, 4, 4, -6], [-6, 4, 4, 6, 0, -2])",
+                        "([7], [7])",
+                        "([5, 9], [9, 5])",
+                        "([1, 1, 1], [1, 1, 1])",
+                        "([1000, -1000], [-1000, 1000])",
+                        "([3, 7, 3, 7, 3], [3, 7, 3, 7, 3])",
+                        "([0, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 0])",
+                        "([10, 20, 30, 40, 50, 60], [60, 50, 40, 30, 20, 10])",
+                        "([9, 8, 7], [7, 8, 9])",
+                        "([-1, -2, -3, -4, -5, -6, -7, -8], [-8, -7, -6, -5, -4, -3, -2, -1])",
+                        "([5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5], [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5])",
+                        "([-771], [-771])"
+                    ]
+                },
+                "body": "        result = run_print_linked_list_in_reverse(Solution, values)\n        assert_print_linked_list_in_reverse(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_print_linked_list_in_reverse, run_print_linked_list_in_reverse\nfrom solution import ImmutableListNode, Solution",
+    "playground_setup": "# Example test case\nvalues = [1, 2, 3, 4]\nexpected = [4, 3, 2, 1]",
+    "playground_run": "result = run_print_linked_list_in_reverse(Solution, values)\nresult",
+    "playground_assert": "assert_print_linked_list_in_reverse(result, expected)"
+}

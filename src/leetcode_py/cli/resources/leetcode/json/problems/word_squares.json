@@ -1,0 +1,97 @@
+{
+    "problem_name": "word_squares",
+    "solution_class_name": "Solution",
+    "problem_number": "425",
+    "problem_title": "Word Squares",
+    "difficulty": "Hard",
+    "topics": "Trie, Array, String, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of **unique** strings `words`, return all the [word squares](https://en.wikipedia.org/wiki/Word_square) you can build from `words`. The same word from `words` can be used **multiple times**. You can return the answer in **any order**.\n\nA sequence of strings forms a valid **word square** if the `k^th` row and column read the same string, where `0 <= k < max(numRows, numColumns)`.\n\nFor example, the word sequence `[\"ball\",\"area\",\"lead\",\"lady\"]` forms a word square because each word reads the same both horizontally and vertically.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"area\",\"lead\",\"wall\",\"lady\",\"ball\"]\nOutput: [[\"ball\",\"area\",\"lead\",\"lady\"],[\"wall\",\"area\",\"lead\",\"lady\"]]\nExplanation:\nThe output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"abat\",\"baba\",\"atan\",\"atal\"]\nOutput: [[\"baba\",\"abat\",\"baba\",\"atal\"],[\"baba\",\"abat\",\"baba\",\"atan\"]]\nExplanation:\nThe output consists of two word squares. The order of output does not matter (just the order of words in each word square matters).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 1000`\n- `1 <= words[i].length <= 4`\n- All `words[i]` have the same length.\n- `words[i]` consists of only lowercase English letters.\n- All `words[i]` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def assert_word_squares_solution_count(result: list[list[str]], expected: int) -> bool:\n    assert len(result) == expected\n    return True",
+    "helpers_run_name": "word_squares",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.word_squares(words)",
+    "helpers_assert_name": "word_squares",
+    "helpers_assert_signature": "(result: list[list[str]], expected: list[list[str]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_squares, assert_word_squares_solution_count, run_word_squares\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordSquares",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "word_squares",
+                "signature": "(self, words: list[str]) -> list[list[str]]",
+                "body": "        # TODO: Implement word_squares\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_squares",
+                "signature": "(self, words: list[str], expected: list[list[str]])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['area','lead','wall','lady','ball'],[['ball','area','lead','lady'],['wall','area','lead','lady']])",
+                        "(['abat','baba','atan','atal'],[['baba','abat','baba','atal'],['baba','abat','baba','atan']])",
+                        "(['ab','ba'],[['ab','ba'],['ba','ab']])",
+                        "(['a'], [['a']])",
+                        "(['ab'], [])",
+                        "(['ab','cd'], [])"
+                    ]
+                },
+                "body": "        result = run_word_squares(Solution, words)\n        assert_word_squares(result, expected)"
+            },
+            {
+                "name": "test_word_squares_solution_count",
+                "signature": "(self, words: list[str], expected_count: int)",
+                "parametrize": "words, expected_count",
+                "test_cases": {
+                    "list": [
+                        "(['area','lead','wall','lady','ball'], 2)",
+                        "(['abat','baba','atan','atal'], 2)",
+                        "(['ab','ba'], 2)",
+                        "(['b','a'], 2)",
+                        "(['abcd','bnrt','crmy','dtye','dvke'], 1)",
+                        "(['ab','ba','aa'], 5)"
+                    ]
+                },
+                "body": "        result = run_word_squares(Solution, words)\n        assert_word_squares_solution_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_squares, assert_word_squares\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['area', 'lead', 'wall', 'lady', 'ball']\nexpected = [['ball', 'area', 'lead', 'lady'], ['wall', 'area', 'lead', 'lady']]",
+    "playground_run": "result = run_word_squares(Solution, words)\nresult",
+    "playground_assert": "assert_word_squares(result, expected)"
+}

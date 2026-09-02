@@ -1,0 +1,93 @@
+{
+    "problem_name": "reverse_vowels_of_a_string",
+    "solution_class_name": "Solution",
+    "problem_number": "345",
+    "problem_title": "Reverse Vowels of a String",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, reverse only all the vowels in the string and return it.\n\nThe vowels are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`, and they can appear in both lower and upper cases, more than once.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \\\"IceCreAm\\\"\nOutput: \\\"AceCreIm\\\"\n```\n**Explanation:** The vowels in `s` are `['I', 'e', 'e', 'A']`. On reversing the vowels, `s` becomes \\\"AceCreIm\\\"."
+            },
+            {
+                "content": "```\nInput: s = \\\"leetcode\\\"\nOutput: \\\"leotcede\\\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 3 * 10^5\n- s consists of printable ASCII characters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_vowels",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_vowels(s)",
+    "helpers_assert_name": "reverse_vowels",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_vowels, run_reverse_vowels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseVowelsOfAString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_vowels",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reverse_vowels\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_vowels",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('IceCreAm', 'AceCreIm')",
+                        "('leetcode', 'leotcede')",
+                        "('a', 'a')",
+                        "('A', 'A')",
+                        "('z', 'z')",
+                        "('ab', 'ab')",
+                        "('hello', 'holle')",
+                        "('aA', 'Aa')",
+                        "('bcdfg', 'bcdfg')",
+                        "('aeiou', 'uoiea')",
+                        "('AEIOU', 'UOIEA')",
+                        "('a.b!c?d', 'a.b!c?d')",
+                        "('!,a?', '!,a?')",
+                        "('a!b@c#e', 'e!b@c#a')",
+                        "('Queueing', 'Qieueung')",
+                        "('Rhythm', 'Rhythm')",
+                        "('Kav0nyVtKYLgR', 'Kav0nyVtKYLgR')",
+                        "('lRa', 'lRa')"
+                    ]
+                },
+                "body": "        result = run_reverse_vowels(Solution, s)\n        assert_reverse_vowels(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_vowels, assert_reverse_vowels\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'IceCreAm'\nexpected = 'AceCreIm'",
+    "playground_run": "result = run_reverse_vowels(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_vowels(result, expected)"
+}

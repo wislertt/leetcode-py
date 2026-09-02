@@ -1,0 +1,90 @@
+{
+    "problem_name": "fizz_buzz",
+    "solution_class_name": "Solution",
+    "problem_number": "412",
+    "problem_title": "Fizz Buzz",
+    "difficulty": "Easy",
+    "topics": "Math, String, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n`, return a string array `answer` (1-indexed) where:\n\n- `answer[i] == \"FizzBuzz\"` if `i` is divisible by `3` and `5`.\n- `answer[i] == \"Fizz\"` if `i` is divisible by `3`.\n- `answer[i] == \"Buzz\"` if `i` is divisible by `5`.\n- `answer[i] == i` (as a string) if none of the above conditions are true.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3\nOutput: [\"1\",\"2\",\"Fizz\"]\n```"
+            },
+            {
+                "content": "```\nInput: n = 5\nOutput: [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\"]\n```"
+            },
+            {
+                "content": "```\nInput: n = 15\nOutput: [\"1\",\"2\",\"Fizz\",\"4\",\"Buzz\",\"Fizz\",\"7\",\"8\",\"Fizz\",\"Buzz\",\"11\",\"Fizz\",\"13\",\"14\",\"FizzBuzz\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "fizz_buzz",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.fizz_buzz(n)",
+    "helpers_assert_name": "fizz_buzz",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_fizz_buzz, run_fizz_buzz\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FizzBuzz",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "fizz_buzz",
+                "signature": "(self, n: int) -> list[str]",
+                "body": "        # TODO: Implement fizz_buzz\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_fizz_buzz",
+                "signature": "(self, n: int, expected: list[str])",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, ['1'])",
+                        "(2, ['1', '2'])",
+                        "(3, ['1', '2', 'Fizz'])",
+                        "(4, ['1', '2', 'Fizz', '4'])",
+                        "(5, ['1', '2', 'Fizz', '4', 'Buzz'])",
+                        "(6, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz'])",
+                        "(7, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7'])",
+                        "(8, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8'])",
+                        "(9, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz'])",
+                        "(10, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz'])",
+                        "(11, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11'])",
+                        "(15, ['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz'])"
+                    ]
+                },
+                "body": "        result = run_fizz_buzz(Solution, n)\n        assert_fizz_buzz(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_fizz_buzz, assert_fizz_buzz\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nexpected = ['1', '2', 'Fizz', '4', 'Buzz']",
+    "playground_run": "result = run_fizz_buzz(Solution, n)\nresult",
+    "playground_assert": "assert_fizz_buzz(result, expected)"
+}

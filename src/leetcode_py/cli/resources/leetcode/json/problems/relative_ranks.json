@@ -1,0 +1,91 @@
+{
+    "problem_name": "relative_ranks",
+    "solution_class_name": "Solution",
+    "problem_number": "506",
+    "problem_title": "Relative Ranks",
+    "difficulty": "Easy",
+    "topics": "Array, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `score` of size `n`, where `score[i]` is the score of the `i^th` athlete in a competition. All the scores are guaranteed to be **unique**.\n\nThe athletes are **placed** based on their scores, where the `1^st` place athlete has the highest score, the `2^nd` place athlete has the `2^nd` highest score, and so on. The placement of each athlete determines their rank:\n\n- The `1^st` place athlete's rank is `\"Gold Medal\"`.\n- The `2^nd` place athlete's rank is `\"Silver Medal\"`.\n- The `3^rd` place athlete's rank is `\"Bronze Medal\"`.\n- For the `4^th` place to the `n^th` place athlete, their rank is their placement number (i.e., the `x^th` place athlete's rank is `\"x\"`).\n\nReturn an array `answer` of size `n` where `answer[i]` is the **rank** of the `i^th` athlete.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: score = [5,4,3,2,1]\nOutput: [\"Gold Medal\",\"Silver Medal\",\"Bronze Medal\",\"4\",\"5\"]\nExplanation: The placements are [1st, 2nd, 3rd, 4th, 5th].\n```"
+            },
+            {
+                "content": "```\nInput: score = [10,3,8,9,4]\nOutput: [\"Gold Medal\",\"5\",\"Bronze Medal\",\"Silver Medal\",\"4\"]\nExplanation: The placements are [1st, 5th, 3rd, 2nd, 4th].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == score.length`\n- `1 <= n <= 10^4`\n- `0 <= score[i] <= 10^6`\n- All the values in `score` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_relative_ranks",
+    "helpers_run_signature": "(solution_class: type, score: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_relative_ranks(score)",
+    "helpers_assert_name": "find_relative_ranks",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_relative_ranks, run_find_relative_ranks\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RelativeRanks",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_relative_ranks",
+                "signature": "(self, score: list[int]) -> list[str]",
+                "body": "        # TODO: Implement find_relative_ranks\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_relative_ranks",
+                "signature": "(self, score: list[int], expected: list[str])",
+                "parametrize": "score, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 4, 3, 2, 1], ['Gold Medal', 'Silver Medal', 'Bronze Medal', '4', '5'])",
+                        "([10, 3, 8, 9, 4], ['Gold Medal', '5', 'Bronze Medal', 'Silver Medal', '4'])",
+                        "([1], ['Gold Medal'])",
+                        "([0], ['Gold Medal'])",
+                        "([2, 1], ['Gold Medal', 'Silver Medal'])",
+                        "([3, 2, 1], ['Gold Medal', 'Silver Medal', 'Bronze Medal'])",
+                        "([1, 2, 3], ['Bronze Medal', 'Silver Medal', 'Gold Medal'])",
+                        "([4, 3, 2, 1], ['Gold Medal', 'Silver Medal', 'Bronze Medal', '4'])",
+                        "([1000000, 0], ['Gold Medal', 'Silver Medal'])",
+                        "([6, 5, 4, 3, 2, 1], ['Gold Medal', 'Silver Medal', 'Bronze Medal', '4', '5', '6'])",
+                        "([7, 3, 9, 1], ['Silver Medal', 'Bronze Medal', 'Gold Medal', '4'])",
+                        "([50, 40, 30, 20, 10], ['Gold Medal', 'Silver Medal', 'Bronze Medal', '4', '5'])",
+                        "([12, 10, 1, 13, 37, 7], ['Bronze Medal', '4', '6', 'Silver Medal', 'Gold Medal', '5'])",
+                        "([1, 9, 35, 15, 21], ['5', '4', 'Gold Medal', 'Bronze Medal', 'Silver Medal'])",
+                        "([23, 22, 9, 19, 39], ['Silver Medal', 'Bronze Medal', '5', '4', 'Gold Medal'])",
+                        "([17, 31, 30, 3, 39], ['4', 'Silver Medal', 'Bronze Medal', '5', 'Gold Medal'])"
+                    ]
+                },
+                "body": "        result = run_find_relative_ranks(Solution, score)\n        assert_find_relative_ranks(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_relative_ranks, assert_find_relative_ranks\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nscore = [5, 4, 3, 2, 1]\nexpected = ['Gold Medal', 'Silver Medal', 'Bronze Medal', '4', '5']",
+    "playground_run": "result = run_find_relative_ranks(Solution, score)\nresult",
+    "playground_assert": "assert_find_relative_ranks(result, expected)"
+}

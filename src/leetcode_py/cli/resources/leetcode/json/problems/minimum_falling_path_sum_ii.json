@@ -1,0 +1,91 @@
+{
+    "problem_name": "minimum_falling_path_sum_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "1289",
+    "problem_title": "Minimum Falling Path Sum II",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an n x n integer matrix grid, return the minimum sum of a falling path with non-zero shifts.\n\nA falling path with non-zero shifts is a choice of exactly one element from each row of grid such that no two elements chosen in adjacent rows are in the same column.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/08/10/falling-grid.jpg)\n\n```\nInput: grid = [[1,2,3],[4,5,6],[7,8,9]]\nOutput: 13\nExplanation: \nThe possible falling paths are:\n[1,5,9], [1,5,7], [1,6,7], [1,6,8],\n[2,4,8], [2,4,9], [2,6,7], [2,6,8],\n[3,4,8], [3,4,9], [3,5,7], [3,5,9]\nThe falling path with the smallest sum is [1,5,7], so the answer is 13.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[7]]\nOutput: 7\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length == grid[i].length\n- 1 <= n <= 200\n- -99 <= grid[i][j] <= 99",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_falling_path_sum",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_falling_path_sum(grid)",
+    "helpers_assert_name": "min_falling_path_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_falling_path_sum",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_falling_path_sum\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_falling_path_sum, run_min_falling_path_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumFallingPathSumIi",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_falling_path_sum",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "[[[1,2,3],[4,5,6],[7,8,9]],13]",
+                        "[[[7]],7]",
+                        "[[[-73]],-73]",
+                        "[[[1,2],[3,4]],5]",
+                        "[[[-1,-2,-3],[-4,-5,-6],[-7,-8,-9]],-17]",
+                        "[[[2,2],[2,2]],4]",
+                        "[[[1,3,2],[4,5,6],[7,8,9]],13]",
+                        "[[[9,1],[1,9]],2]",
+                        "[[[21,69,-51,2,-8],[-93,-57,0,-61,76],[-67,23,-4,89,21],[-96,-3,34,-66,87],[80,-10,-31,77,-66]],-311]",
+                        "[[[-21,-52,37,-71],[79,-62,36,14],[79,50,49,89],[-31,42,5,-57]],-141]",
+                        "[[[62,-5,83,82,49],[93,-22,52,-21,0],[-79,27,76,-8,24],[-17,18,-21,-55,-62],[-14,-79,-2,-3,-7]],-246]",
+                        "[[[-94,95],[10,19]],-75]",
+                        "[[[-87,-50,-38,-98,-1,-37],[25,26,-79,-44,98,-4],[85,-6,-31,60,-22,-73],[26,-51,-38,35,41,-42],[-10,-66,-8,53,-61,80],[3,-53,24,83,-88,62]],-442]",
+                        "[[[71,13,54],[-72,2,94],[-41,42,-77]],-136]",
+                        "[[[-1,-58,-4],[-85,-6,58],[-20,62,-49]],-192]",
+                        "[[[54,29,-9,31,31],[27,32,-97,-72,-78],[75,33,51,29,10],[90,41,99,-49,30],[12,90,80,-89,32]],-119]"
+                    ]
+                },
+                "body": "        result = run_min_falling_path_sum(Solution, grid)\n        assert_min_falling_path_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_falling_path_sum, assert_min_falling_path_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nexpected = 13",
+    "playground_run": "result = run_min_falling_path_sum(Solution, grid)\nresult",
+    "playground_assert": "assert_min_falling_path_sum(result, expected)"
+}

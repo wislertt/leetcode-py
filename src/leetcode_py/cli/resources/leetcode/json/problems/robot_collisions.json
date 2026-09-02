@@ -1,0 +1,108 @@
+{
+    "problem_name": "robot_collisions",
+    "solution_class_name": "Solution",
+    "problem_number": "2751",
+    "problem_title": "Robot Collisions",
+    "difficulty": "Hard",
+    "topics": "Array, Stack, Sorting, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are n 1-indexed robots, each having a position on a line, health, and movement direction.\n\nYou are given 0-indexed integer arrays positions, healths, and a string directions (directions[i] is either 'L' for left or 'R' for right). All integers in positions are unique.\n\nAll robots start moving on the line simultaneously at the same speed in their given directions. If two robots ever share the same position while moving, they will collide.\n\nIf two robots collide, the robot with lower health is removed from the line, and the health of the other robot decreases by one. The surviving robot continues in the same direction it was going. If both robots have the same health, they are both removed from the line.\n\nYour task is to determine the health of the robots that survive the collisions, in the same order that the robots were given, i.e. final health of robot 1 (if survived), final health of robot 2 (if survived), and so on. If there are no survivors, return an empty array.\n\nReturn an array containing the health of the remaining robots (in the order they were given in the input), after no further collisions can occur.\n\nNote: The positions may be unsorted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/05/15/image-20230516011718-12.png)\n\n```\nInput: positions = [5,4,3,2,1], healths = [2,17,9,15,10], directions = \"RRRRR\"\nOutput: [2,17,9,15,10]\nExplanation: No collision occurs in this example, since all robots are moving in the same direction. So, the health of the robots in order from the first robot is returned, [2, 17, 9, 15, 10].\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2023/05/15/image-20230516004433-7.png)\n\n```\nInput: positions = [3,5,2,6], healths = [10,10,15,12], directions = \"RLRL\"\nOutput: [14]\nExplanation: There are 2 collisions in this example. Firstly, robot 1 and robot 2 will collide, and since both have the same health, they will be removed from the line. Next, robot 3 and robot 4 will collide and since robot 4's health is smaller, it gets removed, and robot 3's health becomes 15 - 1 = 14. Only robot 3 remains, so we return [14].\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2023/05/15/image-20230516005114-9.png)\n\n```\nInput: positions = [1,2,5,6], healths = [10,10,11,11], directions = \"RLRL\"\nOutput: []\nExplanation: Robot 1 and robot 2 will collide and since both have the same health, they are both removed. Robot 3 and 4 will collide and since both have the same health, they are both removed. So, we return an empty array, [].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= positions.length == healths.length == directions.length == n <= 10^5\n- 1 <= positions[i], healths[i] <= 10^9\n- `directions[i]` is `'L'` or `'R'`\n- All values in `positions` are distinct",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "survived_robots_healths",
+    "helpers_run_signature": "(solution_class: type, positions: list[int], healths: list[int], directions: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.survived_robots_healths(positions, healths, directions)",
+    "helpers_assert_name": "survived_robots_healths",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_survived_robots_healths, run_survived_robots_healths\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RobotCollisions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "survived_robots_healths",
+                "signature": "(self, positions: list[int], healths: list[int], directions: str) -> list[int]",
+                "body": "        # TODO: Implement survived_robots_healths\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_survived_robots_healths",
+                "signature": "(self, positions: list[int], healths: list[int], directions: str, expected: list[int])",
+                "parametrize": "positions, healths, directions, expected",
+                "test_cases": {
+                    "list": [
+                        "([5,4,3,2,1],[2,17,9,15,10],'RRRRR',[2,17,9,15,10])",
+                        "([3,5,2,6],[10,10,15,12],'RLRL',[14])",
+                        "([1,2,5,6],[10,10,11,11],'RLRL',[])",
+                        "([1],[5],'R',[5])",
+                        "([1],[5],'L',[5])",
+                        "([1,2],[5,5],'RL',[])",
+                        "([1,2],[5,3],'RL',[4])",
+                        "([1,2],[3,5],'RL',[4])",
+                        "([1,2,3],[5,4,3],'RRL',[5,3])",
+                        "([1,2,3],[5,4,6],'RRL',[])",
+                        "([1,2,3],[5,4,9],'RRL',[7])",
+                        "([3,1,2],[7,8,9],'LLL',[7,8,9])",
+                        "([2,1],[4,4],'LR',[])",
+                        "([10,3,7],[9,5,8],'RLR',[9,5,8])",
+                        "([1,2,3,4],[4,3,2,1],'RRLL',[4,1])",
+                        "([1,2,3,4],[1,2,3,4],'RRLL',[1,4])",
+                        "([4,1,3,2],[3,9,2,5],'LRRL',[7])",
+                        "([1,2,3,4,5],[1,1,1,1,9],'RRRLL',[7])",
+                        "([1,4,9,16,25],[6,1,3,2,8],'RLRLR',[5,2,8])",
+                        "([8,2,5,11],[4,4,4,4],'LLRL',[4,4])",
+                        "([2,1,9,3,7,8],[9,2,6,1,9,5],'RRRRLL',[7,2,6])",
+                        "([10,3,6,5,1],[3,8,5,3,6],'RRLLL',[3,6,6])",
+                        "([1,12,2],[5,5,9],'LLR',[5,8])",
+                        "([7,10],[9,6],'LL',[9,6])",
+                        "([4,2],[9,8],'RL',[9,8])",
+                        "([5],[8],'R',[8])",
+                        "([2,4,1,12,3,5],[8,7,1,4,4,8],'LRRLRL',[7,4,6])",
+                        "([12],[2],'R',[2])",
+                        "([4,8,11],[2,2,6],'RRR',[2,2,6])",
+                        "([5],[5],'R',[5])"
+                    ]
+                },
+                "body": "        result = run_survived_robots_healths(Solution, positions, healths, directions)\n        assert_survived_robots_healths(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_survived_robots_healths, assert_survived_robots_healths\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npositions = [3, 5, 2, 6]\nhealths = [10, 10, 15, 12]\ndirections = 'RLRL'\nexpected = [14]",
+    "playground_run": "result = run_survived_robots_healths(Solution, positions, healths, directions)\nresult",
+    "playground_assert": "assert_survived_robots_healths(result, expected)"
+}

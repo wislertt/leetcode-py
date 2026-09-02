@@ -1,0 +1,114 @@
+{
+    "problem_name": "furthest_building_you_can_reach",
+    "solution_class_name": "Solution",
+    "problem_number": "1642",
+    "problem_title": "Furthest Building You Can Reach",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `heights` representing the heights of buildings, some bricks, and some ladders.\n\nYou start your journey from building 0 and move to the next building by possibly using bricks or ladders.\n\nWhile moving from building `i` to building `i+1` (0-indexed),\n\n- If the current building's height is **greater than or equal** to the next building's height, you do **not** need a ladder or bricks.\n- If the current building's height is **less than** the next building's height, you can either use **one ladder** or `(h[i+1] - h[i])` **bricks**.\n\nReturn *the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/27/q4.gif)\n\n```\nInput: heights = [4,2,7,6,9,14,12], bricks = 5, ladders = 1\nOutput: 4\nExplanation: Starting at building 0, you can follow these steps:\n- Go to building 1 without using ladders nor bricks since 4 >= 2.\n- Go to building 2 using 5 bricks. You must use either bricks or ladders because 2 < 7.\n- Go to building 3 without using ladders nor bricks since 7 >= 6.\n- Go to building 4 using your only ladder. You must use either bricks or ladders because 6 < 9.\nIt is impossible to go beyond building 4 because you do not have any more bricks or ladders.\n```"
+            },
+            {
+                "content": "```\nInput: heights = [4,12,2,7,3,18,20,3,19], bricks = 10, ladders = 2\nOutput: 7\n```"
+            },
+            {
+                "content": "```\nInput: heights = [14,3,19,3], bricks = 17, ladders = 0\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= heights.length <= 10^5\n- 1 <= heights[i] <= 10^6\n- 0 <= bricks <= 10^9\n- 0 <= ladders <= heights.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "furthest_building",
+    "helpers_run_signature": "(solution_class: type, heights: list[int], bricks: int, ladders: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.furthest_building(heights, bricks, ladders)",
+    "helpers_assert_name": "furthest_building",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_furthest_building, run_furthest_building\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FurthestBuildingYouCanReach",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "furthest_building",
+                "signature": "(self, heights: list[int], bricks: int, ladders: int) -> int",
+                "body": "        # TODO: Implement furthest_building\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_furthest_building",
+                "signature": "(self, heights: list[int], bricks: int, ladders: int, expected: int)",
+                "parametrize": "heights, bricks, ladders, expected",
+                "test_cases": {
+                    "list": [
+                        "([4,2,7,6,9,14,12], 5, 1, 4)",
+                        "([4,12,2,7,3,18,20,3,19], 10, 2, 7)",
+                        "([14,3,19,3], 17, 0, 3)",
+                        "([1], 0, 0, 0)",
+                        "([1,2], 0, 0, 0)",
+                        "([1,2], 1, 0, 1)",
+                        "([1,2], 0, 1, 1)",
+                        "([1,2,3,4,5], 3, 0, 3)",
+                        "([1,5,1,5,1,5], 0, 2, 4)",
+                        "([3,3,3], 0, 0, 2)",
+                        "([5,4,3,2,1], 0, 0, 4)",
+                        "([1,100], 99, 0, 1)",
+                        "([1,100], 100, 0, 1)",
+                        "([1,2,3,4], 0, 4, 3)",
+                        "([2,7,4,9,1,12], 8, 1, 4)",
+                        "([10,1,10,1,10], 5, 1, 3)",
+                        "([4,3,7,1,8,10,8], 1, 2, 4)",
+                        "([3,3,10,3,7,5,3,2,1], 2, 9, 8)",
+                        "([5,5,1], 15, 3, 2)",
+                        "([8,11,8], 4, 2, 2)",
+                        "([5,11], 5, 0, 0)",
+                        "([12,6,12,9,2], 11, 5, 4)",
+                        "([2,12,3,6,1,9,7], 2, 3, 6)",
+                        "([12,11,7], 5, 3, 2)",
+                        "([10,9,10,11,2,11], 9, 1, 5)",
+                        "([6,6,4,1,10], 4, 4, 4)",
+                        "([8,8,9,4,10,7,4,3], 3, 4, 7)",
+                        "([1,8,4,3,3,12,12], 11, 6, 6)",
+                        "([10,7,8,4,12,4], 6, 3, 5)",
+                        "([12], 0, 1, 0)",
+                        "([11,12,9,10,10,5,11], 6, 6, 6)",
+                        "([6,12,5,10,5,10,2,8], 7, 0, 2)",
+                        "([8,2,6,5,11], 1, 3, 4)",
+                        "([9,5,12,2,7,8,5,11,5], 9, 6, 8)",
+                        "([7,5,6], 1, 0, 2)",
+                        "([9,2,4,9,3,7,9], 3, 2, 5)"
+                    ]
+                },
+                "body": "        result = run_furthest_building(Solution, heights, bricks, ladders)\n        assert_furthest_building(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_furthest_building, assert_furthest_building\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheights = [4, 2, 7, 6, 9, 14, 12]\nbricks = 5\nladders = 1\nexpected = 4",
+    "playground_run": "result = run_furthest_building(Solution, heights, bricks, ladders)\nresult",
+    "playground_assert": "assert_furthest_building(result, expected)"
+}

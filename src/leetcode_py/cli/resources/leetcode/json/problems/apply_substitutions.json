@@ -1,0 +1,88 @@
+{
+    "problem_name": "apply_substitutions",
+    "solution_class_name": "Solution",
+    "problem_number": "3481",
+    "problem_title": "Apply Substitutions",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Graph, Topological Sort, Array, Hash Table, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a `replacements` mapping and a `text` string that may contain **placeholders** formatted as `%var%`, where each `var` corresponds to a key in the `replacements` mapping. Each replacement value may itself contain **one or more** such **placeholders**. Each **placeholder** is replaced by the value associated with its corresponding replacement key.\n\nReturn the fully substituted `text` string which **does not** contain any **placeholders**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: replacements = [[\"A\",\"abc\"],[\"B\",\"def\"]], text = \"%A%_%B%\"\nOutput: \"abc_def\"\nExplanation: Replace %A% with \"abc\" and %B% with \"def\". The final text becomes \"abc_def\".\n```"
+            },
+            {
+                "content": "```\nInput: replacements = [[\"A\",\"bce\"],[\"B\",\"ace\"],[\"C\",\"abc%B%\"]], text = \"%A%_%B%_%C%\"\nOutput: \"bce_ace_abcace\"\nExplanation: Replace %A% with \"bce\" and %B% with \"ace\". Then substitute %B% in \"abc%B%\" with \"ace\" to obtain \"abcace\". The final text becomes \"bce_ace_abcace\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= replacements.length <= 10`\n- Each element of `replacements` is a two-element list `[key, value]`, where:\n  - `key` is a single uppercase English letter.\n  - `value` is a non-empty string of at most 8 characters that may contain zero or more placeholders formatted as `%<key>%`.\n- All replacement keys are unique.\n- The `text` string is formed by concatenating all key placeholders (formatted as `%<key>%`) randomly from the replacements mapping, separated by underscores.\n- `text.length == 4 * replacements.length - 1`\n- Every placeholder in the `text` or in any replacement value corresponds to a key in the `replacements` mapping.\n- There are no cyclic dependencies between replacement keys.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "apply_substitutions",
+    "helpers_run_signature": "(solution_class: type, replacements: list[list[str]], text: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.apply_substitutions(replacements, text)",
+    "helpers_assert_name": "apply_substitutions",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_apply_substitutions, run_apply_substitutions\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ApplySubstitutionsTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "apply_substitutions",
+                "signature": "(self, replacements: list[list[str]], text: str) -> str",
+                "body": "        # TODO: Implement apply_substitutions\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_apply_substitutions",
+                "signature": "(self, replacements: list[list[str]], text: str, expected: str)",
+                "parametrize": "replacements, text, expected",
+                "test_cases": {
+                    "list": [
+                        "([['A','abc'],['B','def']],'%A%_%B%','abc_def')",
+                        "([['A','bce'],['B','ace'],['C','abc%B%']],'%A%_%B%_%C%','bce_ace_abcace')",
+                        "([['A','hello']],'%A%','hello')",
+                        "([['A','%B%'],['B','xy']],'%B%_%A%','xy_xy')",
+                        "([['A','a%B%'],['B','b']],'%A%_%B%','ab_b')",
+                        "([['A','%B%B'],['B','%C%C'],['C','z']],'%C%_%A%_%B%','z_zCB_zC')",
+                        "([['A','%B%%C%'],['B','ab'],['C','cd'],['D','z']],'%A%_%B%_%C%_%D%','abcd_ab_cd_z')",
+                        "([['A','ab%B%cd'],['B','Q'],['C','rs'],['D','t']],'%B%_%A%_%C%_%D%','Q_abQcd_rs_t')",
+                        "([['A','%B%'],['B','%C%'],['C','%D%'],['D','ok']],'%A%_%C%_%B%_%D%','ok_ok_ok_ok')",
+                        "([['A','x'],['B','y'],['C','%A%z%B%'],['D','%C%']],'%D%_%C%_%A%_%B%','xzy_xzy_x_y')",
+                        "([['A','aa'],['B','bb'],['C','cc']],'%C%_%A%_%B%','cc_aa_bb')",
+                        "([['A','%B%a'],['B','%C%b'],['C','c'],['D','d%C%']],'%A%_%B%_%C%_%D%','cba_cb_c_dc')",
+                        "([['A','z%Q%'],['Q','qq'],['B','m'],['Z','%B%']],'%A%_%Z%_%Q%_%B%','zqq_m_qq_m')"
+                    ]
+                },
+                "body": "        result = run_apply_substitutions(Solution, replacements, text)\n        assert_apply_substitutions(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_apply_substitutions, assert_apply_substitutions\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nreplacements = [['A', 'abc'], ['B', 'def']]\ntext = '%A%_%B%'\nexpected = 'abc_def'",
+    "playground_run": "result = run_apply_substitutions(Solution, replacements, text)\nresult",
+    "playground_assert": "assert_apply_substitutions(result, expected)"
+}

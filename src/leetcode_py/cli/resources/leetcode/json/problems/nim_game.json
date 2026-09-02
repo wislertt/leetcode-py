@@ -1,0 +1,98 @@
+{
+    "problem_name": "nim_game",
+    "solution_class_name": "Solution",
+    "problem_number": "292",
+    "problem_title": "Nim Game",
+    "difficulty": "Easy",
+    "topics": "Math, Brainteaser, Game Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are playing the following Nim Game with your friend:\n\n- Initially, there is a heap of stones on the table.\n- You and your friend will alternate taking turns, and **you go first**.\n- On each turn, the person whose turn it is will remove 1 to 3 stones from the heap.\n- The one who removes the last stone is the winner.\n\nGiven `n`, the number of stones in the heap, return `true` if you can win the game assuming both you and your friend play optimally, otherwise return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4\nOutput: false\nExplanation: These are the possible outcomes:\n1. You remove 1 stone. Your friend removes 3 stones, including the last stone. Your friend wins.\n2. You remove 2 stones. Your friend removes 2 stones, including the last stone. Your friend wins.\n3. You remove 3 stones. Your friend removes the last stone. Your friend wins.\nIn all outcomes, your friend wins.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you solve it with a closed-form solution instead of a DP?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_win_nim",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_win_nim(n)",
+    "helpers_assert_name": "can_win_nim",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_win_nim, run_can_win_nim\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NimGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_win_nim",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement can_win_nim\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_win_nim",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(4, False)",
+                        "(1, True)",
+                        "(2, True)",
+                        "(3, True)",
+                        "(5, True)",
+                        "(6, True)",
+                        "(7, True)",
+                        "(8, False)",
+                        "(9, True)",
+                        "(10, True)",
+                        "(11, True)",
+                        "(12, False)",
+                        "(13, True)",
+                        "(16, False)",
+                        "(20, False)",
+                        "(100, False)",
+                        "(1000, False)",
+                        "(2147483647, True)",
+                        "(2147483646, True)",
+                        "(2147483644, False)"
+                    ]
+                },
+                "body": "        result = run_can_win_nim(Solution, n)\n        assert_can_win_nim(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_win_nim, assert_can_win_nim\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nexpected = False",
+    "playground_run": "result = run_can_win_nim(Solution, n)\nresult",
+    "playground_assert": "assert_can_win_nim(result, expected)"
+}

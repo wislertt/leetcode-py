@@ -1,0 +1,97 @@
+{
+    "problem_name": "closest_prime_numbers_in_range",
+    "solution_class_name": "Solution",
+    "problem_number": "2523",
+    "problem_title": "Closest Prime Numbers in Range",
+    "difficulty": "Medium",
+    "topics": "Math, Number Theory, Primality Test, Sieve Theory, Prime Number Sieve",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two positive integers `left` and `right`, find the two integers `num1` and `num2` such that:\n\n- `left <= num1 < num2 <= right`.\n- Both `num1` and `num2` are prime numbers.\n- `num2 - num1` is the **minimum** amongst all other pairs satisfying the above conditions.\n\nReturn the positive integer array `ans = [num1, num2]`. If there are multiple pairs satisfying these conditions, return the one with the **smallest** `num1` value. If no such numbers exist, return `[-1, -1]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: left = 10, right = 19\nOutput: [11,13]\nExplanation: The prime numbers between 10 and 19 are 11, 13, 17, and 19.\nThe closest gap between any pair is 2, which can be achieved by [11,13] or [17,19].\nSince 11 is smaller than 17, we return the first pair.\n```"
+            },
+            {
+                "content": "```\nInput: left = 4, right = 6\nOutput: [-1,-1]\nExplanation: There exists only one prime number in the given range, so the conditions cannot be satisfied.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= left <= right <= 10<sup>6</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "closest_primes",
+    "helpers_run_signature": "(solution_class: type, left: int, right: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.closest_primes(left, right)",
+    "helpers_assert_name": "closest_primes",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_closest_primes, run_closest_primes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ClosestPrimeNumbersInRange",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "closest_primes",
+                "signature": "(self, left: int, right: int) -> list[int]",
+                "body": "        # TODO: Implement closest_primes\n        return [-1, -1]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_closest_primes",
+                "signature": "(self, left: int, right: int, expected: list[int])",
+                "parametrize": "left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 19, [11, 13])",
+                        "(4, 6, [-1, -1])",
+                        "(1, 1, [-1, -1])",
+                        "(1, 2, [-1, -1])",
+                        "(1, 3, [2, 3])",
+                        "(2, 2, [-1, -1])",
+                        "(2, 4, [2, 3])",
+                        "(3, 3, [-1, -1])",
+                        "(3, 5, [3, 5])",
+                        "(4, 5, [-1, -1])",
+                        "(8, 12, [-1, -1])",
+                        "(8, 13, [11, 13])",
+                        "(14, 16, [-1, -1])",
+                        "(19, 23, [19, 23])",
+                        "(20, 30, [23, 29])",
+                        "(88, 100, [89, 97])",
+                        "(100, 200, [101, 103])",
+                        "(1, 100, [2, 3])",
+                        "(990, 1010, [991, 997])",
+                        "(999983, 1000000, [-1, -1])",
+                        "(999999, 1000000, [-1, -1])",
+                        "(1, 1000000, [2, 3])"
+                    ]
+                },
+                "body": "        result = run_closest_primes(Solution, left, right)\n        assert_closest_primes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_closest_primes, assert_closest_primes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nleft: int = 10\nright: int = 19\nexpected: list[int] = [11, 13]",
+    "playground_run": "result = run_closest_primes(Solution, left, right)\nresult",
+    "playground_assert": "assert_closest_primes(result, expected)"
+}

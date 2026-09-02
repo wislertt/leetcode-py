@@ -1,0 +1,104 @@
+{
+    "problem_name": "nth_digit",
+    "solution_class_name": "Solution",
+    "problem_number": "400",
+    "problem_title": "Nth Digit",
+    "difficulty": "Medium",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n`, return the nth digit of the infinite integer sequence `1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 3\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: n = 11\nOutput: 0\n```\n**Explanation:** The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0, which is part of the number 10."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you find the nth digit without using extra memory?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_nth_digit",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_nth_digit(n)",
+    "helpers_assert_name": "find_nth_digit",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_nth_digit, run_find_nth_digit\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NthDigit",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_nth_digit",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement find_nth_digit\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_nth_digit",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3)",
+                        "(11, 0)",
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(8, 8)",
+                        "(9, 9)",
+                        "(10, 1)",
+                        "(15, 2)",
+                        "(100, 5)",
+                        "(189, 9)",
+                        "(190, 1)",
+                        "(1000, 3)",
+                        "(2889, 9)",
+                        "(2890, 1)",
+                        "(10000, 7)",
+                        "(38889, 9)",
+                        "(38890, 1)",
+                        "(100000, 2)",
+                        "(488889, 9)",
+                        "(488890, 1)",
+                        "(1000000, 1)",
+                        "(12345, 3)",
+                        "(99999, 1)",
+                        "(999999, 4)",
+                        "(123456789, 2)",
+                        "(999999999, 9)",
+                        "(1000000000, 1)",
+                        "(2147483646, 2)",
+                        "(2147483647, 2)"
+                    ]
+                },
+                "body": "        result = run_find_nth_digit(Solution, n)\n        assert_find_nth_digit(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_nth_digit, assert_find_nth_digit\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 11\nexpected = 0",
+    "playground_run": "result = run_find_nth_digit(Solution, n)\nresult",
+    "playground_assert": "assert_find_nth_digit(result, expected)"
+}

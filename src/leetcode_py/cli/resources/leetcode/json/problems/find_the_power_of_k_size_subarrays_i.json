@@ -1,0 +1,100 @@
+{
+    "problem_name": "find_the_power_of_k_size_subarrays_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3254",
+    "problem_title": "Find the Power of K-Size Subarrays I",
+    "difficulty": "Medium",
+    "topics": "Array, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of integers `nums` of length `n` and a *positive* integer `k`.\n\nThe **power** of an array is defined as:\n\n- Its **maximum** element if **all** of its elements are **consecutive** and **sorted** in **ascending** order.\n- `-1` otherwise.\n\nYou need to find the **power** of all subarrays of `nums` of size `k`.\n\nReturn an integer array `results` of size `n - k + 1`, where `results[i]` is the power of `nums[i..(i + k - 1)]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4,3,2,5]\nOutput: [3,4,-1,-1,-1]\nExplanation:\nThere are 5 subarrays of nums of size 3:\n- [1, 2, 3] with the maximum element 3.\n- [2, 3, 4] with the maximum element 4.\n- [3, 4, 3] whose elements are not consecutive.\n- [4, 3, 2] whose elements are not sorted.\n- [3, 2, 5] whose elements are not consecutive.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,2,2,2,2]\nOutput: [-1,-1]\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,2,3,2,3,2]\nOutput: [-1,3,-1,3,-1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n == nums.length <= 500`\n- `1 <= nums[i] <= 10^5`\n- `1 <= k <= n`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "results_array",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.results_array(nums, k)",
+    "helpers_assert_name": "results_array",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_results_array, run_results_array\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindThePowerOfKSizeSubarraysI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "results_array",
+                "signature": "(self, nums: list[int], k: int) -> list[int]",
+                "body": "        # TODO: Implement results_array\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_results_array",
+                "signature": "(self, nums: list[int], k: int, expected: list[int])",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 3, 2, 5], 3, [3, 4, -1, -1, -1])",
+                        "([2, 2, 2, 2, 2], 4, [-1, -1])",
+                        "([3, 2, 3, 2, 3, 2], 2, [-1, 3, -1, 3, -1])",
+                        "([1], 1, [1])",
+                        "([5], 1, [5])",
+                        "([1, 2], 1, [1, 2])",
+                        "([2, 1], 1, [2, 1])",
+                        "([1, 2, 3, 4], 4, [4])",
+                        "([1, 2, 3, 5], 4, [-1])",
+                        "([7, 8, 9, 10, 11], 5, [11])",
+                        "([1, 3, 5, 7], 2, [-1, -1, -1])",
+                        "([4, 5, 6, 7, 8], 2, [5, 6, 7, 8])",
+                        "([10, 11, 12, 13, 14, 15], 3, [12, 13, 14, 15])",
+                        "([100000, 99999, 100000], 2, [-1, 100000])",
+                        "([1, 2, 2, 3], 3, [-1, -1])",
+                        "([3, 4, 5, 1, 2, 3, 4, 5, 6], 4, [-1, -1, -1, 4, 5, 6])",
+                        "([9, 2, 4, 2, 12, 9, 5], 4, [-1, -1, -1, -1])",
+                        "([4, 3, 9], 2, [-1, -1])",
+                        "([6, 17, 14, 11, 20], 3, [-1, -1, -1])",
+                        "([19, 3, 17], 1, [19, 3, 17])",
+                        "([17, 5, 20, 1, 9, 20, 13, 4], 5, [-1, -1, -1, -1])",
+                        "([5, 3, 18, 5], 3, [-1, -1])"
+                    ]
+                },
+                "body": "        result = run_results_array(Solution, nums, k)\n        assert_results_array(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_results_array, assert_results_array\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4, 3, 2, 5]\nk = 3\nexpected = [3, 4, -1, -1, -1]",
+    "playground_run": "result = run_results_array(Solution, nums, k)\nresult",
+    "playground_assert": "assert_results_array(result, expected)"
+}

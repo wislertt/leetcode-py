@@ -1,0 +1,93 @@
+{
+    "problem_name": "reverse_string_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "541",
+    "problem_title": "Reverse String II",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s` and an integer `k`, reverse the first `k` characters for every `2k` characters counting from the start of the string.\n\nIf there are fewer than `k` characters left, reverse all of them. If there are less than `2k` but greater than or equal to `k` characters, then reverse the first `k` characters and leave the other as original.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcdefg\", k = 2\nOutput: \"bacdfeg\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcd\", k = 2\nOutput: \"bacd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^4\n- s consists of only lowercase English letters.\n- 1 <= k <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_str",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_str(s, k)",
+    "helpers_assert_name": "reverse_str",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_str, run_reverse_str\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseStringII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_str",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement reverse_str\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_str",
+                "signature": "(self, s: str, k: int, expected: str)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcdefg', 2, 'bacdfeg')",
+                        "('abcd', 2, 'bacd')",
+                        "('a', 1, 'a')",
+                        "('a', 5, 'a')",
+                        "('ab', 1, 'ab')",
+                        "('ab', 2, 'ba')",
+                        "('abc', 2, 'bac')",
+                        "('abcdef', 2, 'bacdfe')",
+                        "('abcdefgh', 3, 'cbadefhg')",
+                        "('abcdefghij', 4, 'dcbaefghji')",
+                        "('abcdefg', 1, 'abcdefg')",
+                        "('abcdefg', 3, 'cbadefg')",
+                        "('abcdefg', 7, 'gfedcba')",
+                        "('abcdefg', 100, 'gfedcba')",
+                        "('hyzq', 2, 'yhzq')",
+                        "('krxhetv', 5, 'ehxrktv')",
+                        "('aomefr', 6, 'rfemoa')",
+                        "('oycbsx', 3, 'cyobsx')"
+                    ]
+                },
+                "body": "        result = run_reverse_str(Solution, s, k)\n        assert_reverse_str(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_str, assert_reverse_str\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcdefg'\nk = 2\nexpected = 'bacdfeg'",
+    "playground_run": "result = run_reverse_str(Solution, s, k)\nresult",
+    "playground_assert": "assert_reverse_str(result, expected)"
+}

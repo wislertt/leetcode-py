@@ -1,0 +1,100 @@
+{
+    "problem_name": "zuma_game",
+    "solution_class_name": "Solution",
+    "problem_number": "488",
+    "problem_title": "Zuma Game",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming, Stack, Breadth-First Search, Memoization",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are playing a variation of the game Zuma.\n\nIn this variation of Zuma, there is a **single row** of colored balls on a board, where each ball can be colored red `'R'`, yellow `'Y'`, blue `'B'`, green `'G'`, or white `'W'`. You also have several colored balls in your hand.\n\nYour goal is to **clear all** of the balls from the board. On each turn:\n\n- Pick **any** ball from your hand and insert it in between two balls in the row or on either end of the row.\n- If there is a group of **three or more consecutive balls** of the **same color**, remove the group of balls from the board.\n  - If this removal causes more groups of three or more of the same color to form, then continue removing each group until there are none left.\n- If there are no more balls on the board, then you win the game.\n- Repeat this process until you either win or do not have any more balls in your hand.\n\nGiven a string `board`, representing the row of balls on the board, and a string `hand`, representing the balls in your hand, return *the **minimum** number of balls you have to insert to clear all the balls from the board. If you cannot clear all the balls from the board using the balls in your hand, return* `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: board = \"WRRBBW\", hand = \"RB\"\nOutput: -1\nExplanation: It is impossible to clear all the balls. The best you can do is:\n- Insert 'R' so the board becomes WRRRBBW. WRRRBBW -> WBBW.\n- Insert 'B' so the board becomes WBBBW. WBBBW -> WW.\nThere are still balls remaining on the board, and you are out of balls to insert.\n```"
+            },
+            {
+                "content": "```\nInput: board = \"WWRRBBWW\", hand = \"WRBRW\"\nOutput: 2\nExplanation: To make the board empty:\n- Insert 'R' so the board becomes WWRRRBBWW. WWRRRBBWW -> WWBBWW.\n- Insert 'B' so the board becomes WWBBBWW. WWBBBWW -> WWWW -> empty.\n2 balls from your hand were needed to clear the board.\n```"
+            },
+            {
+                "content": "```\nInput: board = \"G\", hand = \"GGGGG\"\nOutput: 2\nExplanation: To make the board empty:\n- Insert 'G' so the board becomes GG.\n- Insert 'G' so the board becomes GGG. GGG -> empty.\n2 balls from your hand were needed to clear the board.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= board.length <= 16\n- 1 <= hand.length <= 5\n- board and hand consist of the characters 'R', 'Y', 'B', 'G', and 'W'.\n- The initial row of balls on the board will not have any groups of three or more consecutive balls of the same color.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_min_step",
+    "helpers_run_signature": "(solution_class: type, board: str, hand: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_min_step(board, hand)",
+    "helpers_assert_name": "find_min_step",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_min_step, run_find_min_step\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ZumaGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_min_step",
+                "signature": "(self, board: str, hand: str) -> int",
+                "body": "        # TODO: Implement find_min_step\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_min_step",
+                "signature": "(self, board: str, hand: str, expected: int)",
+                "parametrize": "board, hand, expected",
+                "test_cases": {
+                    "list": [
+                        "('WRRBBW', 'RB', -1)",
+                        "('WWRRBBWW', 'WRBRW', 2)",
+                        "('G', 'GGGGG', 2)",
+                        "('G', 'GG', 2)",
+                        "('WW', 'WW', 1)",
+                        "('WR', 'WRW', -1)",
+                        "('WWRRBBWW', 'RWB', 2)",
+                        "('WWRRBBWW', 'WWRRB', 2)",
+                        "('RRWWRRBBRR', 'WB', -1)",
+                        "('RRYGGYYRRYYGGYRR', 'GGBBB', -1)",
+                        "('BWRRBBW', 'RWB', -1)",
+                        "('WWBBWBBWW', 'WWBBB', 2)",
+                        "('RRGGRR', 'RRGGG', 1)",
+                        "('YRRYYRRY', 'YYRRR', 2)",
+                        "('RYYRRYYR', 'YRRYY', 2)",
+                        "('GGBGGBGG', 'GBGGB', 2)",
+                        "('RBYYWYRWBBRRWYYG', 'RWYBG', -1)",
+                        "('GGRRWWGGWWGGRRG', 'RGRRG', 2)",
+                        "('WWYYRWWYYWRR', 'WYYRW', 3)",
+                        "('WRRBBW', 'RBW', 3)",
+                        "('BBWWBB', 'BWB', 1)",
+                        "('RRGGYYRR', 'GGYYR', 2)"
+                    ]
+                },
+                "body": "        result = run_find_min_step(Solution, board, hand)\n        assert_find_min_step(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_min_step, assert_find_min_step\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = 'WWRRBBWW'\nhand = 'WRBRW'\nexpected = 2",
+    "playground_run": "result = run_find_min_step(Solution, board, hand)\nresult",
+    "playground_assert": "assert_find_min_step(result, expected)"
+}

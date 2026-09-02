@@ -1,0 +1,95 @@
+{
+    "problem_name": "minimum_cost_to_connect_sticks",
+    "solution_class_name": "Solution",
+    "problem_number": "1167",
+    "problem_title": "Minimum Cost to Connect Sticks",
+    "difficulty": "Easy",
+    "topics": "Array, Greedy, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have some number of sticks with positive integer lengths. These lengths are given as an array `sticks`, where `sticks[i]` is the length of the `i<sup>th</sup>` stick.\n\nYou can connect any two sticks of lengths `x` and `y` into one stick by paying a cost of `x + y`. You must connect all the sticks until there is only one stick remaining.\n\nReturn _the minimum cost of connecting all the given sticks into one stick in this way_.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sticks = [2,4,3]\nOutput: 14\nExplanation: You start with sticks = [2,4,3].\n1. Combine sticks 2 and 3 for a cost of 2 + 3 = 5. Now you have sticks = [5,4].\n2. Combine sticks 5 and 4 for a cost of 5 + 4 = 9. Now you have sticks = [9].\nThere is only one stick left, so you are done. The total cost is 5 + 9 = 14.\n```"
+            },
+            {
+                "content": "```\nInput: sticks = [1,8,3,5]\nOutput: 30\nExplanation: You start with sticks = [1,8,3,5].\n1. Combine sticks 1 and 3 for a cost of 1 + 3 = 4. Now you have sticks = [4,8,5].\n2. Combine sticks 4 and 5 for a cost of 4 + 5 = 9. Now you have sticks = [9,8].\n3. Combine sticks 9 and 8 for a cost of 9 + 8 = 17. Now you have sticks = [17].\nThere is only one stick left, so you are done. The total cost is 4 + 9 + 17 = 30.\n```"
+            },
+            {
+                "content": "```\nInput: sticks = [5]\nOutput: 0\nExplanation: There is only one stick, so you don't need to do anything. The total cost is 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= sticks.length <= 10^4\n- 1 <= sticks[i] <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "connect_sticks",
+    "helpers_run_signature": "(solution_class: type, sticks: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.connect_sticks(sticks)",
+    "helpers_assert_name": "connect_sticks",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_connect_sticks, run_connect_sticks\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumCostToConnectSticks",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "connect_sticks",
+                "signature": "(self, sticks: list[int]) -> int",
+                "body": "        # TODO: Implement connect_sticks\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_connect_sticks",
+                "signature": "(self, sticks: list[int], expected: int)",
+                "parametrize": "sticks, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 4, 3], 14)",
+                        "([1, 8, 3, 5], 30)",
+                        "([5], 0)",
+                        "([1, 2], 3)",
+                        "([1, 1], 2)",
+                        "([10, 10], 20)",
+                        "([1, 100, 1], 104)",
+                        "([5, 5, 5], 25)",
+                        "([4, 3, 2, 6], 29)",
+                        "([1, 2, 3, 4, 5], 33)",
+                        "([3354, 4318, 769, 9973, 800], 34947)",
+                        "([10000, 10000, 10000, 10000, 10000], 120000)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1], 24)",
+                        "([2, 2, 2, 2, 2, 2], 32)",
+                        "([9999, 1], 10000)",
+                        "([7, 1, 9, 3, 5, 8], 79)",
+                        "([1000, 2000, 3000, 4000], 19000)"
+                    ]
+                },
+                "body": "        result = run_connect_sticks(Solution, sticks)\n        assert_connect_sticks(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_connect_sticks, assert_connect_sticks\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsticks = [2, 4, 3]\nexpected = 14",
+    "playground_run": "result = run_connect_sticks(Solution, sticks)\nresult",
+    "playground_assert": "assert_connect_sticks(result, expected)"
+}

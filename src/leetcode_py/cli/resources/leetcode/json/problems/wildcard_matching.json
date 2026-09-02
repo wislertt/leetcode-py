@@ -1,0 +1,102 @@
+{
+    "problem_name": "wildcard_matching",
+    "solution_class_name": "Solution",
+    "problem_number": "44",
+    "problem_title": "Wildcard Matching",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming, Greedy, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an input string `s` and a pattern `p`, implement wildcard pattern matching with support for `'?'` and `'*'` where:\n\n- `'?'` Matches any single character.\n- `'*'` Matches any sequence of characters (including the empty sequence).\n\nThe matching should cover the **entire** input string (not partial).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aa\", p = \"a\"\nOutput: false\nExplanation: \"a\" does not match the entire string \"aa\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aa\", p = \"*\"\nOutput: true\nExplanation: '*' matches any sequence.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"cb\", p = \"?a\"\nOutput: false\nExplanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= s.length, p.length <= 2000\n- `s` contains only lowercase English letters.\n- `p` contains only lowercase English letters, `'?'` or `'*'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_match",
+    "helpers_run_signature": "(solution_class: type, s: str, p: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_match(s, p)",
+    "helpers_assert_name": "is_match",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_match, run_is_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WildcardMatching",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_match",
+                "signature": "(self, s: str, p: str) -> bool",
+                "body": "        # TODO: Implement is_match\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_match",
+                "signature": "(self, s: str, p: str, expected: bool)",
+                "parametrize": "s, p, expected",
+                "test_cases": {
+                    "list": [
+                        "('aa', 'a', False)",
+                        "('aa', '*', True)",
+                        "('cb', '?a', False)",
+                        "('', '', True)",
+                        "('', '*', True)",
+                        "('', '?', False)",
+                        "('a', '?', True)",
+                        "('a', '', False)",
+                        "('abc', 'abc', True)",
+                        "('abc', 'a*', True)",
+                        "('abc', '*c', True)",
+                        "('abc', 'a?c', True)",
+                        "('abc', 'a?d', False)",
+                        "('abcdef', 'a*f', True)",
+                        "('abcdef', 'a*g', False)",
+                        "('hi', '*?', True)",
+                        "('aaaa', '**a', True)",
+                        "('acdcb', 'a*c?b', False)",
+                        "('mississippi', 'm??*ss*?i*pi', False)",
+                        "('abcabczzzde', '*abc???de*', True)",
+                        "('b', '*?*?', False)",
+                        "('aab', '?', False)",
+                        "('', 'a', False)",
+                        "('aaab', '**??a', False)"
+                    ]
+                },
+                "body": "        result = run_is_match(Solution, s, p)\n        assert_is_match(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_match, assert_is_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aa'\np = '*'\nexpected = True",
+    "playground_run": "result = run_is_match(Solution, s, p)\nresult",
+    "playground_assert": "assert_is_match(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "sliding_window_median",
+    "solution_class_name": "Solution",
+    "problem_number": "480",
+    "problem_title": "Sliding Window Median",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Sliding Window, Heap (Priority Queue), Treap",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The **median** is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle values.\n\n- For examples, if `arr = [2,**3**,4]`, the median is `3`.\n- For examples, if `arr = [1,**2,3**,4]`, the median is `(2 + 3) / 2 = 2.5`.\n\nYou are given an integer array `nums` and an integer `k`. There is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position.\n\nReturn *the median array for each window in the original array*. Answers within `10^-5` of the actual value will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,3,-1,-3,5,3,6,7], k = 3\nOutput: [1.00000,-1.00000,-1.00000,3.00000,5.00000,6.00000]\n```\n**Explanation:**\n\nWindow position                Median\n---------------                -----\n[1  3  -1] -3  5  3  6  7        1\n 1 [3  -1  -3] 5  3  6  7       -1\n 1  3 [-1  -3  5] 3  6  7       -1\n 1  3  -1 [-3  5  3] 6  7        3\n 1  3  -1  -3 [5  3  6] 7        5\n 1  3  -1  -3  5 [3  6  7]       6"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4,2,3,1,4,2], k = 3\nOutput: [2.00000,3.00000,3.00000,3.00000,2.00000,3.00000,2.00000]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= k <= nums.length <= 10^5\n- -2^31 <= nums[i] <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "median_sliding_window",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.median_sliding_window(nums, k)",
+    "helpers_assert_name": "median_sliding_window",
+    "helpers_assert_signature": "(result: list[float], expected: list[float]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "import heapq",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_median_sliding_window, run_median_sliding_window\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSlidingWindowMedian",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "median_sliding_window",
+                "signature": "(self, nums: list[int], k: int) -> list[float]",
+                "body": "        # TODO: Implement median_sliding_window\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_median_sliding_window, assert_median_sliding_window\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 3, -1, -3, 5, 3, 6, 7]\nk = 3\nexpected = [1.0, -1.0, -1.0, 3.0, 5.0, 6.0]",
+    "playground_run": "result = run_median_sliding_window(Solution, nums, k)\nresult",
+    "playground_assert": "assert_median_sliding_window(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_median_sliding_window",
+                "signature": "(self, nums: list[int], k: int, expected: list[float])",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 3, -1, -3, 5, 3, 6, 7], 3, [1.0, -1.0, -1.0, 3.0, 5.0, 6.0])",
+                        "([1, 2, 3, 4, 2, 3, 1, 4, 2], 3, [2.0, 3.0, 3.0, 3.0, 2.0, 3.0, 2.0])",
+                        "([1], 1, [1.0])",
+                        "([2, 1], 2, [1.5])",
+                        "([5, 2, 2, 7, 3, 7, 9, 0, 2, 3], 4, [3.5, 2.5, 5.0, 7.0, 5.0, 4.5, 2.5])",
+                        "([-1, -2, -3, -4, -5], 2, [-1.5, -2.5, -3.5, -4.5])",
+                        "([1, 1, 1, 1, 1], 3, [1.0, 1.0, 1.0])",
+                        "([2147483647, 2147483647, 2147483647], 2, [2147483647.0, 2147483647.0])",
+                        "([-2147483648, 2147483647], 2, [-0.5])",
+                        "([3, 1, 2], 3, [2.0])",
+                        "([1, 2, 3, 4], 1, [1.0, 2.0, 3.0, 4.0])",
+                        "([1, 4, 2, 3], 2, [2.5, 3.0, 2.5])",
+                        "([-5, 8, -1, 0, 3, -7, 6], 5, [0.0, 0.0, 0.0])",
+                        "([4, 0, -4, 3, 1, -2, 5, 2], 6, [0.5, 0.5, 1.5])",
+                        "([0, 7, 5, -3, 0], 5, [0.0])",
+                        "([-2, -6], 1, [-2.0, -6.0])"
+                    ]
+                },
+                "body": "        result = run_median_sliding_window(Solution, nums, k)\n        assert_median_sliding_window(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "nums = [1, 3, -1, -3, 5, 3, 6, 7]\nk = 3",
+    "playground_execution": "result = run_median_sliding_window(Solution, nums, k)",
+    "playground_assertion": "assert_median_sliding_window(result, [1.0, -1.0, -1.0, 3.0, 5.0, 6.0])"
+}

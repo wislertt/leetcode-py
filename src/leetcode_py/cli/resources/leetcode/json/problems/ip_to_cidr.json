@@ -1,0 +1,88 @@
+{
+    "problem_name": "ip_to_cidr",
+    "solution_class_name": "Solution",
+    "problem_number": "751",
+    "problem_title": "IP to CIDR",
+    "difficulty": "Medium",
+    "topics": "String, Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An IP address is a formatted 32-bit unsigned integer where each group of 8 bits is printed as a decimal number and the dot character `'.'` splits the groups.\n\n- For example, the binary number `00001111 10001000 11111111 01101011` (spaces added for clarity) formatted as an IP address would be `\"15.136.255.107\"`.\n\nA CIDR block is a format used to denote a specific set of IP addresses. It is a string consisting of a base IP address, followed by a slash, followed by a prefix length `k`. The addresses it covers are all the IPs whose first `k` bits are the same as the base IP address.\n\n- For example, `\"123.45.67.89/20\"` is a CIDR block with a prefix length of 20. Any IP address whose binary representation matches `01111011 00101101 0100xxxx xxxxxxxx`, where x can be either 0 or 1, is in the set covered by the CIDR block.\n\nYou are given a start IP address `ip` and the number of IP addresses we need to cover `n`. Your goal is to use as few CIDR blocks as possible to cover all the IP addresses in the inclusive range `[ip, ip + n - 1]` exactly. No other IP addresses outside of the range should be covered.\n\nReturn the shortest list of CIDR blocks that covers the range of IP addresses. If there are multiple answers, return any of them.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: ip = \"255.0.0.7\", n = 10\nOutput: [\"255.0.0.7/32\",\"255.0.0.8/29\",\"255.0.0.16/32\"]\nExplanation: The CIDR block \"255.0.0.7/32\" covers the first address, \"255.0.0.8/29\" covers the middle 8 addresses, and \"255.0.0.16/32\" covers the last address.\n```"
+            },
+            {
+                "content": "```\nInput: ip = \"117.145.102.62\", n = 8\nOutput: [\"117.145.102.62/31\",\"117.145.102.64/30\",\"117.145.102.68/31\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 7 <= ip.length <= 15\n- ip is a valid IPv4 on the form \"a.b.c.d\" where a, b, c, and d are integers in the range [0, 255].\n- 1 <= n <= 1000\n- Every implied address ip + x (for x < n) will be a valid IPv4 address.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "ip_to_cidr",
+    "helpers_run_signature": "(solution_class: type, ip: str, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.ip_to_cidr(ip, n)",
+    "helpers_assert_name": "ip_to_cidr",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_ip_to_cidr, run_ip_to_cidr\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IpToCidr",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "ip_to_cidr",
+                "signature": "(self, ip: str, n: int) -> list[str]",
+                "body": "        # TODO: Implement ip_to_cidr\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_ip_to_cidr",
+                "signature": "(self, ip: str, n: int, expected: list[str])",
+                "parametrize": "ip, n, expected",
+                "test_cases": {
+                    "list": [
+                        "('255.0.0.7', 10, ['255.0.0.7/32','255.0.0.8/29','255.0.0.16/32'])",
+                        "('117.145.102.62', 8, ['117.145.102.62/31','117.145.102.64/30','117.145.102.68/31'])",
+                        "('1.2.3.4', 1, ['1.2.3.4/32'])",
+                        "('0.0.0.0', 1024, ['0.0.0.0/22'])",
+                        "('255.255.255.255', 1, ['255.255.255.255/32'])",
+                        "('10.0.0.5', 12, ['10.0.0.5/32','10.0.0.6/31','10.0.0.8/29','10.0.0.16/32'])",
+                        "('192.168.1.1', 100, ['192.168.1.1/32','192.168.1.2/31','192.168.1.4/30','192.168.1.8/29','192.168.1.16/28','192.168.1.32/27','192.168.1.64/27','192.168.1.96/30','192.168.1.100/32'])",
+                        "('172.16.0.128', 3, ['172.16.0.128/31','172.16.0.130/32'])",
+                        "('8.8.8.8', 16, ['8.8.8.8/29','8.8.8.16/29'])",
+                        "('254.254.254.200', 200, ['254.254.254.200/29','254.254.254.208/28','254.254.254.224/27','254.254.255.0/25','254.254.255.128/28'])",
+                        "('1.0.0.64', 64, ['1.0.0.64/26'])",
+                        "('77.77.77.77', 55, ['77.77.77.77/32','77.77.77.78/31','77.77.77.80/28','77.77.77.96/27','77.77.77.128/30'])",
+                        "('99.99.99.99', 999, ['99.99.99.99/32','99.99.99.100/30','99.99.99.104/29','99.99.99.112/28','99.99.99.128/25','99.99.100.0/23','99.99.102.0/24','99.99.103.0/26','99.99.103.64/29','99.99.103.72/31'])"
+                    ]
+                },
+                "body": "        result = run_ip_to_cidr(Solution, ip, n)\n        assert_ip_to_cidr(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_ip_to_cidr, assert_ip_to_cidr\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nip = '255.0.0.7'\nn = 10\nexpected = ['255.0.0.7/32', '255.0.0.8/29', '255.0.0.16/32']",
+    "playground_run": "result = run_ip_to_cidr(Solution, ip, n)\nresult",
+    "playground_assert": "assert_ip_to_cidr(result, expected)"
+}

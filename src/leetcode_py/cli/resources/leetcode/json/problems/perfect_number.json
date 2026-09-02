@@ -1,0 +1,98 @@
+{
+    "problem_name": "perfect_number",
+    "solution_class_name": "Solution",
+    "problem_number": "507",
+    "problem_title": "Perfect Number",
+    "difficulty": "Easy",
+    "topics": "Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A <a href=\"https://en.wikipedia.org/wiki/Perfect_number\" target=\"_blank\"><strong>perfect number</strong></a> is a <strong>positive integer</strong> that is equal to the sum of its <strong>positive divisors</strong>, excluding the number itself. A <strong>divisor</strong> of an integer <code>x</code> is an integer that can divide <code>x</code> evenly.\n\nGiven an integer <code>n</code>, return <code>true</code><em> if </em><code>n</code><em> is a perfect number, otherwise return </em><code>false</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 28\nOutput: true\nExplanation: 28 = 1 + 2 + 4 + 7 + 14\n1, 2, 4, 7, and 14 are all divisors of 28.\n```"
+            },
+            {
+                "content": "```\nInput: num = 7\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num <= 10^8`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check_perfect_number",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check_perfect_number(num)",
+    "helpers_assert_name": "check_perfect_number",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check_perfect_number, run_check_perfect_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PerfectNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check_perfect_number",
+                "signature": "(self, num: int) -> bool",
+                "body": "        # TODO: Implement check_perfect_number\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check_perfect_number",
+                "signature": "(self, num: int, expected: bool)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(28, True)",
+                        "(7, False)",
+                        "(6, True)",
+                        "(496, True)",
+                        "(8128, True)",
+                        "(33550336, True)",
+                        "(1, False)",
+                        "(2, False)",
+                        "(3, False)",
+                        "(4, False)",
+                        "(12, False)",
+                        "(24, False)",
+                        "(100, False)",
+                        "(120, False)",
+                        "(495, False)",
+                        "(497, False)",
+                        "(999999, False)",
+                        "(33550335, False)",
+                        "(33550337, False)",
+                        "(8127, False)",
+                        "(8129, False)",
+                        "(100000000, False)",
+                        "(1000000, False)"
+                    ]
+                },
+                "body": "        result = run_check_perfect_number(Solution, num)\n        assert_check_perfect_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check_perfect_number, assert_check_perfect_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 28\nexpected = True",
+    "playground_run": "result = run_check_perfect_number(Solution, num)\nresult",
+    "playground_assert": "assert_check_perfect_number(result, expected)"
+}

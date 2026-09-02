@@ -1,0 +1,90 @@
+{
+    "problem_name": "count_square_submatrices_with_all_ones",
+    "solution_class_name": "Solution",
+    "problem_number": "1277",
+    "problem_title": "Count Square Submatrices with All Ones",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a m * n matrix of ones and zeros, return how many square submatrices have all ones.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: matrix =\n[\n  [0,1,1,1],\n  [1,1,1,1],\n  [0,1,1,1]\n]\nOutput: 15\nExplanation: \nThere are 10 squares of side 1.\nThere are 4 squares of side 2.\nThere is  1 square of side 3.\nTotal number of squares = 10 + 4 + 1 = 15.\n```"
+            },
+            {
+                "content": "```\nInput: matrix = \n[\n  [1,0,1],\n  [1,1,0],\n  [1,1,0]\n]\nOutput: 7\nExplanation: \nThere are 6 squares of side 1.  \nThere is 1 square of side 2. \nTotal number of squares = 6 + 1 = 7.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 300\n- 1 <= arr[0].length <= 300\n- 0 <= arr[i][j] <= 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_squares",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_squares(matrix)",
+    "helpers_assert_name": "count_squares",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_squares",
+                "signature": "(self, matrix: list[list[int]]) -> int",
+                "body": "        # TODO: Implement count_squares\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_squares, run_count_squares\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountSquareSubmatricesWithAllOnes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_squares",
+                "signature": "(self, matrix: list[list[int]], expected: int)",
+                "parametrize": "matrix, expected",
+                "test_cases": {
+                    "list": [
+                        "[[[0,1,1,1],[1,1,1,1],[0,1,1,1]],15]",
+                        "[[[1,0,1],[1,1,0],[1,1,0]],7]",
+                        "[[[1]],1]",
+                        "[[[0]],0]",
+                        "[[[0,1],[1,0]],2]",
+                        "[[[1,1],[1,1]],5]",
+                        "[[[1,1,1],[1,1,1],[1,1,1]],14]",
+                        "[[[0,0],[0,0]],0]",
+                        "[[[1,0],[0,1]],2]",
+                        "[[[1,1,1,1,1,0],[1,1,1,1,1,0]],14]",
+                        "[[[1,0,0,1,0,0],[1,1,1,1,1,0],[1,0,1,0,1,1],[1,1,1,1,0,1],[1,0,0,1,1,1],[1,1,1,1,0,0]],24]",
+                        "[[[1,1,1],[0,0,0],[1,0,1]],5]",
+                        "[[[0,0,1,0],[0,1,0,0],[0,1,1,0],[1,1,0,1]],7]",
+                        "[[[1,0,0,1,1,1],[1,1,1,0,1,0],[1,1,1,1,1,1],[1,1,0,1,1,1]],24]",
+                        "[[[1,1,1,1,1],[1,0,1,0,1]],8]"
+                    ]
+                },
+                "body": "        result = run_count_squares(Solution, matrix)\n        assert_count_squares(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_squares, assert_count_squares\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]]\nexpected = 15",
+    "playground_run": "result = run_count_squares(Solution, matrix)\nresult",
+    "playground_assert": "assert_count_squares(result, expected)"
+}

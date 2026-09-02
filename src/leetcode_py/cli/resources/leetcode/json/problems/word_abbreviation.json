@@ -1,0 +1,90 @@
+{
+    "problem_name": "word_abbreviation",
+    "solution_class_name": "Solution",
+    "problem_number": "527",
+    "problem_title": "Word Abbreviation",
+    "difficulty": "Hard",
+    "topics": "Greedy, Trie, Array, String, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of **distinct** strings `words`, return the minimal possible **abbreviations** for every word.\n\nThe following are the rules for a string abbreviation:\n\n1. The **initial** abbreviation for each word is: the first character, then the number of characters in between, followed by the last character.\n2. If more than one word shares the **same** abbreviation, then perform the following operation:\n   - **Increase** the prefix (characters in the first part) of each of their abbreviations by `1`.\n     - For example, say you start with the words `[\"abcdef\",\"abndef\"]` both initially abbreviated as `\"a4f\"`. Then, a sequence of operations would be `[\"a4f\",\"a4f\"]` -> `[\"ab3f\",\"ab3f\"]` -> `[\"abc2f\",\"abn2f\"]`.\n   - This operation is repeated until every abbreviation is **unique**.\n3. At the end, if an abbreviation did not make a word shorter, then keep it as the original word.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"like\",\"god\",\"internal\",\"me\",\"internet\",\"interval\",\"intension\",\"face\",\"intrusion\"]\nOutput: [\"l2e\",\"god\",\"internal\",\"me\",\"i6t\",\"interval\",\"inte4n\",\"f2e\",\"intr4n\"]\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"aa\",\"aaa\"]\nOutput: [\"aa\",\"aaa\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 400`\n- `2 <= words[i].length <= 400`\n- `words[i]` consists of lowercase English letters.\n- All the strings of `words` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "words_abbreviation",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.words_abbreviation(words)",
+    "helpers_assert_name": "words_abbreviation",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_words_abbreviation, run_words_abbreviation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "WordAbbreviation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "words_abbreviation",
+                "signature": "(self, words: list[str]) -> list[str]",
+                "body": "        # TODO: Implement words_abbreviation\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_words_abbreviation",
+                "signature": "(self, words: list[str], expected: list[str])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['like','god','internal','me','internet','interval','intension','face','intrusion'],['l2e','god','internal','me','i6t','interval','inte4n','f2e','intr4n'])",
+                        "(['aa','aaa'],['aa','aaa'])",
+                        "(['abcdef','abndef'],['abc2f','abn2f'])",
+                        "(['international'],['i11l'])",
+                        "(['ab'],['ab'])",
+                        "(['abc','abd'],['abc','abd'])",
+                        "(['kanariozelo','narciso','kanario','narcisos'],['k9o','n5o','k5o','n6s'])",
+                        "(['god','geed'],['god','g2d'])",
+                        "(['cd','ef'],['cd','ef'])",
+                        "(['my','mine','mule','mice'],['my','mine','mule','mice'])",
+                        "(['mule','mine','my','mice'],['mule','mine','my','mice'])",
+                        "(['ebcede','ea','cebbd'],['e4e','ea','c3d'])",
+                        "(['ddbbbe','aabea','acde','ddedb','aabd','cdc'],['d4e','a3a','a2e','d3b','a2d','cdc'])",
+                        "(['deceed','bcaceb','eeea','ecc','ad'],['d4d','b4b','e2a','ecc','ad'])",
+                        "(['ca','bacdd','ae','adecec','bacaaa'],['ca','b3d','ae','a4c','b4a'])"
+                    ]
+                },
+                "body": "        result = run_words_abbreviation(Solution, words)\n        assert_words_abbreviation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_words_abbreviation, assert_words_abbreviation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['like', 'god', 'internal', 'me', 'internet', 'interval', 'intension', 'face', 'intrusion']\nexpected = ['l2e', 'god', 'internal', 'me', 'i6t', 'interval', 'inte4n', 'f2e', 'intr4n']",
+    "playground_run": "result = run_words_abbreviation(Solution, words)\nresult",
+    "playground_assert": "assert_words_abbreviation(result, expected)"
+}

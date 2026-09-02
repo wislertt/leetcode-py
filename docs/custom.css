@@ -1,3 +1,12 @@
+/* Catalog tables (docs/catalog/, see scripts/gen_catalog.py): Mintlify prose
+   tables force min-w-[150px] on every cell, which makes the # column as wide
+   as the Problem column. Let the # column shrink to its content. */
+.sd-catalog-table th:first-child,
+.sd-catalog-table td:first-child {
+    min-width: 0;
+    width: 3rem;
+}
+
 /* Hero OG card: show the surface-matched variant per theme (see
    scripts/branding/BRAND.md -> Color system). */
 html.dark .sd-hero-light {

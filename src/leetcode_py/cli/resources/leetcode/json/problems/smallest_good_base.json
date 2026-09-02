@@ -1,0 +1,113 @@
+{
+    "problem_name": "smallest_good_base",
+    "solution_class_name": "Solution",
+    "problem_number": "483",
+    "problem_title": "Smallest Good Base",
+    "difficulty": "Hard",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n` represented as a string, return *the smallest **good base** of* `n`.\n\nWe call `k >= 2` a **good base** of `n`, if all digits of `n` base `k` are `1`'s.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = \"13\"\nOutput: \"3\"\nExplanation: 13 base 3 is 111.\n```"
+            },
+            {
+                "content": "```\nInput: n = \"4681\"\nOutput: \"8\"\nExplanation: 4681 base 8 is 11111.\n```"
+            },
+            {
+                "content": "```\nInput: n = \"1000000000000000000\"\nOutput: \"999999999999999999\"\nExplanation: 1000000000000000000 base 999999999999999999 is 11.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n is an integer in the range [3, 10^18]\n- n does not contain any leading zeros.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_good_base",
+    "helpers_run_signature": "(solution_class: type, n: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.smallest_good_base(n)",
+    "helpers_assert_name": "smallest_good_base",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_good_base, run_smallest_good_base\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestSmallestGoodBase",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_good_base",
+                "signature": "(self, n: str) -> str",
+                "body": "        # TODO: Implement smallest_good_base\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_good_base, assert_smallest_good_base\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = '13'\nexpected = '3'",
+    "playground_run": "result = run_smallest_good_base(Solution, n)\nresult",
+    "playground_assert": "assert_smallest_good_base(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_good_base",
+                "signature": "(self, n: str, expected: str)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "('3', '2')",
+                        "('4', '3')",
+                        "('5', '4')",
+                        "('6', '5')",
+                        "('7', '2')",
+                        "('8', '7')",
+                        "('13', '3')",
+                        "('15', '2')",
+                        "('31', '2')",
+                        "('121', '3')",
+                        "('343', '18')",
+                        "('4681', '8')",
+                        "('8191', '2')",
+                        "('10000', '9999')",
+                        "('99999', '99998')",
+                        "('1000000000000000000', '999999999999999999')",
+                        "('780304639795581853', '780304639795581852')",
+                        "('665439898187751874', '665439898187751873')",
+                        "('304088126904414731', '304088126904414730')",
+                        "('8815334828759898', '8815334828759897')",
+                        "('591666972533686132', '591666972533686131')",
+                        "('950320801908716147', '950320801908716146')",
+                        "('264413015584371087', '264413015584371086')",
+                        "('940302388529770723', '940302388529770722')",
+                        "('255826622680377569', '255826622680377568')",
+                        "('94413872394434443', '94413872394434442')",
+                        "('353834258345137306', '353834258345137305')",
+                        "('662158786686316149', '662158786686316148')",
+                        "('607011976183235610', '607011976183235609')",
+                        "('332760589061312275', '332760589061312274')",
+                        "('126474261727609665', '126474261727609664')",
+                        "('851657787453707283', '851657787453707282')"
+                    ]
+                },
+                "body": "        result = run_smallest_good_base(Solution, n)\n        assert_smallest_good_base(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "n = '13'",
+    "playground_execution": "result = run_smallest_good_base(Solution, n)",
+    "playground_assertion": "assert_smallest_good_base(result, '3')"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "complex_number_multiply",
+    "solution_class_name": "Solution",
+    "problem_number": "537",
+    "problem_title": "Complex Number Multiplication",
+    "difficulty": "Medium",
+    "topics": "Math, String, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A <a href=\"https://en.wikipedia.org/wiki/Complex_number\" target=\"_blank\">complex number</a> can be represented as a string on the form \"real+imaginaryi\" where:\n\n- `real` is the real part and is an integer in the range `[-100, 100]`.\n- `imaginary` is the imaginary part and is an integer in the range `[-100, 100]`.\n- `i^2 == -1`.\n\nGiven two complex numbers `num1` and `num2` as strings, return <em>a string of the complex number that represents their multiplication</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num1 = \"1+1i\", num2 = \"1+1i\"\nOutput: \"0+2i\"\nExplanation: (1 + i) * (1 + i) = 1 + i^2 + 2 * i = 2i, and you need convert it to the form of 0+2i.\n```"
+            },
+            {
+                "content": "```\nInput: num1 = \"1+-1i\", num2 = \"1+-1i\"\nOutput: \"0+-2i\"\nExplanation: (1 - i) * (1 - i) = 1 + i^2 - 2 * i = -2i, and you need convert it to the form of 0+-2i.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `num1` and `num2` are valid complex numbers.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "complex_number_multiply",
+    "helpers_run_signature": "(solution_class: type, num1: str, num2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.complex_number_multiply(num1, num2)",
+    "helpers_assert_name": "complex_number_multiply",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_complex_number_multiply, run_complex_number_multiply\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ComplexNumberMultiply",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "complex_number_multiply",
+                "signature": "(self, num1: str, num2: str) -> str",
+                "body": "        # TODO: Implement complex_number_multiply\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_complex_number_multiply",
+                "signature": "(self, num1: str, num2: str, expected: str)",
+                "parametrize": "num1, num2, expected",
+                "test_cases": {
+                    "list": [
+                        "('1+1i', '1+1i', '0+2i')",
+                        "('1+-1i', '1+-1i', '0+-2i')",
+                        "('0+0i', '0+0i', '0+0i')",
+                        "('1+0i', '1+0i', '1+0i')",
+                        "('1+-1i', '1+1i', '2+0i')",
+                        "('2+3i', '4+5i', '-7+22i')",
+                        "('-3+4i', '1+-2i', '5+10i')",
+                        "('0+1i', '0+1i', '-1+0i')",
+                        "('100+100i', '100+100i', '0+20000i')",
+                        "('-100+-100i', '100+100i', '0+-20000i')",
+                        "('1+1i', '1+-1i', '2+0i')",
+                        "('-1+0i', '1+0i', '-1+0i')",
+                        "('5+-3i', '-2+7i', '11+41i')",
+                        "('0+-1i', '0+1i', '1+0i')",
+                        "('86+13i', '-37+-43i', '-2623+-4179i')",
+                        "('-90+17i', '32+83i', '-4291+-6926i')",
+                        "('10+-65i', '79+36i', '3130+-4775i')",
+                        "('-29+-20i', '45+67i', '35+-2843i')"
+                    ]
+                },
+                "body": "        result = run_complex_number_multiply(Solution, num1, num2)\n        assert_complex_number_multiply(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_complex_number_multiply, assert_complex_number_multiply\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum1 = '1+1i'\nnum2 = '1+1i'\nexpected = '0+2i'",
+    "playground_run": "result = run_complex_number_multiply(Solution, num1, num2)\nresult",
+    "playground_assert": "assert_complex_number_multiply(result, expected)"
+}

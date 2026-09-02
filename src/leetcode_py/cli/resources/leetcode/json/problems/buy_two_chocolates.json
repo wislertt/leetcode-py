@@ -1,0 +1,95 @@
+{
+    "problem_name": "buy_two_chocolates",
+    "solution_class_name": "Solution",
+    "problem_number": "2706",
+    "problem_title": "Buy Two Chocolates",
+    "difficulty": "Easy",
+    "topics": "Array, Greedy, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `prices` representing the prices of various chocolates in a store. You are also given a single integer `money`, which represents your initial amount of money.\n\nYou must buy **exactly** two chocolates in such a way that you still have some **non-negative** leftover money. You would like to minimize the sum of the prices of the two chocolates you buy.\n\nReturn *the amount of money you will have leftover after buying the two chocolates*. If there is no way for you to buy two chocolates without ending up in debt, return `money`. Note that the leftover must be non-negative.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: prices = [1,2,2], money = 3\nOutput: 0\n```\n**Explanation:** Purchase the chocolates priced at 1 and 2 units respectively. You will have 3 - 3 = 0 units of money afterwards. Thus, we return 0."
+            },
+            {
+                "content": "```\nInput: prices = [3,2,3], money = 3\nOutput: 3\n```\n**Explanation:** You cannot buy 2 chocolates without going in debt, so we return 3."
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= prices.length <= 50\n- 1 <= prices[i] <= 100\n- 1 <= money <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "buy_choco",
+    "helpers_run_signature": "(solution_class: type, prices: list[int], money: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.buy_choco(prices, money)",
+    "helpers_assert_name": "buy_choco",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_buy_choco, run_buy_choco\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BuyTwoChocolates",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "buy_choco",
+                "signature": "(self, prices: list[int], money: int) -> int",
+                "body": "        # TODO: Implement buy_choco\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_buy_choco",
+                "signature": "(self, prices: list[int], money: int, expected: int)",
+                "parametrize": "prices, money, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 2], 3, 0)",
+                        "([3, 2, 3], 3, 3)",
+                        "([1, 2, 2], 100, 97)",
+                        "([98, 99, 100], 100, 100)",
+                        "([98, 99, 100], 1, 1)",
+                        "([50, 50], 100, 0)",
+                        "([50, 50], 99, 99)",
+                        "([1, 1, 1], 1, 1)",
+                        "([100, 100], 100, 100)",
+                        "([100, 100], 99, 99)",
+                        "([7, 3, 5, 9], 10, 2)",
+                        "([2, 9, 4, 8], 12, 6)",
+                        "([1, 100], 100, 100)",
+                        "([1, 100], 50, 50)",
+                        "([13, 17, 11, 11, 20], 25, 3)",
+                        "([5, 6, 7, 8, 9], 3, 3)",
+                        "([48, 9, 82], 92, 35)",
+                        "([86, 12], 22, 22)",
+                        "([30, 92], 67, 67)",
+                        "([92, 69, 89], 45, 45)"
+                    ]
+                },
+                "body": "        result = run_buy_choco(Solution, prices, money)\n        assert_buy_choco(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_buy_choco, assert_buy_choco\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nprices = [1, 2, 2]\nmoney = 3\nexpected = 0",
+    "playground_run": "result = run_buy_choco(Solution, prices, money)\nresult",
+    "playground_assert": "assert_buy_choco(result, expected)"
+}

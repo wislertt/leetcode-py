@@ -1,0 +1,110 @@
+{
+    "problem_name": "number_of_digit_one",
+    "solution_class_name": "Solution",
+    "problem_number": "233",
+    "problem_title": "Number of Digit One",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n`, count *the total number of digit* `1` *appearing in all non-negative integers less than or equal to* `n`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 13\nOutput: 6\n```"
+            },
+            {
+                "content": "```\nInput: n = 0\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 10<sup>9</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_digit_one",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_digit_one(n)",
+    "helpers_assert_name": "count_digit_one",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_digit_one, run_count_digit_one\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfDigitOne",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_digit_one",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement count_digit_one\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_digit_one",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(2, 1)",
+                        "(9, 1)",
+                        "(10, 2)",
+                        "(11, 4)",
+                        "(12, 5)",
+                        "(13, 6)",
+                        "(19, 12)",
+                        "(20, 12)",
+                        "(21, 13)",
+                        "(99, 20)",
+                        "(100, 21)",
+                        "(101, 23)",
+                        "(110, 33)",
+                        "(111, 36)",
+                        "(199, 140)",
+                        "(999, 300)",
+                        "(1000, 301)",
+                        "(1234, 689)",
+                        "(9999, 4000)",
+                        "(12345, 8121)",
+                        "(30000, 22000)",
+                        "(30001, 22001)",
+                        "(30003, 22001)",
+                        "(30010, 22002)",
+                        "(30011, 22004)",
+                        "(30013, 22006)",
+                        "(100000, 50001)",
+                        "(1000000, 600001)",
+                        "(10000000, 7000001)",
+                        "(123456789, 130589849)",
+                        "(82488329, 68545573)",
+                        "(999999999, 900000000)",
+                        "(1000000000, 900000001)"
+                    ]
+                },
+                "body": "        result = run_count_digit_one(Solution, n)\n        assert_count_digit_one(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_digit_one, assert_count_digit_one\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn: int = 13\nexpected: int = 6",
+    "playground_run": "result = run_count_digit_one(Solution, n)\nresult",
+    "playground_assert": "assert_count_digit_one(result, expected)"
+}

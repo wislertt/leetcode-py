@@ -1,0 +1,107 @@
+{
+    "problem_name": "maximum_number_of_points_with_cost",
+    "solution_class_name": "Solution",
+    "problem_number": "1937",
+    "problem_title": "Maximum Number of Points with Cost",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` integer matrix `points` (**0-indexed**). Starting with `0` points, you want to **maximize** the number of points you can get from the matrix.\n\nTo gain points, you must pick one cell in **each row**. Picking the cell at coordinates `(r, c)` will **add** `points[r][c]` to your score.\n\nHowever, you will lose points if you pick a cell too far from the cell that you picked in the previous row. For every two adjacent rows `r` and `r + 1` (where `0 <= r < m - 1`), picking cells at coordinates `(r, c1)` and `(r + 1, c2)` will **subtract** `abs(c1 - c2)` from your score.\n\nReturn *the **maximum** number of points you can achieve*.\n\n`abs(x)` is defined as:\n\n- `x` for `x >= 0`.\n- `-x` for `x < 0`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/12/screenshot-2021-07-12-at-13-40-26-diagram-drawio-diagrams-net.png)\n\n```\nInput: points = [[1,2,3],[1,5,1],[3,1,1]]\nOutput: 9\n```\n**Explanation:** The blue cells denote the optimal cells to pick, which have coordinates (0, 2), (1, 1), and (2, 0). You add 3 + 5 + 3 = 11 to your score. However, you must subtract abs(2 - 1) + abs(1 - 0) = 2 from your score. Your final score is 11 - 2 = 9."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/07/12/screenshot-2021-07-12-at-13-42-14-diagram-drawio-diagrams-net.png)\n\n```\nInput: points = [[1,5],[2,3],[4,2]]\nOutput: 11\n```\n**Explanation:** The blue cells denote the optimal cells to pick, which have coordinates (0, 1), (1, 1), and (2, 0). You add 5 + 3 + 4 = 12 to your score. However, you must subtract abs(1 - 1) + abs(1 - 0) = 1 from your score. Your final score is 12 - 1 = 11."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= m, n <= 10^5`\n- `1 <= m * n <= 10^5`\n- `0 <= points[r][c] <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_points",
+    "helpers_run_signature": "(solution_class: type, points: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_points(points)",
+    "helpers_assert_name": "max_points",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_points, run_max_points\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfPointsWithCost",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_points",
+                "signature": "(self, points: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_points\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_points",
+                "signature": "(self, points: list[list[int]], expected: int)",
+                "parametrize": "points, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3], [1, 5, 1], [3, 1, 1]], 9)",
+                        "([[1, 5], [2, 3], [4, 2]], 11)",
+                        "([[5]], 5)",
+                        "([[0]], 0)",
+                        "([[1, 9, 3]], 9)",
+                        "([[7, 3, 9]], 9)",
+                        "([[1], [9], [3], [9]], 22)",
+                        "([[4, 4], [4, 4]], 8)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 0)",
+                        "([[100000, 100000], [100000, 100000]], 200000)",
+                        "([[1, 100, 1], [1, 100, 1], [1, 100, 1]], 300)",
+                        "([[1, 100, 1], [100, 1, 100]], 199)",
+                        "([[8, 11, 6, 1], [0, 5, 7, 8]], 17)",
+                        "([[1], [6]], 7)",
+                        "([[3, 2, 7], [12, 1, 7], [10, 5, 1], [12, 6, 2]], 39)",
+                        "([[0, 3, 7]], 7)",
+                        "([[1, 7, 3], [1, 10, 11], [10, 9, 0], [10, 0, 5]], 36)",
+                        "([[10, 2], [7, 6]], 17)",
+                        "([[4], [1], [6]], 11)",
+                        "([[12, 5], [7, 3], [8, 0], [11, 6]], 38)",
+                        "([[10, 8], [7, 2], [8, 3]], 25)",
+                        "([[11, 8, 6]], 11)",
+                        "([[7, 10], [10, 11], [10, 5], [11, 5]], 41)",
+                        "([[4], [2]], 6)",
+                        "([[11, 4], [12, 3]], 23)",
+                        "([[4, 12, 4]], 12)",
+                        "([[2, 5, 4, 9]], 9)",
+                        "([[1], [3], [7]], 11)",
+                        "([[7], [5], [11], [10]], 33)",
+                        "([[0, 3, 8, 3], [11, 8, 7, 8], [3, 4, 5, 3], [9, 6, 3, 11]], 30)",
+                        "([[5, 5, 10, 10], [11, 9, 6, 5], [1, 7, 2, 12], [6, 3, 0, 5]], 33)",
+                        "([[11, 4, 8, 12], [2, 4, 12, 12], [1, 12, 11, 10]], 34)"
+                    ]
+                },
+                "body": "        result = run_max_points(Solution, points)\n        assert_max_points(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_points, assert_max_points\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npoints = [[1, 2, 3], [1, 5, 1], [3, 1, 1]]\nexpected = 9",
+    "playground_run": "result = run_max_points(Solution, points)\nresult",
+    "playground_assert": "assert_max_points(result, expected)"
+}

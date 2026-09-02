@@ -1,0 +1,94 @@
+{
+    "problem_name": "keyboard_row",
+    "solution_class_name": "Solution",
+    "problem_number": "500",
+    "problem_title": "Keyboard Row",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of strings `words`, return the words that can be typed using letters of the alphabet on only one row of American keyboard like the image below.\n\nNote that the strings are **case-insensitive**, both lowercased and uppercased of the same letter are treated as if they are at the same row.\n\nIn the American keyboard:\n\n- the first row consists of the characters `qwertyuiop`,\n- the second row consists of the characters `asdfghjkl`, and\n- the third row consists of the characters `zxcvbnm`.\n\n![Keyboard](https://assets.leetcode.com/uploads/2018/10/12/keyboard.png)",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"Hello\",\"Alaska\",\"Dad\",\"Peace\"]\nOutput: [\"Alaska\",\"Dad\"]\nExplanation: Both \"a\" and \"A\" are in the 2nd row of the American keyboard due to case insensitivity.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"omk\"]\nOutput: []\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"adsdf\",\"sfd\"]\nOutput: [\"adsdf\",\"sfd\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 20\n- 1 <= words[i].length <= 100\n- words[i] consists of English letters (both lowercase and uppercase).",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_words",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_words(words)",
+    "helpers_assert_name": "find_words",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_words, run_find_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KeyboardRow",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_words",
+                "signature": "(self, words: list[str]) -> list[str]",
+                "body": "        # TODO: Implement find_words\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_words",
+                "signature": "(self, words: list[str], expected: list[str])",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Hello', 'Alaska', 'Dad', 'Peace'], ['Alaska', 'Dad'])",
+                        "(['omk'], [])",
+                        "(['adsdf', 'sfd'], ['adsdf', 'sfd'])",
+                        "(['Qwerty'], ['Qwerty'])",
+                        "(['a'], ['a'])",
+                        "(['z'], ['z'])",
+                        "(['Alaska'], ['Alaska'])",
+                        "(['Dad', 'Mom'], ['Dad'])",
+                        "(['qwertyuiop'], ['qwertyuiop'])",
+                        "(['asdfghjkl'], ['asdfghjkl'])",
+                        "(['zxcvbnm'], ['zxcvbnm'])",
+                        "(['Teapot'], [])",
+                        "(['Fl', 'Gd'], ['Fl', 'Gd'])",
+                        "(['x', 'q'], ['x', 'q'])",
+                        "(['Man'], [])",
+                        "(['POP'], ['POP'])"
+                    ]
+                },
+                "body": "        result = run_find_words(Solution, words)\n        assert_find_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_words, assert_find_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords: list[str] = ['Hello', 'Alaska', 'Dad', 'Peace']\nexpected: list[str] = ['Alaska', 'Dad']",
+    "playground_run": "result = run_find_words(Solution, words)\nresult",
+    "playground_assert": "assert_find_words(result, expected)"
+}

@@ -1,0 +1,99 @@
+{
+    "problem_name": "swapping_nodes_in_a_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "1721",
+    "problem_title": "Swapping Nodes in a Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Two Pointers",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `head` of a linked list, and an integer `k`.\n\nReturn *the head of the linked list after **swapping** the values of the `k<sup>th</sup>` node from the beginning and the `k<sup>th</sup>` node from the end (the list is **1-indexed**)*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/21/linked1.jpg)\n\n```\nInput: head = [1,2,3,4,5], k = 2\nOutput: [1,4,3,2,5]\n```"
+            },
+            {
+                "content": "```\nInput: head = [7,9,6,6,7,8,3,0,9,5], k = 5\nOutput: [7,9,6,6,8,7,3,0,9,5]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is `n`.\n- `1 <= k <= n <= 10^5`\n- `0 <= Node.val <= 100`",
+    "readme_additional": "**Follow up:** Could you do this in one pass?",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "swap_nodes",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int], k: int)",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    result = implementation.swap_nodes(head, k)\n    return result.to_list() if result else []",
+    "helpers_assert_name": "swap_nodes",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_swap_nodes, run_swap_nodes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SwappingNodesInALinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "swap_nodes",
+                "signature": "(self, head: ListNode[int] | None, k: int) -> ListNode[int] | None",
+                "body": "        # TODO: Implement swap_nodes\n        return head"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_swap_nodes",
+                "signature": "(self, head_list: list[int], k: int, expected: list[int])",
+                "parametrize": "head_list, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5], 2, [1, 4, 3, 2, 5])",
+                        "([7, 9, 6, 6, 7, 8, 3, 0, 9, 5], 5, [7, 9, 6, 6, 8, 7, 3, 0, 9, 5])",
+                        "([1], 1, [1])",
+                        "([1, 2], 1, [2, 1])",
+                        "([1, 2], 2, [2, 1])",
+                        "([1, 2, 3], 1, [3, 2, 1])",
+                        "([1, 2, 3], 2, [1, 2, 3])",
+                        "([1, 2, 3], 3, [3, 2, 1])",
+                        "([1, 2, 3, 4], 1, [4, 2, 3, 1])",
+                        "([1, 2, 3, 4], 2, [1, 3, 2, 4])",
+                        "([1, 2, 3, 4], 3, [1, 3, 2, 4])",
+                        "([1, 2, 3, 4], 4, [4, 2, 3, 1])",
+                        "([0, 0, 0], 2, [0, 0, 0])",
+                        "([5, 1, 9], 2, [5, 1, 9])",
+                        "([10, 20, 30, 40, 50, 60], 3, [10, 20, 40, 30, 50, 60])",
+                        "([100, 1], 1, [1, 100])",
+                        "([51, 82, 84, 55], 2, [51, 84, 82, 55])",
+                        "([46, 93, 0, 87, 11], 4, [46, 87, 0, 93, 11])",
+                        "([50, 10, 61, 68, 75, 40, 87, 82], 8, [82, 10, 61, 68, 75, 40, 87, 50])",
+                        "([51, 97, 34, 51, 34, 13, 42, 34], 5, [51, 97, 34, 34, 51, 13, 42, 34])",
+                        "([74, 42, 0, 90, 28, 99, 22, 82], 2, [74, 22, 0, 90, 28, 99, 42, 82])",
+                        "([22, 77, 57, 30, 55, 91, 99], 3, [22, 77, 55, 30, 57, 91, 99])",
+                        "([17, 79], 1, [79, 17])",
+                        "([9, 9, 36, 23, 93], 1, [93, 9, 36, 23, 9])"
+                    ]
+                },
+                "body": "        result = run_swap_nodes(Solution, head_list, k)\n        assert_swap_nodes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_swap_nodes, assert_swap_nodes\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list: list[int] = [1, 2, 3, 4, 5]\nk = 2\nexpected: list[int] = [1, 4, 3, 2, 5]",
+    "playground_run": "result = run_swap_nodes(Solution, head_list, k)\nresult",
+    "playground_assert": "assert_swap_nodes(result, expected)"
+}

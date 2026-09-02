@@ -1,0 +1,93 @@
+{
+    "problem_name": "longest_word_in_dictionary_through_deleting",
+    "solution_class_name": "Solution",
+    "problem_number": "524",
+    "problem_title": "Longest Word in Dictionary through Deleting",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, String, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s` and a string array `dictionary`, return *the longest string in the dictionary that can be formed by deleting some of the given string characters*. If there is more than one possible result, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abpcplea\", dictionary = [\"ale\",\"apple\",\"monkey\",\"plea\"]\nOutput: \"apple\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abpcplea\", dictionary = [\"a\",\"b\",\"c\"]\nOutput: \"a\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 1000\n- 1 <= dictionary.length <= 1000\n- 1 <= dictionary[i].length <= 1000\n- `s` and `dictionary[i]` consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_longest_word",
+    "helpers_run_signature": "(solution_class: type, s: str, dictionary: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_longest_word(s, dictionary)",
+    "helpers_assert_name": "find_longest_word",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_longest_word, run_find_longest_word\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestWordInDictionaryThroughDeleting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_longest_word",
+                "signature": "(self, s: str, dictionary: list[str]) -> str",
+                "body": "        # TODO: Implement find_longest_word\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_longest_word",
+                "signature": "(self, s: str, dictionary: list[str], expected: str)",
+                "parametrize": "s, dictionary, expected",
+                "test_cases": {
+                    "list": [
+                        "('abpcplea', ['ale', 'apple', 'monkey', 'plea'], 'apple')",
+                        "('abpcplea', ['a', 'b', 'c'], 'a')",
+                        "('abpcplea', ['ale', 'apple', 'monkey', 'plea', 'abpcpl'], 'abpcpl')",
+                        "('abpcplea', ['z', 'zz', 'zzz'], '')",
+                        "('a', ['a'], 'a')",
+                        "('a', ['b'], '')",
+                        "('a', ['a', 'b', 'ab'], 'a')",
+                        "('bab', ['ba', 'ab', 'a', 'b'], 'ab')",
+                        "('abce', ['abe', 'abc', 'ac'], 'abc')",
+                        "('abpcplea', ['apple', 'plea', 'ale', 'pcplea'], 'pcplea')",
+                        "('aaa', ['aaa', 'aa', 'a', 'aaaa'], 'aaa')",
+                        "('abcd', ['dcba', 'bcda', 'cdab'], '')",
+                        "('abcde', ['ace', 'bcd', 'abde', 'abcde'], 'abcde')",
+                        "('xyz', ['xyz', 'xy', 'yz', 'xz'], 'xyz')",
+                        "('abpcplea', ['apcplea', 'bpcplea', 'pcplea'], 'apcplea')",
+                        "('bdcba', ['ba', 'bc', 'bb', 'bdcba'], 'bdcba')",
+                        "('abacaba', ['abacaba', 'aaaa', 'bbb', 'abc'], 'abacaba')",
+                        "('abcabc', ['cc', 'aa', 'bb', 'abcabc'], 'abcabc')"
+                    ]
+                },
+                "body": "        result = run_find_longest_word(Solution, s, dictionary)\n        assert_find_longest_word(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_longest_word, assert_find_longest_word\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abpcplea'\ndictionary = ['ale', 'apple', 'monkey', 'plea']\nexpected = 'apple'",
+    "playground_run": "result = run_find_longest_word(Solution, s, dictionary)\nresult",
+    "playground_assert": "assert_find_longest_word(result, expected)"
+}

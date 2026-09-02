@@ -1,0 +1,108 @@
+{
+    "problem_name": "tag_validator",
+    "solution_class_name": "Solution",
+    "problem_number": "591",
+    "problem_title": "Tag Validator",
+    "difficulty": "Hard",
+    "topics": "String, Stack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string representing a code snippet, implement a tag validator to parse the code and return whether it is valid.\n\nA code snippet is valid if all the following rules hold:\n\n1. The code must be wrapped in a **valid closed tag**. Otherwise, the code is invalid.\n2. A **closed tag** (not necessarily valid) has exactly the following format : `<TAG_NAME>TAG_CONTENT</TAG_NAME>`. Among them, `<TAG_NAME>` is the start tag, and `</TAG_NAME>` is the end tag. The TAG_NAME in start and end tags should be the same. A closed tag is **valid** if and only if the TAG_NAME and TAG_CONTENT are valid.\n3. A **valid** `TAG_NAME` only contain **upper-case letters**, and has length in range [1,9]. Otherwise, the `TAG_NAME` is **invalid**.\n4. A **valid** `TAG_CONTENT` may contain other **valid closed tags**, **cdata** and any characters (see note1) **EXCEPT** unmatched `<`, unmatched start and end tag, and unmatched or closed tags with invalid TAG_NAME. Otherwise, the `TAG_CONTENT` is invalid.\n5. A start tag is unmatched if no end tag exists with the same TAG_NAME, and vice versa. However, you also need to consider the issue of unbalanced when tags are nested.\n6. A `<` is unmatched if you cannot find a subsequent `>`. And when you find a `<` or `</`, all the subsequent characters until the next `>` should be parsed as TAG_NAME (not necessarily valid).\n7. The cdata has the following format : `<![CDATA[CDATA_CONTENT]]>`. The range of `CDATA_CONTENT` is defined as the characters between `<![CDATA[` and the **first subsequent** `]]>`.\n8. `CDATA_CONTENT` may contain **any characters**. The function of cdata is to forbid the validator to parse `CDATA_CONTENT`, so even it has some characters that can be parsed as tag (no matter valid or invalid), you should treat it as **regular characters**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: code = \"<DIV>This is the first line <![CDATA[<div>]]></DIV>\"\nOutput: true\nExplanation: \nThe code is wrapped in a closed tag : <DIV> and </DIV>. \nThe TAG_NAME is valid, the TAG_CONTENT consists of some characters and cdata. \nAlthough CDATA_CONTENT has an unmatched start tag with invalid TAG_NAME, it should be considered as plain text, not parsed as a tag.\nSo TAG_CONTENT is valid, and then the code is valid. Thus return true.\n```"
+            },
+            {
+                "content": "```\nInput: code = \"<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>\"\nOutput: true\nExplanation:\nWe first separate the code into : start_tag|tag_content|end_tag.\nstart_tag -> \"<DIV>\"\nend_tag -> \"</DIV>\"\ntag_content could also be separated into : text1|cdata|text2.\ntext1 -> \">>  ![cdata[]] \"\ncdata -> \"<![CDATA[<div>]>]]>\", where the CDATA_CONTENT is \"<div>]>\"\ntext2 -> \"]]>>]\"\nThe reason why start_tag is NOT \"<DIV>>>\" is because of the rule 6.\nThe reason why cdata is NOT \"<![CDATA[<div>]>]]>]]>\" is because of the rule 7.\n```"
+            },
+            {
+                "content": "```\nInput: code = \"<A>  <B> </A>   </B>\"\nOutput: false\nExplanation: Unbalanced. If \"<A>\" is closed, then \"<B>\" must be unmatched, and vice versa.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= code.length <= 500\n- code consists of English letters, digits, '<', '>', '/', '!', '[', ']', '.', and ' '.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_valid",
+    "helpers_run_signature": "(solution_class: type, code: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_valid(code)",
+    "helpers_assert_name": "is_valid",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_valid, run_is_valid\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TagValidator",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_valid",
+                "signature": "(self, code: str) -> bool",
+                "body": "        # TODO: Implement is_valid\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_valid",
+                "signature": "(self, code: str, expected: bool)",
+                "parametrize": "code, expected",
+                "test_cases": {
+                    "list": [
+                        "('<DIV>This is the first line <![CDATA[<div>]]></DIV>', True)",
+                        "('<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>', True)",
+                        "('<A>  <B> </A>   </B>', False)",
+                        "('<A></A>', True)",
+                        "('<A></A></A>', False)",
+                        "('a<A></A>', False)",
+                        "('<A>hello</A>b', False)",
+                        "('<div></div>', False)",
+                        "('<A></a>', False)",
+                        "('<A></AB>', False)",
+                        "('<A><![CDATA[<div>]]></A>', True)",
+                        "('<![CDATA[x]]>', False)",
+                        "('<A><B></B></A>', True)",
+                        "('<A><B></A></B>', False)",
+                        "('<ABCDEFGHIJ></ABCDEFGHIJ>', False)",
+                        "('<A></A', False)",
+                        "('<A', False)",
+                        "('<A>content</A>', True)",
+                        "('<A><![CDATA[]]></A>', True)",
+                        "('<AAAAAAAAA></AAAAAAAAA>', True)",
+                        "('<A><A></A>', False)",
+                        "('<A>123</A>', True)",
+                        "('<A></>', False)",
+                        "('<A>x</A><B>y</B>', False)",
+                        "('<A><![CDATA[cdata content]]></A>', True)",
+                        "('<DIV>  divisor is 2  </DIV>', True)",
+                        "('<A><![CDATA[>]]><![CDATA[>]]></A>', True)",
+                        "('<A>1 < 2</A>', False)",
+                        "('<A></A >', False)",
+                        "('<A>  <A>  </A>  </A>', True)"
+                    ]
+                },
+                "body": "        result = run_is_valid(Solution, code)\n        assert_is_valid(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_valid, assert_is_valid\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncode = '<DIV>This is the first line <![CDATA[<div>]]></DIV>'\nexpected = True",
+    "playground_run": "result = run_is_valid(Solution, code)\nresult",
+    "playground_assert": "assert_is_valid(result, expected)"
+}

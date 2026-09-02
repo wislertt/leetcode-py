@@ -1,0 +1,87 @@
+{
+    "problem_name": "sequential_digits",
+    "solution_class_name": "Solution",
+    "problem_number": "1291",
+    "problem_title": "Sequential Digits",
+    "difficulty": "Medium",
+    "topics": "Enumeration",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "An integer has sequential digits if and only if each digit in the number is one more than the previous digit.\n\nReturn a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: low = 100, high = 300\nOutput: [123,234]\n```"
+            },
+            {
+                "content": "```\nInput: low = 1000, high = 13000\nOutput: [1234,2345,3456,4567,5678,6789,12345]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 10 <= low <= high <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sequential_digits",
+    "helpers_run_signature": "(solution_class: type, low: int, high: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sequential_digits(low, high)",
+    "helpers_assert_name": "sequential_digits",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sequential_digits",
+                "signature": "(self, low: int, high: int) -> list[int]",
+                "body": "        # TODO: Implement sequential_digits\n        return []"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sequential_digits, run_sequential_digits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SequentialDigits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sequential_digits",
+                "signature": "(self, low: int, high: int, expected: list[int])",
+                "parametrize": "low, high, expected",
+                "test_cases": {
+                    "list": [
+                        "(100, 300, [123, 234])",
+                        "(1000, 13000, [1234, 2345, 3456, 4567, 5678, 6789, 12345])",
+                        "(10, 1000000000, [12, 23, 34, 45, 56, 67, 78, 89, 123, 234, 345, 456, 567, 678, 789, 1234, 2345, 3456, 4567, 5678, 6789, 12345, 23456, 34567, 45678, 56789, 123456, 234567, 345678, 456789, 1234567, 2345678, 3456789, 12345678, 23456789, 123456789])",
+                        "(58, 66, [])",
+                        "(123, 123, [123])",
+                        "(10, 23, [12, 23])",
+                        "(6789, 6790, [6789])",
+                        "(123456789, 999999999, [123456789])",
+                        "(100, 122, [])",
+                        "(10000, 99999, [12345, 23456, 34567, 45678, 56789])",
+                        "(124, 122, [])",
+                        "(90, 125, [123])"
+                    ]
+                },
+                "body": "        result = run_sequential_digits(Solution, low, high)\n        assert_sequential_digits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sequential_digits, assert_sequential_digits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlow = 100\nhigh = 300\nexpected = [123, 234]",
+    "playground_run": "result = run_sequential_digits(Solution, low, high)\nresult",
+    "playground_assert": "assert_sequential_digits(result, expected)"
+}

@@ -1,0 +1,90 @@
+{
+    "problem_name": "delete_node_in_a_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "237",
+    "problem_title": "Delete Node in a Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a singly-linked list `head` and we want to delete a node `node` in it.\n\nYou are given the node to be deleted `node`. You will **not be given access** to the first node of `head`.\n\nAll the values of the linked list are **unique**, and it is guaranteed that the given node `node` is not the last node in the linked list.\n\nDelete the given node. Note that by deleting the node, we do not mean removing it from memory. We mean:\n\n- The value of the given node should not exist in the linked list.\n- The number of nodes in the linked list should decrease by one.\n- All the values before `node` should be in the same order.\n- All the values after `node` should be in the same order.\n\n**Custom testing:**\n\n- For the input, you should provide the entire linked list `head` and the node to be given `node`. `node` should not be the last node of the list and should be an actual node in the list.\n- We will build the linked list and pass the node to your function.\n- The output will be the entire list after calling your function.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/01/node1.jpg)\n\n```\nInput: head = [4,5,1,9], node = 5\nOutput: [4,1,9]\nExplanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/09/01/node2.jpg)\n\n```\nInput: head = [4,5,1,9], node = 1\nOutput: [4,5,9]\nExplanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of the nodes in the given list is in the range `[2, 1000]`.\n- `-1000 <= Node.val <= 1000`\n- The value of each node in the list is **unique**.\n- The `node` to be deleted is **in the list** and is **not a tail** node.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "delete_node",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int], node_val: int)",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    assert head is not None\n    target: ListNode[int] | None = head\n    while target is not None and target.val != node_val:\n        target = target.next\n    assert target is not None\n    implementation = solution_class()\n    implementation.delete_node(target)\n    return head.to_list()",
+    "helpers_assert_name": "delete_node",
+    "helpers_assert_signature": "(result: list[int], expected_list: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected_list\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_delete_node, run_delete_node\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DeleteNodeInALinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "delete_node",
+                "signature": "(self, node: ListNode[int]) -> None",
+                "body": "        # TODO: Implement delete_node\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_delete_node",
+                "signature": "(self, head_list: list[int], node_val: int, expected_list: list[int])",
+                "parametrize": "head_list, node_val, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([4, 5, 1, 9], 5, [4, 1, 9])",
+                        "([4, 5, 1, 9], 1, [4, 5, 9])",
+                        "([1, 2], 1, [2])",
+                        "([1, 2, 4], 2, [1, 4])",
+                        "([0, 1], 0, [1])",
+                        "([2, 4, 3], 4, [2, 3])",
+                        "([10, 20, 30, 40], 20, [10, 30, 40])",
+                        "([-1, -2, -3], -2, [-1, -3])",
+                        "([100, -100, 0], -100, [100, 0])",
+                        "([1, 2, 3, 4, 5], 4, [1, 2, 3, 5])",
+                        "([5, 1, 9], 1, [5, 9])",
+                        "([3, 6, 2, 8, 7], 8, [3, 6, 2, 7])",
+                        "([-1000, 1000], -1000, [1000])",
+                        "([0, -3, 9, -7, 4], -7, [0, -3, 9, 4])",
+                        "([1, 3, 5, 7, 9, 11], 7, [1, 3, 5, 9, 11])"
+                    ]
+                },
+                "body": "        result = run_delete_node(Solution, head_list, node_val)\n        assert_delete_node(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_delete_node, assert_delete_node\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list: list[int] = [4, 5, 1, 9]\nnode_val = 5\nexpected_list = [4, 1, 9]",
+    "playground_run": "result = run_delete_node(Solution, head_list, node_val)\nresult",
+    "playground_assert": "assert_delete_node(result, expected_list)"
+}

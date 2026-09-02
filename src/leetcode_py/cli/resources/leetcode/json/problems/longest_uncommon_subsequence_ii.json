@@ -1,0 +1,93 @@
+{
+    "problem_name": "longest_uncommon_subsequence_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "522",
+    "problem_title": "Longest Uncommon Subsequence II",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Two Pointers, String, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of strings <code>strs</code>, return <em>the length of the <strong>longest uncommon subsequence</strong> between them</em>. If the longest uncommon subsequence does not exist, return <code>-1</code>.\n\nAn <strong>uncommon subsequence</strong> between an array of strings is a string that is a <strong>subsequence of one string but not the others</strong>.\n\nA <strong>subsequence</strong> of a string <code>s</code> is a string that can be obtained after deleting any number of characters from <code>s</code>.\n\n<ul>\n<li>For example, <code>&quot;abc&quot;</code> is a subsequence of <code>&quot;aebdc&quot;</code> because you can delete the underlined characters in <code>&quot;a<u>e</u>b<u>d</u>c&quot;</code> to get <code>&quot;abc&quot;</code>. Other subsequences of <code>&quot;aebdc&quot;</code> include <code>&quot;aebdc&quot;</code>, <code>&quot;aeb&quot;</code>, and <code>&quot;&quot;</code> (empty string).</li>\n</ul>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: strs = [\"aba\",\"cdc\",\"eae\"]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: strs = [\"aaa\",\"aaa\",\"aa\"]\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= strs.length <= 50\n- 1 <= strs[i].length <= 10\n- strs[i] consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_lus_length",
+    "helpers_run_signature": "(solution_class: type, strs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_lus_length(strs)",
+    "helpers_assert_name": "find_lus_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_lus_length, run_find_lus_length\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestUncommonSubsequenceII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_lus_length",
+                "signature": "(self, strs: list[str]) -> int",
+                "body": "        # TODO: Implement find_lus_length\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_lus_length",
+                "signature": "(self, strs: list[str], expected: int)",
+                "parametrize": "strs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['aba', 'cdc', 'eae'], 3)",
+                        "(['aaa', 'aaa', 'aa'], -1)",
+                        "(['a', 'b'], 1)",
+                        "(['a', 'a'], -1)",
+                        "(['abc', 'abd', 'cdcd'], 4)",
+                        "(['abcd', 'abc'], 4)",
+                        "(['abc', 'abc'], -1)",
+                        "(['ab', 'ba', 'abc'], 3)",
+                        "(['aabbcc', 'aabbcc'], -1)",
+                        "(['aa', 'aaa', 'aaaa'], 4)",
+                        "(['xyz', 'abc'], 3)",
+                        "(['m', 'm', 'm'], -1)",
+                        "(['abcde', 'abcd', 'abc'], 5)",
+                        "(['ab', 'cd', 'abcd'], 4)",
+                        "(['abc', 'abc', 'abd'], 3)",
+                        "(['bc', 'a'], 2)",
+                        "(['ca', 'c', 'cccb', 'abc'], 4)",
+                        "(['b', 'acbb'], 4)"
+                    ]
+                },
+                "body": "        result = run_find_lus_length(Solution, strs)\n        assert_find_lus_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_lus_length, assert_find_lus_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstrs = ['aba', 'cdc', 'eae']\nexpected = 3",
+    "playground_run": "result = run_find_lus_length(Solution, strs)\nresult",
+    "playground_assert": "assert_find_lus_length(result, expected)"
+}

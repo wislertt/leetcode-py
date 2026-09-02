@@ -1,0 +1,106 @@
+{
+    "problem_name": "sentence_similarity_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "1813",
+    "problem_title": "Sentence Similarity III",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, String",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two strings `sentence1` and `sentence2`, each representing a **sentence** composed of words. A sentence is a list of **words** that are separated by a **single** space with no leading or trailing spaces. Each word consists of only uppercase and lowercase English characters.\n\nTwo sentences `s1` and `s2` are considered **similar** if it is possible to insert an arbitrary sentence (*possibly empty*) inside one of these sentences such that the two sentences become equal. **Note** that the inserted sentence must be separated from existing words by spaces.\n\nFor example,\n\n- `s1 = \"Hello Jane\"` and `s2 = \"Hello my name is Jane\"` can be made equal by inserting `\"my name is\"` between `\"Hello\"` and `\"Jane\"` in `s1`.\n- `s1 = \"Frog cool\"` and `s2 = \"Frogs are cool\"` are **not** similar, since although there is a sentence `\"s are\"` inserted into `s1`, it is not separated from `\"Frog\"` by a space.\n\nGiven two sentences `sentence1` and `sentence2`, return `true` if `sentence1` and `sentence2` are similar. Otherwise, return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sentence1 = \"My name is Haley\", sentence2 = \"My Haley\"\nOutput: true\n```\n\nsentence2 can be turned to sentence1 by inserting \"name is\" between \"My\" and \"Haley\"."
+            },
+            {
+                "content": "```\nInput: sentence1 = \"of\", sentence2 = \"A lot of words\"\nOutput: false\n```\n\nNo single sentence can be inserted inside one of the sentences to make it equal to the other."
+            },
+            {
+                "content": "```\nInput: sentence1 = \"Eating right now\", sentence2 = \"Eating\"\nOutput: true\n```\n\nsentence2 can be turned to sentence1 by inserting \"right now\" at the end of the sentence."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= sentence1.length, sentence2.length <= 100\n- sentence1 and sentence2 consist of lowercase and uppercase English letters and spaces.\n- The words in sentence1 and sentence2 are separated by a single space.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "are_sentences_similar",
+    "helpers_run_signature": "(solution_class: type, sentence1: str, sentence2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.are_sentences_similar(sentence1, sentence2)",
+    "helpers_assert_name": "are_sentences_similar",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_are_sentences_similar, run_are_sentences_similar\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SentenceSimilarityIii",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "are_sentences_similar",
+                "signature": "(self, sentence1: str, sentence2: str) -> bool",
+                "body": "        # TODO: Implement are_sentences_similar\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_are_sentences_similar",
+                "signature": "(self, sentence1: str, sentence2: str, expected: bool)",
+                "parametrize": "sentence1, sentence2, expected",
+                "test_cases": {
+                    "list": [
+                        "('My name is Haley', 'My Haley', True)",
+                        "('of', 'A lot of words', False)",
+                        "('Eating right now', 'Eating', True)",
+                        "('Hello Jane', 'Hello my name is Jane', True)",
+                        "('Frog cool', 'Frogs are cool', False)",
+                        "('a', 'a', True)",
+                        "('a', 'b', False)",
+                        "('A', 'a', False)",
+                        "('one two three', 'one three', True)",
+                        "('one two three four', 'one three four', True)",
+                        "('here', 'long sentence here', True)",
+                        "('x y z', 'y z x', False)",
+                        "('b b', 'b', True)",
+                        "('a b c', 'a a b c', True)",
+                        "('Cauldron is so cool', 'Cauldron', True)",
+                        "('C', 'C', True)",
+                        "('alpha beta gamma', 'alpha', True)",
+                        "('big red', 'big red', True)",
+                        "('start mid end', 'start end', True)",
+                        "('p q r s', 'p r s', True)",
+                        "('a x b y c', 'a b c', False)",
+                        "('ab', 'a b', False)",
+                        "('one two', 'two one', False)",
+                        "('ca ab b abc', 'b ca bc b c b', False)",
+                        "('c ca ab', 'b b ca ab', False)",
+                        "('ca a ca ca ab a', 'a abc b a bc abc', False)",
+                        "('abc abc c bc', 'abc ca', False)",
+                        "('a bc a abc', 'bc ca a ca', False)"
+                    ]
+                },
+                "body": "        result = run_are_sentences_similar(Solution, sentence1, sentence2)\n        assert_are_sentences_similar(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_are_sentences_similar, assert_are_sentences_similar\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsentence1 = 'My name is Haley'\nsentence2 = 'My Haley'\nexpected = True",
+    "playground_run": "result = run_are_sentences_similar(Solution, sentence1, sentence2)\nresult",
+    "playground_assert": "assert_are_sentences_similar(result, expected)"
+}

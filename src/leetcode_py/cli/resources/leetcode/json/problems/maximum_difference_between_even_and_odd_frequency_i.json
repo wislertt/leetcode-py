@@ -1,0 +1,101 @@
+{
+    "problem_name": "maximum_difference_between_even_and_odd_frequency_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3442",
+    "problem_title": "Maximum Difference Between Even and Odd Frequency I",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` consisting of lowercase English letters.\n\nYour task is to find the **maximum** difference `diff = freq(a1) - freq(a2)` between the frequency of characters `a1` and `a2` in the string such that:\n\n- `a1` has an **odd frequency** in the string.\n- `a2` has an **even frequency** in the string.\n\nReturn this **maximum** difference.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aaaaabbc\"\nOutput: 3\nExplanation: The character 'a' has an odd frequency of 5, and 'b' has an even frequency of 2.\nThe maximum difference is 5 - 2 = 3.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcabcab\"\nOutput: 1\nExplanation: The character 'a' has an odd frequency of 3, and 'c' has an even frequency of 2.\nThe maximum difference is 3 - 2 = 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= s.length <= 100`\n- `s` consists only of lowercase English letters.\n- `s` contains at least one character with an odd frequency and one with an even frequency.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_difference",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_difference(s)",
+    "helpers_assert_name": "max_difference",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_difference, run_max_difference\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumDifferenceBetweenEvenAndOddFrequencyI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_difference",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement max_difference\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_difference",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aaaaabbc', 3)",
+                        "('abcabcab', 1)",
+                        "('aabbb', 1)",
+                        "('zzzyyxxx', 1)",
+                        "('mmnnooopp', 1)",
+                        "('aaabbccc', 1)",
+                        "('abcc', -1)",
+                        "('aabbcd', -1)",
+                        "('aaaab', -3)",
+                        "('aab', -1)",
+                        "('abbcc', -1)",
+                        "('qqqrss', 1)",
+                        "('xxyyzzz', 1)",
+                        "('eeeffggg', 1)",
+                        "('tttuuuvvvv', -1)",
+                        "('hhiiijjj', 1)",
+                        "('abbaaababbabaabbbbbbb', 5)",
+                        "('ceaeaaaebbbbedbecccedee', 3)",
+                        "('cbabcbabacacabcaaa', -3)",
+                        "('ccddacbdddbbdabacdbbaa', 3)",
+                        "('abacabedceceac', 1)",
+                        "('ddbcacbbbebdabcee', 1)",
+                        "('abaaaabaa', 5)",
+                        "('cbc', -1)",
+                        "('abbcbacbcabccababcbab', 3)",
+                        "('bbbabcbabacc', -3)"
+                    ]
+                },
+                "body": "        result = run_max_difference(Solution, s)\n        assert_max_difference(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_difference, assert_max_difference\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aaaaabbc'\nexpected = 3",
+    "playground_run": "result = run_max_difference(Solution, s)\nresult",
+    "playground_assert": "assert_max_difference(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "synonymous_sentences",
+    "solution_class_name": "Solution",
+    "problem_number": "1258",
+    "problem_title": "Synonymous Sentences",
+    "difficulty": "Medium",
+    "topics": "Sort, Union Find, Array, Hash Table, String, Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a list of equivalent string pairs `synonyms` where `synonyms[i] = [s<sub>i</sub>, t<sub>i</sub>]` indicates that `s<sub>i</sub>` and `t<sub>i</sub>` are equivalent strings. You are also given a sentence `text`.\n\nReturn all possible synonymous sentences **sorted lexicographically**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: synonyms = [[\"happy\",\"joy\"],[\"sad\",\"sorrow\"],[\"joy\",\"cheerful\"]], text = \"I am happy today but was sad yesterday\"\nOutput: [\"I am cheerful today but was sad yesterday\",\"I am cheerful today but was sorrow yesterday\",\"I am happy today but was sad yesterday\",\"I am happy today but was sorrow yesterday\",\"I am joy today but was sad yesterday\",\"I am joy today but was sorrow yesterday\"]\nExplanation: From the synonyms, happy, joy and cheerful are equivalent, and sad and sorrow are equivalent. Replacing each synonymous word independently gives 2 * 3 = 6 sentences.\n```"
+            },
+            {
+                "content": "```\nInput: synonyms = [[\"happy\",\"joy\"],[\"cheerful\",\"glad\"]], text = \"I am happy today but was sad yesterday\"\nOutput: [\"I am happy today but was sad yesterday\",\"I am joy today but was sad yesterday\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= synonyms.length <= 10`\n- `synonyms[i].length == 2`\n- `1 <= s<sub>i</sub>.length, t<sub>i</sub>.length <= 10`\n- `s<sub>i</sub> != t<sub>i</sub>`\n- `text` consists of at most `10` words.\n- All the pairs of `synonyms` are **unique**.\n- The words of `text` are separated by single spaces.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "generate_sentences",
+    "helpers_run_signature": "(solution_class: type, synonyms: list[list[str]], text: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.generate_sentences(synonyms, text)",
+    "helpers_assert_name": "generate_sentences",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_generate_sentences, run_generate_sentences\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SynonymousSentences",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "generate_sentences",
+                "signature": "(self, synonyms: list[list[str]], text: str) -> list[str]",
+                "body": "        # TODO: Implement generate_sentences\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_generate_sentences",
+                "signature": "(self, synonyms: list[list[str]], text: str, expected: list[str])",
+                "parametrize": "synonyms, text, expected",
+                "test_cases": {
+                    "list": [
+                        "([['a','b'],['c','d'],['b','e']],'a c',['a c','a d','b c','b d','e c','e d'])",
+                        "([['a', 'b'], ['c', 'd']], 'a c', ['a c', 'a d', 'b c', 'b d'])",
+                        "([], 'a b', ['a b'])",
+                        "([['a', 'b']], 'a', ['a', 'b'])",
+                        "([['a', 'b'], ['b', 'c'], ['c', 'd']], 'a x', ['a x', 'b x', 'c x', 'd x'])",
+                        "([['a', 'b']], 'z a z', ['z a z', 'z b z'])",
+                        "([['a', 'b']], 'a a', ['a a', 'a b', 'b a', 'b b'])",
+                        "([['A', 'b']], 'A b', ['A A', 'A b', 'b A', 'b b'])",
+                        "([['a', 'b']], 'c d', ['c d'])",
+                        "([['a', 'b'], ['b', 'c'], ['c', 'd'], ['d', 'e']], 'a', ['a', 'b', 'c', 'd', 'e'])",
+                        "([['a', 'b'], ['c', 'd'], ['e', 'f']], 'a', ['a', 'b'])",
+                        "([['big', 'large'], ['small', 'tiny']], 'big', ['big', 'large'])",
+                        "([['x', 'y']], 'a b c x y', ['a b c x x', 'a b c x y', 'a b c y x', 'a b c y y'])",
+                        "([['m', 'n'], ['o', 'p']], 'n o', ['m o', 'm p', 'n o', 'n p'])",
+                        "([['a', 'b'], ['a', 'c']], 'b x', ['a x', 'b x', 'c x'])",
+                        "([['a', 'b'], ['c', 'd']], 'a c z', ['a c z', 'a d z', 'b c z', 'b d z'])",
+                        "([['a', 'b'], ['c', 'b']], 'c z', ['a z', 'b z', 'c z'])",
+                        "([['one', 'uno']], 'one x', ['one x', 'uno x'])",
+                        "([['ab', 'cd'], ['ef', 'gh']], 'ab ef', ['ab ef', 'ab gh', 'cd ef', 'cd gh'])",
+                        "([['happy', 'joy']], 'happy today sad', ['happy today sad', 'joy today sad'])"
+                    ]
+                },
+                "body": "        result = run_generate_sentences(Solution, synonyms, text)\n        assert_generate_sentences(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_generate_sentences, assert_generate_sentences\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsynonyms = [['happy', 'joy'], ['sad', 'sorrow'], ['joy', 'cheerful']]\ntext = 'happy sad'\nexpected = [\n    'cheerful sad',\n    'cheerful sorrow',\n    'happy sad',\n    'happy sorrow',\n    'joy sad',\n    'joy sorrow',\n]",
+    "playground_run": "result = run_generate_sentences(Solution, synonyms, text)\nresult",
+    "playground_assert": "assert_generate_sentences(result, expected)"
+}

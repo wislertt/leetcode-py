@@ -1,0 +1,98 @@
+{
+    "problem_name": "time_needed_to_inform_all_employees",
+    "solution_class_name": "Solution",
+    "problem_number": "1376",
+    "problem_title": "Time Needed to Inform All Employees",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A company has `n` employees with a unique ID for each employee from `0` to `n - 1`. The head of the company is the one with `headID`.\n\nEach employee has one direct manager given in the `manager` array where `manager[i]` is the direct manager of the `i-th` employee, `manager[headID] = -1`. Also, it is guaranteed that the subordination relationships have a tree structure.\n\nThe head of the company wants to inform all the company employees of an urgent piece of news. He will inform his direct subordinates, and they will inform their subordinates, and so on until all employees know about the urgent news.\n\nThe `i-th` employee needs `informTime[i]` minutes to inform all of his direct subordinates (i.e., After informTime[i] minutes, all his direct subordinates can start spreading the news).\n\nReturn *the number of minutes* needed to inform all the employees about the urgent news.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1, headID = 0, manager = [-1], informTime = [0]\nOutput: 0\n```\n**Explanation:** The head of the company is the only employee in the company."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/02/27/graph.png)\n\n```\nInput: n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]\nOutput: 1\n```\n**Explanation:** The head of the company with id = 2 is the direct manager of all the employees in the company and needs 1 minute to inform them all. The tree structure of the employees in the company is shown."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 10^5`\n- `0 <= headID < n`\n- `manager.length == n`\n- `0 <= manager[i] < n`\n- `manager[headID] == -1`\n- `informTime.length == n`\n- `0 <= informTime[i] <= 1000`\n- `informTime[i] == 0` if employee `i` has no subordinates.\n- It is **guaranteed** that all the employees can be informed.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_of_minutes",
+    "helpers_run_signature": "(solution_class: type, n: int, head_id: int, manager: list[int], inform_time: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_of_minutes(n, head_id, manager, inform_time)",
+    "helpers_assert_name": "num_of_minutes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_of_minutes, run_num_of_minutes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TimeNeededToInformAllEmployees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_of_minutes",
+                "signature": "(self, n: int, head_id: int, manager: list[int], inform_time: list[int]) -> int",
+                "body": "        # TODO: Implement num_of_minutes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_of_minutes",
+                "signature": "(self, n: int, head_id: int, manager: list[int], inform_time: list[int], expected: int)",
+                "parametrize": "n, head_id, manager, inform_time, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 0, [-1], [0], 0)",
+                        "(6, 2, [2, 2, -1, 2, 2, 2], [0, 0, 1, 0, 0, 0], 1)",
+                        "(2, 0, [-1, 0], [0, 0], 0)",
+                        "(4, 0, [-1, 0, 1, 2], [1, 2, 3, 0], 6)",
+                        "(5, 0, [-1, 0, 0, 1, 1], [2, 3, 0, 0, 0], 5)",
+                        "(4, 1, [1, -1, 1, 1], [0, 5, 0, 0], 5)",
+                        "(6, 0, [-1, 0, 1, 2, 3, 4], [1, 2, 3, 4, 5, 0], 15)",
+                        "(7, 3, [3, 3, 3, -1, 3, 4, 4], [0, 0, 0, 4, 2, 0, 0], 6)",
+                        "(8, 0, [-1, 0, 0, 1, 1, 2, 2, 5], [3, 1, 2, 0, 0, 4, 0, 0], 9)",
+                        "(9, 4, [4, 4, 0, 0, -1, 1, 1, 2, 2], [5, 3, 2, 0, 1, 0, 0, 0, 0], 8)",
+                        "(10, 5, [5, 5, 5, 0, 0, -1, 3, 3, 4, 4], [2, 0, 0, 4, 0, 3, 0, 0, 0, 0], 9)",
+                        "(11,2,[2,2,-1,0,0,1,1,3,5,5,6],[4,2,1,3,0,0,0,0,0,0,0],8)",
+                        "(9, 7, [7, 0, 1, 7, 7, 3, 1, -1, 1], [6, 0, 0, 3, 0, 0, 0, 5, 0], 11)",
+                        "(5, 4, [4, 4, 1, 1, -1], [0, 4, 0, 0, 6], 10)",
+                        "(4, 3, [3, 0, 3, -1], [4, 0, 0, 3], 7)",
+                        "(5, 0, [-1, 0, 0, 0, 0], [1, 0, 0, 0, 0], 1)",
+                        "(8, 2, [2, 0, -1, 0, 1, 2, 3, 4], [6, 6, 2, 3, 3, 0, 0, 0], 17)",
+                        "(11,5,[5,0,1,2,3,-1,2,2,6,6,7],[1,5,8,6,0,4,3,8,0,0,0],26)",
+                        "(2, 0, [-1, 0], [6, 0], 6)",
+                        "(9, 2, [2, 2, -1, 1, 0, 1, 2, 0, 4], [8, 0, 5, 0, 2, 0, 0, 0, 0], 15)",
+                        "(12,6,[6,0,6,2,6,6,-1,3,7,1,9,8],[1,9,4,1,0,0,0,8,1,3,0,0],14)",
+                        "(7, 2, [2, 2, -1, 2, 0, 2, 0], [8, 0, 2, 0, 0, 0, 0], 10)",
+                        "(40,0,[-1,0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,15,16,16,17,17,18,18,19],[0,7,14,21,28,35,42,49,56,63,70,77,84,91,98,105,112,119,126,133,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],231)"
+                    ]
+                },
+                "body": "        result = run_num_of_minutes(Solution, n, head_id, manager, inform_time)\n        assert_num_of_minutes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_of_minutes, assert_num_of_minutes\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 6\nhead_id = 2\nmanager = [2, 2, -1, 2, 2, 2]\ninform_time = [0, 0, 1, 0, 0, 0]\nexpected = 1",
+    "playground_run": "result = run_num_of_minutes(Solution, n, head_id, manager, inform_time)\nresult",
+    "playground_assert": "assert_num_of_minutes(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "fraction_to_recurring_decimal",
+    "solution_class_name": "Solution",
+    "problem_number": "166",
+    "problem_title": "Fraction to Recurring Decimal",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.\n\nIf the fractional part is repeating, enclose the repeating part in parentheses.\n\nIf multiple answers are possible, return any of them.\n\nIt is guaranteed that the length of the answer string is less than 10^4 for all the given inputs.\n\nNote that if the fraction can be represented as a finite length string, you must return it.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: numerator = 1, denominator = 2\nOutput: \"0.5\"\n```"
+            },
+            {
+                "content": "```\nInput: numerator = 2, denominator = 1\nOutput: \"2\"\n```"
+            },
+            {
+                "content": "```\nInput: numerator = 4, denominator = 333\nOutput: \"0.(012)\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= numerator, denominator <= 2^31 - 1\n- denominator != 0",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "fraction_to_decimal",
+    "helpers_run_signature": "(solution_class: type, numerator: int, denominator: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.fraction_to_decimal(numerator, denominator)",
+    "helpers_assert_name": "fraction_to_decimal",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_fraction_to_decimal, run_fraction_to_decimal\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FractionToRecurringDecimal",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "fraction_to_decimal",
+                "signature": "(self, numerator: int, denominator: int) -> str",
+                "body": "        # TODO: Implement fraction_to_decimal\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_fraction_to_decimal",
+                "signature": "(self, numerator: int, denominator: int, expected: str)",
+                "parametrize": "numerator, denominator, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2, '0.5')",
+                        "(2, 1, '2')",
+                        "(4, 333, '0.(012)')",
+                        "(1, 3, '0.(3)')",
+                        "(2, 3, '0.(6)')",
+                        "(1, 6, '0.1(6)')",
+                        "(22, 7, '3.(142857)')",
+                        "(100, 3, '33.(3)')",
+                        "(1, 90, '0.0(1)')",
+                        "(-1, 2, '-0.5')",
+                        "(-1, 3, '-0.(3)')",
+                        "(-50, 8, '-6.25')",
+                        "(7, -12, '-0.58(3)')",
+                        "(0, 3, '0')",
+                        "(0, -5, '0')",
+                        "(-2147483648, -1, '2147483648')",
+                        "(-2147483648, 1, '-2147483648')",
+                        "(1, -2147483648, '-0.0000000004656612873077392578125')",
+                        "(-7, 14, '-0.5')",
+                        "(5, 4, '1.25')"
+                    ]
+                },
+                "body": "        result = run_fraction_to_decimal(Solution, numerator, denominator)\n        assert_fraction_to_decimal(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_fraction_to_decimal, assert_fraction_to_decimal\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnumerator = 4\ndenominator = 333\nexpected = '0.(012)'",
+    "playground_run": "result = run_fraction_to_decimal(Solution, numerator, denominator)\nresult",
+    "playground_assert": "assert_fraction_to_decimal(result, expected)"
+}

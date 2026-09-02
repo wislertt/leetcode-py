@@ -1,0 +1,93 @@
+{
+    "problem_name": "permutation_sequence",
+    "solution_class_name": "Solution",
+    "problem_number": "60",
+    "problem_title": "Permutation Sequence",
+    "difficulty": "Hard",
+    "topics": "Math, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The set `[1, 2, 3, ..., n]` contains a total of `n!` unique permutations.\n\nBy listing and labeling all of the permutations in order, we get the following sequence for `n = 3`:\n\n- `\"123\"`\n- `\"132\"`\n- `\"213\"`\n- `\"231\"`\n- `\"312\"`\n- `\"321\"`\n\nGiven `n` and `k`, return the `kth` permutation sequence.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: Input: n = 3, k = 3\nOutput: \"213\"\n```"
+            },
+            {
+                "content": "```\nInput: Input: n = 4, k = 9\nOutput: \"2314\"\n```"
+            },
+            {
+                "content": "```\nInput: Input: n = 3, k = 1\nOutput: \"123\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 9`\n- `1 <= k <= n!`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_permutation",
+    "helpers_run_signature": "(solution_class: type, n: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_permutation(n, k)",
+    "helpers_assert_name": "get_permutation",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_permutation, run_get_permutation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PermutationSequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_permutation",
+                "signature": "(self, n: int, k: int) -> str",
+                "body": "        # TODO: Implement get_permutation\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_permutation",
+                "signature": "(self, n: int, k: int, expected: str)",
+                "parametrize": "n, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(3, 3, '213')",
+                        "(4, 9, '2314')",
+                        "(3, 1, '123')",
+                        "(1, 1, '1')",
+                        "(2, 1, '12')",
+                        "(2, 2, '21')",
+                        "(3, 6, '321')",
+                        "(4, 1, '1234')",
+                        "(4, 24, '4321')",
+                        "(5, 42, '24531')",
+                        "(6, 400, '425361')",
+                        "(7, 500, '1627354')",
+                        "(8, 7777, '25781346')",
+                        "(9, 1, '123456789')",
+                        "(9, 362880, '987654321')",
+                        "(9, 2143, '125984367')"
+                    ]
+                },
+                "body": "        result = run_get_permutation(Solution, n, k)\n        assert_get_permutation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_permutation, assert_get_permutation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nk = 3\nexpected = '213'",
+    "playground_run": "result = run_get_permutation(Solution, n, k)\nresult",
+    "playground_assert": "assert_get_permutation(result, expected)"
+}

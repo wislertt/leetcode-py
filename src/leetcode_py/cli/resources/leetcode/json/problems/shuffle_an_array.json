@@ -1,0 +1,92 @@
+{
+    "problem_name": "shuffle_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "384",
+    "problem_title": "Shuffle an Array",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Design, Randomized",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `nums`, design an algorithm to randomly shuffle the array. All permutations of the array should be **equally likely** as a result of the shuffling.\n\nImplement the `Solution` class:\n\n- `Solution(int[] nums)` Initializes the object with the integer array `nums`.\n- `int[] reset()` Resets the array to its original configuration and returns it.\n- `int[] shuffle()` Returns a random shuffling of the array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Solution\", \"shuffle\", \"reset\", \"shuffle\"]\n[[[1, 2, 3]], [], [], []]\nOutput\n[null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]\n\nExplanation\nSolution solution = new Solution([1, 2, 3]);\nsolution.shuffle();    // Shuffle the array [1,2,3] and return its result.\n                       // Any permutation of [1,2,3] must be equally likely to be returned. Example: return [3, 1, 2]\nsolution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]\nsolution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 50`\n- `-10^6 <= nums[i] <= 10^6`\n- All the elements of `nums` are **unique**.\n- At most `10^4` calls in total will be made to `reset` and `shuffle`.",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "shuffle_operations",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], operations: list[str])",
+    "helpers_run_body": "    obj: Any = None\n    results: list[list[int] | None] = []\n    for op in operations:\n        if op == 'Solution':\n            obj = solution_class(nums)\n        elif op == 'reset' and obj is not None:\n            results.append(obj.reset())\n        elif op == 'shuffle' and obj is not None:\n            results.append(obj.shuffle())\n    return results, obj",
+    "helpers_assert_name": "shuffle_operations",
+    "helpers_assert_signature": "(result: list[list[int] | None], expected: list[list[int] | None], nums: list[int]) -> bool",
+    "helpers_assert_body": "    assert len(result) == len(expected)\n    for got, exp in zip(result, expected, strict=True):\n        if exp is None:\n            assert got is not None\n            assert sorted(got) == sorted(nums)\n        else:\n            assert got == exp\n    return True",
+    "solution_imports": "import random",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shuffle_operations, run_shuffle_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShuffleAnArray",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize the original and working arrays\n        pass"
+            },
+            {
+                "name": "reset",
+                "signature": "(self) -> list[int]",
+                "body": "        # TODO: Implement reset\n        return []"
+            },
+            {
+                "name": "shuffle",
+                "signature": "(self) -> list[int]",
+                "body": "        # TODO: Implement shuffle\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shuffle_operations",
+                "signature": "(self, nums: list[int], operations: list[str], expected: list[list[int] | None])",
+                "parametrize": "nums, operations, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2], ['Solution', 'shuffle', 'reset', 'shuffle'], [None, [1, 2], None])",
+                        "([5], ['Solution', 'shuffle', 'reset', 'shuffle'], [[5], [5], [5]])",
+                        "([7], ['Solution', 'reset'], [[7]])",
+                        "([7], ['Solution', 'shuffle'], [[7]])",
+                        "([1, 2, 3], ['Solution', 'reset'], [[1, 2, 3]])",
+                        "([-1, 0, 1], ['Solution', 'reset', 'reset'], [[-1, 0, 1], [-1, 0, 1]])",
+                        "([4, 5, 6], ['Solution', 'shuffle'], [None])",
+                        "([10, 20, 30], ['Solution', 'shuffle', 'shuffle'], [None, None])",
+                        "([2, 4, 6], ['Solution', 'shuffle', 'reset'], [None, [2, 4, 6]])",
+                        "([3, 1, 2], ['Solution', 'shuffle', 'reset'], [None, [3, 1, 2]])",
+                        "([-3, 0, 7], ['Solution', 'reset', 'shuffle'], [[-3, 0, 7], None])",
+                        "([1, 2, 3, 4], ['Solution', 'shuffle', 'reset'], [None, [1, 2, 3, 4]])",
+                        "([9, 8, 7], ['Solution', 'shuffle', 'reset'], [None, [9, 8, 7]])",
+                        "([-5, 5], ['Solution', 'shuffle', 'reset'], [None, [-5, 5]])",
+                        "([-99999, 99999], ['Solution', 'shuffle', 'reset'], [None, [-99999, 99999]])",
+                        "([0, -2, 8], ['Solution', 'reset', 'shuffle'], [[0, -2, 8], None])"
+                    ]
+                },
+                "body": "        result, _ = run_shuffle_operations(Solution, nums, operations)\n        assert_shuffle_operations(result, expected, nums)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_shuffle_operations, run_shuffle_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3]\noperations = ['Solution', 'shuffle', 'reset', 'shuffle']\nexpected = [None, [1, 2, 3], None]",
+    "playground_run": "result, obj = run_shuffle_operations(Solution, nums, operations)\nprint(result)\nobj",
+    "playground_assert": "assert_shuffle_operations(result, expected, nums)"
+}

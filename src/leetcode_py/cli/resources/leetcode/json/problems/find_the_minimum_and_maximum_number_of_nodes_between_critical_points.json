@@ -1,0 +1,100 @@
+{
+    "problem_name": "find_the_minimum_and_maximum_number_of_nodes_between_critical_points",
+    "solution_class_name": "Solution",
+    "problem_number": "2058",
+    "problem_title": "Find the Minimum and Maximum Number of Nodes Between Critical Points",
+    "difficulty": "Medium",
+    "topics": "Linked List",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "A **critical point** in a linked list is defined as **either** a **local maxima** or a **local minima**.\n\nA node is a **local maxima** if the current node has a value **strictly greater** than the previous node and the next node.\n\nA node is a **local minima** if the current node has a value **strictly smaller** than the previous node and the next node.\n\nNote that a node can only be a local maxima/minima if there exists **both** a previous node and a next node.\n\nGiven a linked list `head`, return *an array of length 2 containing* `[minDistance, maxDistance]` *where* `minDistance` *is the* ***minimum distance*** *between* ***any two distinct*** *critical points and* `maxDistance` *is the* ***maximum distance*** *between* ***any two distinct*** *critical points. If there are* ***fewer*** *than two critical points, return* `[-1, -1]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/10/13/a1.png)\n\n```\nInput: head = [3,1]\nOutput: [-1,-1]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/10/13/a2.png)\n\n```\nInput: head = [5,3,1,2,5,1,2]\nOutput: [1,3]\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/10/14/a5.png)\n\n```\nInput: head = [1,3,2,2,3,2,2,2,7]\nOutput: [3,3]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is in the range `[2, 10^5]`.\n- `1 <= Node.val <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "nodes_between_critical_points",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.nodes_between_critical_points(head)",
+    "helpers_assert_name": "nodes_between_critical_points",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_nodes_between_critical_points, run_nodes_between_critical_points\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheMinimumAndMaximumNumberOfNodesBetweenCriticalPoints",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "nodes_between_critical_points",
+                "signature": "(self, head: ListNode[int] | None) -> list[int]",
+                "body": "        # TODO: Implement nodes_between_critical_points\n        return [-1, -1]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_nodes_between_critical_points",
+                "signature": "(self, head_list: list[int], expected: list[int])",
+                "parametrize": "head_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 1], [-1, -1])",
+                        "([5, 3, 1, 2, 5, 1, 2], [1, 3])",
+                        "([1, 3, 2, 2, 3, 2, 2, 2, 7], [3, 3])",
+                        "([1, 2], [-1, -1])",
+                        "([2, 1], [-1, -1])",
+                        "([1, 2, 1], [-1, -1])",
+                        "([2, 1, 2], [-1, -1])",
+                        "([1, 3, 2], [-1, -1])",
+                        "([5, 5, 5], [-1, -1])",
+                        "([1, 2, 3, 4, 5], [-1, -1])",
+                        "([5, 4, 3, 2, 1], [-1, -1])",
+                        "([1, 2, 2, 1], [-1, -1])",
+                        "([1, 2, 1, 2, 1, 2, 1], [1, 4])",
+                        "([1, 5, 1, 5, 1, 5, 1, 5, 1], [1, 6])",
+                        "([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5], [1, 8])",
+                        "([2, 2, 2, 3, 3, 3, 2, 2, 2], [-1, -1])",
+                        "([4, 2, 6, 1, 7, 3, 8, 2, 9, 1], [1, 7])",
+                        "([1, 1, 4, 2], [-1, -1])",
+                        "([2, 2, 5, 4, 3, 5, 4], [1, 3])",
+                        "([2, 4, 1, 5, 3, 1, 4, 3, 1], [1, 5])",
+                        "([2, 5, 3, 1, 2, 4, 5], [2, 2])",
+                        "([4, 3, 3, 2, 4, 1, 2, 3, 1, 3, 4], [1, 5])"
+                    ]
+                },
+                "body": "        result = run_nodes_between_critical_points(Solution, head_list)\n        assert_nodes_between_critical_points(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_nodes_between_critical_points, assert_nodes_between_critical_points\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list = [5, 3, 1, 2, 5, 1, 2]\nexpected = [1, 3]",
+    "playground_run": "result = run_nodes_between_critical_points(Solution, head_list)\nresult",
+    "playground_assert": "assert_nodes_between_critical_points(result, expected)"
+}

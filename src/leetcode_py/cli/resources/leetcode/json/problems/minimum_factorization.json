@@ -1,0 +1,89 @@
+{
+    "problem_name": "minimum_factorization",
+    "solution_class_name": "Solution",
+    "problem_number": "625",
+    "problem_title": "Minimum Factorization",
+    "difficulty": "Medium",
+    "topics": "Greedy, Math, Prime Factorization",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a positive integer `num`, return the smallest positive integer `x` whose multiplication of each digit equals `num`. If there is no answer or the answer is not fit in **32-bit** signed integer, return `0`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = 48\nOutput: 68\n```"
+            },
+            {
+                "content": "```\nInput: num = 15\nOutput: 35\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num <= 2^31 - 1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_factorization",
+    "helpers_run_signature": "(solution_class: type, num: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.smallest_factorization(num)",
+    "helpers_assert_name": "smallest_factorization",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_factorization, run_smallest_factorization\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumFactorization",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_factorization",
+                "signature": "(self, num: int) -> int",
+                "body": "        # TODO: Implement smallest_factorization\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_factorization",
+                "signature": "(self, num: int, expected: int)",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "(48,68)",
+                        "(15,35)",
+                        "(1,1)",
+                        "(2,2)",
+                        "(9,9)",
+                        "(10,25)",
+                        "(13,0)",
+                        "(128,288)",
+                        "(300,2556)",
+                        "(720,2589)",
+                        "(1073741824,0)",
+                        "(999999937,0)",
+                        "(999999999,0)",
+                        "(2147483646,0)"
+                    ]
+                },
+                "body": "        result = run_smallest_factorization(Solution, num)\n        assert_smallest_factorization(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_factorization, assert_smallest_factorization\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = 48\nexpected = 68",
+    "playground_run": "result = run_smallest_factorization(Solution, num)\nresult",
+    "playground_assert": "assert_smallest_factorization(result, expected)"
+}

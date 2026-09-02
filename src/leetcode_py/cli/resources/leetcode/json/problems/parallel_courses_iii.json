@@ -1,0 +1,93 @@
+{
+    "problem_name": "parallel_courses_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "2050",
+    "problem_title": "Parallel Courses III",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Graph Theory, Topological Sort, Directed Acyclic Graph",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer `n`, which indicates that there are `n` courses labeled from `1` to `n`. You are also given a 2D integer array `relations` where `relations[j] = [prevCourse_j, nextCourse_j]` denotes that course `prevCourse_j` has to be completed **before** course `nextCourse_j` (prerequisite relationship). Furthermore, you are given a **0-indexed** integer array `time` where `time[i]` denotes how many **months** it takes to complete the `(i+1)th` course.\n\nYou must find the **minimum** number of months needed to complete all the courses following these rules:\n\n- You may start taking a course at **any time** if the prerequisites are met.\n- **Any number of courses** can be taken at the **same time**.\n\nReturn *the **minimum** number of months needed to complete all the courses*.\n\n**Note:** The test cases are generated such that it is possible to complete every course (i.e., the graph is a directed acyclic graph).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/10/07/ex1.png)\n\n```\nInput: n = 3, relations = [[1,3],[2,3]], time = [3,2,5]\nOutput: 8\n```\n**Explanation:** We start course 1 and course 2 simultaneously at month 0. Course 1 takes 3 months and course 2 takes 2 months to complete respectively. Thus, the earliest time we can start course 3 is at month 3, and the total time required is 3 + 5 = 8 months."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/10/07/ex2.png)\n\n```\nInput: n = 5, relations = [[1,5],[2,5],[3,5],[3,4],[4,5]], time = [1,2,3,4,5]\nOutput: 12\n```\n**Explanation:** Courses 1, 2 and 3 run in parallel and finish after 1, 2 and 3 months. Course 4 starts after course 3 and finishes at month 7. Course 5 starts at month 7 and finishes at month 12."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 5 * 10^4`\n- `0 <= relations.length <= min(n * (n - 1) / 2, 5 * 10^4)`\n- `relations[j].length == 2`\n- `1 <= prevCourse_j, nextCourse_j <= n`\n- `prevCourse_j != nextCourse_j`\n- All the pairs `[prevCourse_j, nextCourse_j]` are **unique**.\n- `time.length == n`\n- `1 <= time[i] <= 10^4`\n- The given graph is a directed acyclic graph.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_signature": "(solution_class: type, n: int, relations: list[list[int]], time: list[int])",
+    "helpers_run_name": "minimum_time",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_time(n, relations, time)",
+    "helpers_assert_name": "minimum_time",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_time, run_minimum_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ParallelCoursesIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_time",
+                "signature": "(self, n: int, relations: list[list[int]], time: list[int]) -> int",
+                "body": "        # TODO: Implement minimum_time\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_time",
+                "signature": "(self, n: int, relations: list[list[int]], time: list[int], expected: int)",
+                "parametrize": "n, relations, time, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, [], [7], 7)",
+                        "(3, [[1, 3], [2, 3]], [3, 2, 5], 8)",
+                        "(5, [[1, 5], [2, 5], [3, 5], [3, 4], [4, 5]], [1, 2, 3, 4, 5], 12)",
+                        "(2, [], [4, 9], 9)",
+                        "(3, [], [5, 1, 3], 5)",
+                        "(4, [[1, 2], [2, 3], [3, 4]], [1, 2, 3, 4], 10)",
+                        "(4, [[4, 3], [3, 2], [2, 1]], [2, 3, 4, 5], 14)",
+                        "(4, [[1, 3], [2, 3], [3, 4]], [2, 6, 1, 3], 10)",
+                        "(5, [[1, 4], [2, 4], [3, 5], [4, 5]], [3, 1, 2, 4, 2], 9)",
+                        "(6, [[1, 3], [2, 3], [3, 5], [4, 5], [5, 6]], [1, 2, 3, 4, 5, 6], 16)",
+                        "(7, [[1, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7]], [1, 2, 1, 2, 1, 2, 1], 7)",
+                        "(5, [[1, 5], [2, 5], [3, 5], [4, 5]], [10, 9, 8, 7, 1], 11)",
+                        "(6, [[5, 6], [1, 2], [1, 4]], [8, 7, 6, 1, 5, 5], 15)",
+                        "(6, [[2, 5], [1, 5], [4, 2]], [6, 10, 6, 10, 9, 5], 29)",
+                        "(2, [], [1, 10], 10)",
+                        "(4, [[2, 4], [1, 3]], [3, 5, 10, 7], 13)",
+                        "(3, [[2, 3], [1, 3]], [9, 4, 5], 14)",
+                        "(2, [], [6, 1], 6)"
+                    ]
+                },
+                "body": "        result = run_minimum_time(Solution, n, relations, time)\n        assert_minimum_time(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_time, assert_minimum_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nrelations = [[1, 3], [2, 3]]\ntime = [3, 2, 5]\nexpected = 8",
+    "playground_run": "result = run_minimum_time(Solution, n, relations, time)\nresult",
+    "playground_assert": "assert_minimum_time(result, expected)"
+}

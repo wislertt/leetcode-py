@@ -1,0 +1,98 @@
+{
+    "problem_name": "rearrange_string_k_distance_apart",
+    "solution_class_name": "Solution",
+    "problem_number": "358",
+    "problem_title": "Rearrange String k Distance Apart",
+    "difficulty": "Hard",
+    "topics": "Greedy, Hash Table, String, Counting, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string `s` and an integer `k`, rearrange `s` such that the same characters are **at least** distance `k` from each other. If it is not possible to rearrange the string, return an empty string `\"\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aabbcc\", k = 3\nOutput: \"abcabc\"\nExplanation: The same letters are at least a distance of 3 from each other.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaabc\", k = 3\nOutput: \"\"\nExplanation: It is not possible to rearrange the string.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaadbbcc\", k = 2\nOutput: \"abacabcd\"\nExplanation: The same letters are at least a distance of 2 from each other.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 3 * 10^5`\n- `s` consists of only lowercase English letters.\n- `0 <= k <= s.length`",
+    "readme_additional": "",
+    "helpers_imports": "from collections import Counter",
+    "helpers_content": "",
+    "helpers_run_name": "rearrange_string",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.rearrange_string(s, k)",
+    "helpers_assert_name": "rearrange_string",
+    "helpers_assert_signature": "(result: str, s: str, k: int) -> bool",
+    "helpers_assert_body": "    # If no valid rearrangement exists, the only correct answer is the empty string.\n    max_count = max(Counter(s).values())\n    if k > 1 and max_count > (len(s) - 1) // k + 1:\n        assert result == \"\"\n    else:\n        assert sorted(result) == sorted(s)\n        last: dict[str, int] = {}\n        for i, ch in enumerate(result):\n            assert ch not in last or i - last[ch] >= k\n            last[ch] = i\n    return True",
+    "solution_imports": "from collections import Counter, deque\nfrom heapq import heapify, heappop, heappush",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rearrange_string, run_rearrange_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RearrangeStringKDistanceApart",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rearrange_string",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement rearrange_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rearrange_string",
+                "signature": "(self, s: str, k: int)",
+                "parametrize": "s, k",
+                "test_cases": {
+                    "list": [
+                        "('aabbcc', 3)",
+                        "('aaabc', 3)",
+                        "('aaadbbcc', 2)",
+                        "('a', 0)",
+                        "('a', 1)",
+                        "('aa', 2)",
+                        "('aa', 1)",
+                        "('aabb', 2)",
+                        "('aaabbc', 3)",
+                        "('aabbcc', 2)",
+                        "('abcabc', 3)",
+                        "('aaadbbcc', 3)",
+                        "('aaaa', 4)",
+                        "('abb', 2)",
+                        "('abcbaca', 2)",
+                        "('abcbaca', 3)",
+                        "('zzz', 1)",
+                        "('aabbccdd', 4)",
+                        "('abcabc', 0)",
+                        "('aabb', 0)"
+                    ]
+                },
+                "body": "        result = run_rearrange_string(Solution, s, k)\n        assert_rearrange_string(result, s, k)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rearrange_string, assert_rearrange_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aabbcc'\nk = 3",
+    "playground_run": "result = run_rearrange_string(Solution, s, k)\nresult",
+    "playground_assert": "assert_rearrange_string(result, s, k)"
+}

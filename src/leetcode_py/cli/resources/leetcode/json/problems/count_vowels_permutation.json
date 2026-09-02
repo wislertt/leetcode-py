@@ -1,0 +1,93 @@
+{
+    "problem_name": "count_vowels_permutation",
+    "solution_class_name": "Solution",
+    "problem_number": "1220",
+    "problem_title": "Count Vowels Permutation",
+    "difficulty": "Hard",
+    "topics": "Dynamic Programming",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an integer `n`, your task is to count how many strings of length `n` can be formed under the following rules:\n\n- Each character is a lower case vowel (`'a'`, `'e'`, `'i'`, `'o'`, `'u'`)\n- Each vowel `'a'` may only be followed by an `'e'`.\n- Each vowel `'e'` may only be followed by an `'a'` or an `'i'`.\n- Each vowel `'i'` **may not** be followed by another `'i'`.\n- Each vowel `'o'` may only be followed by an `'i'` or a `'u'`.\n- Each vowel `'u'` may only be followed by an `'a'`.\n\nSince the answer may be too large, return it modulo `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: 5\nExplanation: All possible strings are: \"a\", \"e\", \"i\" , \"o\" and \"u\".\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: 10\nExplanation: All possible strings are: \"ae\", \"ea\", \"ei\", \"ia\", \"ie\", \"io\", \"iu\", \"oi\", \"ou\" and \"ua\".\n```"
+            },
+            {
+                "content": "```\nInput: n = 5\nOutput: 68\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 2 * 10^4`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_vowel_permutation",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_vowel_permutation(n)",
+    "helpers_assert_name": "count_vowel_permutation",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_vowel_permutation, run_count_vowel_permutation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountVowelsPermutationTest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_vowel_permutation",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement count_vowel_permutation\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_vowel_permutation",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 5)",
+                        "(2, 10)",
+                        "(3, 19)",
+                        "(4, 35)",
+                        "(5, 68)",
+                        "(6, 129)",
+                        "(7, 249)",
+                        "(10, 1739)",
+                        "(15, 44779)",
+                        "(20, 1151090)",
+                        "(25, 29599477)",
+                        "(50, 227130014)",
+                        "(100, 173981881)",
+                        "(1000, 89945857)",
+                        "(10000, 76428576)",
+                        "(20000, 759959057)"
+                    ]
+                },
+                "body": "        result = run_count_vowel_permutation(Solution, n)\n        assert_count_vowel_permutation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_vowel_permutation, assert_count_vowel_permutation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nexpected = 68",
+    "playground_run": "result = run_count_vowel_permutation(Solution, n)\nresult",
+    "playground_assert": "assert_count_vowel_permutation(result, expected)"
+}

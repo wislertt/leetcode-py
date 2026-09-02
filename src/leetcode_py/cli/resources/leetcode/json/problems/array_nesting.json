@@ -1,0 +1,93 @@
+{
+    "problem_name": "array_nesting",
+    "solution_class_name": "Solution",
+    "problem_number": "565",
+    "problem_title": "Array Nesting",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums` of length n where `nums` is a permutation of the numbers in the range `[0, n - 1]`.\n\nYou should build a set `s[k] = {nums[k], nums[nums[k]], nums[nums[nums[k]]], ... }` subjected to the following rule:\n\n- The first element in `s[k]` starts with the selection of the element `nums[k]` of `index = k`.\n- The next element in `s[k]` should be `nums[nums[k]]`, and then `nums[nums[nums[k]]]`, and so on.\n- We stop adding right before a duplicate element occurs in `s[k]`.\n\nReturn the longest length of a set `s[k]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [5,4,0,3,1,6,2]\nOutput: 4\nExplanation: nums[0] = 5, nums[1] = 4, nums[2] = 0, nums[3] = 3, nums[4] = 1, nums[5] = 6, nums[6] = 2.\nOne of the longest sets s[k]:\ns[0] = {nums[0], nums[5], nums[6], nums[2]} = {5, 6, 2, 0}\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,2]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- 0 <= nums[i] < nums.length\n- All the values of `nums` are unique.",
+    "readme_additional": "**Follow-up:** Could you solve it using constant extra space complexity?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "array_nesting",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.array_nesting(nums)",
+    "helpers_assert_name": "array_nesting",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_array_nesting, run_array_nesting\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ArrayNesting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "array_nesting",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement array_nesting\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_array_nesting",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 4, 0, 3, 1, 6, 2], 4)",
+                        "([0, 1, 2], 1)",
+                        "([0], 1)",
+                        "([1, 0], 2)",
+                        "([0, 2, 1], 2)",
+                        "([3, 1, 2, 0], 2)",
+                        "([2, 0, 4, 1, 3], 5)",
+                        "([1, 2, 3, 4, 0], 5)",
+                        "([5, 0, 1, 2, 3, 4], 6)",
+                        "([4, 3, 2, 1, 0], 2)",
+                        "([1, 0, 3, 2], 2)",
+                        "([2, 6, 3, 0, 4, 5, 1], 3)",
+                        "([2, 0, 1, 4, 6, 8, 3, 5, 7], 3)",
+                        "([0, 1, 3, 2], 2)",
+                        "([2, 6, 0, 5, 4, 1, 3], 4)",
+                        "([6, 7, 1, 4, 2, 3, 0, 5], 6)",
+                        "([1, 2, 3, 0], 4)",
+                        "([3, 4, 0, 2, 1], 3)"
+                    ]
+                },
+                "body": "        result = run_array_nesting(Solution, nums)\n        assert_array_nesting(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_array_nesting, assert_array_nesting\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [5, 4, 0, 3, 1, 6, 2]\nexpected = 4",
+    "playground_run": "result = run_array_nesting(Solution, nums)\nresult",
+    "playground_assert": "assert_array_nesting(result, expected)"
+}

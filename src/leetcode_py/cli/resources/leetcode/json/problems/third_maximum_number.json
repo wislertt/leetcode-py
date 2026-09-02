@@ -1,0 +1,98 @@
+{
+    "problem_name": "third_maximum_number",
+    "solution_class_name": "Solution",
+    "problem_number": "414",
+    "problem_title": "Third Maximum Number",
+    "difficulty": "Easy",
+    "topics": "Array, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums`.\n\nReturn the third **distinct maximum** number in this array. If the third **maximum** does not exist, return the **maximum** number.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,2,1]\nOutput: 1\n```\n**Explanation:** The first distinct maximum is 3. The second distinct maximum is 2. The third distinct maximum is 1."
+            },
+            {
+                "content": "```\nInput: nums = [1,2]\nOutput: 2\n```\n**Explanation:** The first distinct maximum is 2. The second distinct maximum is 1. The third maximum does not exist, so the maximum (2) is returned instead."
+            },
+            {
+                "content": "```\nInput: nums = [2,2,3,1]\nOutput: 1\n```\n**Explanation:** The first distinct maximum is 3. The second distinct maximum is 2 (both 2's are counted together since they have the same value). The third distinct maximum is 1."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^4\n- -2^31 <= nums[i] <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Can you find an `O(n)` solution?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "third_max",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.third_max(nums)",
+    "helpers_assert_name": "third_max",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_third_max, run_third_max\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ThirdMaximumNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "third_max",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement third_max\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_third_max",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 2, 1], 1)",
+                        "([1, 2], 2)",
+                        "([2, 2, 3, 1], 1)",
+                        "([1], 1)",
+                        "([2, 2], 2)",
+                        "([3, 3, 3], 3)",
+                        "([1, 2, 3], 1)",
+                        "([5, 5, 4, 3, 3], 3)",
+                        "([-1, -2, -3], -3)",
+                        "([-2147483648, 2147483647, 0], -2147483648)",
+                        "([2147483647, 2147483647, 2147483646], 2147483647)",
+                        "([1, 1, 2, 2, 3, 3], 1)",
+                        "([10, 9, 8, 7, 6, 5], 8)",
+                        "([0, -1], 0)",
+                        "([2, 18, -6, 19, -3, -2, -16], 2)",
+                        "([14, -12, 2, 4, -12], 2)",
+                        "([11, -10, -20, 18, -1], -1)",
+                        "([-1], -1)",
+                        "([-12, 20, -19, 18, -3, -9, -10, 6], 6)",
+                        "([8, 16, -1, -9, -3, -11, 10], 8)"
+                    ]
+                },
+                "body": "        result = run_third_max(Solution, nums)\n        assert_third_max(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_third_max, assert_third_max\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 2, 1]\nexpected = 1",
+    "playground_run": "result = run_third_max(Solution, nums)\nresult",
+    "playground_assert": "assert_third_max(result, expected)"
+}

@@ -1,0 +1,109 @@
+{
+    "problem_name": "elimination_game",
+    "solution_class_name": "Solution",
+    "problem_number": "390",
+    "problem_title": "Elimination Game",
+    "difficulty": "Medium",
+    "topics": "Math, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have a list <code>arr</code> of all integers in the range <code>[1, n]</code> sorted in a strictly increasing order. Apply the following algorithm on <code>arr</code>:\n\n<ul>\n\t<li>Starting from left to right, remove the first number and every other number afterward until you reach the end of the list.</li>\n\t<li>Repeat the previous step again, but this time from right to left, remove the rightmost number and every other number from the remaining numbers.</li>\n\t<li>Keep repeating the steps again, alternating left to right and right to left, until a single number remains.</li>\n</ul>\n\n<p>Given the integer <code>n</code>, return <em>the last number that remains in</em> <code>arr</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 9\nOutput: 6\nExplanation:\narr = [1, 2, 3, 4, 5, 6, 7, 8, 9]\narr = [2, 4, 6, 8]\narr = [2, 6]\narr = [6]\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10<sup>9</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "last_remaining",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.last_remaining(n)",
+    "helpers_assert_name": "last_remaining",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_last_remaining, run_last_remaining\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EliminationGame",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "last_remaining",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement last_remaining\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_last_remaining",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 2)",
+                        "(4, 2)",
+                        "(5, 2)",
+                        "(6, 4)",
+                        "(7, 4)",
+                        "(8, 6)",
+                        "(9, 6)",
+                        "(10, 8)",
+                        "(11, 8)",
+                        "(12, 6)",
+                        "(13, 6)",
+                        "(14, 8)",
+                        "(15, 8)",
+                        "(16, 6)",
+                        "(17, 6)",
+                        "(18, 8)",
+                        "(19, 8)",
+                        "(20, 6)",
+                        "(21, 6)",
+                        "(22, 8)",
+                        "(23, 8)",
+                        "(24, 14)",
+                        "(30, 16)",
+                        "(50, 24)",
+                        "(100, 54)",
+                        "(500, 246)",
+                        "(1000, 510)",
+                        "(1234, 472)",
+                        "(5000, 2014)",
+                        "(100000, 55286)",
+                        "(1000000, 481110)",
+                        "(1000000000, 534765398)"
+                    ]
+                },
+                "body": "        result = run_last_remaining(Solution, n)\n        assert_last_remaining(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_last_remaining, assert_last_remaining\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn: int = 9\nexpected: int = 6",
+    "playground_run": "result = run_last_remaining(Solution, n)\nresult",
+    "playground_assert": "assert_last_remaining(result, expected)"
+}

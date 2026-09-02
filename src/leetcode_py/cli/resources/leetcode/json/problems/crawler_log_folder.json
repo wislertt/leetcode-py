@@ -1,0 +1,96 @@
+{
+    "problem_name": "crawler_log_folder",
+    "solution_class_name": "Solution",
+    "problem_number": "1598",
+    "problem_title": "Crawler Log Folder",
+    "difficulty": "Easy",
+    "topics": "Array, String, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "The Leetcode file system keeps a log each time some user performs a change folder operation.\n\nThe operations are described below:\n\n- `'../'` : Move to the parent folder of the current folder. (If you are already in the main folder, remain in the same folder).\n- `'./'` : Remain in the same folder.\n- `'x/'` : Move to the child folder named x (This folder is guaranteed to always exist).\n\nYou are given a list of strings `logs` where `logs[i]` is the operation performed by the user at the ith step.\n\nThe file system starts in the main folder, then the operations in `logs` are performed.\n\nReturn the minimum number of operations needed to go back to the main folder after the change folder operations.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/09/sample_11_1957.png)\n\n```\nInput: logs = [\"d1/\",\"d2/\",\"../\",\"d21/\",\"./\"]\nOutput: 2\nExplanation: Use this change folder operation \"../\" 2 times and go back to the main folder.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/09/09/sample_22_1957.png)\n\n```\nInput: logs = [\"d1/\",\"d2/\",\"./\",\"d3/\",\"../\",\"d31/\"]\nOutput: 3\n```"
+            },
+            {
+                "content": "```\nInput: logs = [\"d1/\",\"../\",\"../\",\"../\"]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= logs.length <= 10^3\n- 2 <= logs[i].length <= 10\n- `logs[i]` contains lowercase English letters, digits, `'.'`, and `'/'`.\n- `logs[i]` follows the format described in the statement.\n- Folder names consist of lowercase English letters and digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_operations",
+    "helpers_run_signature": "(solution_class: type, logs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_operations(logs)",
+    "helpers_assert_name": "min_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_operations, run_min_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CrawlerLogFolder",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_operations",
+                "signature": "(self, logs: list[str]) -> int",
+                "body": "        # TODO: Implement min_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_operations",
+                "signature": "(self, logs: list[str], expected: int)",
+                "parametrize": "logs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['d1/', 'd2/', '../', 'd21/', './'], 2)",
+                        "(['d1/', 'd2/', './', 'd3/', '../', 'd31/'], 3)",
+                        "(['d1/', '../', '../', '../'], 0)",
+                        "(['./'], 0)",
+                        "(['../'], 0)",
+                        "(['a/'], 1)",
+                        "(['a/', 'b/', 'c/'], 3)",
+                        "(['a/', 'b/', '../', '../'], 0)",
+                        "(['a/', '../', 'b/', '../', 'c/', 'c1/'], 2)",
+                        "(['d1/', 'd2/', 'd3/', '../', 'd4/'], 3)",
+                        "(['./', './', './'], 0)",
+                        "(['x1/', './', '../', 'y2/', './', '../'], 0)",
+                        "(['a1b2/'], 1)",
+                        "(['a/', 'b/', 'c/', 'd/', 'e/', '../', '../', '../', '../'], 1)",
+                        "(['a1/', 'a2/', 'a3/', 'a4/', 'a5/', 'a6/', 'a7/', 'a8/', 'a9/', 'a10/'], 10)",
+                        "(['deep1/', 'deep2/', '../', '../', '../'], 0)",
+                        "(['p/', './', 'q/', '../', './', 'r/'], 2)",
+                        "(['l1/', 'l2/', 'l3/', '../', 'l4/', 'l5/', '../', '../', '../'], 1)"
+                    ]
+                },
+                "body": "        result = run_min_operations(Solution, logs)\n        assert_min_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_operations, assert_min_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlogs = ['d1/', 'd2/', '../', 'd21/', './']\nexpected = 2",
+    "playground_run": "result = run_min_operations(Solution, logs)\nresult",
+    "playground_assert": "assert_min_operations(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_number_of_increments_on_subarrays_to_form_a_target_array",
+    "solution_class_name": "Solution",
+    "problem_number": "1526",
+    "problem_title": "Minimum Number of Increments on Subarrays to Form a Target Array",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Stack, Greedy, Monotonic Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array <code>target</code>. You have an integer array <code>initial</code> of the same size as <code>target</code> with all elements initially zeros.\n\nIn one operation you can choose <strong>any</strong> subarray from <code>initial</code> and increment each value by one.\n\nReturn <em>the minimum number of operations to form a </em><code>target</code><em> array from </em><code>initial</code>.\n\nThe test cases are generated so that the answer fits in a 32-bit integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: target = [1,2,3,2,1]\nOutput: 3\nExplanation: We need at least 3 operations to form the target array from the initial array.\n[0,0,0,0,0] increment 1 from index 0 to 4 (inclusive).\n[1,1,1,1,1] increment 1 from index 1 to 3 (inclusive).\n[1,2,2,2,1] increment 1 at index 2.\n[1,2,3,2,1] target array is formed.\n```"
+            },
+            {
+                "content": "```\nInput: target = [3,1,1,2]\nOutput: 4\nExplanation: [0,0,0,0] -> [1,1,1,1] -> [1,1,1,2] -> [2,1,1,2] -> [3,1,1,2]\n```"
+            },
+            {
+                "content": "```\nInput: target = [3,1,5,4,2]\nOutput: 7\nExplanation: [0,0,0,0,0] -> [1,1,1,1,1] -> [2,1,1,1,1] -> [3,1,1,1,1] -> [3,1,2,2,2] -> [3,1,3,3,2] -> [3,1,4,4,2] -> [3,1,5,4,2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= target.length <= 10^5\n- 1 <= target[i] <= 10^5\n- The input is generated such that the answer fits inside a 32 bit integer.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_number_operations",
+    "helpers_run_signature": "(solution_class: type, target: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_number_operations(target)",
+    "helpers_assert_name": "min_number_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_number_operations, run_min_number_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfIncrementsOnSubarraysToFormATargetArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_number_operations",
+                "signature": "(self, target: list[int]) -> int",
+                "body": "        # TODO: Implement min_number_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_number_operations",
+                "signature": "(self, target: list[int], expected: int)",
+                "parametrize": "target, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 2, 1], 3)",
+                        "([3, 1, 1, 2], 4)",
+                        "([3, 1, 5, 4, 2], 7)",
+                        "([1], 1)",
+                        "([5], 5)",
+                        "([100000], 100000)",
+                        "([1, 1, 1, 1], 1)",
+                        "([1, 2, 3, 4, 5], 5)",
+                        "([5, 4, 3, 2, 1], 5)",
+                        "([100000, 1], 100000)",
+                        "([1, 100000], 100000)",
+                        "([10, 1, 10, 1, 10], 28)",
+                        "([2, 1, 3, 1, 4, 1, 5], 11)",
+                        "([4, 4, 5, 1, 1, 6], 10)",
+                        "([3, 3, 3, 2, 2, 2], 3)",
+                        "([4, 1, 1, 6, 2, 8, 5, 6, 4, 5], 17)",
+                        "([1, 4, 7, 5, 3, 6, 5, 1], 10)",
+                        "([7, 1, 2, 3, 4, 1], 10)",
+                        "([8, 3, 3, 6], 11)",
+                        "([5, 3, 2, 5, 5, 4, 4, 2, 8], 14)"
+                    ]
+                },
+                "body": "        result = run_min_number_operations(Solution, target)\n        assert_min_number_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_number_operations, assert_min_number_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntarget = [1, 2, 3, 2, 1]\nexpected = 3",
+    "playground_run": "result = run_min_number_operations(Solution, target)\nresult",
+    "playground_assert": "assert_min_number_operations(result, expected)"
+}

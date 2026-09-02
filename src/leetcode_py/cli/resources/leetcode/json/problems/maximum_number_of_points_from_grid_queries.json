@@ -1,0 +1,94 @@
+{
+    "problem_name": "maximum_number_of_points_from_grid_queries",
+    "solution_class_name": "Solution",
+    "problem_number": "2503",
+    "problem_title": "Maximum Number of Points From Grid Queries",
+    "difficulty": "Hard",
+    "topics": "Array, Two Pointers, Breadth-First Search, Union-Find, Sorting, Heap (Priority Queue), Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` integer matrix `grid` and an array `queries` of size `k`.\n\nFind an array `answer` of size `k` such that for each integer `queries[i]` you start in the top left cell of the matrix and repeat the following process:\n\n- If `queries[i]` is strictly greater than the value of the current cell that you are in, then you get one point if it is your first time visiting this cell, and you can move to any adjacent cell in all `4` directions: up, down, left, and right.\n- Otherwise, you do not get any points, and you end this process.\n\nAfter the process, `answer[i]` is the maximum number of points you can get. Note that for each query you are allowed to visit the same cell multiple times.\n\nReturn the resulting array `answer`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2025/03/15/image1.png)\n\n```\nInput: grid = [[1,2,3],[2,5,7],[3,5,1]]\nqueries = [5,6,2]\nOutput: [5,8,1]\nExplanation: The diagrams above show which cells we visit to get points for each query.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[5,2,1],[1,1,2]]\nqueries = [3]\nOutput: [0]\nExplanation: We can not get any points because the value of the top left cell is already greater than or equal to 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `2 <= m, n <= 10^3`\n- `4 <= m * n <= 10^5`\n- `k == queries.length`\n- `1 <= k <= 10^4`\n- `1 <= grid[i][j], queries[i] <= 10^6`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_points",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]], queries: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_points(grid, queries)",
+    "helpers_assert_name": "max_points",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_points, run_max_points\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfPointsFromGridQueries",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_points",
+                "signature": "(self, grid: list[list[int]], queries: list[int]) -> list[int]",
+                "body": "        # TODO: Implement max_points\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_points",
+                "signature": "(self, grid: list[list[int]], queries: list[int], expected: list[int])",
+                "parametrize": "grid, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3], [2, 5, 7], [3, 5, 1]], [5, 6, 2], [5, 8, 1])",
+                        "([[5, 2, 1], [1, 1, 2]], [3], [0])",
+                        "([[1, 2, 3], [2, 5, 7], [3, 5, 1]], [1], [0])",
+                        "([[1, 2, 3], [2, 5, 7], [3, 5, 1]], [2, 3, 4], [1, 3, 5])",
+                        "([[1, 2, 3], [2, 5, 7], [3, 5, 1]], [1000000], [9])",
+                        "([[1, 2, 3], [2, 5, 7], [3, 5, 1]], [7, 8], [8, 9])",
+                        "([[5, 2, 1], [1, 1, 2]], [1, 2, 3, 4, 5, 6], [0, 0, 0, 0, 0, 6])",
+                        "([[5, 2, 1], [1, 1, 2]], [5], [0])",
+                        "([[5, 2, 1], [1, 1, 2]], [2, 2, 2], [0, 0, 0])",
+                        "([[2, 2], [2, 2]], [2, 3], [0, 4])",
+                        "([[1, 1000000], [1000000, 1]], [1, 2, 1000000], [0, 1, 1])",
+                        "([[9, 1, 9], [1, 9, 1], [9, 1, 9]], [2, 3, 10], [0, 0, 9])",
+                        "([[4, 3, 2], [1, 5, 6], [7, 8, 9]], [3, 5, 7], [0, 4, 6])",
+                        "([[1, 2], [3, 4], [5, 6]], [2, 4, 6, 7], [1, 3, 5, 6])",
+                        "([[10, 10], [10, 10]], [9, 10, 11], [0, 0, 4])",
+                        "([[6, 9, 7, 3], [4, 4, 8, 11], [1, 8, 2, 11], [6, 8, 1, 1]], [2, 2, 5, 8, 9, 12], [0, 0, 0, 5, 13, 16])",
+                        "([[1, 9, 12], [10, 5, 1], [8, 8, 4], [12, 9, 1], [5, 2, 3]], [1, 2, 4, 10, 14], [0, 1, 1, 12, 15])",
+                        "([[5, 7, 5, 4, 9, 11], [2, 7, 12, 10, 8, 1], [4, 1, 12, 3, 10, 2], [2, 2, 5, 9, 5, 9], [8, 6, 1, 10, 11, 12], [1, 8, 3, 1, 5, 5]], [1, 6, 8, 8, 11, 11, 12, 14], [0, 12, 17, 17, 31, 31, 33, 36])",
+                        "([[9, 10, 1, 7, 12, 8, 10], [9, 1, 4, 8, 10, 6, 5], [10, 9, 2, 11, 6, 4, 7]], [8, 9, 11, 14], [0, 0, 19, 21])"
+                    ]
+                },
+                "body": "        result = run_max_points(Solution, grid, queries)\n        assert_max_points(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_points, assert_max_points\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 2, 3], [2, 5, 7], [3, 5, 1]]\nqueries = [5, 6, 2]\nexpected = [5, 8, 1]",
+    "playground_run": "result = run_max_points(Solution, grid, queries)\nresult",
+    "playground_assert": "assert_max_points(result, expected)"
+}

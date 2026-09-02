@@ -1,0 +1,98 @@
+{
+    "problem_name": "flatten_a_multilevel_doubly_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "430",
+    "problem_title": "Flatten a Multilevel Doubly Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Depth-First Search, Doubly-Linked List",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a doubly linked list, which contains nodes that have a next pointer, a previous pointer, and an additional **child pointer**. This child pointer may or may not point to a separate doubly linked list, also containing these special nodes. These child lists may have one or more children of their own, and so on, to produce a **multilevel data structure** as shown in the example below.\n\nGiven the `head` of the first level of the list, **flatten** the list so that all the nodes appear in a single-level, doubly linked list. Let `curr` be a node with a child list. The nodes in the child list should appear **after** `curr` and **before** `curr.next` in the flattened list.\n\nReturn the head of the flattened list. The nodes in the list must have all of their child pointers set to `null`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/11/09/flatten11.jpg)\n\n```\nInput: head = [1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]\nOutput: [1,2,3,7,8,11,12,9,10,4,5,6]\nExplanation: The multilevel linked list in the input is shown.\nAfter flattening the multilevel linked list it becomes:\n```\n\n![Flattened list](https://assets.leetcode.com/uploads/2021/11/09/flatten12.jpg)"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/11/09/flatten2.1jpg)\n\n```\nInput: head = [1,2,null,3]\nOutput: [1,3,2]\nExplanation: The multilevel linked list in the input is shown.\nAfter flattening the multilevel linked list it becomes:\n```\n\n![Flattened list](https://assets.leetcode.com/uploads/2021/11/24/list.jpg)"
+            },
+            {
+                "content": "```\nInput: head = []\nOutput: []\nExplanation: There could be empty list in the input.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of Nodes will not exceed 1000.\n- 1 <= Node.val <= 10^5",
+    "readme_additional": "**How the multilevel linked list is represented in test cases:**\n\nWe use the multilevel linked list from Example 1 above:\n\n```\n 1---2---3---4---5---6--NULL\n         |\n         7---8---9---10--NULL\n             |\n             11--12--NULL\n```\n\nThe serialization of each level is as follows:\n\n```\n[1,2,3,4,5,6,null]\n[7,8,9,10,null]\n[11,12,null]\n```\n\nTo serialize all levels together, we will add nulls in each level to signify no node connects to the upper node of the previous level. The serialization becomes:\n\n```\n[1,    2,    3, 4, 5, 6, null]\n             |\n[null, null, 7,    8, 9, 10, null]\n                   |\n[            null, 11, 12, null]\n```\n\nMerging the serialization of each level and removing trailing nulls we obtain:\n\n```\n[1,2,3,4,5,6,null,null,null,7,8,9,10,null,null,11,12]\n```",
+    "helpers_imports": "",
+    "helpers_content": "class MlNode:\n    def __init__(self, val: int = 0) -> None:\n        self.val = val\n        self.prev: MlNode | None = None\n        self.next: MlNode | None = None\n        self.child: MlNode | None = None\n\n\ndef ml_from_list(vals: list[int | None]) -> MlNode | None:\n    pos = 0\n\n    def parse_level() -> MlNode | None:\n        nonlocal pos\n        nodes: list[MlNode] = []\n        while pos < len(vals) and vals[pos] is not None:\n            v = vals[pos]\n            assert v is not None\n            nodes.append(MlNode(v))\n            pos += 1\n        for i, node in enumerate(nodes):\n            if i > 0:\n                node.prev = nodes[i - 1]\n                nodes[i - 1].next = node\n        if pos < len(vals) and vals[pos] is None:\n            pos += 1\n        for node in nodes:\n            if pos >= len(vals):\n                break\n            if vals[pos] is None:\n                pos += 1\n            else:\n                node.child = parse_level()\n        return nodes[0] if nodes else None\n\n    return parse_level()\n\n\ndef ml_to_list(head: MlNode | None) -> list[int]:\n    out: list[int] = []\n    node = head\n    while node is not None:\n        assert node.child is None\n        if out:\n            assert node.prev is not None\n        else:\n            assert node.prev is None\n        out.append(node.val)\n        node = node.next\n    return out\n",
+    "helpers_run_name": "flatten",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int | None])",
+    "helpers_run_body": "    head = ml_from_list(head_list)\n    implementation = solution_class()\n    return ml_to_list(implementation.flatten(head))",
+    "helpers_assert_name": "flatten",
+    "helpers_assert_signature": "(result: list[int], expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected_list\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class Node:\n    def __init__(\n        self,\n        val: int = 0,\n        prev: Node | None = None,\n        next: Node | None = None,\n        child: Node | None = None,\n    ) -> None:\n        self.val = val\n        self.prev = prev\n        self.next = next\n        self.child = child\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flatten, run_flatten\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FlattenAMultilevelDoublyLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "flatten",
+                "signature": "(self, head: Node | None) -> Node | None",
+                "body": "        # TODO: Implement flatten\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flatten",
+                "signature": "(self, head_list: list[int | None], expected_list: list[int | None])",
+                "parametrize": "head_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([], [])",
+                        "([1], [1])",
+                        "([1,2,3,4,5,6,None,None,None,7,8,9,10,None,None,11,12], [1,2,3,7,8,11,12,9,10,4,5,6])",
+                        "([1,2,None,3], [1,3,2])",
+                        "([5,None,4], [5,4])",
+                        "([1,None,2], [1,2])",
+                        "([2,1,None,3], [2,3,1])",
+                        "([1,2,3,None,4,None,None,5], [1,4,2,5,3])",
+                        "([1,2,None,3,4,None,None,5,6,None,None,None,7], [1,3,4,5,6,2,7])",
+                        "([1,None,2,None,3,None,4], [1,2,3,4])",
+                        "([9,8,7,6,None,None,None,None,5,4,3,None,None,None,2,1], [9,8,7,6,5,4,3,2,1])",
+                        "([10,20,30,40,None,11,None,None,None,31,32,None,41], [10,11,20,30,31,41,32,40])",
+                        "([5,1,5,None,None,27,23,None,54,45,None,None,None,48,54], [5,1,27,54,45,23,48,54,5])",
+                        "([7,6,6,None,27,26,35,None,None,41,51,None,None,None,None,30,33,39,None,None,41,49,None,None,None,None,30,33,39,None,None,41,49], [7,27,26,41,51,35,6,30,33,41,49,39,6,30,33,41,49,39])",
+                        "([20,14,3,6,None,22,27,22,None,57,50,None,None,None,48,None,None,57,50,None,None,None,40,33,32,None,50,None,None,60,None,None,None,26,24,37,None,None,None,None,26,35,None,None,50], [20,22,57,50,27,48,22,57,50,14,40,50,33,60,32,3,26,24,37,6,26,35,50])",
+                        "([10,8,None,24,33,33,None,None,50,None,None,50,None,None,26,26,26,None,60,46,None,None,None,60,46,None,None,None,60,46], [10,24,33,50,33,50,8,26,60,46,26,60,46,26,60,46])",
+                        "([4,None,31], [4,31])",
+                        "([3], [3])",
+                        "([4,16,None,23,None,45], [4,23,45,16])",
+                        "([5,8,5,20,None,None,None,None,24,26], [5,8,5,20,24,26])"
+                    ]
+                },
+                "body": "        result = run_flatten(Solution, head_list)\n        assert_flatten(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flatten, assert_flatten\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nhead_list: list[int | None] = [1, 2, 3, 4, 5, 6, None, None, None, 7, 8, 9, 10, None, None, 11, 12]\nexpected_list: list[int | None] = [1, 2, 3, 7, 8, 11, 12, 9, 10, 4, 5, 6]",
+    "playground_run": "result = run_flatten(Solution, head_list)\nresult",
+    "playground_assert": "assert_flatten(result, expected_list)"
+}

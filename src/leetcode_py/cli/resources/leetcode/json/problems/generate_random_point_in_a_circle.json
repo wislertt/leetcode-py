@@ -1,0 +1,87 @@
+{
+    "problem_name": "generate_random_point_in_a_circle",
+    "solution_class_name": "Solution",
+    "problem_number": "478",
+    "problem_title": "Generate Random Point in a Circle",
+    "difficulty": "Medium",
+    "topics": "Math, Geometry, Rejection Sampling, Randomized",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the radius and the position of the center of a circle, implement the function `randPoint` which generates a uniform random point inside the circle.\n\nImplement the `Solution` class:\n\n- `Solution(double radius, double x_center, double y_center)` initializes the object with the radius of the circle `radius` and the position of the center `(x_center, y_center)`.\n- `randPoint()` returns a random point inside the circle. A point on the circumference of the circle is considered to be in the circle. The answer is returned as an array `[x, y]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Solution\", \"randPoint\", \"randPoint\", \"randPoint\"]\n[[1.0, 0.0, 0.0], [], [], []]\nOutput\n[null, [-0.02493, -0.38077], [0.82314, 0.38945], [0.36572, 0.17248]]\n\nExplanation\nSolution solution = new Solution(1.0, 0.0, 0.0);\nsolution.randPoint(); // return [-0.02493, -0.38077]\nsolution.randPoint(); // return [0.82314, 0.38945]\nsolution.randPoint(); // return [0.36572, 0.17248]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 < radius <= 10^8\n- -10^7 <= x_center, y_center <= 10^7\n- At most 3 * 10^4 calls will be made to randPoint.",
+    "readme_additional": "",
+    "helpers_imports": "import random",
+    "helpers_content": "",
+    "helpers_run_name": "rand_point",
+    "helpers_run_signature": "(solution_class: type, radius: float, x_center: float, y_center: float, seed: int, n: int) -> list[list[float]]",
+    "helpers_run_body": "    random.seed(seed)\n    implementation = solution_class(radius, x_center, y_center)\n    return [implementation.rand_point() for _ in range(n)]",
+    "helpers_assert_name": "rand_point",
+    "helpers_assert_signature": "(result: list[list[float]], radius: float, x_center: float, y_center: float, n: int) -> bool",
+    "helpers_assert_body": "    limit = radius * radius + 1e-9\n    assert result\n    for x, y in result:\n        assert (x - x_center) ** 2 + (y - y_center) ** 2 <= limit\n    # Uniform sampling over enough draws covers all four quadrants\n    if n >= 200:\n        quadrants = {(x >= x_center, y >= y_center) for x, y in result}\n        assert len(quadrants) == 4\n    # The inner half-radius disk holds a quarter of the area\n    if n >= 2000:\n        inner = sum(\n            1 for x, y in result if (x - x_center) ** 2 + (y - y_center) ** 2 <= limit / 4\n        )\n        assert abs(inner / n - 0.25) < 0.05\n    return True",
+    "solution_imports": "import math\n\nimport random",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, radius: float, x_center: float, y_center: float) -> None",
+                "body": "        # TODO: Initialize Solution\n        pass"
+            },
+            {
+                "name": "rand_point",
+                "signature": "(self) -> list[float]",
+                "body": "        # TODO: Implement rand_point\n        return [0.0, 0.0]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "test_imports": "import pytest\n\nfrom leetcode_py import logged_test\n\nfrom .helpers import assert_rand_point, run_rand_point\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GenerateRandomPointInACircle",
+    "test_class_content": "",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rand_point",
+                "signature": "(self, radius: float, x_center: float, y_center: float, seed: int, n: int)",
+                "parametrize": "radius, x_center, y_center, seed, n",
+                "test_cases": {
+                    "list": [
+                        "(1.0, 0.0, 0.0, 0, 1)",
+                        "(1.0, 0.0, 0.0, 1, 2)",
+                        "(2.5, 1.0, -1.0, 2, 3)",
+                        "(1.0, 0.0, 0.0, 3, 5)",
+                        "(0.5, -3.0, 4.0, 4, 8)",
+                        "(10.0, 0.0, 0.0, 5, 10)",
+                        "(1.0, 10000000.0, -10000000.0, 6, 10)",
+                        "(100000000.0, 0.0, 0.0, 7, 10)",
+                        "(1.0, 0.0, 0.0, 8, 50)",
+                        "(3.0, 2.0, 2.0, 9, 100)",
+                        "(1.0, 0.0, 0.0, 10, 200)",
+                        "(7.0, -5.0, 5.0, 11, 500)",
+                        "(0.001, 100.0, -100.0, 13, 300)",
+                        "(1.0, 0.0, 0.0, 42, 150)",
+                        "(12.0, 0.5, 0.5, 14, 400)",
+                        "(1.0, 0.0, 0.0, 12, 2000)"
+                    ]
+                },
+                "body": "        result = run_rand_point(Solution, radius, x_center, y_center, seed, n)\n        assert_rand_point(result, radius, x_center, y_center, n)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_rand_point, run_rand_point\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nradius = 1.0\nx_center = 0.0\ny_center = 0.0\nseed = 42\nn = 20",
+    "playground_run": "result = run_rand_point(Solution, radius, x_center, y_center, seed, n)\nresult",
+    "playground_assert": "assert_rand_point(result, radius, x_center, y_center, n)"
+}

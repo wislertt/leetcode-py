@@ -1,0 +1,93 @@
+{
+    "problem_name": "count_number_of_bad_pairs",
+    "solution_class_name": "Solution",
+    "problem_number": "2364",
+    "problem_title": "Count Number of Bad Pairs",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <strong>0-indexed</strong> integer array <code>nums</code>. A pair of indices <code>(i, j)</code> is a <strong>bad pair</strong> if <code>i &lt; j</code> and <code>j - i != nums[j] - nums[i]</code>.\n\nReturn <em>the total number of <strong>bad pairs</strong> in </em><code>nums</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,1,3,3]\nOutput: 5\n```\n**Explanation:** The pair (0, 1) is a bad pair since 1 - 0 != 1 - 4.\nThe pair (0, 2) is a bad pair since 2 - 0 != 3 - 4, 2 != -1.\nThe pair (0, 3) is a bad pair since 3 - 0 != 3 - 4, 3 != -1.\nThe pair (1, 2) is a bad pair since 2 - 1 != 3 - 1, 1 != 2.\nThe pair (2, 3) is a bad pair since 3 - 2 != 3 - 3, 1 != 0.\nThere are a total of 5 bad pairs, so we return 5."
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5]\nOutput: 0\n```\n**Explanation:** There are no bad pairs."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^5\n- 1 <= nums[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_bad_pairs",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_bad_pairs(nums)",
+    "helpers_assert_name": "count_bad_pairs",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_bad_pairs, run_count_bad_pairs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountNumberOfBadPairs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_bad_pairs",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement count_bad_pairs\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_bad_pairs",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 1, 3, 3], 5)",
+                        "([1, 2, 3, 4, 5], 0)",
+                        "([1], 0)",
+                        "([1, 2], 0)",
+                        "([1, 3], 1)",
+                        "([3, 3, 3], 3)",
+                        "([1, 2, 3, 4], 0)",
+                        "([5, 4, 3, 2, 1], 10)",
+                        "([2, 2, 2], 3)",
+                        "([1000000000, 1], 1)",
+                        "([1, 1, 2, 2, 3, 3], 13)",
+                        "([7, 1, 7, 1, 7], 10)",
+                        "([10, 20, 10, 20, 10, 20], 15)",
+                        "([9, 8, 10, 7, 11, 6], 14)",
+                        "([1, 100, 2, 99, 3, 98, 4], 21)",
+                        "([390065284, 284712645, 463168409, 13835088], 6)",
+                        "([785816186, 237091423, 855758531, 653610779, 966123013, 399555075], 15)",
+                        "([488132343, 593784099], 1)"
+                    ]
+                },
+                "body": "        result = run_count_bad_pairs(Solution, nums)\n        assert_count_bad_pairs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_bad_pairs, assert_count_bad_pairs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums: list[int] = [4, 1, 3, 3]\nexpected = 5",
+    "playground_run": "result = run_count_bad_pairs(Solution, nums)\nresult",
+    "playground_assert": "assert_count_bad_pairs(result, expected)"
+}

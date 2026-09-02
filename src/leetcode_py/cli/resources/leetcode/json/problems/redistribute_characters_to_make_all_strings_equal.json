@@ -1,0 +1,93 @@
+{
+    "problem_name": "redistribute_characters_to_make_all_strings_equal",
+    "solution_class_name": "Solution",
+    "problem_number": "1897",
+    "problem_title": "Redistribute Characters to Make All Strings Equal",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String, Counting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array of strings `words` (0-indexed).\n\nIn one operation, pick two **distinct** indices `i` and `j`, where `words[i]` is a non-empty string, and move **any** character from `words[i]` to **any** position in `words[j]`.\n\nReturn `true` if you can make every string in `words` equal using any number of operations, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"abc\",\"aabc\",\"bc\"]\nOutput: true\nExplanation: Move the first 'a' in words[1] to the front of words[2],\nto make words[1] = \"abc\" and words[2] = \"abc\".\nAll the strings are now equal to \"abc\", so return true.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"ab\",\"a\"]\nOutput: false\nExplanation: It is impossible to make all the strings equal using the operation.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 100\n- 1 <= words[i].length <= 100\n- words[i] consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "make_equal",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.make_equal(words)",
+    "helpers_assert_name": "make_equal",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_make_equal, run_make_equal\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RedistributeCharactersToMakeAllStringsEqual",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "make_equal",
+                "signature": "(self, words: list[str]) -> bool",
+                "body": "        # TODO: Implement make_equal\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_make_equal",
+                "signature": "(self, words: list[str], expected: bool)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abc', 'aabc', 'bc'], True)",
+                        "(['ab', 'a'], False)",
+                        "(['a'], True)",
+                        "(['a', 'a'], True)",
+                        "(['a', 'b'], False)",
+                        "(['ab', 'ba'], True)",
+                        "(['abc', 'def'], False)",
+                        "(['aa', 'bb', 'ab'], True)",
+                        "(['aaa', 'aa'], False)",
+                        "(['abcabc', 'cba'], False)",
+                        "(['zzzzz', 'z'], True)",
+                        "(['zzzz', 'zz', 'zz'], False)",
+                        "(['dlie', 'qzp', 'px', 'o', 'vsyjg'], False)",
+                        "(['m', 'rsq', 'fbq', 'h'], False)",
+                        "(['zysei', 'eqh', 'msmwuy', 'lbs', 'hht'], False)",
+                        "(['s', 'lidod'], False)",
+                        "(['ohhsolrm', 'hyuymw', 'e', 'tkze', 'y'], False)",
+                        "(['c', 'v', 'l', 'v'], False)"
+                    ]
+                },
+                "body": "        result = run_make_equal(Solution, words)\n        assert_make_equal(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_make_equal, assert_make_equal\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords: list[str] = ['abc', 'aabc', 'bc']\nexpected = True",
+    "playground_run": "result = run_make_equal(Solution, words)\nresult",
+    "playground_assert": "assert_make_equal(result, expected)"
+}

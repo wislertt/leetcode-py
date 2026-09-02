@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_number_of_fish_in_a_grid",
+    "solution_class_name": "Solution",
+    "problem_number": "2658",
+    "problem_title": "Maximum Number of Fish in a Grid",
+    "difficulty": "Medium",
+    "topics": "Array, Depth-First Search, Breadth-First Search, Union-Find, Matrix",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a **0-indexed** 2D matrix `grid` of size `m x n`, where `(r, c)` represents:\n\n- A **land** cell if `grid[r][c] = 0`, or\n- A **water** cell containing `grid[r][c]` fish, if `grid[r][c] > 0`.\n\nA fisher can start at any **water** cell `(r, c)` and can do the following operations any number of times:\n\n- Catch all the fish at cell `(r, c)`, or\n- Move to any adjacent **water** cell.\n\nReturn _the **maximum** number of fish the fisher can catch if he chooses his starting cell optimally_, or `0` if no water cell exists.\n\nAn **adjacent** cell of the cell `(r, c)`, is one of the cells `(r, c + 1)`, `(r, c - 1)`, `(r + 1, c)` or `(r - 1, c)` if it exists.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2023/03/29/example.png)\n\n```\nInput: grid = [[0,2,1,0],[4,0,0,3],[1,0,0,4],[0,3,2,0]]\nOutput: 7\nExplanation: The fisher can start at cell (1,3) and collect 3 fish, then move to cell (2,3) and collect 4 fish.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2023/03/29/example2.png)\n\n```\nInput: grid = [[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,1]]\nOutput: 1\nExplanation: The fisher can start at cells (0,0) or (3,3) and collect a single fish.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 10\n- 0 <= grid[i][j] <= 10",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_max_fish",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_max_fish(grid)",
+    "helpers_assert_name": "find_max_fish",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_max_fish, run_find_max_fish\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfFishInAGrid",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_max_fish",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement find_max_fish\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_max_fish",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 2, 1, 0], [4, 0, 0, 3], [1, 0, 0, 4], [0, 3, 2, 0]], 7)",
+                        "([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 1]], 1)",
+                        "([[0]], 0)",
+                        "([[5]], 5)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[10, 10], [10, 10]], 40)",
+                        "([[1, 0], [0, 1]], 1)",
+                        "([[1, 1], [1, 0]], 3)",
+                        "([[0, 3], [4, 0]], 4)",
+                        "([[7, 0, 7]], 7)",
+                        "([[2], [0], [2]], 2)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 0)",
+                        "([[1, 2], [3, 4]], 10)",
+                        "([[0, 4, 0, 0], [2, 0, 5, 0], [0, 0, 0, 0], [1, 0, 3, 6]], 9)",
+                        "([[0, 1, 0, 0, 0], [0, 2, 0, 3, 0], [0, 0, 4, 0, 0]], 4)",
+                        "([[9, 0, 0, 9], [0, 0, 0, 0], [9, 0, 0, 9]], 9)",
+                        "([[8, 2, 10, 5]], 25)",
+                        "([[5, 5, 6], [4, 8, 4], [0, 1, 1], [0, 2, 8], [8, 2, 7]], 61)"
+                    ]
+                },
+                "body": "        result = run_find_max_fish(Solution, grid)\n        assert_find_max_fish(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_max_fish, assert_find_max_fish\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[0,2,1,0],[4,0,0,3],[1,0,0,4],[0,3,2,0]]\nexpected = 7",
+    "playground_run": "result = run_find_max_fish(Solution, grid)\nresult",
+    "playground_assert": "assert_find_max_fish(result, expected)"
+}

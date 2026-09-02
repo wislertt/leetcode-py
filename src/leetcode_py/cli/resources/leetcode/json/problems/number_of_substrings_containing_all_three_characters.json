@@ -1,0 +1,94 @@
+{
+    "problem_name": "number_of_substrings_containing_all_three_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "1358",
+    "problem_title": "Number of Substrings Containing All Three Characters",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a string s consisting only of characters a, b and c.\n\nReturn the number of substrings containing at least one occurrence of all these characters a, b and c.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcabc\"\nOutput: 10\nExplanation: The substrings containing at least one occurrence of the characters a, b and c are \"abc\", \"abca\", \"abcab\", \"abcabc\", \"bca\", \"bcab\", \"bcabc\", \"cab\", \"cabc\" and \"abc\" (again). \n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaacb\"\nOutput: 3\nExplanation: The substrings containing at least one occurrence of the characters a, b and c are \"aaacb\", \"aacb\" and \"acb\". \n```"
+            },
+            {
+                "content": "```\nInput: s = \"abc\"\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= s.length <= 5 * 10^4\n- s only consists of 'a', 'b' or 'c' characters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "number_of_substrings",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.number_of_substrings(s)",
+    "helpers_assert_name": "number_of_substrings",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "number_of_substrings",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement number_of_substrings\n        return 0"
+            }
+        ]
+    },
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_number_of_substrings, run_number_of_substrings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSubstringsContainingAllThreeCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_number_of_substrings",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "['abcabc',10]",
+                        "['aaacb',3]",
+                        "['abc',1]",
+                        "['aaaa',0]",
+                        "['abca',3]",
+                        "['cba',1]",
+                        "['acbbca',7]",
+                        "['ababcc',6]",
+                        "['cab',1]",
+                        "['abcccac',7]",
+                        "['babca',5]",
+                        "['cbbbbab',2]",
+                        "['baccbccc',10]",
+                        "['acacaabb',8]",
+                        "['baaabb',0]",
+                        "['bbcaa',4]"
+                    ]
+                },
+                "body": "        result = run_number_of_substrings(Solution, s)\n        assert_number_of_substrings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_number_of_substrings, assert_number_of_substrings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcabc'\nexpected = 10",
+    "playground_run": "result = run_number_of_substrings(Solution, s)\nresult",
+    "playground_assert": "assert_number_of_substrings(result, expected)"
+}

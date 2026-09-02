@@ -1,0 +1,99 @@
+{
+    "problem_name": "design_browser_history",
+    "solution_class_name": "BrowserHistory",
+    "problem_number": "1472",
+    "problem_title": "Design Browser History",
+    "difficulty": "Medium",
+    "topics": "Array, Linked List, Stack, Design, Doubly-Linked List, Data Stream",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You have a **browser** of one tab where you start on the `homepage` and you can visit another `url`, get back in the history number of `steps` or move forward in the history number of `steps`.\n\nImplement the `BrowserHistory` class:\n\n- `BrowserHistory(string homepage)` Initializes the object with the `homepage` of the browser.\n- `void visit(string url)` Visits `url` from the current page. It clears up all the forward history.\n- `string back(int steps)` Move `steps` back in history. If you can only return `x` steps in the history and `steps > x`, you will return only `x` steps. Return the current `url` after moving back in history **at most** `steps`.\n- `string forward(int steps)` Move `steps` forward in history. If you can only forward `x` steps in the history and `steps > x`, you will forward only `x` steps. Return the current `url` after forwarding in history **at most** `steps`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"BrowserHistory\",\"visit\",\"visit\",\"visit\",\"back\",\"back\",\"forward\",\"visit\",\"forward\",\"back\",\"back\"]\n[[\"leetcode.com\"],[\"google.com\"],[\"facebook.com\"],[\"youtube.com\"],[1],[1],[1],[\"linkedin.com\"],[2],[2],[7]]\nOutput\n[null,null,null,null,\"facebook.com\",\"google.com\",\"facebook.com\",null,\"linkedin.com\",\"google.com\",\"leetcode.com\"]\n```\n\n**Explanation:**\n```\nBrowserHistory browserHistory = new BrowserHistory(\"leetcode.com\");\nbrowserHistory.visit(\"google.com\");   // You are in \"leetcode.com\". Visit \"google.com\"\nbrowserHistory.visit(\"facebook.com\"); // You are in \"google.com\". Visit \"facebook.com\"\nbrowserHistory.visit(\"youtube.com\");  // You are in \"facebook.com\". Visit \"youtube.com\"\nbrowserHistory.back(1);               // You are in \"youtube.com\", move back to \"facebook.com\" return \"facebook.com\"\nbrowserHistory.back(1);               // You are in \"facebook.com\", move back to \"google.com\" return \"google.com\"\nbrowserHistory.forward(1);            // You are in \"google.com\", move forward to \"facebook.com\" return \"facebook.com\"\nbrowserHistory.visit(\"linkedin.com\"); // You are in \"facebook.com\". Visit \"linkedin.com\"\nbrowserHistory.forward(2);            // You are in \"linkedin.com\", you cannot move forward any steps.\nbrowserHistory.back(2);               // You are in \"linkedin.com\", move back two steps to \"facebook.com\" then to \"google.com\". return \"google.com\"\nbrowserHistory.back(7);               // You are in \"google.com\", you can move back only one step to \"leetcode.com\". return \"leetcode.com\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= homepage.length <= 20`\n- `1 <= url.length <= 20`\n- `1 <= steps <= 100`\n- `homepage` and `url` consist of `'.'` or lower case English letters.\n- At most `5000` calls will be made to `visit`, `back`, and `forward`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "browser_history_operations",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    history = None\n    results: list[str | None] = []\n    for i, op in enumerate(operations):\n        if op == 'BrowserHistory':\n            history = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'visit' and history is not None:\n            history.visit(inputs[i][0])\n            results.append(None)\n        elif op == 'back' and history is not None:\n            results.append(history.back(inputs[i][0]))\n        elif op == 'forward' and history is not None:\n            results.append(history.forward(inputs[i][0]))\n    return results, history",
+    "helpers_assert_name": "browser_history_operations",
+    "helpers_assert_signature": "(result: list[str | None], expected: list[str | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_browser_history_operations, run_browser_history_operations\nfrom .solution import BrowserHistory",
+    "test_content": "",
+    "test_class_name": "DesignBrowserHistory",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, homepage: str) -> None",
+                "body": "        # TODO: Initialize browser history\n        pass"
+            },
+            {
+                "name": "visit",
+                "signature": "(self, url: str) -> None",
+                "body": "        # TODO: Implement visit\n        pass"
+            },
+            {
+                "name": "back",
+                "signature": "(self, steps: int) -> str",
+                "body": "        # TODO: Implement back\n        return ''"
+            },
+            {
+                "name": "forward",
+                "signature": "(self, steps: int) -> str",
+                "body": "        # TODO: Implement forward\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_browser_history",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[str | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['BrowserHistory','visit','visit','visit','back','back','forward','visit','forward','back','back'],[['leetcode.com'],['google.com'],['facebook.com'],['youtube.com'],[1],[1],[1],['linkedin.com'],[2],[2],[7]],[None,None,None,None,'facebook.com','google.com','facebook.com',None,'linkedin.com','google.com','leetcode.com'])",
+                        "(['BrowserHistory'],[['a.com']],[None])",
+                        "(['BrowserHistory','back'],[['home.com'],[100]],[None,'home.com'])",
+                        "(['BrowserHistory','forward'],[['home.com'],[50]],[None,'home.com'])",
+                        "(['BrowserHistory','visit','forward'],[['h.com'],['x.com'],[100]],[None,None,'x.com'])",
+                        "(['BrowserHistory','visit','back','visit','forward'],[['h.com'],['x.com'],[1],['y.com'],[1]],[None,None,'h.com',None,'y.com'])",
+                        "(['BrowserHistory','visit','visit','back','back','forward','forward'],[['h.com'],['a.com'],['b.com'],[5],[5],[5],[5]],[None,None,None,'h.com','h.com','b.com','b.com'])",
+                        "(['BrowserHistory','visit','back','visit','back','back'],[['h.com'],['a.com'],[1],['b.com'],[1],[100]],[None,None,'h.com',None,'h.com','h.com'])",
+                        "(['BrowserHistory','visit','visit','forward','visit'],[['cscj.com'],['aypfoyf.com'],['pasznqps.com'],[10],['er.com']],[None,None,None,'pasznqps.com',None])",
+                        "(['BrowserHistory','forward','forward','forward','forward','back'],[['usyouucp.com'],[10],[5],[10],[3],[1]],[None,'usyouucp.com','usyouucp.com','usyouucp.com','usyouucp.com','usyouucp.com'])",
+                        "(['BrowserHistory','forward','forward','forward','back','forward','visit'],[['secg.com'],[10],[100],[5],[3],[5],['p.com']],[None,'secg.com','secg.com','secg.com','secg.com','secg.com',None])",
+                        "(['BrowserHistory','forward','visit','forward','visit','visit','visit'],[['mbslylq.com'],[10],['zhozgpt.com'],[1],['zuqhgmnk.com'],['lsgtlpc.com'],['ganyzthz.com']],[None,'mbslylq.com',None,'zhozgpt.com',None,None,None])",
+                        "(['BrowserHistory','visit','visit','visit','visit','visit','visit','visit'],[['cnjhbv.com'],['ybbgc.com'],['jw.com'],['vkvr.com'],['hjjnvvkr.com'],['mz.com'],['wzz.com'],['gyudhrw.com']],[None,None,None,None,None,None,None,None])",
+                        "(['BrowserHistory','visit','visit','back','forward','visit','forward','back'],[['tfae.com'],['sc.com'],['igiw.com'],[1],[100],['pc.com'],[1],[1]],[None,None,None,'sc.com','igiw.com',None,'pc.com','igiw.com'])",
+                        "(['BrowserHistory','visit','visit','visit','forward','visit','back','back','forward'],[['fjjrxuzg.com'],['s.com'],['ny.com'],['pgdzf.com'],[3],['ue.com'],[100],[1],[1]],[None,None,None,None,'pgdzf.com',None,'fjjrxuzg.com','fjjrxuzg.com','s.com'])",
+                        "(['BrowserHistory','back','back','forward','forward','visit','back','forward','visit','visit'],[['m.com'],[100],[10],[5],[1],['cmwcbax.com'],[3],[10],['ax.com'],['v.com']],[None,'m.com','m.com','m.com','m.com',None,'m.com','cmwcbax.com',None,None])",
+                        "(['BrowserHistory','back','forward','back','back','visit','back','visit','forward','visit','forward'],[['oqt.com'],[5],[10],[100],[2],['htzlv.com'],[10],['f.com'],[1],['noc.com'],[1]],[None,'oqt.com','oqt.com','oqt.com','oqt.com',None,'oqt.com',None,'f.com',None,'noc.com'])",
+                        "(['BrowserHistory','back','visit','visit','back','back','back','forward','back','back','visit','visit'],[['sqvacl.com'],[1],['mfraoimv.com'],['kjsh.com'],[1],[100],[1],[10],[1],[2],['ipqaa.com'],['skvf.com']],[None,'sqvacl.com',None,None,'mfraoimv.com','sqvacl.com','sqvacl.com','kjsh.com','mfraoimv.com','sqvacl.com',None,None])"
+                    ]
+                },
+                "body": "        result, _ = run_browser_history_operations(BrowserHistory, operations, inputs)\n        assert_browser_history_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_browser_history_operations, assert_browser_history_operations\nfrom solution import BrowserHistory",
+    "playground_setup": "# Example test case\noperations = ['BrowserHistory', 'visit', 'visit', 'visit', 'back', 'back', 'forward', 'visit', 'forward', 'back', 'back']\ninputs = [['leetcode.com'], ['google.com'], ['facebook.com'], ['youtube.com'], [1], [1], [1], ['linkedin.com'], [2], [2], [7]]\nexpected = [None, None, None, None, 'facebook.com', 'google.com', 'facebook.com', None, 'linkedin.com', 'google.com', 'leetcode.com']",
+    "playground_run": "result, history = run_browser_history_operations(BrowserHistory, operations, inputs)\nprint(result)\nhistory",
+    "playground_assert": "assert_browser_history_operations(result, expected)"
+}

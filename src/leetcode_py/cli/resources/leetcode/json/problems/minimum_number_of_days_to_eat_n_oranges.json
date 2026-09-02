@@ -1,0 +1,92 @@
+{
+    "problem_name": "minimum_number_of_days_to_eat_n_oranges",
+    "solution_class_name": "Solution",
+    "problem_number": "1553",
+    "problem_title": "Minimum Number of Days to Eat N Oranges",
+    "difficulty": "Hard",
+    "topics": "Dynamic Programming, Memoization",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are `n` oranges in the kitchen and you decided to eat some of these oranges every day as follows:\n\n- Eat one orange.\n- If the number of remaining oranges `n` is divisible by `2` then you can eat `n / 2` oranges.\n- If the number of remaining oranges `n` is divisible by `3` then you can eat `2 * (n / 3)` oranges.\n\nYou can only choose one of the actions per day.\n\nGiven the integer `n`, return *the minimum number of days to eat* `n` *oranges*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 10\nOutput: 4\nExplanation: You have 10 oranges.\nDay 1: Eat 1 orange,  10 - 1 = 9.\nDay 2: Eat 6 oranges, 9 - 2*(9/3) = 9 - 6 = 3. (Since 9 is divisible by 3)\nDay 3: Eat 2 oranges, 3 - 2*(3/3) = 3 - 2 = 1.\nDay 4: Eat the last orange  1 - 1  = 0.\nYou need at least 4 days to eat the 10 oranges.\n```"
+            },
+            {
+                "content": "```\nInput: n = 6\nOutput: 3\nExplanation: You have 6 oranges.\nDay 1: Eat 3 oranges, 6 - 6/2 = 6 - 3 = 3. (Since 6 is divisible by 2).\nDay 2: Eat 2 oranges, 3 - 2*(3/3) = 3 - 2 = 1. (Since 3 is divisible by 3)\nDay 3: Eat the last orange  1 - 1  = 0.\nYou need at least 3 days to eat the 6 oranges.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 2 * 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_days",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_days(n)",
+    "helpers_assert_name": "min_days",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_days, run_min_days\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumNumberOfDaysToEatNOranges",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_days",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement min_days\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_days",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 4)",
+                        "(6, 3)",
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 2)",
+                        "(4, 3)",
+                        "(5, 4)",
+                        "(7, 4)",
+                        "(8, 4)",
+                        "(9, 3)",
+                        "(11, 5)",
+                        "(12, 4)",
+                        "(56, 6)",
+                        "(100, 8)",
+                        "(999, 9)",
+                        "(1000000, 20)",
+                        "(2000000000, 32)"
+                    ]
+                },
+                "body": "        result = run_min_days(Solution, n)\n        assert_min_days(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_days, assert_min_days\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 10\nexpected = 4",
+    "playground_run": "result = run_min_days(Solution, n)\nresult",
+    "playground_assert": "assert_min_days(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "remove_max_number_of_edges_to_keep_graph_fully_traversable",
+    "solution_class_name": "Solution",
+    "problem_number": "1579",
+    "problem_title": "Remove Max Number of Edges to Keep Graph Fully Traversable",
+    "difficulty": "Hard",
+    "topics": "Union-Find, Graph Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Alice and Bob have an undirected graph of `n` nodes and three types of edges:\n\n- Type 1: Can be traversed by Alice only.\n- Type 2: Can be traversed by Bob only.\n- Type 3: Can be traversed by both Alice and Bob.\n\nGiven an array `edges` where `edges[i] = [typei, ui, vi]` represents a bidirectional edge of type `typei` between nodes `ui` and `vi`, find the maximum number of edges you can remove so that after removing the edges, the graph can still be fully traversed by both Alice and Bob. The graph is fully traversed by Alice and Bob if starting from any node, they can reach all other nodes.\n\nReturn *the maximum number of edges you can remove, or return* `-1` *if Alice and Bob cannot fully traverse the graph.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/08/19/ex1.png)\n\n```\nInput: n = 4, edges = [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]]\nOutput: 2\nExplanation: If we remove the 2 edges [1,1,2] and [1,1,3]. The graph will still be fully traversable by Alice and Bob. Removing any additional edge will not make it so. So the maximum number of edges we can remove is 2.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/08/19/ex2.png)\n\n```\nInput: n = 4, edges = [[3,1,2],[3,2,3],[1,1,4],[2,1,4]]\nOutput: 0\nExplanation: Notice that removing any edge will not make the graph fully traversable by Alice and Bob.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2020/08/19/ex3.png)\n\n```\nInput: n = 4, edges = [[3,2,3],[1,1,2],[2,3,4]]\nOutput: -1\nExplanation: In the current graph, Alice cannot reach node 4 from the other nodes. Likewise, Bob cannot reach 1. Therefore it's impossible to make the graph fully traversable.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^5\n- 1 <= edges.length <= min(10^5, 3 * n * (n - 1) / 2)\n- edges[i].length == 3\n- 1 <= typei <= 3\n- 1 <= ui < vi <= n\n- All tuples (typei, ui, vi) are distinct.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_num_edges_to_remove",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_num_edges_to_remove(n, edges)",
+    "helpers_assert_name": "max_num_edges_to_remove",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_num_edges_to_remove, run_max_num_edges_to_remove\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveMaxNumberOfEdgesToKeepGraphFullyTraversable",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_num_edges_to_remove",
+                "signature": "(self, n: int, edges: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_num_edges_to_remove\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_num_edges_to_remove",
+                "signature": "(self, n: int, edges: list[list[int]], expected: int)",
+                "parametrize": "n, edges, expected",
+                "test_cases": {
+                    "list": [
+                        "(4, [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]], 2)",
+                        "(4, [[3,1,2],[3,2,3],[1,1,4],[2,1,4]], 0)",
+                        "(4, [[3,2,3],[1,1,2],[2,3,4]], -1)",
+                        "(2, [[1,1,2],[2,1,2]], 0)",
+                        "(2, [[3,1,2]], 0)",
+                        "(2, [[1,1,2]], -1)",
+                        "(2, [[2,1,2]], -1)",
+                        "(3, [[1,1,2],[1,2,3],[2,1,3],[2,1,2],[3,2,3]], 2)",
+                        "(4, [[1,1,2],[2,3,4]], -1)",
+                        "(4, [[3,1,2],[3,3,4],[3,1,3],[3,2,4]], 1)",
+                        "(5, [[1,1,2],[2,1,2],[1,2,3],[2,2,3],[1,3,4],[2,3,4],[3,4,5]], 0)",
+                        "(3, [[3,1,2],[1,1,2]], -1)",
+                        "(3, [[1,1,2],[2,1,3],[3,2,3],[3,1,3],[3,1,2]], 3)",
+                        "(4, [[2,1,3],[2,2,3],[2,1,4],[3,2,4],[1,1,4],[3,1,2],[2,3,4],[3,1,4],[1,2,3]], 5)",
+                        "(3, [[2,2,3],[3,1,3],[3,2,3],[1,1,2],[2,1,3],[1,2,3]], 4)",
+                        "(3, [[1,1,3],[2,1,3],[2,1,2],[2,2,3],[3,1,3],[3,1,2],[1,1,2]], 5)"
+                    ]
+                },
+                "body": "        result = run_max_num_edges_to_remove(Solution, n, edges)\n        assert_max_num_edges_to_remove(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_num_edges_to_remove, assert_max_num_edges_to_remove\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\nedges = [[3, 1, 2], [3, 2, 3], [1, 1, 3], [1, 2, 4], [1, 1, 2], [2, 3, 4]]\nexpected = 2",
+    "playground_run": "result = run_max_num_edges_to_remove(Solution, n, edges)\nresult",
+    "playground_assert": "assert_max_num_edges_to_remove(result, expected)"
+}

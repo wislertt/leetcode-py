@@ -1,0 +1,102 @@
+{
+    "problem_name": "largest_color_value_in_a_directed_graph",
+    "solution_class_name": "Solution",
+    "problem_number": "1857",
+    "problem_title": "Largest Color Value in a Directed Graph",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Dynamic Programming, Graph Theory, Topological Sort, Memoization, Counting, Directed Acyclic Graph",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is a <strong>directed graph</strong> of <code>n</code> colored nodes and <code>m</code> edges. The nodes are numbered from <code>0</code> to <code>n - 1</code>.\n\nYou are given a string <code>colors</code> where <code>colors[i]</code> is a lowercase English letter representing the <strong>color</strong> of the <code>i<sup>th</sup></code> node in this graph (<strong>0-indexed</strong>). You are also given a 2D array <code>edges</code> where <code>edges[j] = [a<sub>j</sub>, b<sub>j</sub>]</code> indicates that there is a <strong>directed edge</strong> from node <code>a<sub>j</sub></code> to node <code>b<sub>j</sub></code>.\n\nA valid <strong>path</strong> in the graph is a sequence of nodes <code>x<sub>1</sub> -&gt; x<sub>2</sub> -&gt; x<sub>3</sub> -&gt; ... -&gt; x<sub>k</sub></code> such that there is a directed edge from <code>x<sub>i</sub></code> to <code>x<sub>i+1</sub></code> for every <code>1 &lt;= i &lt; k</code>. The <strong>color value</strong> of the path is the number of nodes that are colored the <strong>most frequently</strong> occurring color along that path.\n\nReturn <em>the <strong>largest color value</strong> of any valid path in the given graph, or </em><code>-1</code><em> if the graph contains a cycle</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/21/leet1.png)\n\n```\nInput: colors = \"abaca\", edges = [[0,1],[0,2],[2,3],[3,4]]\nOutput: 3\n```\n**Explanation:** The path 0 -> 2 -> 3 -> 4 contains 3 nodes that are colored `\"a\" (red in the above image)`."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/04/21/leet2.png)\n\n```\nInput: colors = \"a\", edges = [[0,0]]\nOutput: -1\n```\n**Explanation:** There is a cycle from 0 to 0."
+            }
+        ]
+    },
+    "readme_constraints": "- `n == colors.length`\n- `m == edges.length`\n- `1 <= n <= 10^5`\n- `0 <= m <= 10^5`\n- `colors` consists of lowercase English letters.\n- `0 <= aj, bj < n`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_path_value",
+    "helpers_run_signature": "(solution_class: type, colors: str, edges: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_path_value(colors, edges)",
+    "helpers_assert_name": "largest_path_value",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_path_value, run_largest_path_value\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestColorValueInADirectedGraph",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_path_value",
+                "signature": "(self, colors: str, edges: list[list[int]]) -> int",
+                "body": "        # TODO: Implement largest_path_value\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_path_value",
+                "signature": "(self, colors: str, edges: list[list[int]], expected: int)",
+                "parametrize": "colors, edges, expected",
+                "test_cases": {
+                    "list": [
+                        "('abaca', [[0, 1], [0, 2], [2, 3], [3, 4]], 3)",
+                        "('a', [[0, 0]], -1)",
+                        "('a', [], 1)",
+                        "('ab', [[0, 1], [1, 0]], -1)",
+                        "('abc', [[0, 1], [1, 2], [2, 0]], -1)",
+                        "('aa', [[0, 1]], 2)",
+                        "('abca', [[0, 1], [1, 2], [2, 3]], 2)",
+                        "('aab', [[0, 1], [0, 2], [1, 2]], 2)",
+                        "('zzzzz', [[0, 1], [1, 2], [2, 3], [3, 4]], 5)",
+                        "('abcabc', [[0, 3], [1, 4], [2, 5]], 2)",
+                        "('ab', [[0, 1], [0, 1]], 1)",
+                        "('abcd', [[0, 1], [2, 3], [1, 1]], -1)",
+                        "('aabbb', [[0, 1], [1, 2], [2, 3], [3, 4]], 3)",
+                        "('xyzxyz', [[0, 1], [1, 2], [3, 4], [4, 5], [2, 3]], 2)",
+                        "('hgfn', [[0, 1], [1, 2], [2, 3], [3, 0]], -1)",
+                        "('cbbb', [[0, 3]], 1)",
+                        "('cbzac', [[0, 2], [1, 3]], 1)",
+                        "('zabzz', [[1, 4]], 1)",
+                        "('bzzac', [[1, 2], [1, 4], [2, 3], [3, 4]], 2)",
+                        "('zazz', [[0, 2], [0, 3], [1, 2]], 2)",
+                        "('zaa', [[1, 2]], 2)",
+                        "('zazzza', [[0, 4], [0, 5], [3, 5]], 2)",
+                        "('acz', [[0, 1]], 1)",
+                        "('caa', [[0, 2]], 1)",
+                        "('cbzzc', [[0, 2], [1, 4], [2, 4]], 2)",
+                        "('zbac', [[0, 1]], 1)",
+                        "('czabc', [[0, 1], [0, 2], [1, 2], [1, 4], [2, 4], [3, 4]], 2)"
+                    ]
+                },
+                "body": "        result = run_largest_path_value(Solution, colors, edges)\n        assert_largest_path_value(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_path_value, assert_largest_path_value\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncolors = 'abaca'\nedges = [[0, 1], [0, 2], [2, 3], [3, 4]]\nexpected = 3",
+    "playground_run": "result = run_largest_path_value(Solution, colors, edges)\nresult",
+    "playground_assert": "assert_largest_path_value(result, expected)"
+}

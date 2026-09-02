@@ -1,0 +1,93 @@
+{
+    "problem_name": "minimize_rounding_error_to_meet_target",
+    "solution_class_name": "Solution",
+    "problem_number": "1058",
+    "problem_title": "Minimize Rounding Error to Meet Target",
+    "difficulty": "Medium",
+    "topics": "Array, Math, String, Dynamic Programming, Greedy, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of prices `[p1,p2...,pn]` and a `target`, round each price `pi` to `Roundi(pi)` so that the rounded array `[Round1(p1),Round2(p2)...,Roundn(pn)]` sums to the given `target`. Each operation `Roundi(pi)` could be either `Floor(pi)` or `Ceil(pi)`.\n\nReturn the string `\"-1\"` if the rounded array is impossible to sum to `target`. Otherwise, return the smallest rounding error, which is defined as `\u03a3 |Roundi(pi) - (pi)|` for `i` from `1` to `n`, as a string with three places after the decimal.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: prices = [\"0.700\",\"2.800\",\"4.900\"], target = 8\nOutput: \"1.000\"\nExplanation: Use Floor, Ceil and Ceil operations to get (0.7 - 0) + (3 - 2.8) + (5 - 4.9) = 0.7 + 0.2 + 0.1 = 1.0.\n```"
+            },
+            {
+                "content": "```\nInput: prices = [\"1.500\",\"2.500\",\"3.500\"], target = 10\nOutput: \"-1\"\nExplanation: It is impossible to meet the target.\n```"
+            },
+            {
+                "content": "```\nInput: prices = [\"1.500\",\"2.500\",\"3.500\"], target = 9\nOutput: \"1.500\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= prices.length <= 500\n- Each string prices[i] represents a real number in the range [0.0, 1000.0] and has exactly 3 decimal places.\n- 0 <= target <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimize_error",
+    "helpers_run_signature": "(solution_class: type, prices: list[str], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimize_error(prices, target)",
+    "helpers_assert_name": "minimize_error",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimize_error, run_minimize_error\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimizeRoundingErrorToMeetTarget",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimize_error",
+                "signature": "(self, prices: list[str], target: int) -> str",
+                "body": "        # TODO: Implement minimize_error\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimize_error",
+                "signature": "(self, prices: list[str], target: int, expected: str)",
+                "parametrize": "prices, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(['0.700','2.800','4.900'],8,'1.000')",
+                        "(['1.500','2.500','3.500'],10,'-1')",
+                        "(['1.500','2.500','3.500'],9,'1.500')",
+                        "(['1.500','2.500','3.500'],7,'1.500')",
+                        "(['0.700','2.800','4.900'],6,'2.400')",
+                        "(['0.700','2.800','4.900'],9,'0.600')",
+                        "(['1.000','2.000','3.000'],6,'0.000')",
+                        "(['0.001'],1,'0.999')",
+                        "(['0.001'],0,'0.001')",
+                        "(['0.500','0.500'],2,'1.000')",
+                        "(['0.500','0.500'],0,'1.000')",
+                        "(['2.350','1.700','3.200'],8,'1.150')",
+                        "(['10.000','0.100','0.200'],11,'0.900')",
+                        "(['1.400','2.400','3.400'],7,'1.400')",
+                        "(['0.400','0.400'],1,'1.000')"
+                    ]
+                },
+                "body": "        result = run_minimize_error(Solution, prices, target)\n        assert_minimize_error(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimize_error, assert_minimize_error\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nprices = ['0.700', '2.800', '4.900']\ntarget = 8\nexpected = '1.000'",
+    "playground_run": "result = run_minimize_error(Solution, prices, target)\nresult",
+    "playground_assert": "assert_minimize_error(result, expected)"
+}

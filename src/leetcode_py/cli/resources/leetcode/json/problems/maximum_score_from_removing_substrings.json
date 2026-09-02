@@ -1,0 +1,91 @@
+{
+    "problem_name": "maximum_score_from_removing_substrings",
+    "solution_class_name": "Solution",
+    "problem_number": "1717",
+    "problem_title": "Maximum Score From Removing Substrings",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Greedy",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` and two integers `x` and `y`. You can perform two types of operations any number of times.\n\n- Remove substring `\"ab\"` and gain `x` points.\n  - For example, when removing `\"ab\"` from `\"cabxbae\"` it becomes `\"cxbae\"`.\n- Remove substring `\"ba\"` and gain `y` points.\n  - For example, when removing `\"ba\"` from `\"cabxbae\"` it becomes `\"cabxe\"`.\n\nReturn *the maximum points you can gain after applying the above operations on* `s`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"cdbcbbaaabab\", x = 4, y = 5\nOutput: 19\nExplanation:\n- Remove the \"ba\" underlined in \"cdbcbbaaabab\". Now, s = \"cdbcbbaaab\" and 5 points are added to the score.\n- Remove the \"ab\" underlined in \"cdbcbbaaab\". Now, s = \"cdbcbbaa\" and 4 points are added to the score.\n- Remove the \"ba\" underlined in \"cdbcbbaa\". Now, s = \"cdbcba\" and 5 points are added to the score.\n- Remove the \"ba\" underlined in \"cdbcba\". Now, s = \"cdbc\" and 5 points are added to the score.\nTotal score = 5 + 4 + 5 + 5 = 19.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aabbaaxybbaabb\", x = 5, y = 4\nOutput: 20\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- 1 <= x, y <= 10^4\n- s consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_gain",
+    "helpers_run_signature": "(solution_class: type, s: str, x: int, y: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_gain(s, x, y)",
+    "helpers_assert_name": "maximum_gain",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_gain, run_maximum_gain\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumScoreFromRemovingSubstrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_gain",
+                "signature": "(self, s: str, x: int, y: int) -> int",
+                "body": "        # TODO: Implement maximum_gain\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_gain",
+                "signature": "(self, s: str, x: int, y: int, expected: int)",
+                "parametrize": "s, x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "('cdbcbbaaabab', 4, 5, 19)",
+                        "('aabbaaxybbaabb', 5, 4, 20)",
+                        "('ab', 1, 1, 1)",
+                        "('ba', 3, 4, 4)",
+                        "('abab', 2, 1, 4)",
+                        "('aabb', 3, 2, 6)",
+                        "('bbaa', 3, 2, 4)",
+                        "('abc', 5, 4, 5)",
+                        "('a', 5, 4, 0)",
+                        "('bbbaaa', 4, 5, 15)",
+                        "('aaaabbbb', 5, 4, 20)",
+                        "('ababab', 1, 10, 21)",
+                        "('bababa', 10, 1, 21)",
+                        "('aaocnbbaabaaadbabpaabbbgwlansaabbuaaaara', 10000, 1, 60002)",
+                        "('adababbaoybanbdaaaaqaaaabbbbbaaababaaaabaabbbgbbfgaubba', 1, 10000, 120004)",
+                        "('aalbaaaaaaaaabaabdcblhbebybfrbbababbbaaaaombwabbaaaabbb', 10000, 1, 80006)"
+                    ]
+                },
+                "body": "        result = run_maximum_gain(Solution, s, x, y)\n        assert_maximum_gain(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_gain, assert_maximum_gain\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cdbcbbaaabab'\nx = 4\ny = 5\nexpected = 19",
+    "playground_run": "result = run_maximum_gain(Solution, s, x, y)\nresult",
+    "playground_assert": "assert_maximum_gain(result, expected)"
+}

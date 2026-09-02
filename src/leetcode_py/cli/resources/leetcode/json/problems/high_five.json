@@ -1,0 +1,89 @@
+{
+    "problem_name": "high_five",
+    "solution_class_name": "Solution",
+    "problem_number": "1086",
+    "problem_title": "High Five",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given a list of the scores of different students, `items`, where `items[i] = [IDi, scorei]` represents one score from a student with `IDi`, calculate each student's top five average.\n\nReturn the answer as an array of pairs `result`, where `result[j] = [IDj, topFiveAveragej]` represents the student with `IDj` and their top five average. Sort `result` by `IDj` in increasing order.\n\nA student's `top five average` is calculated by taking the sum of their top five scores and dividing it by `5` using integer division.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: items = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]\nOutput: [[1,87],[2,88]]\nExplanation:\nThe student with ID = 1 got scores 91, 92, 60, 65, 87, and 100. Their top five average is (100 + 92 + 91 + 87 + 65) / 5 = 87.\nThe student with ID = 2 got scores 93, 97, 77, 100, and 76. Their top five average is (100 + 97 + 93 + 77 + 76) / 5 = 88.6, but with integer division their average converts to 88.\n```"
+            },
+            {
+                "content": "```\nInput: items = [[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100]]\nOutput: [[1,100],[7,100]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= items.length <= 1000\n- items[i].length == 2\n- 1 <= IDi <= 1000\n- 0 <= scorei <= 100\n- For each IDi, there will be at least five scores.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "high_five",
+    "helpers_run_signature": "(solution_class: type, items: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.high_five(items)",
+    "helpers_assert_name": "high_five",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_high_five, run_high_five\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HighFive",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "high_five",
+                "signature": "(self, items: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement high_five\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_high_five",
+                "signature": "(self, items: list[list[int]], expected: list[list[int]])",
+                "parametrize": "items, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]],[[1,87],[2,88]])",
+                        "([[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100]],[[1,100],[7,100]])",
+                        "([[5,10],[5,20],[5,30],[5,40],[5,50],[5,60]],[[5,40]])",
+                        "([[3,0],[3,0],[3,0],[3,0],[3,0]],[[3,0]])",
+                        "([[2,50],[2,50],[2,50],[2,50],[2,50],[2,100],[1,1],[1,1],[1,1],[1,1],[1,1]],[[1,1],[2,60]])",
+                        "([[10,100],[10,90],[10,80],[10,70],[10,60],[10,50],[10,40]],[[10,80]])",
+                        "([[19,47],[19,77],[19,60],[19,80],[19,74],[19,8],[19,77],[18,60],[18,33],[18,70],[18,29],[18,24]],[[18,43],[19,73]])",
+                        "([[18,29],[18,81],[18,19],[18,66],[18,49],[18,94],[18,1],[19,20],[19,97],[19,75],[19,5],[19,38],[19,99],[16,34],[16,60],[16,76],[16,92],[16,49],[13,50],[13,93],[13,73],[13,56],[13,17],[13,46],[13,12],[13,4],[13,17],[13,63],[13,27]],[[13,67],[16,62],[18,63],[19,65]])",
+                        "([[14,73],[14,44],[14,68],[14,74],[14,52],[14,74],[14,29],[14,43],[14,87],[14,3],[14,35],[10,89],[10,41],[10,69],[10,73],[10,72],[10,13],[10,91],[19,81],[19,73],[19,34],[19,36],[19,15],[19,8],[19,61],[19,81]],[[10,78],[14,75],[19,66]])",
+                        "([[3,2],[3,37],[3,54],[3,98],[3,53],[3,15],[3,5],[12,48],[12,91],[12,75],[12,42],[12,70],[19,64],[19,30],[19,4],[19,39],[19,0],[19,9],[19,13],[19,76],[19,68],[14,25],[14,52],[14,37],[14,78],[14,33]],[[3,51],[12,65],[14,45],[19,55]])",
+                        "([[2,46],[2,17],[2,48],[2,48],[2,58],[2,66],[2,49],[2,82],[2,76],[2,87],[11,79],[11,64],[11,34],[11,55],[11,81],[11,92]],[[2,73],[11,74]])",
+                        "([[10,66],[10,38],[10,70],[10,43],[10,1],[10,100],[10,53],[10,74],[10,40],[14,48],[14,78],[14,75],[14,80],[14,17]],[[10,72],[14,59]])",
+                        "([[11,45],[11,86],[11,45],[11,77],[11,90],[11,35],[11,94],[11,62],[11,2],[11,75],[11,7],[11,86]],[[11,86]])",
+                        "([[12,80],[12,58],[12,38],[12,75],[12,76],[12,40],[12,22],[12,46],[12,23]],[[12,67]])"
+                    ]
+                },
+                "body": "        result = run_high_five(Solution, items)\n        assert_high_five(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_high_five, assert_high_five\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nitems = [[1, 91], [1, 92], [2, 93], [2, 97], [1, 60], [2, 77], [1, 65], [1, 87], [1, 100], [2, 100], [2, 76]]\nexpected = [[1, 87], [2, 88]]",
+    "playground_run": "result = run_high_five(Solution, items)\nresult",
+    "playground_assert": "assert_high_five(result, expected)"
+}

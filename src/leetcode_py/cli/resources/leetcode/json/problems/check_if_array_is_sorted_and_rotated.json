@@ -1,0 +1,102 @@
+{
+    "problem_name": "check_if_array_is_sorted_and_rotated",
+    "solution_class_name": "Solution",
+    "problem_number": "1752",
+    "problem_title": "Check if Array Is Sorted and Rotated",
+    "difficulty": "Easy",
+    "topics": "Array",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array `nums`, return `true` if the array was originally sorted in non-decreasing order, then rotated **some** number of positions (including zero). Otherwise, return `false`.\n\nThere may be **duplicates** in the original array.\n\n**Note:** An array `A` rotated by `x` positions results in an array `B` of the same length such that `B[i] == A[(i+x) % A.length]` for every valid index `i`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,4,5,1,2]\nOutput: true\nExplanation: [1,2,3,4,5] is the original sorted array.\nYou can rotate the array by x = 2 positions to begin on the element of value 3: [3,4,5,1,2].\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,1,3,4]\nOutput: false\nExplanation: There is no sorted array once rotated that can make nums.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3]\nOutput: true\nExplanation: [1,2,3] is the original sorted array.\nYou can rotate the array by x = 0 positions (i.e. no rotation) to make nums.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 100\n- 1 <= nums[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "check",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.check(nums)",
+    "helpers_assert_name": "check",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_check, run_check\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CheckIfArrayIsSortedAndRotated",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "check",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement check\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_check",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 4, 5, 1, 2], True)",
+                        "([2, 1, 3, 4], False)",
+                        "([1, 2, 3], True)",
+                        "([1], True)",
+                        "([2, 1], True)",
+                        "([1, 2], True)",
+                        "([3, 4, 5, 1, 2, 6], False)",
+                        "([2, 2, 2], True)",
+                        "([1, 1, 1, 1], True)",
+                        "([2, 1, 2, 2], True)",
+                        "([1, 2, 3, 4, 5], True)",
+                        "([5, 4, 3, 2, 1], False)",
+                        "([3, 1, 2], True)",
+                        "([1, 3, 2], False)",
+                        "([2, 2, 2, 1, 2], True)",
+                        "([6, 10, 6], True)",
+                        "([6, 100, 13, 34], False)",
+                        "([67, 71, 73], True)",
+                        "([85, 21], True)",
+                        "([34], True)",
+                        "([48, 30, 98, 30, 98, 82, 9, 35], False)",
+                        "([14, 43, 78], True)",
+                        "([28, 16], True)",
+                        "([72], True)"
+                    ]
+                },
+                "body": "        result = run_check(Solution, nums)\n        assert_check(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_check, assert_check\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 4, 5, 1, 2]\nexpected = True",
+    "playground_run": "result = run_check(Solution, nums)\nresult",
+    "playground_assert": "assert_check(result, expected)"
+}

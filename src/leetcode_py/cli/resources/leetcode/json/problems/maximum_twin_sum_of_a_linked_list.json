@@ -1,0 +1,96 @@
+{
+    "problem_name": "maximum_twin_sum_of_a_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "2130",
+    "problem_title": "Maximum Twin Sum of a Linked List",
+    "difficulty": "Medium",
+    "topics": "Linked List, Two Pointers, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "In a linked list of size `n`, where `n` is **even**, the `i^th` node (**0-indexed**) of the linked list is known as the **twin** of the `(n-1-i)^th` node, if `0 <= i <= (n / 2) - 1`.\n\n- For example, if `n = 4`, then node `0` is the twin of node `3`, and node `1` is the twin of node `2`. These are the only nodes with twins for `n = 4`.\n\nThe **twin sum** is defined as the sum of a node and its twin.\n\nGiven the `head` of a linked list with even length, return *the **maximum twin sum** of the linked list*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/12/03/eg1drawio.png)\n\n```\nInput: head = [5,4,2,1]\nOutput: 6\nExplanation:\nNodes 0 and 1 are the twins of nodes 3 and 2, respectively. All have twin sum = 6.\nThere are no other nodes with twins in the linked list.\nThus, the maximum twin sum of the linked list is 6.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/12/03/eg2drawio.png)\n\n```\nInput: head = [4,2,2,3]\nOutput: 7\nExplanation:\nThe nodes with twins present in this linked list are:\n- Node 0 is the twin of node 3 having a twin sum of 4 + 3 = 7.\n- Node 1 is the twin of node 2 having a twin sum of 2 + 2 = 4.\nThus, the maximum twin sum of the linked list is max(7, 4) = 7.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/12/03/eg3drawio.png)\n\n```\nInput: head = [1,100000]\nOutput: 100001\nExplanation:\nThere is only one node with a twin in the linked list having twin sum of 1 + 100000 = 100001.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the list is an **even** integer in the range `[2, 10^5]`.\n- `1 <= Node.val <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import ListNode",
+    "helpers_content": "",
+    "helpers_run_name": "pair_sum",
+    "helpers_run_signature": "(solution_class: type, head_list: list[int])",
+    "helpers_run_body": "    head = ListNode[int].from_list(head_list)\n    implementation = solution_class()\n    return implementation.pair_sum(head)",
+    "helpers_assert_name": "pair_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import ListNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pair_sum, run_pair_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumTwinSumOfALinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pair_sum",
+                "signature": "(self, head: ListNode[int] | None) -> int",
+                "body": "        # TODO: Implement pair_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pair_sum",
+                "signature": "(self, head_list: list[int], expected: int)",
+                "parametrize": "head_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 4, 2, 1], 6)",
+                        "([4, 2, 2, 3], 7)",
+                        "([1, 100000], 100001)",
+                        "([1, 2], 3)",
+                        "([2, 2], 4)",
+                        "([3, 8], 11)",
+                        "([1, 1, 1, 1], 2)",
+                        "([10, 1, 1, 10], 20)",
+                        "([1, 5, 5, 1], 10)",
+                        "([7, 3, 9, 4], 12)",
+                        "([100, 200, 300, 400], 500)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 9)",
+                        "([5, 5, 5, 1, 1, 5], 10)",
+                        "([9, 1, 2, 8, 7, 3], 12)",
+                        "([100000, 100000, 1, 1], 100001)",
+                        "([10, 1, 14, 20], 30)",
+                        "([12, 1, 10, 12, 20, 5, 7, 9], 32)",
+                        "([14, 19], 33)"
+                    ]
+                },
+                "body": "        result = run_pair_sum(Solution, head_list)\n        assert_pair_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_pair_sum, assert_pair_sum\nfrom solution import Solution\nfrom leetcode_py import ListNode",
+    "playground_setup": "# Example test case\nhead_list: list[int] = [5, 4, 2, 1]\nexpected = 6",
+    "playground_run": "result = run_pair_sum(Solution, head_list)\nresult",
+    "playground_assert": "assert_pair_sum(result, expected)"
+}

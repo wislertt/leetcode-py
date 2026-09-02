@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximize_score_after_n_operations",
+    "solution_class_name": "Solution",
+    "problem_number": "1799",
+    "problem_title": "Maximize Score After N Operations",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Dynamic Programming, Backtracking, Bit Manipulation, Number Theory, Bitmask",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given <code>nums</code>, an array of positive integers of size <code>2 * n</code>. You must perform <code>n</code> operations on this array.</p>\n\n<p>In the <code>i<sup>th</sup></code> operation <strong>(1-indexed)</strong>, you will:</p>\n\n<ul>\n\t<li>Choose two elements, <code>x</code> and <code>y</code>.</li>\n\t<li>Receive a score of <code>i * gcd(x, y)</code>.</li>\n\t<li>Remove <code>x</code> and <code>y</code> from <code>nums</code>.</li>\n</ul>\n\n<p>Return <em>the maximum score you can receive after performing </em><code>n</code><em> operations.</em></p>\n\n<p>The function <code>gcd(x, y)</code> is the greatest common divisor of <code>x</code> and <code>y</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2]\nOutput: 1\nExplanation: The optimal choice of operations is:\n(1 * gcd(1, 2)) = 1\n```"
+            },
+            {
+                "content": "```\nInput: nums = [3,4,6,8]\nOutput: 11\nExplanation: The optimal choice of operations is:\n(1 * gcd(3, 6)) + (2 * gcd(4, 8)) = 3 + 8 = 11\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5,6]\nOutput: 14\nExplanation: The optimal choice of operations is:\n(1 * gcd(1, 5)) + (2 * gcd(2, 4)) + (3 * gcd(3, 6)) = 1 + 4 + 9 = 14\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= n &lt;= 7\n- nums.length == 2 * n\n- 1 &lt;= nums[i] &lt;= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_score",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_score(nums)",
+    "helpers_assert_name": "max_score",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_score, run_max_score\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximizeScoreAfterNOperations",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_score",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement max_score\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_score",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2], 1)",
+                        "([3, 4, 6, 8], 11)",
+                        "([1, 2, 3, 4, 5, 6], 14)",
+                        "([1, 1], 1)",
+                        "([2, 2], 2)",
+                        "([1, 1000000], 1)",
+                        "([4, 4, 4, 4], 12)",
+                        "([1, 2, 3, 4], 5)",
+                        "([7, 7, 7, 7, 7, 7], 42)",
+                        "([10, 10, 10, 10], 30)",
+                        "([2, 4, 6, 8, 10, 12, 14, 16], 56)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 28)",
+                        "([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 56)",
+                        "([999983, 999979, 3, 5, 7, 11], 6)",
+                        "([12, 18, 24, 36, 48, 60], 120)",
+                        "([25, 5, 1, 11], 11)",
+                        "([5, 12, 17, 21, 10, 25, 2, 22], 34)",
+                        "([9, 24], 3)",
+                        "([18, 19, 29, 7, 5, 10, 22, 8, 8, 10, 15, 22, 5, 28], 304)",
+                        "([6, 7, 18, 17, 1, 24, 6, 3, 28, 17], 144)"
+                    ]
+                },
+                "body": "        result = run_max_score(Solution, nums)\n        assert_max_score(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_score, assert_max_score\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4, 5, 6]\nexpected = 14",
+    "playground_run": "result = run_max_score(Solution, nums)\nresult",
+    "playground_assert": "assert_max_score(result, expected)"
+}

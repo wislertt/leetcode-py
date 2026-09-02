@@ -1,9 +1,15 @@
 # Unscrapable Problems List
+
 # Problems that cannot be scraped due to being premium, API issues, or other
 # technical limitations.
 
 # Format: (problem_number, problem_name)
-UNSCRAPABLE_PROBLEMS = [
+
+# Already handled (created, or confirmed not applicable).
+UNSCRAPABLE_HANDLED = [
+    (1197, "minimum-knight-moves"),
+    (1966, "binary-searchable-numbers-in-an-unsorted-array"),
+    (2021, "brightest-position-on-street"),
     (252, "meeting-rooms"),
     (253, "meeting-rooms-ii"),
     (261, "graph-valid-tree"),
@@ -14,7 +20,6 @@ UNSCRAPABLE_PROBLEMS = [
     (286, "walls-and-gates"),
     (323, "number-of-connected-components-in-an-undirected-graph"),
     (437, "path-sum-iii"),
-    (1197, "minimum-knight-moves"),
     (1730, "shortest-path-to-get-food"),
     (156, "binary-tree-upside-down"),
     (159, "longest-substring-with-at-most-two-distinct-characters"),
@@ -62,8 +67,6 @@ UNSCRAPABLE_PROBLEMS = [
     (346, "moving-average-from-data-stream"),
     (348, "design-tic-tac-toe"),
     (351, "android-unlock-patterns"),
-    # ======= Add new unscrapable problems below this line.
-    # All problems above this line are already handled.
     (353, "design-snake-game"),
     (356, "line-reflection"),
     (358, "rearrange-string-k-distance-apart"),
@@ -95,7 +98,7 @@ UNSCRAPABLE_PROBLEMS = [
     (499, "the-maze-iii"),
     (505, "the-maze-ii"),
     (510, "inorder-successor-in-bst-ii"),
-    (527, "beautiful-arrangement-ii"),
+    (527, "word-abbreviation"),
     (531, "lonely-pixel-i"),
     (545, "boundary-of-binary-tree"),
     (548, "split-array-with-equal-sum"),
@@ -128,41 +131,158 @@ UNSCRAPABLE_PROBLEMS = [
     (1056, "confusing-number"),
     (1057, "campus-bikes"),
     (1058, "minimize-rounding-error-to-meet-target"),
-    (1059, "complete-binary-tree-inserter"),
+    (1059, "all-paths-from-source-lead-to-destination"),
     (1060, "missing-element-in-sorted-array"),
     (1086, "high-five"),
     (1087, "brace-expansion"),
     (1088, "confusing-number-ii"),
     (1099, "two-sum-less-than-k"),
-    (1100, "longest-well-performing-interval"),
+    (1100, "find-k-length-substrings-with-no-repeated-characters"),
     (1101, "the-earliest-moment-when-everyone-become-friends"),
     (1102, "path-with-maximum-minimum-value"),
     (1120, "maximum-average-subtree"),
     (1121, "divide-array-into-increasing-sequences"),
+    (1133, "largest-unique-number"),
+    (1134, "armstrong-number"),
+    (1135, "connecting-cities-with-minimum-cost"),
+    (1136, "parallel-courses"),
+    (1150, "check-if-a-number-is-majority-element-in-a-sorted-array"),
+    (1152, "analyze-user-website-visit-pattern"),
+    (1165, "single-row-keyboard"),
+    (1166, "design-file-system"),
+    (1167, "minimum-cost-to-connect-sticks"),
+    (1168, "optimize-water-distribution-in-a-village"),
+    (1180, "count-substrings-with-only-one-distinct-letter"),
+    (1183, "maximum-number-of-ones"),
+    (1196, "how-many-apples-can-you-put-into-the-basket"),
+    (1198, "find-smallest-common-element-in-all-rows"),
+    (1214, "two-sum-bsts"),
+    (1215, "stepping-numbers"),
+    (1216, "valid-palindrome-iii"),
+    (1228, "missing-number-in-arithmetic-progression"),
+    (1229, "meeting-scheduler"),
+    (1230, "toss-strange-coins"),
+    (1231, "divide-chocolate"),
+    (1236, "web-crawler"),
+    (1243, "array-transformation"),
+    (1244, "design-a-leaderboard"),
+    (1245, "tree-diameter"),
+    (1246, "palindrome-removal"),
+    (1258, "synonymous-sentences"),
+    (1259, "handshakes-that-dont-cross"),
+    (1272, "remove-interval"),
+    (1273, "delete-tree-nodes"),
+    (1274, "number-of-ships-in-a-rectangle"),
+    (1426, "counting-elements"),
+    (1427, "perform-string-shifts"),
+    (1428, "leftmost-column-with-one"),
+    (1429, "first-unique-number"),
+    (1474, "delete-n-nodes-after-m-nodes-of-a-linked-list"),
+    (1490, "clone-n-ary-tree"),
+    (1506, "find-root-of-n-ary-tree"),
+    (1522, "diameter-of-n-ary-tree"),
+    (1533, "find-the-index-of-the-large-integer"),
+    (1538, "guess-the-majority-in-a-hidden-array"),
+    (1564, "put-boxes-into-the-warehouse-i"),
+    (1570, "dot-product-of-two-sparse-vectors"),
+    (1650, "lowest-common-ancestor-of-a-binary-tree-iii"),
+    (1762, "buildings-with-an-ocean-view"),
+    (1836, "remove-duplicates-from-an-unsorted-linked-list"),
+    (1279, "traffic-light-controlled-intersection"),
+    (1265, "print-immutable-linked-list-in-reverse"),
+    (1868, "product-of-two-run-length-encoded-arrays"),
+    (1891, "cutting-ribbons"),
+    (2393, "count-strictly-increasing-subarrays"),
+    (2534, "time-taken-to-cross-the-door"),
+    (3199, "count-triplets-with-even-xor-set-bits-i"),
+    (3481, "apply-substitutions"),
+    (3711, "maximum-transactions-without-negative-balance"),
+    (157, "read-n-characters-given-read4"),
+    (158, "read-n-characters-given-read4-ii-call-multiple-times"),
+    (170, "two-sum-iii-data-structure-design"),
+    (245, "shortest-word-distance-iii"),
+    (288, "unique-word-abbreviation"),
+]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = [
+    (533, "lonely-pixel-ii"),
+    (536, "construct-binary-tree-from-string"),
+    (544, "output-contest-matches"),
+    (562, "longest-line-of-consecutive-one-in-matrix"),
+    (568, "maximum-vacation-days"),
+    (573, "squirrel-simulation"),
 ]
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
-# Never created; kept separate from UNSCRAPABLE_PROBLEMS so the todo queue
-# below the divider stays purely actionable.
+# Never created; kept separate from the unscrapable lists so the todo queue
+# stays purely actionable.
 NON_PYTHON_PROBLEMS = [
+    (595, "big-countries"),
+    (597, "friend-requests-i-overall-acceptance-rate"),
+    (571, "find-median-given-frequency-of-numbers"),
+    (574, "winning-candidate"),
+    (577, "employee-bonus"),
+    (578, "get-highest-answer-rate-question"),
+    (579, "find-cumulative-salary-of-an-employee"),
+    (580, "count-student-number-in-departments"),
+    (534, "game-play-analysis-iii"),
+    (569, "median-employee-salary"),
+    (570, "managers-with-at-least-5-direct-reports"),
     (262, "trips-and-users"),
+    (1264, "page-recommendations"),
+    (1280, "students-and-examinations"),
     (511, "game-play-analysis-i"),
     (512, "game-play-analysis-ii"),
     (550, "game-play-analysis-iv"),
+    (1141, "user-activity-for-the-past-30-days-i"),
+    (1142, "user-activity-for-the-past-30-days-ii"),
+    (1251, "average-selling-price"),
+    (1270, "all-people-report-to-the-given-manager"),
+    (175, "combine-two-tables"),
+    (176, "second-highest-salary"),
+    (177, "nth-highest-salary"),
+    (178, "rank-scores"),
+    (180, "consecutive-numbers"),
+    (181, "employees-earning-more-than-their-managers"),
+    (182, "duplicate-emails"),
+    (183, "customers-who-never-order"),
+    (184, "department-highest-salary"),
+    (185, "department-top-three-salaries"),
+    (192, "word-frequency"),
+    (193, "valid-phone-numbers"),
+    (194, "transpose-file"),
+    (195, "tenth-line"),
+    (196, "delete-duplicate-emails"),
+    (197, "rising-temperature"),
 ]
 
 
-# Helper function to check if a problem is unscrapable
 def is_unscrapable(problem_number: int) -> bool:
     """Check if a problem number is in the unscrapable list."""
-    return any(num == problem_number for num, _ in UNSCRAPABLE_PROBLEMS)
+    return any(num == problem_number for num, _ in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE)
 
 
 def is_unscrapable_by_name(problem_name: str) -> bool:
     """Check if a problem name is in the unscrapable list."""
-    return any(name == problem_name for _, name in UNSCRAPABLE_PROBLEMS)
+    return any(name == problem_name for _, name in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE)
 
 
 def get_unscrapable_numbers() -> set[int]:
     """Get all unscrapable problem numbers as a set."""
-    return {num for num, _ in UNSCRAPABLE_PROBLEMS}
+    return {num for num, _ in UNSCRAPABLE_HANDLED + UNSCRAPABLE_QUEUE}
+
+
+def get_non_python_numbers() -> set[int]:
+    """Get all non-Python (SQL, shell, ...) problem numbers as a set."""
+    return {num for num, _ in NON_PYTHON_PROBLEMS}
+
+
+def get_unscrapable_queue() -> list[tuple[int, str]]:
+    """Get the todo queue in discovery order.
+
+    Queue entries that turn out to be already-created are the caller's
+    staleness check.
+    """
+    return list(UNSCRAPABLE_QUEUE)

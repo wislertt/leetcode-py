@@ -1,0 +1,87 @@
+{
+    "problem_name": "convert_binary_search_tree_to_sorted_doubly_linked_list",
+    "solution_class_name": "Solution",
+    "problem_number": "426",
+    "problem_title": "Convert Binary Search Tree to Sorted Doubly Linked List",
+    "difficulty": "Medium",
+    "topics": "Stack, Tree, Depth-First Search, Binary Search Tree, Linked List, Binary Tree, Doubly-Linked List",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Convert a **Binary Search Tree** to a sorted **Circular Doubly-Linked List** in place.\n\nYou can think of the left and right pointers as synonymous to the predecessor and successor pointers in a doubly-linked list. For a circular doubly linked list, the predecessor of the first element is the last element, and the successor of the last element is the first element.\n\nWe want to do the transformation **in place**. After the transformation, the left pointer of the tree node should point to its predecessor, and the right pointer should point to its successor. You should return the pointer to the smallest element of the linked list.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0400-0499/0426.Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List/images/bstdlloriginalbst.png)\n\n```\nInput: root = [4,2,5,1,3]\nOutput: [1,2,3,4,5]\n\nExplanation: The figure below shows the transformed BST. The solid line indicates the successor relationship, while the dashed line means the predecessor relationship.\n```"
+            },
+            {
+                "content": "```\nInput: root = [2,1,3]\nOutput: [1,2,3]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 2000]`.\n- `-1000 <= Node.val <= 1000`\n- All the values of the tree are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "tree_to_doubly_list",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    implementation = solution_class()\n    return implementation.tree_to_doubly_list(root)",
+    "helpers_assert_name": "tree_to_doubly_list",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int] | None) -> bool",
+    "helpers_assert_body": "    if expected_list is None:\n        assert result is None\n        return True\n    assert result is not None\n    head = result\n    vals: list[int] = []\n    node: TreeNode[int] | None = head\n    while True:\n        assert node is not None\n        vals.append(node.val)\n        node = node.right\n        if node is head:\n            break\n    assert vals == expected_list\n    assert head.left is not None\n    assert head.left.right is head\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_tree_to_doubly_list, run_tree_to_doubly_list\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ConvertBinarySearchTreeToSortedDoublyLinkedList",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "tree_to_doubly_list",
+                "signature": "(self, root: TreeNode[int] | None) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement tree_to_doubly_list\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_tree_to_doubly_list",
+                "signature": "(self, root_list: list[int | None], expected_list: list[int] | None)",
+                "parametrize": "root_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([4,2,5,1,3],[1,2,3,4,5])",
+                        "([2,1,3],[1,2,3])",
+                        "([],None)",
+                        "([1],[1])",
+                        "([5,3,6,2,4,None,7,1],[1,2,3,4,5,6,7])",
+                        "([2,1],[1,2])",
+                        "([1,None,2],[1,2])",
+                        "([6,2,8,1,4,7,9,None,None,3,5],[1,2,3,4,5,6,7,8,9])",
+                        "([10,4,16,2,8,12,20,1,3,6,9,11,14,18,22],[1,2,3,4,6,8,9,10,11,12,14,16,18,20,22])",
+                        "([15,9,21,5,12,18,25,2,7,10,13,16,20,23,27,1,3],[1,2,3,5,7,9,10,12,13,15,16,18,20,21,23,25,27])",
+                        "([3,1,5,None,2,4,6],[1,2,3,4,5,6])",
+                        "([8,3,10,1,6,None,14,None,None,4,7,12],[1,3,4,6,7,8,10,12,14])"
+                    ]
+                },
+                "body": "        result = run_tree_to_doubly_list(Solution, root_list)\n        assert_tree_to_doubly_list(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_tree_to_doubly_list, assert_tree_to_doubly_list\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [4, 2, 5, 1, 3]\nexpected_list = [1, 2, 3, 4, 5]",
+    "playground_run": "result = run_tree_to_doubly_list(Solution, root_list)\nresult",
+    "playground_assert": "assert_tree_to_doubly_list(result, expected_list)"
+}

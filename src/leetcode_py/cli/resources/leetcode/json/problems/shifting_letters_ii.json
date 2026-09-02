@@ -1,0 +1,95 @@
+{
+    "problem_name": "shifting_letters_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "2381",
+    "problem_title": "Shifting Letters II",
+    "difficulty": "Medium",
+    "topics": "Array, String, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` of lowercase English letters and a 2D integer array `shifts` where `shifts[i] = [start<sub>i</sub>, end<sub>i</sub>, direction<sub>i</sub>]`. For every `i`, **shift** the characters in `s` from the index `start<sub>i</sub>` to the index `end<sub>i</sub>` (**inclusive**) forward if `direction<sub>i</sub> = 1`, or shift the characters backward if `direction<sub>i</sub> = 0`.\n\nShifting a character **forward** means replacing it with the **next** letter in the alphabet (wrapping around so that `'z'` becomes `'a'`). Similarly, shifting a character **backward** means replacing it with the **previous** letter in the alphabet (wrapping around so that `'a'` becomes `'z'`).\n\nReturn *the final string after all such shifts to* `s` *are applied*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abc\", shifts = [[0,1,0],[1,2,1],[0,2,1]]\nOutput: \"ace\"\nExplanation: Firstly, shift the characters from index 0 to index 1 backward. Now s = \"zac\".\nSecondly, shift the characters from index 1 to index 2 forward. Now s = \"zbd\".\nFinally, shift the characters from index 0 to index 2 forward. Now s = \"ace\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"dztz\", shifts = [[0,0,0],[1,1,1]]\nOutput: \"catz\"\nExplanation: Firstly, shift the characters from index 0 to index 0 backward. Now s = \"cztz\".\nFinally, shift the characters from index 1 to index 1 forward. Now s = \"catz\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length, shifts.length <= 5 * 10^4`\n- `shifts[i].length == 3`\n- `0 <= start_i <= end_i < s.length`\n- `0 <= direction_i <= 1`\n- `s` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shifting_letters",
+    "helpers_run_signature": "(solution_class: type, s: str, shifts: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shifting_letters(s, shifts)",
+    "helpers_assert_name": "shifting_letters",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shifting_letters, run_shifting_letters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShiftingLettersII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shifting_letters",
+                "signature": "(self, s: str, shifts: list[list[int]]) -> str",
+                "body": "        # TODO: Implement shifting_letters\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shifting_letters",
+                "signature": "(self, s: str, shifts: list[list[int]], expected: str)",
+                "parametrize": "s, shifts, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc',[[0,1,0],[1,2,1],[0,2,1]],'ace')",
+                        "('dztz',[[0,0,0],[1,1,1]],'catz')",
+                        "('a',[[0,0,1]],'b')",
+                        "('a',[[0,0,0]],'z')",
+                        "('z',[[0,0,1]],'a')",
+                        "('abc',[[0,2,1]],'bcd')",
+                        "('zzz',[[0,2,1]],'aaa')",
+                        "('aaa',[[0,2,0]],'zzz')",
+                        "('abc',[[0,2,1],[0,2,1],[0,2,1]],'def')",
+                        "('abc',[[0,2,0],[0,2,0]],'yza')",
+                        "('abcd',[[0,1,1],[2,3,1]],'bcde')",
+                        "('abcd',[[1,2,0],[0,3,0]],'zzac')",
+                        "('abcd',[[0,3,0],[0,0,1],[3,3,1]],'aabd')",
+                        "('dloa',[[0,2,0],[0,1,0],[0,2,0],[3,3,1],[0,0,1]],'bimb')",
+                        "('yjljzt',[[4,5,0],[2,2,0]],'yjkjys')",
+                        "('hfqsgsps',[[2,6,0]],'hfprfros')",
+                        "('cu',[[0,1,0],[0,0,0],[1,1,0],[1,1,0]],'ar')",
+                        "('raxj',[[0,2,1],[0,0,0]],'rbyj')",
+                        "('jijzyv',[[1,4,1],[2,4,0]],'jjjzyv')",
+                        "('vxdd',[[1,2,0],[3,3,1]],'vwce')"
+                    ]
+                },
+                "body": "        result = run_shifting_letters(Solution, s, shifts)\n        assert_shifting_letters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shifting_letters, assert_shifting_letters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abc'\nshifts = [[0, 1, 0], [1, 2, 1], [0, 2, 1]]\nexpected = 'ace'",
+    "playground_run": "result = run_shifting_letters(Solution, s, shifts)\nresult",
+    "playground_assert": "assert_shifting_letters(result, expected)"
+}

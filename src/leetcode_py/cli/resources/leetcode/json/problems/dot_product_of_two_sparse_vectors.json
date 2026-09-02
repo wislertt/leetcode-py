@@ -1,0 +1,93 @@
+{
+    "problem_name": "dot_product_of_two_sparse_vectors",
+    "solution_class_name": "SparseVector",
+    "problem_number": "1570",
+    "problem_title": "Dot Product of Two Sparse Vectors",
+    "difficulty": "Medium",
+    "topics": "Design, Array, Hash Table, Two Pointers, Linear Algebra",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given two sparse vectors, compute their dot product.\n\nImplement class `SparseVector`:\n\n- `SparseVector(nums)` Initializes the object with the vector `nums`\n- `dotProduct(vec)` Compute the dot product between the instance of *SparseVector* and `vec`\n\nA **sparse vector** is a vector that has mostly zero values, you should store the sparse vector **efficiently** and compute the dot product between two *SparseVector*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums1 = [1,0,0,2,3], nums2 = [0,3,0,4,0]\nOutput: 8\nExplanation: v1 = SparseVector(nums1), v2 = SparseVector(nums2)\nv1.dotProduct(v2) = 1*0 + 0*3 + 0*0 + 2*4 + 3*0 = 8\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [0,1,0,0,0], nums2 = [0,0,0,0,2]\nOutput: 0\nExplanation: v1 = SparseVector(nums1), v2 = SparseVector(nums2)\nv1.dotProduct(v2) = 0*0 + 1*0 + 0*0 + 0*0 + 0*2 = 0\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [0,1,0,0,2,0,0], nums2 = [1,0,0,0,3,0,4]\nOutput: 6\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == nums1.length == nums2.length`\n- `1 <= n <= 10^5`\n- `0 <= nums1[i], nums2[i] <= 100`",
+    "readme_additional": "**Follow up:** What if only one of the vectors is sparse?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "dot_product",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int])",
+    "helpers_run_body": "    v1 = solution_class(nums1)\n    v2 = solution_class(nums2)\n    return v1.dot_product(v2)",
+    "helpers_assert_name": "dot_product",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_dot_product, run_dot_product\nfrom .solution import SparseVector",
+    "test_content": "",
+    "test_class_name": "DotProductOfTwoSparseVectors",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize sparse vector\n        pass"
+            },
+            {
+                "name": "dot_product",
+                "signature": "(self, vec: SparseVector) -> int",
+                "body": "        # TODO: Implement dot_product\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_dot_product",
+                "signature": "(self, nums1: list[int], nums2: list[int], expected: int)",
+                "parametrize": "nums1, nums2, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 0, 2, 3], [0, 3, 0, 4, 0], 8)",
+                        "([0, 1, 0, 0, 0], [0, 0, 0, 0, 2], 0)",
+                        "([0, 1, 0, 0, 2, 0, 0], [1, 0, 0, 0, 3, 0, 4], 6)",
+                        "([5], [7], 35)",
+                        "([0], [9], 0)",
+                        "([0, 0, 0], [0, 0, 0], 0)",
+                        "([100, 0, 100], [100, 100, 0], 10000)",
+                        "([1, 2, 3, 4], [1, 2, 3, 4], 30)",
+                        "([0, 0, 0, 0, 1], [1, 0, 0, 0, 0], 0)",
+                        "([0, 7, 0, 7, 0, 7], [7, 7, 0, 0, 7, 0], 49)",
+                        "([3, 0, 4], [0, 5, 0], 0)",
+                        "([2, 0, 0, 9, 0, 0, 1, 0], [0, 0, 3, 9, 0, 8, 0, 0], 81)",
+                        "([10, 20, 0, 0, 30], [0, 20, 0, 10, 30], 1300)",
+                        "([1, 0, 2, 0, 3, 0, 4, 0, 5], [0, 6, 0, 7, 3, 0, 1, 0, 2], 23)",
+                        "([0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1], [2, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0], 0)",
+                        "([0, 1, 2, 0, 4, 5, 0, 7], [7, 0, 5, 4, 0, 2, 1, 0], 20)"
+                    ]
+                },
+                "body": "        result = run_dot_product(SparseVector, nums1, nums2)\n        assert_dot_product(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_dot_product, assert_dot_product\nfrom solution import SparseVector",
+    "playground_setup": "# Example test case\nnums1 = [1, 0, 0, 2, 3]\nnums2 = [0, 3, 0, 4, 0]\nexpected = 8",
+    "playground_run": "result = run_dot_product(SparseVector, nums1, nums2)\nresult",
+    "playground_assert": "assert_dot_product(result, expected)"
+}

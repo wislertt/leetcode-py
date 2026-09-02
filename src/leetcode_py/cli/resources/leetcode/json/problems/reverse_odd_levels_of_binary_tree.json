@@ -1,0 +1,95 @@
+{
+    "problem_name": "reverse_odd_levels_of_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "2415",
+    "problem_title": "Reverse Odd Levels of Binary Tree",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the `root` of a <strong>perfect</strong> binary tree, reverse the node values at each <strong>odd</strong> level of the tree.\n\nFor example, suppose the node values at level 3 are `[2,1,3,4,7,11,29,18]`, then it should become `[18,29,11,7,4,3,1,2]`.\n\nReturn <em>the root of the reversed tree</em>.\n\nA binary tree is <strong>perfect</strong> if all parent nodes have two children and all leaves are on the same level.\n\nThe <strong>level</strong> of a node is the number of edges along the path between it and the root node.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/07/28/first_case1.png)\n\n```\nInput: root = [2,3,5,8,13,21,34]\nOutput: [2,5,3,8,13,21,34]\nExplanation: \nThe tree has only one odd level.\nThe nodes at level 1 are 3, 5 respectively, which are reversed and become 5, 3.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/07/28/second_case3.png)\n\n```\nInput: root = [7,13,11]\nOutput: [7,11,13]\nExplanation: \nThe nodes at level 1 are 13, 11, which are reversed and become 11, 13.\n```"
+            },
+            {
+                "content": "```\nInput: root = [0,1,2,0,0,0,0,1,1,1,1,2,2,2,2]\nOutput: [0,2,1,0,0,0,0,2,2,2,2,1,1,1,1]\nExplanation: \nThe odd levels have non-zero values.\nThe nodes at level 1 were 1, 2, and are 2, 1 after the reversal.\nThe nodes at level 3 were 1, 1, 1, 1, 2, 2, 2, 2, and are 2, 2, 2, 2, 1, 1, 1, 1 after the reversal.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 2^14]\n- 0 <= Node.val <= 10^5\n- root is a perfect binary tree",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_odd_levels",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.reverse_odd_levels(root)",
+    "helpers_assert_name": "reverse_odd_levels",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_odd_levels, run_reverse_odd_levels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseOddLevelsOfBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_odd_levels",
+                "signature": "(self, root: TreeNode[int] | None) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement reverse_odd_levels\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_odd_levels",
+                "signature": "(self, root_list: list[int | None], expected_list: list[int | None])",
+                "parametrize": "root_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([2], [2])",
+                        "([7], [7])",
+                        "([0], [0])",
+                        "([2, 3, 5], [2, 5, 3])",
+                        "([7, 13, 11], [7, 11, 13])",
+                        "([4, 2, 7], [4, 7, 2])",
+                        "([0, 1, 2], [0, 2, 1])",
+                        "([5, 4, 8], [5, 8, 4])",
+                        "([2, 3, 5, 8, 13, 21, 34], [2, 5, 3, 8, 13, 21, 34])",
+                        "([1, 2, 3, 4, 5, 6, 7], [1, 3, 2, 4, 5, 6, 7])",
+                        "([9, 8, 7, 6, 5, 4, 3], [9, 7, 8, 6, 5, 4, 3])",
+                        "([100, 50, 150, 25, 75, 125, 175], [100, 150, 50, 25, 75, 125, 175])",
+                        "([1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1])",
+                        "([0, 10, 20, 30, 40, 50, 60], [0, 20, 10, 30, 40, 50, 60])",
+                        "([64, 18, 18, 12, 48, 10, 46], [64, 18, 18, 12, 48, 10, 46])",
+                        "([50, 2, 90], [50, 90, 2])",
+                        "([1, 52, 47], [1, 47, 52])"
+                    ]
+                },
+                "body": "        result = run_reverse_odd_levels(Solution, root_list)\n        assert_reverse_odd_levels(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_odd_levels, assert_reverse_odd_levels\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [2, 3, 5, 8, 13, 21, 34]\nexpected_list: list[int | None] = [2, 5, 3, 8, 13, 21, 34]",
+    "playground_run": "result = run_reverse_odd_levels(Solution, root_list)\nresult",
+    "playground_assert": "assert_reverse_odd_levels(result, expected_list)"
+}

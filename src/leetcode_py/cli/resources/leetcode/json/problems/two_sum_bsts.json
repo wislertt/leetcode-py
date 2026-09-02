@@ -1,0 +1,93 @@
+{
+    "problem_name": "two_sum_bsts",
+    "solution_class_name": "Solution",
+    "problem_number": "1214",
+    "problem_title": "Two Sum BSTs",
+    "difficulty": "Medium",
+    "topics": "Stack, Tree, Depth-First Search, Binary Search Tree, Two Pointers, Binary Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>Given the roots of two binary search trees, <code>root1</code> and <code>root2</code>, return <code>true</code> if and only if there is a node in the first tree and a node in the second tree whose values sum up to a given integer <code>target</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1214.Two%20Sum%20BSTs/images/ex1.png)\n\n```\nInput: root1 = [2,1,4], root2 = [1,0,3], target = 5\nOutput: true\nExplanation: 2 and 3 sum up to 5.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1214.Two%20Sum%20BSTs/images/ex2.png)\n\n```\nInput: root1 = [0,-10,10], root2 = [5,1,7,0,2], target = 18\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in each tree is in the range [1, 5000].\n- -10^9 <= Node.val, target <= 10^9.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "two_sum_bsts",
+    "helpers_run_signature": "(solution_class: type, root1_list: list[int | None], root2_list: list[int | None], target: int)",
+    "helpers_run_body": "    root1 = TreeNode[int].from_list(root1_list)\n    root2 = TreeNode[int].from_list(root2_list)\n    implementation = solution_class()\n    return implementation.two_sum_bsts(root1, root2, target)",
+    "helpers_assert_name": "two_sum_bsts",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_two_sum_bsts, run_two_sum_bsts\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TwoSumBSTs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "two_sum_bsts",
+                "signature": "(self, root1: TreeNode[int] | None, root2: TreeNode[int] | None, target: int) -> bool",
+                "body": "        # TODO: Implement two_sum_bsts\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_two_sum_bsts",
+                "signature": "(self, root1_list: list[int | None], root2_list: list[int | None], target: int, expected: bool)",
+                "parametrize": "root1_list, root2_list, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([2,1,4],[1,0,3],5,True)",
+                        "([0,-10,10],[5,1,7,0,2],18,False)",
+                        "([2,1,4],[1,0,3],4,True)",
+                        "([2,1,4],[1,0,3],3,True)",
+                        "([2,1,4],[1,0,3],8,False)",
+                        "([1],[1],2,True)",
+                        "([1],[1],3,False)",
+                        "([-5,-10,-3],[-6,-10,-4],-14,True)",
+                        "([1000000000],[1000000000],2000000000,True)",
+                        "([-1000000000],[-1000000000],-2000000000,True)",
+                        "([0,-10,10],[5,1,7,0,2],12,True)",
+                        "([5,3,8,1,4,7,9],[10,6,15,3,8,11,18],24,True)",
+                        "([3,None,4],[2,None,3],6,True)",
+                        "([10,5,15,2,7],[5,1,8],15,True)",
+                        "([23,-45,None,-49],[23,-5,None,-11,20],46,True)",
+                        "([14,None,33,None,41],[34,-55,None,None,3,-2,17],31,True)",
+                        "([12,-1,23,-49],[-35,-36,43,None,None,29,None,24],-10,False)",
+                        "([-5,-46,20,-56,None,18,40],[-10,-18,36,-59,-11],-101,False)"
+                    ]
+                },
+                "body": "        result = run_two_sum_bsts(Solution, root1_list, root2_list, target)\n        assert_two_sum_bsts(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_two_sum_bsts, assert_two_sum_bsts\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot1_list: list[int | None] = [2, 1, 4]\nroot2_list: list[int | None] = [1, 0, 3]\ntarget = 5\nexpected = True",
+    "playground_run": "result = run_two_sum_bsts(Solution, root1_list, root2_list, target)\nresult",
+    "playground_assert": "assert_two_sum_bsts(result, expected)"
+}

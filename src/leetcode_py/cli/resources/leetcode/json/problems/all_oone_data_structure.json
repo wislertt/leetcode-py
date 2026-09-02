@@ -1,0 +1,106 @@
+{
+    "problem_name": "all_oone_data_structure",
+    "solution_class_name": "AllOne",
+    "problem_number": "432",
+    "problem_title": "All O`one Data Structure",
+    "difficulty": "Hard",
+    "topics": "Hash Table, Linked List, Design, Doubly-Linked List",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Design a data structure to store the strings' count with the ability to return the strings with minimum and maximum counts.\n\nImplement the `AllOne` class:\n\n- `AllOne()` Initializes the object of the data structure.\n- `inc(String key)` Increments the count of the string `key` by `1`. If `key` does not exist in the data structure, insert it with count `1`.\n- `dec(String key)` Decrements the count of the string `key` by `1`. If the count of `key` is `0` after the decrement, remove it from the data structure. It is guaranteed that `key` exists in the data structure before the decrement.\n- `getMaxKey()` Returns one of the keys with the maximal count. If no element exists, return an empty string `\"\"`.\n- `getMinKey()` Returns one of the keys with the minimum count. If no element exists, return an empty string `\"\"`.\n\nNote that each function must run in `O(1)` average time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"AllOne\", \"inc\", \"inc\", \"getMaxKey\", \"getMinKey\", \"inc\", \"getMaxKey\", \"getMinKey\"]\n[[], [\"hello\"], [\"hello\"], [], [], [\"leet\"], [], []]\nOutput\n[null, null, null, \"hello\", \"hello\", null, \"hello\", \"leet\"]\n\nExplanation\nAllOne allOne = new AllOne();\nallOne.inc(\"hello\");\nallOne.inc(\"hello\");\nallOne.getMaxKey(); // return \"hello\"\nallOne.getMinKey(); // return \"hello\"\nallOne.inc(\"leet\");\nallOne.getMaxKey(); // return \"hello\"\nallOne.getMinKey(); // return \"leet\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= key.length <= 10`\n- `key` consists of lowercase English letters.\n- It is guaranteed that for each call to `dec`, `key` exists in the data structure.\n- At most `5 * 10^4` calls will be made to `inc`, `dec`, `getMaxKey`, and `getMinKey`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "all_one",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    implementation = None\n    results: list[str | None] = []\n    for i, op in enumerate(operations):\n        if op == 'AllOne':\n            implementation = solution_class()\n            results.append(None)\n        elif op == 'inc' and implementation is not None:\n            implementation.inc(inputs[i][0])\n            results.append(None)\n        elif op == 'dec' and implementation is not None:\n            implementation.dec(inputs[i][0])\n            results.append(None)\n        elif op == 'get_max_key' and implementation is not None:\n            results.append(implementation.get_max_key())\n        elif op == 'get_min_key' and implementation is not None:\n            results.append(implementation.get_min_key())\n    return results, implementation",
+    "helpers_assert_name": "all_one",
+    "helpers_assert_signature": "(result: list[str | None], expected: list[str | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "from __future__ import annotations\n\n\nclass Bucket:\n    def __init__(self, count: int) -> None:\n        self.count = count\n        self.keys: set[str] = set()\n        self.prev: Bucket = self\n        self.next: Bucket = self\n\n    def insert_after(self, node: Bucket) -> None:\n        node.prev = self\n        node.next = self.next\n        self.next.prev = node\n        self.next = node\n\n    def unlink(self) -> None:\n        self.prev.next = self.next\n        self.next.prev = self.prev\n        self.prev = self.next = self",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_all_one, run_all_one\nfrom .solution import AllOne",
+    "test_content": "",
+    "test_class_name": "AllOne",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize the data structure\n        pass"
+            },
+            {
+                "name": "inc",
+                "signature": "(self, key: str) -> None",
+                "body": "        # TODO: Implement inc\n        pass"
+            },
+            {
+                "name": "dec",
+                "signature": "(self, key: str) -> None",
+                "body": "        # TODO: Implement dec\n        pass"
+            },
+            {
+                "name": "get_max_key",
+                "signature": "(self) -> str",
+                "body": "        # TODO: Implement get_max_key\n        return ''"
+            },
+            {
+                "name": "get_min_key",
+                "signature": "(self) -> str",
+                "body": "        # TODO: Implement get_min_key\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_all_one",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[str | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['AllOne', 'inc', 'inc', 'get_max_key', 'get_min_key', 'inc', 'get_max_key', 'get_min_key'], [[], ['hello'], ['hello'], [], [], ['leet'], [], []], [None, None, None, 'hello', 'hello', None, 'hello', 'leet'])",
+                        "(['AllOne', 'get_max_key', 'get_min_key'], [[], [], []], [None, '', ''])",
+                        "(['AllOne', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], [], []], [None, None, 'a', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], ['a'], [], []], [None, None, None, 'a', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], ['b'], ['b'], [], []], [None, None, None, None, 'b', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'dec', 'dec', 'get_max_key', 'get_min_key'], [[], ['a'], ['b'], ['b'], ['b'], ['b'], [], []], [None, None, None, None, None, None, 'a', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'dec', 'dec', 'get_max_key', 'get_min_key'], [[], ['a'], ['b'], ['b'], ['a'], [], []], [None, None, None, None, None, '', ''])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'inc', 'inc', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], ['b'], ['b'], ['c'], ['c'], ['c'], [], []], [None, None, None, None, None, None, None, 'c', 'a'])",
+                        "(['AllOne', 'inc', 'dec', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], ['a'], ['b'], [], []], [None, None, None, None, 'b', 'b'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'get_max_key', 'dec', 'dec', 'get_max_key', 'get_min_key'], [[], ['a'], ['a'], ['b'], [], ['a'], ['a'], [], []], [None, None, None, None, 'a', None, None, 'b', 'b'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'inc', 'inc', 'inc', 'get_max_key', 'get_min_key'], [[], ['a'], ['b'], ['c'], ['c'], ['b'], ['c'], [], []], [None, None, None, None, None, None, None, 'c', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'inc', 'dec', 'get_max_key', 'get_min_key', 'dec', 'get_max_key', 'get_min_key'], [[], ['k'], ['k'], ['k'], ['k'], ['k'], [], [], ['k'], [], []], [None, None, None, None, None, None, 'k', 'k', None, 'k', 'k'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'inc', 'dec', 'get_max_key', 'dec', 'get_max_key', 'get_min_key'], [[], ['a'], ['a'], ['b'], ['b'], ['b'], [], ['b'], [], []], [None, None, None, None, None, None, 'a', None, 'a', 'a'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'get_max_key', 'get_min_key'], [[], ['abcdefghij'], ['x'], ['abcdefghij'], [], []], [None, None, None, None, 'abcdefghij', 'x'])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'get_max_key', 'get_min_key', 'dec', 'inc', 'get_max_key', 'get_min_key'], [[], ['m'], ['n'], ['m'], [], [], ['m'], ['n'], [], []], [None, None, None, None, 'm', 'n', None, None, 'n', 'm'])",
+                        "(['AllOne', 'inc', 'dec', 'inc', 'dec', 'inc', 'get_max_key', 'get_min_key'], [[], ['p'], ['p'], ['p'], ['p'], ['p'], [], []], [None, None, None, None, None, None, 'p', 'p'])",
+                        "(['AllOne', 'inc', 'get_max_key', 'inc', 'inc', 'inc', 'get_min_key', 'dec', 'inc', 'get_min_key', 'get_min_key'], [[], ['b'], [], ['b'], ['c'], ['b'], [], ['c'], ['ab'], [], []], [None, None, 'b', None, None, None, 'c', None, None, 'ab', 'ab'])",
+                        "(['AllOne', 'inc', 'dec', 'inc', 'dec', 'inc', 'get_min_key', 'get_min_key', 'inc', 'inc', 'inc', 'dec', 'dec', 'dec'], [[], ['d'], ['d'], ['cd'], ['cd'], ['cd'], [], [], ['ab'], ['ab'], ['a'], ['ab'], ['a'], ['cd']], [None, None, None, None, None, None, 'cd', 'cd', None, None, None, None, None, None])",
+                        "(['AllOne', 'inc', 'inc', 'inc', 'get_min_key', 'inc', 'dec', 'get_min_key'], [[], ['cd'], ['c'], ['c'], [], ['d'], ['d'], []], [None, None, None, None, 'cd', None, None, 'cd'])",
+                        "(['AllOne', 'inc', 'inc', 'dec', 'inc', 'inc', 'inc', 'inc', 'get_max_key', 'inc', 'inc', 'dec', 'dec'], [[], ['a'], ['d'], ['a'], ['a'], ['a'], ['a'], ['cd'], [], ['ab'], ['b'], ['d'], ['cd']], [None, None, None, None, None, None, None, None, 'a', None, None, None, None])"
+                    ]
+                },
+                "body": "        result, _ = run_all_one(AllOne, operations, inputs)\n        assert_all_one(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_all_one, assert_all_one\nfrom solution import AllOne",
+    "playground_setup": "# Example test case\noperations = ['AllOne', 'inc', 'inc', 'get_max_key', 'get_min_key', 'inc', 'get_max_key', 'get_min_key']\ninputs = [[], ['hello'], ['hello'], [], [], ['leet'], [], []]\nexpected = [None, None, None, 'hello', 'hello', None, 'hello', 'leet']",
+    "playground_run": "result, all_one = run_all_one(AllOne, operations, inputs)\nprint(result)\nall_one",
+    "playground_assert": "assert_all_one(result, expected)"
+}

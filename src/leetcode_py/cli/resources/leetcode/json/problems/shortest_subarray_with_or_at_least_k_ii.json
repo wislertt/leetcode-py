@@ -1,0 +1,94 @@
+{
+    "problem_name": "shortest_subarray_with_or_at_least_k_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "3097",
+    "problem_title": "Shortest Subarray With OR at Least K II",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation, Sliding Window",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array <code>nums</code> of <strong>non-negative</strong> integers and an integer <code>k</code>.</p>\n\n<p>An array is called <strong>special</strong> if the bitwise <code>OR</code> of all of its elements is <strong>at least</strong> <code>k</code>.</p>\n\n<p>Return <em>the length of the <strong>shortest</strong> <strong>special</strong> <strong>non-empty</strong> <span data-keyword=\"subarray-nonempty\">subarray</span> of</em> <code>nums</code>, <em>or return</em> <code>-1</code> <em>if no special subarray exists</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3], k = 2\nOutput: 1\nExplanation:\nThe subarray [3] has OR value of 3. Hence, we return 1.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,1,8], k = 10\nOutput: 3\nExplanation:\nThe subarray [2,1,8] has OR value of 11. Hence, we return 3.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2], k = 0\nOutput: 1\nExplanation:\nThe subarray [1] has OR value of 1. Hence, we return 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 2 * 10^5\n- 0 <= nums[i] <= 10^9\n- 0 <= k <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_subarray_length",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_subarray_length(nums, k)",
+    "helpers_assert_name": "minimum_subarray_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_subarray_length, run_minimum_subarray_length\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestSubarrayWithORAtLeastKII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_subarray_length",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement minimum_subarray_length\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_subarray_length",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], 2, 1)",
+                        "([2, 1, 8], 10, 3)",
+                        "([1, 2], 0, 1)",
+                        "([1], 2, -1)",
+                        "([2], 2, 1)",
+                        "([1], 0, 1)",
+                        "([0, 0, 0], 1, -1)",
+                        "([1, 4, 2, 8], 15, 4)",
+                        "([5, 2, 3], 6, 2)",
+                        "([8, 1, 1, 8], 9, 2)",
+                        "([4, 4, 3], 7, 2)",
+                        "([1000000000, 1000000000], 1000000000, 1)",
+                        "([1, 2, 4, 8, 16], 31, 5)",
+                        "([3, 3, 3, 3], 2, 1)",
+                        "([16, 1, 2, 4], 23, 4)",
+                        "([0, 1, 0], 1, 1)"
+                    ]
+                },
+                "body": "        result = run_minimum_subarray_length(Solution, nums, k)\n        assert_minimum_subarray_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_subarray_length, assert_minimum_subarray_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 1, 8]\nk = 10\nexpected = 3",
+    "playground_run": "result = run_minimum_subarray_length(Solution, nums, k)\nresult",
+    "playground_assert": "assert_minimum_subarray_length(result, expected)"
+}

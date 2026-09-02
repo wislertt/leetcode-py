@@ -1,0 +1,96 @@
+{
+    "problem_name": "evaluate_boolean_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "2331",
+    "problem_title": "Evaluate Boolean Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given the `root` of a **full binary tree** with the following properties:\n\n- **Leaf nodes** have either the value `0` or `1`, where `0` represents `False` and `1` represents `True`.\n- **Non-leaf nodes** have either the value `2` or `3`, where `2` represents the boolean `OR` and `3` represents the boolean `AND`.\n\nThe **evaluation** of a node is as follows:\n\n- If the node is a leaf node, the evaluation is the **value** of the node, i.e. `True` or `False`.\n- Otherwise, **evaluate** the node's two children and **apply** the boolean operation of its value with the children's evaluations.\n\nReturn *the boolean result of **evaluating** the* `root` *node*.\n\nA **full binary tree** is a binary tree where each node has either `0` or `2` children.\n\nA **leaf node** is a node that has zero children.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/05/16/example1drawio1.png)\n\n```\nInput: root = [2,1,3,null,null,0,1]\nOutput: true\nExplanation: The above diagram illustrates the evaluation process.\nThe AND node evaluates to False AND True = False.\nThe OR node evaluates to True OR False = True.\nThe root node evaluates to True, so we return true.\n```"
+            },
+            {
+                "content": "```\nInput: root = [0]\nOutput: false\nExplanation: The root node is a leaf node and it evaluates to false, so we return false.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 1000].\n- 0 <= Node.val <= 3\n- Every node has either 0 or 2 children.\n- Leaf nodes have a value of 0 or 1.\n- Non-leaf nodes have a value of 2 or 3.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "evaluate_tree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.evaluate_tree(root)",
+    "helpers_assert_name": "evaluate_tree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_evaluate_tree, run_evaluate_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EvaluateBooleanBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "evaluate_tree",
+                "signature": "(self, root: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement evaluate_tree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_evaluate_tree",
+                "signature": "(self, root_list: list[int | None], expected: bool)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 3, None, None, 0, 1], True)",
+                        "([0], False)",
+                        "([1], True)",
+                        "([2, 0, 1], True)",
+                        "([3, 0, 1], False)",
+                        "([3, 1, 1], True)",
+                        "([2, 0, 0], False)",
+                        "([2, 3, 2, 1, 1, 0, 1], True)",
+                        "([3, 2, 3, 0, 1, 1, 0], False)",
+                        "([3, 1, 0], False)",
+                        "([2, 1, 0], True)",
+                        "([3, 3, 3, 0, 0, 0, 0], False)",
+                        "([2, 3, 2, 0, 1, 0, 1], True)",
+                        "([3, 2, 2, 1, 1, 1, 0], True)",
+                        "([3, 2, 3, 1, 1, 1, 0], False)",
+                        "([2, 2, 2, 1, 0, 1, 0], True)",
+                        "([2, 2, 3, 1, 1, 1, 0], True)",
+                        "([2, 3, 3, 2, 3, 3, 3, 0, 1, 1, 1, 0, 0, 1, 0], True)",
+                        "([3, 3, 3, 2, 3, 2, 2, 0, 0, 1, 1, 1, 0, 0, 1], False)",
+                        "([3, 2, 2, 2, 3, 2, 2, 0, 1, 0, 1, 0, 0, 0, 1], True)",
+                        "([2, 3, 2, 2, 2, 3, 2, 1, 1, 0, 1, 1, 0, 1, 1], True)"
+                    ]
+                },
+                "body": "        result = run_evaluate_tree(Solution, root_list)\n        assert_evaluate_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_evaluate_tree, assert_evaluate_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [2, 1, 3, None, None, 0, 1]\nexpected = True",
+    "playground_run": "result = run_evaluate_tree(Solution, root_list)\nresult",
+    "playground_assert": "assert_evaluate_tree(result, expected)"
+}

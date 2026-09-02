@@ -1,0 +1,96 @@
+{
+    "problem_name": "bulls_and_cows",
+    "solution_class_name": "Solution",
+    "problem_number": "299",
+    "problem_title": "Bulls and Cows",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Counting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are playing the [Bulls and Cows](https://en.wikipedia.org/wiki/Bulls_and_Cows) game with your friend.\n\nYou write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:\n\n- The number of `\"bulls\"`, which are digits in the guess that are in the correct position.\n- The number of `\"cows\"`, which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.\n\nGiven the secret number `secret` and your friend's guess `guess`, return *the hint for your friend's guess*.\n\nThe hint should be formatted as `\"xAyB\"`, where `x` is the number of bulls and `y` is the number of cows. Note that both `secret` and `guess` may contain duplicate digits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: secret = \"1807\", guess = \"7810\"\nOutput: \"1A3B\"\nExplanation: Bulls are connected with a '|' and cows are underlined:\n\"1807\"\n  |\n\"7810\"\n```"
+            },
+            {
+                "content": "```\nInput: secret = \"1123\", guess = \"0111\"\nOutput: \"1A1B\"\nExplanation: Bulls are connected with a '|' and cows are underlined:\n\"1123\"        \"1123\"\n  |      or     |\n\"0111\"        \"0111\"\nNote that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= secret.length, guess.length <= 1000\n- secret.length == guess.length\n- secret and guess consist of digits only.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "get_hint",
+    "helpers_run_signature": "(solution_class: type, secret: str, guess: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.get_hint(secret, guess)",
+    "helpers_assert_name": "get_hint",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_hint, run_get_hint\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BullsAndCows",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_hint",
+                "signature": "(self, secret: str, guess: str) -> str",
+                "body": "        # TODO: Implement get_hint\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_hint",
+                "signature": "(self, secret: str, guess: str, expected: str)",
+                "parametrize": "secret, guess, expected",
+                "test_cases": {
+                    "list": [
+                        "('1807', '7810', '1A3B')",
+                        "('1123', '0111', '1A1B')",
+                        "('1', '1', '1A0B')",
+                        "('1', '0', '0A0B')",
+                        "('11', '10', '1A0B')",
+                        "('11', '11', '2A0B')",
+                        "('0123456789', '9876543210', '0A10B')",
+                        "('0000', '1111', '0A0B')",
+                        "('1234567890', '1234567890', '10A0B')",
+                        "('1122', '2211', '0A4B')",
+                        "('1122', '1221', '2A2B')",
+                        "('1122', '0000', '0A0B')",
+                        "('0011223344', '0123456789', '1A4B')",
+                        "('99999999', '99999099', '7A0B')",
+                        "('5555', '5555', '4A0B')",
+                        "('2962', '9262', '2A2B')",
+                        "('260', '181', '0A0B')",
+                        "('908', '301', '1A0B')"
+                    ]
+                },
+                "body": "        result = run_get_hint(Solution, secret, guess)\n        assert_get_hint(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_hint, assert_get_hint\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsecret = '1807'\nguess = '7810'\nexpected = '1A3B'",
+    "playground_run": "result = run_get_hint(Solution, secret, guess)\nresult",
+    "playground_assert": "assert_get_hint(result, expected)",
+    "playground_test_case": "secret = '1807'\nguess = '7810'",
+    "playground_execution": "result = run_get_hint(Solution, secret, guess)",
+    "playground_assertion": "assert_get_hint(result, '1A3B')"
+}

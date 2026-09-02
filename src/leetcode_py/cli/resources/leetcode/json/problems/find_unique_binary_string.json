@@ -1,0 +1,98 @@
+{
+    "problem_name": "find_unique_binary_string",
+    "solution_class_name": "Solution",
+    "problem_number": "1980",
+    "problem_title": "Find Unique Binary String",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Backtracking",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given an array of strings `nums` containing `n` **unique** binary strings each of length `n`, return *a binary string of length* `n` *that **does not appear** in* `nums`*. If there are multiple answers, you may return **any** of them*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [\"01\",\"10\"]\nOutput: \"11\"\nExplanation: \"11\" does not appear in nums. \"00\" would also be correct.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [\"00\",\"01\"]\nOutput: \"11\"\nExplanation: \"11\" does not appear in nums. \"10\" would also be correct.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [\"111\",\"011\",\"001\"]\nOutput: \"101\"\nExplanation: \"101\" does not appear in nums. \"000\", \"010\", \"100\", and \"110\" would also be correct.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == nums.length`\n- `1 <= n <= 16`\n- `nums[i].length == n`\n- `nums[i]` is either `'0'` or `'1'`.\n- All the strings of `nums` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_unique_binary_string",
+    "helpers_run_signature": "(solution_class: type, nums: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_unique_binary_string(nums)",
+    "helpers_assert_name": "find_unique_binary_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    # Multiple valid answers exist; verify shape and binary alphabet here.\n    # Uniqueness against nums is asserted in the test body, which has nums.\n    assert len(result) == len(expected)\n    assert set(result) <= {'0', '1'}\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_unique_binary_string, run_find_unique_binary_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindUniqueBinaryString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_unique_binary_string",
+                "signature": "(self, nums: list[str]) -> str",
+                "body": "        # TODO: Implement find_unique_binary_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_unique_binary_string",
+                "signature": "(self, nums: list[str], expected: str)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "(['01', '10'], '11')",
+                        "(['00', '01'], '11')",
+                        "(['111', '011', '001'], '101')",
+                        "(['0'], '1')",
+                        "(['1'], '0')",
+                        "(['00', '11'], '01')",
+                        "(['010', '110', '001'], '100')",
+                        "(['0000', '1111', '0101', '1010'], '1011')",
+                        "(['00000', '00001', '00010', '00100', '01000'], '11111')",
+                        "(['111111', '000000', '010101', '101010', '011001', '100110'], '011111')",
+                        "(['11011', '00100', '01000', '11010', '00111'], '01100')",
+                        "(['00000', '10000', '10001', '00101', '00001'], '11110')",
+                        "(['10010', '10000', '01011', '11111', '11100'], '01101')",
+                        "(['01101', '00111', '01011', '00101', '11100'], '11111')",
+                        "(['1010', '1001', '0100', '1100'], '0111')",
+                        "(['00101', '11100', '01001', '00010', '01111'], '10100')",
+                        "(['11000', '11100', '00001', '10011', '00000'], '00101')",
+                        "(['0011', '0111', '1001', '0101'], '1010')",
+                        "(['1001', '1000', '0000', '1100'], '0111')",
+                        "(['0110', '0001', '0000', '0111'], '1110')"
+                    ]
+                },
+                "body": "        result = run_find_unique_binary_string(Solution, nums)\n        assert_find_unique_binary_string(result, expected)\n        assert result not in nums"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_unique_binary_string, assert_find_unique_binary_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = ['01', '10']\nexpected = '11'",
+    "playground_run": "result = run_find_unique_binary_string(Solution, nums)\nresult",
+    "playground_assert": "assert_find_unique_binary_string(result, expected)"
+}

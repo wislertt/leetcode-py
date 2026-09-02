@@ -1,0 +1,93 @@
+{
+    "problem_name": "apply_operations_to_maximize_score",
+    "solution_class_name": "Solution",
+    "problem_number": "2818",
+    "problem_title": "Apply Operations to Maximize Score",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Stack, Greedy, Sorting, Monotonic Stack, Number Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "<p>You are given an array <code>nums</code> of <code>n</code> positive integers and an integer <code>k</code>.</p>\n\n<p>Initially, you start with a score of <code>1</code>. You have to maximize your score by applying the following operation at most <code>k</code> times:</p>\n\n<ul>\n\t<li>Choose any <strong>non-empty</strong> subarray <code>nums[l, ..., r]</code> that you haven't chosen previously.</li>\n\t<li>Choose an element <code>x</code> of <code>nums[l, ..., r]</code> with the highest <strong>prime score</strong>. If multiple such elements exist, choose the one with the smallest index.</li>\n\t<li>Multiply your score by <code>x</code>.</li>\n</ul>\n\n<p>Here, <code>nums[l, ..., r]</code> denotes the subarray of <code>nums</code> starting at index <code>l</code> and ending at the index <code>r</code>, both ends being inclusive.</p>\n\n<p>The <strong>prime score</strong> of an integer <code>x</code> is equal to the number of distinct prime factors of <code>x</code>. For example, the prime score of <code>300</code> is <code>3</code> since <code>300 = 2 * 2 * 3 * 5 * 5</code>.</p>\n\n<p>Return <em>the <strong>maximum possible score</strong> after applying at most </em><code>k</code><em> operations</em>.</p>\n\n<p>Since the answer may be large, return it modulo <code>10<sup>9 </sup>+ 7</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [8,3,9,3,8], k = 2\nOutput: 81\nExplanation: To get a score of 81, we can apply the following operations:\n- Choose subarray nums[2, ..., 2]. nums[2] is the only element in this subarray. Hence, we multiply the score by nums[2]. The score becomes 1 * 9 = 9.\n- Choose subarray nums[2, ..., 3]. Both nums[2] and nums[3] have a prime score of 1, but nums[2] has the smaller index. Hence, we multiply the score by nums[2]. The score becomes 9 * 9 = 81.\nIt can be proven that 81 is the highest score one can obtain.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [19,12,14,6,10,18], k = 3\nOutput: 4788\nExplanation: To get a score of 4788, we can apply the following operations:\n- Choose subarray nums[0, ..., 0]. nums[0] is the only element in this subarray. Hence, we multiply the score by nums[0]. The score becomes 1 * 19 = 19.\n- Choose subarray nums[5, ..., 5]. nums[5] is the only element in this subarray. Hence, we multiply the score by nums[5]. The score becomes 19 * 18 = 342.\n- Choose subarray nums[2, ..., 3]. Both nums[2] and nums[3] have a prime score of 2, but nums[2] has the smaller index. Hence, we multipy the score by nums[2]. The score becomes 342 * 14 = 4788.\nIt can be proven that 4788 is the highest score one can obtain.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length == n <= 10^5\n- 1 <= nums[i] <= 10^5\n- 1 <= k <= min(n * (n + 1) / 2, 10^9)",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_score",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_score(nums, k)",
+    "helpers_assert_name": "maximum_score",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_score, run_maximum_score\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ApplyOperationsToMaximizeScore",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_score",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement maximum_score\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_score",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([8, 3, 9, 3, 8], 2, 81)",
+                        "([19, 12, 14, 6, 10, 18], 3, 4788)",
+                        "([1], 1, 1)",
+                        "([2], 1, 2)",
+                        "([5, 5], 1, 5)",
+                        "([5, 5], 3, 125)",
+                        "([1, 1, 1], 6, 1)",
+                        "([2, 4, 8], 3, 128)",
+                        "([6, 10, 15], 4, 9000)",
+                        "([30], 1, 30)",
+                        "([7, 3, 5, 2], 5, 12005)",
+                        "([4, 9, 25, 49], 10, 715359965)",
+                        "([12, 18, 6, 9], 7, 120932352)",
+                        "([100000, 99999], 2, 999899937)",
+                        "([2, 3, 5, 7, 11], 15, 174636000)",
+                        "([18, 35, 27, 12, 7, 13, 9], 7, 633171532)",
+                        "([17, 21, 25, 39, 15, 3, 13], 28, 677332730)",
+                        "([23, 11, 28, 16, 5], 11, 160180811)"
+                    ]
+                },
+                "body": "        result = run_maximum_score(Solution, nums, k)\n        assert_maximum_score(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_score, assert_maximum_score\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [8, 3, 9, 3, 8]\nk = 2\nexpected = 81",
+    "playground_run": "result = run_maximum_score(Solution, nums, k)\nresult",
+    "playground_assert": "assert_maximum_score(result, expected)"
+}

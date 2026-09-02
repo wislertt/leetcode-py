@@ -1,0 +1,93 @@
+{
+    "problem_name": "total_hamming_distance",
+    "solution_class_name": "Solution",
+    "problem_number": "477",
+    "problem_title": "Total Hamming Distance",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The <a href=\"https://en.wikipedia.org/wiki/Hamming_distance\" target=\"_blank\">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.\n\nGiven an integer array <code>nums</code>, return <em>the sum of <strong>Hamming distances</strong> between all the pairs of the integers in</em> <code>nums</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,14,2]\nOutput: 6\nExplanation: In binary representation, the 4 is 0100, 14 is 1110, and 2 is 0010 (just\nshowing the four bits relevant in this case).\nThe answer will be:\nHammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 + 2 = 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [4,14,4]\nOutput: 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 10^4`\n- `0 <= nums[i] <= 10^9`\n- The answer for the given input will fit in a **32-bit** integer.",
+    "readme_additional": "**Follow up:** Could you solve this problem with a linear runtime?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "total_hamming_distance",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.total_hamming_distance(nums)",
+    "helpers_assert_name": "total_hamming_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_total_hamming_distance, run_total_hamming_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TotalHammingDistance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "total_hamming_distance",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement total_hamming_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_total_hamming_distance",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 14, 2], 6)",
+                        "([4, 14, 4], 4)",
+                        "([0], 0)",
+                        "([1], 0)",
+                        "([0, 0], 0)",
+                        "([0, 1], 1)",
+                        "([1, 1], 0)",
+                        "([1, 2], 2)",
+                        "([7, 7, 7], 0)",
+                        "([1, 0, 1, 0], 4)",
+                        "([3, 5, 6, 7], 9)",
+                        "([1000000000, 999999999], 10)",
+                        "([2, 14, 4, 2, 16], 20)",
+                        "([6, 0, 4, 2, 8, 9], 29)",
+                        "([9, 10, 2, 0, 10], 16)",
+                        "([7, 6, 5], 4)",
+                        "([4, 3], 3)",
+                        "([101600362, 434090345, 727006828, 135258606, 920229393, 163151145], 229)"
+                    ]
+                },
+                "body": "        result = run_total_hamming_distance(Solution, nums)\n        assert_total_hamming_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_total_hamming_distance, assert_total_hamming_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 14, 2]\nexpected = 6",
+    "playground_run": "result = run_total_hamming_distance(Solution, nums)\nresult",
+    "playground_assert": "assert_total_hamming_distance(result, expected)"
+}

@@ -1,0 +1,104 @@
+{
+    "problem_name": "find_the_longest_substring_containing_vowels_in_even_counts",
+    "solution_class_name": "Solution",
+    "problem_number": "1371",
+    "problem_title": "Find the Longest Substring Containing Vowels in Even Counts",
+    "difficulty": "Medium",
+    "topics": "String, Bit Manipulation, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given the string <code>s</code>, return the size of the longest substring containing each vowel an even number of times. That is, <code>'a'</code>, <code>'e'</code>, <code>'i'</code>, <code>'o'</code>, and <code>'u'</code> must appear an even number of times.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"eleetminicoworoep\"\nOutput: 13\nExplanation: The longest substring is \"leetminicowor\" which contains two each of the vowels: e, i and o and zero of the vowels: a and u.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"leetcodeisgreat\"\nOutput: 5\nExplanation: The longest substring is \"leetc\" which contains two e's.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"bcbcbc\"\nOutput: 6\nExplanation: In this case, the given string \"bcbcbc\" is the longest because all vowels: a, e, i, o and u appear zero times.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 5 x 10^5\n- s contains only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_the_longest_substring",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_the_longest_substring(s)",
+    "helpers_assert_name": "find_the_longest_substring",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_the_longest_substring, run_find_the_longest_substring\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheLongestSubstringContainingVowelsInEvenCounts",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_the_longest_substring",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement find_the_longest_substring\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_the_longest_substring",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('eleetminicoworoep', 13)",
+                        "('leetcodeisgreat', 5)",
+                        "('bcbcbc', 6)",
+                        "('a', 0)",
+                        "('e', 0)",
+                        "('b', 1)",
+                        "('aa', 2)",
+                        "('ae', 0)",
+                        "('aeb', 1)",
+                        "('aeiou', 0)",
+                        "('aeioub', 1)",
+                        "('aaaa', 4)",
+                        "('abab', 4)",
+                        "('aba', 3)",
+                        "('aeiouaeiou', 10)",
+                        "('aeioua', 0)",
+                        "('bcdaeioubcd', 3)",
+                        "('aaabbb', 5)",
+                        "('aaaeee', 4)",
+                        "('aeeeaaa', 4)",
+                        "('iluqaohubfdlphmrdsha', 11)",
+                        "('nifmfce', 4)",
+                        "('toeeaaggffjkgrvugfgm', 13)",
+                        "('alnfeickjt', 4)",
+                        "('atvkcjljpkfppfbialm', 14)",
+                        "('r', 1)"
+                    ]
+                },
+                "body": "        result = run_find_the_longest_substring(Solution, s)\n        assert_find_the_longest_substring(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_the_longest_substring, assert_find_the_longest_substring\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leetcodeisgreat'\nexpected = 5",
+    "playground_run": "result = run_find_the_longest_substring(Solution, s)\nresult",
+    "playground_assert": "assert_find_the_longest_substring(result, expected)"
+}

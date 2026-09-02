@@ -1,0 +1,87 @@
+{
+    "problem_name": "number_of_distinct_islands_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "711",
+    "problem_title": "Number of Distinct Islands II",
+    "difficulty": "Hard",
+    "topics": "Hash Table, Depth-First Search, Breadth-First Search, Union Find",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an `m x n` binary matrix `grid`. An island is a group of `1`'s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.\n\nAn island is considered to be the same as another if they have the same shape, or have the same shape after rotation (90, 180, or 270 degrees only) or reflection (left/right direction or up/down direction).\n\nReturn the number of **distinct** islands.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[1,1,0,0,0],[1,0,0,0,0],[0,0,0,0,1],[0,0,0,1,1]]\nOutput: 1\nExplanation: The two islands are considered the same because if we make a 180 degrees clockwise rotation on the first island, then two islands will have the same shapes.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]\nOutput: 1\nExplanation: The two islands are considered the same because they are identical.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == grid.length\n- n == grid[i].length\n- 1 <= m, n <= 50\n- grid[i][j] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_distinct_islands_ii",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_distinct_islands_ii(grid)",
+    "helpers_assert_name": "num_distinct_islands_ii",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_distinct_islands_ii, run_num_distinct_islands_ii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfDistinctIslandsII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_distinct_islands_ii",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement num_distinct_islands_ii\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_distinct_islands_ii",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1, 0, 0, 0], [1, 0, 0, 0, 0], [0, 0, 0, 0, 1], [0, 0, 0, 1, 1]], 1)",
+                        "([[1, 1, 0, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1]], 1)",
+                        "([[1]], 1)",
+                        "([[0]], 0)",
+                        "([[1, 0], [0, 1]], 1)",
+                        "([[1, 1, 1], [1, 0, 1], [1, 1, 1]], 1)",
+                        "([[1, 1, 0], [0, 1, 0], [0, 0, 1]], 2)",
+                        "([[1, 0, 1], [0, 1, 0], [1, 0, 1]], 1)",
+                        "([[1, 1, 0, 0], [1, 0, 1, 0], [0, 0, 0, 1]], 2)",
+                        "([[1], [1], [0], [1]], 2)",
+                        "([[1, 1], [1, 0], [1, 1]], 1)",
+                        "([[1, 0, 0], [1, 1, 1]], 1)"
+                    ]
+                },
+                "body": "        result = run_num_distinct_islands_ii(Solution, grid)\n        assert_num_distinct_islands_ii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_distinct_islands_ii, assert_num_distinct_islands_ii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 1, 0, 0, 0], [1, 0, 0, 0, 0], [0, 0, 0, 0, 1], [0, 0, 0, 1, 1]]\nexpected = 1",
+    "playground_run": "result = run_num_distinct_islands_ii(Solution, grid)\nresult",
+    "playground_assert": "assert_num_distinct_islands_ii(result, expected)"
+}

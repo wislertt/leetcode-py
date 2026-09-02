@@ -1,0 +1,98 @@
+{
+    "problem_name": "minimum_deletions_to_make_string_balanced",
+    "solution_class_name": "Solution",
+    "problem_number": "1653",
+    "problem_title": "Minimum Deletions to Make String Balanced",
+    "difficulty": "Medium",
+    "topics": "String, Dynamic Programming, Stack",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s` consisting only of characters `'a'` and `'b'`.\n\nYou can delete any number of characters in `s` to make `s` **balanced**. `s` is **balanced** if there is no pair of indices `(i,j)` such that `i < j` and `s[i] = 'b'` and `s[j] = 'a'`.\n\nReturn the minimum number of deletions needed to make `s` balanced.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aababbab\"\nOutput: 2\nExplanation: You can either:\nDelete the characters at 0-indexed positions 2 and 6 (\"aababbab\" -> \"aaabbb\"), or\nDelete the characters at 0-indexed positions 3 and 6 (\"aababbab\" -> \"aabbbb\").\n```"
+            },
+            {
+                "content": "```\nInput: s = \"bbaaaaabb\"\nOutput: 2\nExplanation: The only solution is to delete the first two characters.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s[i] is 'a' or 'b'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_deletions",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_deletions(s)",
+    "helpers_assert_name": "minimum_deletions",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_deletions, run_minimum_deletions\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumDeletionsToMakeStringBalanced",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_deletions",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement minimum_deletions\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_deletions",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('aababbab', 2)",
+                        "('bbaaaaabb', 2)",
+                        "('a', 0)",
+                        "('b', 0)",
+                        "('ab', 0)",
+                        "('ba', 1)",
+                        "('aaaa', 0)",
+                        "('bbbb', 0)",
+                        "('bbaa', 2)",
+                        "('abab', 1)",
+                        "('bbbaaa', 3)",
+                        "('aababb', 1)",
+                        "('bbabbb', 1)",
+                        "('abababab', 3)",
+                        "('baabbaab', 3)",
+                        "('babbbabb', 2)",
+                        "('aabababbba', 3)",
+                        "('aa', 0)",
+                        "('bbabab', 2)",
+                        "('ababaaababaa', 4)",
+                        "('aaababaabaabbaaa', 5)",
+                        "('aabaabbbabaaab', 5)",
+                        "('aaabbbabbb', 1)"
+                    ]
+                },
+                "body": "        result = run_minimum_deletions(Solution, s)\n        assert_minimum_deletions(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_deletions, assert_minimum_deletions\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aababbab'\nexpected = 2",
+    "playground_run": "result = run_minimum_deletions(Solution, s)\nresult",
+    "playground_assert": "assert_minimum_deletions(result, expected)"
+}

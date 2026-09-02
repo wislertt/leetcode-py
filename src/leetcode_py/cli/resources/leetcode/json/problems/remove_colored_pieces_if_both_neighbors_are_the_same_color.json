@@ -1,0 +1,106 @@
+{
+    "problem_name": "remove_colored_pieces_if_both_neighbors_are_the_same_color",
+    "solution_class_name": "Solution",
+    "problem_number": "2038",
+    "problem_title": "Remove Colored Pieces if Both Neighbors are the Same Color",
+    "difficulty": "Medium",
+    "topics": "Math, String, Greedy, Game Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are n pieces arranged in a line, and each piece is colored either by 'A' or by 'B'. You are given a string colors of length n where colors[i] is the color of the ith piece.\n\nAlice and Bob are playing a game where they take alternating turns removing pieces from the line. In this game, Alice moves first.\n\n\n\tAlice is only allowed to remove a piece colored 'A' if both its neighbors are also colored 'A'. She is not allowed to remove pieces that are colored 'B'.\n\tBob is only allowed to remove a piece colored 'B' if both its neighbors are also colored 'B'. He is not allowed to remove pieces that are colored 'A'.\n\tAlice and Bob cannot remove pieces from the edge of the line.\n\tIf a player cannot make a move on their turn, that player loses and the other player wins.\n\n\nAssuming Alice and Bob play optimally, return true if Alice wins, or return false if Bob wins.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: colors = \"AAABABB\"\nOutput: true\nExplanation: AA<u>A</u>BABB -> AABABB\nAlice moves first.\nShe removes the second 'A' from the left since that is the only 'A' whose neighbors are both 'A'.\n\nNow it's Bob's turn.\nBob cannot make a move on his turn since there are no 'B's whose neighbors are both 'B'.\nThus, Alice wins, so return true.\n```"
+            },
+            {
+                "content": "```\nInput: colors = \"AA\"\nOutput: false\nExplanation: Alice has her turn first.\nThere are only two 'A's and both are on the edge of the line, so she cannot move on her turn.\nThus, Bob wins, so return false.\n```"
+            },
+            {
+                "content": "```\nInput: colors = \"ABBBBBBBAAA\"\nOutput: false\nExplanation: ABBBBBBBA<u>A</u>A -> ABBBBBBBAA\nAlice moves first.\nHer only option is to remove the second to last 'A' from the right.\n\nABBBB<u>B</u>BBAA -> ABBBBBBAA\nNext is Bob's turn.\nHe has many options for which 'B' piece to remove. He can pick any.\n\nOn Alice's second turn, she has no more pieces that she can remove.\nThus, Bob wins, so return false.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= colors.length <= 10^5\n- colors consists of only the letters 'A' and 'B'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "winner_of_game",
+    "helpers_run_signature": "(solution_class: type, colors: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.winner_of_game(colors)",
+    "helpers_assert_name": "winner_of_game",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_winner_of_game, run_winner_of_game\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveColoredPiecesIfBothNeighborsAreTheSameColor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "winner_of_game",
+                "signature": "(self, colors: str) -> bool",
+                "body": "        # TODO: Implement winner_of_game\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_winner_of_game",
+                "signature": "(self, colors: str, expected: bool)",
+                "parametrize": "colors, expected",
+                "test_cases": {
+                    "list": [
+                        "('AAABABB', True)",
+                        "('AA', False)",
+                        "('ABBBBBBBAAA', False)",
+                        "('A', False)",
+                        "('B', False)",
+                        "('BB', False)",
+                        "('AAA', True)",
+                        "('BBB', False)",
+                        "('AB', False)",
+                        "('ABAB', False)",
+                        "('AAAA', True)",
+                        "('BBBB', False)",
+                        "('AAABBB', False)",
+                        "('BBBAAA', False)",
+                        "('AAAAA', True)",
+                        "('BBBBB', False)",
+                        "('AAABBBB', False)",
+                        "('AAAABBBB', False)",
+                        "('BAAA', True)",
+                        "('ABABAB', False)",
+                        "('AABBBBBAB', False)",
+                        "('ABBABBBABBAAA', False)",
+                        "('AABBBABBB', False)",
+                        "('BAABAAABAABAAABB', True)",
+                        "('BBABABABBAABABAA', False)",
+                        "('AAABBAABBABBAB', True)",
+                        "('BBBBBBABBAAAB', False)",
+                        "('BBAAABBAAABABA', True)"
+                    ]
+                },
+                "body": "        result = run_winner_of_game(Solution, colors)\n        assert_winner_of_game(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_winner_of_game, assert_winner_of_game\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncolors = 'AAABABB'\nexpected = True",
+    "playground_run": "result = run_winner_of_game(Solution, colors)\nresult",
+    "playground_assert": "assert_winner_of_game(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_frequency_after_subarray_operation",
+    "solution_class_name": "Solution",
+    "problem_number": "3434",
+    "problem_title": "Maximum Frequency After Subarray Operation",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Dynamic Programming, Greedy, Enumeration, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an array `nums` of length `n`. You are also given an integer `k`.\n\nYou perform the following operation on `nums` **once**:\n\n- Select a subarray `nums[i..j]` where `0 <= i <= j <= n - 1`.\n- Select an integer `x` and add `x` to **all** the elements in `nums[i..j]`.\n\nFind the **maximum** frequency of the value `k` after the operation.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5,6], k = 1\nOutput: 2\n```\n**Explanation:** After adding -5 to `nums[2..5]`, 1 has a frequency of 2 in `[1, 2, -2, -1, 0, 1]`."
+            },
+            {
+                "content": "```\nInput: nums = [10,2,3,4,5,5,4,3,2,2], k = 10\nOutput: 4\n```\n**Explanation:** After adding 8 to `nums[1..9]`, 10 has a frequency of 4 in `[10, 10, 11, 12, 13, 13, 12, 11, 10, 10]`."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n == nums.length <= 10^5\n- 1 <= nums[i] <= 50\n- 1 <= k <= 50",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_frequency",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_frequency(nums, k)",
+    "helpers_assert_name": "max_frequency",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_frequency, run_max_frequency\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumFrequencyAfterSubarrayOperation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_frequency",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement max_frequency\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_frequency",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6], 1, 2)",
+                        "([10, 2, 3, 4, 5, 5, 4, 3, 2, 2], 10, 4)",
+                        "([1], 1, 1)",
+                        "([7], 3, 1)",
+                        "([5, 5, 5], 5, 3)",
+                        "([1, 2, 3], 1, 2)",
+                        "([3, 2, 1], 1, 2)",
+                        "([2, 2, 2, 2], 3, 4)",
+                        "([50, 1, 50, 1], 1, 3)",
+                        "([4, 4, 9, 4, 9], 4, 4)",
+                        "([6, 6, 6, 1], 6, 4)",
+                        "([10, 20, 30, 40], 30, 2)",
+                        "([2, 3, 4, 5, 2, 3], 3, 3)",
+                        "([1, 1, 50, 1, 50, 1], 50, 4)",
+                        "([10, 10, 7, 5, 1, 3], 8, 2)",
+                        "([12, 6, 11, 9, 7, 8, 2, 2], 8, 3)",
+                        "([7, 4, 3, 9, 11, 6, 6], 6, 3)",
+                        "([1, 6, 12, 12, 7, 10, 4, 12], 11, 3)"
+                    ]
+                },
+                "body": "        result = run_max_frequency(Solution, nums, k)\n        assert_max_frequency(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_frequency, assert_max_frequency\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4, 5, 6]\nk = 1\nexpected = 2",
+    "playground_run": "result = run_max_frequency(Solution, nums, k)\nresult",
+    "playground_assert": "assert_max_frequency(result, expected)"
+}

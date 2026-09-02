@@ -1,0 +1,100 @@
+{
+    "problem_name": "maximum_number_of_removable_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "1898",
+    "problem_title": "Maximum Number of Removable Characters",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, String, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two strings `s` and `p` where `p` is a subsequence of `s`. You are also given a **distinct 0-indexed** integer array `removable` containing a subset of indices of `s` (`s` is also **0-indexed**).\n\nYou want to choose an integer `k` (`0 <= k <= removable.length`) such that, after removing `k` characters from `s` using the **first** `k` indices in `removable`, `p` is still a subsequence of `s`. More formally, you will mark the character at `s[removable[i]]` for each `0 <= i < k`, then remove all marked characters and check if `p` is still a subsequence.\n\nReturn *the **maximum** `k` you can choose such that `p` is still a subsequence of `s` after the removals*.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcacb\", p = \"ab\", removable = [3,1,0]\nOutput: 2\n```\n**Explanation:** After removing the characters at indices 3 and 1, `\"abcacb\"` becomes `\"accb\"`. `\"ab\"` is a subsequence of `\"accb\"`. If we remove the characters at indices 3, 1, and 0, `\"abcacb\"` becomes `\"ccb\"`, and `\"ab\"` is no longer a subsequence. Hence, the maximum k is 2."
+            },
+            {
+                "content": "```\nInput: s = \"abcbddddd\", p = \"abcd\", removable = [3,2,1,4,5,6]\nOutput: 1\n```\n**Explanation:** After removing the character at index 3, `\"abcbddddd\"` becomes `\"abcddddd\"`. `\"abcd\"` is a subsequence of `\"abcddddd\"`."
+            },
+            {
+                "content": "```\nInput: s = \"abcab\", p = \"abc\", removable = [0,1,2,3,4]\nOutput: 0\n```\n**Explanation:** If you remove the first index in the array removable, `\"abc\"` is no longer a subsequence."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= p.length <= s.length <= 10^5`\n- `0 <= removable.length < s.length`\n- `0 <= removable[i] < s.length`\n- `p` is a subsequence of `s`.\n- `s` and `p` both consist of lowercase English letters.\n- The elements in `removable` are distinct.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_removals",
+    "helpers_run_signature": "(solution_class: type, s: str, p: str, removable: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_removals(s, p, removable)",
+    "helpers_assert_name": "maximum_removals",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_removals, run_maximum_removals\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumNumberOfRemovableCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_removals",
+                "signature": "(self, s: str, p: str, removable: list[int]) -> int",
+                "body": "        # TODO: Implement maximum_removals\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_removals",
+                "signature": "(self, s: str, p: str, removable: list[int], expected: int)",
+                "parametrize": "s, p, removable, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcacb', 'ab', [3, 1, 0], 2)",
+                        "('abcbddddd', 'abcd', [3, 2, 1, 4, 5, 6], 1)",
+                        "('abcab', 'abc', [0, 1, 2, 3, 4], 0)",
+                        "('a', 'a', [], 0)",
+                        "('ab', 'a', [1], 1)",
+                        "('ab', 'ab', [0], 0)",
+                        "('abc', 'ac', [1], 1)",
+                        "('abcd', 'ad', [1, 2], 2)",
+                        "('abcabc', 'abc', [5, 4, 3], 3)",
+                        "('abcabc', 'abc', [0, 1, 2], 3)",
+                        "('aaaaa', 'aa', [4, 3, 2, 1], 3)",
+                        "('abcdefg', 'aceg', [1, 3, 5], 3)",
+                        "('abcdefg', 'aceg', [6, 4, 2, 0], 0)",
+                        "('ababab', 'aaa', [1, 3, 5], 3)",
+                        "('xyxyxy', 'xy', [0, 2, 4], 2)",
+                        "('mississippi', 'misis', [0, 2, 4, 6, 8, 10], 0)",
+                        "('ccbbc', 'c', [0, 1], 2)",
+                        "('acbacccc', 'cc', [2, 0, 4, 1, 3, 7, 6], 6)",
+                        "('aacbc', 'aac', [2, 0, 4, 1], 1)",
+                        "('ccbcacca', 'ccbcacca', [6], 0)",
+                        "('cbcac', 'bc', [2, 4, 0, 1], 1)",
+                        "('cbaababc', 'baaab', [7, 0, 1, 4, 5], 2)"
+                    ]
+                },
+                "body": "        result = run_maximum_removals(Solution, s, p, removable)\n        assert_maximum_removals(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_removals, assert_maximum_removals\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcacb'\np = 'ab'\nremovable = [3, 1, 0]\nexpected = 2",
+    "playground_run": "result = run_maximum_removals(Solution, s, p, removable)\nresult",
+    "playground_assert": "assert_maximum_removals(result, expected)"
+}

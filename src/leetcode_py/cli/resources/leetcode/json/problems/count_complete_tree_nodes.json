@@ -1,0 +1,110 @@
+{
+    "problem_name": "count_complete_tree_nodes",
+    "solution_class_name": "Solution",
+    "problem_number": "222",
+    "problem_title": "Count Complete Tree Nodes",
+    "difficulty": "Medium",
+    "topics": "Binary Search, Bit Manipulation, Tree, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a **complete** binary tree, return the number of the nodes in the tree.\n\nAccording to Wikipedia's definition of a complete binary tree, every level, except possibly the last, is completely filled in a complete binary tree, and all nodes in the last level are as far left as possible. It can have between `1` and `2^h` nodes inclusive at the last level `h`.\n\nDesign an algorithm that runs in less than `O(n)` time complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/14/complete.jpg)\n\n```\nInput: root = [1,2,3,4,5,6]\nOutput: 6\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: 0\n```"
+            },
+            {
+                "content": "```\nInput: root = [1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range `[0, 5 * 10^4]`.\n- `0 <= Node.val <= 5 * 10^4`\n- The tree is guaranteed to be **complete**.",
+    "readme_additional": "**Follow up:** Design an algorithm that runs in less than `O(n)` time complexity.",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "count_nodes",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    implementation = solution_class()\n    root = TreeNode.from_list(root_list) if root_list else None\n    return implementation.count_nodes(root)",
+    "helpers_assert_name": "count_nodes",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_nodes, run_count_nodes\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountCompleteTreeNodes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_nodes",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement count_nodes\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_nodes",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6], 6)",
+                        "([], 0)",
+                        "([1], 1)",
+                        "([0], 1)",
+                        "([5, 3], 2)",
+                        "([1, 2], 2)",
+                        "([10, 10, 10], 3)",
+                        "([50000, 50000, 50000], 3)",
+                        "([0, 0, 0, 0], 4)",
+                        "([1, 2, 3, 4, 5], 5)",
+                        "([7, 6, 5, 4, 3, 2, 1], 7)",
+                        "([9, 8, 7, 6, 5, 4, 3, 2], 8)",
+                        "([10000, 20000, 30000, 40000, 50000, 0], 6)",
+                        "([26, 33], 2)",
+                        "([39, 46, 53], 3)",
+                        "([0, 7, 14, 21], 4)",
+                        "([13, 20, 27, 34, 41], 5)",
+                        "([26, 33, 40, 47, 54, 61], 6)",
+                        "([39, 46, 53, 60, 67, 74, 81], 7)",
+                        "([0, 7, 14, 21, 28, 35, 42, 49], 8)",
+                        "([13, 20, 27, 34, 41, 48, 55, 62, 69], 9)",
+                        "([26, 33, 40, 47, 54, 61, 68, 75, 82, 89], 10)",
+                        "([39, 46, 53, 60, 67, 74, 81, 88, 95, 1, 8], 11)",
+                        "([0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77], 12)",
+                        "([13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97], 13)",
+                        "([26, 33, 40, 47, 54, 61, 68, 75, 82, 89, 96, 2, 9, 16], 14)",
+                        "([39, 46, 53, 60, 67, 74, 81, 88, 95, 1, 8, 15, 22, 29, 36], 15)",
+                        "([0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98, 4], 16)",
+                        "([13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97, 3, 10, 17, 24], 17)",
+                        "([26, 33, 40, 47, 54, 61, 68, 75, 82, 89, 96, 2, 9, 16, 23, 30, 37, 44], 18)",
+                        "([39, 46, 53, 60, 67, 74, 81, 88, 95, 1, 8, 15, 22, 29, 36, 43, 50, 57, 64], 19)",
+                        "([0, 7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98, 4, 11, 18, 25, 32], 20)"
+                    ]
+                },
+                "body": "        result = run_count_nodes(Solution, root_list)\n        assert_count_nodes(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_nodes, assert_count_nodes\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4, 5, 6]\nexpected = 6",
+    "playground_run": "result = run_count_nodes(Solution, root_list)\nresult",
+    "playground_assert": "assert_count_nodes(result, expected)"
+}

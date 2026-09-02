@@ -1,0 +1,90 @@
+{
+    "problem_name": "sort_the_jumbled_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "2191",
+    "problem_title": "Sort the Jumbled Numbers",
+    "difficulty": "Medium",
+    "topics": "Array, Sorting",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <strong>0-indexed</strong> integer array <code>mapping</code> which represents the mapping rule of a shuffled decimal system. <code>mapping[i] = j</code> means digit <code>i</code> should be mapped to digit <code>j</code> in this system.\n\nThe <strong>mapped value</strong> of an integer is the new integer obtained by replacing each occurrence of digit <code>i</code> in the integer with <code>mapping[i]</code> for all <code>0 &lt;= i &lt;= 9</code>.\n\nYou are also given another integer array <code>nums</code>. Return <em>the array </em><code>nums</code><em> sorted in <strong>non-decreasing</strong> order based on the <strong>mapped values</strong> of its elements.</em>\n\n<p><strong>Notes:</strong></p>\n\n<ul>\n\t<li>Elements with the same mapped values should appear in the <strong>same relative order</strong> as in the input.</li>\n\t<li>The elements of <code>nums</code> should only be sorted based on their mapped values and <strong>not be replaced</strong> by them.</li>\n</ul>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: mapping = [8,9,4,0,2,1,3,5,7,6], nums = [991,338,38]\nOutput: [338,38,991]\nExplanation: \nMap the number 991 as follows:\n1. mapping[9] = 6, so all occurrences of the digit 9 will become 6.\n2. mapping[1] = 9, so all occurrences of the digit 1 will become 9.\nTherefore, the mapped value of 991 is 669.\n338 maps to 007, or 7 after removing the leading zeros.\n38 maps to 07, which is also 7 after removing leading zeros.\nSince 338 and 38 share the same mapped value, they should remain in the same relative order, so 338 comes before 38.\nThus, the sorted array is [338,38,991].\n```"
+            },
+            {
+                "content": "```\nInput: mapping = [0,1,2,3,4,5,6,7,8,9], nums = [789,456,123]\nOutput: [123,456,789]\nExplanation: 789 maps to 789, 456 maps to 456, and 123 maps to 123. Thus, the sorted array is [123,456,789].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- mapping.length == 10\n- 0 <= mapping[i] <= 9\n- All the values of mapping[i] are unique.\n- 1 <= nums.length <= 3 * 10^4\n- 0 <= nums[i] < 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sort_jumbled",
+    "helpers_run_signature": "(solution_class: type, mapping: list[int], nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sort_jumbled(mapping, nums)",
+    "helpers_assert_name": "sort_jumbled",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sort_jumbled, run_sort_jumbled\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortTheJumbledNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sort_jumbled",
+                "signature": "(self, mapping: list[int], nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement sort_jumbled\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sort_jumbled",
+                "signature": "(self, mapping: list[int], nums: list[int], expected: list[int])",
+                "parametrize": "mapping, nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([8,9,4,0,2,1,3,5,7,6],[991,338,38],[338,38,991])",
+                        "([0,1,2,3,4,5,6,7,8,9],[789,456,123],[123,456,789])",
+                        "([0,1,2,3,4,5,6,7,8,9],[5],[5])",
+                        "([9,8,7,6,5,4,3,2,1,0],[0,1,2,3],[3,2,1,0])",
+                        "([5,6,7,8,9,0,1,2,3,4],[10,100,1000],[10,100,1000])",
+                        "([8,9,4,0,2,1,3,5,7,6],[0,0,0],[0,0,0])",
+                        "([1,2,3,4,5,6,7,8,9,0],[91,82,73,64],[91,64,73,82])",
+                        "([7,3,8,9,1,6,2,0,5,4],[123456789,987654321,0],[0,123456789,987654321])",
+                        "([3,5,4,6,2,1,9,0,7,8],[12,21,34,43,56,65],[56,43,21,12,34,65])",
+                        "([0,9,8,7,6,5,4,3,2,1],[10,20,30,11],[30,20,10,11])",
+                        "([4,1,8,2,0,3,5,9,7,6],[999999999,99999999],[99999999,999999999])",
+                        "([2,1,4,8,6,3,0,9,7,5],[555,55,5,5555],[5,55,555,5555])",
+                        "([6,4,9,3,1,7,0,5,2,8],[100,10,1],[1,10,100])",
+                        "([9,0,1,2,3,4,5,6,7,8],[9,90,99,900],[9,99,90,900])",
+                        "([8,9,4,0,2,1,3,5,7,6],[768,867,678,876,786,687],[678,687,768,786,867,876])"
+                    ]
+                },
+                "body": "        result = run_sort_jumbled(Solution, mapping, nums)\n        assert_sort_jumbled(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sort_jumbled, assert_sort_jumbled\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmapping = [8, 9, 4, 0, 2, 1, 3, 5, 7, 6]\nnums = [991, 338, 38]\nexpected = [338, 38, 991]",
+    "playground_run": "result = run_sort_jumbled(Solution, mapping, nums)\nresult",
+    "playground_assert": "assert_sort_jumbled(result, expected)"
+}

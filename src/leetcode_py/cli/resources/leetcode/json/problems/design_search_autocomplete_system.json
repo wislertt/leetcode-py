@@ -1,0 +1,83 @@
+{
+    "problem_name": "design_search_autocomplete_system",
+    "solution_class_name": "AutocompleteSystem",
+    "problem_number": "642",
+    "problem_title": "Design Search Autocomplete System",
+    "difficulty": "Hard",
+    "topics": "Depth-First Search, Design, Trie, String, Data Stream, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a special character `'#'`).\n\nYou are given a string array `sentences` and an integer array `times` both of length `n` where `sentences[i]` is a previously typed sentence and `times[i]` is the corresponding number of times the sentence was typed. For each input character except `'#'`, return the top `3` historical hot sentences that have the same prefix as the part of the sentence already typed.\n\nHere are the specific rules:\n\n- The hot degree for a sentence is defined as the number of times a user typed the exactly same sentence before.\n- The returned top `3` hot sentences should be sorted by hot degree (The first is the hottest one). If several sentences have the same hot degree, use ASCII-code order (smaller one appears first).\n- If less than `3` hot sentences exist, return as many as you can.\n- When the input is a special character, it means the sentence ends, and in this case, you need to return an empty list.\n\nImplement the `AutocompleteSystem` class:\n\n- `AutocompleteSystem(String[] sentences, int[] times)` Initializes the object with the `sentences` and `times` arrays.\n- `List<String> input(char c)` This indicates that the user typed the character `c`.\n  - Returns an empty array `[]` if `c == '#'` and stores the inputted sentence in the system.\n  - Returns the top `3` historical hot sentences that have the same prefix as the part of the sentence already typed. If there are fewer than `3` matches, return them all.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"AutocompleteSystem\", \"input\", \"input\", \"input\", \"input\"]\n[[[\"i love you\", \"island\", \"iroman\", \"i love leetcode\"], [5, 3, 2, 2]], [\"i\"], [\" \"], [\"a\"], [\"#\"]]\nOutput\n[null, [\"i love you\", \"island\", \"i love leetcode\"], [\"i love you\", \"i love leetcode\"], [], []]\n\nExplanation\nAutocompleteSystem obj = new AutocompleteSystem([...], [5, 3, 2, 2]);\nobj.input(\"i\"); // return [\"i love you\", \"island\", \"i love leetcode\"]\nobj.input(\" \"); // return [\"i love you\", \"i love leetcode\"]\nobj.input(\"a\"); // return []\nobj.input(\"#\"); // return []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == sentences.length`\n- `n == times.length`\n- `1 <= n <= 100`\n- `1 <= sentences[i].length <= 100`\n- `1 <= times[i] <= 50`\n- `c` is a lowercase English letter, a hash `'#'`, or space `' '`.\n- Each tested sentence will be a sequence of characters `c` that end with the character `'#'`.\n- Each tested sentence will have a length in the range `[1, 200]`.\n- The words in each input sentence are separated by single spaces.\n- At most `5000` calls will be made to `input`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "autocomplete_system",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    system = None\n    results: list[list[str] | None] = []\n    for i, op in enumerate(operations):\n        if op == 'AutocompleteSystem':\n            system = solution_class(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'input' and system is not None:\n            results.append(system.input(inputs[i][0]))\n    return results, system",
+    "helpers_assert_name": "autocomplete_system",
+    "helpers_assert_signature": "(result: list[list[str] | None], expected: list[list[str] | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_autocomplete_system, run_autocomplete_system\nfrom .solution import AutocompleteSystem",
+    "test_content": "",
+    "test_class_name": "DesignSearchAutocompleteSystem",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, sentences: list[str], times: list[int]) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "input",
+                "signature": "(self, c: str) -> list[str]",
+                "body": "        # TODO: Implement input\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_autocomplete_system",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[list[str] | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['AutocompleteSystem','input','input','input','input'],[[['i love you','island','iroman','i love leetcode'],[5,3,2,2]],['i'],[' '],['a'],['#']],[None,['i love you','island','i love leetcode'],['i love you','i love leetcode'],[],[]])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input'],[[['great','grail','grotto'],[3,3,3]],['g'],['r'],['a'],['i'],['l'],['#']],[None,['grail','great','grotto'],['grail','great','grotto'],['grail'],['grail'],['grail'],[]])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input','input'],[[['hello'],[1]],['h'],['e'],['l'],['l'],['o'],['#'],['h']],[None,['hello'],['hello'],['hello'],['hello'],['hello'],[],['hello']])",
+                        "(['AutocompleteSystem','input','input'],[[['aaa','aab','aac'],[1,1,1]],['a'],['#']],[None,['aaa','aab','aac'],[]])",
+                        "(['AutocompleteSystem','input','input','input'],[[['x'],[1]],['y'],['z'],['#']],[None,[],[],[]])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input','input','input'],[[['abc'],[2]],['a'],['b'],['#'],['a'],['b'],['c'],['#'],['a']],[None,['abc'],['abc'],[],['abc','ab'],['abc','ab'],['abc'],[],['abc','ab']])",
+                        "(['AutocompleteSystem','input'],[[['solo sentence'],[4]],['s']],[None,['solo sentence']])",
+                        "(['AutocompleteSystem','input','input','input','input','input'],[[['b bc','b ab','b cb'],[1,2,3]],['b'],[' '],['c'],['b'],['#']],[None,['b cb','b ab','b bc'],['b cb','b ab','b bc'],['b cb'],['b cb'],[]])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input','input','input','input','input'],[[['ir','iron','island'],[2,3,1]],['i'],['r'],['#'],['i'],['s'],['#'],['i'],['r'],['o'],['n']],[None,['iron','ir','island'],['iron','ir'],[],['ir','iron','island'],['island'],[],['ir','iron','is'],['ir','iron'],['iron'],['iron']])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input','input','input','input'],[[['zeta','zeta beta'],[5,5]],['z'],['e'],['t'],['a'],[' '],['b'],['e'],['t'],['a']],[None,['zeta','zeta beta'],['zeta','zeta beta'],['zeta','zeta beta'],['zeta','zeta beta'],['zeta beta'],['zeta beta'],['zeta beta'],['zeta beta'],['zeta beta']])",
+                        "(['AutocompleteSystem','input','input','input','input','input','input','input'],[[['m'],[1]],['m'],['#'],['m'],['#'],['m'],['#'],['m']],[None,['m'],[],['m'],[],['m'],[],['m']])",
+                        "(['AutocompleteSystem','input'],[[[],[]],['a']],[None,[]])"
+                    ]
+                },
+                "body": "        result, _ = run_autocomplete_system(AutocompleteSystem, operations, inputs)\n        assert_autocomplete_system(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_autocomplete_system, assert_autocomplete_system\nfrom solution import AutocompleteSystem",
+    "playground_setup": "# Example test case\noperations = ['AutocompleteSystem', 'input', 'input', 'input', 'input']\ninputs = [[['i love you', 'island', 'iroman', 'i love leetcode'], [5, 3, 2, 2]], ['i'], [' '], ['a'], ['#']]\nexpected = [None, ['i love you', 'island', 'i love leetcode'], ['i love you', 'i love leetcode'], [], []]",
+    "playground_run": "result, system = run_autocomplete_system(AutocompleteSystem, operations, inputs)\nprint(result)\nsystem",
+    "playground_assert": "assert_autocomplete_system(result, expected)"
+}

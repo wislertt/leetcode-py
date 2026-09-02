@@ -1,0 +1,87 @@
+{
+    "problem_name": "minimize_max_distance_to_gas_station",
+    "solution_class_name": "Solution",
+    "problem_number": "774",
+    "problem_title": "Minimize Max Distance to Gas Station",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `stations` that represents the positions of the gas stations on the x-axis. You are also given an integer `k`.\n\nYou should add `k` new gas stations. You can add the stations anywhere on the x-axis, and not necessarily on an integer position.\n\nLet `penalty()` be the **maximum** distance between adjacent gas stations after adding the `k` new stations.\n\nReturn the smallest possible value of `penalty()`. Answers within `10^-6` of the actual answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: stations = [1,2,3,4,5,6,7,8,9,10], k = 9\nOutput: 0.50000\n```"
+            },
+            {
+                "content": "```\nInput: stations = [23,24,36,39,46,56,57,65,84,98], k = 1\nOutput: 14.00000\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 10 <= stations.length <= 2000\n- 0 <= stations[i] <= 10^8\n- stations is sorted in a strictly increasing order.\n- 1 <= k <= 10^6",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minmax_gas_dist",
+    "helpers_run_signature": "(solution_class: type, stations: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minmax_gas_dist(stations, k)",
+    "helpers_assert_name": "minmax_gas_dist",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    assert abs(result - expected) < 10 ** -4\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minmax_gas_dist, run_minmax_gas_dist\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimizeMaxDistanceToGasStation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minmax_gas_dist",
+                "signature": "(self, stations: list[int], k: int) -> float",
+                "body": "        # TODO: Implement minmax_gas_dist\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minmax_gas_dist",
+                "signature": "(self, stations: list[int], k: int, expected: float)",
+                "parametrize": "stations, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9, 0.5)",
+                        "([23, 24, 36, 39, 46, 56, 57, 65, 84, 98], 1, 14.0)",
+                        "([1, 2], 1, 0.5)",
+                        "([10, 19, 25, 27, 100], 5, 12.16667)",
+                        "([3, 6, 12, 19, 33, 44, 67, 72, 89, 95], 2, 14.0)",
+                        "([1, 5], 1, 2.0)",
+                        "([1, 100], 3, 24.75)",
+                        "([2, 4, 8, 16], 7, 1.6)",
+                        "([5, 6, 7, 8, 20], 4, 2.4)",
+                        "([0, 100000000], 999999, 100.0)",
+                        "([1, 3, 7, 15], 6, 2.0)",
+                        "([12, 19], 2, 2.33333)"
+                    ]
+                },
+                "body": "        result = run_minmax_gas_dist(Solution, stations, k)\n        assert_minmax_gas_dist(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minmax_gas_dist, assert_minmax_gas_dist\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nk = 9\nexpected = 0.5",
+    "playground_run": "result = run_minmax_gas_dist(Solution, stations, k)\nresult",
+    "playground_assert": "assert_minmax_gas_dist(result, expected)"
+}

@@ -1,0 +1,107 @@
+{
+    "problem_name": "palindrome_removal",
+    "solution_class_name": "Solution",
+    "problem_number": "1246",
+    "problem_title": "Palindrome Removal",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `arr`.\n\nIn one move, you can select a **palindromic** subarray `arr[i], arr[i + 1], ..., arr[j]` where `i <= j`, and remove that subarray from the given array. Note that after removing a subarray, the elements on the left and on the right of that subarray move to fill the gap left by the removal.\n\nReturn the minimum number of moves needed to remove all numbers from the array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,2]\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,3,4,1,5]\nOutput: 3\n```\n**Explanation:** Remove `[4]` then remove `[1,3,1]` then remove `[5]`."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 100`\n- `1 <= arr[i] <= 20`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_moves",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_moves(arr)",
+    "helpers_assert_name": "minimum_moves",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_moves, run_minimum_moves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PalindromeRemoval",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_moves",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement minimum_moves\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_moves",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,2],2)",
+                        "([1,3,4,1,5],3)",
+                        "([1],1)",
+                        "([1,1],1)",
+                        "([2,2,2],1)",
+                        "([1,2,1],1)",
+                        "([1,2,2,1],1)",
+                        "([1,2,3],3)",
+                        "([1,2,3,2,1],1)",
+                        "([1,3,2,3,1],1)",
+                        "([1,2,1,2],2)",
+                        "([1,4,1,1,4,1],1)",
+                        "([3,3,3,3,3,3,3],1)",
+                        "([1,20,1,20,1],1)",
+                        "([4,1,4,5,1],3)",
+                        "([2,1,2,1,2,2,1],2)",
+                        "([1,2,3,4,5],5)",
+                        "([1,1,2,2,1,1],1)",
+                        "([7,8,7,8,7],1)",
+                        "([5,5,1,5,5,9,9,5],3)",
+                        "([1,3,1,3,3,2],3)",
+                        "([1,3,3,3,1,2],2)",
+                        "([2,3,2,2,1,1],3)",
+                        "([1,2,2,2,2,3,1,3],3)",
+                        "([2,1,2,1,3,2,3],3)",
+                        "([3,3,3,1,1,1],2)",
+                        "([2,1,2,1,1,2,1,3],3)",
+                        "([3,1,1,1,3,3,2,3],2)",
+                        "([1,2,1,3,1,2,1,4,1,2,1,3],2)",
+                        "([2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],1)",
+                        "([19,13,6,17,14,15,19,2,13,12,13,9,6,10,1],11)",
+                        "([3,4,1,2,4,2,4,1,3,4,1,3,2,3,2,3,4,2,3,2,2,1,3,4,4,3,3,2,2,1],9)"
+                    ]
+                },
+                "body": "        result = run_minimum_moves(Solution, arr)\n        assert_minimum_moves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_moves, assert_minimum_moves\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 3, 4, 1, 5]\nexpected = 3",
+    "playground_run": "result = run_minimum_moves(Solution, arr)\nresult",
+    "playground_assert": "assert_minimum_moves(result, expected)"
+}
