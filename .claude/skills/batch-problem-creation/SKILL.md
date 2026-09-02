@@ -145,7 +145,7 @@ Report back EXACTLY this and nothing else:
 
 ## Step 2: Batch Finalization (MANDATORY — after ALL problems)
 
-Four gates in order. Do NOT skip any.
+Five gates in order. Do NOT skip any.
 
 ### 2.0: Tag Insert (main-side — agents no longer insert their own)
 
@@ -206,6 +206,14 @@ bake check-consistency
 - Expect `✅ Consistency check PASSED: all files match JSON source of truth`
 - On drift (`Drift: leetcode/<problem>/<file>`): **read and follow @.claude/skills/consistency-fix.md**
 - Loop until PASSED. `bake p-gen -f` reporting success does NOT mean consistency passes — only this command passing is real
+
+### 2.4: Test Case Count Check
+
+```bash
+bake check-test-cases
+```
+
+- Must exit 0 (no problems at or below the default threshold — same command CI runs in `test-reproducibility.yml`, so local defaults and CI stay in lockstep). Success Criteria says 12+ per problem, but no other gate counts cases — p-test passes with any count, consistency only diffs generated-vs-JSON (a 10-case JSON is self-consistent), and the count otherwise surfaces only in CI. Batch 189's CI failure (campus_bikes, the_maze_iii at exactly 10) was caught nowhere locally. Runs in seconds — cheap fifth gate. On failure: add machine-verified cases to the JSON template AND mirror them into the generated `test_solution.py` by hand (regenerating clobbers solutions — see the p-gen -f warning below)
 - **GOTCHA — a FAILED run can leave `leetcode/` as regenerated stubs.** `Restoring original leetcode/...` runs at the END of the pipeline; if the run aborts at its lint stage (ruff/ty error mid-batch), the restore never executes and the working tree keeps freshly generated TODO-stub solutions for EVERY problem. After any consistency failure, verify before continuing: `grep -l "TODO: Implement" leetcode/*/solution.py` — any hit means solutions were wiped (rewritable from session context or a /tmp copy; take the copy BEFORE the first consistency run, not after a failure). Only the PASSED run restores reliably
 - **GOTCHA — flat `cp` can silently truncate the safety snapshot.** `cp leetcode/*/solution.py /tmp/dir/` copied exactly 1 file in one run (glob expansion mangled, likely by the rtk hook) — a silently-empty snapshot defeats its purpose. Use a per-problem loop and verify the count:
 
@@ -264,7 +272,7 @@ After the summary, review the run and **suggest** candidate updates to any skill
 
 Each problem: all files generated, optimal solution implemented (single class), 12+ test cases, lint clean, `bake p-test` passes, QA chain run with solution preserved.
 
-The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, all problems still pass `bake p-test` after finalization.
+The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, `bake check-test-cases` exits 0, all problems still pass `bake p-test` after finalization.
 
 ## Unscrapable Problems Management
 
