@@ -193,13 +193,20 @@ UNSCRAPABLE_HANDLED = [
     (1868, "product-of-two-run-length-encoded-arrays"),
     (1891, "cutting-ribbons"),
     (2393, "count-strictly-increasing-subarrays"),
+    (2534, "time-taken-to-cross-the-door"),
+    (3199, "count-triplets-with-even-xor-set-bits-i"),
+    (3481, "apply-substitutions"),
+    (3711, "maximum-transactions-without-negative-balance"),
+    (157, "read-n-characters-given-read4"),
+    (158, "read-n-characters-given-read4-ii-call-multiple-times"),
+    (170, "two-sum-iii-data-structure-design"),
+    (245, "shortest-word-distance-iii"),
+    (288, "unique-word-abbreviation"),
 ]
 
 # Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
 # problem is created; append new discoveries at the bottom.
-UNSCRAPABLE_QUEUE = [
-    (2534, "time-taken-to-cross-the-door"),
-]
+UNSCRAPABLE_QUEUE = []
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
 # Never created; kept separate from the unscrapable lists so the todo queue
@@ -215,6 +222,22 @@ NON_PYTHON_PROBLEMS = [
     (1142, "user-activity-for-the-past-30-days-ii"),
     (1251, "average-selling-price"),
     (1270, "all-people-report-to-the-given-manager"),
+    (175, "combine-two-tables"),
+    (176, "second-highest-salary"),
+    (177, "nth-highest-salary"),
+    (178, "rank-scores"),
+    (180, "consecutive-numbers"),
+    (181, "employees-earning-more-than-their-managers"),
+    (182, "duplicate-emails"),
+    (183, "customers-who-never-order"),
+    (184, "department-highest-salary"),
+    (185, "department-top-three-salaries"),
+    (192, "word-frequency"),
+    (193, "valid-phone-numbers"),
+    (194, "transpose-file"),
+    (195, "tenth-line"),
+    (196, "delete-duplicate-emails"),
+    (197, "rising-temperature"),
 ]
 
 

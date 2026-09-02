@@ -1,0 +1,96 @@
+{
+    "problem_name": "substring_with_concatenation_of_all_words",
+    "solution_class_name": "Solution",
+    "problem_number": "30",
+    "problem_title": "Substring with Concatenation of All Words",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Sliding Window",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string `s` and an array of strings `words`. All the strings of `words` are of **the same length**.\n\nA **concatenated string** is a string that exactly contains all the strings of any permutation of `words` concatenated.\n\n- For example, if `words = [\"ab\",\"cd\",\"ef\"]`, then `\"abcdef\"`, `\"abefcd\"`, `\"cdabef\"`, `\"cdefab\"`, `\"efabcd\"`, and `\"efcdab\"` are all concatenated strings. `\"acdbef\"` is not a concatenated string because it is not the concatenation of any permutation of `words`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"barfoothefoobarman\", words = [\"foo\",\"bar\"]\nOutput: [0,9]\n```\n**Explanation:**\nThe substring starting at 0 is \"barfoo\". It is the concatenation of [\"bar\",\"foo\"] which is a permutation of `words`.\nThe substring starting at 9 is \"foobar\". It is the concatenation of [\"foo\",\"bar\"] which is a permutation of `words`."
+            },
+            {
+                "content": "```\nInput: s = \"wordgoodgoodgoodbestword\", words = [\"word\",\"good\",\"best\",\"word\"]\nOutput: []\n```\n**Explanation:**\nThere is no concatenated substring."
+            },
+            {
+                "content": "```\nInput: s = \"barfoofoobarthefoobarman\", words = [\"bar\",\"foo\",\"the\"]\nOutput: [6,9,12]\n```\n**Explanation:**\nThe substring starting at 6 is \"foobarthe\". It is the concatenation of [\"foo\",\"bar\",\"the\"].\nThe substring starting at 9 is \"barthefoo\". It is the concatenation of [\"bar\",\"the\",\"foo\"].\nThe substring starting at 12 is \"thefoobar\". It is the concatenation of [\"the\",\"foo\",\"bar\"]."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^4\n- 1 <= words.length <= 5000\n- 1 <= words[i].length <= 30\n- s and words[i] consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_substring",
+    "helpers_run_signature": "(solution_class: type, s: str, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_substring(s, words)",
+    "helpers_assert_name": "find_substring",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_substring, run_find_substring\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SubstringWithConcatenationOfAllWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_substring",
+                "signature": "(self, s: str, words: list[str]) -> list[int]",
+                "body": "        # TODO: Implement find_substring\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_substring",
+                "signature": "(self, s: str, words: list[str], expected: list[int])",
+                "parametrize": "s, words, expected",
+                "test_cases": {
+                    "list": [
+                        "('barfoothefoobarman', ['foo', 'bar'], [0, 9])",
+                        "('wordgoodgoodgoodbestword', ['word', 'good', 'best', 'word'], [])",
+                        "('barfoofoobarthefoobarman', ['bar', 'foo', 'the'], [6, 9, 12])",
+                        "('a', ['a'], [0])",
+                        "('ab', ['ab'], [0])",
+                        "('abc', ['abd'], [])",
+                        "('aaa', ['aaaa'], [])",
+                        "('aaa', ['a', 'b'], [])",
+                        "('aaaa', ['aa'], [0, 1, 2])",
+                        "('aaa', ['a', 'a'], [0, 1])",
+                        "('abababab', ['ab', 'ba'], [])",
+                        "('wordgoodgoodgoodbestword', ['word', 'good'], [0])",
+                        "('aaaaaaaaaa', ['aa', 'aa', 'aa'], [0, 1, 2, 3, 4])",
+                        "('mississippi', ['mis', 'sis'], [0])",
+                        "('bcabbcaabb', ['ab', 'bc'], [0, 2])",
+                        "('foobarfoobar', ['foo', 'bar'], [0, 3, 6])",
+                        "('aabbaabb', ['ab', 'ba', 'aa'], [])",
+                        "('goodgoodbestword', ['good', 'good', 'best'], [0])"
+                    ]
+                },
+                "body": "        result = run_find_substring(Solution, s, words)\n        assert_find_substring(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_substring, assert_find_substring\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'barfoothefoobarman'\nwords = ['foo', 'bar']\nexpected = [0, 9]",
+    "playground_run": "result = run_find_substring(Solution, s, words)\nresult",
+    "playground_assert": "assert_find_substring(result, expected)"
+}

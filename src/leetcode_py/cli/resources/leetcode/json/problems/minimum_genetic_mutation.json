@@ -1,0 +1,92 @@
+{
+    "problem_name": "minimum_genetic_mutation",
+    "solution_class_name": "Solution",
+    "problem_number": "433",
+    "problem_title": "Minimum Genetic Mutation",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Breadth-First Search, Bidirectional Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A gene string can be represented by an 8-character long string, with choices from `'A'`, `'C'`, `'G'`, and `'T'`.\n\nSuppose we need to investigate a mutation from a gene string `startGene` to a gene string `endGene` where one mutation is defined as one single character changed in the gene string.\n\n- For example, `\"AACCGGTT\" --> \"AACCGGTA\"` is one mutation.\n\nThere is also a gene bank `bank` that records all the valid gene mutations. A gene must be in `bank` to make it a valid gene string.\n\nGiven the two gene strings `startGene` and `endGene` and the gene bank `bank`, return the minimum number of mutations needed to mutate from `startGene` to `endGene`. If there is no such mutation, return `-1`.\n\nNote that the starting point is assumed to be valid, so it might not be included in the bank.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: startGene = \"AACCGGTT\", endGene = \"AACCGGTA\", bank = [\"AACCGGTA\"]\nOutput: 1\nExplanation: One mutation changes the last gene from 'T' to 'A'.\n```"
+            },
+            {
+                "content": "```\nInput: startGene = \"AACCGGTT\", endGene = \"AAACGGTA\", bank = [\"AACCGGTA\",\"AACCGCTA\",\"AAACGGTA\"]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= bank.length <= 10\n- startGene.length == endGene.length == bank[i].length == 8\n- startGene, endGene, and bank[i] consist of only the characters ['A', 'C', 'G', 'T'].",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_mutation",
+    "helpers_run_signature": "(solution_class: type, start_gene: str, end_gene: str, bank: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_mutation(start_gene, end_gene, bank)",
+    "helpers_assert_name": "min_mutation",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_mutation, run_min_mutation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumGeneticMutation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_mutation",
+                "signature": "(self, start_gene: str, end_gene: str, bank: list[str]) -> int",
+                "body": "        # TODO: Implement min_mutation\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_mutation",
+                "signature": "(self, start_gene: str, end_gene: str, bank: list[str], expected: int)",
+                "parametrize": "start_gene, end_gene, bank, expected",
+                "test_cases": {
+                    "list": [
+                        "('AACCGGTT','AACCGGTA',['AACCGGTA'],1)",
+                        "('AACCGGTT','AAACGGTA',['AACCGGTA','AACCGCTA','AAACGGTA'],2)",
+                        "('AAAAACCC','AACCCCCC',['AAAACCCC','AAACCCCC','AACCCCCC'],3)",
+                        "('AACCGGTT','AACCGGTA',[],-1)",
+                        "('AACCGGTT','AACCGGTT',[],0)",
+                        "('AACCGGTT','AACCGGTA',['AACCGGTT'],-1)",
+                        "('AACCGGTT','AACCGGTT',['AACCGGTA'],0)",
+                        "('AACCGGTT','AAACGGTA',['AACCGGTA','AAACGGTA'],2)",
+                        "('AACCGGTT','AACCGGTA',['AACCGGTA','AACCGGTT','AACCGGTC'],1)",
+                        "('CTAATGGA','CCTCGAAA',['CTAAGGGA','CTATTGGA'],-1)",
+                        "('GCGCCTTT','GCCTTAGG',['GCGCCTTC'],-1)",
+                        "('CGTGTAGG','CCACTGGG',['GGTGTAGG','CTTGTAGG','CGTGTTGG','CGTGCAGG'],-1)",
+                        "('AACAGACG','CATCTACA',['GACAGACG','AACAGTCG','AAAAGACG','TACAGACG'],-1)",
+                        "('AGGCTTGG','TGAACGAC',['AGGCTTTG','AGGGTTGG','AGGCTAGG'],-1)",
+                        "('GGTGCGGA','AGTGCGGA',['AGTGCGGA'],1)",
+                        "('GTAGAACG','GTAGAAAG',['GTAGAAAG'],1)",
+                        "('TAACGTTA','AGACGCTA',['AAACGTTA','AGACGTTA','AGACGCTA'],3)"
+                    ]
+                },
+                "body": "        result = run_min_mutation(Solution, start_gene, end_gene, bank)\n        assert_min_mutation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_mutation, assert_min_mutation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstart_gene = 'AACCGGTT'\nend_gene = 'AACCGGTA'\nbank = ['AACCGGTA']\nexpected = 1",
+    "playground_run": "result = run_min_mutation(Solution, start_gene, end_gene, bank)\nresult",
+    "playground_assert": "assert_min_mutation(result, expected)"
+}

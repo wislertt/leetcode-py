@@ -1,0 +1,104 @@
+{
+    "problem_name": "scramble_string",
+    "solution_class_name": "Solution",
+    "problem_number": "87",
+    "problem_title": "Scramble String",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "We can scramble a string s to get a string t using the following algorithm:\n\n1. If the length of the string is 1, stop.\n2. If the length of the string is > 1, do the following:\n    1. Split the string into two non-empty substrings at a random index, i.e., if the string is `s`, divide it to `x` and `y` where `s = x + y`.\n    2. Randomly decide to swap the two substrings or to keep them in the same order. i.e., after this step, `s` may become `s = x + y` or `s = y + x`.\n    3. Apply step 1 recursively on each of the two substrings `x` and `y`.\n\nGiven two strings `s1` and `s2` of **the same length**, return `true` if `s2` is a scrambled string of `s1`, otherwise, return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s1 = \"great\", s2 = \"rgeat\"\nOutput: true\n```\n**Explanation:** One possible scenario applied on `s1` is:\n`\"great\" --> \"gr/eat\"` // divide at random index.\n`\"gr/eat\" --> \"gr/eat\"` // random decision is not to swap the two substrings and keep them in order.\n`\"gr/eat\" --> \"g/r / e/at\"` // apply the same algorithm recursively on both substrings. divide at random index each of them.\n`\"g/r / e/at\" --> \"r/g / e/at\"` // random decision was to swap the first substring and to keep the second substring in the same order.\n`\"r/g / e/at\" --> \"r/g / e/ a/t\"` // again apply the algorithm recursively, divide \"at\" to \"a/t\".\n`\"r/g / e/ a/t\" --> \"r/g / e/ a/t\"` // random decision is to keep both substrings in the same order.\nThe algorithm stops now, and the result string is `\"rgeat\"` which is `s2`.\nAs one possible scenario led `s1` to be scrambled to `s2`, we return `true`."
+            },
+            {
+                "content": "```\nInput: s1 = \"abcde\", s2 = \"caebd\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"a\", s2 = \"a\"\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- s1.length == s2.length\n- 1 <= s1.length <= 30\n- s1 and s2 consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_scramble",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_scramble(s1, s2)",
+    "helpers_assert_name": "is_scramble",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_scramble, run_is_scramble\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ScrambleString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_scramble",
+                "signature": "(self, s1: str, s2: str) -> bool",
+                "body": "        # TODO: Implement is_scramble\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_scramble",
+                "signature": "(self, s1: str, s2: str, expected: bool)",
+                "parametrize": "s1, s2, expected",
+                "test_cases": {
+                    "list": [
+                        "('great', 'rgeat', True)",
+                        "('abcde', 'caebd', False)",
+                        "('a', 'a', True)",
+                        "('a', 'b', False)",
+                        "('ab', 'ba', True)",
+                        "('ab', 'ab', True)",
+                        "('abc', 'bac', True)",
+                        "('abc', 'cab', True)",
+                        "('abc', 'acb', True)",
+                        "('abc', 'bca', True)",
+                        "('abc', 'cba', True)",
+                        "('abcd', 'bdac', False)",
+                        "('abcd', 'cdab', True)",
+                        "('abcd', 'dcba', True)",
+                        "('great', 'great', True)",
+                        "('great', 'rgtae', True)",
+                        "('great', 'tager', True)",
+                        "('xabcdb', 'babcxd', True)",
+                        "('aa', 'aa', True)",
+                        "('ab', 'aa', False)",
+                        "('abc', 'abd', False)",
+                        "('bea', 'bae', True)",
+                        "('ca', 'ca', True)",
+                        "('de', 'de', True)",
+                        "('cbea', 'abec', True)",
+                        "('edcdbcb', 'eecacac', False)"
+                    ]
+                },
+                "body": "        result = run_is_scramble(Solution, s1, s2)\n        assert_is_scramble(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_scramble, assert_is_scramble\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'great'\ns2 = 'rgeat'\nexpected = True",
+    "playground_run": "result = run_is_scramble(Solution, s1, s2)\nresult",
+    "playground_assert": "assert_is_scramble(result, expected)"
+}

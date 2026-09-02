@@ -1,0 +1,95 @@
+{
+    "problem_name": "longest_substring_with_at_least_k_repeating_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "395",
+    "problem_title": "Longest Substring with At Least K Repeating Characters",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Divide and Conquer, Sliding Window",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s` and an integer `k`, return *the length of the longest substring of* `s` *such that the frequency of each character in this substring is greater than or equal to* `k`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"aaabb\", k = 3\nOutput: 3\nExplanation: The longest substring is \"aaa\", as 'a' is repeated 3 times.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ababbc\", k = 2\nOutput: 5\nExplanation: The longest substring is \"ababb\", as 'a' is repeated 2 times and 'b' is repeated 3 times.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^4`\n- `s` consists of only lowercase English letters.\n- `1 <= k <= 10^5`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_substring_with_at_least_k_repeating_characters",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_substring_with_at_least_k_repeating_characters(s, k)",
+    "helpers_assert_name": "longest_substring_with_at_least_k_repeating_characters",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_substring_with_at_least_k_repeating_characters, run_longest_substring_with_at_least_k_repeating_characters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestSubstringWithAtLeastKRepeatingCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_substring_with_at_least_k_repeating_characters",
+                "signature": "(self, s: str, k: int) -> int",
+                "body": "        # TODO: Implement longest_substring_with_at_least_k_repeating_characters\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_substring_with_at_least_k_repeating_characters",
+                "signature": "(self, s: str, k: int, expected: int)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('aaabb',3,3)",
+                        "('ababbc',2,5)",
+                        "('aaaa',1,4)",
+                        "('a',1,1)",
+                        "('ab',1,2)",
+                        "('ab',2,0)",
+                        "('abcde',5,0)",
+                        "('aabbcc',2,6)",
+                        "('aaabbbccc',3,9)",
+                        "('ababacb',3,0)",
+                        "('bbaaacbd',3,3)",
+                        "('weitaim',2,0)",
+                        "('zzzzzzzz',4,8)",
+                        "('abcabc',2,6)",
+                        "('aabbbaa',3,7)",
+                        "('abcdeabcde',2,10)",
+                        "('acccab',1,6)",
+                        "('dbceec',2,4)",
+                        "('bca',4,0)",
+                        "('ecdbd',2,0)"
+                    ]
+                },
+                "body": "        result = run_longest_substring_with_at_least_k_repeating_characters(Solution, s, k)\n        assert_longest_substring_with_at_least_k_repeating_characters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_substring_with_at_least_k_repeating_characters, assert_longest_substring_with_at_least_k_repeating_characters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'aaabb'\nk = 3\nexpected = 3",
+    "playground_run": "result = run_longest_substring_with_at_least_k_repeating_characters(Solution, s, k)\nresult",
+    "playground_assert": "assert_longest_substring_with_at_least_k_repeating_characters(result, expected)"
+}

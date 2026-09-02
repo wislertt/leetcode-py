@@ -1,0 +1,99 @@
+{
+    "problem_name": "count_triplets_with_even_xor_set_bits_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3199",
+    "problem_title": "Count Triplets with Even XOR Set Bits I",
+    "difficulty": "Easy",
+    "topics": "Array, Bit Manipulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "Given three integer arrays `a`, `b`, and `c`, return the number of triplets `(a[i], b[j], c[k])`, such that the bitwise `XOR` of the elements of each triplet has an **even** number of set bits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: a = [1], b = [2], c = [3]\nOutput: 1\nExplanation:\nThe only triplet is (a[0], b[0], c[0]) and their XOR is: 1 XOR 2 XOR 3 = 00_2.\n```"
+            },
+            {
+                "content": "```\nInput: a = [1,1], b = [2,3], c = [1,5]\nOutput: 4\nExplanation:\nConsider these four triplets:\n- (a[0], b[1], c[0]): 1 XOR 3 XOR 1 = 011_2\n- (a[1], b[1], c[0]): 1 XOR 3 XOR 1 = 011_2\n- (a[0], b[0], c[1]): 1 XOR 2 XOR 5 = 110_2\n- (a[1], b[0], c[1]): 1 XOR 2 XOR 5 = 110_2\n```"
+            }
+        ]
+    },
+    "constraints": {
+        "list": ["1 <= a.length, b.length, c.length <= 100", "0 <= a[i], b[i], c[i] <= 100"]
+    },
+    "readme_constraints": "- 1 <= a.length, b.length, c.length <= 100\n- 0 <= a[i], b[i], c[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "triplet_count",
+    "helpers_run_signature": "(solution_class: type, a: list[int], b: list[int], c: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.triplet_count(a, b, c)",
+    "helpers_assert_name": "triplet_count",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_triplet_count, run_triplet_count\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountTripletsWithEvenXorSetBitsI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "triplet_count",
+                "signature": "(self, a: list[int], b: list[int], c: list[int]) -> int",
+                "body": "        # TODO: Implement triplet_count\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_triplet_count",
+                "signature": "(self, a: list[int], b: list[int], c: list[int], expected: int)",
+                "parametrize": "a, b, c, expected",
+                "test_cases": {
+                    "list": [
+                        "([1], [2], [3], 1)",
+                        "([1, 1], [2, 3], [1, 5], 4)",
+                        "([84, 52], [48], [32, 85, 18, 20], 2)",
+                        "([52, 24, 41], [3, 38, 87], [58, 48, 68, 65, 27], 25)",
+                        "([76], [69, 21, 22, 74, 23], [95, 7, 37, 21, 58], 11)",
+                        "([39, 17, 18], [63, 51, 20, 60, 92], [73, 54], 15)",
+                        "([93, 43, 14, 38, 13], [26, 94, 92], [77, 70], 15)",
+                        "([11, 32], [27, 84, 49, 44], [45, 56], 8)",
+                        "([81], [60, 56], [18, 87], 2)",
+                        "([35, 93, 50, 77, 83], [22, 61], [91, 7, 6, 78, 75], 26)",
+                        "([78], [23, 18, 95, 23], [79, 75, 6, 57], 12)",
+                        "([21, 22, 69], [69], [13, 74, 63, 11], 3)",
+                        "([45, 43], [91], [98, 8, 76, 2], 8)",
+                        "([26, 33, 71, 38], [93, 32, 30, 75, 97], [87, 81, 74, 8, 10], 50)",
+                        "([44, 38], [94, 86], [54], 2)",
+                        "([74, 75], [30, 79], [17], 2)",
+                        "([0], [0], [0], 1)",
+                        "([0, 0, 0], [0, 0], [0], 6)",
+                        "([100], [100], [100], 0)",
+                        "([1, 2, 4, 8], [1, 2, 4, 8], [1, 2, 4, 8], 0)",
+                        "([7], [7], [7], 0)"
+                    ]
+                },
+                "body": "        result = run_triplet_count(Solution, a, b, c)\n        assert_triplet_count(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_triplet_count, assert_triplet_count\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = [1]\nb = [2]\nc = [3]\nexpected = 1",
+    "playground_run": "result = run_triplet_count(Solution, a, b, c)\nresult",
+    "playground_assert": "assert_triplet_count(result, expected)"
+}

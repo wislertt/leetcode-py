@@ -1,0 +1,98 @@
+{
+    "problem_name": "circular_array_loop",
+    "solution_class_name": "Solution",
+    "problem_number": "457",
+    "problem_title": "Circular Array Loop",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Two Pointers, Floyd's Cycle Finding Algorithm",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are playing a game involving a **circular** array of non-zero integers `nums`. Each `nums[i]` denotes the number of indices forward/backward you must move if you are located at index `i`:\n\n- If `nums[i]` is positive, move `nums[i]` steps **forward**, and\n- If `nums[i]` is negative, move `abs(nums[i])` steps **backward**.\n\nSince the array is **circular**, you may assume that moving forward from the last element puts you on the first element, and moving backwards from the first element puts you on the last element.\n\nA **cycle** in the array consists of a sequence of indices `seq` of length `k` where:\n\n- Following the movement rules above results in the repeating index sequence `seq[0] -> seq[1] -> ... -> seq[k - 1] -> seq[0] -> ...`\n- Every `nums[seq[j]]` is either **all positive** or **all negative**.\n- `k > 1`\n\nReturn `true` if there is a **cycle** in `nums`, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2022/09/01/img1.jpg)\n\n```\nInput: nums = [2,-1,1,2,2]\nOutput: true\n```\n**Explanation:** The graph shows how the indices are connected. White nodes are jumping forward, while red is jumping backward.\nWe can see the cycle 0 -> 2 -> 3 -> 0 -> ..., and all of its nodes are white (jumping in the same direction)."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2022/09/01/img2.jpg)\n\n```\nInput: nums = [-1,-2,-3,-4,-5,6]\nOutput: false\n```\n**Explanation:** The graph shows how the indices are connected. White nodes are jumping forward, while red is jumping backward.\nThe only cycle is of size 1, so we return false."
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2022/09/01/img3.jpg)\n\n```\nInput: nums = [1,-1,5,1,4]\nOutput: true\n```\n**Explanation:** The graph shows how the indices are connected. White nodes are jumping forward, while red is jumping backward.\nWe can see the cycle 0 -> 1 -> 0 -> ..., and while it is of size > 1, it has a node jumping forward and a node jumping backward, so **it is not a cycle**.\nWe can see the cycle 3 -> 4 -> 3 -> ..., and all of its nodes are white (jumping in the same direction)."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 5000\n- -1000 <= nums[i] <= 1000\n- nums[i] != 0",
+    "readme_additional": "**Follow up:** Could you solve it in O(n) time complexity and O(1) extra space complexity?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "circular_array_loop",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.circular_array_loop(nums)",
+    "helpers_assert_name": "circular_array_loop",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_circular_array_loop, run_circular_array_loop\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CircularArrayLoop",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "circular_array_loop",
+                "signature": "(self, nums: list[int]) -> bool",
+                "body": "        # TODO: Implement circular_array_loop\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_circular_array_loop",
+                "signature": "(self, nums: list[int], expected: bool)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, -1, 1, 2, 2], True)",
+                        "([-1, -2, -3, -4, -5, 6], False)",
+                        "([1, -1, 5, 1, 4], True)",
+                        "([-1, -1], True)",
+                        "([1, 2], False)",
+                        "([3, 1, 2], True)",
+                        "([-1, 2], False)",
+                        "([1], False)",
+                        "([1, 1], True)",
+                        "([-1, -2, -3, -4, -5], False)",
+                        "([-2, 1, -1], False)",
+                        "([2, 1, 1], True)",
+                        "([-2, 2, 1, 4, 2, -4, -2, -2], False)",
+                        "([-1, -2, -1, 3, 3, -2, 3], False)",
+                        "([4, -4, -3, 2, -3, -3], True)",
+                        "([1, -1], False)",
+                        "([2, -1, -1, 2, -1], False)",
+                        "([1, 3, -4, 2, -2, -4], True)",
+                        "([2, 1, 2, -2], True)",
+                        "([-4, 3, 1, 2, 4, 2, 2, 3], True)"
+                    ]
+                },
+                "body": "        result = run_circular_array_loop(Solution, nums)\n        assert_circular_array_loop(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_circular_array_loop, assert_circular_array_loop\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, -1, 1, 2, 2]\nexpected = True",
+    "playground_run": "result = run_circular_array_loop(Solution, nums)\nresult",
+    "playground_assert": "assert_circular_array_loop(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "h_index_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "275",
+    "problem_title": "H-Index II",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of integers `citations` where `citations[i]` is the number of citations a researcher received for their `i<sup>th</sup>` paper and `citations` is sorted in **non-descending order**, return *the researcher's h-index*.\n\nAccording to the [definition of h-index on Wikipedia](https://en.wikipedia.org/wiki/H-index): The h-index is defined as the maximum value of `h` such that the given researcher has published at least `h` papers that have each been cited at least `h` times.\n\nYou must write an algorithm that runs in logarithmic time.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: citations = [0,1,3,5,6]\nOutput: 3\n```\n**Explanation:** [0,1,3,5,6] means the researcher has 5 papers in total and each of them had received 0, 1, 3, 5, 6 citations respectively.\nSince the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, their h-index is 3."
+            },
+            {
+                "content": "```\nInput: citations = [1,2,100]\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == citations.length\n- 1 <= n <= 10^5\n- 0 <= citations[i] <= 1000\n- citations is sorted in ascending order.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "h_index",
+    "helpers_run_signature": "(solution_class: type, citations: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.h_index(citations)",
+    "helpers_assert_name": "h_index",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_h_index, run_h_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HIndexII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "h_index",
+                "signature": "(self, citations: list[int]) -> int",
+                "body": "        # TODO: Implement h_index\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_h_index",
+                "signature": "(self, citations: list[int], expected: int)",
+                "parametrize": "citations, expected",
+                "test_cases": {
+                    "list": [
+                        "([0,1,3,5,6], 3)",
+                        "([1,2,100], 2)",
+                        "([0], 0)",
+                        "([100], 1)",
+                        "([0,0], 0)",
+                        "([1,1], 1)",
+                        "([0,0,0,0], 0)",
+                        "([1,2,3,4,5], 3)",
+                        "([11,15], 2)",
+                        "([4,4,4,4,4], 4)",
+                        "([0,1,2,5,6], 2)",
+                        "([1,1,1,1,1,1], 1)",
+                        "([2,2,2], 2)",
+                        "([0,1,3,5,6,8,10], 4)",
+                        "([0,1000,1000,1000,1000], 4)",
+                        "([1000,1000,1000,1000,1000,1000,1000,1000,1000,1000,1000], 11)",
+                        "([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], 1)",
+                        "([0,0,0,0,0,0,1,2,3], 2)",
+                        "([3,3,3], 3)",
+                        "([0,0,1,1,2,2], 2)"
+                    ]
+                },
+                "body": "        result = run_h_index(Solution, citations)\n        assert_h_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_h_index, assert_h_index\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncitations = [0, 1, 3, 5, 6]\nexpected = 3",
+    "playground_run": "result = run_h_index(Solution, citations)\nresult",
+    "playground_assert": "assert_h_index(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "sum_of_left_leaves",
+    "solution_class_name": "Solution",
+    "problem_number": "404",
+    "problem_title": "Sum of Left Leaves",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, return *the sum of all left leaves*.\n\nA **leaf** is a node with no children. A **left leaf** is a leaf that is the left child of another node.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/04/08/leftsum-tree.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: 24\nExplanation: There are two left leaves in the binary tree, with values 9 and 15 respectively.\n```"
+            },
+            {
+                "content": "```\nInput: root = [1]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 1000]\n- -1000 <= Node.val <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "sum_of_left_leaves",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.sum_of_left_leaves(root)",
+    "helpers_assert_name": "sum_of_left_leaves",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sum_of_left_leaves, run_sum_of_left_leaves\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumOfLeftLeaves",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sum_of_left_leaves",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement sum_of_left_leaves\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sum_of_left_leaves",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], 24)",
+                        "([1], 0)",
+                        "([1, 2], 2)",
+                        "([1, None, 2], 0)",
+                        "([1, 2, 3], 2)",
+                        "([1, 2, 3, 4, 5], 4)",
+                        "([1, 2, 3, None, 4, None, 5], 0)",
+                        "([4, 9, 5, None, 7], 0)",
+                        "([10, 5, 15, 3, 7, None, 20], 3)",
+                        "([-2, -3, 4], -3)",
+                        "([0, 0, 0, 0], 0)",
+                        "([100, -100, 200, 50], 50)",
+                        "([-50, 37, -48, -8, 35, -39], -47)",
+                        "([-28, 45, -34, -26, 45], -26)",
+                        "([19, -41, 47, -30, -1], -30)",
+                        "([39, -9, -18, 3], 3)",
+                        "([-23, 5, -32, -25, 8, 11], -14)",
+                        "([-36, 25, -45, 36], 36)"
+                    ]
+                },
+                "body": "        result = run_sum_of_left_leaves(Solution, root_list)\n        assert_sum_of_left_leaves(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sum_of_left_leaves, assert_sum_of_left_leaves\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3, 9, 20, None, None, 15, 7]\nexpected = 24",
+    "playground_run": "result = run_sum_of_left_leaves(Solution, root_list)\nresult",
+    "playground_assert": "assert_sum_of_left_leaves(result, expected)"
+}

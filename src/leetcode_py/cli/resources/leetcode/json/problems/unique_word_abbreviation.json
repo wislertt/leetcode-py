@@ -1,0 +1,89 @@
+{
+    "problem_name": "unique_word_abbreviation",
+    "solution_class_name": "ValidWordAbbr",
+    "problem_number": "288",
+    "problem_title": "Unique Word Abbreviation",
+    "difficulty": "Medium",
+    "topics": "Design, Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The **abbreviation** of a word is a concatenation of its first letter, the number of characters between the first and last letter, and its last letter. If a word has only two characters, then it is an **abbreviation** of itself.\n\nFor example:\n\n- `dog -> d1g` because there is one letter between the first letter `d` and the last letter `g`.\n- `internationalization -> i18n` because there are 18 letters between the first letter `i` and the last letter `n`.\n- `it -> it` because any word with only two characters is an **abbreviation** of itself.\n\nImplement the `ValidWordAbbr` class:\n\n- `ValidWordAbbr(String[] dictionary)` Initializes the object with a `dictionary` of words.\n- `boolean isUnique(string word)` Returns `true` if **either** of the following conditions are met (otherwise returns `false`):\n  - There is no word in `dictionary` whose **abbreviation** is equal to `word`'s **abbreviation**.\n  - For any word in `dictionary` whose **abbreviation** is equal to `word`'s **abbreviation**, that word and `word` are **the same**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"ValidWordAbbr\", \"isUnique\", \"isUnique\", \"isUnique\", \"isUnique\", \"isUnique\"]\n[[[\"deer\", \"door\", \"cake\", \"card\"]], [\"dear\"], [\"cart\"], [\"cane\"], [\"make\"], [\"cake\"]]\nOutput\n[null, false, true, false, true, true]\n\nExplanation\nValidWordAbbr validWordAbbr = new ValidWordAbbr([\"deer\", \"door\", \"cake\", \"card\"]);\nvalidWordAbbr.isUnique(\"dear\"); // return false, \"deer\" and \"dear\" share \"d2r\" but differ.\nvalidWordAbbr.isUnique(\"cart\"); // return true, no dictionary word abbreviates to \"c2t\".\nvalidWordAbbr.isUnique(\"cane\"); // return false, \"cake\" and \"cane\" share \"c2e\" but differ.\nvalidWordAbbr.isUnique(\"make\"); // return true, no dictionary word abbreviates to \"m2e\".\nvalidWordAbbr.isUnique(\"cake\"); // return true, \"cake\" is the only word with \"c2e\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= dictionary.length <= 3 * 10^4`\n- `1 <= dictionary[i].length <= 20`\n- `dictionary[i]` consists of lowercase English letters.\n- `1 <= word.length <= 20`\n- `word` consists of lowercase English letters.\n- At most `5000` calls will be made to `isUnique`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_word_abbr",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    implementation = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'ValidWordAbbr':\n            implementation = solution_class(inputs[i])\n            results.append(None)\n        elif op == 'is_unique' and implementation is not None:\n            results.append(implementation.is_unique(inputs[i][0]))\n    return results, implementation",
+    "helpers_assert_name": "valid_word_abbr",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_word_abbr, run_valid_word_abbr\nfrom .solution import ValidWordAbbr",
+    "test_content": "",
+    "test_class_name": "UniqueWordAbbreviation",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, dictionary: list[str]) -> None",
+                "body": "        # TODO: Initialize word abbreviation dictionary\n        pass"
+            },
+            {
+                "name": "is_unique",
+                "signature": "(self, word: str) -> bool",
+                "body": "        # TODO: Implement is_unique\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_unique",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique'], [['deer', 'door', 'cake', 'card'], ['dear'], ['cart']], [None, False, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['deer', 'door', 'cake', 'card'], ['cane'], ['make'], ['cake']], [None, False, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique'], [['deer', 'door', 'cake', 'card'], ['card'], ['door']], [None, True, False])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['deer', 'door'], ['dear'], ['door'], ['dore']], [None, False, False, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['it', 'is'], ['it'], ['at'], ['is']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['a', 'b'], ['a'], ['c'], ['b']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['deer', 'deer'], ['deer'], ['dear'], ['deere']], [None, True, False, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['abc', 'axc'], ['abc'], ['axc'], ['add']], [None, False, False, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['hello'], ['hello'], ['hellp'], ['hola']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique'], [['internationalization'], ['internationalization'], ['inter']], [None, True, True])",
+                        "(['ValidWordAbbr', 'is_unique'], [['internationalization', 'internationalizatio'], ['internationalization']], [None, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['aab', 'abb'], ['aab'], ['abb'], ['aab']], [None, False, False, False])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['tie', 'tie', 'tie'], ['tie'], ['tin'], ['tie']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['xyzzyc', 'xyzzyc'], ['xyzzyc'], ['yzzzyc'], ['xyzzyc']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['cat', 'cow'], ['cat'], ['cow'], ['cut']], [None, True, True, False])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['ddae', 'aded', 'db'], ['ceac'], ['bde'], ['bdd']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['be', 'da', 'caabe', 'bdaabc'], ['eeed'], ['dca'], ['cabe']], [None, True, True, True])",
+                        "(['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique'], [['cadc', 'aaad'], ['dcea'], ['c'], ['adbb']], [None, True, True, True])"
+                    ]
+                },
+                "body": "        result, _ = run_valid_word_abbr(ValidWordAbbr, operations, inputs)\n        assert_valid_word_abbr(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_word_abbr, assert_valid_word_abbr\nfrom solution import ValidWordAbbr",
+    "playground_setup": "# Example test case\noperations = ['ValidWordAbbr', 'is_unique', 'is_unique', 'is_unique']\ninputs = [['deer', 'door', 'cake', 'card'], ['dear'], ['cart'], ['cane']]\nexpected = [None, False, True, False]",
+    "playground_run": "result, implementation = run_valid_word_abbr(ValidWordAbbr, operations, inputs)\nprint(result)\nimplementation",
+    "playground_assert": "assert_valid_word_abbr(result, expected)"
+}

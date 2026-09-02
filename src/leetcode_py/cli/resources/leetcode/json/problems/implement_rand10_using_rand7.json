@@ -1,0 +1,96 @@
+{
+    "problem_name": "implement_rand10_using_rand7",
+    "solution_class_name": "Solution",
+    "problem_number": "470",
+    "problem_title": "Implement Rand10() Using Rand7()",
+    "difficulty": "Medium",
+    "topics": "Math, Rejection Sampling, Randomized, Probability and Statistics",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the **API** `rand7()` that generates a uniform random integer in the range `[1, 7]`, write a function `rand10()` that generates a uniform random integer in the range `[1, 10]`. You can only call the API `rand7()`, and you shouldn't call any other API. Please **do not** use a language's built-in random API.\n\nEach test case will have one **internal** argument `n`, the number of times that your implemented function `rand10()` will be called while testing. Note that this is **not an argument** passed to `rand10()`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: [2]\n```"
+            },
+            {
+                "content": "```\nInput: n = 2\nOutput: [2,8]\n```"
+            },
+            {
+                "content": "```\nInput: n = 3\nOutput: [3,8,10]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^5",
+    "readme_additional": "**Follow up:**\n\n- What is the expected value for the number of calls to `rand7()` function?\n- Could you minimize the number of calls to `rand7()`?",
+    "helpers_imports": "from .solution import Rand7",
+    "helpers_content": "",
+    "helpers_run_name": "rand10",
+    "helpers_run_signature": "(solution_class: type, seed: int, n: int) -> tuple[list[int], int]",
+    "helpers_run_body": "    api = Rand7(seed)\n    implementation = solution_class(api)\n    results = [implementation.rand10() for _ in range(n)]\n    return results, api.calls",
+    "helpers_assert_name": "rand10",
+    "helpers_assert_signature": "(result: tuple[list[int], int], expected: int) -> bool",
+    "helpers_assert_body": "    values, calls = result\n    assert len(values) == expected\n    assert all(1 <= value <= 10 for value in values)\n    # A correct uniform rand10() covers every value once the draw count is high\n    if expected >= 100:\n        assert len(set(values)) == 10\n    # Rejection sampling averages ~2.45 rand7() calls per rand10() draw\n    assert calls <= 6 * expected + 40\n    return True",
+    "solution_imports": "",
+    "solution_contents": "import random\n\n\n# LeetCode exposes rand7() as a black-box API. It is modelled here as a\n# concrete seeded class so the generated tests are deterministic and can also\n# count how many rand7() calls each rand10() draw consumed.\nclass Rand7:\n    def __init__(self, seed: int) -> None:\n        self._rng = random.Random(seed)\n        self.calls = 0\n\n    def rand7(self) -> int:\n        self.calls += 1\n        return self._rng.randint(1, 7)\n\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rand10, run_rand10\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ImplementRand10UsingRand7",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, rand7_api: Rand7) -> None",
+                "body": "        # TODO: Initialize Solution\n        pass"
+            },
+            {
+                "name": "rand10",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement rand10\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rand10",
+                "signature": "(self, seed: int, n: int, expected: int)",
+                "parametrize": "seed, n, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 1, 1)",
+                        "(1, 2, 2)",
+                        "(2, 3, 3)",
+                        "(3, 5, 5)",
+                        "(4, 7, 7)",
+                        "(5, 10, 10)",
+                        "(6, 13, 13)",
+                        "(7, 20, 20)",
+                        "(8, 25, 25)",
+                        "(9, 30, 30)",
+                        "(10, 40, 40)",
+                        "(11, 50, 50)",
+                        "(12, 75, 75)",
+                        "(13, 100, 100)",
+                        "(14, 150, 150)",
+                        "(15, 200, 200)",
+                        "(42, 300, 300)",
+                        "(7, 1, 1)",
+                        "(99, 100000, 100000)"
+                    ]
+                },
+                "body": "        result = run_rand10(Solution, seed, n)\n        assert_rand10(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_rand10, run_rand10\nfrom solution import Rand7, Solution",
+    "playground_setup": "# Example test case\nseed = 42\nn = 20\nexpected = 20",
+    "playground_run": "values, calls = run_rand10(Solution, seed, n)\nprint(values)\ncalls",
+    "playground_assert": "assert_rand10((values, calls), expected)"
+}

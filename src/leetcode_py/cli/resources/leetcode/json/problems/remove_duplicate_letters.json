@@ -1,0 +1,93 @@
+{
+    "problem_name": "remove_duplicate_letters",
+    "solution_class_name": "Solution",
+    "problem_number": "316",
+    "problem_title": "Remove Duplicate Letters",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Greedy, Monotonic Stack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, remove duplicate letters so that every letter appears once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"bcabc\"\nOutput: \"abc\"\nExplanation: The possible results are \"abc\", \"bac\", \"bca\", \"cab\", and \"cba\". The smallest is \"abc\"."
+            },
+            {
+                "content": "```\nInput: s = \"cbacdcbc\"\nOutput: \"acdb\"\nExplanation: Removing duplicates while keeping the result smallest gives \"acdb\"."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^4`\n- `s` consists of lowercase English letters.",
+    "readme_additional": "**Note:** This question is the same as 1081: [Smallest Subsequence of Distinct Characters](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/).",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_duplicate_letters",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_duplicate_letters(s)",
+    "helpers_assert_name": "remove_duplicate_letters",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_duplicate_letters, run_remove_duplicate_letters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveDuplicateLetters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_duplicate_letters",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement remove_duplicate_letters\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_duplicate_letters",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('bcabc', 'abc')",
+                        "('cbacdcbc', 'acdb')",
+                        "('abacb', 'abc')",
+                        "('bcac', 'bac')",
+                        "('cdadabcc', 'adbc')",
+                        "('abacbdc', 'abcd')",
+                        "('cbabc', 'abc')",
+                        "('abacbda', 'abcd')",
+                        "('edebbed', 'bed')",
+                        "('bcabcba', 'abc')",
+                        "('cba', 'cba')",
+                        "('aaa', 'a')",
+                        "('a', 'a')",
+                        "('bcbcbcbcbcacbda', 'acbd')",
+                        "('b', 'b')",
+                        "('abab', 'ab')",
+                        "('db', 'db')",
+                        "('cbcc', 'bc')"
+                    ]
+                },
+                "body": "        result = run_remove_duplicate_letters(Solution, s)\n        assert_remove_duplicate_letters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_duplicate_letters, assert_remove_duplicate_letters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cbacdcbc'\nexpected = 'acdb'",
+    "playground_run": "result = run_remove_duplicate_letters(Solution, s)\nresult",
+    "playground_assert": "assert_remove_duplicate_letters(result, expected)"
+}

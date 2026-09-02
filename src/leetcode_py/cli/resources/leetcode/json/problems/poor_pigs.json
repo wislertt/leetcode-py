@@ -1,0 +1,101 @@
+{
+    "problem_name": "poor_pigs",
+    "solution_class_name": "Solution",
+    "problem_number": "458",
+    "problem_title": "Poor Pigs",
+    "difficulty": "Hard",
+    "topics": "Math, Dynamic Programming, Combinatorics",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There are `buckets` buckets of liquid, where **exactly one** of the buckets is poisonous. To figure out which one is poisonous, you feed some number of (poor) pigs the liquid to see whether they will die or not. Unfortunately, you only have `minutesToTest` minutes to determine which bucket is poisonous.\n\nYou can feed the pigs according to these steps:\n\n1. Choose some live pigs to feed.\n2. For each pig, choose which buckets to feed it. The pig will consume all the chosen buckets simultaneously and will take no time. Each pig can feed from any number of buckets, and each bucket can be fed from by any number of pigs.\n3. Wait for `minutesToDie` minutes. You may **not** feed any other pigs during this time.\n4. After `minutesToDie` minutes have passed, any pigs that have been fed the poisonous bucket will die, and all others will survive.\n5. Repeat this process until you run out of time.\n\nGiven `buckets`, `minutesToDie`, and `minutesToTest`, return the **minimum** number of pigs needed to figure out which bucket is poisonous within the allotted time.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: buckets = 4, minutesToDie = 15, minutesToTest = 15\nOutput: 2\nExplanation: We can determine the poisonous bucket as follows:\nAt time 0, feed the first pig buckets 1 and 2, and feed the second pig buckets 2 and 3.\nAt time 15, there are 4 possible outcomes:\n- If only the first pig dies, then bucket 1 must be poisonous.\n- If only the second pig dies, then bucket 3 must be poisonous.\n- If both pigs die, then bucket 2 must be poisonous.\n- If neither pig dies, then bucket 4 must be poisonous.\n```"
+            },
+            {
+                "content": "```\nInput: buckets = 4, minutesToDie = 15, minutesToTest = 30\nOutput: 2\nExplanation: We can determine the poisonous bucket as follows:\nAt time 0, feed the first pig bucket 1, and feed the second pig bucket 2.\nAt time 15, there are 2 possible outcomes:\n- If either pig dies, then the poisonous bucket is the one it was fed.\n- If neither pig dies, then feed the first pig bucket 3, and feed the second pig bucket 4.\nAt time 30, one of the two pigs must die, and the poisonous bucket is the one it was fed.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= buckets <= 1000\n- 1 <= minutesToDie <= minutesToTest <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "poor_pigs",
+    "helpers_run_signature": "(solution_class: type, buckets: int, minutes_to_die: int, minutes_to_test: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.poor_pigs(buckets, minutes_to_die, minutes_to_test)",
+    "helpers_assert_name": "poor_pigs",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_poor_pigs, run_poor_pigs\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PoorPigs",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "poor_pigs",
+                "signature": "(self, buckets: int, minutes_to_die: int, minutes_to_test: int) -> int",
+                "body": "        # TODO: Implement poor_pigs\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_poor_pigs",
+                "signature": "(self, buckets: int, minutes_to_die: int, minutes_to_test: int, expected: int)",
+                "parametrize": "buckets, minutes_to_die, minutes_to_test, expected",
+                "test_cases": {
+                    "list": [
+                        "(4, 15, 15, 2)",
+                        "(4, 15, 30, 2)",
+                        "(1, 15, 15, 0)",
+                        "(1, 1, 1, 0)",
+                        "(1, 100, 100, 0)",
+                        "(2, 1, 1, 1)",
+                        "(2, 15, 15, 1)",
+                        "(3, 1, 1, 2)",
+                        "(5, 15, 15, 3)",
+                        "(100, 15, 15, 7)",
+                        "(500, 15, 15, 9)",
+                        "(1000, 15, 15, 10)",
+                        "(1000, 15, 30, 7)",
+                        "(1000, 15, 60, 5)",
+                        "(1000, 1, 100, 2)",
+                        "(25, 15, 15, 5)",
+                        "(999, 15, 15, 10)",
+                        "(998, 15, 30, 7)",
+                        "(544, 10, 87, 3)",
+                        "(91, 57, 61, 7)",
+                        "(363, 37, 99, 6)",
+                        "(833, 92, 100, 10)",
+                        "(19, 74, 96, 5)",
+                        "(333, 59, 78, 9)",
+                        "(759, 10, 12, 10)",
+                        "(303, 47, 62, 9)"
+                    ]
+                },
+                "body": "        result = run_poor_pigs(Solution, buckets, minutes_to_die, minutes_to_test)\n        assert_poor_pigs(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_poor_pigs, assert_poor_pigs\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbuckets: int = 4\nminutes_to_die: int = 15\nminutes_to_test: int = 15\nexpected: int = 2",
+    "playground_run": "result = run_poor_pigs(Solution, buckets, minutes_to_die, minutes_to_test)\nresult",
+    "playground_assert": "assert_poor_pigs(result, expected)"
+}

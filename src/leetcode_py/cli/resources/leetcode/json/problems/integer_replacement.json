@@ -1,0 +1,100 @@
+{
+    "problem_name": "integer_replacement",
+    "solution_class_name": "Solution",
+    "problem_number": "397",
+    "problem_title": "Integer Replacement",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming, Greedy, Bit Manipulation, Memoization",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a positive integer `n`, you can apply one of the following operations:\n\n- If `n` is even, replace `n` with `n / 2`.\n- If `n` is odd, replace `n` with either `n + 1` or `n - 1`.\n\nReturn the minimum number of operations needed for `n` to become `1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 8\nOutput: 3\nExplanation: 8 -> 4 -> 2 -> 1\n```"
+            },
+            {
+                "content": "```\nInput: n = 7\nOutput: 4\nExplanation: 7 -> 8 -> 4 -> 2 -> 1\nor 7 -> 6 -> 3 -> 2 -> 1\n```"
+            },
+            {
+                "content": "```\nInput: n = 4\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "integer_replacement",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.integer_replacement(n)",
+    "helpers_assert_name": "integer_replacement",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_integer_replacement, run_integer_replacement\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "IntegerReplacement",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "integer_replacement",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement integer_replacement\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_integer_replacement",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 0)",
+                        "(2, 1)",
+                        "(3, 2)",
+                        "(4, 2)",
+                        "(5, 3)",
+                        "(6, 3)",
+                        "(7, 4)",
+                        "(8, 3)",
+                        "(9, 4)",
+                        "(10, 4)",
+                        "(11, 5)",
+                        "(15, 5)",
+                        "(16, 4)",
+                        "(17, 5)",
+                        "(31, 6)",
+                        "(63, 7)",
+                        "(1023, 11)",
+                        "(65535, 17)",
+                        "(1073741824, 30)",
+                        "(2147483647, 32)",
+                        "(2147483646, 32)",
+                        "(123456789, 37)"
+                    ]
+                },
+                "body": "        result = run_integer_replacement(Solution, n)\n        assert_integer_replacement(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_integer_replacement, assert_integer_replacement\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 8\nexpected = 3",
+    "playground_run": "result = run_integer_replacement(Solution, n)\nresult",
+    "playground_assert": "assert_integer_replacement(result, expected)"
+}

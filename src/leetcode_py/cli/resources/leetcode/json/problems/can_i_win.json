@@ -1,0 +1,103 @@
+{
+    "problem_name": "can_i_win",
+    "solution_class_name": "Solution",
+    "problem_number": "464",
+    "problem_title": "Can I Win",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Bit Manipulation, Memoization, Game Theory, Bitmask",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "In the \"100 game\" two players take turns adding, to a running total, any integer from `1` to `10`. The player who first causes the running total to **reach or exceed** 100 wins.\n\nWhat if we change the game so that players **cannot** re-use integers?\n\nFor example, two players might take turns drawing from a common pool of numbers from 1 to 15 without replacement until they reach a total >= 100.\n\nGiven two integers `maxChoosableInteger` and `desiredTotal`, return `true` if the first player to move can force a win, otherwise, return `false`. Assume both players play optimally.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: maxChoosableInteger = 10, desiredTotal = 11\nOutput: false\nExplanation:\nNo matter which integer the first player choose, the first player will lose.\nThe first player can choose an integer from 1 up to 10.\nIf the first player choose 1, the second player can only choose integers from 2 up to 10.\nThe second player will win by choosing 10 and get a total = 11, which is >= desiredTotal.\nSame with other integers chosen by the first player, the second player will always win.\n```"
+            },
+            {
+                "content": "```\nInput: maxChoosableInteger = 10, desiredTotal = 0\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: maxChoosableInteger = 10, desiredTotal = 1\nOutput: true\n```"
+            }
+        ]
+    },
+    "constraints": {
+        "list": ["1 <= maxChoosableInteger <= 20", "0 <= desiredTotal <= 300"]
+    },
+    "readme_constraints": "- 1 <= maxChoosableInteger <= 20\n- 0 <= desiredTotal <= 300",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_i_win",
+    "helpers_run_signature": "(solution_class: type, max_choosable_integer: int, desired_total: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_i_win(max_choosable_integer, desired_total)",
+    "helpers_assert_name": "can_i_win",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_i_win, run_can_i_win\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CanIWin",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_i_win",
+                "signature": "(self, max_choosable_integer: int, desired_total: int) -> bool",
+                "body": "        # TODO: Implement can_i_win\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_i_win",
+                "signature": "(self, max_choosable_integer: int, desired_total: int, expected: bool)",
+                "parametrize": "max_choosable_integer, desired_total, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 11, False)",
+                        "(10, 0, True)",
+                        "(10, 1, True)",
+                        "(1, 1, True)",
+                        "(1, 2, False)",
+                        "(2, 2, True)",
+                        "(2, 3, False)",
+                        "(2, 4, False)",
+                        "(3, 6, True)",
+                        "(3, 7, False)",
+                        "(4, 6, True)",
+                        "(4, 10, False)",
+                        "(5, 15, True)",
+                        "(5, 16, False)",
+                        "(5, 50, False)",
+                        "(6, 20, False)",
+                        "(7, 28, True)",
+                        "(7, 29, False)",
+                        "(8, 36, False)",
+                        "(10, 40, False)",
+                        "(10, 55, False)",
+                        "(10, 56, False)"
+                    ]
+                },
+                "body": "        result = run_can_i_win(Solution, max_choosable_integer, desired_total)\n        assert_can_i_win(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_i_win, assert_can_i_win\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmax_choosable_integer = 10\ndesired_total = 11\nexpected = False",
+    "playground_run": "result = run_can_i_win(Solution, max_choosable_integer, desired_total)\nresult",
+    "playground_assert": "assert_can_i_win(result, expected)"
+}

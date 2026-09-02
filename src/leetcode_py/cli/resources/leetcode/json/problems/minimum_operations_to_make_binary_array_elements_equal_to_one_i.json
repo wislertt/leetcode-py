@@ -1,0 +1,97 @@
+{
+    "problem_name": "minimum_operations_to_make_binary_array_elements_equal_to_one_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3191",
+    "problem_title": "Minimum Operations to Make Binary Array Elements Equal to One I",
+    "difficulty": "Medium",
+    "topics": "Array, Bit Manipulation, Queue, Sliding Window, Prefix Sum",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a <span data-keyword=\"binary-array\">binary array</span> `nums`.\n\nYou can do the following operation on the array **any** number of times (possibly zero):\n\n- Choose **any** 3 **consecutive** elements from the array and **flip** **all** of them.\n\nFlipping an element means changing its value from 0 to 1, and from 1 to 0.\n\nReturn the **minimum** number of operations required to make all elements in `nums` equal to 1. If it is impossible, return -1.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [0,1,1,1,0,0]\nOutput: 3\nExplanation:\nWe can do the following operations:\n- Choose the elements at indices 0, 1 and 2. The resulting array is nums = [1,0,0,1,0,0].\n- Choose the elements at indices 1, 2 and 3. The resulting array is nums = [1,1,1,0,0,0].\n- Choose the elements at indices 3, 4 and 5. The resulting array is nums = [1,1,1,1,1,1].\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,1,1,1]\nOutput: -1\nExplanation:\nIt is impossible to make all elements equal to 1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= nums.length <= 10^5\n- 0 <= nums[i] <= 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_operations",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_operations(nums)",
+    "helpers_assert_name": "min_operations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_operations, run_min_operations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumOperationsToMakeBinaryArrayElementsEqualToOneI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_operations",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement min_operations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_operations",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 0, 0], 1)",
+                        "([0, 0, 1], -1)",
+                        "([1, 0, 0], -1)",
+                        "([1, 1, 0], -1)",
+                        "([1, 1, 1], 0)",
+                        "([0, 1, 1, 1], -1)",
+                        "([1, 1, 1, 0], -1)",
+                        "([0, 0, 1, 0, 0], 2)",
+                        "([0, 1, 1, 1, 0], -1)",
+                        "([1, 0, 0, 0, 1], 1)",
+                        "([1, 0, 1, 0, 1], -1)",
+                        "([1, 0, 1, 1, 1], -1)",
+                        "([1, 1, 1, 1, 1], 0)",
+                        "([0, 1, 1, 1, 0, 0], 3)",
+                        "([1, 1, 0, 1, 0, 1], -1)",
+                        "([1, 1, 1, 1, 1, 1, 1], 0)",
+                        "([0, 1, 1, 1, 1, 0, 0, 0], -1)",
+                        "([1, 1, 0, 1, 1, 1, 1, 0], -1)",
+                        "([1, 1, 1, 0, 0, 1, 1, 1], -1)",
+                        "([0, 0, 0, 1, 0, 1, 0, 0, 0], -1)",
+                        "([1, 1, 0, 0, 1, 1, 0, 0, 1], -1)",
+                        "([1, 1, 1, 1, 0, 0, 0, 0, 1], -1)"
+                    ]
+                },
+                "body": "        result = run_min_operations(Solution, nums)\n        assert_min_operations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_operations, assert_min_operations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [0, 1, 1, 1, 0, 0]\nexpected = 3",
+    "playground_run": "result = run_min_operations(Solution, nums)\nresult",
+    "playground_assert": "assert_min_operations(result, expected)"
+}

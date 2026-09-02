@@ -1,0 +1,98 @@
+{
+    "problem_name": "count_of_range_sum",
+    "solution_class_name": "Solution",
+    "problem_number": "327",
+    "problem_title": "Count of Range Sum",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Search, Divide and Conquer, Binary Indexed Tree, Segment Tree, Merge Sort, Ordered Set",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "<p>Given an integer array <code>nums</code> and two integers <code>lower</code> and <code>upper</code>, return <em>the number of range sums that lie in</em> <code>[lower, upper]</code> <em>inclusive</em>.</p>\n\n<p>Range sum <code>S(i, j)</code> is defined as the sum of the elements in <code>nums</code> between indices <code>i</code> and <code>j</code> inclusive, where <code>i &lt;= j</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [-2,5,-1], lower = -2, upper = 2\nOutput: 3\nExplanation: The three ranges are: [0,0], [2,2], and [0,2] and their respective sums are: -2, -1, 2.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0], lower = 0, upper = 0\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>\n\t<li><code>-10<sup>5</sup> &lt;= lower &lt;= upper &lt;= 10<sup>5</sup></code></li>\n\t<li>The answer is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_range_sum",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], lower: int, upper: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_range_sum(nums, lower, upper)",
+    "helpers_assert_name": "count_range_sum",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_range_sum, run_count_range_sum\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountOfRangeSum",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_range_sum",
+                "signature": "(self, nums: list[int], lower: int, upper: int) -> int",
+                "body": "        # TODO: Implement count_range_sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_range_sum",
+                "signature": "(self, nums: list[int], lower: int, upper: int, expected: int)",
+                "parametrize": "nums, lower, upper, expected",
+                "test_cases": {
+                    "list": [
+                        "([-2, 5, -1], -2, 2, 3)",
+                        "([0], 0, 0, 1)",
+                        "([1], 0, 0, 0)",
+                        "([1, 2, 3], 0, 6, 6)",
+                        "([1, 2, 3], 3, 3, 2)",
+                        "([1, 2, 3], 7, 10, 0)",
+                        "([-1, -1, -1], -2, -1, 5)",
+                        "([0, 0, 0], 0, 0, 6)",
+                        "([5], 5, 10, 1)",
+                        "([-5], -10, -5, 1)",
+                        "([-5], -4, 0, 0)",
+                        "([1, -1, 1, -1], 0, 1, 7)",
+                        "([2, -2, 2, -2], -2, 2, 10)",
+                        "([-2, 3, 0, 2, -5, 4], -2, 3, 15)",
+                        "([2147483647, -2147483648, -1, 2], -1, 2, 5)",
+                        "([7], -5, -1, 0)",
+                        "([-5, -3, 6], -9, 8, 6)",
+                        "([-4, -4], -12, -8, 1)",
+                        "([-8, -9, -4, -6], -9, -1, 4)",
+                        "([-8, -9, 3, -3, 9], -2, 10, 6)",
+                        "([9, -9, 3, 7], -8, 7, 6)",
+                        "([-4, 5], 7, 9, 0)",
+                        "([-8], -3, 12, 0)"
+                    ]
+                },
+                "body": "        result = run_count_range_sum(Solution, nums, lower, upper)\n        assert_count_range_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_range_sum, assert_count_range_sum\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums: list[int] = [-2, 5, -1]\nlower = -2\nupper = 2\nexpected = 3",
+    "playground_run": "result = run_count_range_sum(Solution, nums, lower, upper)\nresult",
+    "playground_assert": "assert_count_range_sum(result, expected)"
+}

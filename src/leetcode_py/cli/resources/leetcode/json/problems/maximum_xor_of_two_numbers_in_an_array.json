@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximum_xor_of_two_numbers_in_an_array",
+    "solution_class_name": "Solution",
+    "problem_number": "421",
+    "problem_title": "Maximum XOR of Two Numbers in an Array",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Bit Manipulation, Trie",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `nums`, return the maximum result of `nums[i] XOR nums[j]`, where `0 <= i <= j < n`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,10,5,25,2,8]\nOutput: 28\nExplanation: The maximum result is 5 XOR 25 = 28.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [14,70,53,83,49,91,36,80,92,51,66,70]\nOutput: 127\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 2 * 10^5\n- 0 <= nums[i] <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_maximum_xor",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_maximum_xor(nums)",
+    "helpers_assert_name": "find_maximum_xor",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_maximum_xor, run_find_maximum_xor\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumXorOfTwoNumbersInAnArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_maximum_xor",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement find_maximum_xor\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_maximum_xor",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 10, 5, 25, 2, 8], 28)",
+                        "([14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70], 127)",
+                        "([1], 0)",
+                        "([0], 0)",
+                        "([0, 0], 0)",
+                        "([2, 4], 6)",
+                        "([8, 10, 2], 10)",
+                        "([1, 2, 3, 4], 7)",
+                        "([5, 5, 5, 5], 0)",
+                        "([1, 1, 1], 0)",
+                        "([2147483647, 0], 2147483647)",
+                        "([2147483647, 2147483646], 1)",
+                        "([4, 6, 7, 11, 25, 66, 70, 81, 88, 92], 95)",
+                        "([12, 3, 19, 7, 14, 8], 31)",
+                        "([1000000000, 999999999, 1], 1000000001)",
+                        "([65536, 65535, 131071, 1], 131071)",
+                        "([63, 8, 14, 7, 3, 0], 63)",
+                        "([80, 15, 14, 38, 0, 6, 4], 118)",
+                        "([5, 46, 15], 43)",
+                        "([14, 41, 2, 9, 6, 3, 5], 47)"
+                    ]
+                },
+                "body": "        result = run_find_maximum_xor(Solution, nums)\n        assert_find_maximum_xor(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_maximum_xor, assert_find_maximum_xor\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 10, 5, 25, 2, 8]\nexpected = 28",
+    "playground_run": "result = run_find_maximum_xor(Solution, nums)\nresult",
+    "playground_assert": "assert_find_maximum_xor(result, expected)",
+    "playground_test_case": "nums = [3, 10, 5, 25, 2, 8]",
+    "playground_execution": "result = run_find_maximum_xor(Solution, nums)",
+    "playground_assertion": "assert_find_maximum_xor(result, 28)"
+}

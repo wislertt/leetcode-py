@@ -1,0 +1,98 @@
+{
+    "problem_name": "power_of_three",
+    "solution_class_name": "Solution",
+    "problem_number": "326",
+    "problem_title": "Power of Three",
+    "difficulty": "Easy",
+    "topics": "Math, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n`, return `true` if it is a power of three. Otherwise, return `false`.\n\nAn integer `n` is a power of three, if there exists an integer `x` such that `n == 3^x`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 27\nOutput: true\nExplanation: 27 = 3^3\n```"
+            },
+            {
+                "content": "```\nInput: n = 0\nOutput: false\nExplanation: There is no x where 3^x = 0.\n```"
+            },
+            {
+                "content": "```\nInput: n = -1\nOutput: false\nExplanation: There is no x where 3^x = (-1).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- -2^31 <= n <= 2^31 - 1",
+    "readme_additional": "**Follow up:** Could you solve it without loops/recursion?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_power_of_three",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_power_of_three(n)",
+    "helpers_assert_name": "is_power_of_three",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_power_of_three, run_is_power_of_three\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PowerOfThree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_power_of_three",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement is_power_of_three\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_power_of_three",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(27, True)",
+                        "(0, False)",
+                        "(-1, False)",
+                        "(1, True)",
+                        "(3, True)",
+                        "(9, True)",
+                        "(2, False)",
+                        "(6, False)",
+                        "(45, False)",
+                        "(81, True)",
+                        "(243, True)",
+                        "(729, True)",
+                        "(1162261467, True)",
+                        "(2147483647, False)",
+                        "(-3, False)",
+                        "(-27, False)",
+                        "(2147483646, False)",
+                        "(59049, True)",
+                        "(1594323, True)",
+                        "(15, False)"
+                    ]
+                },
+                "body": "        result = run_is_power_of_three(Solution, n)\n        assert_is_power_of_three(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_power_of_three, assert_is_power_of_three\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 27\nexpected = True",
+    "playground_run": "result = run_is_power_of_three(Solution, n)\nresult",
+    "playground_assert": "assert_is_power_of_three(result, expected)"
+}

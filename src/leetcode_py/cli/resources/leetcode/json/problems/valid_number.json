@@ -1,0 +1,123 @@
+{
+    "problem_name": "valid_number",
+    "solution_class_name": "Solution",
+    "problem_number": "65",
+    "problem_title": "Valid Number",
+    "difficulty": "Hard",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, return whether `s` is a valid number.\n\nFor example, all the following are valid numbers: `\"2\"`, `\"0089\"`, `\"-0.1\"`, `\"+3.14\"`, `\"4.\"`, `\"-.9\"`, `\"2e10\"`, `\"-90E3\"`, `\"3e+7\"`, `\"+6e-1\"`, `\"53.5e93\"`, `\"-123.456e789\"`, while the following are not valid numbers: `\"abc\"`, `\"1a\"`, `\"1e\"`, `\"e3\"`, `\"99e2.5\"`, `\"--6\"`, `\"-+3\"`, `\"95a54e53\"`.\n\nFormally, a valid number is defined using one of the following definitions:\n\n- An integer number followed by an optional exponent.\n- A decimal number followed by an optional exponent.\n\nAn integer number is defined with an optional sign `'-'` or `'+'` followed by digits.\n\nA decimal number is defined with an optional sign `'-'` or `'+'` followed by one of the following definitions:\n\n- Digits followed by a dot `'.'`.\n- Digits followed by a dot `'.'` followed by digits.\n- A dot `'.'` followed by digits.\n\nAn exponent is defined with an exponent notation `'e'` or `'E'` followed by an integer number.\n\nThe digits are defined as one or more digits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"0\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"e\"\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: s = \".\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 20\n- s consists of only English letters (both uppercase and lowercase), digits (0-9), plus '+', minus '-', or dot '.'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_number",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_number(s)",
+    "helpers_assert_name": "is_number",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_number, run_is_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_number",
+                "signature": "(self, s: str) -> bool",
+                "body": "        # TODO: Implement is_number\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_number",
+                "signature": "(self, s: str, expected: bool)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('0', True)",
+                        "('e', False)",
+                        "('.', False)",
+                        "('2', True)",
+                        "('0089', True)",
+                        "('-0.1', True)",
+                        "('+3.14', True)",
+                        "('4.', True)",
+                        "('-.9', True)",
+                        "('2e10', True)",
+                        "('-90E3', True)",
+                        "('3e+7', True)",
+                        "('+6e-1', True)",
+                        "('53.5e93', True)",
+                        "('-123.456e789', True)",
+                        "('abc', False)",
+                        "('1a', False)",
+                        "('1e', False)",
+                        "('e3', False)",
+                        "('99e2.5', False)",
+                        "('--6', False)",
+                        "('-+3', False)",
+                        "('95a54e53', False)",
+                        "('1', True)",
+                        "('+', False)",
+                        "('-', False)",
+                        "('3.', True)",
+                        "('.5', True)",
+                        "('5.e1', True)",
+                        "('6e+', False)",
+                        "('6e-', False)",
+                        "('+E3', False)",
+                        "('-1E-10', True)",
+                        "('1e5e5', False)",
+                        "('1.2.3', False)",
+                        "('+-3', False)",
+                        "('..', False)",
+                        "('e5', False)",
+                        "('4e+', False)",
+                        "('inf', False)",
+                        "('0e', False)",
+                        "('+.8', True)",
+                        "('000.000', True)",
+                        "('-.7e+42', True)",
+                        "('1234567890123456789', True)"
+                    ]
+                },
+                "body": "        result = run_is_number(Solution, s)\n        assert_is_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_number, assert_is_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '0'\nexpected = True",
+    "playground_run": "result = run_is_number(Solution, s)\nresult",
+    "playground_assert": "assert_is_number(result, expected)"
+}

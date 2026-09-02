@@ -1,0 +1,116 @@
+{
+    "problem_name": "serialize_and_deserialize_bst",
+    "solution_class_name": "Codec",
+    "problem_number": "449",
+    "problem_title": "Serialize and Deserialize BST",
+    "difficulty": "Medium",
+    "topics": "String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Search Tree, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Serialization is converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.\n\nDesign an algorithm to serialize and deserialize a **binary search tree**. There is no restriction on how your serialization/deserialization algorithm should work. You need to ensure that a binary search tree can be serialized to a string, and this string can be deserialized to the original tree structure.\n\nThe encoded string should be as compact as possible.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: root = [2,1,3]\nOutput: [2,1,3]\n```"
+            },
+            {
+                "content": "```\nInput: root = []\nOutput: []\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 10^4].\n- 0 <= Node.val <= 10^4\n- The input tree is guaranteed to be a binary search tree.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "def assert_round_trip_count(result: TreeNode[int] | None, expected_count: int) -> bool:\n    def count(node: TreeNode[int] | None) -> int:\n        if node is None:\n            return 0\n        return 1 + count(node.left) + count(node.right)\n\n    assert count(result) == expected_count\n    return True",
+    "helpers_run_name": "serialize_deserialize",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    codec = solution_class()\n    serialized = codec.serialize(root)\n    deserialized = codec.deserialize(serialized)\n    return deserialized",
+    "helpers_assert_name": "round_trip",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list) if expected_list else None\n    if expected is None:\n        assert result is None\n    else:\n        assert result is not None\n        assert result.to_list() == expected.to_list()\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_round_trip, assert_round_trip_count, run_serialize_deserialize\nfrom .solution import Codec",
+    "test_content": "",
+    "test_class_name": "SerializeAndDeserializeBst",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "serialize",
+                "signature": "(self, root: TreeNode[int] | None) -> str",
+                "body": "        # TODO: Implement serialize\n        return ''"
+            },
+            {
+                "name": "deserialize",
+                "signature": "(self, data: str) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement deserialize\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_serialize_deserialize",
+                "signature": "(self, root_list: list[int | None])",
+                "parametrize": "root_list",
+                "test_cases": {
+                    "list": [
+                        "([])",
+                        "([1])",
+                        "([2, 1, 3])",
+                        "([0])",
+                        "([10000])",
+                        "([5, 3, 6, 2, 4, None, None, 1])",
+                        "([10, 5, 15, 3, 7, 12, 18])",
+                        "([10, 5, 15, 3, 7, None, 18])",
+                        "([1, None, 2, None, 3, None, 4])",
+                        "([4, 3, None, 2, None, 1])",
+                        "([50, 30, 70, 20, 40, 60, 80, 10, 25, 35, 45, 55, 65, 75, 85])",
+                        "([1000, 500, 1500, 250, 750, 1250, 1750])",
+                        "([6, 2, 8, 0, 4, 7, 9, None, None, 3, 5])",
+                        "([20, 10, 30, 5, 15, 25, 35, 1, 7, 12, 17])",
+                        "([3431, 3131, 6331, 2038, None, 3499, 9852, None, None, None, None, 9505])",
+                        "([6302, 1777, None, 545, 3174])",
+                        "([7123, 3946, 8534, 1215, 4033, None, 9882, None, None, None, None, 9104])",
+                        "([9071, None, 9185])"
+                    ]
+                },
+                "body": "        result = run_serialize_deserialize(Codec, root_list)\n        assert_round_trip(result, root_list)"
+            },
+            {
+                "name": "test_serialize_deserialize_node_count",
+                "signature": "(self, root_list: list[int | None], expected_count: int)",
+                "parametrize": "root_list, expected_count",
+                "test_cases": {
+                    "list": [
+                        "([], 0)",
+                        "([1], 1)",
+                        "([2, 1, 3], 3)",
+                        "([0], 1)",
+                        "([10000], 1)",
+                        "([5, 3, 6, 2, 4, None, None, 1], 6)",
+                        "([10, 5, 15, 3, 7, 12, 18], 7)",
+                        "([10, 5, 15, 3, 7, None, 18], 6)",
+                        "([1, None, 2, None, 3, None, 4], 4)"
+                    ]
+                },
+                "body": "        result = run_serialize_deserialize(Codec, root_list)\n        assert_round_trip_count(result, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_serialize_deserialize, assert_round_trip\nfrom solution import Codec\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list = [2, 1, 3]",
+    "playground_run": "result = run_serialize_deserialize(Codec, root_list)\nresult",
+    "playground_assert": "assert_round_trip(result, root_list)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "hamming_distance",
+    "solution_class_name": "Solution",
+    "problem_number": "461",
+    "problem_title": "Hamming Distance",
+    "difficulty": "Easy",
+    "topics": "Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The <a href=\"https://en.wikipedia.org/wiki/Hamming_distance\" target=\"_blank\">Hamming distance</a> between two integers is the number of positions at which the corresponding bits are different.\n\nGiven two integers <code>x</code> and <code>y</code>, return <em>the <strong>Hamming distance</strong> between them</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: x = 1, y = 4\nOutput: 2\nExplanation:\n1   (0 0 0 1)\n4   (0 1 0 0)\n       \u2191   \u2191\nThe above arrows point to positions where the corresponding bits are different.\n```"
+            },
+            {
+                "content": "```\nInput: x = 3, y = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= x, y <= 2^31 - 1",
+    "readme_additional": "**Note:** This question is the same as [2220: Minimum Bit Flips to Convert Number](https://leetcode.com/problems/minimum-bit-flips-to-convert-number/description/).",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "hamming_distance",
+    "helpers_run_signature": "(solution_class: type, x: int, y: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.hamming_distance(x, y)",
+    "helpers_assert_name": "hamming_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_hamming_distance, run_hamming_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "HammingDistance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "hamming_distance",
+                "signature": "(self, x: int, y: int) -> int",
+                "body": "        # TODO: Implement hamming_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_hamming_distance",
+                "signature": "(self, x: int, y: int, expected: int)",
+                "parametrize": "x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 4, 2)",
+                        "(3, 1, 1)",
+                        "(0, 0, 0)",
+                        "(1, 0, 1)",
+                        "(0, 1, 1)",
+                        "(1, 1, 0)",
+                        "(2, 1, 2)",
+                        "(7, 7, 0)",
+                        "(15, 0, 4)",
+                        "(0, 2147483647, 31)",
+                        "(2147483647, 2147483647, 0)",
+                        "(2147483647, 0, 31)",
+                        "(123456789, 987654321, 15)",
+                        "(1344025257, 286130530, 13)",
+                        "(1800652142, 743377863, 16)",
+                        "(379944512, 1813096935, 20)",
+                        "(1151405634, 2132125920, 16)",
+                        "(966455881, 825552887, 16)",
+                        "(1322570837, 2041244841, 20)",
+                        "(1528332448, 638467953, 20)"
+                    ]
+                },
+                "body": "        result = run_hamming_distance(Solution, x, y)\n        assert_hamming_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_hamming_distance, assert_hamming_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nx = 1\ny = 4\nexpected = 2",
+    "playground_run": "result = run_hamming_distance(Solution, x, y)\nresult",
+    "playground_assert": "assert_hamming_distance(result, expected)"
+}

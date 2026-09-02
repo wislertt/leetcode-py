@@ -18,7 +18,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "minimum_index_of_a_valid_split"
+    problem: str = "implement_rand10_using_rand7"
 
     def lint(self) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")

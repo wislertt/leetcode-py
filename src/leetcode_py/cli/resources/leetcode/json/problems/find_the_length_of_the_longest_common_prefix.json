@@ -1,0 +1,97 @@
+{
+    "problem_name": "find_the_length_of_the_longest_common_prefix",
+    "solution_class_name": "Solution",
+    "problem_number": "3043",
+    "problem_title": "Find the Length of the Longest Common Prefix",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Trie",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given two arrays with positive integers `arr1` and `arr2`.\n\nA prefix of a positive integer is an integer formed by one or more of its digits, starting from its leftmost digit. For example, 123 is a prefix of the integer 12345, while 234 is not.\n\nA common prefix of two integers `a` and `b` is an integer `c`, such that `c` is a prefix of both `a` and `b`. For example, 5655359 and 56554 have common prefixes 565 and 5655 while 1223 and 43456 do not have a common prefix.\n\nYou need to find the length of the longest common prefix between all pairs of integers `(x, y)` such that `x` belongs to `arr1` and `y` belongs to `arr2`.\n\nReturn the length of the longest common prefix among all pairs. If no common prefix exists among them, return 0.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr1 = [1,10,100], arr2 = [1000]\nOutput: 3\nExplanation: There are 3 pairs (arr1[i], arr2[j]):\n- The longest common prefix of (1, 1000) is 1.\n- The longest common prefix of (10, 1000) is 10.\n- The longest common prefix of (100, 1000) is 100.\nThe longest common prefix is 100 with a length of 3.\n```"
+            },
+            {
+                "content": "```\nInput: arr1 = [1,2,3], arr2 = [4,4,4]\nOutput: 0\nExplanation: There exists no common prefix for any pair (arr1[i], arr2[j]), hence we return 0.\nNote that common prefixes between elements of the same array do not count.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr1.length, arr2.length <= 5 * 10^4\n- 1 <= arr1[i], arr2[i] <= 10^8",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_common_prefix",
+    "helpers_run_signature": "(solution_class: type, arr1: list[int], arr2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_common_prefix(arr1, arr2)",
+    "helpers_assert_name": "longest_common_prefix",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_common_prefix, run_longest_common_prefix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheLengthOfTheLongestCommonPrefix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_common_prefix",
+                "signature": "(self, arr1: list[int], arr2: list[int]) -> int",
+                "body": "        # TODO: Implement longest_common_prefix\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_common_prefix",
+                "signature": "(self, arr1: list[int], arr2: list[int], expected: int)",
+                "parametrize": "arr1, arr2, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 10, 100], [1000], 3)",
+                        "([1, 2, 3], [4, 4, 4], 0)",
+                        "([5655359], [56554], 4)",
+                        "([1223], [43456], 0)",
+                        "([12], [123], 2)",
+                        "([9], [987654], 1)",
+                        "([100000000], [100000000], 9)",
+                        "([1], [1], 1)",
+                        "([12345], [12345678], 5)",
+                        "([98765432], [9876543], 7)",
+                        "([10, 100, 1000], [1, 10, 100], 3)",
+                        "([2, 22, 222], [22, 222, 2222], 3)",
+                        "([17], [28], 0)",
+                        "([12345678], [87654321], 0)",
+                        "([5, 55, 555], [5], 1)",
+                        "([7], [7, 77, 777], 1)",
+                        "([46534, 79353, 73724, 83159], [56058, 49508], 1)",
+                        "([16096, 51061], [8028, 6558, 11348, 61704], 1)",
+                        "([94545, 88789, 34242], [59165, 39082, 37926], 1)",
+                        "([57116, 86326, 58929], [95528], 0)",
+                        "([12462, 86035, 68557, 54977], [96005, 63807, 36912], 1)",
+                        "([14715, 62484, 17673], [78195], 0)"
+                    ]
+                },
+                "body": "        result = run_longest_common_prefix(Solution, arr1, arr2)\n        assert_longest_common_prefix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_common_prefix, assert_longest_common_prefix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr1: list[int] = [1, 10, 100]\narr2: list[int] = [1000]\nexpected = 3",
+    "playground_run": "result = run_longest_common_prefix(Solution, arr1, arr2)\nresult",
+    "playground_assert": "assert_longest_common_prefix(result, expected)"
+}

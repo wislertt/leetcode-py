@@ -1,0 +1,86 @@
+{
+    "problem_name": "random_pick_index",
+    "solution_class_name": "Solution",
+    "problem_number": "398",
+    "problem_title": "Random Pick Index",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, Reservoir Sampling, Randomized",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `nums` with possible **duplicates**, randomly output the index of a given `target` number. You can assume that the given target number must exist in the array.\n\nImplement the `Solution` class:\n\n- `Solution(int[] nums)` Initializes the object with the array `nums`.\n- `int pick(int target)` Picks a random index `i` from `nums` where `nums[i] == target`. If there are multiple valid `i`'s, then each index should have an equal probability of returning.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"Solution\", \"pick\", \"pick\", \"pick\"]\n[[[1, 2, 3, 3, 3]], [3], [1], [3]]\nOutput\n[null, 4, 0, 2]\n\nExplanation\nSolution solution = new Solution([1, 2, 3, 3, 3]);\nsolution.pick(3); // It should return either index 2, 3, or 4 randomly. Each index should have equal probability of returning.\nsolution.pick(1); // It should return 0. Since in the array only nums[0] is equal to 1.\nsolution.pick(3); // It should return either index 2, 3, or 4 randomly. Each index should have equal probability of returning.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 2 * 10^4`\n- `-2^31 <= nums[i] <= 2^31 - 1`\n- `target` is an integer from `nums`.\n- At most `10^4` calls will be made to `pick`.",
+    "readme_additional": "**Follow up:** What is the time and space complexity of your solution? Could you do it with `O(1)` extra space?",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "",
+    "helpers_run_name": "random_pick_index",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    obj: Any = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'Solution':\n            obj = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'pick' and obj is not None:\n            results.append(obj.pick(inputs[i][0]))\n    return results",
+    "helpers_assert_name": "random_pick_index",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[list[int | None]]) -> bool",
+    "helpers_assert_body": "    assert len(result) == len(expected)\n    for r, choices in zip(result, expected, strict=True):\n        assert r in choices\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_random_pick_index, run_random_pick_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RandomPickIndex",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, nums: list[int]) -> None",
+                "body": "        # TODO: Initialize Solution\n        pass"
+            },
+            {
+                "name": "pick",
+                "signature": "(self, target: int) -> int",
+                "body": "        # TODO: Implement pick\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pick",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[list[int | None]])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['Solution','pick','pick'],[[[1,2,3,3,3]],[3],[1]],[[None],[2,3,4],[0]])",
+                        "(['Solution','pick'],[[[1,2,3,3,3]],[3]],[[None],[2,3,4]])",
+                        "(['Solution','pick'],[[[1]],[1]],[[None],[0]])",
+                        "(['Solution','pick'],[[[7,7,7,7]],[7]],[[None],[0,1,2,3]])",
+                        "(['Solution','pick'],[[[5,5]],[5]],[[None],[0,1]])",
+                        "(['Solution','pick','pick'],[[[3,1,3]],[3],[1]],[[None],[0,2],[1]])",
+                        "(['Solution','pick','pick'],[[[4,9,4,9]],[9],[4]],[[None],[1,3],[0,2]])",
+                        "(['Solution','pick','pick'],[[[-1,-1,2]],[-1],[2]],[[None],[0,1],[2]])",
+                        "(['Solution','pick'],[[[2147483647,2147483647,0]],[2147483647]],[[None],[0,1]])",
+                        "(['Solution','pick'],[[[-2147483648,-2147483648]],[-2147483648]],[[None],[0,1]])",
+                        "(['Solution','pick','pick'],[[[10,20,10,20]],[10],[20]],[[None],[0,2],[1,3]])",
+                        "(['Solution','pick','pick'],[[[1,1,2,2,3,3]],[1],[3]],[[None],[0,1],[4,5]])",
+                        "(['Solution','pick'],[[[6,6,6,6,6,6]],[6]],[[None],[0,1,2,3,4,5]])",
+                        "(['Solution','pick'],[[[1,1,2,2,3,3,3]],[3]],[[None],[4,5,6]])",
+                        "(['Solution','pick'],[[[42]],[42]],[[None],[0]])"
+                    ]
+                },
+                "body": "        result = run_random_pick_index(Solution, operations, inputs)\n        assert_random_pick_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_random_pick_index, assert_random_pick_index\nfrom solution import Solution",
+    "playground_setup": "# Example test case\noperations = ['Solution', 'pick', 'pick', 'pick']\ninputs = [[[1, 2, 3, 3, 3]], [3], [1], [3]]\nexpected = [[None], [2, 3, 4], [0], [2, 3, 4]]",
+    "playground_run": "result = run_random_pick_index(Solution, operations, inputs)\nprint(result)\nresult",
+    "playground_assert": "assert_random_pick_index(result, expected)"
+}

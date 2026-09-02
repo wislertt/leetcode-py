@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximum_product_of_word_lengths",
+    "solution_class_name": "Solution",
+    "problem_number": "318",
+    "problem_title": "Maximum Product of Word Lengths",
+    "difficulty": "Medium",
+    "topics": "Array, String, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string array <code>words</code>, return <em>the maximum value of</em> <code>length(word[i]) * length(word[j])</code> <em>where the two words do not share common letters</em>. If no such two words exist, return <code>0</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"abcw\",\"baz\",\"foo\",\"bar\",\"xtfn\",\"abcdef\"]\nOutput: 16\nExplanation: The two words can be \"abcw\", \"xtfn\".\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"a\",\"ab\",\"abc\",\"d\",\"cd\",\"bcd\",\"abcd\"]\nOutput: 4\nExplanation: The two words can be \"ab\", \"cd\".\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"a\",\"aa\",\"aaa\",\"aaaa\"]\nOutput: 0\nExplanation: No such pair of words.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= words.length <= 1000\n- 1 <= words[i].length <= 1000\n- words[i] consists only of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_product",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_product(words)",
+    "helpers_assert_name": "max_product",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_product, run_max_product\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumProductOfWordLengths",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_product",
+                "signature": "(self, words: list[str]) -> int",
+                "body": "        # TODO: Implement max_product\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_product",
+                "signature": "(self, words: list[str], expected: int)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef'], 16)",
+                        "(['a', 'ab', 'abc', 'd', 'cd', 'bcd', 'abcd'], 4)",
+                        "(['a', 'aa', 'aaa', 'aaaa'], 0)",
+                        "(['ab', 'cd'], 4)",
+                        "(['ab', 'abc'], 0)",
+                        "(['a', 'b'], 1)",
+                        "(['xy', 'yz', 'xz'], 0)",
+                        "(['abc', 'def', 'ghi'], 9)",
+                        "(['abcd', 'efgh', 'abc'], 16)",
+                        "(['aaaa', 'bbbb', 'cc'], 16)",
+                        "(['aabb', 'bbaa', 'ccdd'], 16)",
+                        "(['hello', 'world', 'leetcode'], 0)",
+                        "(['abc', 'xyz', 'abcd'], 12)",
+                        "(['qwerty', 'asdfg', 'zxcvb'], 30)",
+                        "(['aa', 'bb', 'cc', 'ab'], 4)",
+                        "(['a', 'a'], 0)",
+                        "(['abcdefg', 'hijklmn', 'opqrstu', 'vwxyz'], 49)",
+                        "(['book', 'keep', 'flag'], 16)",
+                        "(['abcde', 'fghij', 'klmno', 'pqrst'], 25)",
+                        "(['abc', 'abc'], 0)"
+                    ]
+                },
+                "body": "        result = run_max_product(Solution, words)\n        assert_max_product(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_product, assert_max_product\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['abcw', 'baz', 'foo', 'bar', 'xtfn', 'abcdef']\nexpected = 16",
+    "playground_run": "result = run_max_product(Solution, words)\nresult",
+    "playground_assert": "assert_max_product(result, expected)"
+}

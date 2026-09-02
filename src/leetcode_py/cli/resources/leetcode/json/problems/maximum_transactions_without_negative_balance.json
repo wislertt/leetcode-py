@@ -1,0 +1,94 @@
+{
+    "problem_name": "maximum_transactions_without_negative_balance",
+    "solution_class_name": "Solution",
+    "problem_number": "3711",
+    "problem_title": "Maximum Transactions Without Negative Balance",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Heap (Priority Queue)",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer array `transactions`, where `transactions[i]` represents the amount of the `i`-th transaction:\n\n- A positive value means money is **received**.\n- A negative value means money is **sent**.\n\nThe account starts with a balance of 0, and the balance **must never become negative**. Transactions must be considered in the given order, but you are allowed to skip some transactions.\n\nReturn an integer denoting the **maximum number of transactions** that can be performed without the balance ever going negative.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: transactions = [2,-5,3,-1,-2]\nOutput: 4\nExplanation:\nOne optimal sequence is [2, 3, -1, -2], balance: 0 -> 2 -> 5 -> 4 -> 2.\n```"
+            },
+            {
+                "content": "```\nInput: transactions = [-1,-2,-3]\nOutput: 0\nExplanation:\nAll transactions are negative. Including any would make the balance negative.\n```"
+            },
+            {
+                "content": "```\nInput: transactions = [3,-2,3,-2,1,-1]\nOutput: 6\nExplanation:\nAll transactions can be taken in order, balance: 0 -> 3 -> 1 -> 4 -> 2 -> 3 -> 2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= transactions.length <= 10^5\n- -10^9 <= transactions[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_transactions",
+    "helpers_run_signature": "(solution_class: type, transactions: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_transactions(transactions)",
+    "helpers_assert_name": "max_transactions",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_transactions, run_max_transactions\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumTransactionsWithoutNegativeBalance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_transactions",
+                "signature": "(self, transactions: list[int]) -> int",
+                "body": "        # TODO: Implement max_transactions\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_transactions",
+                "signature": "(self, transactions: list[int], expected: int)",
+                "parametrize": "transactions, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, -5, 3, -1, -2], 4)",
+                        "([-1, -2, -3], 0)",
+                        "([3, -2, 3, -2, 1, -1], 6)",
+                        "([5], 1)",
+                        "([-7], 0)",
+                        "([0], 1)",
+                        "([1, -1, 1, -1], 4)",
+                        "([-1, 1], 1)",
+                        "([2, -3, 4], 2)",
+                        "([10, -20, 30], 2)",
+                        "([1, 2, 3], 3)",
+                        "([-5, 5, -5, 5], 3)",
+                        "([0, -1, 0], 2)",
+                        "([4, -10, -3, 6, 1], 4)",
+                        "([1, -2, 3, -4, 5, -6, 7], 5)",
+                        "([1000000000, -1000000000, 1000000000], 3)"
+                    ]
+                },
+                "body": "        result = run_max_transactions(Solution, transactions)\n        assert_max_transactions(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_transactions, assert_max_transactions\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntransactions = [2, -5, 3, -1, -2]\nexpected = 4",
+    "playground_run": "result = run_max_transactions(Solution, transactions)\nresult",
+    "playground_assert": "assert_max_transactions(result, expected)"
+}

@@ -1,0 +1,103 @@
+{
+    "problem_name": "shortest_distance_after_queries_i",
+    "solution_class_name": "Solution",
+    "problem_number": "3243",
+    "problem_title": "Shortest Distance After Road Addition Queries I",
+    "difficulty": "Medium",
+    "topics": "Array, Breadth-First Search, Graph Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given an integer <code>n</code> and a 2D integer array <code>queries</code>.\n\nThere are <code>n</code> cities numbered from <code>0</code> to <code>n - 1</code>. Initially, there is a <strong>unidirectional</strong> road from city <code>i</code> to city <code>i + 1</code> for all <code>0 &lt;= i &lt; n - 1</code>.\n\n<code>queries[i] = [u<sub>i</sub>, v<sub>i</sub>]</code> represents the addition of a new <strong>unidirectional</strong> road from city <code>u<sub>i</sub></code> to city <code>v<sub>i</sub></code>. After each query, you need to find the <strong>length</strong> of the <strong>shortest path</strong> from city <code>0</code> to city <code>n - 1</code>.\n\nReturn an array <code>answer</code> where for each <code>i</code> in the range <code>[0, queries.length - 1]</code>, <code>answer[i]</code> is the length of the shortest path from city <code>0</code> to city <code>n - 1</code> after processing the <strong>first</strong> <code>i + 1</code> queries.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/06/28/image8.jpg)\n\n```\nInput: n = 5, queries = [[2,4],[0,2],[0,4]]\nOutput: [3,2,1]\nExplanation:\n\nAfter the addition of the road from 2 to 4, the length of the shortest path from 0 to 4 is 3.\n```"
+            },
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/06/28/image9.jpg)\n\nAfter the addition of the road from 0 to 2, the length of the shortest path from 0 to 4 is 2."
+            },
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/06/28/image10.jpg)\n\nAfter the addition of the road from 0 to 4, the length of the shortest path from 0 to 4 is 1."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/06/28/image11.jpg)\n\n```\nInput: n = 4, queries = [[0,3],[0,2]]\nOutput: [1,1]\nExplanation:\n\nAfter the addition of the road from 0 to 3, the length of the shortest path from 0 to 3 is 1.\n```\n\n![Example 2](https://assets.leetcode.com/uploads/2024/06/28/image12.jpg)\n\nAfter the addition of the road from 0 to 2, the length of the shortest path remains 1."
+            }
+        ]
+    },
+    "readme_constraints": "- <code>3 &lt;= n &lt;= 500</code>\n- <code>1 &lt;= queries.length &lt;= 500</code>\n- <code>queries[i].length == 2</code>\n- <code>0 &lt;= queries[i][0] &lt; queries[i][1] &lt; n</code>\n- <code>1 &lt; queries[i][1] - queries[i][0]</code>\n- There are no repeated roads among the queries.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_distance_after_queries",
+    "helpers_run_signature": "(solution_class: type, n: int, queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_distance_after_queries(n, queries)",
+    "helpers_assert_name": "shortest_distance_after_queries",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_distance_after_queries, run_shortest_distance_after_queries\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestDistanceAfterRoadAdditionQueriesI",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_distance_after_queries",
+                "signature": "(self, n: int, queries: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement shortest_distance_after_queries\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_distance_after_queries",
+                "signature": "(self, n: int, queries: list[list[int]], expected: list[int])",
+                "parametrize": "n, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "(5,[[2,4],[0,2],[0,4]],[3,2,1])",
+                        "(4,[[0,3],[0,2]],[1,1])",
+                        "(3,[[0,2]],[1])",
+                        "(5,[[1,3]],[3])",
+                        "(6,[[0,3],[3,5],[0,5]],[3,2,1])",
+                        "(7,[[0,5],[2,4]],[2,2])",
+                        "(10,[[0,9]],[1])",
+                        "(8,[[0,4],[4,7],[2,6]],[4,2,2])",
+                        "(6,[[0,2],[2,5],[1,4]],[4,2,2])",
+                        "(9,[[1,4],[0,3],[4,8]],[6,6,3])",
+                        "(5,[[0,3],[1,4],[0,4]],[2,2,1])",
+                        "(12,[[0,6],[6,11],[0,11]],[6,2,1])",
+                        "(4,[[0,2]],[2])",
+                        "(7,[[0,4],[3,6],[1,5]],[3,3,3])",
+                        "(6,[[1,5],[0,2]],[2,2])",
+                        "(5,[[0,2],[2,4],[0,4]],[3,2,1])",
+                        "(11,[[5,8],[0,5],[8,10]],[8,4,3])",
+                        "(13,[[0,7],[7,12],[3,9]],[6,2,2])",
+                        "(5,[[0,4]],[1])",
+                        "(9,[[0,6],[3,6]],[3,3])",
+                        "(9,[[3,8]],[4])",
+                        "(5,[[0,4],[1,4],[2,4]],[1,1,1])"
+                    ]
+                },
+                "body": "        result = run_shortest_distance_after_queries(Solution, n, queries)\n        assert_shortest_distance_after_queries(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_distance_after_queries, assert_shortest_distance_after_queries\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nqueries = [[2, 4], [0, 2], [0, 4]]\nexpected = [3, 2, 1]",
+    "playground_run": "result = run_shortest_distance_after_queries(Solution, n, queries)\nresult",
+    "playground_assert": "assert_shortest_distance_after_queries(result, expected)"
+}

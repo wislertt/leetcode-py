@@ -1,0 +1,99 @@
+{
+    "problem_name": "time_taken_to_cross_the_door",
+    "solution_class_name": "Solution",
+    "problem_number": "2534",
+    "problem_title": "Time Taken to Cross the Door",
+    "difficulty": "Hard",
+    "topics": "Queue, Array, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There are <code>n</code> persons numbered from <code>0</code> to <code>n - 1</code> and a door. Each person can enter or exit through the door once, taking one second.</p>\n\n<p>You are given a <strong>non-decreasing</strong> integer array <code>arrival</code> of size <code>n</code>, where <code>arrival[i]</code> is the arrival time of the <code>i<sup>th</sup></code> person at the door. You are also given an array <code>state</code> of size <code>n</code>, where <code>state[i]</code> is <code>0</code> if person <code>i</code> wants to enter through the door or <code>1</code> if they want to exit through the door.</p>\n\n<p>If two or more persons want to use the door at the <strong>same</strong> time, they follow the following rules:</p>\n\n<ul>\n\t<li>If the door was <strong>not</strong> used in the previous second, then the person who wants to <strong>exit</strong> goes first.</li>\n\t<li>If the door was used in the previous second for <strong>entering</strong>, the person who wants to enter goes first.</li>\n\t<li>If the door was used in the previous second for <strong>exiting</strong>, the person who wants to <strong>exit</strong> goes first.</li>\n\t<li>If multiple persons want to go in the same direction, the person with the <strong>smallest</strong> index goes first.</li>\n</ul>\n\n<p>Return <em>an array </em><code>answer</code><em> of size </em><code>n</code><em> where </em><code>answer[i]</code><em> is the second at which the <code>i<sup>th</sup></code> person crosses the door</em>.</p>\n\n<p><strong>Note</strong> that:</p>\n\n<ul>\n\t<li>Only one person can cross the door at each second.</li>\n\t<li>A person may arrive at the door and wait without entering or exiting to follow the mentioned rules.</li>\n</ul>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arrival = [0,1,1,2,4], state = [0,1,0,0,1]\nOutput: [0,3,1,2,4]\nExplanation: At each second we have the following:\n- At t = 0: Person 0 is the only one who wants to enter, so they just enter through the door.\n- At t = 1: Person 1 wants to exit, and person 2 wants to enter. Since the door was used the previous second for entering, person 2 enters.\n- At t = 2: Person 1 still wants to exit, and person 3 wants to enter. Since the door was used the previous second for entering, person 3 enters.\n- At t = 3: Person 1 is the only one who wants to exit, so they just exit through the door.\n- At t = 4: Person 4 is the only one who wants to exit, so they just exit through the door.\n```"
+            },
+            {
+                "content": "```\nInput: arrival = [0,0,0], state = [1,0,1]\nOutput: [0,2,1]\nExplanation: At each second we have the following:\n- At t = 0: Person 1 wants to enter while persons 0 and 2 want to exit. Since the door was not used in the previous second, the persons who want to exit get to go first. Since person 0 has a smaller index, they exit first.\n- At t = 1: Person 1 wants to enter, and person 2 wants to exit. Since the door was used in the previous second for exiting, person 2 exits.\n- At t = 2: Person 1 is the only one who wants to enter, so they just enter through the door.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == arrival.length == state.length\n- 1 <= n <= 10^5\n- 0 <= arrival[i] <= n\n- arrival is sorted in non-decreasing order.\n- state[i] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "time_taken",
+    "helpers_run_signature": "(solution_class: type, arrival: list[int], state: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.time_taken(arrival, state)",
+    "helpers_assert_name": "time_taken",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_time_taken, run_time_taken\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TimeTakenToCrossTheDoor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "time_taken",
+                "signature": "(self, arrival: list[int], state: list[int]) -> list[int]",
+                "body": "        # TODO: Implement time_taken\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_time_taken",
+                "signature": "(self, arrival: list[int], state: list[int], expected: list[int])",
+                "parametrize": "arrival, state, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 1, 1, 2, 4], [0, 1, 0, 0, 1], [0, 3, 1, 2, 4])",
+                        "([0, 0, 0], [1, 0, 1], [0, 2, 1])",
+                        "([0], [0], [0])",
+                        "([0], [1], [0])",
+                        "([0, 0, 0, 0], [0, 0, 0, 0], [0, 1, 2, 3])",
+                        "([0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 2, 3])",
+                        "([0, 0], [0, 1], [1, 0])",
+                        "([0, 1], [1, 0], [0, 1])",
+                        "([0, 0, 5, 5], [0, 1, 0, 1], [1, 0, 6, 5])",
+                        "([0, 2, 2, 2, 2], [1, 0, 0, 1, 1], [0, 4, 5, 2, 3])",
+                        "([0, 0, 1, 1, 2, 2], [0, 1, 0, 1, 0, 1], [3, 0, 4, 1, 5, 2])",
+                        "([1, 1, 1], [0, 1, 0], [2, 1, 3])",
+                        "([0, 0, 0, 3, 3, 3, 3], [0, 1, 1, 0, 0, 1, 1], [2, 0, 1, 3, 4, 5, 6])",
+                        "([0, 1, 2, 3, 4, 5], [1, 1, 0, 1, 0, 0], [0, 1, 2, 3, 4, 5])",
+                        "([0,0,1,2,3,3,4,5,7],[0,0,0,1,1,0,1,1,1],[0,1,2,4,5,3,6,7,8])",
+                        "([0,2,3,3,4,7,7,8,9],[0,1,0,0,0,0,1,1,0],[0,2,3,4,5,9,7,8,10])",
+                        "([1, 2, 3, 3, 4], [0, 0, 1, 0, 1], [1, 2, 4, 3, 5])",
+                        "([0, 0, 0, 1, 4], [1, 1, 1, 1, 0], [0, 1, 2, 3, 4])",
+                        "([0,3,5,6,6,8,9,9,9,10],[1,0,0,1,0,1,0,0,1,1],[0,3,5,7,6,8,11,12,9,10])",
+                        "([2, 3, 4, 5, 5], [1, 0, 1, 0, 1], [2, 3, 4, 6, 5])",
+                        "([0, 2, 3, 3], [0, 1, 1, 0], [0, 2, 3, 4])",
+                        "([0, 1, 4, 5, 5, 6, 7], [0, 0, 0, 1, 0, 0, 1], [0, 1, 4, 7, 5, 6, 8])",
+                        "([1,1,3,4,5,6,7,7,8,9],[1,1,0,1,0,1,1,1,1,0],[1,2,3,4,5,6,7,8,9,10])",
+                        "([2, 2, 3], [0, 1, 0], [3, 2, 4])"
+                    ]
+                },
+                "body": "        result = run_time_taken(Solution, arrival, state)\n        assert_time_taken(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_time_taken, assert_time_taken\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narrival = [0, 1, 1, 2, 4]\nstate = [0, 1, 0, 0, 1]\nexpected = [0, 3, 1, 2, 4]",
+    "playground_run": "result = run_time_taken(Solution, arrival, state)\nresult",
+    "playground_assert": "assert_time_taken(result, expected)"
+}

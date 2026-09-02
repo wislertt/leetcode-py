@@ -1,0 +1,99 @@
+{
+    "problem_name": "read_n_characters_given_read4_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "158",
+    "problem_title": "Read N Characters Given read4 II - Call Multiple Times",
+    "difficulty": "Hard",
+    "topics": "Array, Interactive, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a `file` and assume that you can only read the file using a given method `read4`, implement a method `read` to read `n` characters. Your method `read` may be **called multiple times**.\n\n**Method read4:**\n\nThe API `read4` reads **four consecutive characters** from `file`, then writes those characters into the buffer array `buf4`.\n\nThe return value is the number of actual characters read.\n\nNote that `read4()` has its own file pointer, much like `FILE *fp` in C.\n\n**Definition of read4:**\n\n```\n    Parameter:  char[] buf4\n    Returns:    int\n\nbuf4[] is a destination, not a source. The results from read4 will be copied to buf4[].\n```\n\nBelow is a high-level example of how `read4` works:\n\n![read4 example](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0100-0199/0158.Read%20N%20Characters%20Given%20read4%20II%20-%20Call%20Multiple%20Times/images/157_example.png)\n\n```\nFile file(\"abcde\"); // File is \"abcde\", initially file pointer (fp) points to 'a'\nchar[] buf4 = new char[4]; // Create buffer with enough space\nread4(buf4); // read4 returns 4. Now buf4 = \"abcd\", fp points to 'e'\nread4(buf4); // read4 returns 1. Now buf4 = \"e\", fp points to end of file\nread4(buf4); // read4 returns 0. Now buf4 = \"\", fp points to end of file\n```\n\n**Method read:**\n\nBy using the `read4` method, implement the method `read` that reads `n` characters from `file` and stores them in the buffer array `buf`. Consider that you cannot manipulate `file` directly.\n\nThe return value is the number of actual characters read.\n\n**Definition of read:**\n\n```\n    Parameters:  char[] buf, int n\n    Returns:     int\n\nbuf[] is a destination, not a source. You will need to write the results to buf[].\n```",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: file = \"abc\", queries = [1,2,1]\nOutput: [1,2,0]\nExplanation:\nsol.read(buf, 1); // buf should contain \"a\". We read a total of 1 character from the file, so return 1.\nsol.read(buf, 2); // Now buf should contain \"bc\". We read a total of 2 characters, so return 2.\nsol.read(buf, 1); // We have reached the end of file, no more characters can be read. So return 0.\n```"
+            },
+            {
+                "content": "```\nInput: file = \"abc\", queries = [4,1]\nOutput: [3,0]\nExplanation:\nsol.read(buf, 4); // buf should contain \"abc\". We read a total of 3 characters, so return 3.\nsol.read(buf, 1); // We have reached the end of file, no more characters can be read. So return 0.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= file.length <= 500`\n- `file` consists of English letters and digits.\n- `1 <= queries.length <= 10`\n- `1 <= queries[i] <= 500`",
+    "readme_additional": "**Note:**\n\n- The `read` function may be **called multiple times**; remember to reset your class variables, as they are persisted across multiple test cases.\n- The destination buffer `buf` is guaranteed to have enough space for storing `n` characters.\n\nIn this repository the `read4` API is provided as the `read4(buf4)` method of the `File` class in `solution.py`, and `read` receives that `File` instance as its third argument.",
+    "helpers_imports": "from .solution import File",
+    "helpers_content": "",
+    "helpers_run_name": "read",
+    "helpers_run_signature": "(solution_class: type, file: str, queries: list[int])",
+    "helpers_run_body": "    file_api = File(file)\n    implementation = solution_class()\n    results: list[int] = []\n    consumed = 0\n    for n in queries:\n        buf = [''] * n\n        count = implementation.read(buf, n, file_api)\n        # each call must fill buf with the next count characters\n        assert ''.join(buf[:count]) == file[consumed : consumed + count]\n        consumed += count\n        results.append(count)\n    return results",
+    "helpers_assert_name": "read",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class File:\n    # Test-harness API: backs the read4 interface with the file content\n    def __init__(self, content: str) -> None:\n        self.content = content\n        self.pos = 0\n\n    def read4(self, buf4: list[str]) -> int:\n        # Reads up to 4 consecutive characters into buf4 and returns the\n        # number of characters actually read; read4 keeps its own file\n        # pointer across calls\n        chunk = self.content[self.pos : self.pos + 4]\n        self.pos += len(chunk)\n        for i, char in enumerate(chunk):\n            buf4[i] = char\n        return len(chunk)\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_read, run_read\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReadNCharactersGivenRead4II",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize persistent read state\n        pass"
+            },
+            {
+                "name": "read",
+                "signature": "(self, buf: list[str], n: int, file: File) -> int",
+                "body": "        # TODO: Implement read\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_read",
+                "signature": "(self, file: str, queries: list[int], expected: list[int])",
+                "parametrize": "file, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', [1, 2, 1], [1, 2, 0])",
+                        "('abc', [4, 1], [3, 0])",
+                        "('abcde', [1, 2, 1], [1, 2, 1])",
+                        "('abcde', [4, 4, 4], [4, 1, 0])",
+                        "('a', [1], [1])",
+                        "('a', [2], [1])",
+                        "('a', [1, 1, 1], [1, 0, 0])",
+                        "('ab', [1, 1], [1, 1])",
+                        "('ab', [2, 1], [2, 0])",
+                        "('abcdefgh', [3, 3, 3], [3, 3, 2])",
+                        "('abcdefghij', [4, 4, 4], [4, 4, 2])",
+                        "('xyz', [5, 1], [3, 0])",
+                        "('pqrs', [1, 1, 1, 1], [1, 1, 1, 1])",
+                        "('leetcode', [4, 4, 4, 4], [4, 4, 0, 0])",
+                        "('abcdef', [2, 2, 2, 2], [2, 2, 2, 0])",
+                        "('mn', [3, 3], [2, 0])",
+                        "('abcdefghijk', [1, 4, 4, 4], [1, 4, 4, 2])",
+                        "('a1b2c3d4e5f6', [4, 4, 4], [4, 4, 4])",
+                        "('playground', [7, 7, 7], [7, 3, 0])"
+                    ]
+                },
+                "body": "        result = run_read(Solution, file, queries)\n        assert_read(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_read, run_read\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nfile = 'abc'\nqueries = [1, 2, 1]\nexpected = [1, 2, 0]",
+    "playground_run": "result = run_read(Solution, file, queries)\nresult",
+    "playground_assert": "assert_read(result, expected)"
+}

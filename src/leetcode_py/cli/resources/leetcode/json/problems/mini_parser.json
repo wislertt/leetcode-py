@@ -1,0 +1,88 @@
+{
+    "problem_name": "mini_parser",
+    "solution_class_name": "Solution",
+    "problem_number": "385",
+    "problem_title": "Mini Parser",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Depth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string s represents the serialization of a nested list, implement a parser to deserialize it and return the deserialized `NestedInteger`.\n\nEach element is either an integer or a list whose elements may also be integers or other lists.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"324\"\nOutput: 324\nExplanation: You should return a NestedInteger object which contains a single integer 324.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"[123,[456,[789]]]\"\nOutput: [123,[456,[789]]]\nExplanation: Return a NestedInteger object containing a nested list with 2 elements:\n1. An integer containing value 123.\n2. A nested list containing two elements:\n    i.  An integer containing value 456.\n    ii. A nested list with one element:\n         a. An integer containing value 789\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 5 * 10<sup>4</sup>\n- s consists of digits, square brackets `\"[]\"`, negative sign `'-'`, and commas `','`.\n- s is the serialization of valid `NestedInteger`.\n- All the values in the input are in the range [-10<sup>6</sup>, 10<sup>6</sup>].",
+    "readme_additional": "",
+    "helpers_imports": "from typing import Any",
+    "helpers_content": "def nested_to_py(obj: Any) -> Any:\n    if obj.is_integer():\n        return obj.get_integer()\n    return [nested_to_py(item) for item in obj.get_list()]\n",
+    "helpers_run_name": "mini_parser",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return nested_to_py(implementation.deserialize(s))",
+    "helpers_assert_name": "mini_parser",
+    "helpers_assert_signature": "(result: Any, expected: Any) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "class NestedInteger:\n    def __init__(self, value: int | None = None) -> None:\n        self._integer: int | None = value\n        self._list: list[NestedInteger] | None = None if value is not None else []\n\n    def is_integer(self) -> bool:\n        return self._list is None\n\n    def add(self, elem: NestedInteger) -> None:\n        items = self._list\n        if items is None:\n            items = []\n            self._integer = None\n            self._list = items\n        items.append(elem)\n\n    def set_integer(self, value: int) -> None:\n        self._integer = value\n        self._list = None\n\n    def get_integer(self) -> int | None:\n        return self._integer\n\n    def get_list(self) -> list[NestedInteger] | None:\n        return self._list\n",
+    "solution_class_content": "",
+    "test_imports": "from typing import Any\n\nimport pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_mini_parser, run_mini_parser\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MiniParser",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "deserialize",
+                "signature": "(self, s: str) -> NestedInteger",
+                "body": "        # TODO: Implement deserialize\n        return NestedInteger()"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_mini_parser",
+                "signature": "(self, s: str, expected: Any)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('324', 324)",
+                        "('[123,[456,[789]]]', [123, [456, [789]]])",
+                        "('0', 0)",
+                        "('-1', -1)",
+                        "('1000000', 1000000)",
+                        "('-1000000', -1000000)",
+                        "('[]', [])",
+                        "('[[]]', [[]])",
+                        "('[[],[[]]]', [[], [[]]])",
+                        "('[1,2,3]', [1, 2, 3])",
+                        "('[-1,-2,-3]', [-1, -2, -3])",
+                        "('[1,[2],[3,[4,[5]]]]', [1, [2], [3, [4, [5]]]])",
+                        "('[[[[5]]]]', [[[[5]]]])",
+                        "('[[1],2,[3]]', [[1], 2, [3]])",
+                        "('[-12,[34],[-56]]', [-12, [34], [-56]])",
+                        "('[1,2,3,4,5,6,7,8,9,10]', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])",
+                        "('[0,[0,[0]]]', [0, [0, [0]]])",
+                        "('[-1000000,[1000000,-999999]]', [-1000000, [1000000, -999999]])",
+                        "('[[1,2],[3,4],[5,[6,7]]]', [[1, 2], [3, 4], [5, [6, 7]]])"
+                    ]
+                },
+                "body": "        result = run_mini_parser(Solution, s)\n        assert_mini_parser(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_mini_parser, assert_mini_parser\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '324'\nexpected = 324",
+    "playground_run": "result = run_mini_parser(Solution, s)\nresult",
+    "playground_assert": "assert_mini_parser(result, expected)"
+}

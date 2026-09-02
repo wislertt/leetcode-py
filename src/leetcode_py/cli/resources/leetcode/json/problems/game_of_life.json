@@ -1,0 +1,101 @@
+{
+    "problem_name": "game_of_life",
+    "solution_class_name": "Solution",
+    "problem_number": "289",
+    "problem_title": "Game of Life",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "According to [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)'s article: \"The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.\"\n\nThe board is made up of an `m x n` grid of cells, where each cell has an initial state: live (represented by a `1`) or dead (represented by a `0`). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):\n\n1. Any live cell with fewer than two live neighbors dies as if caused by under-population.\n2. Any live cell with two or three live neighbors lives on to the next generation.\n3. Any live cell with more than three live neighbors dies, as if by over-population.\n4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.\n\nThe next state of the board is determined by applying the above rules simultaneously to every cell in the current state of the `m x n` grid `board`. In this process, births and deaths occur simultaneously.\n\nGiven the current state of the `board`, update the board to reflect its next state. Note that you do not need to return anything.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/12/26/grid1.jpg)\n\n```\nInput: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]\nOutput: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/12/26/grid2.jpg)\n\n```\nInput: board = [[1,1],[1,0]]\nOutput: [[1,1],[1,1]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == board.length\n- n == board[i].length\n- 1 <= m, n <= 25\n- board[i][j] is 0 or 1.",
+    "readme_additional": "**Follow up:**\n\n- Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.\n- In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "game_of_life",
+    "helpers_run_signature": "(solution_class: type, board: list[list[int]])",
+    "helpers_run_body": "    import copy\n    board_copy = copy.deepcopy(board)\n    implementation = solution_class()\n    implementation.game_of_life(board_copy)\n    return board_copy",
+    "helpers_assert_name": "game_of_life",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_game_of_life, run_game_of_life\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GameOfLife",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "game_of_life",
+                "signature": "(self, board: list[list[int]]) -> None",
+                "body": "        # TODO: Implement game_of_life\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_game_of_life",
+                "signature": "(self, board: list[list[int]], expected: list[list[int]])",
+                "parametrize": "board, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1,0],[0,0,1],[1,1,1],[0,0,0]],[[0,0,0],[1,0,1],[0,1,1],[0,1,0]])",
+                        "([[1,1],[1,0]],[[1,1],[1,1]])",
+                        "([[1]],[[0]])",
+                        "([[0]],[[0]])",
+                        "([[1,1]],[[0,0]])",
+                        "([[1],[1]],[[0],[0]])",
+                        "([[1,1,1]],[[0,1,0]])",
+                        "([[1],[1],[1]],[[0],[1],[0]])",
+                        "([[0,0,0],[0,0,0]],[[0,0,0],[0,0,0]])",
+                        "([[1,0,1],[1,0,1]],[[0,0,0],[0,0,0]])",
+                        "([[1,1],[1,1]],[[1,1],[1,1]])",
+                        "([[1,1,1],[1,1,1],[1,1,1]],[[1,0,1],[0,0,0],[1,0,1]])",
+                        "([[0,1,0],[0,1,0],[0,1,0]],[[0,0,0],[1,1,1],[0,0,0]])",
+                        "([[1,0,1,0],[0,1,0,1],[1,0,1,0]],[[0,1,1,0],[1,0,0,1],[0,1,1,0]])",
+                        "([[1,0,0],[1,0,0]],[[0,0,0],[0,0,0]])",
+                        "([[1,1],[0,1],[1,0]],[[1,1],[0,1],[0,0]])",
+                        "([[1,0,1],[0,0,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]])",
+                        "([[0,0,0,0,0,1]],[[0,0,0,0,0,0]])",
+                        "([[0],[0],[0],[1],[1],[1]],[[0],[0],[0],[0],[1],[0]])",
+                        "([[1,1],[1,1]],[[1,1],[1,1]])",
+                        "([[1,0,1],[1,1,0]],[[1,0,0],[1,1,0]])",
+                        "([[0,1],[1,0],[0,0]],[[0,0],[0,0],[0,0]])",
+                        "([[1,0,1],[1,1,0],[0,0,1]],[[1,0,0],[1,0,1],[0,1,0]])",
+                        "([[0,1,1,0,0,1]],[[0,0,0,0,0,0]])",
+                        "([[1],[1],[1],[1],[1],[1]],[[0],[1],[1],[1],[1],[0]])",
+                        "([[0,1],[1,1]],[[1,1],[1,1]])"
+                    ]
+                },
+                "body": "        result = run_game_of_life(Solution, board)\n        assert_game_of_life(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_game_of_life, assert_game_of_life\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]\nexpected = [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]",
+    "playground_run": "result = run_game_of_life(Solution, board)\nresult",
+    "playground_assert": "assert_game_of_life(result, expected)"
+}

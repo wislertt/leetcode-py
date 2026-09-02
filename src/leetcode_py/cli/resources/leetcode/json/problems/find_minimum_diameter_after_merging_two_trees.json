@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_minimum_diameter_after_merging_two_trees",
+    "solution_class_name": "Solution",
+    "problem_number": "3203",
+    "problem_title": "Find Minimum Diameter After Merging Two Trees",
+    "difficulty": "Hard",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Graph Theory",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There exist two **undirected** trees with `n` and `m` nodes, numbered from `0` to `n - 1` and from `0` to `m - 1`, respectively. You are given two 2D integer arrays `edges1` and `edges2` of lengths `n - 1` and `m - 1`, respectively, where `edges1[i] = [ai, bi]` indicates that there is an edge between nodes `ai` and `bi` in the first tree and `edges2[i] = [ui, vi]` indicates that there is an edge between nodes `ui` and `vi` in the second tree.\n\nYou must connect one node from the first tree with another node from the second tree with an edge.\n\nReturn the **minimum** possible **diameter** of the resulting tree.\n\nThe **diameter** of a tree is the length of the longest path between any two nodes in the tree.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/04/22/example11-transformed.png)\n\n```\nInput: edges1 = [[0,1],[0,2],[0,3]], edges2 = [[0,1]]\nOutput: 3\n```\n\n**Explanation:** We can obtain a tree of diameter 3 by connecting node 0 from the first tree with any node from the second tree."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/04/22/example211.png)\n\n```\nInput: edges1 = [[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[2,7]], edges2 = [[0,1],[0,2],[0,3],[2,4],[2,5],[3,6],[2,7]]\nOutput: 5\n```\n\n**Explanation:** We can obtain a tree of diameter 5 by connecting node 0 from the first tree with node 0 from the second tree."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n, m <= 10^5`\n- `edges1.length == n - 1`\n- `edges2.length == m - 1`\n- `edges1[i].length == edges2[i].length == 2`\n- `edges1[i] = [ai, bi]`\n- `0 <= ai, bi < n`\n- `edges2[i] = [ui, vi]`\n- `0 <= ui, vi < m`\n- The input is generated such that `edges1` and `edges2` represent valid trees.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_diameter_after_merge",
+    "helpers_run_signature": "(solution_class: type, edges1: list[list[int]], edges2: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_diameter_after_merge(edges1, edges2)",
+    "helpers_assert_name": "minimum_diameter_after_merge",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_diameter_after_merge, run_minimum_diameter_after_merge\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindMinimumDiameterAfterMergingTwoTrees",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_diameter_after_merge",
+                "signature": "(self, edges1: list[list[int]], edges2: list[list[int]]) -> int",
+                "body": "        # TODO: Implement minimum_diameter_after_merge\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_diameter_after_merge",
+                "signature": "(self, edges1: list[list[int]], edges2: list[list[int]], expected: int)",
+                "parametrize": "edges1, edges2, expected",
+                "test_cases": {
+                    "list": [
+                        "([], [], 1)",
+                        "([], [[0, 1]], 2)",
+                        "([[0, 1]], [], 2)",
+                        "([[0, 1]], [[0, 1]], 3)",
+                        "([[0, 1], [0, 2], [0, 3]], [[0, 1]], 3)",
+                        "([[0, 1], [0, 2], [0, 3]], [], 2)",
+                        "([], [[0, 1], [0, 2], [0, 3]], 2)",
+                        "([[0, 1], [1, 2], [2, 3]], [[0, 1]], 4)",
+                        "([[0, 1], [0, 2], [0, 3]], [[0, 1], [1, 2], [2, 3]], 4)",
+                        "([[0, 1], [0, 2], [1, 3], [1, 4]], [[0, 1], [0, 2], [2, 3]], 5)",
+                        "([[0, 1], [1, 2], [2, 3], [3, 4]], [[0, 1], [1, 2]], 4)",
+                        "([[0, 1], [0, 2], [0, 3], [3, 4]], [[0, 1], [0, 2], [2, 3]], 5)",
+                        "([[0, 1], [1, 2], [0, 3], [0, 4]], [[0, 1]], 4)",
+                        "([[0, 1], [1, 2], [0, 3], [1, 4]], [[0, 1], [1, 2], [0, 3], [0, 4]], 5)",
+                        "([[0, 1], [0, 2], [2, 3]], [[0, 1], [0, 2], [1, 3], [0, 4], [3, 5]], 5)",
+                        "([[0, 1], [0, 2], [1, 3], [0, 4]], [[0, 1], [0, 2], [2, 3], [2, 4], [1, 5]], 5)",
+                        "([[0, 1], [1, 2], [1, 3], [0, 4]], [[0, 1], [1, 2], [1, 3]], 4)",
+                        "([[0, 1], [1, 2], [0, 3], [1, 4]], [[0, 1], [0, 2], [1, 3]], 5)"
+                    ]
+                },
+                "body": "        result = run_minimum_diameter_after_merge(Solution, edges1, edges2)\n        assert_minimum_diameter_after_merge(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_diameter_after_merge, assert_minimum_diameter_after_merge\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nedges1: list[list[int]] = [[0, 1], [0, 2], [0, 3]]\nedges2: list[list[int]] = [[0, 1]]\nexpected = 3",
+    "playground_run": "result = run_minimum_diameter_after_merge(Solution, edges1, edges2)\nresult",
+    "playground_assert": "assert_minimum_diameter_after_merge(result, expected)"
+}

@@ -1,0 +1,91 @@
+{
+    "problem_name": "clear_digits",
+    "solution_class_name": "Solution",
+    "problem_number": "3174",
+    "problem_title": "Clear Digits",
+    "difficulty": "Easy",
+    "topics": "String, Stack, Simulation",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "You are given a string `s`.\n\nYour task is to remove **all** digits by doing this operation repeatedly:\n\n- Delete the *first* digit and the **closest** non-digit character to its *left*.\n\nReturn the resulting string after removing all digits.\n\n**Note** that the operation *cannot* be performed on a digit that does not have any non-digit character to its left.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abc\"\nOutput: \"abc\"\nExplanation: There is no digit in the string.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"cb34\"\nOutput: \"\"\nExplanation: First, we apply the operation on s[2], and s becomes \"c4\".\nThen we apply the operation on s[1], and s becomes \"\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 100`\n- `s` consists only of lowercase English letters and digits.\n- The input is generated such that it is possible to delete all digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "clear_digits",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.clear_digits(s)",
+    "helpers_assert_name": "clear_digits",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_clear_digits, run_clear_digits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ClearDigits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "clear_digits",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement clear_digits\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_clear_digits",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', 'abc')",
+                        "('cb34', '')",
+                        "('a1b2c3', '')",
+                        "('abc12', 'a')",
+                        "('ab1c2', 'a')",
+                        "('a', 'a')",
+                        "('z9', '')",
+                        "('aa1bb1', 'ab')",
+                        "('a1b1c1', '')",
+                        "('ab', 'ab')",
+                        "('a1', '')",
+                        "('abcdefg1h2', 'abcdef')",
+                        "('xy3z', 'xz')",
+                        "('p5q5r5', '')",
+                        "('leet1code2', 'leecod')",
+                        "('acb2b2', 'ac')"
+                    ]
+                },
+                "body": "        result = run_clear_digits(Solution, s)\n        assert_clear_digits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_clear_digits, assert_clear_digits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cb34'\nexpected = ''",
+    "playground_run": "result = run_clear_digits(Solution, s)\nresult",
+    "playground_assert": "assert_clear_digits(result, expected)"
+}

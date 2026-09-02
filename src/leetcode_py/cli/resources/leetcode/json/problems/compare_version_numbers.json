@@ -1,0 +1,98 @@
+{
+    "problem_name": "compare_version_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "165",
+    "problem_title": "Compare Version Numbers",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two version strings, version1 and version2, compare them. A version string consists of revisions separated by dots `'.'`. The value of the revision is its integer conversion ignoring leading zeros.\n\nTo compare version strings, compare their revision values in left-to-right order. If one of the version strings has fewer revisions, treat the missing revision values as 0.\n\nReturn the following:\n\n- If version1 < version2, return -1.\n- If version1 > version2, return 1.\n- Otherwise, return 0.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: version1 = \"1.2\", version2 = \"1.10\"\nOutput: -1\nExplanation:\nversion1's second revision is \"2\" and version2's second revision is \"10\": 2 < 10, so version1 < version2.\n```"
+            },
+            {
+                "content": "```\nInput: version1 = \"1.01\", version2 = \"1.001\"\nOutput: 0\nExplanation:\nIgnoring leading zeroes, both \"01\" and \"001\" represent the same integer \"1\".\n```"
+            },
+            {
+                "content": "```\nInput: version1 = \"1.0\", version2 = \"1.0.0.0\"\nOutput: 0\nExplanation:\nversion1 has less revisions, which means every missing revision are treated as \"0\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= version1.length, version2.length <= 500`\n- `version1` and `version2` only contain digits and `'.'`.\n- `version1` and `version2` are valid version numbers.\n- All the given revisions in `version1` and `version2` can be stored in a 32-bit integer.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "compare_version",
+    "helpers_run_signature": "(solution_class: type, version1: str, version2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.compare_version(version1, version2)",
+    "helpers_assert_name": "compare_version",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_compare_version, run_compare_version\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CompareVersionNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "compare_version",
+                "signature": "(self, version1: str, version2: str) -> int",
+                "body": "        # TODO: Implement compare_version\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_compare_version",
+                "signature": "(self, version1: str, version2: str, expected: int)",
+                "parametrize": "version1, version2, expected",
+                "test_cases": {
+                    "list": [
+                        "('1.2', '1.10', -1)",
+                        "('1.01', '1.001', 0)",
+                        "('1.0', '1.0.0.0', 0)",
+                        "('0.1', '1.1', -1)",
+                        "('7.5.2.4', '7.5.3', -1)",
+                        "('2.0', '1.0', 1)",
+                        "('1', '1.0.0', 0)",
+                        "('1.0.0', '1', 0)",
+                        "('0.0.1', '0.0.1', 0)",
+                        "('10.4.4', '10.4.4.0', 0)",
+                        "('1.2.3.4.5', '1.2.3.4', 1)",
+                        "('001.000.1', '1.0.1', 0)",
+                        "('2.0.1', '1.9.9', 1)",
+                        "('1.00000000001', '1.0', 1)",
+                        "('0.0.0', '0', 0)",
+                        "('3.4.5.6.7.8', '3.4.5.6.7.9', -1)",
+                        "('3', '4.11.20.003', -1)",
+                        "('38.026', '24.6.31.16.33', 1)",
+                        "('19.38', '024', -1)",
+                        "('7.21.19', '29.11.40', -1)"
+                    ]
+                },
+                "body": "        result = run_compare_version(Solution, version1, version2)\n        assert_compare_version(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_compare_version, assert_compare_version\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nversion1 = '1.01'\nversion2 = '1.001'\nexpected = 0",
+    "playground_run": "result = run_compare_version(Solution, version1, version2)\nresult",
+    "playground_assert": "assert_compare_version(result, expected)"
+}

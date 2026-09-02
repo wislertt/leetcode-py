@@ -1,0 +1,97 @@
+{
+    "problem_name": "peeking_iterator",
+    "solution_class_name": "PeekingIterator(Iterator)",
+    "problem_number": "284",
+    "problem_title": "Peeking Iterator",
+    "difficulty": "Medium",
+    "topics": "Array, Design, Iterator",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Design an iterator that supports the peek operation on an existing iterator in addition to the hasNext and the next operations.\n\nImplement the PeekingIterator class:\n\n- `PeekingIterator(Iterator<int> nums)` Initializes the object with the given integer iterator `iterator`.\n- `int next()` Returns the next element in the array and moves the pointer to the next element.\n- `boolean hasNext()` Returns `true` if there are still elements in the array.\n- `int peek()` Returns the next element in the array **without** moving the pointer.\n\n**Note:** Each language may have a different implementation of the constructor and Iterator, but they all support the `int next()` and `boolean hasNext()` functions.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"PeekingIterator\", \"next\", \"peek\", \"next\", \"next\", \"hasNext\"]\n[[[1, 2, 3]], [], [], [], [], []]\nOutput\n[null, 1, 2, 2, 3, false]\n\nExplanation\nPeekingIterator peekingIterator = new PeekingIterator([1, 2, 3]); // [1,2,3]\npeekingIterator.next();    // return 1, the pointer moves to the next element [1,2,3].\npeekingIterator.peek();    // return 2, the pointer does not move [1,2,3].\npeekingIterator.next();    // return 2, the pointer moves to the next element [1,2,3]\npeekingIterator.next();    // return 3, the pointer moves to the next element [1,2,3]\npeekingIterator.hasNext(); // return False\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 1000`\n- `1 <= nums[i] <= 1000`\n- All the calls to `next` and `peek` are valid.\n- At most `1000` calls will be made to `next`, `hasNext`, and `peek`.",
+    "readme_additional": "**Follow up:** How would you extend your design to be generic and work with all types, not just integer?",
+    "helpers_imports": "",
+    "helpers_content": "class Iterator:\n    def __init__(self, nums: list[int]) -> None:\n        self.nums: list[int] = list(nums)\n        self.index: int = 0\n\n    def next(self) -> int:\n        value = self.nums[self.index]\n        self.index += 1\n        return value\n\n    def has_next(self) -> bool:\n        return self.index < len(self.nums)\n",
+    "helpers_run_name": "peeking_iterator",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    iterator = None\n    results: list[int | bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'PeekingIterator':\n            iterator = solution_class(Iterator(inputs[i][0]))\n            results.append(None)\n        elif op == 'next' and iterator is not None:\n            results.append(iterator.next())\n        elif op == 'peek' and iterator is not None:\n            results.append(iterator.peek())\n        elif op == 'has_next' and iterator is not None:\n            results.append(iterator.has_next())\n    return results, iterator",
+    "helpers_assert_name": "peeking_iterator",
+    "helpers_assert_signature": "(result: list[int | bool | None], expected: list[int | bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class Iterator:\n    def __init__(self, nums: list[int]) -> None:\n        self._nums: list[int] = list(nums)\n        self._index: int = 0\n\n    def next(self) -> int:\n        value = self._nums[self._index]\n        self._index += 1\n        return value\n\n    def has_next(self) -> bool:\n        return self._index < len(self._nums)\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_peeking_iterator, run_peeking_iterator\nfrom .solution import PeekingIterator",
+    "test_content": "",
+    "test_class_name": "PeekingIterator",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, iterator: Iterator) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "peek",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement peek\n        return 0"
+            },
+            {
+                "name": "next",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement next\n        return 0"
+            },
+            {
+                "name": "has_next",
+                "signature": "(self) -> bool",
+                "body": "        # TODO: Implement has_next\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_peeking_iterator",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['PeekingIterator','next','peek','next','next','has_next'],[[[1,2,3]],[],[],[],[],[]],[None,1,2,2,3,False])",
+                        "(['PeekingIterator','peek','next','peek','peek','next','has_next'],[[[1,2,3]],[],[],[],[],[],[]],[None,1,1,2,2,2,True])",
+                        "(['PeekingIterator','has_next','peek','next','has_next'],[[[1]],[],[],[],[]],[None,True,1,1,False])",
+                        "(['PeekingIterator','next','has_next'],[[[1]],[],[]],[None,1,False])",
+                        "(['PeekingIterator','peek','peek','peek'],[[[5]],[],[],[]],[None,5,5,5])",
+                        "(['PeekingIterator','peek','peek','next','next','has_next'],[[[2,2]],[],[],[],[],[]],[None,2,2,2,2,False])",
+                        "(['PeekingIterator','peek','next','peek','next','peek','next','has_next'],[[[7,7,7,7]],[],[],[],[],[],[],[]],[None,7,7,7,7,7,7,True])",
+                        "(['PeekingIterator','has_next','peek','has_next','next','has_next'],[[[1,2]],[],[],[],[],[]],[None,True,1,True,1,True])",
+                        "(['PeekingIterator','peek','next','next','peek','next','has_next'],[[[1000,1,999]],[],[],[],[],[],[]],[None,1000,1000,1,999,999,False])",
+                        "(['PeekingIterator','peek','next','peek','next','peek','next','peek'],[[[3,1,4,1,5]],[],[],[],[],[],[],[]],[None,3,3,1,1,4,4,1])",
+                        "(['PeekingIterator','peek','next'],[[[10]],[],[]],[None,10,10])",
+                        "(['PeekingIterator','has_next','next','has_next','next','has_next','next'],[[[42,42,42]],[],[],[],[],[],[]],[None,True,42,True,42,True,42])",
+                        "(['PeekingIterator','peek','peek','next','next','peek','next','has_next'],[[[8,6,7]],[],[],[],[],[],[],[]],[None,8,8,8,6,7,7,False])",
+                        "(['PeekingIterator','has_next','has_next','peek','next','has_next'],[[[9]],[],[],[],[],[]],[None,True,True,9,9,False])",
+                        "(['PeekingIterator','next','peek','next','has_next'],[[[500,501]],[],[],[],[]],[None,500,501,501,False])",
+                        "(['PeekingIterator','peek','peek','next','peek','next','peek','next','has_next'],[[[1,2,3,4,5]],[],[],[],[],[],[],[],[]],[None,1,1,1,2,2,3,3,True])"
+                    ]
+                },
+                "body": "        result, _ = run_peeking_iterator(PeekingIterator, operations, inputs)\n        assert_peeking_iterator(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_peeking_iterator, run_peeking_iterator\nfrom solution import PeekingIterator",
+    "playground_setup": "# Example test case\noperations = ['PeekingIterator', 'next', 'peek', 'next', 'next', 'has_next']\ninputs = [[[1, 2, 3]], [], [], [], [], []]\nexpected = [None, 1, 2, 2, 3, False]",
+    "playground_run": "result, iterator = run_peeking_iterator(PeekingIterator, operations, inputs)\nprint(result)\niterator",
+    "playground_assert": "assert_peeking_iterator(result, expected)"
+}

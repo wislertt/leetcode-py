@@ -1,0 +1,97 @@
+{
+    "problem_name": "reconstruct_original_digits_from_english",
+    "solution_class_name": "Solution",
+    "problem_number": "423",
+    "problem_title": "Reconstruct Original Digits from English",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s` containing an out-of-order English representation of digits `0-9`, return the digits in ascending order.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"owoztneoer\"\nOutput: \"012\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"fviefuro\"\nOutput: \"45\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s[i] is one of the characters [\"e\",\"g\",\"f\",\"i\",\"h\",\"o\",\"n\",\"s\",\"r\",\"u\",\"t\",\"w\",\"v\",\"x\",\"z\"].\n- s is guaranteed to be valid.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "original_digits",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.original_digits(s)",
+    "helpers_assert_name": "original_digits",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_original_digits, run_original_digits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReconstructOriginalDigitsFromEnglish",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "original_digits",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement original_digits\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_original_digits",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('owoztneoer', '012')",
+                        "('fviefuro', '45')",
+                        "('zero', '0')",
+                        "('one', '1')",
+                        "('two', '2')",
+                        "('nine', '9')",
+                        "('zerozero', '00')",
+                        "('oneoneone', '111')",
+                        "('eight', '8')",
+                        "('sevenfive', '57')",
+                        "('rnzoenei', '09')",
+                        "('neoeoetwhtr', '123')",
+                        "('euxfsrfivoi', '456')",
+                        "('gnsnieeneviteh', '789')",
+                        "('uozwerterronheeofot', '01234')",
+                        "('enifessinnveeihvtgiex', '56789')",
+                        "('thetehertrhreee', '333')",
+                        "('ssiozixrxe', '066')",
+                        "('ffornoeronoueu', '1144')",
+                        "('iezrtreeeienvnirgsowtoounfvheiosextnefhe', '0123456789')",
+                        "('nweswsovvetetneo', '2277')",
+                        "('fvei', '5')"
+                    ]
+                },
+                "body": "        result = run_original_digits(Solution, s)\n        assert_original_digits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_original_digits, assert_original_digits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'owoztneoer'\nexpected = '012'",
+    "playground_run": "result = run_original_digits(Solution, s)\nresult",
+    "playground_assert": "assert_original_digits(result, expected)"
+}

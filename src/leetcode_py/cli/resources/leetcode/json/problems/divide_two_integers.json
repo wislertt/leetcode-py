@@ -1,0 +1,98 @@
+{
+    "problem_name": "divide_two_integers",
+    "solution_class_name": "Solution",
+    "problem_number": "29",
+    "problem_title": "Divide Two Integers",
+    "difficulty": "Medium",
+    "topics": "Math, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two integers `dividend` and `divisor`, divide two integers **without** using multiplication, division, and mod operator.\n\nThe integer division should truncate toward zero, which means losing its fractional part. For example, `8.345` would be truncated to `8`, and `-2.7335` would be truncated to `-2`.\n\nReturn *the **quotient** after dividing* `dividend` *by* `divisor`.\n\n**Note:** Assume we are dealing with an environment that could only store integers within the **32-bit** signed integer range: `[-2^31, 2^31 - 1]`. For this problem, if the quotient is **strictly greater than** `2^31 - 1`, then return `2^31 - 1`, and if the quotient is **strictly less than** `-2^31`, then return `-2^31`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: dividend = 10, divisor = 3\nOutput: 3\nExplanation: 10/3 = 3.33333.. which is truncated to 3.\n```"
+            },
+            {
+                "content": "```\nInput: dividend = 7, divisor = -3\nOutput: -2\nExplanation: 7/-3 = -2.33333.. which is truncated to -2.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `-2^31 <= dividend, divisor <= 2^31 - 1`\n- `divisor != 0`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "divide",
+    "helpers_run_signature": "(solution_class: type, dividend: int, divisor: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.divide(dividend, divisor)",
+    "helpers_assert_name": "divide",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_divide, run_divide\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DivideTwoIntegers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "divide",
+                "signature": "(self, dividend: int, divisor: int) -> int",
+                "body": "        # TODO: Implement divide\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_divide",
+                "signature": "(self, dividend: int, divisor: int, expected: int)",
+                "parametrize": "dividend, divisor, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 3, 3)",
+                        "(7, -3, -2)",
+                        "(0, 1, 0)",
+                        "(0, -5, 0)",
+                        "(1, 1, 1)",
+                        "(1, -1, -1)",
+                        "(-1, 1, -1)",
+                        "(-1, -1, 1)",
+                        "(100, -7, -14)",
+                        "(-100, -7, 14)",
+                        "(-100, 7, -14)",
+                        "(15, 4, 3)",
+                        "(-15, 4, -3)",
+                        "(5, -2, -2)",
+                        "(2147483647, 1, 2147483647)",
+                        "(2147483647, 2, 1073741823)",
+                        "(2147483647, -1, -2147483647)",
+                        "(-2147483648, -1, 2147483647)",
+                        "(-2147483648, 1, -2147483648)",
+                        "(-2147483648, 2, -1073741824)",
+                        "(-2147483648, -2, 1073741824)",
+                        "(3, 3, 1)",
+                        "(6, 2, 3)"
+                    ]
+                },
+                "body": "        result = run_divide(Solution, dividend, divisor)\n        assert_divide(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_divide, assert_divide\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndividend = 10\ndivisor = 3\nexpected = 3",
+    "playground_run": "result = run_divide(Solution, dividend, divisor)\nresult",
+    "playground_assert": "assert_divide(result, expected)"
+}

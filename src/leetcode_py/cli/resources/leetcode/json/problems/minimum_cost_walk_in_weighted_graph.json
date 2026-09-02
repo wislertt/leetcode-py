@@ -1,0 +1,97 @@
+{
+    "problem_name": "minimum_cost_walk_in_weighted_graph",
+    "solution_class_name": "Solution",
+    "problem_number": "3108",
+    "problem_title": "Minimum Cost Walk in Weighted Graph",
+    "difficulty": "Hard",
+    "topics": "Array, Bit Manipulation, Union Find, Graph",
+    "_tags": {
+        "list": ["neetcode"]
+    },
+    "readme_description": "There is an undirected weighted graph with `n` vertices labeled from `0` to `n - 1`.\n\nYou are given the integer `n` and an array `edges`, where `edges[i] = [ui, vi, wi]` indicates that there is an edge between vertices `ui` and `vi` with a weight of `wi`.\n\nA walk on a graph is a sequence of vertices and edges. The walk starts and ends with a vertex, and each edge connects the vertex that comes before it and the vertex that comes after it. It's important to note that a walk may visit the same edge or vertex more than once.\n\nThe **cost** of a walk starting at node `u` and ending at node `v` is defined as the bitwise `AND` of the weights of the edges traversed during the walk. In other words, if the sequence of edge weights encountered during the walk is `w0, w1, w2, ..., wk`, then the cost is calculated as `w0 & w1 & w2 & ... & wk`, where `&` denotes the bitwise `AND` operator.\n\nYou are also given a 2D array `query`, where `query[i] = [si, ti]`. For each query, you need to find the minimum cost of the walk starting at vertex `si` and ending at vertex `ti`. If there exists no such walk, the answer is `-1`.\n\nReturn *the array* `answer`*, where* `answer[i]` *denotes the **minimum** cost of a walk for query* `i`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/01/31/q4_example1-1.png)\n\n```\nInput: n = 5, edges = [[0,1,7],[1,3,7],[1,2,1]], query = [[0,3],[3,4]]\nOutput: [1,-1]\nExplanation:\nTo achieve the cost of 1 in the first query, we need to move on the following edges: 0->1 (weight 7), 1->2 (weight 1), 2->1 (weight 1), 1->3 (weight 7).\nIn the second query, there is no walk between nodes 3 and 4, so the answer is -1.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/01/31/q4_example2e.png)\n\n```\nInput: n = 3, edges = [[0,2,7],[0,1,15],[1,2,6],[1,2,1]], query = [[1,2]]\nOutput: [0]\nExplanation:\nTo achieve the cost of 0 in the first query, we need to move on the following edges: 1->2 (weight 1), 2->1 (weight 6), 1->2 (weight 1).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= n <= 10^5\n- 0 <= edges.length <= 10^5\n- edges[i].length == 3\n- 0 <= ui, vi <= n - 1\n- ui != vi\n- 0 <= wi <= 10^5\n- 1 <= query.length <= 10^5\n- query[i].length == 2\n- 0 <= si, ti <= n - 1\n- si != ti",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "minimum_cost",
+    "helpers_run_signature": "(solution_class: type, n: int, edges: list[list[int]], query: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.minimum_cost(n, edges, query)",
+    "helpers_assert_name": "minimum_cost",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_minimum_cost, run_minimum_cost\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumCostWalkInWeightedGraph",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "minimum_cost",
+                "signature": "(self, n: int, edges: list[list[int]], query: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement minimum_cost\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_minimum_cost",
+                "signature": "(self, n: int, edges: list[list[int]], query: list[list[int]], expected: list[int])",
+                "parametrize": "n, edges, query, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[0, 1, 7], [1, 3, 7], [1, 2, 1]], [[0, 3], [3, 4]], [1, -1])",
+                        "(3, [[0, 2, 7], [0, 1, 15], [1, 2, 6], [1, 2, 1]], [[1, 2]], [0])",
+                        "(2, [[0, 1, 5]], [[0, 1]], [5])",
+                        "(2, [], [[0, 1]], [-1])",
+                        "(4, [[0, 1, 3], [2, 3, 3]], [[0, 1], [0, 2], [2, 3]], [3, -1, 3])",
+                        "(3, [[0, 1, 0]], [[0, 1], [1, 0]], [0, 0])",
+                        "(4, [[0, 1, 1], [1, 2, 2], [2, 3, 4]], [[0, 3], [1, 3], [0, 2]], [0, 0, 0])",
+                        "(5, [[0, 1, 7], [1, 3, 7], [1, 2, 1]], [[4, 3], [0, 1], [2, 3]], [-1, 1, 1])",
+                        "(2, [[0, 1, 4], [0, 1, 3]], [[0, 1]], [0])",
+                        "(4, [[0, 1, 65535], [1, 2, 2]], [[0, 2], [2, 0]], [2, 2])",
+                        "(6, [[0, 1, 8], [2, 3, 8], [4, 5, 8]], [[0, 1], [1, 2], [2, 3], [4, 5]], [8, -1, 8, 8])",
+                        "(4, [[0, 1, 100000], [1, 2, 100000]], [[0, 2], [0, 3]], [100000, -1])",
+                        "(3, [[0, 1, 100000], [1, 2, 0]], [[0, 2]], [0])",
+                        "(4, [[0, 1, 12], [0, 2, 10], [0, 3, 6]], [[1, 2], [1, 3], [2, 3]], [0, 0, 0])",
+                        "(5, [[3, 1, 6], [3, 4, 3]], [[1, 3], [1, 0], [2, 1]], [2, -1, -1])",
+                        "(3, [[0, 1, 7], [2, 0, 6], [1, 0, 0], [2, 1, 5], [2, 1, 1]], [[2, 1], [2, 0]], [0, 0])",
+                        "(2, [], [[0, 1], [1, 0]], [-1, -1])",
+                        "(4, [[2, 0, 12], [0, 1, 0], [2, 1, 100000]], [[0, 2], [2, 1]], [0, 0])",
+                        "(2, [[0, 1, 0], [0, 1, 12], [1, 0, 1]], [[0, 1], [1, 0], [1, 0]], [0, 0, 0])",
+                        "(4, [[0, 3, 8], [0, 1, 5], [1, 2, 8], [0, 1, 100000]], [[0, 1], [2, 1]], [0, 0])",
+                        "(3, [[1, 2, 12], [2, 1, 0], [1, 0, 6], [0, 1, 8]], [[2, 0]], [0])",
+                        "(3, [[0, 1, 0]], [[1, 0], [0, 1], [1, 2]], [0, 0, -1])"
+                    ]
+                },
+                "body": "        result = run_minimum_cost(Solution, n, edges, query)\n        assert_minimum_cost(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_minimum_cost, assert_minimum_cost\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nedges = [[0, 1, 7], [1, 3, 7], [1, 2, 1]]\nquery = [[0, 3], [3, 4]]\nexpected = [1, -1]",
+    "playground_run": "result = run_minimum_cost(Solution, n, edges, query)\nresult",
+    "playground_assert": "assert_minimum_cost(result, expected)"
+}
