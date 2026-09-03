@@ -1,0 +1,93 @@
+{
+    "problem_name": "next_closest_time",
+    "solution_class_name": "Solution",
+    "problem_number": "681",
+    "problem_title": "Next Closest Time",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a `time` represented in the format `\"HH:MM\"`, form the next closest time by reusing the current digits. There is no limit on how many times a digit can be reused.\n\nYou may assume the given input string is always valid. For example, `\"01:34\"`, `\"12:09\"` are all valid. `\"1:34\"`, `\"12:9\"` are all invalid.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: time = \"19:34\"\nOutput: \"19:39\"\nExplanation: The next closest time choosing from digits 1, 9, 3, 4, is 19:39, which occurs 5 minutes later. It is not 19:33, because this occurs 23 hours and 59 minutes later.\n```"
+            },
+            {
+                "content": "```\nInput: time = \"23:59\"\nOutput: \"22:22\"\nExplanation: The next closest time choosing from digits 2, 3, 5, 9, is 22:22. It may be assumed that the returned time is next day's time since it is smaller than the input time numerically.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `time.length == 5`\n- `time` is a valid time in the form `\"HH:MM\"`.\n- `0 <= HH < 24`\n- `0 <= MM < 60`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "next_closest_time",
+    "helpers_run_signature": "(solution_class: type, time: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.next_closest_time(time)",
+    "helpers_assert_name": "next_closest_time",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_next_closest_time, run_next_closest_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NextClosestTime",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "next_closest_time",
+                "signature": "(self, time: str) -> str",
+                "body": "        # TODO: Implement next_closest_time\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_next_closest_time",
+                "signature": "(self, time: str, expected: str)",
+                "parametrize": "time, expected",
+                "test_cases": {
+                    "list": [
+                        "('19:34', '19:39')",
+                        "('23:59', '22:22')",
+                        "('00:00', '00:00')",
+                        "('11:11', '11:11')",
+                        "('13:55', '15:11')",
+                        "('09:59', '00:00')",
+                        "('10:00', '10:01')",
+                        "('15:47', '15:51')",
+                        "('20:38', '22:00')",
+                        "('06:06', '00:00')",
+                        "('12:34', '12:41')",
+                        "('17:59', '19:11')",
+                        "('21:11', '21:12')",
+                        "('23:53', '23:55')",
+                        "('05:05', '05:50')",
+                        "('18:42', '18:44')",
+                        "('08:15', '08:18')",
+                        "('14:02', '14:04')"
+                    ]
+                },
+                "body": "        result = run_next_closest_time(Solution, time)\n        assert_next_closest_time(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_next_closest_time, assert_next_closest_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntime = '19:34'\nexpected = '19:39'",
+    "playground_run": "result = run_next_closest_time(Solution, time)\nresult",
+    "playground_assert": "assert_next_closest_time(result, expected)"
+}

@@ -1,0 +1,89 @@
+{
+    "problem_name": "my_calendar_iii",
+    "solution_class_name": "MyCalendarThree",
+    "problem_number": "732",
+    "problem_title": "My Calendar III",
+    "difficulty": "Hard",
+    "topics": "Binary Search, Design, Segment Tree, Prefix Sum, Ordered Set",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A `k`-booking happens when `k` events have some non-empty intersection (i.e., there is some time that is common to all `k` events.)\n\nYou are given some events `[startTime, endTime)`, after each given event, return an integer `k` representing the maximum `k`-booking between all the previous events.\n\nImplement the `MyCalendarThree` class:\n\n- `MyCalendarThree()` Initializes the object.\n- `int book(int startTime, int endTime)` Returns an integer `k` representing the largest integer such that there exists a `k`-booking in the calendar.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MyCalendarThree\", \"book\", \"book\", \"book\", \"book\", \"book\", \"book\"]\n[[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]\nOutput\n[null, 1, 1, 2, 3, 3, 3]\n\nExplanation\nMyCalendarThree myCalendarThree = new MyCalendarThree();\nmyCalendarThree.book(10, 20); // return 1\nmyCalendarThree.book(50, 60); // return 1\nmyCalendarThree.book(10, 40); // return 2\nmyCalendarThree.book(5, 15);  // return 3\nmyCalendarThree.book(5, 10);  // return 3\nmyCalendarThree.book(25, 55); // return 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= startTime < endTime <= 10^9\n- At most 400 calls will be made to book.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "calendar_ops",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    calendar = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MyCalendarThree':\n            calendar = solution_class()\n            results.append(None)\n        elif op == 'book' and calendar is not None:\n            results.append(calendar.book(inputs[i][0], inputs[i][1]))\n    return results, calendar",
+    "helpers_assert_name": "calendar_ops",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_calendar_ops, run_calendar_ops\nfrom .solution import MyCalendarThree",
+    "test_content": "",
+    "test_class_name": "MyCalendarIII",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize\n        pass"
+            },
+            {
+                "name": "book",
+                "signature": "(self, start_time: int, end_time: int) -> int",
+                "body": "        # TODO: Implement book\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_calendar_ops",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MyCalendarThree','book','book','book','book','book','book'],[[],[10,20],[50,60],[10,40],[5,15],[5,10],[25,55]],[None,1,1,2,3,3,3])",
+                        "(['MyCalendarThree','book'],[[],[1,2]],[None,1])",
+                        "(['MyCalendarThree','book','book','book'],[[],[1,5],[5,10],[10,15]],[None,1,1,1])",
+                        "(['MyCalendarThree','book','book'],[[],[3,7],[3,7]],[None,1,2])",
+                        "(['MyCalendarThree','book','book','book'],[[],[3,7],[3,7],[3,7]],[None,1,2,3])",
+                        "(['MyCalendarThree','book','book','book'],[[],[10,40],[5,15],[5,10]],[None,1,2,2])",
+                        "(['MyCalendarThree','book','book','book'],[[],[0,100],[10,20],[12,15]],[None,1,2,3])",
+                        "(['MyCalendarThree','book','book'],[[],[5,10],[10,20]],[None,1,1])",
+                        "(['MyCalendarThree','book','book','book'],[[],[0,1000000000],[0,1000000000],[999999999,1000000000]],[None,1,2,3])",
+                        "(['MyCalendarThree','book','book','book'],[[],[1,10],[2,3],[4,5]],[None,1,2,2])",
+                        "(['MyCalendarThree','book','book','book'],[[],[1,5],[3,8],[20,30]],[None,1,2,2])",
+                        "(['MyCalendarThree','book','book','book'],[[],[1,4],[2,5],[6,9]],[None,1,2,2])",
+                        "(['MyCalendarThree','book','book','book','book'],[[],[1,10],[1,10],[1,10],[1,10]],[None,1,2,3,4])",
+                        "(['MyCalendarThree','book','book','book','book'],[[],[1,3],[2,4],[3,5],[4,6]],[None,1,2,2,2])",
+                        "(['MyCalendarThree','book','book','book','book'],[[],[0,100],[10,20],[10,20],[30,40]],[None,1,2,3,3])",
+                        "(['MyCalendarThree','book','book','book'],[[],[5,15],[10,20],[14,25]],[None,1,2,3])",
+                        "(['MyCalendarThree','book','book','book'],[[],[0,50],[25,30],[24,26]],[None,1,2,3])",
+                        "(['MyCalendarThree','book','book','book'],[[],[7,9],[1,8],[8,12]],[None,1,2,2])"
+                    ]
+                },
+                "body": "        result, _ = run_calendar_ops(MyCalendarThree, operations, inputs)\n        assert_calendar_ops(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_calendar_ops, assert_calendar_ops\nfrom solution import MyCalendarThree",
+    "playground_setup": "# Example test case\noperations = ['MyCalendarThree', 'book', 'book', 'book', 'book', 'book', 'book']\ninputs = [[], [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]]\nexpected = [None, 1, 1, 2, 3, 3, 3]",
+    "playground_run": "result, calendar = run_calendar_ops(MyCalendarThree, operations, inputs)\nprint(result)\ncalendar",
+    "playground_assert": "assert_calendar_ops(result, expected)"
+}

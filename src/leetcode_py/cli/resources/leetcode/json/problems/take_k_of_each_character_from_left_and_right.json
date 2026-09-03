@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: s = \"aabaaaacaabc\", k = 2\nOutput: 8\nExplanation: \nTake three characters from the left of s. You now have two 'a' characters, and one 'b' character.\nTake five characters from the right of s. You now have four 'a' characters, two 'b' characters, and two 'c' characters.\nA total of 3 + 5 = 8 minutes is needed.\nIt can be proven that 8 is the minimum number of minutes needed.\n```"
+                "content": "```\nInput: s = \"aabaaaacaabc\", k = 2\nOutput: 8\nExplanation:\nTake three characters from the left of s. You now have two 'a' characters, and one 'b' character.\nTake five characters from the right of s. You now have four 'a' characters, two 'b' characters, and two 'c' characters.\nA total of 3 + 5 = 8 minutes is needed.\nIt can be proven that 8 is the minimum number of minutes needed.\n```"
             },
             {
                 "content": "```\nInput: s = \"a\", k = 1\nOutput: -1\nExplanation: It is not possible to take one 'b' or 'c' so return -1.\n```"

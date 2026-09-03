@@ -1,0 +1,87 @@
+{
+    "problem_name": "output_contest_matches",
+    "solution_class_name": "Solution",
+    "problem_number": "544",
+    "problem_title": "Output Contest Matches",
+    "difficulty": "Medium",
+    "topics": "Recursion, String, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "During the NBA playoffs, we always set the rather strong team to play with the rather weak team, like making the rank `1` team play with the rank `n`th team, which is a good strategy to make the contest more interesting.\n\nGiven `n` teams, return their final contest matches in the form of a string.\n\nThe `n` teams are labeled from `1` to `n`, which represents their initial rank (i.e., Rank `1` is the strongest team and Rank `n` is the weakest team).\n\nWe will use parentheses `'('`, and `')'` and commas `','` to represent the contest team pairing. We use the parentheses for pairing and the commas for partition. During the pairing process in each round, you always need to follow the strategy of making the rather strong one pair with the rather weak one.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4\nOutput: \"((1,4),(2,3))\"\nExplanation:\nIn the first round, we pair the team 1 and 4, the teams 2 and 3 together, as we need to make the strong team and weak team together.\nAnd we got (1, 4),(2, 3).\nIn the second round, the winners of (1, 4) and (2, 3) need to play again to generate the final winner, so you need to add the parentheses outside them.\nAnd we got the final answer ((1,4),(2,3)).\n```"
+            },
+            {
+                "content": "```\nInput: n = 8\nOutput: \"(((1,8),(4,5)),((2,7),(3,6)))\"\nExplanation:\nFirst round: (1, 8),(2, 7),(3, 6),(4, 5)\nSecond round: ((1, 8),(4, 5)),((2, 7),(3, 6))\nThird round: (((1, 8),(4, 5)),((2, 7),(3, 6)))\nSince the third round will generate the final winner, you need to output the answer (((1,8),(4,5)),((2,7),(3,6))).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == 2^x` where `x` is in the range `[1, 12]`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_contest_match",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_contest_match(n)",
+    "helpers_assert_name": "find_contest_match",
+    "helpers_assert_signature": "(result: str, n: int, expected: str | int) -> bool",
+    "helpers_assert_body": "    if isinstance(expected, str):\n        assert result == expected\n    else:\n        # Large n: the exact string overflows the parametrize line budget, so the JSON\n        # carries the machine-verified output length instead.\n        assert len(result) == expected\n        assert result.count('(') == n - 1\n        assert result.count(')') == n - 1\n        assert result.startswith('(') and result.endswith(')')\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_contest_match, run_find_contest_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OutputContestMatches",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_contest_match",
+                "signature": "(self, n: int) -> str",
+                "body": "        # TODO: Implement find_contest_match\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_contest_match",
+                "signature": "(self, n: int, expected: str | int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, '(1,2)')",
+                        "(4, '((1,4),(2,3))')",
+                        "(8, '(((1,8),(4,5)),((2,7),(3,6)))')",
+                        "(16, '((((1,16),(8,9)),((4,13),(5,12))),(((2,15),(7,10)),((3,14),(6,11))))')",
+                        "(32, 148)",
+                        "(64, 308)",
+                        "(128, 657)",
+                        "(256, 1425)",
+                        "(512, 2961)",
+                        "(1024, 6058)",
+                        "(2048, 13226)",
+                        "(4096, 27562)"
+                    ]
+                },
+                "body": "        result = run_find_contest_match(Solution, n)\n        assert_find_contest_match(result, n, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_contest_match, assert_find_contest_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 8\nexpected = '(((1,8),(4,5)),((2,7),(3,6)))'",
+    "playground_run": "result = run_find_contest_match(Solution, n)\nresult",
+    "playground_assert": "assert_find_contest_match(result, n, expected)"
+}

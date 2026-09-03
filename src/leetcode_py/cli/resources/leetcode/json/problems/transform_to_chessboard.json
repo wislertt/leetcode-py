@@ -1,0 +1,105 @@
+{
+    "problem_name": "transform_to_chessboard",
+    "solution_class_name": "Solution",
+    "problem_number": "782",
+    "problem_title": "Transform to Chessboard",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Bit Manipulation, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `n x n` binary grid `board`. In each move, you can swap any two rows with each other, or any two columns with each other.\n\nReturn the minimum number of moves to transform the board into a chessboard board. If the task is impossible, return `-1`.\n\nA chessboard board is a board where no `0`'s and no `1`'s are 4-directionally adjacent.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/29/chessboard1-grid.jpg)\n\n```\nInput: board = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]\nOutput: 2\nExplanation: One potential sequence of moves is shown.\nThe first move swaps the first and second column.\nThe second move swaps the second and third row.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/06/29/chessboard2-grid.jpg)\n\n```\nInput: board = [[0,1],[1,0]]\nOutput: 0\nExplanation: Also note that the board with 0 in the top left corner, is also a valid chessboard.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/06/29/chessboard3-grid.jpg)\n\n```\nInput: board = [[1,0],[1,0]]\nOutput: -1\nExplanation: No matter what sequence of moves you make, you cannot end with a valid chessboard.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == board.length\n- n == board[i].length\n- 2 <= n <= 30\n- board[i][j] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "moves_to_chessboard",
+    "helpers_run_signature": "(solution_class: type, board: list[list[int]])",
+    "helpers_run_body": "    import copy\n    board_copy = copy.deepcopy(board)\n    implementation = solution_class()\n    return implementation.moves_to_chessboard(board_copy)",
+    "helpers_assert_name": "moves_to_chessboard",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_moves_to_chessboard, run_moves_to_chessboard\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TransformToChessboard",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "moves_to_chessboard",
+                "signature": "(self, board: list[list[int]]) -> int",
+                "body": "        # TODO: Implement moves_to_chessboard\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_moves_to_chessboard",
+                "signature": "(self, board: list[list[int]], expected: int)",
+                "parametrize": "board, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]], 2)",
+                        "([[0,1],[1,0]], 0)",
+                        "([[1,0],[1,0]], -1)",
+                        "([[1,0],[0,1]], 0)",
+                        "([[0,1,0],[1,0,1],[0,1,0]], 0)",
+                        "([[1,0,1],[0,1,0],[1,0,1]], 0)",
+                        "([[1,0,1],[0,1,0],[0,1,0]], 1)",
+                        "([[0,1,0],[0,1,0],[1,0,1]], 1)",
+                        "([[0,1,1],[1,0,0],[1,0,0]], 2)",
+                        "([[1,1,0],[0,0,1],[0,0,1]], 2)",
+                        "([[0,1,0,1],[1,0,1,0],[0,1,0,1],[1,0,1,0]], 0)",
+                        "([[1,0,1,0],[0,1,0,1],[1,0,1,0],[0,1,0,1]], 0)",
+                        "([[1,0,1,0],[0,1,0,1],[0,1,0,1],[1,0,1,0]], 1)",
+                        "([[1,0,1,0],[1,0,1,0],[0,1,0,1],[0,1,0,1]], 1)",
+                        "([[0,1,1,0],[1,0,0,1],[1,0,0,1],[0,1,1,0]], 2)",
+                        "([[0,0,1,1],[1,1,0,0],[1,1,0,0],[0,0,1,1]], 2)",
+                        "([[0,0],[0,0]], -1)",
+                        "([[1,0],[0,0]], -1)",
+                        "([[0,0,0],[0,0,0],[0,0,0]], -1)",
+                        "([[1,0,0],[0,0,0],[0,0,0]], -1)",
+                        "([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], -1)",
+                        "([[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], -1)",
+                        "([[0,1,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]], -1)",
+                        "([[0,1,1],[1,0,0],[0,1,1]], 1)",
+                        "([[0,1,0,1,0],[1,0,1,0,1],[0,1,0,1,0],[1,0,1,0,1],[0,1,0,1,0]], 0)",
+                        "([[1,0,0,1,1],[1,0,0,1,1],[0,1,1,0,0],[0,1,1,0,0],[1,0,0,1,1]], 2)",
+                        "([[0,1,0,1,0],[1,0,1,0,1],[1,1,0,0,1],[0,1,0,1,0],[1,0,1,0,1]], -1)"
+                    ]
+                },
+                "body": "        result = run_moves_to_chessboard(Solution, board)\n        assert_moves_to_chessboard(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_moves_to_chessboard, assert_moves_to_chessboard\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]\nexpected = 2",
+    "playground_run": "result = run_moves_to_chessboard(Solution, board)\nresult",
+    "playground_assert": "assert_moves_to_chessboard(result, expected)"
+}

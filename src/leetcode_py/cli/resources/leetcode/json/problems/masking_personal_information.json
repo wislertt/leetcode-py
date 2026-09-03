@@ -1,0 +1,101 @@
+{
+    "problem_name": "masking_personal_information",
+    "solution_class_name": "Solution",
+    "problem_number": "831",
+    "problem_title": "Masking Personal Information",
+    "difficulty": "Medium",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a personal information string `s`, representing either an **email address** or a **phone number**. Return *the **masked** personal information using the below rules*.\n\n<u>**Email address:**</u>\n\nAn email address is:\n\n- A **name** consisting of **at least** two uppercase and lowercase English letters, followed by\n- The `'@'` symbol, followed by\n- The **domain** consisting of uppercase and lowercase English letters with a dot `'.'` somewhere in the middle (not the first or last character).\n\nTo mask an email:\n\n- The uppercase letters in the **name** and **domain** must be converted to lowercase letters.\n- The middle letters of the **name** (i.e., all but the first and last letters) must be replaced by 5 asterisks `\"*****\"`.\n\n<u>**Phone number:**</u>\n\nA phone number is formatted as follows:\n\n- The phone number contains 10-13 digits.\n- The last 10 digits make up the **local number**.\n- The remaining 0-3 digits, in the beginning, make up the **country code**.\n- **Separation characters** from the set `{'+', '-', '(', ')', ' '}` separate the above digits in some way.\n\nTo mask a phone number:\n\n- Remove all **separation characters**.\n- The masked phone number should have the form:\n  - `\"***-***-XXXX\"` if the country code has 0 digits.\n  - `\"+*-***-***-XXXX\"` if the country code has 1 digit.\n  - `\"+**-***-***-XXXX\"` if the country code has 2 digits.\n  - `\"+***-***-***-XXXX\"` if the country code has 3 digits.\n\n- `\"XXXX\"` is the last 4 digits of the **local number**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"LeetCode@LeetCode.com\"\nOutput: \"l*****e@leetcode.com\"\nExplanation: s is an email address.\nThe name and domain are converted to lowercase, and the middle of the name is replaced by 5 asterisks.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"AB@qq.com\"\nOutput: \"a*****b@qq.com\"\nExplanation: s is an email address.\nThe name and domain are converted to lowercase, and the middle of the name is replaced by 5 asterisks.\nNote that even though \"ab\" is 2 characters, it still must have 5 asterisks in the middle.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"1(234)567-890\"\nOutput: \"***-***-7890\"\nExplanation: s is a phone number.\nThere are 10 digits, so the local number is 10 digits and the country code is 0 digits.\nThus, the resulting masked number is \"***-***-7890\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- s is either a valid email or a phone number.\n- If s is an email:\n  - 8 <= s.length <= 40\n  - s consists of uppercase and lowercase English letters and exactly one '@' symbol and '.' symbol.\n- If s is a phone number:\n  - 10 <= s.length <= 20\n  - s consists of digits, spaces, and the symbols '(', ')', '-', and '+'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "mask_pii",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.mask_pii(s)",
+    "helpers_assert_name": "mask_pii",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_mask_pii, run_mask_pii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaskingPersonalInformation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "mask_pii",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement mask_pii\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_mask_pii",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('LeetCode@LeetCode.com', 'l*****e@leetcode.com')",
+                        "('AB@qq.com', 'a*****b@qq.com')",
+                        "('aBcD@xYz.com', 'a*****d@xyz.com')",
+                        "('abc@code.org', 'a*****c@code.org')",
+                        "('Worker@LeetCode.com', 'w*****r@leetcode.com')",
+                        "('xy@mailserver.com', 'x*****y@mailserver.com')",
+                        "('ruh@ftqv.kc', 'r*****h@ftqv.kc')",
+                        "('LwWcQjGQ@nsscuxk.xz', 'l*****q@nsscuxk.xz')",
+                        "('wXAWrww@jyvd.lyp', 'w*****w@jyvd.lyp')",
+                        "('1(234)567-890', '***-***-7890')",
+                        "('123-456-7890', '***-***-7890')",
+                        "('(123) 456-7890', '***-***-7890')",
+                        "('1234567890', '***-***-7890')",
+                        "('+1 234 567 8901', '+*-***-***-8901')",
+                        "('861234567890', '+**-***-***-7890')",
+                        "('+999-999-999-999', '+**-***-***-9999')",
+                        "('1(111)111-1111', '+*-***-***-1111')",
+                        "('+111 111 111 1111', '+***-***-***-1111')",
+                        "('1 234 567 8901', '+*-***-***-8901')",
+                        "('2 7(431 54+622', '***-***-4622')",
+                        "('36 1 652)24-9 79', '+*-***-***-4979')",
+                        "('6(64+4)9+42-96 951', '+**-***-***-6951')",
+                        "('15+40424+0+4 2939', '+***-***-***-2939')"
+                    ]
+                },
+                "body": "        result = run_mask_pii(Solution, s)\n        assert_mask_pii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_mask_pii, assert_mask_pii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'LeetCode@LeetCode.com'\nexpected = 'l*****e@leetcode.com'",
+    "playground_run": "result = run_mask_pii(Solution, s)\nresult",
+    "playground_assert": "assert_mask_pii(result, expected)"
+}

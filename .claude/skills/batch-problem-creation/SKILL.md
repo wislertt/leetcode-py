@@ -74,6 +74,8 @@ For each manifest line, spawn ONE agent with `subagent_type: "general-purpose"` 
 
 **GOTCHA — never derive a spawn number from memory.** Every spawn prompt must be filled from a MANIFEST LINE read in that same turn (`awk '{print $2}' /tmp/batch_manifest.txt` to list unspawned numbers). Numbering refills from recall invents problems: 2026-09-02 batch 17 spawned 6 numbers (587-597) that were not in the manifest — 2 landed on SQL (dead spawns), 4 created unplanned problems, and a real manifest line (575) was skipped until the end-of-batch reconciliation caught it. Second consecutive batch with a manifest-discipline failure (batch 16 silently dropped 3 lines). Same rule as the scrape gotcha above, one level up: hand-transcription of numbers is where batches go wrong, whether into a scrape command or a spawn prompt. When refilling, take the LOWEST unspawned manifest number(s) not yet reported — and keep a spawned/set marker (e.g. touch `/tmp/batch_spawned_{N}`) if multiple reports land in one turn, so the same line is never double-spawned or skipped.
 
+**GOTCHA — the manifest has GAPS; never assume contiguous numbering.** The `new`-source pool skips numbers already in the repo, so manifest numbers are non-contiguous (batch 19: ...858, 859, 864... — 853/860-863 absent). "The next number" or "previous + 1" is wrong by construction. Enforcement: touch a spawn marker ONLY for a number that the unspawned-scan (`comm` of manifest numbers vs spawned markers) listed in that same turn; run the scan FIRST, take its first line, touch, then spawn. Blind neighbor-touching cost batch 19 three stray off-manifest spawns (815/853/860 — all pre-existing problems; see also the pre-existing-problem line in the prompt template).
+
 **Subagent prompt template** — fill `{N}`, `{TAG}`, `{SCRAPE_PATH}` (`/tmp/batch_scrape_{N}.json`) from the manifest line, verbatim otherwise:
 
 ```text
@@ -113,6 +115,12 @@ Do, in order:
    orchestrator can insert the tag and re-test by real dir names — do NOT assume the scrape
    slug (they can differ, e.g. shorter names chosen to satisfy E501).
 
+IF THE PROBLEM ALREADY EXISTS in the repo (leetcode/{problem_name}/ or its JSON): do NOT
+recreate or overwrite from scratch — verify the existing work against these requirements
+instead (machine-verified expectations, QA chain, scoped lint), LEAVE `_tags` in the JSON
+untouched (the orchestrator owns tags), and report status PASS with a note that the problem
+pre-existed.
+
 Boundaries — you own ONLY this problem:
 - Touch only: your JSON file, leetcode/{problem_name}/, /tmp scratch files (including
   /tmp/batch_name_{N}.txt)
@@ -130,9 +138,28 @@ Report back EXACTLY this and nothing else:
 - any deviation from the skills you had to make and why
 ```
 
+**MANDATORY before gate 2.0 — spawned-vs-done reconciliation.** Never start finalization while any
+manifest line is unaccounted for. Every spawn must leave a marker (`touch /tmp/batch_spawned_{N}`),
+and the batch is fully reported only when this is empty:
+
+```bash
+comm -23 <(sort -n <(ls /tmp/batch_spawned_* | sed 's/.*batch_spawned_//')) \
+         <(sort -n <(ls /tmp/batch_name_*.txt | sed 's/.*batch_name_//;s/\.txt//'))
+```
+
+Non-empty output means a report never arrived (notification drops hit batches 13, 15, 16, and 18 —
+2 of 50-111 lines each). Handle per the 1.3 dropped-notification fallback BEFORE proceeding: check
+`/tmp/batch_name_{N}.txt` + `leetcode/<dir>` existence, confirm with a scoped pytest, and respawn
+only if zero artifacts exist. Batch 18 stalled multiple turns waiting on two reports the user had to
+rule out manually — the skill had the _check_ but not the _when_, which is why this is a gate now.
+Also prune stale markers for numbers you touched but that are NOT manifest lines (off-manifest
+touches poison this scan into reporting "all spawned" early).
+
 ### 1.3: After Each Agent Report (main context)
 
-- PASS: `sed -i '' 's/    problem: str = ".*"/    problem: str = "{problem_name}"/' bakefile.py` — keeps `bake p-test` default pointing at the newest problem. Then reconcile the flight to target (count running, spawn the deficit from the manifest). The agent also wrote its real dir name to /tmp/batch_name_{N}.txt — authoritative for tag insert (gate 2.0) and Step 3 re-testing; do NOT derive names from the scrape slug (they can differ)
+- PASS: `sed -i '' 's/    problem: str = ".*"/    problem: str = "{problem_name}"/' bakefile.py` — keeps `bake p-test` default pointing at the newest problem.
+- **MANDATORY every turn: run ListAgents and COUNT running agents, then spawn `target - running` from the manifest. NEVER infer the flight count from how many reports arrived this turn** — notifications clump and lag (spawn latency 1-3 min), so "1 report = 1 slot free, spawn 1" under-spawns persistently and the flight decays (batch 19: sagged to 1 running by batch end; 150-problem batch stretched hours longer than needed). Count the roster, spawn the whole deficit at once.
+- The agent also wrote its real dir name to /tmp/batch_name_{N}.txt — authoritative for tag insert (gate 2.0) and Step 3 re-testing; do NOT derive names from the scrape slug (they can differ)
 - FAIL: log reason for the summary; decide retry once vs skip per Error Handling. Do not debug inline — a failed agent's context is gone; if retrying, spawn a fresh agent including the failure paragraph in the prompt
 - **GOTCHA — completion notifications can be silently dropped** (3 of 50 in batch 13: the agent left the roster with no notification ever arriving). If an agent seems long-running but you suspect it finished, do NOT respawn (it would collide on the same files) — check `/tmp/batch_name_{N}.txt` existence + `leetcode/<dir>` presence, then confirm with a scoped pytest run on that dir before counting it done or scheduling a respawn
 - Suppressed-output discipline (the whole point of this design): never print scrape JSON, full p-gen logs, or full test output to main context. `| tail -3` or grep a count. If deeper inspection is needed, it belongs in the NEXT agent's prompt, not this conversation
@@ -145,7 +172,7 @@ Report back EXACTLY this and nothing else:
 
 ## Step 2: Batch Finalization (MANDATORY — after ALL problems)
 
-Five gates in order. Do NOT skip any.
+Six gates in order. Do NOT skip any.
 
 ### 2.0: Tag Insert (main-side — agents no longer insert their own)
 
@@ -198,10 +225,14 @@ uv run python .claude/.dev/update_tags.py
 
 ### 2.3: Consistency Check
 
+Each run regenerates ALL problems (minutes on 1300+ trees) — plan to run it as few times as possible:
+
 ```bash
-bake check-consistency
+bake check-consistency > /tmp/consistency.log 2>&1; grep -E 'PASSED|FAILED|Drift' /tmp/consistency.log
 ```
 
+- **NEVER `tail` the live output** — the `Drift:` box prints AFTER the summary line, so a tail window hides which file drifted and forces a full multi-minute re-run just to learn the name (batch 19: 3 full runs instead of 1). Redirect to a file and grep it.
+- Fix ALL drift files in ONE pass, then re-run once. Re-running after every single fix is the expensive failure mode.
 - Regenerates ALL problems from JSON into a temp dir, converts notebooks, lints, then diffs against the working tree (original `leetcode/` is restored afterwards — solutions preserved)
 - Expect `✅ Consistency check PASSED: all files match JSON source of truth`
 - On drift (`Drift: leetcode/<problem>/<file>`): **read and follow @.claude/skills/consistency-fix.md**
@@ -233,6 +264,16 @@ bake p-gen -p {problem_name} -f
 cp /tmp/solution_backup.py leetcode/{problem_name}/solution.py
 ```
 
+### 2.5: Docs Stub-Poisoning Check
+
+```bash
+grep -rl "TODO: Implement" docs/problems/ | wc -l   # must be 0
+```
+
+- **Why**: `check-consistency` (gate 2.3) regenerates `leetcode/` as stubs, lints (which regenerates `docs/problems/` from those stubs), then restores `leetcode/` — docs were the blind spot until 2026-09-03, when all 1404 pages shipped with `# TODO: Implement` + `O(?)` embedded despite clean git status. The bakefile now re-runs `gen_problems.py` after the restore, but any future clobber-window variant re-opens the hole; git status CANNOT detect this class of damage — the poisoned file looks legitimately generated
+- On a nonzero count: `uv run python scripts/gen_problems.py` regenerates from the real tree, then re-grep. If solutions themselves are stubbed (`grep -rl "TODO: Implement" leetcode/*/solution.py`), restore from the gate 2.4 safety snapshot FIRST, regen docs second
+- Runs in seconds — cheap sixth gate
+
 ## Step 3: Batch Summary
 
 Report: total created, success rate, failed problems with reasons, finalization results. Then re-test all batch problems with `bake p-test -p {name}` and report counts.
@@ -255,7 +296,7 @@ After the summary, review the run and **suggest** candidate updates to any skill
     - auto-memory `skill-suggestions-log` (machine-local, not in git) — a suggestion already recorded there is BLOCKED from re-proposal; if it was applied, re-suggesting means the skill text failed (say which wording); if it was skipped, the user chose not to act (do not resurrect)
     - `RUN_HISTORY.md` in this skill folder (git-tracked) — the experiment registry + per-batch run history
 - **Evaluate open experiments against this run's metrics**: for each experiment in `testing` status in RUN_HISTORY.md, compare its success criteria against what this run actually recorded (wall time per problem, gate failures, boundary violations, context use). Move it to `validated` (then propose the skill change it implies) or `rejected` (record why, with numbers). An experiment needs at least one full batch of data before any verdict
-- **Append this run's record** to RUN_HISTORY.md's run history: date, batch size, mode (sequential/parallel, concurrency), agent durations or wall time, FAIL count, gate results, boundary violations. One line per batch — this is the baseline future experiments are measured against. New process changes get registered in RUN_HISTORY.md too
+- **Append this run's record** to RUN_HISTORY.md's run history: date, batch size, mode (sequential/parallel, concurrency), agent durations or wall time, FAIL count, gate results, boundary violations. One line per batch — this is the baseline future experiments are measured against. Retention: NEVER more than the last 5 batches as full lines — when appending pushes the count past 5, distill and combine the oldest full lines into aggregate lines (keep only baseline-relevant facts; failure-mode detail lives in the skill-suggestions-log memory, not here). New process changes get registered in RUN_HISTORY.md too
 - **Suggestion only. NEVER edit skill files** — the user decides and updates skills themselves (unless the user explicitly instructs the edit this session; then record the applied change in the log)
 - **Bar for additions**: only what (a) will recur in future runs AND (b) existing skill content misses. Reject re-derivations (an existing gotcha catching the issue = skill working), refinements/widenings of working gotchas, niche one-offs (a greppable reference JSON suffices), run trivia. Test: name the exact step that failed AND the cycle it cost — no cost, no suggestion
 - **Bar for cuts**: anything the run showed to be redundant, misleading, or unused — including steps followed out of habit that added no value
@@ -267,12 +308,13 @@ After the summary, review the run and **suggest** candidate updates to any skill
 - **Continue the batch** when a problem fails — log the reason, move to the next, note it in the summary
 - **NEVER edit generated files** (helpers.py, test_solution.py, README.md, ...) — fix the JSON template and regenerate. The ONLY exception is `solution.py`
 - **Scrape failures**: premium → unscrapable queue; SQL → `NON_PYTHON_PROBLEMS`; transient API → retry once. For `new`-source failures the name is unknown until classified — fetch each failed number's title and file accordingly: `curl -s https://leetcode.ca/all/{N}.html | grep -o '<title>[^<]*'`; SQL/shell titles (Combine Two Tables, Word Frequency, ...) go to `NON_PYTHON_PROBLEMS`, premium Python titles to `UNSCRAPABLE_QUEUE` (batch 16: 21 numbers classified in one pass this way)
+- **Replacement pool exhausted**: pick state does not advance until disk changes, so a replacement `--take` after failures re-issues only already-picked manifest lines. If the filtered pull yields nothing new, the `new`/`list` pool is EMPTY — do not keep widening the take (batch 18: 45-wide pull after 31 failures returned only re-issues; the wider sweep added zero candidates, exactly as batch 16's 230-wide-sweep note predicted in reverse). Instead: shrink the batch to the creatable count, tell the user the gap and where each lost number went (SQL → `NON_PYTHON_PROBLEMS`, premium → `UNSCRAPABLE_QUEUE`, premium queue entries can be created this batch via the doocs web flow), and proceed. Recurs every batch from now on: registered lists are complete and the fallback pool only shrinks.
 
 ## Success Criteria
 
 Each problem: all files generated, optimal solution implemented (single class), 12+ test cases, lint clean, `bake p-test` passes, QA chain run with solution preserved.
 
-The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, `bake check-test-cases` exits 0, all problems still pass `bake p-test` after finalization.
+The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, `bake check-test-cases` exits 0, zero `TODO: Implement` hits in `docs/problems/`, all problems still pass `bake p-test` after finalization.
 
 ## Unscrapable Problems Management
 

@@ -1,0 +1,92 @@
+{
+    "problem_name": "domino_and_tromino_tiling",
+    "solution_class_name": "Solution",
+    "problem_number": "790",
+    "problem_title": "Domino and Tromino Tiling",
+    "difficulty": "Medium",
+    "topics": "Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have two types of tiles: a `2 x 1` domino shape and a tromino shape. You may rotate these shapes.\n\nGiven an integer n, return *the number of ways to tile an* `2 x n` *board*. Since the answer may be very large, return it **modulo** `10^9 + 7`.\n\nIn a tiling, every square must be covered by a tile. Two tilings are different if and only if there are two 4-directionally adjacent cells on the board such that exactly one of the tilings has both squares occupied by a tile.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/07/15/lc-domino.jpg)\n\n```\nInput: n = 3\nOutput: 5\nExplanation: The five different ways are shown above.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_tilings",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_tilings(n)",
+    "helpers_assert_name": "num_tilings",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_tilings, run_num_tilings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DominoAndTrominoTiling",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_tilings",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement num_tilings\n        return 1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_tilings",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 5)",
+                        "(4, 11)",
+                        "(5, 24)",
+                        "(6, 53)",
+                        "(7, 117)",
+                        "(8, 258)",
+                        "(9, 569)",
+                        "(10, 1255)",
+                        "(11, 2768)",
+                        "(12, 6105)",
+                        "(15, 65501)",
+                        "(20, 3418626)",
+                        "(30, 312342182)",
+                        "(50, 451995198)",
+                        "(1000, 979232805)"
+                    ]
+                },
+                "body": "        result = run_num_tilings(Solution, n)\n        assert_num_tilings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_tilings, assert_num_tilings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 3\nexpected = 5",
+    "playground_run": "result = run_num_tilings(Solution, n)\nresult",
+    "playground_assert": "assert_num_tilings(result, expected)"
+}

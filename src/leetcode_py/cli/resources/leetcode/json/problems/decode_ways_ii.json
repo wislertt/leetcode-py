@@ -1,0 +1,108 @@
+{
+    "problem_name": "decode_ways_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "639",
+    "problem_title": "Decode Ways II",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A message containing letters from A-Z can be encoded into numbers using the following mapping:\n\n```\n'A' -> \"1\"\n'B' -> \"2\"\n...\n'Z' -> \"26\"\n```\n\nTo decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, \"11106\" can be mapped into:\n\n- \"AAJF\" with the grouping (1 1 10 6)\n- \"KJF\" with the grouping (11 10 6)\n\nNote that the grouping (1 11 06) is invalid because \"06\" cannot be mapped into 'F' since \"6\" is different from \"06\".\n\nIn addition to the mapping above, an encoded message may contain the '*' character, which can represent any digit from '1' to '9' ('0' is excluded). For example, the encoded message \"1*\" may represent any of the encoded messages \"11\", \"12\", \"13\", \"14\", \"15\", \"16\", \"17\", \"18\", or \"19\". Decoding \"1*\" is equivalent to decoding any of the encoded messages it can represent.\n\nGiven a string s consisting of digits and '*' characters, return the number of ways to decode it.\n\nSince the answer may be very large, return it modulo 10^9 + 7.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"*\"\nOutput: 9\nExplanation: The encoded message can represent any of the encoded messages \"1\" through \"9\". Each of these can be decoded to the strings \"A\" through \"I\" respectively. Hence, there are a total of 9 ways to decode \"*\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"1*\"\nOutput: 18\nExplanation: The encoded message can represent any of the encoded messages \"11\" through \"19\". Each of these encoded messages have 2 ways to be decoded (e.g. \"11\" can be decoded to \"AA\" or \"K\"). Hence, there are a total of 9 * 2 = 18 ways to decode \"1*\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"2*\"\nOutput: 15\nExplanation: The encoded message can represent any of the encoded messages \"21\" through \"29\". \"21\" through \"26\" have 2 ways of being decoded, but \"27\" through \"29\" only have 1 way. Hence, there are a total of (6 * 2) + (3 * 1) = 15 ways to decode \"2*\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s[i] is a digit or '*'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_decodings",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_decodings(s)",
+    "helpers_assert_name": "num_decodings",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_decodings, run_num_decodings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DecodeWaysII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_decodings",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement num_decodings\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_decodings",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('*', 9)",
+                        "('1*', 18)",
+                        "('2*', 15)",
+                        "('0', 0)",
+                        "('10', 1)",
+                        "('01', 0)",
+                        "('1', 1)",
+                        "('12', 2)",
+                        "('27', 1)",
+                        "('**', 96)",
+                        "('*1', 11)",
+                        "('3*', 9)",
+                        "('*0', 2)",
+                        "('10*', 9)",
+                        "('**0', 18)",
+                        "('11106', 2)",
+                        "('*1*', 180)",
+                        "('90', 0)",
+                        "('2*7', 16)",
+                        "('**12', 210)",
+                        "('1**', 177)",
+                        "('0*', 0)",
+                        "('6**25085', 0)",
+                        "('36283', 1)",
+                        "('2336', 2)",
+                        "('845027', 0)",
+                        "('4*87', 10)",
+                        "('14934', 2)",
+                        "('53340', 0)",
+                        "('8065', 0)"
+                    ]
+                },
+                "body": "        result = run_num_decodings(Solution, s)\n        assert_num_decodings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_decodings, assert_num_decodings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '1*'\nexpected = 18",
+    "playground_run": "result = run_num_decodings(Solution, s)\nresult",
+    "playground_assert": "assert_num_decodings(result, expected)"
+}

@@ -1,0 +1,101 @@
+{
+    "problem_name": "maximum_vacation_days",
+    "solution_class_name": "Solution",
+    "problem_number": "568",
+    "problem_title": "Maximum Vacation Days",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "LeetCode wants to give one of its best employees the option to travel among `n` cities to collect algorithm problems. But all work and no play makes Jack a dull boy, you could take vacations in some particular cities and weeks. Your job is to schedule the traveling to maximize the number of vacation days you could take, but there are certain rules and restrictions you need to follow.\n\nRules and restrictions:\n\n1. You can only travel among `n` cities, represented by indexes from `0` to `n - 1`. Initially, you are in the city indexed `0` on **Monday**.\n2. The cities are connected by flights. The flights are represented as an `n x n` matrix (not necessarily symmetrical), called `flights` representing the airline status from the city `i` to the city `j`. If there is no flight from the city `i` to the city `j`, `flights[i][j] == 0`; Otherwise, `flights[i][j] == 1`. Also, `flights[i][i] == 0` for all `i`.\n3. You totally have `k` weeks (each week has **seven days**) to travel. You can only take flights at most once per day and can only take flights on each week's Monday morning. Since flight time is so short, we do not consider the impact of flight time.\n4. For each city, you can only have restricted vacation days in different weeks, given an `n x k` matrix called `days` representing this relationship. For the value of `days[i][j]`, it represents the maximum days you could take a vacation in the city `i` in the week `j`.\n5. You could stay in a city beyond the number of vacation days, but you should work on the extra days, which will not be counted as vacation days.\n6. If you fly from city `A` to city `B` and take the vacation on that day, the deduction towards vacation days will count towards the vacation days of city `B` in that week.\n7. We do not consider the impact of flight hours on the calculation of vacation days.\n\nGiven the two matrices `flights` and `days`, return *the maximum vacation days you could take during* `k` *weeks*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: flights = [[0,1,1],[1,0,1],[1,1,0]], days = [[1,3,1],[6,0,3],[3,3,3]]\nOutput: 12\n```\n**Explanation:**\nOne of the best strategies is:\n1st week : fly from city 0 to city 1 on Monday, and play 6 days and work 1 day.\n(Although you start at city 0, we could also fly to and start at other cities since it is Monday.)\n2nd week : fly from city 1 to city 2 on Monday, and play 3 days and work 4 days.\n3rd week : stay at city 2, and play 3 days and work 4 days.\nAns = 6 + 3 + 3 = 12."
+            },
+            {
+                "content": "```\nInput: flights = [[0,0,0],[0,0,0],[0,0,0]], days = [[1,1,1],[7,7,7],[7,7,7]]\nOutput: 3\n```\n**Explanation:**\nSince there are no flights that enable you to move to another city, you have to stay at city 0 for the whole 3 weeks.\nFor each week, you only have one day to play and six days to work.\nSo the maximum number of vacation days is 3.\nAns = 1 + 1 + 1 = 3."
+            },
+            {
+                "content": "```\nInput: flights = [[0,1,1],[1,0,1],[1,1,0]], days = [[7,0,0],[0,7,0],[0,0,7]]\nOutput: 21\n```\n**Explanation:**\nOne of the best strategies is:\n1st week : stay at city 0, and play 7 days.\n2nd week : fly from city 0 to city 1 on Monday, and play 7 days.\n3rd week : fly from city 1 to city 2 on Monday, and play 7 days.\nAns = 7 + 7 + 7 = 21"
+            }
+        ]
+    },
+    "readme_constraints": "- n == flights.length\n- n == flights[i].length\n- n == days.length\n- k == days[i].length\n- 1 <= n, k <= 100\n- flights[i][j] is either 0 or 1.\n- 0 <= days[i][j] <= 7",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_vacation_days",
+    "helpers_run_signature": "(solution_class: type, flights: list[list[int]], days: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_vacation_days(flights, days)",
+    "helpers_assert_name": "max_vacation_days",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_vacation_days, run_max_vacation_days\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestMaximumVacationDays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_vacation_days",
+                "signature": "(self, flights: list[list[int]], days: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_vacation_days\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_vacation_days, assert_max_vacation_days\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nflights = [[0, 1, 1], [1, 0, 1], [1, 1, 0]]\ndays = [[1, 3, 1], [6, 0, 3], [3, 3, 3]]\nexpected = 12",
+    "playground_run": "result = run_max_vacation_days(Solution, flights, days)\nresult",
+    "playground_assert": "assert_max_vacation_days(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_vacation_days",
+                "signature": "(self, flights: list[list[int]], days: list[list[int]], expected: int)",
+                "parametrize": "flights, days, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 1, 1], [1, 0, 1], [1, 1, 0]], [[1, 3, 1], [6, 0, 3], [3, 3, 3]], 12)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], [[1, 1, 1], [7, 7, 7], [7, 7, 7]], 3)",
+                        "([[0, 1, 1], [1, 0, 1], [1, 1, 0]], [[7, 0, 0], [0, 7, 0], [0, 0, 7]], 21)",
+                        "([[0]], [[7]], 7)",
+                        "([[0]], [[1, 2, 3]], 6)",
+                        "([[0, 1], [1, 0]], [[3], [5]], 5)",
+                        "([[0, 0], [0, 0]], [[0, 0], [0, 0]], 0)",
+                        "([[0, 1, 0], [0, 0, 1], [0, 0, 0]], [[1, 1, 1], [2, 2, 2], [3, 3, 3]], 8)",
+                        "([[0, 1, 0], [1, 0, 0], [0, 0, 0]], [[7, 7], [0, 0], [0, 0]], 14)",
+                        "([[0, 1, 1], [1, 0, 0], [1, 0, 0]], [[0, 0], [7, 7], [0, 0]], 14)",
+                        "([[0, 1], [0, 0]], [[7, 7], [7, 7]], 14)",
+                        "([[0, 1, 1], [1, 0, 1], [1, 1, 0]], [[6, 6], [6, 6], [6, 6]], 12)",
+                        "([[0, 1], [1, 0]], [[7, 0], [0, 7]], 14)",
+                        "([[0, 0, 1], [0, 0, 1], [0, 0, 0]], [[2, 2, 2], [3, 3, 3], [4, 4, 4]], 12)",
+                        "([[0, 1], [1, 0]], [[6, 3], [1, 7]], 13)",
+                        "([[0, 1, 1], [0, 0, 1], [0, 0, 0]], [[4, 2, 2], [7, 2, 3], [5, 3, 6]], 16)",
+                        "([[0, 0], [0, 0]], [[7, 7], [0, 0]], 14)",
+                        "([[0, 1, 0], [1, 0, 0], [0, 1, 0]], [[2, 7, 5], [3, 2, 1], [7, 6, 3]], 15)",
+                        "([[0, 1], [1, 0]], [[2, 0], [1, 5]], 7)",
+                        "([[0, 0], [1, 0]], [[4, 3], [2, 7]], 7)"
+                    ]
+                },
+                "body": "        result = run_max_vacation_days(Solution, flights, days)\n        assert_max_vacation_days(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "flights = [[0, 1, 1], [1, 0, 1], [1, 1, 0]]",
+    "playground_execution": "result = run_max_vacation_days(Solution, flights, days)",
+    "playground_assertion": "assert_max_vacation_days(result, 12)"
+}

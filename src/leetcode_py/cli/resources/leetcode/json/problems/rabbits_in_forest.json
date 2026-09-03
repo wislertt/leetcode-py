@@ -1,0 +1,122 @@
+{
+    "problem_name": "rabbits_in_forest",
+    "solution_class_name": "Solution",
+    "problem_number": "781",
+    "problem_title": "Rabbits in Forest",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Math, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a forest with an unknown number of rabbits. We asked n rabbits **\"How many other rabbits have the same color as you?\"** and collected the answers in an integer array `answers` where `answers[i]` is the answer of the `i<sup>th</sup>` rabbit.\n\nGiven the array `answers`, return *the minimum number of rabbits that could be in the forest*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: answers = [1,1,2]\nOutput: 5\nExplanation:\nThe two rabbits that answered \"1\" could both be the same color, say red.\nThe rabbit that answered \"2\" can't be red or the answers would be inconsistent.\nSay the rabbit that answered \"2\" was blue.\nThen there should be 2 other blue rabbits in the forest that didn't answer into the array.\nThe smallest possible number of rabbits in the forest is therefore 5: 3 that answered plus 2 that didn't.\n```"
+            },
+            {
+                "content": "```\nInput: answers = [10,10,10]\nOutput: 11\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= answers.length <= 1000`\n- `0 <= answers[i] < 1000`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_rabbits",
+    "helpers_run_signature": "(solution_class: type, answers: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_rabbits(answers)",
+    "helpers_assert_name": "num_rabbits",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_rabbits, run_num_rabbits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RabbitsInForest",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_rabbits",
+                "signature": "(self, answers: list[int]) -> int",
+                "body": "        # TODO: Implement num_rabbits\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_rabbits",
+                "signature": "(self, answers: list[int], expected: int)",
+                "parametrize": "answers, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 2], 5)",
+                        "([10, 10, 10], 11)",
+                        "([0, 0, 1, 0, 2], 8)",
+                        "([0], 1)",
+                        "([1], 2)",
+                        "([2], 3)",
+                        "([999], 1000)",
+                        "([0, 0, 0, 0], 4)",
+                        "([1, 1, 1], 4)",
+                        "([2, 2, 2, 2, 2], 6)",
+                        "([3, 3, 3, 3, 3, 3, 3], 8)",
+                        "([5, 5, 5, 5, 5, 5], 6)",
+                        "([0, 1, 2, 3, 4], 15)",
+                        "([1, 1, 2, 2, 2, 2], 8)",
+                        "([4, 4, 4, 4, 4, 4, 4, 4, 4], 10)",
+                        "([0, 0, 1, 1, 2, 2, 3, 3], 11)",
+                        "([10, 10, 10, 10, 10, 10, 10], 11)",
+                        "([1, 3, 1, 2], 9)",
+                        "([0, 2, 0, 6, 5, 5, 4, 3], 27)",
+                        "([3, 3, 4, 5], 15)",
+                        "([2, 0, 4, 1, 3, 6], 22)",
+                        "([0, 4, 6, 1, 3], 19)",
+                        "([0, 4, 4], 6)",
+                        "([0, 5], 7)",
+                        "([3, 1, 6, 4], 18)",
+                        "([0, 3, 1, 3, 2, 6, 5], 23)",
+                        "([0, 3, 4, 4, 1, 4], 12)",
+                        "([6, 1], 9)",
+                        "([3, 0, 4], 10)",
+                        "([4, 6, 0, 5, 0, 0], 21)",
+                        "([3, 5, 2, 0, 4, 4], 19)",
+                        "([3, 4], 9)",
+                        "([3, 2], 7)",
+                        "([0, 4, 6, 2], 16)",
+                        "([3, 1, 3, 0, 6], 14)",
+                        "([5, 4, 3, 2, 3, 1, 3], 20)",
+                        "([6, 4, 1, 5, 6], 20)",
+                        "([5, 2, 3], 13)",
+                        "([4, 6, 2, 3], 19)",
+                        "([1, 2], 5)",
+                        "([1, 4, 4, 3, 6, 0, 2, 2], 22)",
+                        "([6, 1, 2, 6, 6], 12)",
+                        "([1, 3, 1, 0], 7)",
+                        "([4, 3, 4, 0, 6, 2, 2], 20)",
+                        "([5, 1], 8)",
+                        "([6, 1, 4, 4, 3, 0], 19)",
+                        "([3], 4)"
+                    ]
+                },
+                "body": "        result = run_num_rabbits(Solution, answers)\n        assert_num_rabbits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_rabbits, assert_num_rabbits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nanswers = [1, 1, 2]\nexpected = 5",
+    "playground_run": "result = run_num_rabbits(Solution, answers)\nresult",
+    "playground_assert": "assert_num_rabbits(result, expected)"
+}

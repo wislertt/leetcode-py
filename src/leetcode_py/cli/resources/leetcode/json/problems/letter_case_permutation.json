@@ -1,0 +1,93 @@
+{
+    "problem_name": "letter_case_permutation",
+    "solution_class_name": "Solution",
+    "problem_number": "784",
+    "problem_title": "Letter Case Permutation",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, you can transform every letter individually to be lowercase or uppercase to create another string.\n\nReturn a list of all possible strings we could create. Return the output in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"a1b2\"\nOutput: [\"a1b2\",\"a1B2\",\"A1b2\",\"A1B2\"]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"3z4\"\nOutput: [\"3z4\",\"3Z4\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 12`\n- `s` consists of lowercase English letters, uppercase English letters, and digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "letter_case_permutation",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.letter_case_permutation(s)",
+    "helpers_assert_name": "letter_case_permutation",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    result.sort()\n    expected.sort()\n    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_letter_case_permutation, run_letter_case_permutation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LetterCasePermutation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "letter_case_permutation",
+                "signature": "(self, s: str) -> list[str]",
+                "body": "        # TODO: Implement letter_case_permutation\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_letter_case_permutation",
+                "signature": "(self, s: str, expected: list[str])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('a1b2', ['A1B2', 'A1b2', 'a1B2', 'a1b2'])",
+                        "('3z4', ['3Z4', '3z4'])",
+                        "('a', ['A', 'a'])",
+                        "('C', ['C', 'c'])",
+                        "('7', ['7'])",
+                        "('123', ['123'])",
+                        "('a1', ['A1', 'a1'])",
+                        "('ab', ['AB', 'Ab', 'aB', 'ab'])",
+                        "('aB', ['AB', 'Ab', 'aB', 'ab'])",
+                        "('zZ', ['ZZ', 'Zz', 'zZ', 'zz'])",
+                        "('abc', ['ABC', 'ABc', 'AbC', 'Abc', 'aBC', 'aBc', 'abC', 'abc'])",
+                        "('Ab3', ['AB3', 'Ab3', 'aB3', 'ab3'])",
+                        "('1a2b', ['1A2B', '1A2b', '1a2B', '1a2b'])",
+                        "('xy', ['XY', 'Xy', 'xY', 'xy'])",
+                        "('q9r', ['Q9R', 'Q9r', 'q9R', 'q9r'])",
+                        "('m0n0', ['M0N0', 'M0n0', 'm0N0', 'm0n0'])",
+                        "('Zz9', ['ZZ9', 'Zz9', 'zZ9', 'zz9'])",
+                        "('A1b2C', ['A1B2C', 'A1B2c', 'A1b2C', 'A1b2c', 'a1B2C', 'a1B2c', 'a1b2C', 'a1b2c'])"
+                    ]
+                },
+                "body": "        result = run_letter_case_permutation(Solution, s)\n        assert_letter_case_permutation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_letter_case_permutation, assert_letter_case_permutation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'a1b2'\nexpected = ['a1b2', 'a1B2', 'A1b2', 'A1B2']",
+    "playground_run": "result = run_letter_case_permutation(Solution, s)\nresult",
+    "playground_assert": "assert_letter_case_permutation(result, expected)"
+}

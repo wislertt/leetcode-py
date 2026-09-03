@@ -1,0 +1,121 @@
+{
+    "problem_name": "reach_a_number",
+    "solution_class_name": "Solution",
+    "problem_number": "754",
+    "problem_title": "Reach a Number",
+    "difficulty": "Medium",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are standing at position `0` on an infinite number line. There is a destination at position `target`.\n\nYou can make some number of moves `numMoves` so that:\n\n- On each move, you can either go left or right.\n- During the `i^th` move (starting from `i == 1` to `i == numMoves`), you take `i` steps in the chosen direction.\n\nGiven the integer `target`, return *the **minimum** number of moves required (i.e., the minimum `numMoves`)* to reach the destination.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: target = 2\nOutput: 3\nExplanation:\nOn the 1st move, we step from 0 to 1 (1 step).\nOn the 2nd move, we step from 1 to -1 (2 steps).\nOn the 3rd move, we step from -1 to 2 (3 steps).\n```"
+            },
+            {
+                "content": "```\nInput: target = 3\nOutput: 2\nExplanation:\nOn the 1st move, we step from 0 to 1 (1 step).\nOn the 2nd move, we step from 1 to 3 (2 steps).\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `-10^9 <= target <= 10^9`\n- `target != 0`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reach_number",
+    "helpers_run_signature": "(solution_class: type, target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reach_number(target)",
+    "helpers_assert_name": "reach_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reach_number, run_reach_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReachANumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reach_number",
+                "signature": "(self, target: int) -> int",
+                "body": "        # TODO: Implement reach_number\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reach_number",
+                "signature": "(self, target: int, expected: int)",
+                "parametrize": "target, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 3)",
+                        "(3, 2)",
+                        "(4, 3)",
+                        "(5, 5)",
+                        "(6, 3)",
+                        "(7, 5)",
+                        "(8, 4)",
+                        "(9, 5)",
+                        "(10, 4)",
+                        "(11, 5)",
+                        "(12, 7)",
+                        "(13, 5)",
+                        "(14, 7)",
+                        "(15, 5)",
+                        "(16, 7)",
+                        "(17, 6)",
+                        "(18, 7)",
+                        "(19, 6)",
+                        "(20, 7)",
+                        "(25, 9)",
+                        "(30, 8)",
+                        "(50, 11)",
+                        "(100, 15)",
+                        "(111, 17)",
+                        "(1000, 47)",
+                        "(12345, 157)",
+                        "(99999, 449)",
+                        "(1000000000, 44723)",
+                        "(999999999, 44721)",
+                        "(999999937, 44721)",
+                        "(1073741824, 46343)",
+                        "(-1, 1)",
+                        "(-2, 3)",
+                        "(-3, 2)",
+                        "(-5, 5)",
+                        "(-11, 5)",
+                        "(-1000, 47)",
+                        "(-999999937, 44721)",
+                        "(-1000000000, 44723)",
+                        "(-999999999, 44721)",
+                        "(44, 11)",
+                        "(45, 9)",
+                        "(46, 11)",
+                        "(44721, 301)",
+                        "(44722, 299)"
+                    ]
+                },
+                "body": "        result = run_reach_number(Solution, target)\n        assert_reach_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reach_number, assert_reach_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ntarget = 2\nexpected = 3",
+    "playground_run": "result = run_reach_number(Solution, target)\nresult",
+    "playground_assert": "assert_reach_number(result, expected)"
+}

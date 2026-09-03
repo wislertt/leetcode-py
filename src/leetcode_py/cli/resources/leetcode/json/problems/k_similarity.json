@@ -1,0 +1,98 @@
+{
+    "problem_name": "k_similarity",
+    "solution_class_name": "Solution",
+    "problem_number": "854",
+    "problem_title": "K-Similar Strings",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Breadth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Strings `s1` and `s2` are `k`-**similar** (for some non-negative integer `k`) if we can swap the positions of two letters in `s1` exactly `k` times so that the resulting string equals `s2`.\n\nGiven two anagrams `s1` and `s2`, return the smallest `k` for which `s1` and `s2` are `k`-**similar**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s1 = \"ab\", s2 = \"ba\"\nOutput: 1\nExplanation: The two strings are 1-similar because we can use one swap to change s1 to s2: \"ab\" --> \"ba\".\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"abc\", s2 = \"bca\"\nOutput: 2\nExplanation: The two strings are 2-similar because we can use two swaps to change s1 to s2: \"abc\" --> \"bac\" --> \"bca\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s1.length <= 20\n- s2.length == s1.length\n- s1 and s2 contain only lowercase letters from the set {'a', 'b', 'c', 'd', 'e', 'f'}.\n- s2 is an anagram of s1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "k_similarity",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.k_similarity(s1, s2)",
+    "helpers_assert_name": "k_similarity",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_k_similarity, run_k_similarity\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestKSimilarStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "k_similarity",
+                "signature": "(self, s1: str, s2: str) -> int",
+                "body": "        # TODO: Implement k_similarity\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_k_similarity, assert_k_similarity\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'abc'\ns2 = 'bca'\nexpected = 2",
+    "playground_run": "result = run_k_similarity(Solution, s1, s2)\nresult",
+    "playground_assert": "assert_k_similarity(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_k_similarity",
+                "signature": "(self, s1: str, s2: str, expected: int)",
+                "parametrize": "s1, s2, expected",
+                "test_cases": {
+                    "list": [
+                        "('ab', 'ba', 1)",
+                        "('abc', 'bca', 2)",
+                        "('a', 'a', 0)",
+                        "('abcd', 'abcd', 0)",
+                        "('abcdef', 'abcdef', 0)",
+                        "('abab', 'baba', 2)",
+                        "('aabb', 'bbaa', 2)",
+                        "('aabbcc', 'ccbbaa', 2)",
+                        "('abcdabcd', 'dcbadcba', 4)",
+                        "('abcabc', 'cbacba', 2)",
+                        "('aabbc', 'cbaba', 2)",
+                        "('cdacbaccac', 'abcacdccca', 5)",
+                        "('dabba', 'badba', 1)",
+                        "('bbcddabbd', 'acbbbddbd', 4)",
+                        "('bccacddb', 'bccdacbd', 3)",
+                        "('cacdb', 'cdacb', 2)",
+                        "('adabccb', 'aabcbdc', 4)",
+                        "('ddcabdcac', 'cccddabad', 4)",
+                        "('cdcadccbbcb', 'abbcdbccccd', 4)",
+                        "('bdbcac', 'cbcdab', 3)"
+                    ]
+                },
+                "body": "        result = run_k_similarity(Solution, s1, s2)\n        assert_k_similarity(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "s1 = 'abc'\ns2 = 'bca'",
+    "playground_execution": "result = run_k_similarity(Solution, s1, s2)",
+    "playground_assertion": "assert_k_similarity(result, 2)"
+}

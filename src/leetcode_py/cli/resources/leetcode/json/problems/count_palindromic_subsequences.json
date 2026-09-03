@@ -1,0 +1,110 @@
+{
+    "problem_name": "count_palindromic_subsequences",
+    "solution_class_name": "Solution",
+    "problem_number": "730",
+    "problem_title": "Count Different Palindromic Subsequences",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, return *the number of different non-empty palindromic subsequences in* `s`. Since the answer may be very large, return it **modulo** `10^9 + 7`.\n\nA **subsequence** of a string is obtained by deleting zero or more characters from the string.\n\nA sequence is palindromic if it is equal to the sequence reversed.\n\nTwo sequences `a1, a2, ...` and `b1, b2, ...` are different if there is some `i` for which `ai != bi`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"bccb\"\nOutput: 6\nExplanation: The 6 different non-empty palindromic subsequences are 'b', 'c', 'bb', 'cc', 'bcb', 'bccb'.\nNote that 'bcb' is counted only once, even though it occurs twice.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba\"\nOutput: 104860361\nExplanation: There are 3104860382 different non-empty palindromic subsequences, which is 104860361 modulo 10^9 + 7.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 1000`\n- `s[i]` is either `'a'`, `'b'`, `'c'`, or `'d'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_palindromic_subsequences",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_palindromic_subsequences(s)",
+    "helpers_assert_name": "count_palindromic_subsequences",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_palindromic_subsequences, run_count_palindromic_subsequences\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CountPalindromicSubsequences",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_palindromic_subsequences",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement count_palindromic_subsequences\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_palindromic_subsequences",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('bccb', 6)",
+                        "('a', 1)",
+                        "('b', 1)",
+                        "('aa', 2)",
+                        "('ab', 2)",
+                        "('aba', 4)",
+                        "('abc', 3)",
+                        "('aaaa', 4)",
+                        "('abcd', 4)",
+                        "('abcba', 10)",
+                        "('abccba', 14)",
+                        "('aabb', 4)",
+                        "('abab', 6)",
+                        "('abcdabcdabcd', 72)",
+                        "('dcbadcba', 20)",
+                        "('aaaabbbb', 8)",
+                        "('abcdcba', 22)",
+                        "('ddbbaacc', 8)",
+                        "('acdbbccbda', 42)",
+                        "('cacdbddc', 15)",
+                        "('adadbcdbc', 17)",
+                        "('adaccbbda', 25)",
+                        "('bacbddada', 18)",
+                        "('abdcdaccaba', 50)",
+                        "('aaabdadacddc', 26)",
+                        "('adcadccdba', 33)",
+                        "('dcdabccbddad', 52)",
+                        "('dbcabbcccc', 15)",
+                        "('abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba', 104860361)",
+                        "('abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd', 125826312)",
+                        "('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 70)",
+                        "('ababababababababababababababababababababababababababababababababababab', 78176334)",
+                        "('abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcba', 562274879)",
+                        "('bddbdcddbcbaabadbbcdadbdccdabbccbacbccbacdcdadcacbbcdcdbbdadcbbcccdb', 23767172)",
+                        "('abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd', 372554565)"
+                    ]
+                },
+                "body": "        result = run_count_palindromic_subsequences(Solution, s)\n        assert_count_palindromic_subsequences(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_palindromic_subsequences, assert_count_palindromic_subsequences\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'bccb'\nexpected = 6",
+    "playground_run": "result = run_count_palindromic_subsequences(Solution, s)\nresult",
+    "playground_assert": "assert_count_palindromic_subsequences(result, expected)"
+}

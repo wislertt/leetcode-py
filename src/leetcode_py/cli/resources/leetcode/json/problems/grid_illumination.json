@@ -1,0 +1,100 @@
+{
+    "problem_name": "grid_illumination",
+    "solution_class_name": "Solution",
+    "problem_number": "1001",
+    "problem_title": "Grid Illumination",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a 2D grid of size n x n where each cell of this grid has a lamp that is initially **turned off**.\n\nYou are given a 2D array of lamp positions `lamps`, where `lamps[i] = [row_i, col_i]` indicates that the lamp at `grid[row_i][col_i]` is **turned on**. Even if the same lamp is listed more than once, it is turned on.\n\nWhen a lamp is turned on, it **illuminates its cell** and **all other cells** in the same **row, column, or diagonal**.\n\nYou are also given another 2D array `queries`, where `queries[j] = [row_j, col_j]`. For the `j<sup>th</sup>` query, determine whether `grid[row_j][col_j]` is illuminated or not. After answering the `j<sup>th</sup>` query, **turn off** the lamp at `grid[row_j][col_j]` and its **8 adjacent lamps** if they exist. A lamp is adjacent if its cell shares either a side or corner with `grid[row_j][col_j]`.\n\nReturn *an array of integers* `ans`,* where `ans[j]` should be `1` if the cell in the `j<sup>th</sup>` query was illuminated, or `0` if the lamp was not.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/08/19/illu_1.jpg)\n\n```\nInput: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,0]]\nOutput: [1,0]\nExplanation: We have the initial grid with all lamps turned off. In the above picture we see the grid after turning on the lamp at grid[0][0] then turning on the lamp at grid[4][4].\nThe 0th query asks if the lamp at grid[1][1] is illuminated or not (the blue square). It is illuminated, so set ans[0] = 1. Then, we turn off all lamps in the red square.\n```"
+            },
+            {
+                "content": "```\nInput: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,1]]\nOutput: [1,1]\n```"
+            },
+            {
+                "content": "```\nInput: n = 5, lamps = [[0,0],[0,4]], queries = [[0,4],[0,1],[1,4]]\nOutput: [1,1,0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^9\n- 0 <= lamps.length <= 20000\n- 0 <= queries.length <= 20000\n- lamps[i].length == 2\n- 0 <= row_i, col_i < n\n- queries[j].length == 2\n- 0 <= row_j, col_j < n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "grid_illumination",
+    "helpers_run_signature": "(solution_class: type, n: int, lamps: list[list[int]], queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.grid_illumination(n, lamps, queries)",
+    "helpers_assert_name": "grid_illumination",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_grid_illumination, run_grid_illumination\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GridIllumination",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "grid_illumination",
+                "signature": "(self, n: int, lamps: list[list[int]], queries: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement grid_illumination\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_grid_illumination",
+                "signature": "(self, n: int, lamps: list[list[int]], queries: list[list[int]], expected: list[int])",
+                "parametrize": "n, lamps, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, [[0, 0], [4, 4]], [[1, 1], [1, 0]], [1, 0])",
+                        "(5, [[0, 0], [4, 4]], [[1, 1], [1, 1]], [1, 1])",
+                        "(5, [[0, 0], [0, 4]], [[0, 4], [0, 1], [1, 4]], [1, 1, 0])",
+                        "(1, [[0, 0]], [[0, 0]], [1])",
+                        "(1, [], [[0, 0]], [0])",
+                        "(3, [], [], [])",
+                        "(2, [[0, 1]], [[0, 0], [1, 1], [1, 0]], [1, 0, 0])",
+                        "(5, [[0, 0], [0, 0]], [[0, 0], [0, 0], [0, 0]], [1, 0, 0])",
+                        "(1000000000, [[0, 999999999]], [[999999999, 999999999]], [1])",
+                        "(1000000000, [[5, 5]], [[6, 6], [7, 7], [8, 8]], [1, 0, 0])",
+                        "(4, [[0, 0], [1, 1], [2, 2]], [[3, 3], [0, 3], [1, 0]], [1, 1, 1])",
+                        "(6, [[2, 3], [4, 1], [5, 5]], [[0, 3], [5, 5], [4, 4], [1, 1]], [1, 1, 1, 1])",
+                        "(7, [[0, 6], [3, 0], [6, 6]], [[6, 0], [0, 0], [3, 6]], [1, 1, 1])",
+                        "(8, [[7, 0], [0, 7], [4, 4]], [[4, 4], [3, 3], [7, 7]], [1, 0, 1])",
+                        "(2, [[1, 0]], [[1, 1]], [1])",
+                        "(6, [[4, 1], [4, 0], [0, 5]], [[5, 5], [3, 5]], [1, 1])",
+                        "(6, [[4, 5], [4, 1], [0, 4]], [[0, 5]], [1])",
+                        "(5, [[0, 2], [3, 4], [0, 4]], [[4, 3]], [1])",
+                        "(2, [[0, 1], [0, 0]], [[0, 0], [0, 1]], [1, 0])",
+                        "(6, [[1, 4], [3, 1]], [[4, 0]], [1])",
+                        "(2, [[0, 0], [1, 0]], [[0, 0], [0, 1]], [1, 0])",
+                        "(5, [[3, 0]], [[1, 1], [0, 3], [2, 2]], [0, 1, 0])"
+                    ]
+                },
+                "body": "        result = run_grid_illumination(Solution, n, lamps, queries)\n        assert_grid_illumination(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_grid_illumination, assert_grid_illumination\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nlamps = [[0, 0], [4, 4]]\nqueries = [[1, 1], [1, 0]]\nexpected = [1, 0]",
+    "playground_run": "result = run_grid_illumination(Solution, n, lamps, queries)\nresult",
+    "playground_assert": "assert_grid_illumination(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "friends_of_appropriate_ages",
+    "solution_class_name": "Solution",
+    "problem_number": "825",
+    "problem_title": "Friends Of Appropriate Ages",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Binary Search, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "<p>There are <code>n</code> persons on a social media website. You are given an integer array <code>ages</code> where <code>ages[i]</code> is the age of the <code>i<sup>th</sup></code> person.</p>\n\n<p>A Person <code>x</code> will not send a friend request to a person <code>y</code> (<code>x != y</code>) if any of the following conditions is true:</p>\n\n<ul>\n\t<li><code>age[y] &lt;= 0.5 * age[x] + 7</code></li>\n\t<li><code>age[y] &gt; age[x]</code></li>\n\t<li><code>age[y] &gt; 100 &amp;&amp; age[x] &lt; 100</code></li>\n</ul>\n\n<p>Otherwise, <code>x</code> will send a friend request to <code>y</code>.</p>\n\n<p>Note that if <code>x</code> sends a request to <code>y</code>, <code>y</code> will not necessarily send a request to <code>x</code>. Also, a person will not send a friend request to themself.</p>\n\n<p>Return <em>the total number of friend requests made</em>.</p>\n\n<p>&nbsp;</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: ages = [16,16]\nOutput: 2\nExplanation: 2 people friend request each other.\n```"
+            },
+            {
+                "content": "```\nInput: ages = [16,17,18]\nOutput: 2\nExplanation: Friend requests are made 17 -> 16, 18 -> 17.\n```"
+            },
+            {
+                "content": "```\nInput: ages = [20,30,100,110,120]\nOutput: 3\nExplanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == ages.length\n- 1 <= n <= 2 * 10^4\n- 1 <= ages[i] <= 120",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_friend_requests",
+    "helpers_run_signature": "(solution_class: type, ages: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_friend_requests(ages)",
+    "helpers_assert_name": "num_friend_requests",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_friend_requests, run_num_friend_requests\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FriendsOfAppropriateAges",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_friend_requests",
+                "signature": "(self, ages: list[int]) -> int",
+                "body": "        # TODO: Implement num_friend_requests\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_friend_requests",
+                "signature": "(self, ages: list[int], expected: int)",
+                "parametrize": "ages, expected",
+                "test_cases": {
+                    "list": [
+                        "([16, 16], 2)",
+                        "([16, 17, 18], 2)",
+                        "([20, 30, 100, 110, 120], 3)",
+                        "([1], 0)",
+                        "([120], 0)",
+                        "([14, 14], 0)",
+                        "([15, 15], 2)",
+                        "([15, 16], 0)",
+                        "([57, 69], 1)",
+                        "([100, 99, 101], 3)",
+                        "([30, 101, 25, 101], 3)",
+                        "([1, 2], 0)",
+                        "([108, 115, 55], 1)",
+                        "([68, 68, 20, 35], 2)",
+                        "([55, 56, 57, 58], 6)",
+                        "([83, 95, 38, 74, 103, 115], 10)",
+                        "([82, 112, 95], 3)",
+                        "([77, 25, 103, 5, 15], 1)",
+                        "([76, 48, 100, 34, 87, 37, 37], 11)",
+                        "([2, 29, 34, 64, 68, 110], 4)"
+                    ]
+                },
+                "body": "        result = run_num_friend_requests(Solution, ages)\n        assert_num_friend_requests(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_friend_requests, assert_num_friend_requests\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nages = [16, 16]\nexpected = 2",
+    "playground_run": "result = run_num_friend_requests(Solution, ages)\nresult",
+    "playground_assert": "assert_num_friend_requests(result, expected)"
+}

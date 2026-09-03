@@ -18,7 +18,6 @@ A good line is a line of three or more cells (including the endpoints) where the
 
 Given two integers rMove and cMove and a character color representing the color you are playing as (white or black), return true if changing cell (rMove, cMove) to color color is a legal move, or false if it is not legal.
 
- 
 Example 1:
 
 Input: board = [[".",".",".","B",".",".",".","."],[".",".",".","W",".",".",".","."],[".",".",".","W",".",".",".","."],[".",".",".","W",".",".",".","."],["W","B","B",".","W","W","W","B"],[".",".",".","B",".",".",".","."],[".",".",".","B",".",".",".","."],[".",".",".","W",".",".",".","."]], rMove = 4, cMove = 3, color = "B"
@@ -32,7 +31,6 @@ Input: board = [[".",".",".",".",".",".",".","."],[".","B",".",".","W",".",".","
 Output: false
 Explanation: While there are good lines with the chosen cell as a middle cell, there are no good lines with the chosen cell as an endpoint.
 
- 
 Constraints:
 
     board.length == board[r].length == 8

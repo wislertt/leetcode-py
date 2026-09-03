@@ -1,0 +1,102 @@
+{
+    "problem_name": "largest_component_size_by_common_factor",
+    "solution_class_name": "Solution",
+    "problem_number": "952",
+    "problem_title": "Largest Component Size by Common Factor",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Math, Union-Find, Number Theory, Prime Factorization",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array of unique positive integers `nums`. Consider the following graph:\n\n- There are `nums.length` nodes, labeled `nums[0]` to `nums[nums.length - 1]`,\n- There is an undirected edge between `nums[i]` and `nums[j]` if `nums[i]` and `nums[j]` share a common factor greater than `1`.\n\nReturn the size of the largest connected component in the graph.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/01/ex1.png)\n\n```\nInput: nums = [4,6,15,35]\nOutput: 4\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/01/ex2.png)\n\n```\nInput: nums = [20,50,9,63]\nOutput: 2\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2018/12/01/ex3.png)\n\n```\nInput: nums = [2,3,6,7,4,12,21,39]\nOutput: 8\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 2 * 10^4\n- 1 <= nums[i] <= 10^5\n- All the values of nums are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_component_size",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_component_size(nums)",
+    "helpers_assert_name": "largest_component_size",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_component_size, run_largest_component_size\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestComponentSizeByCommonFactor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_component_size",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement largest_component_size\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_component_size, assert_largest_component_size\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 6, 15, 35]\nexpected = 4",
+    "playground_run": "result = run_largest_component_size(Solution, nums)\nresult",
+    "playground_assert": "assert_largest_component_size(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_component_size",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 6, 15, 35], 4)",
+                        "([20, 50, 9, 63], 2)",
+                        "([2, 3, 6, 7, 4, 12, 21, 39], 8)",
+                        "([1], 1)",
+                        "([2], 1)",
+                        "([1, 2, 3, 4, 5, 6, 7], 4)",
+                        "([11, 13, 17, 19], 1)",
+                        "([6, 10, 15], 3)",
+                        "([5, 7, 35, 11, 77], 5)",
+                        "([2, 4, 8, 16], 4)",
+                        "([3, 5, 7, 15, 21, 35], 6)",
+                        "([100000, 99999], 1)",
+                        "([99991, 100000], 1)",
+                        "([8, 27, 125, 9, 49], 2)",
+                        "([12, 18, 25, 49, 121, 169], 2)",
+                        "([81, 146, 33, 165, 178], 3)",
+                        "([111, 138, 84, 130], 4)",
+                        "([133, 112, 107, 109, 86, 57, 154], 5)",
+                        "([83, 184, 15, 111, 100, 191, 48, 44], 6)",
+                        "([83, 158, 58, 60, 147, 109, 53], 4)",
+                        "([188, 166, 34, 18, 40, 68, 129, 186, 49, 88, 97], 9)"
+                    ]
+                },
+                "body": "        result = run_largest_component_size(Solution, nums)\n        assert_largest_component_size(result, expected)"
+            }
+        ]
+    },
+    "playground_test_case": "nums = [4, 6, 15, 35]",
+    "playground_execution": "result = run_largest_component_size(Solution, nums)",
+    "playground_assertion": "assert_largest_component_size(result, 4)"
+}

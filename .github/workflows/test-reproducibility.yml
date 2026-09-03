@@ -70,6 +70,14 @@ jobs:
             - name: check-test-case-count
               run: bake check-test-cases
 
+            - name: check-docs-generated-files-fresh
+              # read-only compare of committed docs against generator output;
+              # catches missing pages, drift, hand-edits, and stub content
+              # (TODO solutions) baked in during a clobber window
+              run: |
+                  uv run python scripts/gen_catalog.py --check
+                  uv run python scripts/gen_problems.py --check
+
             - name: backup-existing-problems
               run: |
                   mkdir -p .cache

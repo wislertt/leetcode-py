@@ -1,0 +1,102 @@
+{
+    "problem_name": "decoded_string_at_index",
+    "solution_class_name": "Solution",
+    "problem_number": "880",
+    "problem_title": "Decoded String at Index",
+    "difficulty": "Medium",
+    "topics": "String, Stack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an encoded string `s`. To decode the string to a tape, the encoded string is read one character at a time and the following steps are taken:\n\n- If the character read is a letter, that letter is written onto the tape.\n- If the character read is a digit `d`, the entire current tape is repeatedly written `d - 1` more times in total.\n\nGiven an integer `k`, return the `k^th` letter (**1-indexed**) in the decoded string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"leet2code3\", k = 10\nOutput: \"o\"\nExplanation: The decoded string is \"leetleetcodeleetleetcodeleetleetcode\".\nThe 10th letter in the string is \"o\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ha22\", k = 5\nOutput: \"h\"\nExplanation: The decoded string is \"hahahaha\".\nThe 5th letter is \"h\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"a2345678999999999999999\", k = 1\nOutput: \"a\"\nExplanation: The decoded string is \"a\" repeated 8301530446056247680 times.\nThe 1st letter is \"a\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= s.length <= 100\n- s consists of lowercase English letters and digits 2 through 9.\n- s starts with a letter.\n- 1 <= k <= 10^9\n- It is guaranteed that k is less than or equal to the length of the decoded string.\n- The decoded string is guaranteed to have less than 2^63 letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "decode_at_index",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.decode_at_index(s, k)",
+    "helpers_assert_name": "decode_at_index",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_decode_at_index, run_decode_at_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DecodedStringAtIndex",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "decode_at_index",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement decode_at_index\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_decode_at_index",
+                "signature": "(self, s: str, k: int, expected: str)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('leet2code3', 10, 'o')",
+                        "('ha22', 5, 'h')",
+                        "('a2345678999999999999999', 1, 'a')",
+                        "('abc', 1, 'a')",
+                        "('abc', 3, 'c')",
+                        "('a2', 2, 'a')",
+                        "('a9', 9, 'a')",
+                        "('ab2c3', 4, 'b')",
+                        "('ab2c3', 15, 'c')",
+                        "('a2b3c4', 7, 'a')",
+                        "('a2b3c4', 20, 'c')",
+                        "('leet2code3', 1, 'l')",
+                        "('leet2code3', 8, 't')",
+                        "('leet2code3', 11, 'd')",
+                        "('leet2code3', 36, 'e')",
+                        "('ha22', 1, 'h')",
+                        "('ha22', 8, 'a')",
+                        "('m5n9', 30, 'n')",
+                        "('g9h9i9', 100, 'g')",
+                        "('x3y2z4', 15, 'x')",
+                        "('leetcode9', 40, 'e')",
+                        "('b8a999999999', 8, 'b')",
+                        "('b8a999999999', 9, 'a')",
+                        "('vzpp636', 20, 'p')"
+                    ]
+                },
+                "body": "        result = run_decode_at_index(Solution, s, k)\n        assert_decode_at_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_decode_at_index, assert_decode_at_index\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'leet2code3'\nk = 10\nexpected = 'o'",
+    "playground_run": "result = run_decode_at_index(Solution, s, k)\nresult",
+    "playground_assert": "assert_decode_at_index(result, expected)"
+}

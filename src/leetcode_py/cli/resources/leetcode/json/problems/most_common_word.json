@@ -1,0 +1,94 @@
+{
+    "problem_name": "most_common_word",
+    "solution_class_name": "Solution",
+    "problem_number": "819",
+    "problem_title": "Most Common Word",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String, Counting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `paragraph` and a string array of the banned words `banned`, return *the most frequent word that is not banned*. It is **guaranteed** there is **at least one word** that is not banned, and that the answer is **unique**.\n\nThe words in `paragraph` are **case-insensitive** and the answer should be returned in **lowercase**.\n\n**Note** that words can not contain punctuation symbols.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: paragraph = \"Bob hit a ball, the hit BALL flew far after it was hit.\", banned = [\"hit\"]\nOutput: \"ball\"\nExplanation: \"hit\" occurs 3 times, but it is a banned word. \"ball\" occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph.\n```"
+            },
+            {
+                "content": "```\nInput: paragraph = \"a.\", banned = []\nOutput: \"a\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= paragraph.length <= 1000\n- paragraph consists of English letters, space ' ', or one of the symbols: \"!?',;.\".\n- 0 <= banned.length <= 100\n- 1 <= banned[i].length <= 10\n- banned[i] consists of only lowercase English letters.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "most_common_word",
+    "helpers_run_signature": "(solution_class: type, paragraph: str, banned: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.most_common_word(paragraph, banned)",
+    "helpers_assert_name": "most_common_word",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_most_common_word, run_most_common_word\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MostCommonWord",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "most_common_word",
+                "signature": "(self, paragraph: str, banned: list[str]) -> str",
+                "body": "        # TODO: Implement most_common_word\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_most_common_word",
+                "signature": "(self, paragraph: str, banned: list[str], expected: str)",
+                "parametrize": "paragraph, banned, expected",
+                "test_cases": {
+                    "list": [
+                        "('Bob hit a ball, the hit BALL flew far after it was hit.', ['hit'], 'ball')",
+                        "('Bob hit a ball, the hit BALL flew far after it was hit.', [], 'hit')",
+                        "('a.', [], 'a')",
+                        "('L, P! X! ..., L', [], 'l')",
+                        "('a, a, a, a, b,b,b,c, c', ['a'], 'b')",
+                        "('Bob', [], 'bob')",
+                        "('banned banned okay', ['banned'], 'okay')",
+                        "('x. y? z! x', ['y', 'z'], 'x')",
+                        "('Aa aA AA bb', ['bb'], 'aa')",
+                        "('ball, BALL ball ball', [], 'ball')",
+                        "('one two two three three three', ['three'], 'two')",
+                        "('cat, dog. cat, dog, cat', [], 'cat')",
+                        "('Hello hello HELLO world', ['hello'], 'world')",
+                        "('a!!b..c,,a', ['c'], 'a')",
+                        "('Hi hi HI hI there', [], 'hi')",
+                        "('the quick brown fox jumps over the lazy dog the end', [], 'the')",
+                        "('We, we, WE... will w!ill win', ['will'], 'we')",
+                        "('gray gray grey', ['grey'], 'gray')",
+                        "('spot, spot. spot? Spot! spott', ['spot'], 'spott')",
+                        "('z', [], 'z')"
+                    ]
+                },
+                "body": "        result = run_most_common_word(Solution, paragraph, banned)\n        assert_most_common_word(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_most_common_word, assert_most_common_word\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nparagraph = 'Bob hit a ball, the hit BALL flew far after it was hit.'\nbanned = ['hit']\nexpected = 'ball'",
+    "playground_run": "result = run_most_common_word(Solution, paragraph, banned)\nresult",
+    "playground_assert": "assert_most_common_word(result, expected)"
+}

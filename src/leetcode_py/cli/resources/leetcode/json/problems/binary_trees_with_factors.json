@@ -1,0 +1,98 @@
+{
+    "problem_name": "binary_trees_with_factors",
+    "solution_class_name": "Solution",
+    "problem_number": "823",
+    "problem_title": "Binary Trees With Factors",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Dynamic Programming, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of unique integers, `arr`, where each integer `arr[i]` is strictly greater than `1`.\n\nWe make a binary tree using these integers, and each number may be used for any number of times. Each non-leaf node's value should be equal to the product of the values of its children.\n\nReturn *the number of binary trees we can make*. The answer may be too large so return the answer **modulo** `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [2,4]\nOutput: 3\nExplanation: We can make these trees: [2], [4], [4, 2, 2]\n```"
+            },
+            {
+                "content": "```\nInput: arr = [2,4,5,10]\nOutput: 7\nExplanation: We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 1000`\n- `2 <= arr[i] <= 10^9`\n- All the values of `arr` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_factored_binary_trees",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_factored_binary_trees(arr)",
+    "helpers_assert_name": "num_factored_binary_trees",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_factored_binary_trees, run_num_factored_binary_trees\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreesWithFactors",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_factored_binary_trees",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement num_factored_binary_trees\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_factored_binary_trees",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 4], 3)",
+                        "([2, 4, 5, 10], 7)",
+                        "([2], 1)",
+                        "([3], 1)",
+                        "([1000000000], 1)",
+                        "([2, 3], 2)",
+                        "([2, 3, 5], 3)",
+                        "([2, 4, 8, 16], 23)",
+                        "([3, 9, 27, 81], 23)",
+                        "([2, 4, 3, 6, 12], 18)",
+                        "([5, 25, 125, 625, 3125], 74)",
+                        "([18, 2, 9, 3, 6], 18)",
+                        "([7, 49, 343], 8)",
+                        "([1000000000, 2, 4], 4)",
+                        "([4, 2, 16, 8, 64], 109)",
+                        "([2, 4, 10, 16, 21, 27, 28, 32, 59], 24)",
+                        "([5, 9, 10, 19, 29, 30, 39, 58], 8)",
+                        "([2, 16, 18, 21, 29, 31, 40, 45, 59], 9)",
+                        "([11, 15, 17, 21, 47, 50], 6)",
+                        "([2, 6, 7, 9, 41], 5)",
+                        "([17, 26, 52, 56, 57], 5)",
+                        "([6, 10, 27, 35, 38, 45, 58], 7)",
+                        "([6, 20, 21, 23, 28, 34, 41, 45, 46], 9)"
+                    ]
+                },
+                "body": "        result = run_num_factored_binary_trees(Solution, arr)\n        assert_num_factored_binary_trees(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_factored_binary_trees, assert_num_factored_binary_trees\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [2, 4]\nexpected = 3",
+    "playground_run": "result = run_num_factored_binary_trees(Solution, arr)\nresult",
+    "playground_assert": "assert_num_factored_binary_trees(result, expected)"
+}

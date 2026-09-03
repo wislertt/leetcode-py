@@ -1,0 +1,91 @@
+{
+    "problem_name": "similar_rgb_color",
+    "solution_class_name": "Solution",
+    "problem_number": "800",
+    "problem_title": "Similar RGB Color",
+    "difficulty": "Easy",
+    "topics": "Math, String, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "The red-green-blue color `\"#AABBCC\"` can be written as `\"#ABC\"` in shorthand.\n\n- For example, `\"#15c\"` is shorthand for the color `\"#1155cc\"`.\n\nThe similarity between the two colors `\"#ABCDEF\"` and `\"#UVWXYZ\"` is `-(AB - UV)^2 - (CD - WX)^2 - (EF - YZ)^2`.\n\nGiven a string `color` that follows the format `\"#ABCDEF\"`, return a string represents the color that is most similar to the given color and has a shorthand (i.e., it can be represented as some `\"#XYZ\"`).\n\n**Any answer** which has the same highest similarity as the best answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: color = \"#09f166\"\nOutput: \"#11ee66\"\nExplanation:\nThe similarity is -(0x09 - 0x11)^2 -(0xf1 - 0xee)^2 - (0x66 - 0x66)^2 = -64 -9 -0 = -73.\nThis is the highest among any shorthand color.\n```"
+            },
+            {
+                "content": "```\nInput: color = \"#4e3fe1\"\nOutput: \"#5544dd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `color.length == 7`\n- `color[0] == '#'`\n- `color[i]` is either digit or character in the range `['a', 'f']` for `i > 0`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "similar_rgb",
+    "helpers_run_signature": "(solution_class: type, color: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.similar_rgb(color)",
+    "helpers_assert_name": "similar_rgb",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_similar_rgb, run_similar_rgb\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SimilarRgbColor",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "similar_rgb",
+                "signature": "(self, color: str) -> str",
+                "body": "        # TODO: Implement similar_rgb\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_similar_rgb",
+                "signature": "(self, color: str, expected: str)",
+                "parametrize": "color, expected",
+                "test_cases": {
+                    "list": [
+                        "('#09f166', '#11ee66')",
+                        "('#4e3fe1', '#5544dd')",
+                        "('#000000', '#000000')",
+                        "('#ffffff', '#ffffff')",
+                        "('#010101', '#000000')",
+                        "('#1a2b3c', '#223344')",
+                        "('#fefefe', '#ffffff')",
+                        "('#8899aa', '#8899aa')",
+                        "('#abcdef', '#aaccee')",
+                        "('#000001', '#000000')",
+                        "('#7f7f7f', '#777777')",
+                        "('#080808', '#000000')",
+                        "('#f0f0f0', '#eeeeee')",
+                        "('#123456', '#113355')",
+                        "('#deadbf', '#ddaabb')",
+                        "('#5c5c5c', '#555555')"
+                    ]
+                },
+                "body": "        result = run_similar_rgb(Solution, color)\n        assert_similar_rgb(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_similar_rgb, assert_similar_rgb\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncolor = '#09f166'\nexpected = '#11ee66'",
+    "playground_run": "result = run_similar_rgb(Solution, color)\nresult",
+    "playground_assert": "assert_similar_rgb(result, expected)"
+}

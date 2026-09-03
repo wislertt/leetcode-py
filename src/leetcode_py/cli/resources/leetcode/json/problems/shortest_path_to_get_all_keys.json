@@ -1,0 +1,100 @@
+{
+    "problem_name": "shortest_path_to_get_all_keys",
+    "solution_class_name": "Solution",
+    "problem_number": "864",
+    "problem_title": "Shortest Path to Get All Keys",
+    "difficulty": "Hard",
+    "topics": "Array, Bit Manipulation, Breadth-First Search, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `m x n` grid `grid` where:\n\n- `'.'` is an empty cell.\n- `'#'` is a wall.\n- `'@'` is the starting point.\n- Lowercase letters represent keys.\n- Uppercase letters represent locks.\n\nYou start at the starting point and one move consists of walking one space in one of the four cardinal directions. You cannot walk outside the grid, or walk into a wall.\n\nIf you walk over a key, you can pick it up and you cannot walk over a lock unless you have its corresponding key.\nFor some `1 <= k <= 6`, there is exactly one lowercase and one uppercase letter of the first `k` letters of the English alphabet in the grid. This means that there is exactly one key for each lock, and one lock for each key; and also that the letters used to represent the keys and locks were chosen in the same order as the English alphabet.\n\nReturn the lowest number of moves to acquire all keys. If it is impossible, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [\"@.a..\",\"###.#\",\"b.A.B\"]\nOutput: 8\nExplanation: Note that the goal is to obtain all the keys not to open all the locks.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [\"@..aA\",\"..B#.\",\"....b\"]\nOutput: 6\n```"
+            },
+            {
+                "content": "```\nInput: grid = [\"@Aa\"]\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 30`\n- `grid[i][j]` is a letter, `'.'`, `'#'`, or `'@'`.\n- There is exactly one `'@'` in the grid.\n- The number of keys in the grid is in the range `[1, 6]`.\n- Each key in the grid is unique.\n- Each key in the grid has a matching lock.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_path_all_keys",
+    "helpers_run_signature": "(solution_class: type, grid: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_path_all_keys(grid)",
+    "helpers_assert_name": "shortest_path_all_keys",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_path_all_keys, run_shortest_path_all_keys\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestShortestPathToGetAllKeys",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_path_all_keys",
+                "signature": "(self, grid: list[str]) -> int",
+                "body": "        # TODO: Implement shortest_path_all_keys\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_path_all_keys, assert_shortest_path_all_keys\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = ['@.a..', '###.#', 'b.A.B']\nexpected = 8",
+    "playground_run": "result = run_shortest_path_all_keys(Solution, grid)\nresult",
+    "playground_assert": "assert_shortest_path_all_keys(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_path_all_keys",
+                "signature": "(self, grid: list[str], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "(['@.a..', '###.#', 'b.A.B'], 8)",
+                        "(['@..aA', '..B#.', '....b'], 6)",
+                        "(['@Aa'], -1)",
+                        "(['@aA'], 1)",
+                        "(['@.a.A'], 2)",
+                        "(['@#aA'], -1)",
+                        "(['Aa@'], 1)",
+                        "(['@aAbB'], 3)",
+                        "(['@aA.b.B'], 4)",
+                        "(['@aAbBcC'], 5)",
+                        "(['@.a.Ab.B'], 5)",
+                        "(['@.a.AB', '#..b..'], 4)",
+                        "(['@.a.AB', 'b.....'], 4)",
+                        "(['@abcdefABCDEF'], 6)",
+                        "(['@f.a.d.b.e.cABCDEF'], 11)",
+                        "(['@..a..b..c', 'ABC.......'], 9)",
+                        "(['@#a#b#c', '.A.B.C.'], -1)",
+                        "(['@.a.', '#...', 'A.bB'], 4)",
+                        "(['.#A.', '#...', '.#..', '.#@a', '#..#'], 1)",
+                        "(['b.', 'A@', 'aB'], 6)",
+                        "(['..#.C', '....B', 'Aac..', '##.@b'], 5)",
+                        "(['.ab', '..c', '.CB', '@.A'], 6)"
+                    ]
+                },
+                "body": "        result = run_shortest_path_all_keys(Solution, grid)\n        assert_shortest_path_all_keys(result, expected)"
+            }
+        ]
+    }
+}

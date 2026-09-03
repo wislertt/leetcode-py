@@ -1,0 +1,98 @@
+{
+    "problem_name": "broken_calculator",
+    "solution_class_name": "Solution",
+    "problem_number": "991",
+    "problem_title": "Broken Calculator",
+    "difficulty": "Medium",
+    "topics": "Math, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a broken calculator that has the integer `startValue` on its display initially. In one operation, you can:\n\n- multiply the number on display by `2`, or\n- subtract `1` from the number on display.\n\nGiven two integers `startValue` and `target`, return the minimum number of operations needed to display `target` on the calculator.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: startValue = 2, target = 3\nOutput: 2\nExplanation: Use double operation and then decrement operation {2 -> 4 -> 3}.\n```"
+            },
+            {
+                "content": "```\nInput: startValue = 5, target = 8\nOutput: 2\nExplanation: Use decrement and then double {5 -> 4 -> 8}.\n```"
+            },
+            {
+                "content": "```\nInput: startValue = 3, target = 10\nOutput: 3\nExplanation: Use double, decrement and double {3 -> 6 -> 5 -> 10}.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= startValue, target <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "broken_calc",
+    "helpers_run_signature": "(solution_class: type, start_value: int, target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.broken_calc(start_value, target)",
+    "helpers_assert_name": "broken_calc",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_broken_calc, run_broken_calc\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BrokenCalculator",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "broken_calc",
+                "signature": "(self, start_value: int, target: int) -> int",
+                "body": "        # TODO: Implement broken_calc\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_broken_calc",
+                "signature": "(self, start_value: int, target: int, expected: int)",
+                "parametrize": "start_value, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 3, 2)",
+                        "(5, 8, 2)",
+                        "(3, 10, 3)",
+                        "(1, 1, 0)",
+                        "(2, 2, 0)",
+                        "(10, 10, 0)",
+                        "(2, 1, 1)",
+                        "(1000000000, 1, 999999999)",
+                        "(1, 2, 1)",
+                        "(1, 3, 3)",
+                        "(1, 4, 2)",
+                        "(3, 2, 1)",
+                        "(7, 21, 5)",
+                        "(4, 13, 4)",
+                        "(6, 25, 8)",
+                        "(1, 1000000000, 39)",
+                        "(1000000000, 999999999, 1)",
+                        "(5, 1, 4)",
+                        "(8, 5, 3)",
+                        "(12, 4, 8)"
+                    ]
+                },
+                "body": "        result = run_broken_calc(Solution, start_value, target)\n        assert_broken_calc(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_broken_calc, assert_broken_calc\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstart_value = 2\ntarget = 3\nexpected = 2",
+    "playground_run": "result = run_broken_calc(Solution, start_value, target)\nresult",
+    "playground_assert": "assert_broken_calc(result, expected)"
+}

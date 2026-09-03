@@ -1,0 +1,93 @@
+{
+    "problem_name": "search_in_a_sorted_array_of_unknown_size",
+    "solution_class_name": "Solution",
+    "problem_number": "702",
+    "problem_title": "Search in a Sorted Array of Unknown Size",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Interactive",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "This is an <strong><em>interactive problem</em></strong>.\n\nYou have a sorted array of <strong>unique</strong> elements and an <strong>unknown size</strong>. You do not have an access to the array but you can use the <code>ArrayReader</code> interface to access it. You can call <code>ArrayReader.get(i)</code> that:\n\n<ul>\n<li>returns the value at the <code>i<sup>th</sup></code> index (<strong>0-indexed</strong>) of the secret array (i.e., <code>secret[i]</code>), or</li>\n<li>returns <code>2<sup>31</sup> - 1</code> if the <code>i</code> is out of the boundary of the array.</li>\n</ul>\n\nYou are also given an integer <code>target</code>.\n\nReturn the index <code>k</code> of the hidden array where <code>secret[k] == target</code> or return <code>-1</code> otherwise.\n\nYou must write an algorithm with <code>O(log n)</code> runtime complexity.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: secret = [-1,0,3,5,9,12], target = 9\nOutput: 4\nExplanation: 9 exists in secret and its index is 4.\n```"
+            },
+            {
+                "content": "```\nInput: secret = [-1,0,3,5,9,12], target = 2\nOutput: -1\nExplanation: 2 does not exist in secret so return -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= secret.length <= 10^4`\n- `-10^4 <= secret[i], target <= 10^4`\n- All the integers of `secret` are <strong>unique</strong>.\n- `secret` is sorted in a strictly increasing order.",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import ArrayReader",
+    "helpers_content": "",
+    "helpers_run_name": "search",
+    "helpers_run_signature": "(solution_class: type, secret: list[int], target: int)",
+    "helpers_run_body": "    reader = ArrayReader(secret)\n    return solution_class().search(reader, target)",
+    "helpers_assert_name": "search",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class ArrayReader:\n    # Test-harness API: backs get() with the hidden sorted array\n    def __init__(self, secret: list[int]) -> None:\n        self.secret = secret\n\n    def get(self, index: int) -> int:\n        if 0 <= index < len(self.secret):\n            return self.secret[index]\n        return 2147483647\n\n\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_search, run_search\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SearchInASortedArrayOfUnknownSize",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "search",
+                "signature": "(self, reader: ArrayReader, target: int) -> int",
+                "body": "        # TODO: Implement search\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_search",
+                "signature": "(self, secret: list[int], target: int, expected: int)",
+                "parametrize": "secret, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([-1, 0, 3, 5, 9, 12], 9, 4)",
+                        "([-1, 0, 3, 5, 9, 12], 2, -1)",
+                        "([-1, 0, 3, 5, 9, 12], 12, 5)",
+                        "([-1, 0, 3, 5, 9, 12], -1, 0)",
+                        "([5], 5, 0)",
+                        "([5], 4, -1)",
+                        "([1, 2, 3, 4, 5], 1, 0)",
+                        "([1, 2, 3, 4, 5], 5, 4)",
+                        "([-10000, -9999, -1, 0, 1], 0, 3)",
+                        "([-10000, -9999, -1, 0, 1], 2, -1)",
+                        "([2, 5], 2, 0)",
+                        "([2, 5], 6, -1)",
+                        "([-5, -3, 0, 7, 8, 21, 40], 40, 6)",
+                        "([-5, -3, 0, 7, 8, 21, 40], -6, -1)",
+                        "([-5, -3, 0, 7, 8, 21, 40], 20, -1)",
+                        "([-9032, -5538], -3583, -1)",
+                        "([-7448, -1253, 3702, 5332, 8829], 8829, 4)",
+                        "([-7409, -5206, 5751], 2330, -1)"
+                    ]
+                },
+                "body": "        result = run_search(Solution, secret, target)\n        assert_search(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_search, run_search\nfrom solution import ArrayReader, Solution",
+    "playground_setup": "# Example test case\nsecret = [-1, 0, 3, 5, 9, 12]\ntarget = 9\nexpected = 4",
+    "playground_run": "result = run_search(Solution, secret, target)\nresult",
+    "playground_assert": "assert_search(result, expected)"
+}

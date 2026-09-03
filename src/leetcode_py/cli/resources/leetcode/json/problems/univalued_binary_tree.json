@@ -1,0 +1,95 @@
+{
+    "problem_name": "univalued_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "965",
+    "problem_title": "Univalued Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A binary tree is <strong>uni-valued</strong> if every node in the tree has the same value.\n\nGiven the <code>root</code> of a binary tree, return <code>true</code> if the given tree is <strong>uni-valued</strong>, or <code>false</code> otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/28/unival_bst_1.png)\n\n```\nInput: root = [1,1,1,1,1,null,1]\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/28/unival_bst_2.png)\n\n```\nInput: root = [2,2,2,5,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 100]\n- 0 <= Node.val < 100",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_unival_tree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.is_unival_tree(root)",
+    "helpers_assert_name": "is_unival_tree",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_unival_tree, run_is_unival_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UnivaluedBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_unival_tree",
+                "signature": "(self, root: TreeNode[int] | None) -> bool",
+                "body": "        # TODO: Implement is_unival_tree\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_unival_tree",
+                "signature": "(self, root_list: list[int | None], expected: bool)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1, 1, 1, 1, None, 1], True)",
+                        "([2, 2, 2, 5, 2], False)",
+                        "([1], True)",
+                        "([0], True)",
+                        "([1, 1], True)",
+                        "([1, 2], False)",
+                        "([99, 99], True)",
+                        "([98, 99], False)",
+                        "([0, 0, 0, 0, 0, 0, 0], True)",
+                        "([1, 1, 1, 1, 1, 1, 1], True)",
+                        "([1, 1, 1, None, 1, None, 1], True)",
+                        "([1, 1, 1, None, 2], False)",
+                        "([0, 0, 0, 1], False)",
+                        "([9, 9, 9, 9, 9, 9, 10], False)",
+                        "([1, 1, None, 1, None, 1, None, 1, None, 1], True)",
+                        "([7, 7, None, 7, 7, None, 7, None, 7], True)",
+                        "([57, 57, None, 57], True)",
+                        "([88, 84, None, 49, None, 25], False)",
+                        "([76, 76, None, 76, None, 76, None, 76, None, 76], True)",
+                        "([45, 45, None, 45], True)"
+                    ]
+                },
+                "body": "        result = run_is_unival_tree(Solution, root_list)\n        assert_is_unival_tree(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_unival_tree, assert_is_unival_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 1, 1, 1, 1, None, 1]\nexpected: bool = True",
+    "playground_run": "result = run_is_unival_tree(Solution, root_list)\nresult",
+    "playground_assert": "assert_is_unival_tree(result, expected)"
+}

@@ -1,0 +1,99 @@
+{
+    "problem_name": "unique_morse_code_words",
+    "solution_class_name": "Solution",
+    "problem_number": "804",
+    "problem_title": "Unique Morse Code Words",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows:\n\n- `'a'` maps to `\".-\"`,\n- `'b'` maps to `\"-...\"`,\n- `'c'` maps to `\"-.-.\"`, and so on.\n\nFor convenience, the full table for the 26 letters of the English alphabet is given below:\n\n```\n[\".-\",\"-...\",\"-.-.\",\"-..\",\".\",\"..-.\",\"--.\",\"....\",\"..\",\".---\",\"-.-\",\".-..\",\"--\",\"-.\",\"---\",\".--.\",\"--.-\",\".-.\",\"...\",\"-\",\"..-\",\"...-\",\".--\",\"-..-\",\"-.--\",\"--..\"]\n```\n\nGiven an array of strings `words` where each word can be written as a concatenation of the Morse code of each letter.\n\n- For example, `\"cab\"` can be written as `\"-.-..--...\"`, which is the concatenation of `\"-.-.\"`, `\".-\"`, and `\"-...\"`. We will call such a concatenation the **transformation** of a word.\n\nReturn *the number of different transformations among all words we have*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"gin\",\"zen\",\"gig\",\"msg\"]\nOutput: 2\nExplanation: The transformation of each word is:\n\"gin\" -> \"--...-.\"\n\"zen\" -> \"--...-.\"\n\"gig\" -> \"--...--.\"\n\"msg\" -> \"--...--.\"\nThere are 2 different transformations: \"--...-.\" and \"--...--.\".\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"a\"]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= words.length <= 100\n- 1 <= words[i].length <= 12\n- words[i] consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "unique_morse_representations",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.unique_morse_representations(words)",
+    "helpers_assert_name": "unique_morse_representations",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_unique_morse_representations, run_unique_morse_representations\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UniqueMorseCodeWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "unique_morse_representations",
+                "signature": "(self, words: list[str]) -> int",
+                "body": "        # TODO: Implement unique_morse_representations\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_unique_morse_representations",
+                "signature": "(self, words: list[str], expected: int)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['gin', 'zen', 'gig', 'msg'], 2)",
+                        "(['a'], 1)",
+                        "(['zocd', 'gqkl'], 2)",
+                        "(['ab', 'ba', 'ab'], 2)",
+                        "(['abc', 'bca', 'cab'], 3)",
+                        "(['a', 'b', 'c', 'd'], 4)",
+                        "(['aaaaaaaaaaaa'], 1)",
+                        "(['abcdefghijkl'], 1)",
+                        "(['aaa', 'bbb', 'ccc'], 3)",
+                        "(['cab', 'abc', 'bca'], 3)",
+                        "(['xyz'], 1)",
+                        "(['q', 'z', 'q'], 2)",
+                        "(['hello', 'world'], 2)",
+                        "(['leetcode', 'code', 'leet'], 3)",
+                        "(['ab', 'cd', 'ef', 'gh', 'ij'], 5)",
+                        "(['aa', 'bb', 'cc', 'aa'], 3)",
+                        "(['a', 'a', 'a', 'a', 'a'], 1)",
+                        "(['morse', 'code', 'words'], 3)",
+                        "(['zzzz', 'yyyy'], 2)",
+                        "(['abcdefghijkl', 'a', 'zzzzzzzzzzzz'], 3)",
+                        "(['aa', 'a', 'aaa'], 3)",
+                        "(['xy', 'yx'], 2)",
+                        "(['pqr', 'qrp', 'rpq'], 3)",
+                        "(['abcd', 'dcba'], 2)"
+                    ]
+                },
+                "body": "        result = run_unique_morse_representations(Solution, words)\n        assert_unique_morse_representations(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_unique_morse_representations, run_unique_morse_representations\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['gin', 'zen', 'gig', 'msg']\nexpected = 2",
+    "playground_run": "result = run_unique_morse_representations(Solution, words)\nresult",
+    "playground_assert": "assert_unique_morse_representations(result, expected)"
+}

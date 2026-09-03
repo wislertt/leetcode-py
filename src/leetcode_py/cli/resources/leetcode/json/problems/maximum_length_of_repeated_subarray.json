@@ -1,0 +1,99 @@
+{
+    "problem_name": "maximum_length_of_repeated_subarray",
+    "solution_class_name": "Solution",
+    "problem_number": "718",
+    "problem_title": "Maximum Length of Repeated Subarray",
+    "difficulty": "Medium",
+    "topics": "Array, Binary Search, Dynamic Programming, Sliding Window, Rolling Hash, Hash Function",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two integer arrays `nums1` and `nums2`, return *the maximum length of a subarray that appears in **both** arrays*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]\nOutput: 3\nExplanation: The repeated subarray with maximum length is [3,2,1].\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]\nOutput: 5\nExplanation: The repeated subarray with maximum length is [0,0,0,0,0].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums1.length, nums2.length <= 1000\n- 0 <= nums1[i], nums2[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_length",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_length(nums1, nums2)",
+    "helpers_assert_name": "find_length",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_length, run_find_length\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumLengthOfRepeatedSubarray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_length",
+                "signature": "(self, nums1: list[int], nums2: list[int]) -> int",
+                "body": "        # TODO: Implement find_length\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_length",
+                "signature": "(self, nums1: list[int], nums2: list[int], expected: int)",
+                "parametrize": "nums1, nums2, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 2, 1], [3, 2, 1, 4, 7], 3)",
+                        "([0, 0, 0, 0, 0], [0, 0, 0, 0, 0], 5)",
+                        "([1], [1], 1)",
+                        "([1], [2], 0)",
+                        "([1, 2], [2, 1], 1)",
+                        "([1, 2, 3], [1, 2, 3], 3)",
+                        "([1, 2, 3], [3, 2, 1], 1)",
+                        "([1, 2, 3, 4, 5], [6, 7, 8, 9, 10], 0)",
+                        "([70, 39, 41, 42, 43], [39, 41, 42, 43, 70], 4)",
+                        "([0, 1, 1, 1, 1], [1, 0, 1, 0, 1], 2)",
+                        "([1, 0, 0, 0, 1], [1, 0, 0, 0, 1], 5)",
+                        "([5, 5, 5, 5], [5], 1)",
+                        "([3], [1, 2, 3], 1)",
+                        "([2, 2, 2, 2, 2], [2, 2], 2)",
+                        "([1, 2, 1, 2, 1, 2], [2, 1, 2, 1, 2, 1], 5)",
+                        "([100, 99, 98], [98, 99, 100], 1)",
+                        "([0], [0], 1)",
+                        "([1, 2, 3, 4], [5, 1, 2, 3, 4, 6], 4)",
+                        "([1, 3, 3], [1, 3, 3, 2, 3, 2], 3)",
+                        "([3, 3, 0, 1, 0, 2], [0, 2, 1, 0, 0, 3], 2)",
+                        "([1], [3, 0, 0, 1, 3, 3], 1)",
+                        "([2, 3], [2, 0, 3, 2, 3, 0], 2)",
+                        "([0, 0, 3, 3], [3, 1, 2, 2], 1)",
+                        "([0, 1, 1, 0, 3], [3, 1, 3], 1)"
+                    ]
+                },
+                "body": "        result = run_find_length(Solution, nums1, nums2)\n        assert_find_length(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_length, assert_find_length\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums1 = [1, 2, 3, 2, 1]\nnums2 = [3, 2, 1, 4, 7]\nexpected = 3",
+    "playground_run": "result = run_find_length(Solution, nums1, nums2)\nresult",
+    "playground_assert": "assert_find_length(result, expected)"
+}

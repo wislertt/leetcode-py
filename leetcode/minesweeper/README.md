@@ -8,7 +8,7 @@
 
 ## Problem Description
 
-Let's play the minesweeper game ([Wikipedia](<https://en.wikipedia.org/wiki/Minesweeper_(video_game)>), [online game](http://minesweeperonline.com))!
+Let's play the minesweeper game ([Wikipedia](https://en.wikipedia.org/wiki/Minesweeper_%28video_game%29), [online game](http://minesweeperonline.com))!
 
 You are given an `m x n` char matrix `board` representing the game board where:
 

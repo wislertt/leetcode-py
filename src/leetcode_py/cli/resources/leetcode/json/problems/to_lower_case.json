@@ -1,0 +1,94 @@
+{
+    "problem_name": "to_lower_case",
+    "solution_class_name": "Solution",
+    "problem_number": "709",
+    "problem_title": "To Lower Case",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, return *the string after replacing every uppercase letter with the same lowercase letter*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"Hello\"\nOutput: \"hello\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"here\"\nOutput: \"here\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"LOVELY\"\nOutput: \"lovely\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 100\n- s consists of printable ASCII characters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "to_lower_case",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.to_lower_case(s)",
+    "helpers_assert_name": "to_lower_case",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_to_lower_case, run_to_lower_case\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ToLowerCase",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "to_lower_case",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement to_lower_case\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_to_lower_case",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('Hello', 'hello')",
+                        "('here', 'here')",
+                        "('LOVELY', 'lovely')",
+                        "('a', 'a')",
+                        "('A', 'a')",
+                        "('z', 'z')",
+                        "('Z', 'z')",
+                        "('AzZa', 'azza')",
+                        "('AbCdEfG', 'abcdefg')",
+                        "('123!@#', '123!@#')",
+                        "('Hello World 123', 'hello world 123')",
+                        "('MiXeD CaSe StRiNg', 'mixed case string')",
+                        "('ALL CAPS WITH SPACES', 'all caps with spaces')",
+                        "('  leading and trailing  ', '  leading and trailing  ')",
+                        "('PyThOn3.12+Is-FuN', 'python3.12+is-fun')",
+                        "('aBcDeFgHiJkLmNoPqRsTuVw', 'abcdefghijklmnopqrstuvw')"
+                    ]
+                },
+                "body": "        result = run_to_lower_case(Solution, s)\n        assert_to_lower_case(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_to_lower_case, assert_to_lower_case\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'Hello'\nexpected = 'hello'",
+    "playground_run": "result = run_to_lower_case(Solution, s)\nresult",
+    "playground_assert": "assert_to_lower_case(result, expected)"
+}

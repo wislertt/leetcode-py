@@ -1,0 +1,91 @@
+{
+    "problem_name": "find_and_replace_in_string",
+    "solution_class_name": "Solution",
+    "problem_number": "833",
+    "problem_title": "Find And Replace in String",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a 0-indexed string `s` that you must perform `k` replacement operations on. The replacement operations are given as three 0-indexed parallel arrays, `indices`, `sources`, and `targets`, all of length `k`.\n\nTo complete the `ith` replacement operation:\n\n- Check if the substring `sources[i]` occurs at index `indices[i]` in the original string `s`.\n- If it does not occur, do nothing.\n- Otherwise if it does occur, replace that substring with `targets[i]`.\n\nFor example, if `s = \"abcd\"`, `indices[i] = 0`, `sources[i] = \"ab\"`, and `targets[i] = \"eee\"`, then the result of this replacement will be `\"eeecd\"`.\n\nAll replacement operations must occur simultaneously, meaning the replacement operations should not affect the indexing of each other. The testcases will be generated such that the replacements will not overlap.\n\n- For example, a testcase with `s = \"abc\"`, `indices = [0, 1]`, and `sources = [\"ab\",\"bc\"]` will not be generated because the `\"ab\"` and `\"bc\"` replacements overlap.\n\nReturn the resulting string after performing all replacement operations on `s`.\n\nA substring is a contiguous sequence of characters in a string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/12/833-ex1.png)\n\n```\nInput: s = \"abcd\", indices = [0, 2], sources = [\"a\", \"cd\"], targets = [\"eee\", \"ffff\"]\nOutput: \"eeebffff\"\nExplanation:\n\"a\" occurs at index 0 in s, so we replace it with \"eee\".\n\"cd\" occurs at index 2 in s, so we replace it with \"ffff\".\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/06/12/833-ex2-1.png)\n\n```\nInput: s = \"abcd\", indices = [0, 2], sources = [\"ab\",\"ec\"], targets = [\"eee\",\"ffff\"]\nOutput: \"eeecd\"\nExplanation:\n\"ab\" occurs at index 0 in s, so we replace it with \"eee\".\n\"ec\" does not occur at index 2 in s, so we do nothing.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 1000\n- k == indices.length == sources.length == targets.length\n- 1 <= k <= 100\n- 0 <= indices[i] < s.length\n- 1 <= sources[i].length, targets[i].length <= 50\n- s consists of only lowercase English letters.\n- sources[i] and targets[i] consist of only lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_replace_string",
+    "helpers_run_signature": "(solution_class: type, s: str, indices: list[int], sources: list[str], targets: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_replace_string(s, indices, sources, targets)",
+    "helpers_assert_name": "find_replace_string",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_replace_string, run_find_replace_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindAndReplaceInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_replace_string",
+                "signature": "(self, s: str, indices: list[int], sources: list[str], targets: list[str]) -> str",
+                "body": "        # TODO: Implement find_replace_string\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_replace_string",
+                "signature": "(self, s: str, indices: list[int], sources: list[str], targets: list[str], expected: str)",
+                "parametrize": "s, indices, sources, targets, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcd', [0, 2], ['a', 'cd'], ['eee', 'ffff'], 'eeebffff')",
+                        "('abcd', [0, 2], ['ab', 'ec'], ['eee', 'ffff'], 'eeecd')",
+                        "('abcd', [0], ['ab'], ['eee'], 'eeecd')",
+                        "('abcd', [3], ['d'], ['z'], 'abcz')",
+                        "('abcd', [3], ['de'], ['z'], 'abcd')",
+                        "('abcde', [0, 2], ['ab', 'cd'], ['x', 'y'], 'xye')",
+                        "('vmvvggive', [5, 0], ['g', 'vmvv'], ['h', 'i'], 'ighive')",
+                        "('abcdef', [1, 3], ['bc', 'de'], ['bc', 'def'], 'abcdeff')",
+                        "('a', [0], ['a'], ['aa'], 'aa')",
+                        "('hello', [0, 4], ['he', 'lo'], ['hey', 'lo!'], 'heyllo')",
+                        "('cggfgfbe', [2], ['gf'], ['a'], 'cgagfbe')",
+                        "('dagdcbacf', [7, 4], ['c', 'cb'], ['dfg', 'chb'], 'dagdchbadfgf')",
+                        "('dbhhbfab', [1, 3, 4], ['bh', 'h', 'bf'], ['b', 'baaf', 'ehgf'], 'dbbaafehgfab')",
+                        "('cdeef', [4, 1, 3], ['cdd', 'de', 'db'], ['acf', 'e', 'ce'], 'ceef')",
+                        "('bghfh', [2, 1], ['hf', 'g'], ['fa', 'aheg'], 'bahegfah')",
+                        "('afabhggc', [4, 1], ['hg', 'f'], ['ch', 'bd'], 'abdabchgc')"
+                    ]
+                },
+                "body": "        result = run_find_replace_string(Solution, s, indices, sources, targets)\n        assert_find_replace_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_find_replace_string, run_find_replace_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcd'\nindices = [0, 2]\nsources = ['a', 'cd']\ntargets = ['eee', 'ffff']\nexpected = 'eeebffff'",
+    "playground_run": "result = run_find_replace_string(Solution, s, indices, sources, targets)\nresult",
+    "playground_assert": "assert_find_replace_string(result, expected)"
+}

@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/01/16/untitled.png)\n\n```\nInput: jobDifficulty = [6,5,4,3,2,1], d = 2\nOutput: 7\nExplanation: First day you can finish the first 5 jobs, total difficulty = 6.\nSecond day you can finish the last job, total difficulty = 1.\nThe difficulty of the schedule = 6 + 1 = 7 \n```"
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/01/16/untitled.png)\n\n```\nInput: jobDifficulty = [6,5,4,3,2,1], d = 2\nOutput: 7\nExplanation: First day you can finish the first 5 jobs, total difficulty = 6.\nSecond day you can finish the last job, total difficulty = 1.\nThe difficulty of the schedule = 6 + 1 = 7\n```"
             },
             {
                 "content": "```\nInput: jobDifficulty = [9,9,9], d = 4\nOutput: -1\nExplanation: If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs.\n```"

@@ -1,0 +1,89 @@
+{
+    "problem_name": "number_of_recent_calls",
+    "solution_class_name": "RecentCounter",
+    "problem_number": "933",
+    "problem_title": "Number of Recent Calls",
+    "difficulty": "Easy",
+    "topics": "Design, Queue, Data Stream",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have a `RecentCounter` class which counts the number of recent requests within a certain time frame.\n\nImplement the `RecentCounter` class:\n\n- `RecentCounter()` Initializes the counter with zero recent requests.\n- `int ping(int t)` Adds a new request at time `t`, where `t` represents some time in milliseconds, and returns the number of requests that has happened in the past `3000` milliseconds (including the new request). Specifically, return the number of requests that have happened in the inclusive range `[t - 3000, t]`.\n\nIt is **guaranteed** that every call to `ping` uses a strictly larger value of `t` than the previous call.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"RecentCounter\", \"ping\", \"ping\", \"ping\", \"ping\"]\n[[], [1], [100], [3001], [3002]]\nOutput\n[null, 1, 2, 3, 3]\n\nExplanation\nRecentCounter recentCounter = new RecentCounter();\nrecentCounter.ping(1); // requests = [1], range is [-2999,1], return 1\nrecentCounter.ping(100); // requests = [1, 100], range is [-2900,100], return 2\nrecentCounter.ping(3001); // requests = [1, 100, 3001], range is [1,3001], return 3\nrecentCounter.ping(3002); // requests = [1, 100, 3001, 3002], range is [2,3002], return 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= t <= 10^9`\n- Each test case will call `ping` with **strictly increasing** values of `t`.\n- At most `10^4` calls will be made to `ping`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "recent_counter",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    counter = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'RecentCounter':\n            counter = solution_class()\n            results.append(None)\n        elif op == 'ping' and counter is not None:\n            results.append(counter.ping(inputs[i][0]))\n    return results, counter",
+    "helpers_assert_name": "recent_counter",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from collections import deque",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_recent_counter, run_recent_counter\nfrom .solution import RecentCounter",
+    "test_content": "",
+    "test_class_name": "NumberOfRecentCalls",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize the counter with zero recent requests\n        pass"
+            },
+            {
+                "name": "ping",
+                "signature": "(self, t: int) -> int",
+                "body": "        # TODO: Implement ping\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_recent_counter",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['RecentCounter','ping','ping','ping','ping'],[[],[1],[100],[3001],[3002]],[None,1,2,3,3])",
+                        "(['RecentCounter','ping'],[[],[1]],[None,1])",
+                        "(['RecentCounter','ping','ping'],[[],[1],[2]],[None,1,2])",
+                        "(['RecentCounter','ping','ping'],[[],[1],[3001]],[None,1,2])",
+                        "(['RecentCounter','ping','ping'],[[],[2],[3002]],[None,1,2])",
+                        "(['RecentCounter','ping','ping','ping'],[[],[1],[3002],[6003]],[None,1,1,1])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping'],[[],[642],[1849],[4921],[5936],[5957]],[None,1,2,1,2,3])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping'],[[],[1],[100],[3001],[3002],[8000]],[None,1,2,3,3,1])",
+                        "(['RecentCounter','ping','ping'],[[],[999999999],[1000000000]],[None,1,2])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping'],[[],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]],[None,1,2,3,4,5,6,7,8,9,10])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping','ping'],[[],[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[15]],[None,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping'],[[],[1],[3000],[6000],[9000],[12000]],[None,1,2,2,2,2])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping','ping','ping','ping'],[[],[1],[2],[3],[3000],[3001],[3002],[6000],[6001],[6002]],[None,1,2,3,4,5,5,4,4,4])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping','ping'],[[],[1],[4],[5],[3005],[3006],[6006],[9007]],[None,1,2,3,2,2,2,1])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping'],[[],[1501],[3001],[3002],[6002],[6003]],[None,1,2,3,2,2])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping'],[[],[3],[8],[13],[14],[3014],[3015]],[None,1,2,3,4,2,2])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping','ping','ping','ping','ping'],[[],[2],[1502],[1503],[1505],[6505],[6605],[8105],[8205],[11205]],[None,1,2,3,4,1,2,3,4,2])",
+                        "(['RecentCounter','ping','ping','ping','ping','ping'],[[],[3001],[6001],[6003],[6103],[6203]],[None,1,2,2,3,4])"
+                    ]
+                },
+                "body": "        result, _ = run_recent_counter(RecentCounter, operations, inputs)\n        assert_recent_counter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_recent_counter, assert_recent_counter\nfrom solution import RecentCounter",
+    "playground_setup": "# Example test case\noperations = ['RecentCounter', 'ping', 'ping', 'ping', 'ping']\ninputs = [[], [1], [100], [3001], [3002]]\nexpected = [None, 1, 2, 3, 3]",
+    "playground_run": "result, counter = run_recent_counter(RecentCounter, operations, inputs)\nprint(result)\ncounter",
+    "playground_assert": "assert_recent_counter(result, expected)"
+}

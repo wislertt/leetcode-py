@@ -1,0 +1,102 @@
+{
+    "problem_name": "split_into_fibonacci_sequence",
+    "solution_class_name": "Solution",
+    "problem_number": "842",
+    "problem_title": "Split Array into Fibonacci Sequence",
+    "difficulty": "Medium",
+    "topics": "String, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string of digits `num`, such as `\"123456579\"`. We can split it into a Fibonacci-like sequence `[123, 456, 579]`.\n\nFormally, a **Fibonacci-like** sequence is a list `f` of non-negative integers such that:\n\n- `0 <= f[i] < 2^31`, (that is, each integer fits in a **32-bit** signed integer type),\n- `f.length >= 3`, and\n- `f[i] + f[i + 1] == f[i + 2]` for all `0 <= i < f.length - 2`.\n\nNote that when splitting the string into pieces, each piece must not have extra leading zeroes, except if the piece is the number `0` itself.\n\nReturn any Fibonacci-like sequence split from `num`, or return `[]` if it cannot be done.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: num = \"1101111\"\nOutput: [11,0,11,11]\nExplanation: The output [110, 1, 111] would also be accepted.\n```"
+            },
+            {
+                "content": "```\nInput: num = \"112358130\"\nOutput: []\nExplanation: The task is impossible.\n```"
+            },
+            {
+                "content": "```\nInput: num = \"0123\"\nOutput: []\nExplanation: Leading zeroes are not allowed, so \"01\", \"2\", \"3\" is not valid.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= num.length <= 200`\n- `num` contains only digits.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "split_into_fibonacci",
+    "helpers_run_signature": "(solution_class: type, num: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.split_into_fibonacci(num)",
+    "helpers_assert_name": "split_into_fibonacci",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    if not result and not expected:\n        return True\n    # Any valid split is accepted; validate structure instead of equality\n    assert len(result) >= 3\n    assert all(0 <= val < 2**31 for val in result)\n    pieces = [str(val) for val in result]\n    assert all(p == '0' or not p.startswith('0') for p in pieces)\n    assert all(result[i] + result[i + 1] == result[i + 2] for i in range(len(result) - 2))\n    assert ''.join(pieces) == ''.join(str(val) for val in expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_split_into_fibonacci, run_split_into_fibonacci\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplitIntoFibonacciSequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "split_into_fibonacci",
+                "signature": "(self, num: str) -> list[int]",
+                "body": "        # TODO: Implement split_into_fibonacci\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_split_into_fibonacci",
+                "signature": "(self, num: str, expected: list[int])",
+                "parametrize": "num, expected",
+                "test_cases": {
+                    "list": [
+                        "('1101111', [11, 0, 11, 11])",
+                        "('112358130', [])",
+                        "('0123', [])",
+                        "('0000', [0, 0, 0, 0])",
+                        "('123456579', [123, 456, 579])",
+                        "('112358', [1, 1, 2, 3, 5, 8])",
+                        "('011235', [0, 1, 1, 2, 3, 5])",
+                        "('10235', [])",
+                        "('5473', [])",
+                        "('199100199', [1, 99, 100, 199])",
+                        "('1234', [])",
+                        "('2147483647', [])",
+                        "('10234', [])",
+                        "('987', [])",
+                        "('011222', [])",
+                        "('12345678', [])",
+                        "('132456', [])",
+                        "('175325500825', [175, 325, 500, 825])",
+                        "('43155486541', [431, 55, 486, 541])",
+                        "('52428480908', [52, 428, 480, 908])",
+                        "('48382430812', [48, 382, 430, 812])",
+                        "('260137397534', [260, 137, 397, 534])",
+                        "('131238369607', [131, 238, 369, 607])",
+                        "('105165270435', [105, 165, 270, 435])"
+                    ]
+                },
+                "body": "        result = run_split_into_fibonacci(Solution, num)\n        assert_split_into_fibonacci(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_split_into_fibonacci, assert_split_into_fibonacci\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnum = '1101111'\nexpected = [11, 0, 11, 11]",
+    "playground_run": "result = run_split_into_fibonacci(Solution, num)\nresult",
+    "playground_assert": "assert_split_into_fibonacci(result, expected)"
+}

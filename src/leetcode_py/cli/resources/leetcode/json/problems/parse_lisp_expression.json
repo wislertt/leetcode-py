@@ -1,0 +1,96 @@
+{
+    "problem_name": "parse_lisp_expression",
+    "solution_class_name": "Solution",
+    "problem_number": "736",
+    "problem_title": "Parse Lisp Expression",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Stack, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string expression representing a Lisp-like expression to return the integer value of.\n\nThe syntax for these expressions is given as follows.\n\n- An expression is either an integer, let expression, add expression, mult expression, or an assigned variable. Expressions always evaluate to a single integer. (An integer could be positive or negative.)\n- A let expression takes the form `(let v1 e1 v2 e2 ... vn en expr)`, where let is always the string `\"let\"`, then there are one or more pairs of alternating variables and expressions, meaning that the first variable v1 is assigned the value of the expression e1, the second variable v2 is assigned the value of the expression e2, and so on sequentially; and then the value of this let expression is the value of the expression expr.\n- An add expression takes the form `(add e1 e2)` where add is always the string `\"add\"`, there are always two expressions e1, e2 and the result is the addition of the evaluation of e1 and the evaluation of e2.\n- A mult expression takes the form `(mult e1 e2)` where mult is always the string `\"mult\"`, there are always two expressions e1, e2 and the result is the multiplication of the evaluation of e1 and the evaluation of e2.\n- For this question, we will use a smaller subset of variable names. A variable starts with a lowercase letter, then zero or more lowercase letters or digits. Additionally, for your convenience, the names `\"add\"`, `\"let\"`, and `\"mult\"` are protected and will never be used as variable names.\n- Finally, there is the concept of scope. When an expression of a variable name is evaluated, within the context of that evaluation, the innermost scope (in terms of parentheses) is checked first for the value of that variable, and then outer scopes are checked sequentially. It is guaranteed that every expression is legal. Please see the examples for more details on the scope.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: expression = \"(let x 2 (mult x (let x 3 y 4 (add x y))))\"\nOutput: 14\n```\n**Explanation:** In the expression (add x y), when checking for the value of the variable x, we check from the innermost scope to the outermost in the context of the variable we are trying to evaluate. Since x = 3 is found first, the value of x is 3."
+            },
+            {
+                "content": "```\nInput: expression = \"(let x 3 x 2 x)\"\nOutput: 2\n```\n**Explanation:** Assignment in let statements is processed sequentially."
+            },
+            {
+                "content": "```\nInput: expression = \"(let x 1 y 2 x (add x y) (add x y))\"\nOutput: 5\n```\n**Explanation:** The first (add x y) evaluates as 3, and is assigned to x. The second (add x y) evaluates as 3+2 = 5."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= expression.length <= 2000\n- There are no leading or trailing spaces in expression.\n- All tokens are separated by a single space in expression.\n- The answer and all intermediate calculations of that answer are guaranteed to fit in a 32-bit integer.\n- The expression is guaranteed to be legal and evaluate to an integer.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "evaluate",
+    "helpers_run_signature": "(solution_class: type, expression: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.evaluate(expression)",
+    "helpers_assert_name": "evaluate",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_evaluate, run_evaluate\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ParseLispExpression",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "evaluate",
+                "signature": "(self, expression: str) -> int",
+                "body": "        # TODO: Implement evaluate\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_evaluate",
+                "signature": "(self, expression: str, expected: int)",
+                "parametrize": "expression, expected",
+                "test_cases": {
+                    "list": [
+                        "('(let x 2 (mult x (let x 3 y 4 (add x y))))', 14)",
+                        "('(let x 3 x 2 x)', 2)",
+                        "('(let x 1 y 2 x (add x y) (add x y))', 5)",
+                        "('(add 1 2)', 3)",
+                        "('(mult 3 4)', 12)",
+                        "('(add (add 1 2) (mult 3 4))', 15)",
+                        "('7', 7)",
+                        "('-3', -3)",
+                        "('(let x 7 x)', 7)",
+                        "('(let x -2 y x y)', -2)",
+                        "('(let a1 3 b2 (add a1 1) b2)', 4)",
+                        "('(let x 2 (add (let x 3 x) x))', 5)",
+                        "('(mult -3 (add 2 2))', -12)",
+                        "('(let x 1 (add x (let x 2 x)))', 3)",
+                        "('(let v 5 (mult v (let v 2 (add v 1))))', 15)",
+                        "('(add (let x 2 x) (let y 3 y))', 5)",
+                        "('(let x 2 (mult x 5))', 10)",
+                        "('(let x 0 (add x (mult x 9)))', 0)"
+                    ]
+                },
+                "body": "        result = run_evaluate(Solution, expression)\n        assert_evaluate(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_evaluate, assert_evaluate\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nexpression = '(let x 2 (mult x (let x 3 y 4 (add x y))))'\nexpected = 14",
+    "playground_run": "result = run_evaluate(Solution, expression)\nresult",
+    "playground_assert": "assert_evaluate(result, expected)"
+}

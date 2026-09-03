@@ -1,0 +1,90 @@
+{
+    "problem_name": "cracking_the_safe",
+    "solution_class_name": "Solution",
+    "problem_number": "753",
+    "problem_title": "Cracking the Safe",
+    "difficulty": "Hard",
+    "topics": "String, Depth-First Search, Graph Theory, Eulerian Circuit, Eulerian Path, Eulerian Graph",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a safe protected by a password. The password is a sequence of `n` digits where each digit can be in the range `[0, k - 1]`.\n\nThe safe has a peculiar way of checking the password. When you enter in a sequence, it checks the **most recent `n` digits** that were entered each time you type a digit.\n\n- For example, the correct password is `\"345\"` and you enter in `\"012345\"`:\n  - After typing `0`, the most recent `3` digits is `\"0\"`, which is incorrect.\n  - After typing `1`, the most recent `3` digits is `\"01\"`, which is incorrect.\n  - After typing `2`, the most recent `3` digits is `\"012\"`, which is incorrect.\n  - After typing `3`, the most recent `3` digits is `\"123\"`, which is incorrect.\n  - After typing `4`, the most recent `3` digits is `\"234\"`, which is incorrect.\n  - After typing `5`, the most recent `3` digits is `\"345\"`, which is correct and the safe unlocks.\n\nReturn any string of minimum length that will unlock the safe at some point of entering it.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1, k = 2\nOutput: \"10\"\nExplanation: The password is a single digit, so enter each digit. \"01\" would also unlock the safe.\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, k = 2\nOutput: \"01100\"\nExplanation: For each possible password:\n- \"00\" is typed in starting from the 4th digit.\n- \"01\" is typed in starting from the 1st digit.\n- \"10\" is typed in starting from the 3rd digit.\n- \"11\" is typed in starting from the 2nd digit.\nThus \"01100\" will unlock the safe. \"10011\", and \"11001\" would also unlock the safe.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 4`\n- `1 <= k <= 10`\n- `1 <= k^n <= 4096`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "crack_safe",
+    "helpers_run_signature": "(solution_class: type, n: int, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.crack_safe(n, k)",
+    "helpers_assert_name": "crack_safe",
+    "helpers_assert_signature": "(result: str, expected: tuple[int, int]) -> bool",
+    "helpers_assert_body": "    # Any minimum-length de Bruijn sequence is accepted, so expected is the\n    # (n, k) pair used to validate the result rather than one exact string\n    n, k = expected\n    assert len(result) == k**n + n - 1\n    assert set(result) <= set('0123456789')\n    assert len(set(result)) == k\n    windows = [result[i : i + n] for i in range(k**n)]\n    assert len(set(windows)) == k**n\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_crack_safe, run_crack_safe\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CrackingTheSafe",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "crack_safe",
+                "signature": "(self, n: int, k: int) -> str",
+                "body": "        # TODO: Implement crack_safe\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_crack_safe",
+                "signature": "(self, n: int, k: int, expected: tuple[int, int])",
+                "parametrize": "n, k, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1, (1, 1))",
+                        "(1, 2, (1, 2))",
+                        "(1, 3, (1, 3))",
+                        "(2, 1, (2, 1))",
+                        "(2, 2, (2, 2))",
+                        "(2, 3, (2, 3))",
+                        "(3, 1, (3, 1))",
+                        "(3, 2, (3, 2))",
+                        "(3, 3, (3, 3))",
+                        "(1, 4, (1, 4))",
+                        "(1, 10, (1, 10))",
+                        "(2, 4, (2, 4))",
+                        "(3, 4, (3, 4))",
+                        "(4, 1, (4, 1))",
+                        "(4, 2, (4, 2))"
+                    ]
+                },
+                "body": "        result = run_crack_safe(Solution, n, k)\n        assert_crack_safe(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_crack_safe, assert_crack_safe\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nk = 2\nexpected = (2, 2)",
+    "playground_run": "result = run_crack_safe(Solution, n, k)\nresult",
+    "playground_assert": "assert_crack_safe(result, expected)"
+}

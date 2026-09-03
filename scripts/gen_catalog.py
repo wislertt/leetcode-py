@@ -484,7 +484,7 @@ def main() -> None:
             if not path.exists() or path.read_text() != content:
                 drift.append(path)
         if drift:
-            print("❌ docs/catalog/ is out of date, run: bake docs-catalog")
+            print("❌ docs/catalog/ is out of date, run: bake lint")
             for path in drift:
                 print(f"  {path.relative_to(REPO_ROOT)}")
             sys.exit(1)

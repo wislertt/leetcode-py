@@ -1,0 +1,99 @@
+{
+    "problem_name": "split_bst",
+    "solution_class_name": "Solution",
+    "problem_number": "776",
+    "problem_title": "Split BST",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Search Tree, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the root of a binary search tree (BST) and an integer target, split the tree into two subtrees where one subtree has nodes that are all smaller or equal to the target value, while the other subtree has all nodes that are greater than the target value. It is not necessarily the case that the tree contains a node with the value target.\n\nAdditionally, most of the structure of the original tree should remain. Formally, for any child c with parent p in the original tree, if they are both in the same subtree after the split, then node c should still have the parent p.\n\nReturn an array of the two roots [smaller, larger] of the two subtrees.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0700-0799/0776.Split%20BST/images/split-tree.jpg)\n\n```\nInput: root = [4,2,6,1,3,5,7], target = 2\nOutput: [[2,1],[4,3,6,null,null,5,7]]\n```"
+            },
+            {
+                "content": "```\nInput: root = [1], target = 1\nOutput: [[1],[]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 50].\n- 0 <= Node.val, target <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "split_bst",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], target: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.split_bst(root, target)",
+    "helpers_assert_name": "split_bst",
+    "helpers_assert_signature": "(result: list[TreeNode[int] | None], expected_lists: list[list[int | None]]) -> bool",
+    "helpers_assert_body": "    def to_seq(node: TreeNode[int] | None) -> list[int | None]:\n        return [] if node is None else node.to_list()\n\n    actual = [to_seq(node) for node in result]\n    assert actual == expected_lists\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_split_bst, run_split_bst\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SplitBST",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "split_bst",
+                "signature": "(self, root: TreeNode[int] | None, target: int) -> list[TreeNode[int] | None]",
+                "body": "        # TODO: Implement split_bst\n        return [root, root]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_split_bst",
+                "signature": "(self, root_list: list[int | None], target: int, expected_lists: list[list[int | None]])",
+                "parametrize": "root_list, target, expected_lists",
+                "test_cases": {
+                    "list": [
+                        "([4, 2, 6, 1, 3, 5, 7], 2, [[2, 1], [4, 3, 6, None, None, 5, 7]])",
+                        "([1], 1, [[1], []])",
+                        "([1], 0, [[], [1]])",
+                        "([2, 1, 3], 1, [[1], [2, None, 3]])",
+                        "([2, 1, 3], 2, [[2, 1], [3]])",
+                        "([2, 1, 3], 0, [[], [2, 1, 3]])",
+                        "([2, 1, 3], 3, [[2, 1, 3], []])",
+                        "([3, 1, 5, None, 2, 4, 6], 2, [[1, None, 2], [3, None, 5, 4, 6]])",
+                        "([3, 1, 5, None, 2, 4, 6], 3, [[3, 1, None, None, 2], [5, 4, 6]])",
+                        "([10, 5, 15, 3, 7, None, 18], 7, [[5, 3, 7], [10, None, 15, None, 18]])",
+                        "([10, 5, 15, 3, 7, None, 18], 5, [[5, 3], [10, 7, 15, None, None, None, 18]])",
+                        "([10, 5, 15, 3, 7, None, 18], 11, [[10, 5, None, 3, 7], [15, None, 18]])",
+                        "([5, 3, 8, 1, 4, 7, 9, None, 2], 4, [[3, 1, 4, None, 2], [5, None, 8, 7, 9]])",
+                        "([1000], 1000, [[1000], []])",
+                        "([1000], 0, [[], [1000]])",
+                        "([1, None, 1000], 500, [[1], [1000]])",
+                        "([6, 4, 8, 3, 5, 7, 9], 5, [[4, 3, 5], [6, None, 8, 7, 9]])",
+                        "([6, 4, 8, 3, 5, 7, 9], 8, [[6, 4, 8, 3, 5, 7], [9]])",
+                        "([959], 500, [[], [959]])",
+                        "([93, None, 442, 127, 452], 741, [[93, None, 442, 127, 452], []])",
+                        "([583], 704, [[583], []])",
+                        "([738, 439, None, 159], 971, [[738, 439, None, 159], []])",
+                        "([490, 250, 818], 392, [[250], [490, None, 818]])",
+                        "([388, None, 819, None, 855], 615, [[388], [819, None, 855]])"
+                    ]
+                },
+                "body": "        result = run_split_bst(Solution, root_list, target)\n        assert_split_bst(result, expected_lists)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_split_bst, assert_split_bst\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [4, 2, 6, 1, 3, 5, 7]\ntarget = 2\nexpected_lists: list[list[int | None]] = [[2, 1], [4, 3, 6, None, None, 5, 7]]",
+    "playground_run": "result = run_split_bst(Solution, root_list, target)\nresult",
+    "playground_assert": "assert_split_bst(result, expected_lists)"
+}

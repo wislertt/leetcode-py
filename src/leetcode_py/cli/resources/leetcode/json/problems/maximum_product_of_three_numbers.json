@@ -1,0 +1,93 @@
+{
+    "problem_name": "maximum_product_of_three_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "628",
+    "problem_title": "Maximum Product of Three Numbers",
+    "difficulty": "Easy",
+    "topics": "Array, Math, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums`.\n\nFind three numbers whose product is maximum and return the maximum product.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3]\nOutput: 6\nExplanation: The only three numbers are 1, 2, and 3, so the maximum product is 1 * 2 * 3 = 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4]\nOutput: 24\nExplanation: The largest product comes from the three greatest numbers: 2 * 3 * 4 = 24.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [-1,-2,-3]\nOutput: -6\nExplanation: The only three numbers are -1, -2, and -3, so the maximum product is (-1) * (-2) * (-3) = -6.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= nums.length <= 10^4`\n- `-1000 <= nums[i] <= 1000`",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "maximum_product",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.maximum_product(nums)",
+    "helpers_assert_name": "maximum_product",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_maximum_product, run_maximum_product\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximumProductOfThreeNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "maximum_product",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement maximum_product\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_maximum_product",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3], 6)",
+                        "([1, 2, 3, 4], 24)",
+                        "([-1, -2, -3], -6)",
+                        "([-1, -2, -3, -4], -6)",
+                        "([-1000, -1000, 1000], 1000000000)",
+                        "([-1000, -1000, -1000], -1000000000)",
+                        "([-1000, 0, 1000, 500], 0)",
+                        "([-5, -4, -3, -2, -1], -6)",
+                        "([0, 0, 0], 0)",
+                        "([-1, 0, 1], 0)",
+                        "([1, 1, 1, 1], 1)",
+                        "([-10, -10, 1, 3, 2], 300)",
+                        "([7, 3, 1, 0, -5, 12], 252)",
+                        "([-1000, 1000, 0, -999, 2], 999000000)",
+                        "([-8, 7, 7, -7, 4, -6], 392)",
+                        "([7, 10, 4, 5], 350)"
+                    ]
+                },
+                "body": "        result = run_maximum_product(Solution, nums)\n        assert_maximum_product(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_maximum_product, assert_maximum_product\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4]\nexpected = 24",
+    "playground_run": "result = run_maximum_product(Solution, nums)\nresult",
+    "playground_assert": "assert_maximum_product(result, expected)"
+}

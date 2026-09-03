@@ -1,0 +1,93 @@
+{
+    "problem_name": "valid_square",
+    "solution_class_name": "Solution",
+    "problem_number": "593",
+    "problem_title": "Valid Square",
+    "difficulty": "Medium",
+    "topics": "Math, Geometry",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the coordinates of four points in 2D space <code>p1</code>, <code>p2</code>, <code>p3</code> and <code>p4</code>, return <code>true</code> <em>if the four points construct a square</em>.\n\n<p>The coordinate of a point <code>p<sub>i</sub></code> is represented as <code>[x<sub>i</sub>, y<sub>i</sub>]</code>. The input is <strong>not</strong> given in any order.</p>\n\n<p>A <strong>valid square</strong> has four equal sides with positive length and four equal angles (90-degree angles).</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,12]\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: p1 = [1,0], p2 = [-1,0], p3 = [0,1], p4 = [0,-1]\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- p1.length == p2.length == p3.length == p4.length == 2\n- -10^4 <= xi, yi <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_square",
+    "helpers_run_signature": "(solution_class: type, p1: list[int], p2: list[int], p3: list[int], p4: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_square(p1, p2, p3, p4)",
+    "helpers_assert_name": "valid_square",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_square, run_valid_square\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidSquare",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_square",
+                "signature": "(self, p1: list[int], p2: list[int], p3: list[int], p4: list[int]) -> bool",
+                "body": "        # TODO: Implement valid_square\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_square",
+                "signature": "(self, p1: list[int], p2: list[int], p3: list[int], p4: list[int], expected: bool)",
+                "parametrize": "p1, p2, p3, p4, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 0], [1, 1], [1, 0], [0, 1], True)",
+                        "([0, 0], [1, 1], [1, 0], [0, 12], False)",
+                        "([1, 0], [-1, 0], [0, 1], [0, -1], True)",
+                        "([0, 0], [0, 0], [0, 0], [0, 0], False)",
+                        "([0, 0], [1, 0], [0, 1], [1, 1], True)",
+                        "([1, 1], [0, 0], [0, 1], [1, 0], True)",
+                        "([0, 0], [0, 1], [1, 1], [2, 1], False)",
+                        "([0, 0], [3, 0], [3, 3], [0, 3], True)",
+                        "([0, 0], [1, 1], [1, 0], [0, 2], False)",
+                        "([0, 0], [5, 0], [5, 5], [0, 5], True)",
+                        "([0, 0], [0, 5], [0, 10], [0, 15], False)",
+                        "([9999, 9999], [9999, 0], [0, 9999], [0, 0], True)",
+                        "([-10000, -10000], [10000, -10000], [10000, 10000], [-10000, 10000], True)",
+                        "([0, 0], [1, 2], [2, 1], [2, 2], False)",
+                        "([2, 2], [2, 5], [5, 5], [5, 2], True)"
+                    ]
+                },
+                "body": "        result = run_valid_square(Solution, p1, p2, p3, p4)\n        assert_valid_square(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_square, assert_valid_square\nfrom solution import Solution",
+    "playground_setup": "# Example test case\np1 = [0, 0]\np2 = [1, 1]\np3 = [1, 0]\np4 = [0, 1]\nexpected = True",
+    "playground_run": "result = run_valid_square(Solution, p1, p2, p3, p4)\nresult",
+    "playground_assert": "assert_valid_square(result, expected)"
+}

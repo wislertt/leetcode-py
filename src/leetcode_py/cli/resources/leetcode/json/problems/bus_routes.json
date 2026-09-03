@@ -5,7 +5,9 @@
     "problem_title": "Bus Routes",
     "difficulty": "Hard",
     "topics": "Array, Hash Table, Breadth-First Search",
-    "_tags": { "list": ["grind"] },
+    "_tags": {
+        "list": ["grind", "neetcode"]
+    },
     "readme_description": "You are given an array `routes` representing bus routes where `routes[i]` is a bus route that the `i^th` bus repeats forever.\n\n- For example, if `routes[0] = [1, 5, 7]`, this means that the `0^th` bus travels in the sequence `1 -> 5 -> 7 -> 1 -> 5 -> 7 -> 1 -> ...` forever.\n\nYou will start at the bus stop `source` (You are not on any bus initially), and you want to go to the bus stop `target`. You can travel between bus stops by buses only.\n\nReturn the least number of buses you must take to travel from `source` to `target`. Return `-1` if it is not possible.",
     "_readme_examples": {
         "list": [
@@ -17,7 +19,7 @@
             }
         ]
     },
-    "readme_constraints": "- 1 <= routes.length <= 500.\n- 1 <= routes[i].length <= 10^5\n- All the values of `routes[i]` are **unique**.\n- `sum(routes[i].length) <= 10^5`\n- 0 <= routes[i][j] < 10^6\n- 0 <= source, target < 10^6",
+    "readme_constraints": "- 1 <= routes.length <= 500\n- 1 <= routes[i].length <= 10^5\n- All the values of `routes[i]` are **unique**.\n- sum(routes[i].length) <= 10^5\n- 0 <= routes[i][j] < 10^6\n- 0 <= source, target < 10^6",
     "readme_additional": "",
     "helpers_imports": "",
     "helpers_content": "",
@@ -27,7 +29,7 @@
     "helpers_assert_name": "num_buses_to_destination",
     "helpers_assert_signature": "(result: int, expected: int) -> bool",
     "helpers_assert_body": "    assert result == expected\n    return True",
-    "solution_imports": "from collections import defaultdict, deque",
+    "solution_imports": "",
     "solution_contents": "",
     "solution_class_content": "",
     "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_buses_to_destination, run_num_buses_to_destination\nfrom .solution import Solution",
@@ -44,7 +46,13 @@
         ]
     },
     "_test_helper_methods": {
-        "list": [{ "name": "setup_method", "parameters": "", "body": "self.solution = Solution()" }]
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
     },
     "_test_methods": {
         "list": [
@@ -68,7 +76,10 @@
                         "([[1, 2], [2, 3], [3, 4]], 1, 4, 3)",
                         "([[1, 2], [3, 4], [5, 6]], 1, 6, -1)",
                         "([[1, 2, 3]], 5, 1, -1)",
-                        "([[1, 7], [3, 6, 7], [1, 2, 3]], 1, 6, 2)"
+                        "([[1, 7], [3, 6, 7], [1, 2, 3]], 1, 6, 2)",
+                        "([[1, 2, 7], [3, 6, 7]], 7, 1, 1)",
+                        "([[2], [2, 5], [5]], 2, 5, 1)",
+                        "([[2, 12], [12, 7], [7, 6]], 2, 6, 3)"
                     ]
                 },
                 "body": "        result = run_num_buses_to_destination(Solution, routes, source, target)\n        assert_num_buses_to_destination(result, expected)"

@@ -1,0 +1,119 @@
+{
+    "problem_name": "all_paths_source_target",
+    "solution_class_name": "Solution",
+    "problem_number": "797",
+    "problem_title": "All Paths From Source to Target",
+    "difficulty": "Medium",
+    "topics": "Backtracking, Depth-First Search, Breadth-First Search, Graph Theory, Directed Acyclic Graph",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a directed acyclic graph (**DAG**) of `n` nodes labeled from `0` to `n - 1`, find all possible paths from node `0` to node `n - 1` and return them in **any order**.\n\nThe graph is given as follows: `graph[i]` is a list of all nodes you can visit from node `i` (i.e., there is a directed edge from node `i` to node `graph[i][j]`).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg)\n\n```\nInput: graph = [[1,2],[3],[3],[]]\nOutput: [[0,1,3],[0,2,3]]\n```\n\n**Explanation:** There are two paths: `0 -> 1 -> 3` and `0 -> 2 -> 3`."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/09/28/all_2.jpg)\n\n```\nInput: graph = [[4,3,1],[3,2,4],[3],[4],[]]\nOutput: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == graph.length`\n- `2 <= n <= 15`\n- `0 <= graph[i][j] < n`\n- `graph[i][j] != i` (i.e., there will be no self-loops).\n- All the elements of `graph[i]` are **unique**.\n- The input graph is **guaranteed** to be a **DAG**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "from itertools import pairwise\n\n\ndef count_paths_source_target(graph: list[list[int]]) -> int:\n    n = len(graph)\n    memo: dict[int, int] = {}\n\n    def dfs(node: int) -> int:\n        if node == n - 1:\n            return 1\n        if node not in memo:\n            memo[node] = sum(dfs(nxt) for nxt in graph[node])\n        return memo[node]\n\n    return dfs(0)\n\n\ndef assert_all_paths_source_target_count(\n    result: list[list[int]], graph: list[list[int]], expected_count: int\n) -> bool:\n    n = len(graph)\n    unique = {tuple(path) for path in result}\n    assert len(unique) == len(result)\n    for path in result:\n        assert path[0] == 0\n        assert path[-1] == n - 1\n        for a, b in pairwise(path):\n            assert b in graph[a]\n    assert len(unique) == count_paths_source_target(graph)\n    assert len(result) == expected_count\n    return True",
+    "helpers_run_name": "all_paths_source_target",
+    "helpers_run_signature": "(solution_class: type, graph: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.all_paths_source_target(graph)",
+    "helpers_assert_name": "all_paths_source_target",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for order-independent comparison\n    result_sorted = sorted(result)\n    expected_sorted = sorted(expected)\n    assert result_sorted == expected_sorted\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import (\n    assert_all_paths_source_target,\n    assert_all_paths_source_target_count,\n    run_all_paths_source_target,\n)\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AllPathsSourceTarget",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "all_paths_source_target",
+                "signature": "(self, graph: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement all_paths_source_target\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_all_paths_source_target",
+                "signature": "(self, graph: list[list[int]], expected: list[list[int]])",
+                "parametrize": "graph, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2], [3], [3], []], [[0, 1, 3], [0, 2, 3]])",
+                        "([[4,3,1],[3,2,4],[3],[4],[]],[[0,1,2,3,4],[0,1,3,4],[0,1,4],[0,3,4],[0,4]])",
+                        "([[1], []], [[0, 1]])",
+                        "([[1, 2], [], []], [[0, 2]])",
+                        "([[1], [2], [3], []], [[0, 1, 2, 3]])",
+                        "([[1, 3], [2], [3], []], [[0, 1, 2, 3], [0, 3]])",
+                        "([[2], [3], [1, 3], []], [[0, 2, 1, 3], [0, 2, 3]])",
+                        "([[1, 2], [2, 3], [3], []], [[0, 1, 2, 3], [0, 1, 3], [0, 2, 3]])",
+                        "([[1, 2, 3], [4], [4], [4], []], [[0, 1, 4], [0, 2, 4], [0, 3, 4]])",
+                        "([[3], [3], [3], []], [[0, 3]])",
+                        "([[1, 2, 3], [3], [3], []], [[0, 1, 3], [0, 2, 3], [0, 3]])",
+                        "([[1,2],[3,4],[3,4],[5],[5],[]],[[0,1,3,5],[0,1,4,5],[0,2,3,5],[0,2,4,5]])",
+                        "([[1, 2], [2, 3], [3], []], [[0, 1, 2, 3], [0, 1, 3], [0, 2, 3]])",
+                        "([[1, 2], [3], [1, 3], []], [[0, 1, 3], [0, 2, 1, 3], [0, 2, 3]])"
+                    ]
+                },
+                "body": "        result = run_all_paths_source_target(Solution, graph)\n        assert_all_paths_source_target(result, expected)"
+            },
+            {
+                "name": "test_all_paths_source_target_count",
+                "signature": "(self, graph: list[list[int]], expected_count: int)",
+                "parametrize": "graph, expected_count",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2], [3, 4], [3, 4], [5], [5], []], 4)",
+                        "([[1, 2], [3, 4, 5], [3, 4, 5], [6], [6], [6], []], 6)",
+                        "([[1, 2, 3], [4, 5, 6], [4, 5, 6], [4, 5, 6], [7], [7], [7], []], 9)",
+                        "([[1, 2], [3, 4], [3, 4], [5, 6], [5, 6], [7], [7], []], 8)",
+                        "([[1, 2], [3, 4], [3, 4], [5, 6, 7], [5, 6, 7], [8], [8], [8], []], 12)",
+                        "([[1, 2], [3, 4], [3, 4], [5, 6], [5, 6], [7, 8], [7, 8], [9], [9], []], 16)",
+                        "([[1,2,3],[4,5,6],[4,5,6],[4,5,6],[7,8],[7,8],[7,8],[9],[9],[]],18)",
+                        "([[1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13],[14],[]],1)",
+                        "([[5, 7], [7, 3, 6], [4], [7], [], [], [5], [4, 5]], 1)",
+                        "([[4, 6], [5, 4], [], [], [], [3], [4, 3]], 1)",
+                        "([[11,1],[],[0,3,11],[1],[],[3,4],[11],[3],[11,9],[1,11,3],[3],[]],1)",
+                        "([[4,13],[5,2,6],[],[5,13,6],[],[],[7,5],[],[13],[11,7],[7,5],[],[8,5,4],[6,7]],1)",
+                        "([[3, 5, 2], [], [5], [], [2, 0, 3], []], 2)",
+                        "([[10],[7],[10,8,0],[],[8,10,2],[4],[8,9,10],[],[10],[0,8,10],[]],1)",
+                        "([[1, 4], [], [0], [4, 1, 0], [1]], 1)",
+                        "([[5], [], [5, 3, 1], [0, 1], [], [1]], 1)",
+                        "([[7,8,13],[7,13],[10],[13,10],[],[3,10,11],[13],[],[1,13],[],[],[],[],[]],3)",
+                        "([[1, 3, 6, 8], [7], [1, 5, 8], [], [3, 6, 7], [1, 3], [], [], []], 1)",
+                        "([[8, 3], [], [3, 8], [8], [], [8], [7], [2], []], 2)",
+                        "([[13,4],[12],[3,4],[13],[13],[],[4],[],[4,12],[8,13],[8,0],[3,2],[],[12]],2)"
+                    ]
+                },
+                "body": "        result = run_all_paths_source_target(Solution, graph)\n        assert_all_paths_source_target_count(result, graph, expected_count)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_all_paths_source_target, assert_all_paths_source_target\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngraph = [[1, 2], [3], [3], []]\nexpected = [[0, 1, 3], [0, 2, 3]]",
+    "playground_run": "result = run_all_paths_source_target(Solution, graph)\nresult",
+    "playground_assert": "assert_all_paths_source_target(result, expected)"
+}

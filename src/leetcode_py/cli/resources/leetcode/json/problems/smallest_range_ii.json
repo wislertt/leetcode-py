@@ -1,0 +1,102 @@
+{
+    "problem_name": "smallest_range_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "910",
+    "problem_title": "Smallest Range II",
+    "difficulty": "Medium",
+    "topics": "Array, Math, Greedy, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums` and an integer `k`.\n\nFor each index `i` where `0 <= i < nums.length`, change `nums[i]` to be either `nums[i] + k` or `nums[i] - k`.\n\nThe **score** of `nums` is the difference between the maximum and minimum elements in `nums`.\n\nReturn *the minimum **score** of* `nums` *after changing the values at each index*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1], k = 0\nOutput: 0\nExplanation: The score is max(nums) - min(nums) = 1 - 1 = 0.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,10], k = 2\nOutput: 6\nExplanation: Change nums to be [2, 8]. The score is max(nums) - min(nums) = 8 - 2 = 6.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,3,6], k = 3\nOutput: 3\nExplanation: Change nums to be [4, 6, 3]. The score is max(nums) - min(nums) = 6 - 3 = 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^4\n- 0 <= nums[i] <= 10^4\n- 0 <= k <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "smallest_range_ii",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.smallest_range_ii(nums, k)",
+    "helpers_assert_name": "smallest_range_ii",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_smallest_range_ii, run_smallest_range_ii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SmallestRangeII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "smallest_range_ii",
+                "signature": "(self, nums: list[int], k: int) -> int",
+                "body": "        # TODO: Implement smallest_range_ii\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_smallest_range_ii",
+                "signature": "(self, nums: list[int], k: int, expected: int)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1], 0, 0)",
+                        "([0, 10], 2, 6)",
+                        "([1, 3, 6], 3, 3)",
+                        "([0], 0, 0)",
+                        "([1], 10000, 0)",
+                        "([0, 10], 5, 0)",
+                        "([0, 10000], 10000, 10000)",
+                        "([0, 10000], 9999, 9998)",
+                        "([2, 7, 2], 1, 3)",
+                        "([1, 5, 9], 2, 4)",
+                        "([3, 1, 10], 4, 2)",
+                        "([10, 0, 5, 5], 0, 10)",
+                        "([5, 5, 5, 5], 7, 0)",
+                        "([9, 1, 4, 4, 7], 3, 3)",
+                        "([0, 6, 2, 12, 0, 4], 6, 6)",
+                        "([5, 11, 10, 7, 4, 10], 1, 5)",
+                        "([1, 2, 3, 4, 5, 6, 7, 8], 4, 7)",
+                        "([7, 0, 3, 9, 2, 8, 5, 6], 2, 5)",
+                        "([4, 1, 8, 0, 6, 2, 9, 3, 7, 5], 3, 5)",
+                        "([100, 0, 50], 25, 50)",
+                        "([2878, 2944, 5635, 5873, 7873], 1222, 2551)",
+                        "([143, 7354, 8845, 9125, 9304], 9087, 9161)",
+                        "([2426, 4010, 5582, 7142, 8105, 9402, 9682], 2425, 3290)",
+                        "([779, 1053, 3844, 4896, 4904, 7770, 9626], 2183, 4481)"
+                    ]
+                },
+                "body": "        result = run_smallest_range_ii(Solution, nums, k)\n        assert_smallest_range_ii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_smallest_range_ii, assert_smallest_range_ii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1]\nk = 0\nexpected = 0",
+    "playground_run": "result = run_smallest_range_ii(Solution, nums, k)\nresult",
+    "playground_assert": "assert_smallest_range_ii(result, expected)"
+}

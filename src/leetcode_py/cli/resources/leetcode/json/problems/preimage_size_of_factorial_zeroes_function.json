@@ -1,0 +1,106 @@
+{
+    "problem_name": "preimage_size_of_factorial_zeroes_function",
+    "solution_class_name": "Solution",
+    "problem_number": "793",
+    "problem_title": "Preimage Size of Factorial Zeroes Function",
+    "difficulty": "Hard",
+    "topics": "Math, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Let <code>f(x)</code> be the number of zeroes at the end of <code>x!</code>. Recall that <code>x! = 1 * 2 * 3 * ... * x</code> and by convention, <code>0! = 1</code>.\n\n<ul>\n\t<li>For example, <code>f(3) = 0</code> because <code>3! = 6</code> has no zeroes at the end, while <code>f(11) = 2</code> because <code>11! = 39916800</code> has two zeroes at the end.</li>\n</ul>\n\n<p>Given an integer <code>k</code>, return <em>the number of non-negative integers</em> <code>x</code> <em>have the property that</em> <code>f(x) = k</code>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: k = 0\nOutput: 5\nExplanation: 0!, 1!, 2!, 3!, and 4! end with k = 0 zeroes.\n```"
+            },
+            {
+                "content": "```\nInput: k = 5\nOutput: 0\nExplanation: There is no x such that x! ends in k = 5 zeroes.\n```"
+            },
+            {
+                "content": "```\nInput: k = 3\nOutput: 5\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= k <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "preimage_size_fzf",
+    "helpers_run_signature": "(solution_class: type, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.preimage_size_fzf(k)",
+    "helpers_assert_name": "preimage_size_fzf",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected, f'Expected {expected}, got {result}'\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_preimage_size_fzf, run_preimage_size_fzf\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PreimageSizeOfFactorialZeroesFunction",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "preimage_size_fzf",
+                "signature": "(self, k: int) -> int",
+                "body": "        # TODO: Implement preimage_size_fzf\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_preimage_size_fzf",
+                "signature": "(self, k: int, expected: int)",
+                "parametrize": "k, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 5)",
+                        "(1, 5)",
+                        "(2, 5)",
+                        "(3, 5)",
+                        "(4, 5)",
+                        "(5, 0)",
+                        "(6, 5)",
+                        "(7, 5)",
+                        "(9, 5)",
+                        "(10, 5)",
+                        "(11, 0)",
+                        "(12, 5)",
+                        "(13, 5)",
+                        "(15, 5)",
+                        "(16, 5)",
+                        "(17, 0)",
+                        "(19, 5)",
+                        "(20, 5)",
+                        "(23, 0)",
+                        "(24, 5)",
+                        "(25, 5)",
+                        "(29, 0)",
+                        "(30, 0)",
+                        "(41, 5)",
+                        "(100, 5)",
+                        "(1000000, 5)",
+                        "(999999995, 0)",
+                        "(1000000000, 5)"
+                    ]
+                },
+                "body": "        result = run_preimage_size_fzf(Solution, k)\n        assert_preimage_size_fzf(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_preimage_size_fzf, assert_preimage_size_fzf\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nk = 0\nexpected = 5",
+    "playground_run": "result = run_preimage_size_fzf(Solution, k)\nresult",
+    "playground_assert": "assert_preimage_size_fzf(result, expected)"
+}

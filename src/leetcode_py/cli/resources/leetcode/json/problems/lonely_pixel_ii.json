@@ -1,0 +1,111 @@
+{
+    "problem_name": "lonely_pixel_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "533",
+    "problem_title": "Lonely Pixel II",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an `m x n` `picture` consisting of black `'B'` and white `'W'` pixels and an integer `target`, return the number of **black** lonely pixels.\n\nA black lonely pixel is a character `'B'` located at a specific position `(r, c)` where:\n\n- Row `r` and column `c` both contain exactly `target` black pixels.\n- For all rows that have a black pixel at column `c`, they should be exactly the same as row `r`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0533.Lonely%20Pixel%20II/images/pixel2-1-grid.jpg)\n\n```\nInput: picture = [[\"W\",\"B\",\"W\",\"B\",\"B\",\"W\"],[\"W\",\"B\",\"W\",\"B\",\"B\",\"W\"],[\"W\",\"B\",\"W\",\"B\",\"B\",\"W\"],[\"W\",\"W\",\"B\",\"W\",\"B\",\"W\"]], target = 3\nOutput: 6\nExplanation: All the green 'B's are the black pixels we need (all 'B's at column 1 and 3).\nTake 'B' at row r = 0 and column c = 1 as an example:\n - Rule 1, row r = 0 and column c = 1 both have exactly target = 3 black pixels.\n - Rule 2, the rows that have a black pixel at column c = 1 are row 0, row 1 and row 2. They are exactly the same as row r = 0.\n```"
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0533.Lonely%20Pixel%20II/images/pixel2-2-grid.jpg)\n\n```\nInput: picture = [[\"W\",\"W\",\"B\"],[\"W\",\"W\",\"B\"],[\"W\",\"W\",\"B\"]], target = 1\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == picture.length`\n- `n == picture[i].length`\n- `1 <= m, n <= 200`\n- `picture[i][j]` is `'W'` or `'B'`.\n- `1 <= target <= min(m, n)`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_black_pixel",
+    "helpers_run_signature": "(solution_class: type, picture: list[list[str]], target: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_black_pixel(picture, target)",
+    "helpers_assert_name": "find_black_pixel",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_black_pixel, run_find_black_pixel\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LonelyPixelII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_black_pixel",
+                "signature": "(self, picture: list[list[str]], target: int) -> int",
+                "body": "        # TODO: Implement find_black_pixel\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_black_pixel",
+                "signature": "(self, picture: list[list[str]], target: int, expected: int)",
+                "parametrize": "picture, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([['W','W','B'],['W','W','B'],['W','W','B']], 1, 0)",
+                        "([['W','B','W'],['W','B','W'],['W','B','W']], 1, 0)",
+                        "([['W','B','W'],['W','B','W'],['W','B','W']], 2, 0)",
+                        "([['W','B','W'],['W','B','W'],['W','B','W']], 3, 0)",
+                        "([['B','W'],['B','W']], 1, 0)",
+                        "([['B','W'],['B','W']], 2, 0)",
+                        "([['B','W','B'],['B','W','B']], 1, 0)",
+                        "([['B','W','B'],['B','W','B']], 2, 4)",
+                        "([['B']], 1, 1)",
+                        "([['W']], 1, 0)",
+                        "([['B','B'],['B','B']], 2, 4)",
+                        "([['B','B','W'],['B','W','B']], 1, 0)",
+                        "([['B','W','B'],['B','W','B'],['W','B','W']], 2, 4)",
+                        "([['B','W'],['W','B']], 1, 2)",
+                        "([['B','W','B'],['B','B','W']], 2, 0)",
+                        "([['W','B','B'],['B','B','W']], 2, 0)",
+                        "([['W','W','B','B'],['W','W','B','B']], 2, 4)",
+                        "([['B','W','B'],['W','B','B'],['B','W','B']], 1, 0)",
+                        "([['B','W'],['W','B'],['B','W'],['W','B']], 1, 0)",
+                        "([['W','B'],['W','B'],['W','B']], 1, 0)",
+                        "([['W','W'],['B','B'],['B','W'],['B','B']], 1, 0)",
+                        "([['B'],['W'],['B']], 1, 0)",
+                        "([['B','W']], 1, 1)",
+                        "([['B','W'],['W','W'],['W','B']], 1, 2)",
+                        "([['W','B'],['W','B'],['W','B'],['W','W']], 2, 0)",
+                        "([['W','W','B','W'],['W','B','B','W'],['B','B','W','W'],['B','W','W','B']], 2, 0)",
+                        "([['B','W'],['B','B'],['B','B']], 2, 2)",
+                        "([['B'],['B'],['W']], 1, 0)",
+                        "([['B'],['B'],['W'],['W']], 1, 0)",
+                        "([['W','W']], 1, 0)",
+                        "([['W','B','W']], 1, 1)",
+                        "([['W','B','B','B'],['W','B','W','B'],['B','W','B','B'],['W','B','B','B']], 1, 0)",
+                        "([['W'],['W'],['W']], 1, 0)",
+                        "([['B','W','B','B'],['W','B','B','B']], 1, 0)",
+                        "([['B','W','W']], 1, 1)",
+                        "([['B','B'],['W','W']], 1, 0)"
+                    ]
+                },
+                "body": "        result = run_find_black_pixel(Solution, picture, target)\n        assert_find_black_pixel(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_black_pixel, assert_find_black_pixel\nfrom solution import Solution",
+    "playground_setup": "# Example test case\npicture = [['W', 'B', 'W'], ['W', 'B', 'W'], ['W', 'B', 'W']]\ntarget = 1\nexpected = 0",
+    "playground_run": "result = run_find_black_pixel(Solution, picture, target)\nresult",
+    "playground_assert": "assert_find_black_pixel(result, expected)"
+}

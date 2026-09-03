@@ -202,18 +202,29 @@ UNSCRAPABLE_HANDLED = [
     (170, "two-sum-iii-data-structure-design"),
     (245, "shortest-word-distance-iii"),
     (288, "unique-word-abbreviation"),
-]
-
-# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
-# problem is created; append new discoveries at the bottom.
-UNSCRAPABLE_QUEUE = [
     (533, "lonely-pixel-ii"),
     (536, "construct-binary-tree-from-string"),
     (544, "output-contest-matches"),
     (562, "longest-line-of-consecutive-one-in-matrix"),
     (568, "maximum-vacation-days"),
     (573, "squirrel-simulation"),
+    (660, "remove-9"),
+    (663, "equal-tree-partition"),
+    (666, "path-sum-iv"),
+    (681, "next-closest-time"),
+    (683, "k-empty-slots"),
+    (702, "search-in-a-sorted-array-of-unknown-size"),
+    (727, "minimum-window-subsequence"),
+    (750, "number-of-corner-rectangles"),
+    (755, "pour-water"),
+    (758, "bold-words-in-string"),
+    (776, "split-bst"),
+    (800, "similar-rgb-color"),
 ]
+
+# Todo queue in discovery order. Move a tuple into UNSCRAPABLE_HANDLED once the
+# problem is created; append new discoveries at the bottom.
+UNSCRAPABLE_QUEUE = []
 
 # Problems that cannot be implemented in Python (SQL, shell, etc.).
 # Never created; kept separate from the unscrapable lists so the todo queue
@@ -256,6 +267,25 @@ NON_PYTHON_PROBLEMS = [
     (195, "tenth-line"),
     (196, "delete-duplicate-emails"),
     (197, "rising-temperature"),
+    (584, "find-customer-referee"),
+    (585, "investments-in-2016"),
+    (586, "customer-placing-the-largest-number-of-orders"),
+    (596, "classes-more-than-5-students"),
+    (601, "human-traffic-of-stadium"),
+    (602, "friend-requests-ii-who-has-the-most-friends"),
+    (603, "consecutive-available-seats"),
+    (607, "sales-person"),
+    (608, "tree-node"),
+    (610, "triangle-judgement"),
+    (612, "shortest-distance-in-a-plane"),
+    (613, "shortest-distance-in-a-line"),
+    (614, "second-degree-follower"),
+    (615, "average-salary-departments-vs-company"),
+    (618, "students-report-by-geography"),
+    (619, "biggest-single-number"),
+    (620, "not-boring-movies"),
+    (626, "exchange-seats"),
+    (627, "swap-salary"),
 ]
 
 

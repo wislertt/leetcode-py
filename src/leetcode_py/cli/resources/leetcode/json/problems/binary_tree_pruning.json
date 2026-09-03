@@ -1,0 +1,98 @@
+{
+    "problem_name": "binary_tree_pruning",
+    "solution_class_name": "Solution",
+    "problem_number": "814",
+    "problem_title": "Binary Tree Pruning",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, return the same tree where every subtree (of the given tree) not containing a `1` has been removed.\n\nA subtree of a node `node` is `node` plus every node that is a descendant of `node`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_2.png)\n\n```\nInput: root = [1,null,0,0,1]\nOutput: [1,null,0,null,1]\nExplanation:\nOnly the red nodes satisfy the property \"every subtree not containing a 1\".\nThe diagram on the right represents the answer.\n```"
+            },
+            {
+                "content": "![Example 2](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_1.png)\n\n```\nInput: root = [1,0,1,0,0,0,1]\nOutput: [1,null,1,null,1]\n```"
+            },
+            {
+                "content": "![Example 3](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/05/1028.png)\n\n```\nInput: root = [1,1,0,1,1,0,1,0]\nOutput: [1,1,0,1,1,null,1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 200]\n- Node.val is either 0 or 1",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "prune_tree",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.prune_tree(root)",
+    "helpers_assert_name": "prune_tree",
+    "helpers_assert_signature": "(result: TreeNode[int] | None, expected_list: list[int | None]) -> bool",
+    "helpers_assert_body": "    expected = TreeNode[int].from_list(expected_list)\n    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_prune_tree, run_prune_tree\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreePruning",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "prune_tree",
+                "signature": "(self, root: TreeNode[int] | None) -> TreeNode[int] | None",
+                "body": "        # TODO: Implement prune_tree\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_prune_tree",
+                "signature": "(self, root_list: list[int | None], expected_list: list[int | None])",
+                "parametrize": "root_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([1,None,0,0,1], [1,None,0,None,1])",
+                        "([1,0,1,0,0,0,1], [1,None,1,None,1])",
+                        "([1,1,0,1,1,0,1,0], [1,1,0,1,1,None,1])",
+                        "([0], [])",
+                        "([1], [1])",
+                        "([0,0,0], [])",
+                        "([1,0,0], [1])",
+                        "([0,1,1], [0,1,1])",
+                        "([1,1,0], [1,1])",
+                        "([1,1,1], [1,1,1])",
+                        "([0,0,None,0,1], [0,0,None,None,1])",
+                        "([1,0,1,None,1,0,1], [1,0,1,None,1,None,1])",
+                        "([1,0,0,0,0,0,0], [1])",
+                        "([0,0,None,1], [0,0,None,1])",
+                        "([1,1], [1,1])",
+                        "([0,1,None,1,None,1], [0,1,None,1,None,1])",
+                        "([0,1,None,1,None,0], [0,1,None,1])",
+                        "([0,1,None,1,None,0,None,0], [0,1,None,1])",
+                        "([1,0], [1])",
+                        "([0,None,0,None,0,1], [0,None,0,None,0,1])"
+                    ]
+                },
+                "body": "        result = run_prune_tree(Solution, root_list)\n        assert_prune_tree(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_prune_tree, assert_prune_tree\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, None, 0, 0, 1]\nexpected_list: list[int | None] = [1, None, 0, None, 1]",
+    "playground_run": "result = run_prune_tree(Solution, root_list)\nresult",
+    "playground_assert": "assert_prune_tree(result, expected_list)"
+}

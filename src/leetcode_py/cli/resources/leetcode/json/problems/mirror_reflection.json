@@ -1,0 +1,96 @@
+{
+    "problem_name": "mirror_reflection",
+    "solution_class_name": "Solution",
+    "problem_number": "858",
+    "problem_title": "Mirror Reflection",
+    "difficulty": "Medium",
+    "topics": "Math, Geometry, Number Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a special square room with mirrors on each of the four walls. Except for the southwest corner, there are receptors on each of the remaining corners, numbered `0`, `1`, and `2`.\n\nThe square room has walls of length `p` and a laser ray from the southwest corner first meets the east wall at a distance `q` from the 0^th receptor.\n\nGiven the two integers `p` and `q`, return the number of the receptor that the ray meets first.\n\nThe test cases are guaranteed so that the ray will meet a receptor eventually.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/18/reflection.png)\n\n```\nInput: p = 2, q = 1\nOutput: 2\nExplanation: The ray meets receptor 2 the first time it gets reflected back to the left wall.\n```"
+            },
+            {
+                "content": "```\nInput: p = 3, q = 1\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= q <= p <= 1000`",
+    "readme_additional": "**Follow up:** Could you solve it without simulating the reflections?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "mirror_reflection",
+    "helpers_run_signature": "(solution_class: type, p: int, q: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.mirror_reflection(p, q)",
+    "helpers_assert_name": "mirror_reflection",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_mirror_reflection, run_mirror_reflection\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MirrorReflection",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "mirror_reflection",
+                "signature": "(self, p: int, q: int) -> int",
+                "body": "        # TODO: Implement mirror_reflection\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_mirror_reflection",
+                "signature": "(self, p: int, q: int, expected: int)",
+                "parametrize": "p, q, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, 1, 2)",
+                        "(3, 1, 1)",
+                        "(1, 1, 1)",
+                        "(2, 2, 1)",
+                        "(4, 2, 2)",
+                        "(5, 2, 0)",
+                        "(6, 3, 2)",
+                        "(7, 3, 1)",
+                        "(8, 6, 2)",
+                        "(9, 6, 0)",
+                        "(10, 4, 0)",
+                        "(12, 8, 0)",
+                        "(15, 10, 0)",
+                        "(21, 14, 0)",
+                        "(11, 7, 1)",
+                        "(13, 5, 1)",
+                        "(16, 12, 2)",
+                        "(100, 99, 2)",
+                        "(999, 999, 1)",
+                        "(1000, 1, 2)",
+                        "(1000, 999, 2)"
+                    ]
+                },
+                "body": "        result = run_mirror_reflection(Solution, p, q)\n        assert_mirror_reflection(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_mirror_reflection, assert_mirror_reflection\nfrom solution import Solution",
+    "playground_setup": "# Example test case\np = 2\nq = 1\nexpected = 2",
+    "playground_run": "result = run_mirror_reflection(Solution, p, q)\nresult",
+    "playground_assert": "assert_mirror_reflection(result, expected)"
+}

@@ -1,0 +1,96 @@
+{
+    "problem_name": "solve_the_equation",
+    "solution_class_name": "Solution",
+    "problem_number": "640",
+    "problem_title": "Solve the Equation",
+    "difficulty": "Medium",
+    "topics": "Math, String, Simulation, Linear Algebra",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Solve a given equation and return the value of `x` in the form of a string `\"x=#value\"`. The equation contains only `'+'`, `'-'` operation, the variable `x` and its coefficient. You should return `\"No solution\"` if there is no solution for the equation, or `\"Infinite solutions\"` if there are infinite solutions for the equation.\n\nIf there is exactly one solution for the equation, we ensure that the value of `x` is an integer.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: equation = \"x+5-3+x=6+x-2\"\nOutput: \"x=2\"\n```"
+            },
+            {
+                "content": "```\nInput: equation = \"x=x\"\nOutput: \"Infinite solutions\"\n```"
+            },
+            {
+                "content": "```\nInput: equation = \"2x=x\"\nOutput: \"x=0\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 3 <= equation.length <= 1000\n- equation has exactly one '='.\n- equation consists of integers with an absolute value in the range [0, 100] without any leading zeros, and the variable 'x'.\n- The input is generated that if there is a single solution, it will be an integer.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "solve_equation",
+    "helpers_run_signature": "(solution_class: type, equation: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.solve_equation(equation)",
+    "helpers_assert_name": "solve_equation",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_solve_equation, run_solve_equation\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SolveTheEquation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "solve_equation",
+                "signature": "(self, equation: str) -> str",
+                "body": "        # TODO: Implement solve_equation\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_solve_equation",
+                "signature": "(self, equation: str, expected: str)",
+                "parametrize": "equation, expected",
+                "test_cases": {
+                    "list": [
+                        "('x+5-3+x=6+x-2', 'x=2')",
+                        "('x=x', 'Infinite solutions')",
+                        "('2x=x', 'x=0')",
+                        "('x=x+1', 'No solution')",
+                        "('-x=-1', 'x=1')",
+                        "('0x=0', 'Infinite solutions')",
+                        "('x+1=x+2', 'No solution')",
+                        "('3x-2-x=2x+4', 'No solution')",
+                        "('99x=99', 'x=1')",
+                        "('x-100=100-x', 'x=100')",
+                        "('-1+x=0', 'x=1')",
+                        "('x=5', 'x=5')",
+                        "('5=5', 'Infinite solutions')",
+                        "('5=6', 'No solution')",
+                        "('-x+1=-x+1', 'Infinite solutions')",
+                        "('100x-100=0', 'x=1')",
+                        "('x+2x+3x=6x-6', 'No solution')",
+                        "('-x+2x=3', 'x=3')"
+                    ]
+                },
+                "body": "        result = run_solve_equation(Solution, equation)\n        assert_solve_equation(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_solve_equation, assert_solve_equation\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nequation = 'x+5-3+x=6+x-2'\nexpected = 'x=2'",
+    "playground_run": "result = run_solve_equation(Solution, equation)\nresult",
+    "playground_assert": "assert_solve_equation(result, expected)"
+}

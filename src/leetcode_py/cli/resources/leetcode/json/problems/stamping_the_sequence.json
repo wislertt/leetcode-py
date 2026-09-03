@@ -1,0 +1,97 @@
+{
+    "problem_name": "stamping_the_sequence",
+    "solution_class_name": "Solution",
+    "problem_number": "936",
+    "problem_title": "Stamping The Sequence",
+    "difficulty": "Hard",
+    "topics": "String, Stack, Greedy, Queue",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two strings `stamp` and `target`. Initially, there is a string `s` of length `target.length` with all `s[i] == '?'`.\n\nIn one turn, you can place `stamp` over `s` and replace every letter in the `s` with the corresponding letter from `stamp`.\n\n- For example, if `stamp = \"abc\"` and `target = \"abcba\"`, then `s` is `\"?????\"` initially. In one turn you can:\n  - place `stamp` at index `0` of `s` to obtain `\"abc??\"`,\n  - place `stamp` at index `1` of `s` to obtain `\"?abc?\"`, or\n  - place `stamp` at index `2` of `s` to obtain `\"??abc\"`.\n\n  Note that `stamp` must be fully contained in the boundaries of `s` in order to stamp (i.e., you cannot place `stamp` at index `3` of `s`).\n\nWe want to convert `s` to `target` using **at most** `10 * target.length` turns.\n\nReturn *an array of the index of the left-most letter being stamped at each turn*. If we cannot obtain `target` from `s` within `10 * target.length` turns, return an empty array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: stamp = \"abc\", target = \"ababc\"\nOutput: [0,2]\nExplanation: Initially s = \"?????\".\n- Place stamp at index 0 to get \"abc??\".\n- Place stamp at index 2 to get \"ababc\".\n[1,0,2] would also be accepted as an answer, as well as some other answers.\n```"
+            },
+            {
+                "content": "```\nInput: stamp = \"abca\", target = \"aabcaca\"\nOutput: [3,0,1]\nExplanation: Initially s = \"???????\".\n- Place stamp at index 3 to get \"???abca\".\n- Place stamp at index 0 to get \"abcabca\".\n- Place stamp at index 1 to get \"aabcaca\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= stamp.length <= target.length <= 1000`\n- `stamp` and `target` consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "def _is_valid_stamp_moves(moves: list[int], stamp: str, target: str) -> bool:\n    if not 0 <= len(moves) <= 10 * len(target):\n        return False\n    span = len(target) - len(stamp)\n    chars = ['?'] * len(target)\n    for move in moves:\n        if not 0 <= move <= span:\n            return False\n        for offset, char in enumerate(stamp):\n            chars[move + offset] = char\n    return ''.join(chars) == target",
+    "helpers_run_name": "moves_to_stamp",
+    "helpers_run_signature": "(solution_class: type, stamp: str, target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.moves_to_stamp(stamp, target)",
+    "helpers_assert_name": "moves_to_stamp",
+    "helpers_assert_signature": "(result: list[int], expected: list[int], stamp: str, target: str) -> bool",
+    "helpers_assert_body": "    # Multiple stamp sequences are valid; an empty one is not reproducible.\n    if not expected:\n        assert result == []\n        return True\n    assert result\n    assert _is_valid_stamp_moves(result, stamp, target)\n    assert len(result) <= 10 * len(target)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_moves_to_stamp, run_moves_to_stamp\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StampingTheSequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "moves_to_stamp",
+                "signature": "(self, stamp: str, target: str) -> list[int]",
+                "body": "        # TODO: Implement moves_to_stamp\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_moves_to_stamp",
+                "signature": "(self, stamp: str, target: str, expected: list[int])",
+                "parametrize": "stamp, target, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', 'ababc', [0, 2])",
+                        "('abca', 'aabcaca', [3, 0, 1])",
+                        "('a', 'a', [0])",
+                        "('a', 'aaaa', [3, 2, 1, 0])",
+                        "('aa', 'aaaa', [2, 1, 0])",
+                        "('abc', 'abc', [0])",
+                        "('ab', 'abab', [2, 0])",
+                        "('he', 'hehehe', [4, 2, 0])",
+                        "('aba', 'ababa', [2, 0])",
+                        "('ab', 'ba', [])",
+                        "('abc', 'abca', [])",
+                        "('ab', 'aa', [])",
+                        "('b', 'abab', [])",
+                        "('ab', 'aabb', [2, 0, 1])",
+                        "('ba', 'bbaa', [2, 0, 1])",
+                        "('bcbb', 'bbcbb', [0, 1])",
+                        "('cbab', 'cbabb', [1, 0])",
+                        "('bcca', 'bcca', [0])",
+                        "('aaa', 'aaaa', [1, 0])",
+                        "('acb', 'acb', [0])",
+                        "('ab', 'aaab', [0, 1, 2])",
+                        "('abac', 'abac', [0])"
+                    ]
+                },
+                "body": "        result = run_moves_to_stamp(Solution, stamp, target)\n        assert_moves_to_stamp(result, expected, stamp, target)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_moves_to_stamp, assert_moves_to_stamp\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstamp = 'abc'\ntarget = 'ababc'\nexpected = [0, 2]",
+    "playground_run": "result = run_moves_to_stamp(Solution, stamp, target)\nresult",
+    "playground_assert": "assert_moves_to_stamp(result, expected, stamp, target)"
+}

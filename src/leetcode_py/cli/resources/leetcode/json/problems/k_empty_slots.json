@@ -1,0 +1,116 @@
+{
+    "problem_name": "k_empty_slots",
+    "solution_class_name": "Solution",
+    "problem_number": "683",
+    "problem_title": "K Empty Slots",
+    "difficulty": "Hard",
+    "topics": "Array, Binary Indexed Tree, Segment Tree, Queue, Ordered Set, Sliding Window, Monotonic Queue, Heap (Priority Queue)",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have `n` bulbs in a row numbered from `1` to `n`. Initially, all the bulbs are turned off. We turn on **exactly one** bulb every day until all bulbs are on after `n` days.\n\nYou are given an array `bulbs` of length `n` where `bulbs[i] = x` means that on the `(i+1)`-th day, we will turn on the bulb at position `x` where `i` is **0-indexed** and `x` is **1-indexed**.\n\nGiven an integer `k`, return *the **minimum day number** such that there exists two **turned on** bulbs that have **exactly** `k` bulbs between them that are **all turned off**. If there is no such day, return `-1`.*",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: bulbs = [1,3,2], k = 1\nOutput: 2\n```\n**Explanation:**\n- On the first day: bulbs[0] = 1, first bulb is turned on: [1,0,0]\n- On the second day: bulbs[1] = 3, third bulb is turned on: [1,0,1]\n- On the third day: bulbs[2] = 2, second bulb is turned on: [1,1,1]\nWe return 2 because on the second day, there were two on bulbs with one off bulb between them."
+            },
+            {
+                "content": "```\nInput: bulbs = [1,2,3], k = 1\nOutput: -1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == bulbs.length`\n- `1 <= n <= 2 * 10^4`\n- `1 <= bulbs[i] <= n`\n- `bulbs` is a permutation of numbers from `1` to `n`.\n- `0 <= k <= 2 * 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "k_empty_slots",
+    "helpers_run_signature": "(solution_class: type, bulbs: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.k_empty_slots(bulbs, k)",
+    "helpers_assert_name": "k_empty_slots",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_k_empty_slots, run_k_empty_slots\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KEmptySlots",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "k_empty_slots",
+                "signature": "(self, bulbs: list[int], k: int) -> int",
+                "body": "        # TODO: Implement k_empty_slots\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_k_empty_slots",
+                "signature": "(self, bulbs: list[int], k: int, expected: int)",
+                "parametrize": "bulbs, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1,3,2],1,2)",
+                        "([1,2,3],1,-1)",
+                        "([1],0,-1)",
+                        "([2,1],0,2)",
+                        "([1,2],0,2)",
+                        "([3,1,2],1,2)",
+                        "([2,3,1],1,-1)",
+                        "([1,4,2,3],2,2)",
+                        "([4,1,3,2],2,2)",
+                        "([6,1,4,2,5,3],2,3)",
+                        "([1,6,3,5,2,4],1,3)",
+                        "([5,2,4,1,3],0,3)",
+                        "([2,5,3,1,4],3,-1)",
+                        "([3,1,2],0,3)",
+                        "([2,3,1],2,-1)",
+                        "([2,1,3],3,-1)",
+                        "([4,1,3,2],0,3)",
+                        "([1,3,2,4],1,2)",
+                        "([2,3,1,4],2,-1)",
+                        "([1,4,3,2],3,-1)",
+                        "([3,4,1,2,5],0,2)",
+                        "([1,3,4,2,5],1,2)",
+                        "([2,3,4,1,5],2,-1)",
+                        "([4,1,3,2,5],3,-1)",
+                        "([1,3,5,2,6,4],0,4)",
+                        "([2,6,4,3,5,1],1,3)",
+                        "([2,3,6,1,4,5],2,3)",
+                        "([2,6,4,1,3,5],3,2)",
+                        "([1,3,2,5,6,7,4],0,3)",
+                        "([5,3,6,4,2,7,1],1,2)",
+                        "([4,3,6,2,1,7,5],2,-1)",
+                        "([7,6,5,1,3,4,2],3,4)",
+                        "([5,4,7,9,10,1,8,3,2,6],0,2)",
+                        "([5,3,1,8,10,7,2,6,4,9],2,4)",
+                        "([3,7,8,6,2,1,5,9,10,4],5,-1)",
+                        "([2,11,3,5,8,12,9,1,7,4,10,6],0,3)",
+                        "([5,1,4,11,3,9,7,8,10,6,2,12],2,3)",
+                        "([10,8,6,2,11,4,12,9,7,3,1,5],5,-1)",
+                        "([1,4,10,3,12,9,7,15,5,11,13,2,6,8,14],0,4)",
+                        "([13,11,1,9,12,6,5,14,15,2,7,8,3,10,4],2,6)",
+                        "([4,7,1,3,6,11,8,13,10,2,5,14,12,15,9],5,-1)"
+                    ]
+                },
+                "body": "        result = run_k_empty_slots(Solution, bulbs, k)\n        assert_k_empty_slots(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_k_empty_slots, assert_k_empty_slots\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbulbs = [1,3,2]\nk = 1\nexpected = 2",
+    "playground_run": "result = run_k_empty_slots(Solution, bulbs, k)\nresult",
+    "playground_assert": "assert_k_empty_slots(result, expected)"
+}

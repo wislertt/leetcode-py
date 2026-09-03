@@ -1,0 +1,95 @@
+{
+    "problem_name": "binary_tree_cameras",
+    "solution_class_name": "Solution",
+    "problem_number": "968",
+    "problem_title": "Binary Tree Cameras",
+    "difficulty": "Hard",
+    "topics": "Dynamic Programming, Tree, Depth-First Search, Binary Tree, DP on Trees",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given the `root` of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.\n\nReturn the minimum number of cameras needed to monitor all nodes of the tree.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png)\n\n```\nInput: root = [0,0,null,0,0]\nOutput: 1\nExplanation: One camera is enough to monitor all nodes if placed as shown.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png)\n\n```\nInput: root = [0,0,null,0,null,0,null,null,0]\nOutput: 2\nExplanation: At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 1000]\n- Node.val == 0",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "min_camera_cover",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.min_camera_cover(root)",
+    "helpers_assert_name": "min_camera_cover",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_camera_cover, run_min_camera_cover\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryTreeCameras",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_camera_cover",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement min_camera_cover\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_camera_cover",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([0], 1)",
+                        "([0, 0], 1)",
+                        "([0, 0, 0], 1)",
+                        "([0, 0, None, 0, 0], 1)",
+                        "([0, 0, None, 0, None, 0, None, None, 0], 2)",
+                        "([0, None, 0, None, 0, None, 0], 2)",
+                        "([0, 0, 0, None, None, None, 0], 2)",
+                        "([0, 0, None, 0, None, 0], 2)",
+                        "([0, 0, None, None, 0], 1)",
+                        "([0, 0, 0, 0], 2)",
+                        "([0, 0, 0, None, 0], 2)",
+                        "([0, None, 0, None, 0], 1)",
+                        "([0, 0, 0, None, 0, 0, 0, 0, None, None, None, 0], 3)",
+                        "([0, 0, 0, None, 0, None, None, 0, 0, None, 0], 3)",
+                        "([0, None, 0, 0, 0, None, None, None, 0], 2)",
+                        "([0, 0, 0, 0, 0, 0, None, None, None, 0, 0], 3)",
+                        "([0, 0, 0, None, 0, None, None, None, 0], 2)",
+                        "([0, 0, 0, None, 0, 0, None, 0], 2)",
+                        "([0, 0, 0, None, None, 0, 0, 0, None, None, 0, 0, 0], 3)",
+                        "([0, 0, 0, 0, None, None, 0, None, None, 0, 0, 0, None, None, 0], 4)"
+                    ]
+                },
+                "body": "        result = run_min_camera_cover(Solution, root_list)\n        assert_min_camera_cover(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_camera_cover, assert_min_camera_cover\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [0, 0, None, 0, 0]\nexpected = 1",
+    "playground_run": "result = run_min_camera_cover(Solution, root_list)\nresult",
+    "playground_assert": "assert_min_camera_cover(result, expected)"
+}

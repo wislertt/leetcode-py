@@ -1,0 +1,97 @@
+{
+    "problem_name": "max_increase_to_keep_city_skyline",
+    "solution_class_name": "Solution",
+    "problem_number": "807",
+    "problem_title": "Max Increase to Keep City Skyline",
+    "difficulty": "Medium",
+    "topics": "Array, Greedy, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a city composed of `n x n` blocks, where each block contains a single building shaped like a vertical square prism. You are given a **0-indexed** `n x n` integer matrix `grid` where `grid[r][c]` represents the **height** of the building located in the block at row `r` and column `c`.\n\nA city's **skyline** is the outer contour formed by all the building when viewing the side of the city from a distance. The **skyline** from each cardinal direction north, east, south, and west may be different.\n\nWe are allowed to increase the height of **any number of buildings by any amount** (the amount can be different per building). The height of a `0`-height building can also be increased. However, increasing the height of a building should **not** affect the city's **skyline** from any cardinal direction.\n\nReturn *the **maximum total sum** that the height of the buildings can be increased by **without** changing the city's **skyline** from any cardinal direction*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/06/21/807-ex1.png)\n\n```\nInput: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]\nOutput: 35\nExplanation: The building heights are shown in the center of the above image.\nThe skylines when viewed from each cardinal direction are drawn in red.\nThe grid after increasing the height of buildings without affecting skylines is:\ngridNew = [ [8, 4, 8, 7],\n            [7, 4, 7, 7],\n            [9, 4, 8, 7],\n            [3, 3, 3, 3] ]\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[0,0,0],[0,0,0],[0,0,0]]\nOutput: 0\nExplanation: Increasing the height of any building will result in the skyline changing.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length\n- n == grid[r].length\n- 2 <= n <= 50\n- 0 <= grid[r][c] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_increase_keeping_skyline",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_increase_keeping_skyline(grid)",
+    "helpers_assert_name": "max_increase_keeping_skyline",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_increase_keeping_skyline, run_max_increase_keeping_skyline\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaxIncreaseToKeepCitySkyline",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_increase_keeping_skyline",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_increase_keeping_skyline\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_increase_keeping_skyline",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]], 35)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 0)",
+                        "([[1, 2], [3, 4]], 1)",
+                        "([[5, 5], [5, 5]], 0)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[10, 0], [0, 10]], 20)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 0)",
+                        "([[9, 9, 9], [9, 9, 9], [9, 9, 9]], 0)",
+                        "([[100, 100], [100, 100]], 0)",
+                        "([[0, 100], [100, 0]], 200)",
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 6)",
+                        "([[9, 8, 7], [6, 5, 4], [3, 2, 1]], 6)",
+                        "([[94, 12, 97], [21, 29, 38], [22, 71, 19]], 186)",
+                        "([[0, 2, 6, 1], [9, 2, 7, 5], [8, 3, 8, 5], [3, 2, 6, 6]], 20)",
+                        "([[0, 7, 3, 7], [5, 2, 0, 5], [5, 7, 6, 9], [7, 6, 0, 4]], 30)",
+                        "([[5, 2, 7, 0], [9, 3, 4, 9], [7, 3, 7, 0], [5, 0, 5, 5]], 23)",
+                        "([[19, 9, 86], [80, 58, 54], [11, 72, 42]], 255)",
+                        "([[46, 13], [68, 86]], 33)",
+                        "([[80, 66, 35], [44, 48, 12], [45, 14, 6]], 87)",
+                        "([[76, 41, 82], [33, 71, 94], [79, 35, 92]], 115)",
+                        "([[60, 39], [74, 2]], 37)",
+                        "([[45, 7, 67], [68, 71, 49], [22, 94, 74]], 150)"
+                    ]
+                },
+                "body": "        result = run_max_increase_keeping_skyline(Solution, grid)\n        assert_max_increase_keeping_skyline(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_max_increase_keeping_skyline, run_max_increase_keeping_skyline\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]\nexpected = 35",
+    "playground_run": "result = run_max_increase_keeping_skyline(Solution, grid)\nresult",
+    "playground_assert": "assert_max_increase_keeping_skyline(result, expected)"
+}

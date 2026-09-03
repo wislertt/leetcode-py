@@ -1,0 +1,91 @@
+{
+    "problem_name": "reorder_log_files",
+    "solution_class_name": "Solution",
+    "problem_number": "937",
+    "problem_title": "Reorder Data in Log Files",
+    "difficulty": "Medium",
+    "topics": "Array, String, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of logs. Each log is a space-delimited string of words, where the first word is the **identifier**.\n\nThere are two types of logs:\n\n- **Letter-logs**: All words (except the identifier) consist of lowercase English letters.\n- **Digit-logs**: All words (except the identifier) consist of digits.\n\nReorder these logs so that:\n\n1. The **letter-logs** come before all **digit-logs**.\n2. The **letter-logs** are sorted lexicographically by their contents. If their contents are the same, then sort them lexicographically by their identifiers.\n3. The **digit-logs** maintain their relative ordering.\n\nReturn *the final order of the logs*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: logs = [\"dig1 8 1 5 1\",\"let1 art can\",\"dig2 3 6\",\"let2 own kit dig\",\"let3 art zero\"]\nOutput: [\"let1 art can\",\"let3 art zero\",\"let2 own kit dig\",\"dig1 8 1 5 1\",\"dig2 3 6\"]\nExplanation:\nThe letter-log contents are all different, so their ordering is \"art can\", \"art zero\", \"own kit dig\".\nThe digit-logs have a relative order of \"dig1 8 1 5 1\", \"dig2 3 6\".\n```"
+            },
+            {
+                "content": "```\nInput: logs = [\"a1 9 2 3 1\",\"g1 act car\",\"zo4 4 7\",\"ab1 off key dog\",\"a8 act zoo\"]\nOutput: [\"g1 act car\",\"a8 act zoo\",\"ab1 off key dog\",\"a1 9 2 3 1\",\"zo4 4 7\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= logs.length <= 100\n- 3 <= logs[i].length <= 100\n- All the tokens of logs[i] are separated by a single space.\n- logs[i] is guaranteed to have an identifier and at least one word after the identifier.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reorder_log_files",
+    "helpers_run_signature": "(solution_class: type, logs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reorder_log_files(logs)",
+    "helpers_assert_name": "reorder_log_files",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reorder_log_files, run_reorder_log_files\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReorderLogFiles",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reorder_log_files",
+                "signature": "(self, logs: list[str]) -> list[str]",
+                "body": "        # TODO: Implement reorder_log_files\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reorder_log_files",
+                "signature": "(self, logs: list[str], expected: list[str])",
+                "parametrize": "logs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['a1 9 2 3 1', 'g1 act car'], ['g1 act car', 'a1 9 2 3 1'])",
+                        "(['g1 act car', 'a1 9 2 3 1'], ['g1 act car', 'a1 9 2 3 1'])",
+                        "(['b1 a'], ['b1 a'])",
+                        "(['i1 0'], ['i1 0'])",
+                        "(['a1 1', 'b2 2'], ['a1 1', 'b2 2'])",
+                        "(['b2 2', 'a1 1'], ['b2 2', 'a1 1'])",
+                        "(['d1 b a', 'a1 a b'], ['a1 a b', 'd1 b a'])",
+                        "(['x1 c', 'x2 b', 'x3 a'], ['x3 a', 'x2 b', 'x1 c'])",
+                        "(['a1 x', 'a1 x'], ['a1 x', 'a1 x'])",
+                        "(['a1 ab', 'a0 ab'], ['a0 ab', 'a1 ab'])",
+                        "(['t1 c b a', 't2 c b a', 't0 c b a'], ['t0 c b a', 't1 c b a', 't2 c b a'])",
+                        "(['z9 zz yy', 'y9 zz yy'], ['y9 zz yy', 'z9 zz yy'])",
+                        "(['m1 x', 'm2 1', 'm3 y', 'm4 2'], ['m1 x', 'm3 y', 'm2 1', 'm4 2'])",
+                        "(['d1 5', 'c1 b a', 'd2 1', 'a1 a'], ['a1 a', 'c1 b a', 'd1 5', 'd2 1'])",
+                        "(['d1 8', 'let1 art', 'dig2 3', 'let2 kit'], ['let1 art', 'let2 kit', 'd1 8', 'dig2 3'])",
+                        "(['a1 9', 'g1 act car', 'zo4 7', 'ab1 dog'], ['g1 act car', 'ab1 dog', 'a1 9', 'zo4 7'])"
+                    ]
+                },
+                "body": "        result = run_reorder_log_files(Solution, logs)\n        assert_reorder_log_files(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reorder_log_files, assert_reorder_log_files\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlogs = ['dig1 8 1 5 1', 'let1 art can', 'dig2 3 6', 'let2 own kit dig', 'let3 art zero']\nexpected = ['let1 art can', 'let3 art zero', 'let2 own kit dig', 'dig1 8 1 5 1', 'dig2 3 6']",
+    "playground_run": "result = run_reorder_log_files(Solution, logs)\nresult",
+    "playground_assert": "assert_reorder_log_files(result, expected)"
+}

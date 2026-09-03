@@ -1,0 +1,98 @@
+{
+    "problem_name": "fraction_addition_and_subtraction",
+    "solution_class_name": "Solution",
+    "problem_number": "592",
+    "problem_title": "Fraction Addition and Subtraction",
+    "difficulty": "Medium",
+    "topics": "Math, String, Simulation, Euclidean Algorithm, Greatest Common Divisor",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `expression` representing an expression of fraction addition and subtraction, return the calculation result in string format.\n\nThe final result should be an irreducible fraction. If your final result is an integer, change it to the format of a fraction that has a denominator `1`. So in this case, `2` should be converted to `2/1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: expression = \"-1/2+1/2\"\nOutput: \"0/1\"\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"-1/2+1/2+1/3\"\nOutput: \"1/3\"\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"1/3-1/2\"\nOutput: \"-1/6\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The input string only contains '0' to '9', '/', '+' and '-'. So does the output.\n- Each fraction (input and output) has the format \u00b1numerator/denominator. If the first input fraction or the output is positive, then '+' will be omitted.\n- The input only contains valid irreducible fractions, where the numerator and denominator of each fraction will always be in the range [1, 10]. If the denominator is 1, it means this fraction is actually an integer in a fraction format defined above.\n- The number of given fractions will be in the range [1, 10].\n- The numerator and denominator of the final result are guaranteed to be valid and in the range of 32-bit int.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "fraction_addition",
+    "helpers_run_signature": "(solution_class: type, expression: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.fraction_addition(expression)",
+    "helpers_assert_name": "fraction_addition",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_fraction_addition, run_fraction_addition\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FractionAdditionAndSubtraction",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "fraction_addition",
+                "signature": "(self, expression: str) -> str",
+                "body": "        # TODO: Implement fraction_addition\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_fraction_addition",
+                "signature": "(self, expression: str, expected: str)",
+                "parametrize": "expression, expected",
+                "test_cases": {
+                    "list": [
+                        "('-1/2+1/2', '0/1')",
+                        "('-1/2+1/2+1/3', '1/3')",
+                        "('1/3-1/2', '-1/6')",
+                        "('1/2', '1/2')",
+                        "('5/1', '5/1')",
+                        "('-3/4', '-3/4')",
+                        "('2/1+3/1', '5/1')",
+                        "('-1/2-1/2', '-1/1')",
+                        "('1/1-1/1', '0/1')",
+                        "('1/3+1/4-1/6', '5/12')",
+                        "('7/10+1/2-3/5', '3/5')",
+                        "('1/2-1/3+1/6', '1/3')",
+                        "('-5/2+5/2-1/7', '-1/7')",
+                        "('9/10-1/10', '4/5')",
+                        "('1/1-1/2', '1/2')",
+                        "('-7/3+2/3', '-5/3')",
+                        "('5/3-10/3', '-5/3')",
+                        "('7/6-3/8+8/3', '83/24')",
+                        "('2/5+7/10-7/3-3/7', '-349/210')",
+                        "('9/8-1/9', '73/72')"
+                    ]
+                },
+                "body": "        result = run_fraction_addition(Solution, expression)\n        assert_fraction_addition(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_fraction_addition, assert_fraction_addition\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nexpression = '-1/2+1/2'\nexpected = '0/1'",
+    "playground_run": "result = run_fraction_addition(Solution, expression)\nresult",
+    "playground_assert": "assert_fraction_addition(result, expected)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "keys_and_rooms",
+    "solution_class_name": "Solution",
+    "problem_number": "841",
+    "problem_title": "Keys and Rooms",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Graph Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There are `n` rooms labeled from `0` to `n - 1` and all the rooms are locked except for room `0`. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.\n\nWhen you visit a room, you may find a set of **distinct keys** in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.\n\nGiven an array `rooms` where `rooms[i]` is the set of keys that you can obtain if you visited room `i`, return `true` if you can visit **all** the rooms, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: rooms = [[1],[2],[3],[]]\nOutput: true\nExplanation:\nWe visit room 0 and pick up key 1.\nWe then visit room 1 and pick up key 2.\nWe then visit room 2 and pick up key 3.\nWe then visit room 3.\nSince we were able to visit every room, we return true.\n```"
+            },
+            {
+                "content": "```\nInput: rooms = [[1,3],[3,0,1],[2],[0]]\nOutput: false\nExplanation: We can not enter room number 2 since the only key that unlocks it is in that room.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == rooms.length\n- 2 <= n <= 1000\n- 0 <= rooms[i].length <= 1000\n- 1 <= sum(rooms[i].length) <= 3000\n- 0 <= rooms[i][j] < n\n- All the values of rooms[i] are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_visit_all_rooms",
+    "helpers_run_signature": "(solution_class: type, rooms: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_visit_all_rooms(rooms)",
+    "helpers_assert_name": "can_visit_all_rooms",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_visit_all_rooms, run_can_visit_all_rooms\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KeysAndRooms",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_visit_all_rooms",
+                "signature": "(self, rooms: list[list[int]]) -> bool",
+                "body": "        # TODO: Implement can_visit_all_rooms\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_visit_all_rooms",
+                "signature": "(self, rooms: list[list[int]], expected: bool)",
+                "parametrize": "rooms, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1], [2], [3], []], True)",
+                        "([[1, 3], [3, 0, 1], [2], [0]], False)",
+                        "([[1], [0], [1], [2]], False)",
+                        "([[1, 2, 3], [], [], []], True)",
+                        "([[1], [0, 2], []], True)",
+                        "([[2], [3], [0], [1]], False)",
+                        "([[1], [1], [1], [3]], False)",
+                        "([[1, 2], [0], [0]], True)",
+                        "([[1], [2], [3], [0]], True)",
+                        "([[1], [0, 3], [3], [2]], True)",
+                        "([[2], [2], [1], []], False)",
+                        "([[1, 2], [2], [1], []], False)",
+                        "([[1], [0]], True)",
+                        "([[1], [2], [0]], True)",
+                        "([[1], [1], [2]], False)",
+                        "([[1, 4, 5], [5, 3, 4], [5, 4], [], [3, 1, 5], [2, 0]], True)",
+                        "([[0], []], False)",
+                        "([[], [1, 5, 3], [2, 3, 5], [], [], [3]], False)",
+                        "([[3, 2], [], [3, 2, 0], []], False)",
+                        "([[2, 4, 3], [5], [], [0, 3, 5], [1, 4], []], True)",
+                        "([[2, 4], [1], [3, 1, 4], [1, 4], [1]], True)",
+                        "([[3, 0, 2], [], [2], []], False)",
+                        "([[4, 0], [], [], [], [4], [3, 2, 5]], False)"
+                    ]
+                },
+                "body": "        result = run_can_visit_all_rooms(Solution, rooms)\n        assert_can_visit_all_rooms(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_visit_all_rooms, assert_can_visit_all_rooms\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrooms = [[1], [2], [3], []]\nexpected = True",
+    "playground_run": "result = run_can_visit_all_rooms(Solution, rooms)\nresult",
+    "playground_assert": "assert_can_visit_all_rooms(result, expected)"
+}

@@ -15,7 +15,7 @@
                 "content": "```\nInput: paths = [[\"London\",\"New York\"],[\"New York\",\"Lima\"],[\"Lima\",\"Sao Paulo\"]]\nOutput: \"Sao Paulo\"\nExplanation: Starting at \"London\" city you will reach \"Sao Paulo\" city which is the destination city. Your trip consist of: \"London\" -> \"New York\" -> \"Lima\" -> \"Sao Paulo\".\n```"
             },
             {
-                "content": "```\nInput: paths = [[\"B\",\"C\"],[\"D\",\"B\"],[\"C\",\"A\"]]\nOutput: \"A\"\nExplanation: All possible trips are: \n\"D\" -> \"B\" -> \"C\" -> \"A\". \n\"B\" -> \"C\" -> \"A\". \n\"C\" -> \"A\". \n\"A\". \nClearly the destination city is \"A\".\n```"
+                "content": "```\nInput: paths = [[\"B\",\"C\"],[\"D\",\"B\"],[\"C\",\"A\"]]\nOutput: \"A\"\nExplanation: All possible trips are:\n\"D\" -> \"B\" -> \"C\" -> \"A\".\n\"B\" -> \"C\" -> \"A\".\n\"C\" -> \"A\".\n\"A\".\nClearly the destination city is \"A\".\n```"
             },
             {
                 "content": "```\nInput: paths = [[\"A\",\"Z\"]]\nOutput: \"Z\"\n```"

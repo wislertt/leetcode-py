@@ -1,0 +1,102 @@
+{
+    "problem_name": "count_unique_characters_of_all_substrings_of_a_given_string",
+    "solution_class_name": "Solution",
+    "problem_number": "828",
+    "problem_title": "Count Unique Characters of All Substrings of a Given String",
+    "difficulty": "Hard",
+    "topics": "Hash Table, String, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "<p>Let's define a function <code>countUniqueChars(s)</code> that returns the number of unique characters in\u00a0<code>s</code>.</p>\n\n<ul>\n\t<li>For example, calling <code>countUniqueChars(s)</code> if <code>s = \"LEETCODE\"</code> then <code>\"L\"</code>, <code>\"T\"</code>, <code>\"C\"</code>, <code>\"O\"</code>, <code>\"D\"</code> are the unique characters since they appear only once in <code>s</code>, therefore <code>countUniqueChars(s) = 5</code>.</li>\n</ul>\n\n<p>Given a string <code>s</code>, return the sum of <code>countUniqueChars(t)</code> where <code>t</code> is a substring of <code>s</code>. The test cases are generated such that the answer fits in a 32-bit integer.</p>\n\n<p>Notice that some substrings can be repeated so in this case you have to count the repeated ones too.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ABC\"\nOutput: 10\nExplanation: All possible substrings are: \"A\",\"B\",\"C\",\"AB\",\"BC\" and \"ABC\".\nEvery substring is composed with only unique letters.\nSum of lengths of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ABA\"\nOutput: 8\nExplanation: The same as example 1, except countUniqueChars(\"ABA\") = 1.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"LEETCODE\"\nOutput: 92\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s consists of uppercase English letters only.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "unique_letter_string",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.unique_letter_string(s)",
+    "helpers_assert_name": "unique_letter_string",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_unique_letter_string, run_unique_letter_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "UniqueLetterString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "unique_letter_string",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement unique_letter_string\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_unique_letter_string",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('ABC', 10)",
+                        "('ABA', 8)",
+                        "('LEETCODE', 92)",
+                        "('A', 1)",
+                        "('AA', 2)",
+                        "('AB', 4)",
+                        "('AAA', 3)",
+                        "('AAB', 6)",
+                        "('ABB', 6)",
+                        "('ABAB', 12)",
+                        "('AABC', 14)",
+                        "('ABCA', 18)",
+                        "('ABCDEFG', 84)",
+                        "('AABBCC', 18)",
+                        "('AABAA', 15)",
+                        "('ZZZZZ', 5)",
+                        "('AAACC', 10)",
+                        "('OKKKIB', 28)",
+                        "('ABBA', 10)",
+                        "('FCDDNCF', 50)",
+                        "('D', 1)",
+                        "('OMDJEG', 56)",
+                        "('IIGO', 14)",
+                        "('ABDBCDCC', 53)"
+                    ]
+                },
+                "body": "        result = run_unique_letter_string(Solution, s)\n        assert_unique_letter_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_unique_letter_string, assert_unique_letter_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ABC'\nexpected = 10",
+    "playground_run": "result = run_unique_letter_string(Solution, s)\nresult",
+    "playground_assert": "assert_unique_letter_string(result, expected)"
+}

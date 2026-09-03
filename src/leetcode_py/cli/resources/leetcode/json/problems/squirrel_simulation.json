@@ -1,0 +1,93 @@
+{
+    "problem_name": "squirrel_simulation",
+    "solution_class_name": "Solution",
+    "problem_number": "573",
+    "problem_title": "Squirrel Simulation",
+    "difficulty": "Medium",
+    "topics": "Array, Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two integers `height` and `width` representing a garden of size `height x width`. You are also given:\n\n- an array `tree` where `tree = [tree_r, tree_c]` is the position of the tree in the garden,\n- an array `squirrel` where `squirrel = [squirrel_r, squirrel_c]` is the position of the squirrel in the garden,\n- and an array `nuts` where `nuts[i] = [nut_i_r, nut_i_c]` is the position of the `i^th` nut in the garden.\n\nThe squirrel can only take at most one nut at one time and can move in four directions: up, down, left, and right, to the adjacent cell.\n\nReturn *the **minimal distance** for the squirrel to collect all the nuts and put them under the tree one by one*.\n\nThe **distance** is the number of moves.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0573.Squirrel%20Simulation/images/squirrel1-grid.jpg)\n\n```\nInput: height = 5, width = 7, tree = [2,2], squirrel = [4,4], nuts = [[3,0], [2,5]]\nOutput: 12\n```\n**Explanation:** The squirrel should go to the nut at [2, 5] first to achieve a minimal distance."
+            },
+            {
+                "content": "![Example 2](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/0500-0599/0573.Squirrel%20Simulation/images/squirrel2-grid.jpg)\n\n```\nInput: height = 1, width = 3, tree = [0,1], squirrel = [0,0], nuts = [[0,2]]\nOutput: 3\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= height, width <= 100`\n- `tree.length == 2`\n- `squirrel.length == 2`\n- `1 <= nuts.length <= 5000`\n- `nuts[i].length == 2`\n- `0 <= tree_r, squirrel_r, nut_i_r <= height`\n- `0 <= tree_c, squirrel_c, nut_i_c <= width`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_distance",
+    "helpers_run_signature": "(solution_class: type, height: int, width: int, tree: list[int], squirrel: list[int], nuts: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_distance(height, width, tree, squirrel, nuts)",
+    "helpers_assert_name": "min_distance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_distance, run_min_distance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SquirrelSimulation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_distance",
+                "signature": "(self, height: int, width: int, tree: list[int], squirrel: list[int], nuts: list[list[int]]) -> int",
+                "body": "        # TODO: Implement min_distance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_distance",
+                "signature": "(self, height: int, width: int, tree: list[int], squirrel: list[int], nuts: list[list[int]], expected: int)",
+                "parametrize": "height, width, tree, squirrel, nuts, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, 7, [2, 2], [4, 4], [[3, 0], [2, 5]], 12)",
+                        "(1, 3, [0, 1], [0, 0], [[0, 2]], 3)",
+                        "(1, 1, [0, 0], [0, 0], [[0, 0]], 0)",
+                        "(3, 3, [1, 1], [1, 1], [[0, 0]], 4)",
+                        "(3, 3, [1, 1], [2, 2], [[1, 1]], 2)",
+                        "(3, 3, [0, 0], [1, 2], [[1, 2], [0, 3]], 9)",
+                        "(5, 5, [2, 2], [2, 0], [[2, 0], [2, 4]], 6)",
+                        "(10, 10, [5, 5], [0, 9], [[5, 5], [6, 6]], 11)",
+                        "(100, 100, [50, 50], [0, 0], [[49, 49], [51, 51], [49, 51]], 108)",
+                        "(2, 2, [0, 0], [1, 1], [[0, 1]], 2)",
+                        "(4, 4, [2, 2], [3, 1], [[2, 2], [2, 2]], 2)",
+                        "(5, 5, [2, 2], [2, 2], [[2, 2], [3, 3]], 4)",
+                        "(7, 8, [3, 4], [6, 0], [[0, 7], [3, 0], [6, 4]], 25)",
+                        "(3, 4, [1, 2], [2, 3], [[1, 2], [1, 2], [1, 2]], 2)",
+                        "(4, 4, [1, 1], [1, 1], [[0, 0], [3, 3]], 12)",
+                        "(9, 9, [4, 4], [7, 7], [[7, 7], [0, 0]], 22)",
+                        "(6, 6, [3, 3], [0, 5], [[5, 1], [0, 0], [5, 5]], 27)",
+                        "(8, 9, [4, 4], [7, 8], [[0, 0], [7, 0], [4, 8], [2, 2]], 45)"
+                    ]
+                },
+                "body": "        result = run_min_distance(Solution, height, width, tree, squirrel, nuts)\n        assert_min_distance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_distance, assert_min_distance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nheight = 5\nwidth = 7\ntree = [2, 2]\nsquirrel = [4, 4]\nnuts = [[3, 0], [2, 5]]\nexpected = 12",
+    "playground_run": "result = run_min_distance(Solution, height, width, tree, squirrel, nuts)\nresult",
+    "playground_assert": "assert_min_distance(result, expected)"
+}

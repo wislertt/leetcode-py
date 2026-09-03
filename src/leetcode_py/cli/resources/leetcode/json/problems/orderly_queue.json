@@ -1,0 +1,99 @@
+{
+    "problem_name": "orderly_queue",
+    "solution_class_name": "Solution",
+    "problem_number": "899",
+    "problem_title": "Orderly Queue",
+    "difficulty": "Hard",
+    "topics": "Math, String, Sorting, Lexicographically Minimal String Rotation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string `s` and an integer `k`. You can choose one of the first `k` letters of `s` and append it at the end of the string.\n\nReturn *the lexicographically smallest string you could have after applying the mentioned step any number of moves*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"cba\", k = 1\nOutput: \"acb\"\nExplanation: In the first move, we move the 1st character 'c' to the end, obtaining the string \"bac\".\nIn the second move, we move the 1st character 'b' to the end, obtaining the final result \"acb\".\n```"
+            },
+            {
+                "content": "```\nInput: s = \"baaca\", k = 3\nOutput: \"aaabc\"\nExplanation: In the first move, we move the 1st character 'b' to the end, obtaining the string \"aacab\".\nIn the second move, we move the 3rd character 'c' to the end, obtaining the final result \"aaabc\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= k <= s.length <= 1000`\n- `s` consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "orderly_queue",
+    "helpers_run_signature": "(solution_class: type, s: str, k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.orderly_queue(s, k)",
+    "helpers_assert_name": "orderly_queue",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_orderly_queue, run_orderly_queue\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OrderlyQueue",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "orderly_queue",
+                "signature": "(self, s: str, k: int) -> str",
+                "body": "        # TODO: Implement orderly_queue\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_orderly_queue",
+                "signature": "(self, s: str, k: int, expected: str)",
+                "parametrize": "s, k, expected",
+                "test_cases": {
+                    "list": [
+                        "('cba', 1, 'acb')",
+                        "('baaca', 3, 'aaabc')",
+                        "('a', 1, 'a')",
+                        "('ab', 1, 'ab')",
+                        "('ba', 1, 'ab')",
+                        "('ba', 2, 'ab')",
+                        "('cab', 2, 'abc')",
+                        "('aaab', 1, 'aaab')",
+                        "('bbaa', 1, 'aabb')",
+                        "('dcba', 4, 'abcd')",
+                        "('dcba', 1, 'adcb')",
+                        "('zzza', 2, 'azzz')",
+                        "('xyx', 3, 'xxy')",
+                        "('kuus', 1, 'kuus')",
+                        "('gwk', 1, 'gwk')",
+                        "('edcba', 1, 'aedcb')",
+                        "('abcabc', 1, 'abcabc')",
+                        "('zyxwvu', 2, 'uvwxyz')",
+                        "('aabbcc', 5, 'aabbcc')",
+                        "('kkkk', 1, 'kkkk')",
+                        "('bxcdaweafq', 1, 'afqbxcdawe')",
+                        "('bxcdaweafq', 2, 'aabcdefqwx')",
+                        "('qwertyuiopasdfghjklz', 1, 'asdfghjklzqwertyuiop')",
+                        "('mnoapqrstuvwbyzabcxd', 2, 'aabbcdmnopqrstuvwxyz')"
+                    ]
+                },
+                "body": "        result = run_orderly_queue(Solution, s, k)\n        assert_orderly_queue(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_orderly_queue, assert_orderly_queue\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'cba'\nk = 1\nexpected = 'acb'",
+    "playground_run": "result = run_orderly_queue(Solution, s, k)\nresult",
+    "playground_assert": "assert_orderly_queue(result, expected)"
+}

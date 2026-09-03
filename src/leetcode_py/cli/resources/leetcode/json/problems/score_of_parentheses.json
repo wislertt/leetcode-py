@@ -1,0 +1,101 @@
+{
+    "problem_name": "score_of_parentheses",
+    "solution_class_name": "Solution",
+    "problem_number": "856",
+    "problem_title": "Score of Parentheses",
+    "difficulty": "Medium",
+    "topics": "String, Stack, Bracket Sequences",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a balanced parentheses string `s`, return *the **score** of the string*.\n\nThe **score** of a balanced parentheses string is based on the following rule:\n\n- `\"()\"` has score `1`.\n- `AB` has score `A + B`, where `A` and `B` are balanced parentheses strings.\n- `(A)` has score `2 * A`, where `A` is a balanced parentheses string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"()\"\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: s = \"(())\"\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: s = \"()()\"\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= s.length <= 50\n- s consists of only `'('` and `')'`.\n- s is a balanced parentheses string.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "score_of_parentheses",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.score_of_parentheses(s)",
+    "helpers_assert_name": "score_of_parentheses",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_score_of_parentheses, run_score_of_parentheses\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ScoreOfParentheses",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "score_of_parentheses",
+                "signature": "(self, s: str) -> int",
+                "body": "        # TODO: Implement score_of_parentheses\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_score_of_parentheses",
+                "signature": "(self, s: str, expected: int)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('()', 1)",
+                        "('(())', 2)",
+                        "('()()', 2)",
+                        "('((()))', 4)",
+                        "('(()())', 4)",
+                        "('()()()()', 4)",
+                        "('(()(()))', 6)",
+                        "('((((()))))', 16)",
+                        "('(()())(())', 6)",
+                        "('((()())())', 10)",
+                        "('(())()', 3)",
+                        "('(()(()()))', 10)",
+                        "('((())(())(()))', 12)",
+                        "('((()()))', 8)",
+                        "('(())((()))(((((())()())(()))()()))()', 95)",
+                        "('((()))((((())))(()))((()())())()()', 36)",
+                        "('(((()))()())((((())()))()(())()(()())(()))()', 57)",
+                        "('(()())(((()))())()((()))', 19)",
+                        "('(((())((()())((())())()))()(()))()(()())((()()))()', 116)",
+                        "('((()())())((((())(()))(()))(())())', 56)",
+                        "('(((())()))()()', 14)",
+                        "('(((()(())())((())))())', 50)",
+                        "('((((((((((((((((((((((((()))))))))))))))))))))))))', 16777216)"
+                    ]
+                },
+                "body": "        result = run_score_of_parentheses(Solution, s)\n        assert_score_of_parentheses(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_score_of_parentheses, assert_score_of_parentheses\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '(()(()))'\nexpected = 6",
+    "playground_run": "result = run_score_of_parentheses(Solution, s)\nresult",
+    "playground_assert": "assert_score_of_parentheses(result, expected)"
+}

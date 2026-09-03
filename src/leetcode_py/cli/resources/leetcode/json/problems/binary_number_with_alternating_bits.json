@@ -1,0 +1,99 @@
+{
+    "problem_name": "binary_number_with_alternating_bits",
+    "solution_class_name": "Solution",
+    "problem_number": "693",
+    "problem_title": "Binary Number with Alternating Bits",
+    "difficulty": "Easy",
+    "topics": "Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a positive integer, check whether it has alternating bits: namely, if two adjacent bits will always have different values.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 5\nOutput: true\nExplanation: The binary representation of 5 is: 101\n```"
+            },
+            {
+                "content": "```\nInput: n = 7\nOutput: false\nExplanation: The binary representation of 7 is: 111.\n```"
+            },
+            {
+                "content": "```\nInput: n = 11\nOutput: false\nExplanation: The binary representation of 11 is: 1011.\n```"
+            }
+        ]
+    },
+    "constraints": {
+        "list": ["1 <= n <= 2^31 - 1"]
+    },
+    "readme_constraints": "- 1 <= n <= 2^31 - 1",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "has_alternating_bits",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.has_alternating_bits(n)",
+    "helpers_assert_name": "has_alternating_bits",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_has_alternating_bits, run_has_alternating_bits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BinaryNumberWithAlternatingBits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "has_alternating_bits",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement has_alternating_bits\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_has_alternating_bits",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(5, True)",
+                        "(1, True)",
+                        "(2, True)",
+                        "(10, True)",
+                        "(42, True)",
+                        "(85, True)",
+                        "(170, True)",
+                        "(1431655765, True)",
+                        "(715827882, True)",
+                        "(2147483647, False)",
+                        "(7, False)",
+                        "(11, False)",
+                        "(3, False)",
+                        "(4, False)",
+                        "(6, False)",
+                        "(12, False)",
+                        "(2147483645, False)",
+                        "(2147483646, False)"
+                    ]
+                },
+                "body": "        result = run_has_alternating_bits(Solution, n)\n        assert_has_alternating_bits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_has_alternating_bits, assert_has_alternating_bits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 5\nexpected = True",
+    "playground_run": "result = run_has_alternating_bits(Solution, n)\nresult",
+    "playground_assert": "assert_has_alternating_bits(result, expected)"
+}

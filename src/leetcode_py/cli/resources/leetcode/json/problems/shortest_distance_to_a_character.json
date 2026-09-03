@@ -1,0 +1,95 @@
+{
+    "problem_name": "shortest_distance_to_a_character",
+    "solution_class_name": "Solution",
+    "problem_number": "821",
+    "problem_title": "Shortest Distance to a Character",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s` and a character `c` that occurs in `s`, return an array of integers `answer` where `answer.length == s.length` and `answer[i]` is the distance from index `i` to the closest occurrence of character `c` in `s`.\n\nThe distance between two indices `i` and `j` is `abs(i - j)`, where `abs` is the absolute value function.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"loveleetcode\", c = \"e\"\nOutput: [3,2,1,0,1,0,0,1,2,2,1,0]\n```\n**Explanation:** The character 'e' appears at indices 3, 5, 6, and 11 (0-indexed). The closest occurrence of 'e' for index 0 is at index 3, so the distance is abs(0 - 3) = 3. For index 4, there is a tie between the 'e' at index 3 and the 'e' at index 5, but the distance is still the same: abs(4 - 3) == abs(4 - 5) = 1."
+            },
+            {
+                "content": "```\nInput: s = \"aaab\", c = \"b\"\nOutput: [3,2,1,0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^4\n- s[i] and c are lowercase English letters.\n- It is guaranteed that c occurs at least once in s.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_to_char",
+    "helpers_run_signature": "(solution_class: type, s: str, c: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_to_char(s, c)",
+    "helpers_assert_name": "shortest_to_char",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_to_char, run_shortest_to_char\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestDistanceToACharacter",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_to_char",
+                "signature": "(self, s: str, c: str) -> list[int]",
+                "body": "        # TODO: Implement shortest_to_char\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_to_char",
+                "signature": "(self, s: str, c: str, expected: list[int])",
+                "parametrize": "s, c, expected",
+                "test_cases": {
+                    "list": [
+                        "('loveleetcode', 'e', [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0])",
+                        "('aaab', 'b', [3, 2, 1, 0])",
+                        "('a', 'a', [0])",
+                        "('ab', 'a', [0, 1])",
+                        "('ab', 'b', [1, 0])",
+                        "('aaabaaa', 'b', [3, 2, 1, 0, 1, 2, 3])",
+                        "('bbbbb', 'b', [0, 0, 0, 0, 0])",
+                        "('abcabc', 'a', [0, 1, 1, 0, 1, 2])",
+                        "('cbacba', 'a', [2, 1, 0, 1, 1, 0])",
+                        "('aabaa', 'b', [2, 1, 0, 1, 2])",
+                        "('baaab', 'a', [1, 0, 0, 0, 1])",
+                        "('jylhdzdmuwvriizwl', 'z', [5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 4, 3, 2, 1, 0, 1, 2])",
+                        "('xjgkwixdamzn', 'z', [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1])",
+                        "('zq', 'z', [0, 1])",
+                        "('qmpza', 'z', [3, 2, 1, 0, 1])",
+                        "('fvpjsorzswpcculmvf', 'z', [7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])",
+                        "('zstjfivf', 'z', [0, 1, 2, 3, 4, 5, 6, 7])",
+                        "('egftlxyidzza', 'z', [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 1])",
+                        "('juzirkbjxoh', 'z', [2, 1, 0, 1, 2, 3, 4, 5, 6, 7, 8])",
+                        "('pbktizonjiog', 'z', [5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 6])"
+                    ]
+                },
+                "body": "        result = run_shortest_to_char(Solution, s, c)\n        assert_shortest_to_char(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_to_char, assert_shortest_to_char\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'loveleetcode'\nc = 'e'\nexpected = [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]",
+    "playground_run": "result = run_shortest_to_char(Solution, s, c)\nresult",
+    "playground_assert": "assert_shortest_to_char(result, expected)"
+}

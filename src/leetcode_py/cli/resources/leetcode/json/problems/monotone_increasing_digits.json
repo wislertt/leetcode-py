@@ -1,0 +1,98 @@
+{
+    "problem_name": "monotone_increasing_digits",
+    "solution_class_name": "Solution",
+    "problem_number": "738",
+    "problem_title": "Monotone Increasing Digits",
+    "difficulty": "Medium",
+    "topics": "Math, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "An integer has **monotone increasing digits** if and only if each pair of adjacent digits `x` and `y` satisfy `x <= y`.\n\nGiven an integer `n`, return the largest number that is less than or equal to `n` with monotone increasing digits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 10\nOutput: 9\n```"
+            },
+            {
+                "content": "```\nInput: n = 1234\nOutput: 1234\n```"
+            },
+            {
+                "content": "```\nInput: n = 332\nOutput: 299\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= n <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "monotone_increasing_digits",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.monotone_increasing_digits(n)",
+    "helpers_assert_name": "monotone_increasing_digits",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_monotone_increasing_digits, run_monotone_increasing_digits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MonotoneIncreasingDigits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "monotone_increasing_digits",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement monotone_increasing_digits\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_monotone_increasing_digits",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(10, 9)",
+                        "(1234, 1234)",
+                        "(332, 299)",
+                        "(0, 0)",
+                        "(1, 1)",
+                        "(9, 9)",
+                        "(11, 11)",
+                        "(21, 19)",
+                        "(32, 29)",
+                        "(100, 99)",
+                        "(120, 119)",
+                        "(321, 299)",
+                        "(666, 666)",
+                        "(999, 999)",
+                        "(54321, 49999)",
+                        "(123321, 122999)",
+                        "(555555, 555555)",
+                        "(987654321, 899999999)",
+                        "(666666666, 666666666)",
+                        "(1000000000, 999999999)"
+                    ]
+                },
+                "body": "        result = run_monotone_increasing_digits(Solution, n)\n        assert_monotone_increasing_digits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_monotone_increasing_digits, assert_monotone_increasing_digits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 332\nexpected = 299",
+    "playground_run": "result = run_monotone_increasing_digits(Solution, n)\nresult",
+    "playground_assert": "assert_monotone_increasing_digits(result, expected)"
+}

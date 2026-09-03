@@ -34,6 +34,13 @@ def kebab(name: str) -> str:
     return name.replace("_", "-")
 
 
+def strip_trailing_ws(text: str) -> str:
+    """Match pre-commit's trailing-whitespace hook per line, so generated pages
+    never carry the scrape artifacts (stray double spaces, NBSP) that templates
+    may still hold - otherwise the hook and this script undo each other."""
+    return "\n".join(line.rstrip() for line in text.split("\n"))
+
+
 def mdx_escape(text: str) -> str:
     """Escape JSX-significant characters (<, {, }) so raw MDX compiles.
 
@@ -130,14 +137,37 @@ def validate_mdx(content: str) -> None:
         )
 
 
+def unique_titles(problems: dict[str, dict]) -> dict[str, str]:
+    """Truncated titles can collide when two problems share a long prefix
+    (e.g. '... from Preorder and Inorder/Postorder Traversal'). Re-truncate
+    the colliding titles and append '(#number)' - problem numbers are
+    unique, so the result is too."""
+    titles = {name: page_title(p["problem_title"]) for name, p in problems.items()}
+    counts: dict[str, int] = {}
+    for title in titles.values():
+        counts[title] = counts.get(title, 0) + 1
+    for name, title in titles.items():
+        if counts[title] < 2:
+            continue
+        suffix = f" (#{problems[name]['problem_number']})"
+        base = title
+        if len(base) + len(suffix) > 46:
+            base = base[: 46 - len(suffix)]
+            if " " in base:
+                base = base[: base.rfind(" ")]
+            base = base.rstrip(" ,-")
+        titles[name] = base + suffix
+    return titles
+
+
 def render_problem_page(
     name: str,
     data: dict,
     tags: dict[str, list],
     solution_src: str,
+    title: str,
 ) -> str:
     slug = kebab(name)
-    title = page_title(data["problem_title"])
     difficulty = data["difficulty"]
     topics = data["topics"]
     complexity = parse_complexity(solution_src)
@@ -202,20 +232,25 @@ def render_problem_page(
             + "."
         )
     lines.append("")
-    return "\n".join(lines)
+    # Normalize the final page once: strip trailing whitespace per line and end
+    # with exactly one newline, matching pre-commit's trailing-whitespace and
+    # end-of-file-fixer hooks. A mismatch here makes the hooks and this script
+    # undo each other forever.
+    return strip_trailing_ws("\n".join(lines)).rstrip("\n") + "\n"
 
 
 def render_pages(names: list[str]) -> dict[Path, str]:
     tags = load_tags()
     problems = load_problems()
 
-    titles = [page_title(p["problem_title"]) for p in problems.values()]
-    assert len(set(titles)) == len(titles), (
-        f"problem page titles must be unique: {sorted(t for t in titles if titles.count(t) > 1)}"
+    titles = unique_titles(problems)
+    assert len(set(titles.values())) == len(titles), (
+        "problem page titles must be unique: "
+        f"{sorted(t for t in titles.values() if list(titles.values()).count(t) > 1)}"
     )
-    assert all(len(t) <= 46 for t in titles), (
+    assert all(len(t) <= 46 for t in titles.values()), (
         f"titles must stay <= 46 chars (Mintlify appends ' - leetcode-py'): "
-        f"{[t for t in titles if len(t) > 46]}"
+        f"{[t for t in titles.values() if len(t) > 46]}"
     )
 
     pages: dict[Path, str] = {}
@@ -223,7 +258,7 @@ def render_pages(names: list[str]) -> dict[Path, str]:
         data = problems[name]
         solution_src = (REPO_ROOT / "leetcode" / name / "solution.py").read_text()
         pages[PROBLEMS_DOCS_DIR / f"{kebab(name)}.mdx"] = render_problem_page(
-            name, data, tags, solution_src
+            name, data, tags, solution_src, titles[name]
         )
     for content in pages.values():
         validate_mdx(content)
@@ -261,7 +296,7 @@ def main() -> None:
             if not path.exists() or path.read_text() != content
         ]
         if drift:
-            print("❌ docs/problems/ is out of date, regenerate with this script")
+            print("❌ docs/problems/ is out of date, run: bake lint")
             for path in drift:
                 print(f"  {path.relative_to(REPO_ROOT)}")
             sys.exit(1)

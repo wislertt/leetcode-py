@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: customers = \"YYNY\"\nOutput: 2\nExplanation: \n- Closing the shop at the 0th hour incurs in 1+1+0+1 = 3 penalty.\n- Closing the shop at the 1st hour incurs in 0+1+0+1 = 2 penalty.\n- Closing the shop at the 2nd hour incurs in 0+0+0+1 = 1 penalty.\n- Closing the shop at the 3rd hour incurs in 0+0+1+1 = 2 penalty.\n- Closing the shop at the 4th hour incurs in 0+0+1+0 = 1 penalty.\nClosing the shop at 2nd or 4th hour gives a minimum penalty. Since 2 is earlier, the optimal closing time is 2.\n```"
+                "content": "```\nInput: customers = \"YYNY\"\nOutput: 2\nExplanation:\n- Closing the shop at the 0th hour incurs in 1+1+0+1 = 3 penalty.\n- Closing the shop at the 1st hour incurs in 0+1+0+1 = 2 penalty.\n- Closing the shop at the 2nd hour incurs in 0+0+0+1 = 1 penalty.\n- Closing the shop at the 3rd hour incurs in 0+0+1+1 = 2 penalty.\n- Closing the shop at the 4th hour incurs in 0+0+1+0 = 1 penalty.\nClosing the shop at 2nd or 4th hour gives a minimum penalty. Since 2 is earlier, the optimal closing time is 2.\n```"
             },
             {
                 "content": "```\nInput: customers = \"NNNNN\"\nOutput: 0\nExplanation: It is best to close the shop at the 0th hour as no customers arrive.\n```"

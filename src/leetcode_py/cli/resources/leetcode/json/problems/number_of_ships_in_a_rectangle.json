@@ -12,10 +12,10 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/images/1445_example_1.png)\n\n```\nInput: \nships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]\nOutput: 3\nExplanation: From [0,0] to [4,4] we can count 3 ships within the range.\n```"
+                "content": "![Example 1](https://fastly.jsdelivr.net/gh/doocs/leetcode@main/solution/1200-1299/1274.Number%20of%20Ships%20in%20a%20Rectangle/images/1445_example_1.png)\n\n```\nInput:\nships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]\nOutput: 3\nExplanation: From [0,0] to [4,4] we can count 3 ships within the range.\n```"
             },
             {
-                "content": "```\nInput: \nships = [[1,1],[2,2],[3,3]], topRight = [1000,1000], bottomLeft = [0,0]\nOutput: 3\n```"
+                "content": "```\nInput:\nships = [[1,1],[2,2],[3,3]], topRight = [1000,1000], bottomLeft = [0,0]\nOutput: 3\n```"
             }
         ]
     },

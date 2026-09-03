@@ -1,0 +1,105 @@
+{
+    "problem_name": "largest_number_at_least_twice_of_others",
+    "solution_class_name": "Solution",
+    "problem_number": "747",
+    "problem_title": "Largest Number At Least Twice of Others",
+    "difficulty": "Easy",
+    "topics": "Array, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums` where the largest integer is **unique**.\n\nDetermine whether the largest element in the array is **at least twice** as much as every other number in the array. If it is, return *the **index** of the largest element, or return* `-1` *otherwise*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [3,6,1,0]\nOutput: 1\nExplanation: 6 is the largest integer.\nFor every other number in the array x, 6 is at least twice as big as x.\nThe index of value 6 is 1, so we return 1.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4]\nOutput: -1\nExplanation: 4 is less than twice the value of 3, so we return -1.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 50\n- 0 <= nums[i] <= 100\n- The largest element in nums is unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "dominant_index",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.dominant_index(nums)",
+    "helpers_assert_name": "dominant_index",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_dominant_index, run_dominant_index\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestNumberAtLeastTwiceOfOthers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "dominant_index",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement dominant_index\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_dominant_index",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([3, 6, 1, 0], 1)",
+                        "([1, 2, 3, 4], -1)",
+                        "([1], 0)",
+                        "([0], 0)",
+                        "([1, 0], 0)",
+                        "([0, 1], 1)",
+                        "([2, 1], 0)",
+                        "([1, 2], 1)",
+                        "([100, 0], 0)",
+                        "([0, 100], 1)",
+                        "([50, 25, 24], 0)",
+                        "([50, 25, 25, 26], -1)",
+                        "([3, 6], 1)",
+                        "([4, 7], -1)",
+                        "([99, 49, 0, 12], 0)",
+                        "([1, 1, 2], 2)",
+                        "([10, 5, 20, 9], 2)",
+                        "([3, 2, 1], -1)",
+                        "([7, 40, 49, 28, 68, 17], -1)",
+                        "([33, 16, 5, 17, 5, 86, 27, 21, 24, 23, 0, 14], 5)",
+                        "([49, 88], -1)",
+                        "([3, 84, 2, 29], 1)",
+                        "([5, 88, 35], 1)",
+                        "([31, 37, 35, 11, 51, 44, 43, 35, 35, 15, 10, 36], -1)",
+                        "([49, 34, 29, 14, 11, 81, 6, 33, 46, 11, 41, 4], -1)",
+                        "([30, 83, 33, 28, 6, 0, 29, 31, 2, 6, 9, 9], 1)",
+                        "([32, 15, 17, 6, 8, 45, 46, 45, 11, 76, 29], -1)",
+                        "([23, 0, 31, 4, 3, 10, 57], -1)",
+                        "([9, 32, 8, 24, 98, 29], 4)",
+                        "([52, 41], -1)"
+                    ]
+                },
+                "body": "        result = run_dominant_index(Solution, nums)\n        assert_dominant_index(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_dominant_index, assert_dominant_index\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [3, 6, 1, 0]\nexpected = 1",
+    "playground_run": "result = run_dominant_index(Solution, nums)\nresult",
+    "playground_assert": "assert_dominant_index(result, expected)"
+}

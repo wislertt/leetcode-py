@@ -1,0 +1,93 @@
+{
+    "problem_name": "find_and_replace_pattern",
+    "solution_class_name": "Solution",
+    "problem_number": "890",
+    "problem_title": "Find and Replace Pattern",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a list of strings `words` and a string `pattern`, return *a list of* `words[i]` *that match* `pattern`. You may return the answer in **any order**.\n\nA word matches the pattern if there exists a permutation of letters `p` so that after replacing every letter `x` in the pattern with `p(x)`, we get the desired word.\n\nRecall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"abc\",\"deq\",\"mee\",\"aqq\",\"dkd\",\"ccc\"], pattern = \"abb\"\nOutput: [\"mee\",\"aqq\"]\nExplanation: \"mee\" matches the pattern because there is a permutation {a -> m, b -> e, ...}.\n\"ccc\" does not match the pattern because {a -> c, b -> c, ...} is not a permutation, since a and b map to the same letter.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"a\",\"b\",\"c\"], pattern = \"a\"\nOutput: [\"a\",\"b\",\"c\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= pattern.length <= 20`\n- `1 <= words.length <= 50`\n- `words[i].length == pattern.length`\n- `pattern` and `words[i]` are lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_and_replace_pattern",
+    "helpers_run_signature": "(solution_class: type, words: list[str], pattern: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_and_replace_pattern(words, pattern)",
+    "helpers_assert_name": "find_and_replace_pattern",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_and_replace_pattern, run_find_and_replace_pattern\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindAndReplacePattern",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_and_replace_pattern",
+                "signature": "(self, words: list[str], pattern: str) -> list[str]",
+                "body": "        # TODO: Implement find_and_replace_pattern\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_and_replace_pattern",
+                "signature": "(self, words: list[str], pattern: str, expected: list[str])",
+                "parametrize": "words, pattern, expected",
+                "test_cases": {
+                    "list": [
+                        "(['abc', 'deq', 'mee', 'aqq', 'dkd', 'ccc'], 'abb', ['mee', 'aqq'])",
+                        "(['a', 'b', 'c'], 'a', ['a', 'b', 'c'])",
+                        "(['aa', 'bb'], 'aa', ['aa', 'bb'])",
+                        "(['ab', 'ba'], 'ab', ['ab', 'ba'])",
+                        "(['abc', 'cba'], 'abc', ['abc', 'cba'])",
+                        "(['aaa', 'bbb'], 'aab', [])",
+                        "(['aba', 'cdc'], 'aba', ['aba', 'cdc'])",
+                        "(['ab', 'xy', 'aa'], 'zz', ['aa'])",
+                        "(['mno', 'moo', 'omm'], 'moo', ['moo', 'omm'])",
+                        "(['abab', 'abcd', 'aaaa', 'aabb'], 'abab', ['abab'])",
+                        "(['pep', 'pip', 'pop'], 'pep', ['pep', 'pip', 'pop'])",
+                        "(['badc', 'baba', 'abcd'], 'baba', ['baba'])",
+                        "(['i', 'x', 'q'], 'j', ['i', 'x', 'q'])",
+                        "(['k'], 'n', ['k'])",
+                        "(['ytv', 'lvj'], 'spb', ['ytv', 'lvj'])",
+                        "(['s', 'a', 'i', 'z'], 'z', ['s', 'a', 'i', 'z'])",
+                        "(['jcjz', 'nfgo', 'avnt', 'heyv'], 'odzy', ['nfgo', 'avnt', 'heyv'])",
+                        "(['pvj', 'dmi'], 'mnp', ['pvj', 'dmi'])"
+                    ]
+                },
+                "body": "        result = run_find_and_replace_pattern(Solution, words, pattern)\n        assert_find_and_replace_pattern(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_and_replace_pattern, assert_find_and_replace_pattern\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['abc', 'deq', 'mee', 'aqq', 'dkd', 'ccc']\npattern = 'abb'\nexpected = ['mee', 'aqq']",
+    "playground_run": "result = run_find_and_replace_pattern(Solution, words, pattern)\nresult",
+    "playground_assert": "assert_find_and_replace_pattern(result, expected)"
+}

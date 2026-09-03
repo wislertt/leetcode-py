@@ -10,7 +10,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: arr = [3,1,2,4]\nOutput: 17\nExplanation: \nSubarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. \nMinimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1. Sum is 17.\n```"
+                "content": "```\nInput: arr = [3,1,2,4]\nOutput: 17\nExplanation:\nSubarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4].\nMinimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1. Sum is 17.\n```"
             },
             { "content": "```\nInput: arr = [50]\nOutput: 50\n```" }
         ]

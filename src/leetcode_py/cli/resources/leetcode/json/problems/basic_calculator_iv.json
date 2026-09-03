@@ -1,0 +1,99 @@
+{
+    "problem_name": "basic_calculator_iv",
+    "solution_class_name": "Solution",
+    "problem_number": "770",
+    "problem_title": "Basic Calculator IV",
+    "difficulty": "Hard",
+    "topics": "Hash Table, Math, String, Stack, Recursion",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an expression such as `expression = \"e + 8 - a + 5\"` and an evaluation map such as `{\"e\": 1}` (given in terms of `evalvars = [\"e\"]` and `evalints = [1]`), return a list of tokens representing the simplified expression, such as `[\"-1*a\",\"14\"]`\n\n- An expression alternates chunks and symbols, with a space separating each chunk and symbol.\n- A chunk is either an expression in parentheses, a variable, or a non-negative integer.\n- A variable is a string of lowercase letters (not including digits.) Note that variables can be multiple letters, and note that variables never have a leading coefficient or unary operator like `\"2x\"` or `\"-x\"`.\n\nExpressions are evaluated in the usual order: brackets first, then multiplication, then addition and subtraction.\n\n- For example, `expression = \"1 + 2 * 3\"` has an answer of `[\"7\"]`.\n\nThe format of the output is as follows:\n\n- For each term of free variables with a non-zero coefficient, we write the free variables within a term in sorted order lexicographically.\n\n  - For example, we would never write a term like `\"b*a*c\"`, only `\"a*b*c\"`.\n\n- Terms have degrees equal to the number of free variables being multiplied, counting multiplicity. We write the largest degree terms of our answer first, breaking ties by lexicographic order ignoring the leading coefficient of the term.\n\n  - For example, `\"a*a*b*c\"` has degree `4`.\n\n- The leading coefficient of the term is placed directly to the left with an asterisk separating it from the variables (if they exist.) A leading coefficient of 1 is still printed.\n- An example of a well-formatted answer is `[\"-2*a*a*a\", \"3*a*a*b\", \"3*b*b\", \"4*a\", \"5*c\", \"-6\"]`.\n- Terms (including constant terms) with coefficient `0` are not included.\n\n  - For example, an expression of `\"0\"` has an output of `[]`.\n\n**Note:** You may assume that the given expression is always valid. All intermediate results will be in the range of `[-2^31, 2^31 - 1]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: expression = \"e + 8 - a + 5\", evalvars = [\"e\"], evalints = [1]\nOutput: [\"-1*a\",\"14\"]\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"e - 8 + temperature - pressure\", evalvars = [\"e\", \"temperature\"], evalints = [1, 12]\nOutput: [\"-1*pressure\",\"5\"]\n```"
+            },
+            {
+                "content": "```\nInput: expression = \"(e + 8) * (e - 8)\", evalvars = [], evalints = []\nOutput: [\"1*e*e\",\"-64\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= expression.length <= 250\n- expression consists of lowercase English letters, digits, '+', '-', '*', '(', ')', and ' '.\n- expression does not contain any leading or trailing spaces.\n- All the tokens in expression are separated by a single space.\n- 0 <= evalvars.length <= 100\n- 1 <= evalvars[i].length <= 20\n- evalvars[i] consists of lowercase English letters.\n- evalints.length == evalvars.length\n- -100 <= evalints[i] <= 100",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "basic_calculator_iv",
+    "helpers_run_signature": "(solution_class: type, expression: str, evalvars: list[str], evalints: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.basic_calculator_iv(expression, evalvars, evalints)",
+    "helpers_assert_name": "basic_calculator_iv",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_basic_calculator_iv, run_basic_calculator_iv\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BasicCalculatorIV",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "basic_calculator_iv",
+                "signature": "(self, expression: str, evalvars: list[str], evalints: list[int]) -> list[str]",
+                "body": "        # TODO: Implement basic_calculator_iv\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_basic_calculator_iv",
+                "signature": "(self, expression: str, evalvars: list[str], evalints: list[int], expected: list[str])",
+                "parametrize": "expression, evalvars, evalints, expected",
+                "test_cases": {
+                    "list": [
+                        "('e + 8 - a + 5', ['e'], [1], ['-1*a', '14'])",
+                        "('e - 8 + temp - p', ['e', 'temp'], [1, 12], ['-1*p', '5'])",
+                        "('(e + 8) * (e - 8)', [], [], ['1*e*e', '-64'])",
+                        "('1 + 2 * 3', [], [], ['7'])",
+                        "('0', [], [], [])",
+                        "('a * b * c + b * a * c', [], [], ['2*a*b*c'])",
+                        "('a + b + c + a + b + c', [], [], ['2*a', '2*b', '2*c'])",
+                        "('(a - b) * (a + b)', [], [], ['1*a*a', '-1*b*b'])",
+                        "('(a + b) * (a + b)', [], [], ['1*a*a', '2*a*b', '1*b*b'])",
+                        "('x * x * x', ['x'], [2], ['8'])",
+                        "('a * b + c', ['a', 'b'], [2, 3], ['1*c', '6'])",
+                        "('(a + 3) * (b + 4)', ['a', 'b'], [1, 2], ['24'])",
+                        "('a - a', [], [], [])",
+                        "('(x + y) * (x - y) + y * y', [], [], ['1*x*x'])",
+                        "('a * a * a * a', [], [], ['1*a*a*a*a'])",
+                        "('(a + b) * (c + d)', [], [], ['1*a*c', '1*a*d', '1*b*c', '1*b*d'])",
+                        "('2 * x + y * y - 3 * x', [], [], ['1*y*y', '-1*x'])",
+                        "('(a + 1) * (a + 2) * (a + 3)', [], [], ['1*a*a*a', '6*a*a', '11*a', '6'])",
+                        "('x + y', ['x'], [-3], ['1*y', '-3'])",
+                        "('b + aa + c', [], [], ['1*aa', '1*b', '1*c'])",
+                        "('temp * press + zz', [], [], ['1*press*temp', '1*zz'])"
+                    ]
+                },
+                "body": "        result = run_basic_calculator_iv(Solution, expression, evalvars, evalints)\n        assert_basic_calculator_iv(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_basic_calculator_iv, assert_basic_calculator_iv\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nexpression = 'e + 8 - a + 5'\nevalvars = ['e']\nevalints = [1]\nexpected = ['-1*a', '14']",
+    "playground_run": "result = run_basic_calculator_iv(Solution, expression, evalvars, evalints)\nresult",
+    "playground_assert": "assert_basic_calculator_iv(result, expected)"
+}

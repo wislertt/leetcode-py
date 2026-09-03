@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: boxes = [1,3,2,2,2,3,4,3,1]\nOutput: 23\nExplanation:\n[1, 3, 2, 2, 2, 3, 4, 3, 1] \n----> [1, 3, 3, 4, 3, 1] (3*3=9 points) \n----> [1, 3, 3, 3, 1] (1*1=1 points) \n----> [1, 1] (3*3=9 points) \n----> [] (2*2=4 points)\n```"
+                "content": "```\nInput: boxes = [1,3,2,2,2,3,4,3,1]\nOutput: 23\nExplanation:\n[1, 3, 2, 2, 2, 3, 4, 3, 1]\n----> [1, 3, 3, 4, 3, 1] (3*3=9 points)\n----> [1, 3, 3, 3, 1] (1*1=1 points)\n----> [1, 1] (3*3=9 points)\n----> [] (2*2=4 points)\n```"
             },
             {
                 "content": "```\nInput: boxes = [1,1,1]\nOutput: 9\n```"

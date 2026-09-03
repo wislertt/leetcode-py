@@ -1,0 +1,90 @@
+{
+    "problem_name": "map_sum_pairs",
+    "solution_class_name": "MapSum",
+    "problem_number": "677",
+    "problem_title": "Map Sum Pairs",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Design, Trie",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Design a map that allows you to do the following:\n\n- Maps a string key to a given value.\n- Returns the sum of the values that have a key with a prefix equal to a given string.\n\nImplement the `MapSum` class:\n\n- `MapSum()` Initializes the `MapSum` object.\n- `void insert(String key, int val)` Inserts the `key-val` pair into the map. If the `key` already existed, the original `key-value` pair will be overridden to the new one.\n- `int sum(string prefix)` Returns the sum of all the pairs' value whose `key` starts with the `prefix`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MapSum\", \"insert\", \"sum\", \"insert\", \"sum\"]\n[[], [\"apple\", 3], [\"ap\"], [\"app\", 2], [\"ap\"]]\nOutput\n[null, null, 3, null, 5]\n```\n\n**Explanation**\n```\nMapSum mapSum = new MapSum();\nmapSum.insert(\"apple\", 3);\nmapSum.sum(\"ap\");           // return 3 (apple = 3)\nmapSum.insert(\"app\", 2);\nmapSum.sum(\"ap\");           // return 5 (apple + app = 3 + 2 = 5)\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= key.length, prefix.length <= 50`\n- `key` and `prefix` consist of only lowercase English letters.\n- `1 <= val <= 1000`\n- At most `50` calls will be made to `insert` and `sum`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "map_sum",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    map_sum = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MapSum':\n            map_sum = solution_class()\n            results.append(None)\n        elif op == 'insert' and map_sum is not None:\n            map_sum.insert(*inputs[i])\n            results.append(None)\n        elif op == 'sum' and map_sum is not None:\n            results.append(map_sum.sum(*inputs[i]))\n    return results, map_sum",
+    "helpers_assert_name": "map_sum",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from __future__ import annotations",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_map_sum, run_map_sum\nfrom .solution import MapSum",
+    "test_content": "",
+    "test_class_name": "MapSumPairs",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize map sum\n        pass"
+            },
+            {
+                "name": "insert",
+                "signature": "(self, key: str, val: int) -> None",
+                "body": "        # TODO: Implement insert\n        pass"
+            },
+            {
+                "name": "sum",
+                "signature": "(self, prefix: str) -> int",
+                "body": "        # TODO: Implement sum\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_map_sum",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['MapSum', 'insert', 'sum', 'insert', 'sum'], [[], ['apple', 3], ['ap'], ['app', 2], ['ap']], [None, None, 3, None, 5])",
+                        "(['MapSum', 'insert', 'sum'], [[], ['a', 3], ['a']], [None, None, 3])",
+                        "(['MapSum', 'insert', 'sum', 'sum'], [[], ['app', 1], ['ap'], ['apple']], [None, None, 1, 0])",
+                        "(['MapSum', 'insert', 'insert', 'sum', 'sum'], [[], ['apple', 3], ['apple', 2], ['apple'], ['ap']], [None, None, None, 2, 2])",
+                        "(['MapSum', 'sum'], [[], ['a']], [None, 0])",
+                        "(['MapSum', 'insert', 'insert', 'insert', 'sum', 'sum', 'sum'], [[], ['a', 1], ['ab', 2], ['abc', 3], ['a'], ['ab'], ['abc']], [None, None, None, None, 6, 5, 3])",
+                        "(['MapSum', 'insert', 'insert', 'sum', 'sum', 'sum'], [[], ['ap', 4], ['apple', 5], ['ap'], ['appl'], ['applex']], [None, None, None, 9, 5, 0])",
+                        "(['MapSum', 'insert', 'insert', 'sum', 'sum', 'sum'], [[], ['cat', 1], ['dog', 2], ['c'], ['d'], ['e']], [None, None, None, 1, 2, 0])",
+                        "(['MapSum', 'insert', 'insert', 'sum', 'sum', 'sum'], [[], ['abc', 1], ['abd', 2], ['ab'], ['abc'], ['a']], [None, None, None, 3, 1, 3])",
+                        "(['MapSum', 'insert', 'insert', 'sum', 'insert', 'sum'], [[], ['app', 1], ['apple', 10], ['ap'], ['apple', 1], ['ap']], [None, None, None, 11, None, 2])",
+                        "(['MapSum', 'insert', 'sum', 'sum', 'sum'], [[], ['aaaaaaaaaa', 1000], ['a'], ['aaaaaaaaab'], ['aaaaaaaaaaa']], [None, None, 1000, 0, 0])",
+                        "(['MapSum', 'insert', 'insert', 'insert', 'sum', 'sum'], [[], ['te', 5], ['tea', 6], ['ten', 7], ['te'], ['ten']], [None, None, None, None, 18, 7])",
+                        "(['MapSum', 'insert', 'insert', 'insert', 'sum', 'insert', 'sum'], [[], ['ba', 2], ['bat', 3], ['bar', 4], ['ba'], ['bat', 9], ['ba']], [None, None, None, None, 9, None, 15])",
+                        "(['MapSum', 'insert', 'sum', 'sum', 'insert', 'sum', 'sum'], [[], ['k', 1000], ['k'], ['kk'], ['kk', 1000], ['k'], ['z']], [None, None, 1000, 0, None, 2000, 0])"
+                    ]
+                },
+                "body": "        result, _ = run_map_sum(MapSum, operations, inputs)\n        assert_map_sum(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_map_sum, assert_map_sum\nfrom solution import MapSum",
+    "playground_setup": "# Example test case\noperations = ['MapSum', 'insert', 'sum', 'insert', 'sum']\ninputs = [[], ['apple', 3], ['ap'], ['app', 2], ['ap']]\nexpected = [None, None, 3, None, 5]",
+    "playground_run": "result, map_sum = run_map_sum(MapSum, operations, inputs)\nprint(result)\nmap_sum",
+    "playground_assert": "assert_map_sum(result, expected)"
+}

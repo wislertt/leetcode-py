@@ -1,0 +1,99 @@
+{
+    "problem_name": "self_dividing_numbers",
+    "solution_class_name": "Solution",
+    "problem_number": "728",
+    "problem_title": "Self Dividing Numbers",
+    "difficulty": "Easy",
+    "topics": "Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A **self-dividing number** is a number that is divisible by every digit it contains.\n\n- For example, `128` is **a self-dividing number** because `128 % 1 == 0`, `128 % 2 == 0`, and `128 % 8 == 0`.\n\nA **self-dividing number** is not allowed to contain the digit zero.\n\nGiven two integers `left` and `right`, return *a list of all the **self-dividing numbers** in the range* `[left, right]` *(both **inclusive**)*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: left = 1, right = 22\nOutput: [1,2,3,4,5,6,7,8,9,11,12,15,22]\n```"
+            },
+            {
+                "content": "```\nInput: left = 47, right = 85\nOutput: [48,55,66,77]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= left <= right <= 10^4`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "self_dividing_numbers",
+    "helpers_run_signature": "(solution_class: type, left: int, right: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.self_dividing_numbers(left, right)",
+    "helpers_assert_name": "self_dividing_numbers",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_self_dividing_numbers, run_self_dividing_numbers\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SelfDividingNumbers",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "self_dividing_numbers",
+                "signature": "(self, left: int, right: int) -> list[int]",
+                "body": "        # TODO: Implement self_dividing_numbers\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_self_dividing_numbers",
+                "signature": "(self, left: int, right: int, expected: list[int])",
+                "parametrize": "left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 22, [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22])",
+                        "(47, 85, [48, 55, 66, 77])",
+                        "(1, 1, [1])",
+                        "(1, 10, [1, 2, 3, 4, 5, 6, 7, 8, 9])",
+                        "(1, 13, [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12])",
+                        "(10, 12, [11, 12])",
+                        "(13, 15, [15])",
+                        "(20, 25, [22, 24])",
+                        "(26, 33, [33])",
+                        "(38, 40, [])",
+                        "(48, 48, [48])",
+                        "(55, 66, [55, 66])",
+                        "(88, 88, [88])",
+                        "(99, 111, [99, 111])",
+                        "(100, 120, [111, 112, 115])",
+                        "(128, 128, [128])",
+                        "(2222, 2222, [2222])",
+                        "(9990, 9999, [9999])",
+                        "(9999, 9999, [9999])",
+                        "(1000, 1010, [])",
+                        "(9000, 9000, [])",
+                        "(11, 11, [11])",
+                        "(111, 111, [111])",
+                        "(2022, 2022, [])"
+                    ]
+                },
+                "body": "        result = run_self_dividing_numbers(Solution, left, right)\n        assert_self_dividing_numbers(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_self_dividing_numbers, assert_self_dividing_numbers\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nleft = 1\nright = 22\nexpected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]",
+    "playground_run": "result = run_self_dividing_numbers(Solution, left, right)\nresult",
+    "playground_assert": "assert_self_dividing_numbers(result, expected)"
+}

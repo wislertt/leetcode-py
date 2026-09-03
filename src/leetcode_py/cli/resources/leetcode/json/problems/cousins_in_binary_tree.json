@@ -1,0 +1,94 @@
+{
+    "problem_name": "cousins_in_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "993",
+    "problem_title": "Cousins in Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree with unique values and the values of two different nodes of the tree `x` and `y`, return `true` if the nodes corresponding to the values `x` and `y` in the tree are cousins, or `false` otherwise.\n\nTwo nodes of a binary tree are **cousins** if they have the same depth with different parents.\n\nNote that in a binary tree, the root node is at the depth `0`, and children of each depth `k` node are at the depth `k + 1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png)\n\n```\nInput: root = [1,2,3,4], x = 4, y = 3\nOutput: false\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png)\n\n```\nInput: root = [1,2,3,null,4,null,5], x = 5, y = 4\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png)\n\n```\nInput: root = [1,2,3,null,4], x = 2, y = 3\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [2, 100]\n- 1 <= Node.val <= 100\n- Each node has a unique value\n- x != y\n- x and y exist in the tree",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "is_cousins",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], x: int, y: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.is_cousins(root, x, y)",
+    "helpers_assert_name": "is_cousins",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_cousins, run_is_cousins\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "CousinsInBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_cousins",
+                "signature": "(self, root: TreeNode[int] | None, x: int, y: int) -> bool",
+                "body": "        # TODO: Implement is_cousins\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_cousins",
+                "signature": "(self, root_list: list[int | None], x: int, y: int, expected: bool)",
+                "parametrize": "root_list, x, y, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4], 4, 3, False)",
+                        "([1, 2, 3, None, 4, None, 5], 5, 4, True)",
+                        "([1, 2, 3, None, 4], 2, 3, False)",
+                        "([1, 2, 3], 2, 3, False)",
+                        "([1, 2], 1, 2, False)",
+                        "([1, 2, 3, 4, 5], 4, 5, False)",
+                        "([1, 2, 3, None, 4, None, 5], 4, 5, True)",
+                        "([1, 2, 3, 4, 5, 6, 7], 4, 6, True)",
+                        "([1, 2, 3, 4, 5, 6, 7], 4, 7, True)",
+                        "([1, 2, None, 3, None, 4], 3, 4, False)",
+                        "([1, None, 2, None, 3], 1, 3, False)",
+                        "([10, 1, 2, 3, 4, 5, 6, 7], 7, 4, False)",
+                        "([11, 19], 11, 19, False)",
+                        "([34, 40, 80, 54, 31, None, 39, 5, 6], 34, 80, False)",
+                        "([92, 7, None, 98, 85, None, 37], 7, 37, False)",
+                        "([15, None, 17, 61], 61, 17, False)"
+                    ]
+                },
+                "body": "        result = run_is_cousins(Solution, root_list, x, y)\n        assert_is_cousins(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_cousins, assert_is_cousins\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [1, 2, 3, 4]\nx = 4\ny = 3\nexpected = False",
+    "playground_run": "result = run_is_cousins(Solution, root_list, x, y)\nresult",
+    "playground_assert": "assert_is_cousins(result, expected)"
+}

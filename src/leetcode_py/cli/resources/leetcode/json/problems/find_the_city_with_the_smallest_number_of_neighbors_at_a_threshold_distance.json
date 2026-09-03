@@ -12,10 +12,10 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/08/23/problem1334example0.png)\n\n```\nInput: n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4\nOutput: 3\nExplanation: The figure above describes the graph. \nThe neighboring cities at a distanceThreshold = 4 for each city are:\nCity 0 -> [City 1, City 2] \nCity 1 -> [City 0, City 2, City 3] \nCity 2 -> [City 0, City 1, City 3] \nCity 3 -> [City 1, City 2] \nCities 0 and 3 have 2 neighboring cities at a distanceThreshold = 4, but we have to return city 3 since it has the greatest number.\n```"
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2024/08/23/problem1334example0.png)\n\n```\nInput: n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4\nOutput: 3\nExplanation: The figure above describes the graph.\nThe neighboring cities at a distanceThreshold = 4 for each city are:\nCity 0 -> [City 1, City 2]\nCity 1 -> [City 0, City 2, City 3]\nCity 2 -> [City 0, City 1, City 3]\nCity 3 -> [City 1, City 2]\nCities 0 and 3 have 2 neighboring cities at a distanceThreshold = 4, but we have to return city 3 since it has the greatest number.\n```"
             },
             {
-                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/08/23/problem1334example1.png)\n\n```\nInput: n = 5, edges = [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], distanceThreshold = 2\nOutput: 0\nExplanation: The figure above describes the graph. \nThe neighboring cities at a distanceThreshold = 2 for each city are:\nCity 0 -> [City 1] \nCity 1 -> [City 0, City 4] \nCity 2 -> [City 3, City 4] \nCity 3 -> [City 2, City 4]\nCity 4 -> [City 1, City 2, City 3] \nThe city 0 has 1 neighboring city at a distanceThreshold = 2.\n```"
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2024/08/23/problem1334example1.png)\n\n```\nInput: n = 5, edges = [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], distanceThreshold = 2\nOutput: 0\nExplanation: The figure above describes the graph.\nThe neighboring cities at a distanceThreshold = 2 for each city are:\nCity 0 -> [City 1]\nCity 1 -> [City 0, City 4]\nCity 2 -> [City 3, City 4]\nCity 3 -> [City 2, City 4]\nCity 4 -> [City 1, City 2, City 3]\nThe city 0 has 1 neighboring city at a distanceThreshold = 2.\n```"
             }
         ]
     },

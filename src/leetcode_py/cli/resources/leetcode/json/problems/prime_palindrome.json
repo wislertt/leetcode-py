@@ -1,0 +1,108 @@
+{
+    "problem_name": "prime_palindrome",
+    "solution_class_name": "Solution",
+    "problem_number": "866",
+    "problem_title": "Prime Palindrome",
+    "difficulty": "Medium",
+    "topics": "Math, Number Theory, Primality Test",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer `n`, return *the smallest prime palindrome* greater than or equal to `n`.\n\nAn integer is **prime** if it has exactly two divisors: `1` and itself. Note that `1` is not a prime number.\n\n- For example, `2`, `3`, `5`, `7`, `11`, and `13` are all primes.\n\nAn integer is a **palindrome** if it reads the same from left to right as it does from right to left.\n\n- For example, `101` and `12321` are palindromes.\n\nThe test cases are generated so that the answer always exists and is in the range `[2, 2 * 10^8]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 6\nOutput: 7\n```"
+            },
+            {
+                "content": "```\nInput: n = 8\nOutput: 11\n```"
+            },
+            {
+                "content": "```\nInput: n = 13\nOutput: 101\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10<sup>8</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "prime_palindrome",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.prime_palindrome(n)",
+    "helpers_assert_name": "prime_palindrome",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_prime_palindrome, run_prime_palindrome\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PrimePalindrome",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "prime_palindrome",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement prime_palindrome\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_prime_palindrome",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 5)",
+                        "(5, 5)",
+                        "(6, 7)",
+                        "(8, 11)",
+                        "(9, 11)",
+                        "(10, 11)",
+                        "(11, 11)",
+                        "(12, 101)",
+                        "(13, 101)",
+                        "(14, 101)",
+                        "(31, 101)",
+                        "(98, 101)",
+                        "(99, 101)",
+                        "(100, 101)",
+                        "(101, 101)",
+                        "(102, 131)",
+                        "(130, 131)",
+                        "(132, 151)",
+                        "(200, 313)",
+                        "(1000, 10301)",
+                        "(10000, 10301)",
+                        "(123456, 1003001)",
+                        "(1000000, 1003001)",
+                        "(9999998, 100030001)",
+                        "(10000000, 100030001)",
+                        "(99999998, 100030001)",
+                        "(100000000, 100030001)"
+                    ]
+                },
+                "body": "        result = run_prime_palindrome(Solution, n)\n        assert_prime_palindrome(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_prime_palindrome, assert_prime_palindrome\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn: int = 6\nexpected: int = 7",
+    "playground_run": "result = run_prime_palindrome(Solution, n)\nresult",
+    "playground_assert": "assert_prime_palindrome(result, expected)"
+}

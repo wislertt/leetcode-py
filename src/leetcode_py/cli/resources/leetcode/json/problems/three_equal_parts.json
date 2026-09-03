@@ -1,0 +1,104 @@
+{
+    "problem_name": "three_equal_parts",
+    "solution_class_name": "Solution",
+    "problem_number": "927",
+    "problem_title": "Three Equal Parts",
+    "difficulty": "Hard",
+    "topics": "Array, Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array `arr` which consists of only zeros and ones, divide the array into **three non-empty parts** such that all of these parts represent the same binary value.\n\nIf it is possible, return any `[i, j]` with `i + 1 < j`, such that:\n\n- `arr[0], arr[1], ..., arr[i]` is the first part,\n- `arr[i + 1], arr[i + 2], ..., arr[j - 1]` is the second part, and\n- `arr[j], arr[j + 1], ..., arr[arr.length - 1]` is the third part.\n- All three parts have equal binary values.\n\nIf it is not possible, return `[-1, -1]`.\n\nNote that the entire part is used when considering what binary value it represents. For example, `[1,1,0]` represents `6` in decimal, not `3`. Also, leading zeros **are allowed**, so `[0,1,1]` and `[1,1]` represent the same value.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,0,1,0,1]\nOutput: [0,3]\nExplanation: The following figure shows a possible split of the array into three parts.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,1,0,1,1]\nOutput: [-1,-1]\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,1,0,0,1]\nOutput: [0,2]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `3 <= arr.length <= 3 * 10^4`\n- `arr[i]` is `0` or `1`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "three_equal_parts",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.three_equal_parts(arr)",
+    "helpers_assert_name": "three_equal_parts",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_three_equal_parts, run_three_equal_parts\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ThreeEqualParts",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "three_equal_parts",
+                "signature": "(self, arr: list[int]) -> list[int]",
+                "body": "        # TODO: Implement three_equal_parts\n        return [-1, -1]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_three_equal_parts",
+                "signature": "(self, arr: list[int], expected: list[int])",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 1, 0, 1], [0, 3])",
+                        "([1, 1, 0, 1, 1], [-1, -1])",
+                        "([1, 1, 0, 0, 1], [0, 2])",
+                        "([0, 0, 0], [0, 2])",
+                        "([0, 1, 0], [-1, -1])",
+                        "([1, 1, 0], [-1, -1])",
+                        "([1, 0, 0, 1, 0, 0, 1], [0, 4])",
+                        "([1, 0, 0, 0, 1, 0, 0, 0, 1], [0, 5])",
+                        "([0, 1, 0, 1, 0, 1], [1, 4])",
+                        "([1, 0, 1, 0, 1, 0, 0], [-1, -1])",
+                        "([1, 1, 1, 0, 0, 0, 0, 0, 0], [-1, -1])",
+                        "([0, 0, 1, 0, 0, 1, 0, 0, 1], [2, 6])",
+                        "([1, 1, 1, 1, 1, 1], [1, 4])",
+                        "([1, 1, 1, 1], [-1, -1])",
+                        "([0, 0, 0, 0, 0, 0], [0, 5])",
+                        "([1, 1, 0, 1, 1, 0, 1, 1, 0], [2, 6])",
+                        "([0, 1, 1], [-1, -1])",
+                        "([1, 1, 0, 0, 0], [-1, -1])",
+                        "([0, 0, 1, 1], [-1, -1])",
+                        "([1, 0, 1], [-1, -1])",
+                        "([0, 0, 0, 1, 1], [-1, -1])",
+                        "([0, 0, 1, 0, 0, 0, 1, 1, 0], [-1, -1])",
+                        "([0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1], [1, 10])",
+                        "([0, 1, 1, 1, 0], [-1, -1])",
+                        "([1, 0, 1, 0, 1, 1, 1], [-1, -1])",
+                        "([0, 1, 0, 1, 0], [-1, -1])"
+                    ]
+                },
+                "body": "        result = run_three_equal_parts(Solution, arr)\n        assert_three_equal_parts(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_three_equal_parts, run_three_equal_parts\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 0, 1, 0, 1]\nexpected = [0, 3]",
+    "playground_run": "result = run_three_equal_parts(Solution, arr)\nresult",
+    "playground_assert": "assert_three_equal_parts(result, expected)"
+}

@@ -1,0 +1,96 @@
+{
+    "problem_name": "goat_latin",
+    "solution_class_name": "Solution",
+    "problem_number": "824",
+    "problem_title": "Goat Latin",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string `sentence` that consist of words separated by spaces. Each word consists of lowercase and uppercase letters only.\n\nWe would like to convert the sentence to **Goat Latin** (a made-up language similar to Pig Latin.) The rules of Goat Latin are as follows:\n\n- If a word begins with a vowel (`'a'`, `'e'`, `'i'`, `'o'`, or `'u'`), append `\"ma\"` to the end of the word.\n  - For example, the word `\"apple\"` becomes `\"applema\"`.\n- If a word begins with a consonant (i.e., not a vowel), remove the first letter and append it to the end, then add `\"ma\"`.\n  - For example, the word `\"goat\"` becomes `\"oatgma\"`.\n- Add one letter `'a'` to the end of each word per its word index in the sentence, starting with `1`.\n  - For example, the first word gets `\"a\"` added to the end, the second word gets `\"aa\"` added to the end, and so on.\n\nReturn the final sentence representing the conversion from sentence to Goat Latin.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: sentence = \"I speak Goat Latin\"\nOutput: \"Imaa peaksmaaa oatGmaaaa atinLmaaaaa\"\n```"
+            },
+            {
+                "content": "```\nInput: sentence = \"apple\"\nOutput: \"applema\"\n```"
+            },
+            {
+                "content": "```\nInput: sentence = \"goat\"\nOutput: \"oatgma\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= sentence.length <= 150\n- sentence consists of English letters and spaces.\n- sentence has no leading or trailing spaces.\n- All the words in sentence are separated by a single space.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "to_goat_latin",
+    "helpers_run_signature": "(solution_class: type, sentence: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.to_goat_latin(sentence)",
+    "helpers_assert_name": "to_goat_latin",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_to_goat_latin, run_to_goat_latin\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GoatLatin",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "to_goat_latin",
+                "signature": "(self, sentence: str) -> str",
+                "body": "        # TODO: Implement to_goat_latin\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_to_goat_latin",
+                "signature": "(self, sentence: str, expected: str)",
+                "parametrize": "sentence, expected",
+                "test_cases": {
+                    "list": [
+                        "('I speak Goat Latin', 'Imaa peaksmaaa oatGmaaaa atinLmaaaaa')",
+                        "('The quick brown fox', 'heTmaa uickqmaaa rownbmaaaa oxfmaaaaa')",
+                        "('a', 'amaa')",
+                        "('I', 'Imaa')",
+                        "('apple', 'applemaa')",
+                        "('goat', 'oatgmaa')",
+                        "('UtAh', 'UtAhmaa')",
+                        "('Orange', 'Orangemaa')",
+                        "('egg', 'eggmaa')",
+                        "('Under', 'Undermaa')",
+                        "('each word turns', 'eachmaa ordwmaaa urnstmaaaa')",
+                        "('a b c d', 'amaa bmaaa cmaaaa dmaaaaa')",
+                        "('Zz Yy Xx', 'zZmaa yYmaaa xXmaaaa')",
+                        "('The sky is blue', 'heTmaa kysmaaa ismaaaa luebmaaaaa')",
+                        "('Quartz gem', 'uartzQmaa emgmaaa')",
+                        "('wcjdS e', 'cjdSwmaa emaaa')",
+                        "('oRfqX YlrqI', 'oRfqXmaa lrqIYmaaa')",
+                        "('q zUA Y s', 'qmaa UAzmaaa Ymaaaa smaaaaa')"
+                    ]
+                },
+                "body": "        result = run_to_goat_latin(Solution, sentence)\n        assert_to_goat_latin(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_to_goat_latin, assert_to_goat_latin\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsentence = 'I speak Goat Latin'\nexpected = 'Imaa peaksmaaa oatGmaaaa atinLmaaaaa'",
+    "playground_run": "result = run_to_goat_latin(Solution, sentence)\nresult",
+    "playground_assert": "assert_to_goat_latin(result, expected)"
+}

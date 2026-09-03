@@ -1,0 +1,91 @@
+{
+    "problem_name": "employee_importance",
+    "solution_class_name": "Solution",
+    "problem_number": "690",
+    "problem_title": "Employee Importance",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Tree, Depth-First Search, Breadth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have a data structure of employee information, including the employee's unique ID, importance value, and direct subordinates' IDs.\n\nYou are given an array of employees `employees` where:\n\n- `employees[i].id` is the ID of the `i^th` employee.\n- `employees[i].importance` is the importance value of the `i^th` employee.\n- `employees[i].subordinates` is a list of the IDs of the direct subordinates of the `i^th` employee.\n\nGiven an integer `id` that represents an employee's ID, return *the **total** importance value of this employee and all their direct and indirect subordinates*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/31/emp1-tree.jpg)\n\n```\nInput: employees = [[1,5,[2,3]],[2,3,[]],[3,3,[]]], id = 1\nOutput: 11\nExplanation: Employee 1 has an importance value of 5 and has two direct subordinates: employee 2 and employee 3. They both have an importance value of 3. Thus, the total importance value of employee 1 is 5 + 3 + 3 = 11.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/05/31/emp2-tree.jpg)\n\n```\nInput: employees = [[1,2,[5]],[5,-3,[]]], id = 5\nOutput: -3\nExplanation: Employee 5 has an importance value of -3 and has no direct subordinates. Thus, the total importance value of employee 5 is -3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= employees.length <= 2000`\n- `1 <= employees[i].id <= 2000`\n- All `employees[i].id` are **unique**.\n- `-100 <= employees[i].importance <= 100`\n- One employee has at most one direct leader and may have several subordinates.\n- The IDs in `employees[i].subordinates` are **valid** IDs.",
+    "readme_additional": "",
+    "helpers_imports": "from .solution import Employee",
+    "helpers_content": "def _employees_from_lists(rows: list[list[int | list[int]]]) -> list[Employee]:\n    employees: list[Employee] = []\n    for row in rows:\n        emp_id = row[0]\n        importance = row[1]\n        subs = row[2]\n        assert isinstance(emp_id, int)\n        assert isinstance(importance, int)\n        assert isinstance(subs, list)\n        employees.append(Employee(emp_id, importance, subs))\n    return employees",
+    "helpers_run_name": "get_importance",
+    "helpers_run_signature": "(solution_class: type, employees: list[list[int | list[int]]], id: int)",
+    "helpers_run_body": "    emp_objects = _employees_from_lists(employees)\n    implementation = solution_class()\n    return implementation.get_importance(emp_objects, id)",
+    "helpers_assert_name": "get_importance",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class Employee:\n    def __init__(\n        self, id: int, importance: int, subordinates: list[int] | None = None\n    ) -> None:\n        self.id = id\n        self.importance = importance\n        self.subordinates = subordinates if subordinates is not None else []\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_get_importance, run_get_importance\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EmployeeImportance",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "get_importance",
+                "signature": "(self, employees: list[Employee], id: int) -> int",
+                "body": "        # TODO: Implement get_importance\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_get_importance",
+                "signature": "(self, employees: list[list[int | list[int]]], id: int, expected: int)",
+                "parametrize": "employees, id, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1, 11)",
+                        "([[1, 2, [5]], [5, -3, []]], 5, -3)",
+                        "([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 2, 3)",
+                        "([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 3, 3)",
+                        "([[1, 2, [5]], [5, -3, []]], 1, -1)",
+                        "([[1, 10, []]], 1, 10)",
+                        "([[1, -1, [2]], [2, -2, []]], 1, -3)",
+                        "([[1, -1, [2]], [2, -2, []]], 2, -2)",
+                        "([[1, 0, [2]], [2, 1, [3]], [3, 2, []]], 1, 3)",
+                        "([[1, 0, [2]], [2, 1, [3]], [3, 2, []]], 2, 3)",
+                        "([[1, 0, [2]], [2, 1, [3]], [3, 2, []]], 3, 2)",
+                        "([[1, 0, [2, 3, 4, 5]], [2, 1, []], [3, 1, []], [4, 1, []], [5, 1, []]], 1, 4)",
+                        "([[1, 0, [2, 3, 4, 5]], [2, 1, []], [3, 1, []], [4, 1, []], [5, 1, []]], 5, 1)",
+                        "([[1, 4, [2]], [2, -6, [3]], [3, 7, []], [9, 100, [10]], [10, -100, []]], 1, 5)",
+                        "([[1, 4, [2]], [2, -6, [3]], [3, 7, []], [9, 100, [10]], [10, -100, []]], 9, 0)",
+                        "([[1, 4, [2]], [2, -6, [3]], [3, 7, []], [9, 100, [10]], [10, -100, []]], 3, 7)"
+                    ]
+                },
+                "body": "        result = run_get_importance(Solution, employees, id)\n        assert_get_importance(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_get_importance, assert_get_importance\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nemployees = [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]]\nid = 1\nexpected = 11",
+    "playground_run": "result = run_get_importance(Solution, employees, id)\nresult",
+    "playground_assert": "assert_get_importance(result, expected)"
+}

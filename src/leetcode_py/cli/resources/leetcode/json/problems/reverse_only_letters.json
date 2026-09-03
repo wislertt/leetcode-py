@@ -1,0 +1,100 @@
+{
+    "problem_name": "reverse_only_letters",
+    "solution_class_name": "Solution",
+    "problem_number": "917",
+    "problem_title": "Reverse Only Letters",
+    "difficulty": "Easy",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `s`, reverse the string according to the following rules:\n\n- All the characters that are not English letters remain in the same position.\n- All the English letters (lowercase or uppercase) should be reversed.\n\nReturn `s` *after reversing it*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ab-cd\"\nOutput: \"dc-ba\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"a-bC-dEf-ghIj\"\nOutput: \"j-Ih-gfE-dCba\"\n```"
+            },
+            {
+                "content": "```\nInput: s = \"Test1ng-Leet=code-Q!\"\nOutput: \"Qedo1ct-eeLg=ntse-T!\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 100\n- s consists of characters with ASCII values in the range [33, 122].\n- s does not contain '\"' or '\\\\'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reverse_only_letters",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reverse_only_letters(s)",
+    "helpers_assert_name": "reverse_only_letters",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reverse_only_letters, run_reverse_only_letters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReverseOnlyLetters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reverse_only_letters",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement reverse_only_letters\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reverse_only_letters",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('ab-cd', 'dc-ba')",
+                        "('a-bC-dEf-ghIj', 'j-Ih-gfE-dCba')",
+                        "('Test1ng-Leet=code-Q!', 'Qedo1ct-eeLg=ntse-T!')",
+                        "('a', 'a')",
+                        "('z', 'z')",
+                        "('-', '-')",
+                        "('ab', 'ba')",
+                        "('A-b', 'b-A')",
+                        "('!a!b!', '!b!a!')",
+                        "('12345', '12345')",
+                        "('a1b2c3', 'c1b2a3')",
+                        "('QWERTY', 'YTREWQ')",
+                        "('Ab,cD', 'Dc,bA')",
+                        "('[]', '[]')",
+                        "('xyz!abc', 'cba!zyx')",
+                        "('a!', 'a!')",
+                        "('!a', '!a')",
+                        "('7-c', '7-c')",
+                        "('AbCdEf', 'fEdCbA')",
+                        "(']a[b]c<', ']c[b]a<')",
+                        "('a0b1c2d3e4', 'e0d1c2b3a4')",
+                        "('zZ-yY-xX', 'Xx-Yy-Zz')"
+                    ]
+                },
+                "body": "        result = run_reverse_only_letters(Solution, s)\n        assert_reverse_only_letters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reverse_only_letters, assert_reverse_only_letters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ab-cd'\nexpected = 'dc-ba'",
+    "playground_run": "result = run_reverse_only_letters(Solution, s)\nresult",
+    "playground_assert": "assert_reverse_only_letters(result, expected)"
+}

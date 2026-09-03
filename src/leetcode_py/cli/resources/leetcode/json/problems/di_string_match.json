@@ -1,0 +1,94 @@
+{
+    "problem_name": "di_string_match",
+    "solution_class_name": "Solution",
+    "problem_number": "942",
+    "problem_title": "DI String Match",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, String, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A permutation `perm` of `n + 1` integers of all the integers in the range `[0, n]` can be represented as a string `s` of length `n` where:\n\n- `s[i] == 'I'` if `perm[i] < perm[i + 1]`, and\n- `s[i] == 'D'` if `perm[i] > perm[i + 1]`.\n\nGiven a string `s`, reconstruct the permutation `perm` and return it. If there are multiple valid permutations `perm`, return **any of them**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"IDID\"\nOutput: [0,4,1,3,2]\nExplanation: [0,4,1,3,2] is one valid answer.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"III\"\nOutput: [0,1,2,3]\n```"
+            },
+            {
+                "content": "```\nInput: s = \"DDI\"\nOutput: [3,2,0,1]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 10^5`\n- `s[i]` is either `'I'` or `'D'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "di_string_match",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.di_string_match(s)",
+    "helpers_assert_name": "di_string_match",
+    "helpers_assert_signature": "(result: list[int], expected: list[int], s: str) -> bool",
+    "helpers_assert_body": "    # Multiple valid permutations exist; validate the DI pattern, not exact equality\n    assert len(expected) == len(s) + 1\n    assert len(result) == len(s) + 1\n    assert sorted(result) == list(range(len(s) + 1))\n    assert all((result[i] < result[i + 1]) == (s[i] == 'I') for i in range(len(s)))\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_di_string_match, run_di_string_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "DIStringMatch",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "di_string_match",
+                "signature": "(self, s: str) -> list[int]",
+                "body": "        # TODO: Implement di_string_match\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_di_string_match",
+                "signature": "(self, s: str, expected: list[int])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('IDID', [0, 4, 1, 3, 2])",
+                        "('III', [0, 1, 2, 3])",
+                        "('DDI', [3, 2, 0, 1])",
+                        "('I', [0, 1])",
+                        "('D', [1, 0])",
+                        "('II', [0, 1, 2])",
+                        "('DD', [2, 1, 0])",
+                        "('ID', [0, 2, 1])",
+                        "('DI', [2, 0, 1])",
+                        "('IDI', [0, 3, 1, 2])",
+                        "('DID', [3, 0, 2, 1])",
+                        "('IDIDID', [0, 6, 1, 5, 2, 4, 3])",
+                        "('DDDD', [4, 3, 2, 1, 0])",
+                        "('IIII', [0, 1, 2, 3, 4])",
+                        "('IDIDDI', [0, 6, 1, 5, 4, 2, 3])",
+                        "('DIIDID', [6, 0, 1, 5, 2, 4, 3])"
+                    ]
+                },
+                "body": "        result = run_di_string_match(Solution, s)\n        assert_di_string_match(result, expected, s)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_di_string_match, assert_di_string_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'IDID'\nexpected = [0, 4, 1, 3, 2]",
+    "playground_run": "result = run_di_string_match(Solution, s)\nresult",
+    "playground_assert": "assert_di_string_match(result, expected, s)"
+}

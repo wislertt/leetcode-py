@@ -1,0 +1,99 @@
+{
+    "problem_name": "longest_word_in_dictionary",
+    "solution_class_name": "Solution",
+    "problem_number": "720",
+    "problem_title": "Longest Word in Dictionary",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Trie, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of strings `words` representing an English Dictionary, return *the longest word in* `words` *that can be built one character at a time by other words in* `words`.\n\nIf there is more than one possible answer, return the longest word with the smallest lexicographical order. If there is no answer, return the empty string.\n\nNote that the word should be built from left to right with each additional character being added to the end of a previous word.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"w\",\"wo\",\"wor\",\"worl\",\"world\"]\nOutput: \"world\"\n```\n**Explanation:** The word `\"world\"` can be built one character at a time by `\"w\"`, `\"wo\"`, `\"wor\"`, and `\"worl\"`."
+            },
+            {
+                "content": "```\nInput: words = [\"a\",\"banana\",\"app\",\"appl\",\"ap\",\"apply\",\"apple\"]\nOutput: \"apple\"\n```\n**Explanation:** Both `\"apply\"` and `\"apple\"` can be built from other words in the dictionary. However, `\"apple\"` is lexicographically smaller than `\"apply\"`."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 1000`\n- `1 <= words[i].length <= 30`\n- `words[i]` consists of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_word",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_word(words)",
+    "helpers_assert_name": "longest_word",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_word, run_longest_word\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestWordInDictionary",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_word",
+                "signature": "(self, words: list[str]) -> str",
+                "body": "        # TODO: Implement longest_word\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_word",
+                "signature": "(self, words: list[str], expected: str)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['w', 'wo', 'wor', 'worl', 'world'], 'world')",
+                        "(['a', 'banana', 'app', 'appl', 'ap', 'apply', 'apple'], 'apple')",
+                        "(['a'], 'a')",
+                        "(['b', 'br', 'bre', 'brea', 'break', 'breaks'], 'breaks')",
+                        "(['ts', 'e', 't', 'tea', 'teas', 'eat'], 'ts')",
+                        "(['yo', 'ew', 'fc', 'zc', 'zl', 'peh', 'tj'], '')",
+                        "(['m', 'mo', 'moc', 'moch', 'mocha'], 'mocha')",
+                        "(['a', 'ab', 'abc', 'abd'], 'abc')",
+                        "(['z', 'zy', 'zyx', 'zyxw'], 'zyxw')",
+                        "(['ab', 'abc'], '')",
+                        "(['b', 'br', 'bre', 'brea', 'bread'], 'bread')",
+                        "(['c', 'cd', 'cdf', 'cdfg', 'cdfgh', 'cdfghi'], 'cdfghi')",
+                        "(['a', 'ab', 'ba', 'bab', 'baba'], 'ab')",
+                        "(['d', 'do', 'dog', 'o', 'og', 'ogg'], 'dog')",
+                        "(['ap', 'a', 'app', 'appl', 'apple', 'apply'], 'apple')",
+                        "(['q', 'qq', 'qqq', 'qqqq', 'qqqqq'], 'qqqqq')",
+                        "(['x', 'yo', 'cpbt'], 'x')",
+                        "(['njjjl', 'zoh', 'jpx', 'qzio', 'f', 'uo', 'hyrs', 'km'], 'f')",
+                        "(['nq', 'jxb', 'y', 'dg', 'ptv'], 'y')",
+                        "(['yts', 'uetxd', 'edob', 'lid', 'qbnh', 'joi', 'cj'], '')",
+                        "(['je', 'bc'], '')",
+                        "(['sse', 'gk', 'b', 'wf', 'c'], 'b')",
+                        "(['zm', 'nml', 'g', 'a', 'lcgw'], 'a')",
+                        "(['u', 'ytlps'], 'u')"
+                    ]
+                },
+                "body": "        result = run_longest_word(Solution, words)\n        assert_longest_word(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_word, assert_longest_word\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['w', 'wo', 'wor', 'worl', 'world']\nexpected = 'world'",
+    "playground_run": "result = run_longest_word(Solution, words)\nresult",
+    "playground_assert": "assert_longest_word(result, expected)"
+}

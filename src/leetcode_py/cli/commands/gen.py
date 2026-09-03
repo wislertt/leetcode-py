@@ -132,6 +132,13 @@ def generate(
     all_problems: Annotated[bool, typer.Option("--all", help="Generate all problems")] = False,
     output: Annotated[str, typer.Option(".", "-o", "--output", help="Output directory")] = ".",
     force: Annotated[bool, typer.Option("--force", help="Force overwrite existing files")] = False,
+    no_check: Annotated[
+        bool,
+        typer.Option(
+            "--no-check",
+            help="Skip the trailing ruff/ty pass (caller formats and checks afterward)",
+        ),
+    ] = False,
 ):
     problem_nums = problem_nums if problem_nums is not None else []
     problem_slugs = problem_slugs if problem_slugs is not None else []
@@ -172,6 +179,6 @@ def generate(
         raise typer.Exit(1)
 
     # Batch format, lint, and type check only the newly created problem directories
-    if created_dirs:
+    if created_dirs and not no_check:
         typer.echo("Running format and check...")
         batch_format_and_check(created_dirs)

@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: nums = [9], maxOperations = 2\nOutput: 3\nExplanation: \n- Divide the bag with 9 balls into two bags of sizes 6 and 3. [9] -> [6,3].\n- Divide the bag with 6 balls into two bags of sizes 3 and 3. [6,3] -> [3,3,3].\nThe bag with the most number of balls has 3 balls, so your penalty is 3 and you should return 3.\n```"
+                "content": "```\nInput: nums = [9], maxOperations = 2\nOutput: 3\nExplanation:\n- Divide the bag with 9 balls into two bags of sizes 6 and 3. [9] -> [6,3].\n- Divide the bag with 6 balls into two bags of sizes 3 and 3. [6,3] -> [3,3,3].\nThe bag with the most number of balls has 3 balls, so your penalty is 3 and you should return 3.\n```"
             },
             {
                 "content": "```\nInput: nums = [2,4,8,2], maxOperations = 4\nOutput: 2\nExplanation:\n- Divide the bag with 8 balls into two bags of sizes 4 and 4. [2,4,8,2] -> [2,4,4,4,2].\n- Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,4,4,4,2] -> [2,2,2,4,4,2].\n- Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,2,2,4,4,2] -> [2,2,2,2,2,4,2].\n- Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,2,2,2,2,4,2] -> [2,2,2,2,2,2,2,2].\nThe bag with the most number of balls has 2 balls, so your penalty is 2, and you should return 2.\n```"

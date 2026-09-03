@@ -1,0 +1,94 @@
+{
+    "problem_name": "special_binary_string",
+    "solution_class_name": "Solution",
+    "problem_number": "761",
+    "problem_title": "Special Binary String",
+    "difficulty": "Hard",
+    "topics": "String, Divide and Conquer, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Special binary strings are binary strings with the following two properties:\n\n- The number of 0's is equal to the number of 1's.\n- Every prefix of the binary string has at least as many 1's as 0's.\n\nYou are given a special binary string `s`.\n\nA move consists of choosing two consecutive, non-empty, special substrings of `s`, and swapping them. Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.\n\nReturn the lexicographically largest resulting string possible after applying the mentioned operations on the string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"11011000\"\nOutput: \"11100100\"\nExplanation: The strings \"10\" [occuring at s[1]] and \"1100\" [at s[3]] are swapped.\nThis is the lexicographically largest string possible after some number of swaps.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"10\"\nOutput: \"10\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 50\n- s[i] is either '0' or '1'.\n- s is a special binary string.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "make_largest_special",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.make_largest_special(s)",
+    "helpers_assert_name": "make_largest_special",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_make_largest_special, run_make_largest_special\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SpecialBinaryString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "make_largest_special",
+                "signature": "(self, s: str) -> str",
+                "body": "        # TODO: Implement make_largest_special\n        return s"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_make_largest_special",
+                "signature": "(self, s: str, expected: str)",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('10', '10')",
+                        "('1100', '1100')",
+                        "('11011000', '11100100')",
+                        "('1010', '1010')",
+                        "('110100', '110100')",
+                        "('111000', '111000')",
+                        "('11001100', '11001100')",
+                        "('11110000', '11110000')",
+                        "('10101010', '10101010')",
+                        "('110010', '110010')",
+                        "('1101010010', '1101010010')",
+                        "('111000111000', '111000111000')",
+                        "('10110101100010', '11100101001010')",
+                        "('1011010100110010', '1101010011001010')",
+                        "('11011010001101110000', '11110001001110100100')",
+                        "('111111000001001011011000', '111111000001001110010010')",
+                        "('1100111011100111000101000100', '1111110001100101001001001100')",
+                        "('11011110111100010000110111000000', '11111111000100100011110001000100')",
+                        "('111011010100111110011001001000101000', '111111100110010010001101010010101000')"
+                    ]
+                },
+                "body": "        result = run_make_largest_special(Solution, s)\n        assert_make_largest_special(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_make_largest_special, assert_make_largest_special\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = '11011000'\nexpected = '11100100'",
+    "playground_run": "result = run_make_largest_special(Solution, s)\nresult",
+    "playground_assert": "assert_make_largest_special(result, expected)"
+}

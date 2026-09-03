@@ -1,0 +1,87 @@
+{
+    "problem_name": "prefix_and_suffix_search",
+    "solution_class_name": "WordFilter",
+    "problem_number": "745",
+    "problem_title": "Prefix and Suffix Search",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, String, Design, Trie",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Design a special dictionary that searches the words in it by a prefix and a suffix.\n\nImplement the `WordFilter` class:\n\n- `WordFilter(string[] words)` Initializes the object with the `words` in the dictionary.\n- `f(string pref, string suff)` Returns *the index of the word in the dictionary,* which has the prefix `pref` and the suffix `suff`. If there is more than one valid index, return **the largest** of them. If there is no such word in the dictionary, return `-1`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"WordFilter\", \"f\"]\n[[[\"apple\"]], [\"a\", \"e\"]]\nOutput\n[null, 0]\n\nExplanation\nWordFilter wordFilter = new WordFilter([\"apple\"]);\nwordFilter.f(\"a\", \"e\"); // return 0, because the word at index 0 has prefix = \"a\" and suffix = \"e\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 10^4`\n- `1 <= words[i].length <= 7`\n- `1 <= pref.length, suff.length <= 7`\n- `words[i]`, `pref` and `suff` consist of lowercase English letters only.\n- At most `10^4` calls will be made to the function `f`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "word_filter",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    word_filter = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'WordFilter':\n            word_filter = solution_class(words=inputs[i][0])\n            results.append(None)\n        elif op == 'f' and word_filter is not None:\n            results.append(word_filter.f(pref=inputs[i][0], suff=inputs[i][1]))\n    return results, word_filter",
+    "helpers_assert_name": "word_filter",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_word_filter, run_word_filter\nfrom .solution import WordFilter",
+    "test_content": "",
+    "test_class_name": "PrefixAndSuffixSearch",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, words: list[str]) -> None",
+                "body": "        # TODO: Initialize the word filter\n        pass"
+            },
+            {
+                "name": "f",
+                "signature": "(self, pref: str, suff: str) -> int",
+                "body": "        # TODO: Implement f\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_word_filter",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"a\", \"e\"]], [None, 0])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"a\", \"l\"]], [None, -1])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"p\", \"e\"]], [None, -1])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"apple\", \"apple\"]], [None, 0])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"appl\", \"ple\"]], [None, 0])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"apples\", \"e\"]], [None, -1])",
+                        "([\"WordFilter\", \"f\"], [[[\"apple\"]], [\"a\", \"lephant\"]], [None, -1])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"ab\", \"ab\", \"ab\"]], [\"a\", \"b\"], [\"a\", \"b\"], [\"b\", \"a\"]], [None, 2, 2, -1])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"a\", \"b\"]], [\"a\", \"a\"], [\"b\", \"a\"], [\"a\", \"b\"]], [None, 0, -1, -1])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"c\", \"c\", \"b\", \"c\"]], [\"c\", \"c\"], [\"c\", \"b\"], [\"b\", \"b\"]], [None, 3, -1, 2])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"abc\", \"axc\", \"abcx\"]], [\"a\", \"c\"], [\"a\", \"x\"], [\"abc\", \"cx\"]], [None, 1, 2, 2])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"abb\", \"bab\", \"bba\", \"ab\"]], [\"a\", \"b\"], [\"b\", \"b\"], [\"b\", \"a\"]], [None, 3, 1, 2])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"bab\", \"aba\"]], [\"b\", \"ab\"], [\"ab\", \"ba\"], [\"aba\", \"aba\"]], [None, 0, 1, 1])",
+                        "([\"WordFilter\", \"f\", \"f\", \"f\"], [[[\"bab\", \"aab\", \"b\", \"a\", \"ab\", \"aba\"]], [\"a\", \"a\"], [\"aab\", \"ab\"], [\"bab\", \"b\"]], [None, 5, 1, 0])",
+                        "([\"WordFilter\", \"f\"], [[[\"ba\"]], [\"ba\", \"ba\"]], [None, 0])",
+                        "([\"WordFilter\", \"f\", \"f\"], [[[\"aba\", \"aa\", \"baa\"]], [\"aba\", \"aba\"], [\"ba\", \"aa\"]], [None, 0, 2])"
+                    ]
+                },
+                "body": "        result, _ = run_word_filter(WordFilter, operations, inputs)\n        assert_word_filter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_word_filter, assert_word_filter\nfrom solution import WordFilter",
+    "playground_setup": "# Example test case\noperations = ['WordFilter', 'f']\ninputs = [['apple'], ['a', 'e']]\nexpected = [None, 0]",
+    "playground_run": "result, word_filter = run_word_filter(WordFilter, operations, inputs)\nprint(result)\nword_filter",
+    "playground_assert": "assert_word_filter(result, expected)"
+}

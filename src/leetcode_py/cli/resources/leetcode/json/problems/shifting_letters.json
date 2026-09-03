@@ -1,0 +1,93 @@
+{
+    "problem_name": "shifting_letters",
+    "solution_class_name": "Solution",
+    "problem_number": "848",
+    "problem_title": "Shifting Letters",
+    "difficulty": "Medium",
+    "topics": "Array, String, Prefix Sum",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a string `s` of lowercase English letters and an integer array `shifts` of the same length.\n\nCall the `shift()` of a letter, the next letter in the alphabet, (wrapping around so that `'z'` becomes `'a'`).\n\n- For example, `shift('a') = 'b'`, `shift('t') = 'u'`, and `shift('z') = 'a'`.\n\nNow for each `shifts[i] = x`, we want to shift the first `i + 1` letters of `s`, `x` times.\n\nReturn *the final string after all such shifts to s are applied*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abc\", shifts = [3,5,9]\nOutput: \"rpl\"\nExplanation: We start with \"abc\".\nAfter shifting the first 1 letters of s by 3, we have \"dbc\".\nAfter shifting the first 2 letters of s by 5, we have \"igc\".\nAfter shifting the first 3 letters of s by 9, we have \"rpl\", the answer.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aaa\", shifts = [1,2,3]\nOutput: \"gfd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 10^5\n- s consists of lowercase English letters.\n- shifts.length == s.length\n- 0 <= shifts[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shifting_letters",
+    "helpers_run_signature": "(solution_class: type, s: str, shifts: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shifting_letters(s, shifts)",
+    "helpers_assert_name": "shifting_letters",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shifting_letters, run_shifting_letters\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShiftingLetters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shifting_letters",
+                "signature": "(self, s: str, shifts: list[int]) -> str",
+                "body": "        # TODO: Implement shifting_letters\n        return \"\""
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shifting_letters",
+                "signature": "(self, s: str, shifts: list[int], expected: str)",
+                "parametrize": "s, shifts, expected",
+                "test_cases": {
+                    "list": [
+                        "('abc', [3, 5, 9], 'rpl')",
+                        "('aaa', [1, 2, 3], 'gfd')",
+                        "('a', [1], 'b')",
+                        "('a', [0], 'a')",
+                        "('a', [25], 'z')",
+                        "('z', [1], 'a')",
+                        "('zz', [1, 1], 'ba')",
+                        "('abc', [0, 0, 0], 'abc')",
+                        "('abc', [26, 26, 26], 'abc')",
+                        "('a', [1000000000], 'm')",
+                        "('z', [999999999], 'k')",
+                        "('abcdef', [1, 2, 3, 4, 5, 6], 'vvuspl')",
+                        "('leetcode', [1, 2, 3, 4, 5, 6, 7, 8], 'vnlxcjsm')",
+                        "('xyzz', [1000000000, 1000000000, 1000000000, 1000000000], 'tixl')",
+                        "('cba', [1000000000, 999999998, 3], 'bod')",
+                        "('znzd', [0, 26, 0, 27], 'aoae')",
+                        "('speg', [0, 0, 1, 25], 'spef')",
+                        "('ii', [1000000000, 25], 'th')"
+                    ]
+                },
+                "body": "        result = run_shifting_letters(Solution, s, shifts)\n        assert_shifting_letters(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shifting_letters, assert_shifting_letters\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abc'\nshifts = [3, 5, 9]\nexpected = 'rpl'",
+    "playground_run": "result = run_shifting_letters(Solution, s, shifts)\nresult",
+    "playground_assert": "assert_shifting_letters(result, expected)"
+}

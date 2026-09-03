@@ -1,0 +1,93 @@
+{
+    "problem_name": "nth_magical_number",
+    "solution_class_name": "Solution",
+    "problem_number": "878",
+    "problem_title": "Nth Magical Number",
+    "difficulty": "Hard",
+    "topics": "Math, Binary Search, Number Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A positive integer is magical if it is divisible by either `a` or `b`.\n\nGiven the three integers `n`, `a`, and `b`, return the nth magical number. Since the answer may be very large, return it modulo `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1, a = 2, b = 3\nOutput: 2\n```"
+            },
+            {
+                "content": "```\nInput: n = 4, a = 2, b = 3\nOutput: 6\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^9\n- 2 <= a, b <= 4 * 10^4",
+    "readme_additional": "**Follow up:** Could you solve the problem in `O(log(n * min(a, b)))` time complexity?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "nth_magical_number",
+    "helpers_run_signature": "(solution_class: type, n: int, a: int, b: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.nth_magical_number(n, a, b)",
+    "helpers_assert_name": "nth_magical_number",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_nth_magical_number, run_nth_magical_number\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NthMagicalNumber",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "nth_magical_number",
+                "signature": "(self, n: int, a: int, b: int) -> int",
+                "body": "        # TODO: Implement nth_magical_number\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_nth_magical_number",
+                "signature": "(self, n: int, a: int, b: int, expected: int)",
+                "parametrize": "n, a, b, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2, 2, 2)",
+                        "(1, 2, 3, 2)",
+                        "(2, 2, 4, 4)",
+                        "(2, 3, 5, 5)",
+                        "(4, 2, 3, 6)",
+                        "(5, 2, 4, 10)",
+                        "(7, 5, 7, 21)",
+                        "(10, 2, 5, 16)",
+                        "(13, 4, 6, 40)",
+                        "(50, 2, 4, 100)",
+                        "(1000, 9, 12, 6000)",
+                        "(31415, 2718, 2818, 43479846)",
+                        "(100000000, 7, 11, 452941174)",
+                        "(123456789, 12, 18, 111111097)",
+                        "(999999999, 39999, 40000, 999847507)",
+                        "(1000000000, 2, 3, 499999993)",
+                        "(1000000000, 40000, 39998, 999860007)",
+                        "(1000000000, 40000, 40000, 999720007)"
+                    ]
+                },
+                "body": "        result = run_nth_magical_number(Solution, n, a, b)\n        assert_nth_magical_number(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_nth_magical_number, assert_nth_magical_number\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\na = 2\nb = 3\nexpected = 6",
+    "playground_run": "result = run_nth_magical_number(Solution, n, a, b)\nresult",
+    "playground_assert": "assert_nth_magical_number(result, expected)"
+}

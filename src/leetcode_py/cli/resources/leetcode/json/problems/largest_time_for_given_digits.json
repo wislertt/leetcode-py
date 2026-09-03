@@ -1,0 +1,96 @@
+{
+    "problem_name": "largest_time_for_given_digits",
+    "solution_class_name": "Solution",
+    "problem_number": "949",
+    "problem_title": "Largest Time for Given Digits",
+    "difficulty": "Medium",
+    "topics": "Array, String, Backtracking, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array `arr` of 4 digits, find the latest 24-hour time that can be made using each digit exactly once.\n\n24-hour times are formatted as `\"HH:MM\"`, where `HH` is between `00` and `23`, and `MM` is between `00` and `59`. The earliest 24-hour time is `00:00`, and the latest is `23:59`.\n\nReturn the latest 24-hour time in `\"HH:MM\"` format. If no valid time can be made, return an empty string.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,2,3,4]\nOutput: \"23:41\"\nExplanation: The valid 24-hour times are \"12:34\", \"12:43\", \"13:24\", \"13:42\", \"14:23\", \"14:32\", \"21:34\", \"21:43\", \"23:14\", and \"23:41\". Of these times, \"23:41\" is the latest.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [5,5,5,5]\nOutput: \"\"\nExplanation: There are no valid 24-hour times as \"55:55\" is not valid.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `arr.length == 4`\n- `0 <= arr[i] <= 9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_time_from_digits",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_time_from_digits(arr)",
+    "helpers_assert_name": "largest_time_from_digits",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_time_from_digits, run_largest_time_from_digits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestTimeForGivenDigits",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_time_from_digits",
+                "signature": "(self, arr: list[int]) -> str",
+                "body": "        # TODO: Implement largest_time_from_digits\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_time_from_digits",
+                "signature": "(self, arr: list[int], expected: str)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4], '23:41')",
+                        "([5, 5, 5, 5], '')",
+                        "([0, 0, 0, 0], '00:00')",
+                        "([2, 3, 5, 9], '23:59')",
+                        "([1, 9, 9, 9], '')",
+                        "([2, 4, 6, 0], '20:46')",
+                        "([9, 5, 3, 1], '19:53')",
+                        "([6, 6, 6, 6], '')",
+                        "([2, 9, 9, 4], '')",
+                        "([1, 0, 0, 0], '10:00')",
+                        "([4, 7, 2, 3], '23:47')",
+                        "([0, 6, 9, 1], '19:06')",
+                        "([8, 3, 5, 1], '18:53')",
+                        "([2, 0, 6, 6], '06:26')",
+                        "([7, 9, 9, 1], '')",
+                        "([5, 5, 5, 4], '')",
+                        "([9, 4, 7, 8], '')",
+                        "([9, 5, 0, 2], '20:59')",
+                        "([4, 0, 6, 1], '16:40')",
+                        "([3, 6, 2, 7], '')",
+                        "([4, 0, 8, 1], '18:40')"
+                    ]
+                },
+                "body": "        result = run_largest_time_from_digits(Solution, arr)\n        assert_largest_time_from_digits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_time_from_digits, assert_largest_time_from_digits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 2, 3, 4]\nexpected = '23:41'",
+    "playground_run": "result = run_largest_time_from_digits(Solution, arr)\nresult",
+    "playground_assert": "assert_largest_time_from_digits(result, expected)"
+}

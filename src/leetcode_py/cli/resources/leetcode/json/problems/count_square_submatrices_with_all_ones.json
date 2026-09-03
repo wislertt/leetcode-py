@@ -12,10 +12,10 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: matrix =\n[\n  [0,1,1,1],\n  [1,1,1,1],\n  [0,1,1,1]\n]\nOutput: 15\nExplanation: \nThere are 10 squares of side 1.\nThere are 4 squares of side 2.\nThere is  1 square of side 3.\nTotal number of squares = 10 + 4 + 1 = 15.\n```"
+                "content": "```\nInput: matrix =\n[\n  [0,1,1,1],\n  [1,1,1,1],\n  [0,1,1,1]\n]\nOutput: 15\nExplanation:\nThere are 10 squares of side 1.\nThere are 4 squares of side 2.\nThere is  1 square of side 3.\nTotal number of squares = 10 + 4 + 1 = 15.\n```"
             },
             {
-                "content": "```\nInput: matrix = \n[\n  [1,0,1],\n  [1,1,0],\n  [1,1,0]\n]\nOutput: 7\nExplanation: \nThere are 6 squares of side 1.  \nThere is 1 square of side 2. \nTotal number of squares = 6 + 1 = 7.\n```"
+                "content": "```\nInput: matrix =\n[\n  [1,0,1],\n  [1,1,0],\n  [1,1,0]\n]\nOutput: 7\nExplanation:\nThere are 6 squares of side 1.\nThere is 1 square of side 2.\nTotal number of squares = 6 + 1 = 7.\n```"
             }
         ]
     },

@@ -1,0 +1,98 @@
+{
+    "problem_name": "image_overlap",
+    "solution_class_name": "Solution",
+    "problem_number": "835",
+    "problem_title": "Image Overlap",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two images, `img1` and `img2`, represented as binary, square matrices of size `n x n`. A binary matrix has only `0`s and `1`s as values.\n\nWe **translate** one image however we choose by sliding all the `1` bits left, right, up, and/or down any number of units. We then place it on top of the other image. We can then calculate the **overlap** by counting the number of positions that have a `1` in **both** images.\n\nNote also that a translation does **not** include any kind of rotation. Any `1` bits that are translated outside of the matrix borders are erased.\n\nReturn *the largest possible overlap*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/09/overlap1.jpg)\n\n```\nInput: img1 = [[1,1,0],[0,1,0],[0,1,0]], img2 = [[0,0,0],[0,1,1],[0,0,1]]\nOutput: 3\nExplanation: We translate img1 to right by 1 unit and down by 1 unit.\n```\n\n![Step 1](https://assets.leetcode.com/uploads/2020/09/09/overlap_step1.jpg)\n\nThe number of positions that have a 1 in both images is 3 (shown in red).\n\n![Step 2](https://assets.leetcode.com/uploads/2020/09/09/overlap_step2.jpg)"
+            },
+            {
+                "content": "```\nInput: img1 = [[1]], img2 = [[1]]\nOutput: 1\n```"
+            },
+            {
+                "content": "```\nInput: img1 = [[0]], img2 = [[0]]\nOutput: 0\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == img1.length == img1[i].length\n- n == img2.length == img2[i].length\n- 1 <= n <= 30\n- img1[i][j] is either 0 or 1.\n- img2[i][j] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_overlap",
+    "helpers_run_signature": "(solution_class: type, img1: list[list[int]], img2: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_overlap(img1, img2)",
+    "helpers_assert_name": "largest_overlap",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_overlap, run_largest_overlap\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ImageOverlap",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_overlap",
+                "signature": "(self, img1: list[list[int]], img2: list[list[int]]) -> int",
+                "body": "        # TODO: Implement largest_overlap\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_overlap",
+                "signature": "(self, img1: list[list[int]], img2: list[list[int]], expected: int)",
+                "parametrize": "img1, img2, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1, 0], [0, 1, 0], [0, 1, 0]], [[0, 0, 0], [0, 1, 1], [0, 0, 1]], 3)",
+                        "([[1]], [[1]], 1)",
+                        "([[0]], [[0]], 0)",
+                        "([[1]], [[0]], 0)",
+                        "([[0]], [[1]], 0)",
+                        "([[1, 0], [0, 1]], [[0, 1], [1, 0]], 1)",
+                        "([[1, 1], [1, 1]], [[1, 1], [1, 1]], 4)",
+                        "([[0, 0], [0, 0]], [[1, 1], [1, 1]], 0)",
+                        "([[1, 0], [0, 0]], [[0, 0], [0, 1]], 1)",
+                        "([[1, 1, 1], [0, 0, 0], [0, 0, 0]], [[0, 0, 0], [0, 0, 0], [1, 1, 1]], 3)",
+                        "([[0, 1, 0], [1, 0, 1], [0, 1, 0]], [[0, 0, 0], [0, 1, 0], [0, 0, 0]], 1)",
+                        "([[1, 0, 0], [1, 0, 0], [1, 0, 0]], [[0, 0, 1], [0, 0, 1], [0, 0, 1]], 3)",
+                        "([[1, 0, 0], [0, 1, 0], [0, 0, 1]], [[0, 0, 1], [0, 1, 0], [1, 0, 0]], 1)",
+                        "([[0, 0], [0, 1]], [[0, 1], [0, 0]], 1)",
+                        "([[1, 1], [0, 1]], [[1, 1], [0, 0]], 2)",
+                        "([[1, 0, 0], [0, 0, 0], [0, 1, 0]], [[0, 1, 0], [0, 0, 1], [1, 0, 1]], 2)",
+                        "([[0, 0, 0], [0, 0, 1], [0, 0, 0]], [[0, 0, 1], [0, 0, 0], [1, 1, 0]], 1)",
+                        "([[1, 1, 1], [0, 0, 0], [1, 1, 0]], [[1, 0, 1], [1, 1, 0], [0, 1, 1]], 3)",
+                        "([[1, 0, 0], [0, 1, 1], [0, 0, 1]], [[1, 1, 0], [0, 1, 1], [1, 1, 1]], 4)",
+                        "([[0, 0, 1], [0, 1, 1], [1, 0, 0]], [[1, 0, 0], [1, 0, 0], [1, 1, 0]], 2)"
+                    ]
+                },
+                "body": "        result = run_largest_overlap(Solution, img1, img2)\n        assert_largest_overlap(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_overlap, assert_largest_overlap\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nimg1 = [[1, 1, 0], [0, 1, 0], [0, 1, 0]]\nimg2 = [[0, 0, 0], [0, 1, 1], [0, 0, 1]]\nexpected = 3",
+    "playground_run": "result = run_largest_overlap(Solution, img1, img2)\nresult",
+    "playground_assert": "assert_largest_overlap(result, expected)"
+}

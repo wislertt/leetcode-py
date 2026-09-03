@@ -1,0 +1,96 @@
+{
+    "problem_name": "range_addition_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "598",
+    "problem_title": "Range Addition II",
+    "difficulty": "Easy",
+    "topics": "Array, Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `m x n` matrix `M` initialized with all `0`'s and an array of operations `ops`, where `ops[i] = [ai, bi]` means `M[x][y]` should be incremented by one for all `0 <= x < ai` and `0 <= y < bi`.\n\nCount and return *the number of maximum integers in the matrix after performing all the operations*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/02/ex1.jpg)\n\n```\nInput: m = 3, n = 3, ops = [[2,2],[3,3]]\nOutput: 4\nExplanation: The maximum integer in M is 2, and there are four of it in M. So return 4.\n```"
+            },
+            {
+                "content": "```\nInput: m = 3, n = 3, ops = [[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]]\nOutput: 4\n```"
+            },
+            {
+                "content": "```\nInput: m = 3, n = 3, ops = []\nOutput: 9\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= m, n <= 4 * 10^4\n- 0 <= ops.length <= 10^4\n- ops[i].length == 2\n- 1 <= ai <= m\n- 1 <= bi <= n",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_count",
+    "helpers_run_signature": "(solution_class: type, m: int, n: int, ops: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_count(m, n, ops)",
+    "helpers_assert_name": "max_count",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_count, run_max_count\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RangeAdditionII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_count",
+                "signature": "(self, m: int, n: int, ops: list[list[int]]) -> int",
+                "body": "        # TODO: Implement max_count\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_count",
+                "signature": "(self, m: int, n: int, ops: list[list[int]], expected: int)",
+                "parametrize": "m, n, ops, expected",
+                "test_cases": {
+                    "list": [
+                        "(3,3,[[2,2],[3,3]],4)",
+                        "(3,3,[[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]],4)",
+                        "(3,3,[],9)",
+                        "(1,1,[],1)",
+                        "(1,1,[[1,1]],1)",
+                        "(4,4,[[4,4]],16)",
+                        "(5,5,[[2,3],[3,2]],4)",
+                        "(10,10,[[1,1]],1)",
+                        "(100,100,[],10000)",
+                        "(3,4,[[2,2],[3,3]],4)",
+                        "(40000,40000,[[40000,40000]],1600000000)",
+                        "(5,5,[[5,1],[1,5],[3,3]],1)",
+                        "(7,2,[[3,2],[7,1]],3)",
+                        "(2,8,[[2,5]],10)",
+                        "(6,6,[[6,6],[1,1],[6,6]],1)",
+                        "(9,9,[[4,7],[3,9],[9,3]],9)",
+                        "(10000,10000,[],100000000)",
+                        "(3,3,[[3,3],[2,2],[3,3]],4)"
+                    ]
+                },
+                "body": "        result = run_max_count(Solution, m, n, ops)\n        assert_max_count(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_count, assert_max_count\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nm = 3\nn = 3\nops = [[2, 2], [3, 3]]\nexpected = 4",
+    "playground_run": "result = run_max_count(Solution, m, n, ops)\nresult",
+    "playground_assert": "assert_max_count(result, expected)"
+}

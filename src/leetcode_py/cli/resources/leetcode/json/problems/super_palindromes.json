@@ -1,0 +1,108 @@
+{
+    "problem_name": "super_palindromes",
+    "solution_class_name": "Solution",
+    "problem_number": "906",
+    "problem_title": "Super Palindromes",
+    "difficulty": "Hard",
+    "topics": "Math, String, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Let's say a positive integer is a **super-palindrome** if it is a palindrome, and it is also the square of a palindrome.\n\nGiven two positive integers <code>left</code> and <code>right</code> represented as strings, return <em>the number of <strong>super-palindromes</strong> integers in the inclusive range</em> <code>[left, right]</code>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: left = \"4\", right = \"1000\"\nOutput: 4\nExplanation: 4, 9, 121, and 484 are superpalindromes.\nNote that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrome.\n```"
+            },
+            {
+                "content": "```\nInput: left = \"1\", right = \"2\"\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 &lt;= left.length, right.length &lt;= 18\n- left and right consist of only digits.\n- left and right cannot have leading zeros.\n- left and right represent integers in the range [1, 10<sup>18</sup> - 1].\n- left is less than or equal to right.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "super_palindromes_in_range",
+    "helpers_run_signature": "(solution_class: type, left: str, right: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.super_palindromes_in_range(left, right)",
+    "helpers_assert_name": "super_palindromes_in_range",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_super_palindromes_in_range, run_super_palindromes_in_range\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SuperPalindromes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "super_palindromes_in_range",
+                "signature": "(self, left: str, right: str) -> int",
+                "body": "        # TODO: Implement super_palindromes_in_range\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_super_palindromes_in_range",
+                "signature": "(self, left: str, right: str, expected: int)",
+                "parametrize": "left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "('4', '1000', 4)",
+                        "('1', '2', 1)",
+                        "('1', '1', 1)",
+                        "('2', '2', 0)",
+                        "('3', '3', 0)",
+                        "('4', '4', 1)",
+                        "('9', '9', 1)",
+                        "('10', '10', 0)",
+                        "('11', '11', 0)",
+                        "('121', '121', 1)",
+                        "('676', '676', 0)",
+                        "('1', '9', 3)",
+                        "('1', '100', 3)",
+                        "('100', '10000', 2)",
+                        "('1000', '1000000', 5)",
+                        "('99999999999999999', '999999999999999999', 0)",
+                        "('384993223391482364', '616150121133157331', 0)",
+                        "('309800857263518530', '984422537336625948', 0)",
+                        "('422703056767326185', '741474729361013312', 0)",
+                        "('458602564538043363', '735449500685093205', 0)",
+                        "('975260454454743092', '989961279379753474', 0)",
+                        "('398780163542857328', '995774918789191964', 0)",
+                        "('43996935910671708', '263225791936751430', 0)",
+                        "('1234320', '1234321', 1)",
+                        "('1234321', '1234322', 1)",
+                        "('10221412200', '10221412201', 1)",
+                        "('10221412201', '10221412202', 1)",
+                        "('1212225222120', '1212225222121', 1)",
+                        "('1212225222121', '1212225222122', 1)",
+                        "('121242363242120', '121242363242121', 1)",
+                        "('121242363242121', '121242363242122', 1)",
+                        "('10203040504030200', '10203040504030201', 1)",
+                        "('10203040504030201', '10203040504030202', 1)"
+                    ]
+                },
+                "body": "        result = run_super_palindromes_in_range(Solution, left, right)\n        assert_super_palindromes_in_range(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_super_palindromes_in_range, run_super_palindromes_in_range\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nleft = '4'\nright = '1000'\nexpected = 4",
+    "playground_run": "result = run_super_palindromes_in_range(Solution, left, right)\nresult",
+    "playground_assert": "assert_super_palindromes_in_range(result, expected)"
+}

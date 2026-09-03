@@ -1,0 +1,99 @@
+{
+    "problem_name": "implement_magic_dictionary",
+    "solution_class_name": "MagicDictionary",
+    "problem_number": "676",
+    "problem_title": "Implement Magic Dictionary",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Depth-First Search, Design, Trie",
+    "readme_description": "Design a data structure that is initialized with a list of **different** words. Provided a string, you should determine if you can change **exactly one character** in this string to match any word in the data structure.\n\nImplement the `MagicDictionary` class:\n\n- `MagicDictionary()` Initializes the object.\n- `void buildDict(String[] dictionary)` Sets the data structure with an array of distinct strings `dictionary`.\n- `bool search(String searchWord)` Returns `true` if you can change **exactly one character** in `searchWord` to match any string in the data structure, otherwise returns `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"MagicDictionary\", \"buildDict\", \"search\", \"search\", \"search\", \"search\"]\n[[], [[\"hello\", \"leetcode\"]], [\"hello\"], [\"hhllo\"], [\"hell\"], [\"leetcoded\"]]\nOutput\n[null, null, false, true, false, false]\n\nExplanation\nMagicDictionary magicDictionary = new MagicDictionary();\nmagicDictionary.buildDict([\"hello\", \"leetcode\"]);\nmagicDictionary.search(\"hello\"); // return False\nmagicDictionary.search(\"hhllo\"); // We can change the second 'h' to 'e' to match \"hello\" so we return True\nmagicDictionary.search(\"hell\"); // return False\nmagicDictionary.search(\"leetcoded\"); // return False\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= dictionary.length <= 100`\n- `1 <= dictionary[i].length <= 100`\n- `dictionary[i]` consists of only lower-case English letters.\n- All the strings in `dictionary` are **distinct**.\n- `1 <= searchWord.length <= 100`\n- `searchWord` consists of only lower-case English letters.\n- `buildDict` will be called only once before `search`.\n- At most `100` calls will be made to `search`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "magic_dictionary",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[str]])",
+    "helpers_run_body": "    magic = None\n    results: list[bool | None] = []\n    for i, op in enumerate(operations):\n        if op == 'MagicDictionary':\n            magic = solution_class()\n            results.append(None)\n        elif op == 'build_dict' and magic is not None:\n            magic.build_dict(inputs[i][0])\n            results.append(None)\n        elif op == 'search' and magic is not None:\n            results.append(magic.search(inputs[i][0]))\n    return results, magic",
+    "helpers_assert_name": "magic_dictionary",
+    "helpers_assert_signature": "(result: list[bool | None], expected: list[bool | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_magic_dictionary, run_magic_dictionary\nfrom .solution import MagicDictionary",
+    "test_content": "",
+    "test_class_name": "ImplementMagicDictionary",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self) -> None",
+                "body": "        # TODO: Initialize the dictionary store\n        pass"
+            },
+            {
+                "name": "build_dict",
+                "signature": "(self, dictionary: list[str]) -> None",
+                "body": "        # TODO: Implement build_dict\n        pass"
+            },
+            {
+                "name": "search",
+                "signature": "(self, search_word: str) -> bool",
+                "body": "        # TODO: Implement search\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_magic_dictionary",
+                "signature": "(self, operations: list[str], inputs: list[list[str]], expected: list[bool | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "                (['MagicDictionary','build_dict','search'],[[],[['a']],['b']],[None,None,True])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['cb']],[None,None,True])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['ac']],[None,None,True])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['ax']],[None,None,True])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['a']],['a']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['ab']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['cd']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['ba']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['ab']],['a']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['a']],['ab']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['abc']],['a']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['a']],['abc']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['abc']],['ab']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['v']],['pxr']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['nxk']],['i']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['wl']],['pg']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['pm']],['l']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['uxj']],['x']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['olh']],['t']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['so']],['mr']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['zz']],['vn']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['n']],['wg']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['gq']],['ta']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['pld']],['j']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['byj']],['v']],[None,None,False])",
+                        "                (['MagicDictionary','build_dict','search'],[[],[['tc']],['v']],[None,None,False])"
+                    ]
+                },
+                "body": "        result, _ = run_magic_dictionary(MagicDictionary, operations, inputs)\n        assert_magic_dictionary(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_magic_dictionary, assert_magic_dictionary\nfrom solution import MagicDictionary",
+    "playground_setup": "# Example test case\noperations = ['MagicDictionary', 'build_dict', 'search', 'search', 'search', 'search']\ninputs = [[], [['hello', 'leetcode']], ['hello'], ['hhllo'], ['hell'], ['leetcoded']]\nexpected = [None, None, False, True, False, False]",
+    "playground_run": "result, magic = run_magic_dictionary(MagicDictionary, operations, inputs)\nprint(result)\nmagic",
+    "playground_assert": "assert_magic_dictionary(result, expected)"
+}

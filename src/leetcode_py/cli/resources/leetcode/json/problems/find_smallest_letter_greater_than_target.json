@@ -1,0 +1,96 @@
+{
+    "problem_name": "find_smallest_letter_greater_than_target",
+    "solution_class_name": "Solution",
+    "problem_number": "744",
+    "problem_title": "Find Smallest Letter Greater Than Target",
+    "difficulty": "Easy",
+    "topics": "Array, Binary Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of characters `letters` that is sorted in **non-decreasing order**, and a character `target`. There are **at least two different** characters in `letters`.\n\nReturn *the smallest character in* `letters` *that is lexicographically greater than* `target`. If such a character does not exist, return the first character in `letters`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: letters = [\"c\",\"f\",\"j\"], target = \"a\"\nOutput: \"c\"\nExplanation: The smallest character that is lexicographically greater than 'a' in letters is 'c'.\n```"
+            },
+            {
+                "content": "```\nInput: letters = [\"c\",\"f\",\"j\"], target = \"c\"\nOutput: \"f\"\nExplanation: The smallest character that is lexicographically greater than 'c' in letters is 'f'.\n```"
+            },
+            {
+                "content": "```\nInput: letters = [\"x\",\"x\",\"y\",\"y\"], target = \"z\"\nOutput: \"x\"\nExplanation: There are no characters in letters that is lexicographically greater than 'z' so we return letters[0].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= letters.length <= 10^4\n- letters[i] is a lowercase English letter.\n- letters is sorted in non-decreasing order.\n- letters contains at least two different characters.\n- target is a lowercase English letter.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "next_greatest_letter",
+    "helpers_run_signature": "(solution_class: type, letters: list[str], target: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.next_greatest_letter(letters, target)",
+    "helpers_assert_name": "next_greatest_letter",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_next_greatest_letter, run_next_greatest_letter\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindSmallestLetterGreaterThanTarget",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "next_greatest_letter",
+                "signature": "(self, letters: list[str], target: str) -> str",
+                "body": "        # TODO: Implement next_greatest_letter\n        return 'a'"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_next_greatest_letter",
+                "signature": "(self, letters: list[str], target: str, expected: str)",
+                "parametrize": "letters, target, expected",
+                "test_cases": {
+                    "list": [
+                        "(['c', 'f', 'j'], 'a', 'c')",
+                        "(['c', 'f', 'j'], 'c', 'f')",
+                        "(['x', 'x', 'y', 'y'], 'z', 'x')",
+                        "(['a', 'b'], 'z', 'a')",
+                        "(['a', 'b'], 'a', 'b')",
+                        "(['a', 'a', 'b', 'b'], 'a', 'b')",
+                        "(['e', 'e', 'e', 'k', 'q', 'q', 'q'], 'd', 'e')",
+                        "(['e', 'e', 'e', 'k', 'q', 'q', 'q'], 'k', 'q')",
+                        "(['e', 'e', 'e', 'k', 'q', 'q', 'q'], 'q', 'e')",
+                        "(['e', 'e', 'g', 'g'], 'g', 'e')",
+                        "(['a', 'z'], 'z', 'a')",
+                        "(['a', 'z'], 'y', 'z')",
+                        "(['a', 'z'], 'b', 'z')",
+                        "(['b', 'y'], 'a', 'b')",
+                        "(['c', 'f', 'j'], 'j', 'c')",
+                        "(['c', 'f', 'j'], 'd', 'f')",
+                        "(['a', 'm', 'm', 'z'], 'l', 'm')",
+                        "(['a', 'm', 'm', 'z'], 'z', 'a')"
+                    ]
+                },
+                "body": "        result = run_next_greatest_letter(Solution, letters, target)\n        assert_next_greatest_letter(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_next_greatest_letter, assert_next_greatest_letter\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nletters: list[str] = ['c', 'f', 'j']\ntarget = 'a'\nexpected = 'c'",
+    "playground_run": "result = run_next_greatest_letter(Solution, letters, target)\nresult",
+    "playground_assert": "assert_next_greatest_letter(result, expected)"
+}

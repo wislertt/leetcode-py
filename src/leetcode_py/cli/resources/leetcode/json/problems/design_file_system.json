@@ -12,10 +12,10 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: \n[\"FileSystem\",\"createPath\",\"get\"]\n[[],[\"/a\",1],[\"/a\"]]\nOutput: \n[null,true,1]\nExplanation: \nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/a\", 1); // return true\nfileSystem.get(\"/a\"); // return 1\n```"
+                "content": "```\nInput:\n[\"FileSystem\",\"createPath\",\"get\"]\n[[],[\"/a\",1],[\"/a\"]]\nOutput:\n[null,true,1]\nExplanation:\nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/a\", 1); // return true\nfileSystem.get(\"/a\"); // return 1\n```"
             },
             {
-                "content": "```\nInput: \n[\"FileSystem\",\"createPath\",\"createPath\",\"get\",\"createPath\",\"get\"]\n[[],[\"/leet\",1],[\"/leet/code\",2],[\"/leet/code\"],[\"/c/d\",1],[\"/c\"]]\nOutput: \n[null,true,true,2,false,-1]\nExplanation: \nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/leet\", 1); // return true\nfileSystem.createPath(\"/leet/code\", 2); // return true\nfileSystem.get(\"/leet/code\"); // return 2\nfileSystem.createPath(\"/c/d\", 1); // return false because the parent path \"/c\" doesn't exist.\nfileSystem.get(\"/c\"); // return -1 because this path doesn't exist.\n```"
+                "content": "```\nInput:\n[\"FileSystem\",\"createPath\",\"createPath\",\"get\",\"createPath\",\"get\"]\n[[],[\"/leet\",1],[\"/leet/code\",2],[\"/leet/code\"],[\"/c/d\",1],[\"/c\"]]\nOutput:\n[null,true,true,2,false,-1]\nExplanation:\nFileSystem fileSystem = new FileSystem();\n\nfileSystem.createPath(\"/leet\", 1); // return true\nfileSystem.createPath(\"/leet/code\", 2); // return true\nfileSystem.get(\"/leet/code\"); // return 2\nfileSystem.createPath(\"/c/d\", 1); // return false because the parent path \"/c\" doesn't exist.\nfileSystem.get(\"/c\"); // return -1 because this path doesn't exist.\n```"
             }
         ]
     },

@@ -1,0 +1,106 @@
+{
+    "problem_name": "swap_adjacent_in_lr_string",
+    "solution_class_name": "Solution",
+    "problem_number": "777",
+    "problem_title": "Swap Adjacent in LR String",
+    "difficulty": "Medium",
+    "topics": "Two Pointers, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "In a string composed of `'L'`, `'R'`, and `'X'` characters, like `\"RXXLRXRXL\"`, a move consists of either replacing one occurrence of `\"XL\"` with `\"LX\"`, or replacing one occurrence of `\"RX\"` with `\"XR\"`. Given the starting string `start` and the ending string `result`, return `True` if and only if there exists a sequence of moves to transform `start` to `result`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: start = \"RXXLRXRXL\", result = \"XRLXXRRLX\"\nOutput: true\nExplanation: We can transform start to result following these steps:\nRXXLRXRXL ->\nXRXLRXRXL ->\nXRLXRXRXL ->\nXRLXXRRXL ->\nXRLXXRRLX\n```"
+            },
+            {
+                "content": "```\nInput: start = \"X\", result = \"L\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= start.length <= 10^4`\n- `start.length == result.length`\n- Both `start` and `result` will only consist of characters in `'L'`, `'R'`, and `'X'`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "can_transform",
+    "helpers_run_signature": "(solution_class: type, start: str, result: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.can_transform(start, result)",
+    "helpers_assert_name": "can_transform",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_can_transform, run_can_transform\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SwapAdjacentInLRString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "can_transform",
+                "signature": "(self, start: str, result: str) -> bool",
+                "body": "        # TODO: Implement can_transform\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_can_transform",
+                "signature": "(self, start: str, result: str, expected: bool)",
+                "parametrize": "start, result, expected",
+                "test_cases": {
+                    "list": [
+                        "('RXXLRXRXL', 'XRLXXRRLX', True)",
+                        "('X', 'L', False)",
+                        "('L', 'L', True)",
+                        "('R', 'R', True)",
+                        "('X', 'X', True)",
+                        "('XL', 'LX', True)",
+                        "('RX', 'XR', True)",
+                        "('LX', 'XL', False)",
+                        "('XR', 'RX', False)",
+                        "('XX', 'XX', True)",
+                        "('RL', 'RL', True)",
+                        "('XXXX', 'XXXX', True)",
+                        "('XLX', 'XXL', False)",
+                        "('LXXR', 'LXXR', True)",
+                        "('XL', 'XL', True)",
+                        "('RXLXL', 'XLRLX', False)",
+                        "('XRXR', 'RRXX', False)",
+                        "('XXXXRXXXLXX', 'XXXXRXXXLXX', True)",
+                        "('RRR', 'XRR', False)",
+                        "('LRXXXR', 'XRLLXL', False)",
+                        "('LXLX', 'XRRX', False)",
+                        "('LXXL', 'RXLR', False)",
+                        "('LRXLXX', 'LXXXRX', False)",
+                        "('LXRLL', 'RRLXX', False)",
+                        "('LRLRX', 'LXRXR', False)",
+                        "('LLLL', 'XXLL', False)",
+                        "('LXR', 'LXR', True)",
+                        "('LXLX', 'LLXX', True)",
+                        "('LLL', 'LLL', True)",
+                        "('XLXLXXX', 'LLXXXXX', True)",
+                        "('LLRLL', 'LLRLL', True)"
+                    ]
+                },
+                "body": "        result = run_can_transform(Solution, start, result)\n        assert_can_transform(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_can_transform, assert_can_transform\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nstart = 'RXXLRXRXL'\nresult = 'XRLXXRRLX'\nexpected = True",
+    "playground_run": "result = run_can_transform(Solution, start, result)\nresult",
+    "playground_assert": "assert_can_transform(result, expected)"
+}

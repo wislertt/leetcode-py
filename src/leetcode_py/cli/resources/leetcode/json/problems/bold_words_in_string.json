@@ -1,0 +1,91 @@
+{
+    "problem_name": "bold_words_in_string",
+    "solution_class_name": "Solution",
+    "problem_number": "758",
+    "problem_title": "Bold Words in String",
+    "difficulty": "Medium",
+    "topics": "Trie, Array, Hash Table, String, String Matching",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of keywords `words` and a string `s`, make all appearances of all keywords `words[i]` in `s` bold. Any letters between `<b>` and `</b>` tags become bold.\n\nReturn `s` *after adding the bold tags*. The returned string should use the least number of tags possible, and the tags should form a valid combination.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"ab\",\"bc\"], s = \"aabcd\"\nOutput: \"a<b>abc</b>d\"\nExplanation: Note that returning \"a<b>a<b>b</b>c</b>d\" would use more tags, so it is incorrect.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"ab\",\"cb\"], s = \"aabcd\"\nOutput: \"a<b>ab</b>cd\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= s.length <= 500`\n- `0 <= words.length <= 50`\n- `1 <= words[i].length <= 10`\n- `s` and `words[i]` consist of lowercase English letters.",
+    "readme_additional": "**Note:** This question is the same as [616: Add Bold Tag in String](https://leetcode.com/problems/add-bold-tag-in-string/description/).",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "bold_words",
+    "helpers_run_signature": "(solution_class: type, words: list[str], s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.bold_words(words, s)",
+    "helpers_assert_name": "bold_words",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_bold_words, run_bold_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BoldWordsInString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "bold_words",
+                "signature": "(self, words: list[str], s: str) -> str",
+                "body": "        # TODO: Implement bold_words\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_bold_words",
+                "signature": "(self, words: list[str], s: str, expected: str)",
+                "parametrize": "words, s, expected",
+                "test_cases": {
+                    "list": [
+                        "(['ab', 'bc'], 'aabcd', 'a<b>abc</b>d')",
+                        "(['ab', 'cb'], 'aabcd', 'a<b>ab</b>cd')",
+                        "([], 'hello', 'hello')",
+                        "(['a'], 'a', '<b>a</b>')",
+                        "(['b'], 'a', 'a')",
+                        "(['aa', 'b'], 'aaabbb', '<b>aaabbb</b>')",
+                        "(['abc'], 'abcabcabc', '<b>abcabcabc</b>')",
+                        "(['abc', 'xyz'], 'abcxyzuvw', '<b>abcxyz</b>uvw')",
+                        "(['mis', 'sis', 'sip'], 'mississippi', '<b>mississip</b>pi')",
+                        "(['ab', 'abcd'], 'abcd', '<b>abcd</b>')",
+                        "(['ap', 'pl', 'e'], 'apple', '<b>apple</b>')",
+                        "(['a', 'b', 'c'], 'abc', '<b>abc</b>')",
+                        "(['py', 'pyt', 'thon'], 'pythonpython', '<b>pythonpython</b>')",
+                        "(['leetcode'], 'letmein', 'letmein')",
+                        "(['zz'], 'zyzzzzy', 'zy<b>zzzz</b>y')",
+                        "(['xy', 'yx'], 'xyx', '<b>xyx</b>')"
+                    ]
+                },
+                "body": "        result = run_bold_words(Solution, words, s)\n        assert_bold_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_bold_words, assert_bold_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['ab', 'bc']\ns = 'aabcd'\nexpected = 'a<b>abc</b>d'",
+    "playground_run": "result = run_bold_words(Solution, words, s)\nresult",
+    "playground_assert": "assert_bold_words(result, expected)"
+}

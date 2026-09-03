@@ -1,0 +1,94 @@
+{
+    "problem_name": "number_of_squareful_arrays",
+    "solution_class_name": "Solution",
+    "problem_number": "996",
+    "problem_title": "Number of Squareful Arrays",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Math, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "An array is **squareful** if the sum of every pair of adjacent elements is a **perfect square**.\n\nGiven an integer array `nums`, return *the number of permutations of* `nums` *that are* ***squareful***.\n\nTwo permutations `perm1` and `perm2` are different if there is some index `i` such that `perm1[i] != perm2[i]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,17,8]\nOutput: 2\nExplanation: [1,8,17] and [17,8,1] are the valid permutations.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,2,2]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 12\n- 0 <= nums[i] <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "num_squareful_perms",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.num_squareful_perms(nums)",
+    "helpers_assert_name": "num_squareful_perms",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_num_squareful_perms, run_num_squareful_perms\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "NumberOfSquarefulArrays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "num_squareful_perms",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement num_squareful_perms\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_num_squareful_perms",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 17, 8], 2)",
+                        "([2, 2, 2], 1)",
+                        "([1], 1)",
+                        "([0], 1)",
+                        "([0, 0], 1)",
+                        "([1, 1], 0)",
+                        "([1, 3], 2)",
+                        "([2, 2, 7], 3)",
+                        "([0, 1, 3], 2)",
+                        "([1, 3, 6], 2)",
+                        "([4, 5, 11], 2)",
+                        "([1, 3, 8], 2)",
+                        "([1, 8, 17, 0], 2)",
+                        "([0, 0, 1, 3], 2)",
+                        "([1000000000, 13129], 0)",
+                        "([999950884, 0], 2)",
+                        "([999950884, 0, 1], 2)",
+                        "([2, 2, 2, 2], 1)",
+                        "([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 1)"
+                    ]
+                },
+                "body": "        result = run_num_squareful_perms(Solution, nums)\n        assert_num_squareful_perms(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_num_squareful_perms, assert_num_squareful_perms\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 17, 8]\nexpected = 2",
+    "playground_run": "result = run_num_squareful_perms(Solution, nums)\nresult",
+    "playground_assert": "assert_num_squareful_perms(result, expected)"
+}

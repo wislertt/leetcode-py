@@ -1,0 +1,95 @@
+{
+    "problem_name": "prime_number_of_set_bits_in_binary_representation",
+    "solution_class_name": "Solution",
+    "problem_number": "762",
+    "problem_title": "Prime Number of Set Bits in Binary Representation",
+    "difficulty": "Easy",
+    "topics": "Math, Bit Manipulation, Primality Test",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two integers `left` and `right`, return *the **count** of numbers in the **inclusive** range* `[left, right]` *having a **prime number of set bits** in their binary representation*.\n\nRecall that the **number of set bits** an integer has is the number of `1`'s present when written in binary.\n\n- For example, `21` written in binary is `10101`, which has `3` set bits.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: left = 6, right = 10\nOutput: 4\nExplanation:\n6  -> 110 (2 set bits, 2 is prime)\n7  -> 111 (3 set bits, 3 is prime)\n8  -> 1000 (1 set bit, 1 is not prime)\n9  -> 1001 (2 set bits, 2 is prime)\n10 -> 1010 (2 set bits, 2 is prime)\n4 numbers have a prime number of set bits.\n```"
+            },
+            {
+                "content": "```\nInput: left = 10, right = 15\nOutput: 5\nExplanation:\n10 -> 1010 (2 set bits, 2 is prime)\n11 -> 1011 (3 set bits, 3 is prime)\n12 -> 1100 (2 set bits, 2 is prime)\n13 -> 1101 (3 set bits, 3 is prime)\n14 -> 1110 (3 set bits, 3 is prime)\n15 -> 1111 (4 set bits, 4 is not prime)\n5 numbers have a prime number of set bits.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= left <= right <= 10<sup>6</sup>\n- 0 <= right - left <= 10<sup>4</sup>",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_prime_set_bits",
+    "helpers_run_signature": "(solution_class: type, left: int, right: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_prime_set_bits(left, right)",
+    "helpers_assert_name": "count_prime_set_bits",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_prime_set_bits, run_count_prime_set_bits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PrimeNumberOfSetBitsInBinaryRepresentation",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_prime_set_bits",
+                "signature": "(self, left: int, right: int) -> int",
+                "body": "        # TODO: Implement count_prime_set_bits\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_prime_set_bits",
+                "signature": "(self, left: int, right: int, expected: int)",
+                "parametrize": "left, right, expected",
+                "test_cases": {
+                    "list": [
+                        "(6, 10, 4)",
+                        "(10, 15, 5)",
+                        "(1, 1, 0)",
+                        "(2, 2, 0)",
+                        "(3, 3, 1)",
+                        "(1, 2, 0)",
+                        "(1, 10, 6)",
+                        "(5, 8, 3)",
+                        "(9, 14, 6)",
+                        "(24, 28, 4)",
+                        "(32, 47, 11)",
+                        "(100, 130, 16)",
+                        "(567, 890, 164)",
+                        "(1, 1000, 530)",
+                        "(1000, 2000, 473)",
+                        "(12345, 13345, 380)",
+                        "(999990, 1000000, 5)",
+                        "(999999, 1000000, 1)",
+                        "(1, 5000, 2320)",
+                        "(524288, 525288, 474)"
+                    ]
+                },
+                "body": "        result = run_count_prime_set_bits(Solution, left, right)\n        assert_count_prime_set_bits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_prime_set_bits, assert_count_prime_set_bits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nleft: int = 6\nright: int = 10\nexpected: int = 4",
+    "playground_run": "result = run_count_prime_set_bits(Solution, left, right)\nresult",
+    "playground_assert": "assert_count_prime_set_bits(result, expected)"
+}

@@ -1,0 +1,87 @@
+{
+    "problem_name": "online_election",
+    "solution_class_name": "TopVotedCandidate",
+    "problem_number": "911",
+    "problem_title": "Online Election",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, Binary Search, Design",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two integer arrays `persons` and `times`. In an election, the `i-th` vote was cast for `persons[i]` at time `times[i]`.\n\nFor each query at a time `t`, find the person that was leading the election at time `t`. Votes cast at time `t` will count towards our query. In the case of a tie, the most recent vote (among tied candidates) wins.\n\nImplement the `TopVotedCandidate` class:\n\n- `TopVotedCandidate(int[] persons, int[] times)` Initializes the object with the `persons` and `times` arrays.\n- `int q(int t)` Returns the number of the person that was leading the election at time `t` according to the mentioned rules.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"TopVotedCandidate\", \"q\", \"q\", \"q\", \"q\", \"q\", \"q\"]\n[[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]\nOutput\n[null, 0, 1, 1, 0, 0, 1]\n\nExplanation\nTopVotedCandidate topVotedCandidate = new TopVotedCandidate([0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]);\ntopVotedCandidate.q(3); // return 0, At time 3, the votes are [0], and 0 is leading.\ntopVotedCandidate.q(12); // return 1, At time 12, the votes are [0,1,1], and 1 is leading.\ntopVotedCandidate.q(25); // return 1, At time 25, the votes are [0,1,1,0,0,1], and 1 is leading (as ties go to the most recent vote.)\ntopVotedCandidate.q(15); // return 0\ntopVotedCandidate.q(24); // return 0\ntopVotedCandidate.q(8); // return 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= persons.length <= 5000`\n- `times.length == persons.length`\n- `0 <= persons[i] < persons.length`\n- `0 <= times[i] <= 10^9`\n- `times` is sorted in a strictly increasing order.\n- `times[0] <= t <= 10^9`\n- At most `10^4` calls will be made to `q`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "online_election",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list])",
+    "helpers_run_body": "    candidate = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'TopVotedCandidate':\n            candidate = solution_class(inputs[i][0], inputs[i][1])\n            results.append(None)\n        elif op == 'q' and candidate is not None:\n            results.append(candidate.q(inputs[i][0]))\n    return results, candidate",
+    "helpers_assert_name": "online_election",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_online_election, run_online_election\nfrom .solution import TopVotedCandidate",
+    "test_content": "",
+    "test_class_name": "OnlineElection",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, persons: list[int], times: list[int]) -> None",
+                "body": "        # TODO: Initialize with persons and times\n        pass"
+            },
+            {
+                "name": "q",
+                "signature": "(self, t: int) -> int",
+                "body": "        # TODO: Implement q\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_online_election",
+                "signature": "(self, operations: list[str], inputs: list[list], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[3],[12],[25]],[None,0,1,1])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[15],[24],[8]],[None,0,0,1])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,1,0,0,1,0],[0,5,10,15,20,25,30]],[30],[29],[0]],[None,0,1,0])",
+                        "(['TopVotedCandidate','q','q'],[[[0],[0]],[0],[1000000000]],[None,0,0])",
+                        "(['TopVotedCandidate','q','q','q','q'],[[[2,2,2],[1,2,3]],[1],[2],[3],[4]],[None,2,2,2,2])",
+                        "(['TopVotedCandidate','q','q','q','q'],[[[0,1],[0,10]],[0],[5],[10],[15]],[None,0,0,1,1])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,0,1,0],[1,2,3,4,5]],[1],[3],[5]],[None,0,0,0])",
+                        "(['TopVotedCandidate','q','q','q'],[[[1,1,0],[0,5,6]],[6],[5],[100]],[None,1,1,1])",
+                        "(['TopVotedCandidate','q','q','q'],[[[3,3,3,3],[10,20,30,40]],[15],[35],[40]],[None,3,3,3])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,0],[0,500000000,1000000000]],[499999999],[500000000],[1000000000]],[None,0,1,0])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,0,1],[0,7,8]],[6],[7],[8]],[None,0,0,0])",
+                        "(['TopVotedCandidate','q','q','q'],[[[1,0,1],[2,4,6]],[3],[5],[6]],[None,1,0,1])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,2,3,4],[1,2,3,4,5]],[2],[4],[5]],[None,1,3,4])",
+                        "(['TopVotedCandidate','q','q','q'],[[[0,1,0,1,1],[1,2,3,4,5]],[1],[3],[5]],[None,0,0,1])",
+                        "(['TopVotedCandidate','q'],[[[0,1,1,0],[0,1,2,3]],[3]],[None,0])",
+                        "(['TopVotedCandidate','q','q','q','q','q','q'],[[[0,0,0,1,1,1],[1,3,5,7,9,11]],[2],[4],[6],[8],[10],[12]],[None,0,0,0,0,0,1])"
+                    ]
+                },
+                "body": "        result, _ = run_online_election(TopVotedCandidate, operations, inputs)\n        assert_online_election(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_online_election, assert_online_election\nfrom solution import TopVotedCandidate",
+    "playground_setup": "# Example test case\noperations = ['TopVotedCandidate', 'q', 'q', 'q', 'q', 'q', 'q']\ninputs = [[[0, 1, 1, 0, 0, 1, 0], [0, 5, 10, 15, 20, 25, 30]], [3], [12], [25], [15], [24], [8]]\nexpected = [None, 0, 1, 1, 0, 0, 1]",
+    "playground_run": "result, candidate = run_online_election(TopVotedCandidate, operations, inputs)\nprint(result)\ncandidate",
+    "playground_assert": "assert_online_election(result, expected)"
+}

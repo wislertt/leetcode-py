@@ -1,0 +1,93 @@
+{
+    "problem_name": "soup_servings",
+    "solution_class_name": "Solution",
+    "problem_number": "808",
+    "problem_title": "Soup Servings",
+    "difficulty": "Medium",
+    "topics": "Math, Dynamic Programming, Probability and Statistics",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You have two soups, A and B, each starting with `n` mL. On every turn, one of the following four serving operations is chosen at random, each with probability `0.25` independent of all previous turns:\n\n- pour 100 mL from type A and 0 mL from type B\n- pour 75 mL from type A and 25 mL from type B\n- pour 50 mL from type A and 50 mL from type B\n- pour 25 mL from type A and 75 mL from type B\n\nNote:\n\n- There is no operation that pours 0 mL from A and 100 mL from B.\n- The amounts from A and B are poured simultaneously during the turn.\n- If an operation asks you to pour more than you have left of a soup, pour all that remains of that soup.\n\nThe process stops immediately after any turn in which one of the soups is used up.\n\nReturn the probability that A is used up before B, plus half the probability that both soups are used up in the same turn. Answers within 10^-5 of the actual answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 50\nOutput: 0.62500\nExplanation:\nIf we perform either of the first two serving operations, soup A will become empty first.\nIf we perform the third operation, A and B will become empty at the same time.\nIf we perform the fourth operation, B will become empty first.\nSo the total probability of A becoming empty first plus half the probability that A and B become empty at the same time, is 0.25 * (1 + 1 + 0.5 + 0) = 0.625.\n```"
+            },
+            {
+                "content": "```\nInput: n = 100\nOutput: 0.71875\nExplanation:\nIf we perform the first serving operation, soup A will become empty first.\nIf we perform the second serving operations, A will become empty on performing operation [1, 2, 3], and both A and B become empty on performing operation 4.\nIf we perform the third operation, A will become empty on performing operation [1, 2], and both A and B become empty on performing operation 3.\nIf we perform the fourth operation, A will become empty on performing operation 1, and both A and B become empty on performing operation 2.\nSo the total probability of A becoming empty first plus half the probability that A and B become empty at the same time, is 0.71875.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 0 <= n <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "soup_servings",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.soup_servings(n)",
+    "helpers_assert_name": "soup_servings",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    assert abs(result - expected) <= 1e-5\n    return True",
+    "solution_imports": "from functools import cache",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_soup_servings, run_soup_servings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SoupServings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "soup_servings",
+                "signature": "(self, n: int) -> float",
+                "body": "        # TODO: Implement soup_servings\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_soup_servings",
+                "signature": "(self, n: int, expected: float)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(0, 0.5)",
+                        "(1, 0.625)",
+                        "(25, 0.625)",
+                        "(50, 0.625)",
+                        "(60, 0.65625)",
+                        "(75, 0.65625)",
+                        "(100, 0.71875)",
+                        "(125, 0.7421875)",
+                        "(150, 0.7578125)",
+                        "(175, 0.78515625)",
+                        "(200, 0.796875)",
+                        "(250, 0.82763671875)",
+                        "(300, 0.8521728515625)",
+                        "(500, 0.916344165802002)",
+                        "(1000, 0.9765650521094358)",
+                        "(2000, 0.9977163163248763)",
+                        "(5000, 1.0)",
+                        "(1000000000, 1.0)"
+                    ]
+                },
+                "body": "        result = run_soup_servings(Solution, n)\n        assert_soup_servings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_soup_servings, assert_soup_servings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 50\nexpected = 0.625",
+    "playground_run": "result = run_soup_servings(Solution, n)\nresult",
+    "playground_assert": "assert_soup_servings(result, expected)"
+}

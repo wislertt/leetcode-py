@@ -18,14 +18,15 @@ Given a string `s`, remove duplicate letters so that every letter appears once a
 Input: s = "bcabc"
 Output: "abc"
 Explanation: The possible results are "abc", "bac", "bca", "cab", and "cba". The smallest is "abc".
+```
 
 ### Example 2:
 
 ```
-
 Input: s = "cbacdcbc"
 Output: "acdb"
 Explanation: Removing duplicates while keeping the result smallest gives "acdb".
+```
 
 ## Constraints
 

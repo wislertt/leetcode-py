@@ -1,0 +1,105 @@
+{
+    "problem_name": "rotate_string",
+    "solution_class_name": "Solution",
+    "problem_number": "796",
+    "problem_title": "Rotate String",
+    "difficulty": "Easy",
+    "topics": "String, String Matching",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two strings `s` and `goal`, return `true` *if and only if* `s` *can become* `goal` after some number of **shifts** on `s`.\n\nA **shift** on `s` consists of moving the leftmost character of `s` to the rightmost position.\n\n- For example, if `s = \"abcde\"`, then it will be `\"bcdea\"` after one shift.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abcde\", goal = \"cdeab\"\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcde\", goal = \"abced\"\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length, goal.length <= 100\n- s and goal consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rotate_string",
+    "helpers_run_signature": "(solution_class: type, s: str, goal: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.rotate_string(s, goal)",
+    "helpers_assert_name": "rotate_string",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rotate_string, run_rotate_string\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RotateString",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rotate_string",
+                "signature": "(self, s: str, goal: str) -> bool",
+                "body": "        # TODO: Implement rotate_string\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rotate_string",
+                "signature": "(self, s: str, goal: str, expected: bool)",
+                "parametrize": "s, goal, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcde', 'cdeab', True)",
+                        "('abcde', 'abced', False)",
+                        "('a', 'a', True)",
+                        "('a', 'b', False)",
+                        "('m', 'f', False)",
+                        "('ab', 'ba', True)",
+                        "('ab', 'aa', False)",
+                        "('abc', 'abc', True)",
+                        "('abc', 'cab', True)",
+                        "('abc', 'bca', True)",
+                        "('abc', 'acb', False)",
+                        "('aaaa', 'aaaa', True)",
+                        "('abab', 'baba', True)",
+                        "('abab', 'abba', False)",
+                        "('waterbottle', 'erbottlewat', True)",
+                        "('waterbottle', 'erbottlewta', False)",
+                        "('gcmbfll', 'llgcmbf', True)",
+                        "('gcmbfll', 'fllgcmb', True)",
+                        "('gcmbfll', 'gcmbfll', True)",
+                        "('bbbbaabb', 'bbbbaaba', False)",
+                        "('xyxxy', 'yxxyx', True)",
+                        "('xyxxy', 'xyxyx', True)",
+                        "('bbbbbbbaa', 'bbaababab', False)",
+                        "('baabbbb', 'bbbbbaa', True)",
+                        "('bbaab', 'aaaab', False)",
+                        "('bbbaabbb', 'aabbbbbb', True)",
+                        "('baabaaa', 'bbbbbab', False)",
+                        "('baa', 'aba', True)",
+                        "('abbbaaabba', 'abbaabbbaa', True)",
+                        "('bbaabab', 'aabaabb', False)"
+                    ]
+                },
+                "body": "        result = run_rotate_string(Solution, s, goal)\n        assert_rotate_string(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rotate_string, assert_rotate_string\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abcde'\ngoal = 'cdeab'\nexpected = True",
+    "playground_run": "result = run_rotate_string(Solution, s, goal)\nresult",
+    "playground_assert": "assert_rotate_string(result, expected)"
+}

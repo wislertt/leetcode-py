@@ -1,0 +1,99 @@
+{
+    "problem_name": "repeated_string_match",
+    "solution_class_name": "Solution",
+    "problem_number": "686",
+    "problem_title": "Repeated String Match",
+    "difficulty": "Medium",
+    "topics": "String, String Matching, Z Algorithm, Knuth-Morris-Pratt Algorithm, Boyer-Moore String-Search Algorithm",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two strings `a` and `b`, return the minimum number of times you should repeat string `a` so that string `b` is a substring of it. If it is impossible for `b` to be a substring of `a` after repeating it, return `-1`.\n\n**Notice:** string `\"abc\"` repeated 0 times is `\"\"`, repeated 1 time is `\"abc\"` and repeated 2 times is `\"abcabc\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: a = \"abcd\", b = \"cdabcdab\"\nOutput: 3\nExplanation: We return 3 because by repeating a three times \"abcdabcdabcd\", b is a substring of it.\n```"
+            },
+            {
+                "content": "```\nInput: a = \"a\", b = \"aa\"\nOutput: 2\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= a.length, b.length <= 10^4\n- a and b consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "repeated_string_match",
+    "helpers_run_signature": "(solution_class: type, a: str, b: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.repeated_string_match(a, b)",
+    "helpers_assert_name": "repeated_string_match",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_repeated_string_match, run_repeated_string_match\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RepeatedStringMatch",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "repeated_string_match",
+                "signature": "(self, a: str, b: str) -> int",
+                "body": "        # TODO: Implement repeated_string_match\n        return -1"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_repeated_string_match",
+                "signature": "(self, a: str, b: str, expected: int)",
+                "parametrize": "a, b, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcd', 'cdabcdab', 3)",
+                        "('a', 'aa', 2)",
+                        "('abc', 'cabcabca', 4)",
+                        "('abcd', 'd', 1)",
+                        "('abcd', 'a', 1)",
+                        "('ab', 'b', 1)",
+                        "('ab', 'ba', 2)",
+                        "('aa', 'a', 1)",
+                        "('aaac', 'aac', 1)",
+                        "('abab', 'ba', 1)",
+                        "('abc', 'abcabcabc', 3)",
+                        "('abcd', 'efgh', -1)",
+                        "('abc', 'abd', -1)",
+                        "('ab', 'ac', -1)",
+                        "('bbabb', 'baaaabba', -1)",
+                        "('bba', 'abbaaaa', -1)",
+                        "('b', 'abbbabaaa', -1)",
+                        "('babbb', 'aaaabbabb', -1)",
+                        "('b', 'aaaaaaaba', -1)",
+                        "('ba', 'a', 1)",
+                        "('bbaba', 'baabaa', -1)",
+                        "('baa', 'aaa', -1)",
+                        "('bb', 'baabaab', -1)",
+                        "('ababb', 'aababb', -1)"
+                    ]
+                },
+                "body": "        result = run_repeated_string_match(Solution, a, b)\n        assert_repeated_string_match(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_repeated_string_match, assert_repeated_string_match\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = 'abcd'\nb = 'cdabcdab'\nexpected = 3",
+    "playground_run": "result = run_repeated_string_match(Solution, a, b)\nresult",
+    "playground_assert": "assert_repeated_string_match(result, expected)"
+}

@@ -1,0 +1,100 @@
+{
+    "problem_name": "tallest_billboard",
+    "solution_class_name": "Solution",
+    "problem_number": "956",
+    "problem_title": "Tallest Billboard",
+    "difficulty": "Hard",
+    "topics": "Array, Dynamic Programming, Meet in the Middle, Knapsack Problem, 0-1 Knapsack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are installing a billboard and want it to have the largest height. The billboard will have two steel supports, one on each side. Each steel support must be an equal height.\n\nYou are given a collection of `rods` that can be welded together. For example, if you have rods of lengths `1`, `2`, and `3`, you can weld them together to make a support of length `6`.\n\nReturn the largest possible height of your billboard installation. If you cannot support the billboard, return `0`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: rods = [1,2,3,6]\nOutput: 6\n```\n**Explanation:** We have two disjoint subsets {1,2,3} and {6}, which have the same sum = 6."
+            },
+            {
+                "content": "```\nInput: rods = [1,2,3,4,5,6]\nOutput: 10\n```\n**Explanation:** We have two disjoint subsets {2,3,5} and {4,6}, which have the same sum = 10."
+            },
+            {
+                "content": "```\nInput: rods = [1,2]\nOutput: 0\n```\n**Explanation:** The billboard cannot be supported, so we return 0."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= rods.length <= 20\n- 1 <= rods[i] <= 1000\n- sum(rods[i]) <= 5000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "tallest_billboard",
+    "helpers_run_signature": "(solution_class: type, rods: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.tallest_billboard(rods)",
+    "helpers_assert_name": "tallest_billboard",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_tallest_billboard, run_tallest_billboard\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TallestBillboard",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "tallest_billboard",
+                "signature": "(self, rods: list[int]) -> int",
+                "body": "        # TODO: Implement tallest_billboard\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_tallest_billboard",
+                "signature": "(self, rods: list[int], expected: int)",
+                "parametrize": "rods, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 6], 6)",
+                        "([1, 2, 3, 4, 5, 6], 10)",
+                        "([1, 2], 0)",
+                        "([1], 0)",
+                        "([2, 2], 2)",
+                        "([1, 1], 1)",
+                        "([1, 2, 3], 3)",
+                        "([1, 2, 4], 0)",
+                        "([3, 3, 3, 3], 6)",
+                        "([1, 1, 1, 1], 2)",
+                        "([5, 5, 5, 5, 5], 10)",
+                        "([1, 2, 3, 4, 5], 7)",
+                        "([10, 10], 10)",
+                        "([1000, 1000], 1000)",
+                        "([1, 2, 3, 4, 5, 6, 7], 14)",
+                        "([1, 1, 1, 1, 1, 1, 1, 1], 4)",
+                        "([2, 3, 5, 7], 7)",
+                        "([1, 3, 4, 7, 10], 11)",
+                        "([5, 1, 2, 6, 3], 8)",
+                        "([6, 6, 6], 6)",
+                        "([1, 1000, 999, 2, 998], 1001)",
+                        "([20, 20, 20, 20, 20, 20, 20, 20], 80)"
+                    ]
+                },
+                "body": "        result = run_tallest_billboard(Solution, rods)\n        assert_tallest_billboard(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_tallest_billboard, assert_tallest_billboard\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrods = [1, 2, 3, 6]\nexpected = 6",
+    "playground_run": "result = run_tallest_billboard(Solution, rods)\nresult",
+    "playground_assert": "assert_tallest_billboard(result, expected)"
+}

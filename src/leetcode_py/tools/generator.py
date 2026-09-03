@@ -34,7 +34,7 @@ def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> No
             raise typer.Exit(1)
 
 
-def batch_format_and_check(directories: list[Path]) -> None:
+def batch_format_and_check(directories: list[Path], run_ty: bool = True) -> None:
     if not directories:
         return
 
@@ -84,17 +84,22 @@ def batch_format_and_check(directories: list[Path]) -> None:
         )
 
         # 3. ty check (ignore unresolved-import)
-        result_ty = subprocess.run(
-            [
-                ty_bin,
-                "check",
-                "--error-on-warning",
-                "--no-progress",
-                "--ignore",
-                "unresolved-import",
-                *dir_paths,
-            ],
-            check=False,
+        result_ty = (
+            subprocess.run(
+                [
+                    ty_bin,
+                    "check",
+                    "--error-on-warning",
+                    "--no-progress",
+                    "--ignore",
+                    "unresolved-import",
+                    *dir_paths,
+                ],
+                check=False,
+            )
+            if run_ty
+            # Sentinel success: caller runs ty itself afterward (bake lint).
+            else subprocess.CompletedProcess([], 0)
         )
 
         # If all passed, break early

@@ -1,0 +1,92 @@
+{
+    "problem_name": "subdomain_visit_count",
+    "solution_class_name": "Solution",
+    "problem_number": "811",
+    "problem_title": "Subdomain Visit Count",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Counting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "A website domain `\"discuss.leetcode.com\"` consists of various subdomains. At the top level, we have `\"com\"`, at the next level, we have `\"leetcode.com\"` and at the lowest level, `\"discuss.leetcode.com\"`. When we visit a domain like `\"discuss.leetcode.com\"`, we will also visit the parent domains `\"leetcode.com\"` and `\"com\"` implicitly.\n\nA <strong>count-paired domain</strong> is a domain that has one of the two formats `\"rep d1.d2.d3\"` or `\"rep d1.d2\"` where `rep` is the number of visits to the domain and `d1.d2.d3` is the domain itself.\n\n- For example, `\"9001 discuss.leetcode.com\"` is a <strong>count-paired domain</strong> that indicates that <code>discuss.leetcode.com</code> was visited `9001` times.\n\nGiven an array of <strong>count-paired domains</strong> <code>cpdomains</code>, return <em>an array of the <strong>count-paired domains</strong> of each subdomain in the input</em>. You may return the answer in <strong>any order</strong>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: cpdomains = [\"9001 discuss.leetcode.com\"]\nOutput: [\"9001 leetcode.com\",\"9001 discuss.leetcode.com\",\"9001 com\"]\n```\n\nExplanation: We only have one website domain: `\"discuss.leetcode.com\"`.\nAs discussed above, the subdomains `\"leetcode.com\"` and `\"com\"` will also be visited. So they will all be visited 9001 times."
+            },
+            {
+                "content": "```\nInput: cpdomains = [\"900 google.mail.com\", \"50 yahoo.com\", \"1 intel.mail.com\", \"5 wiki.org\"]\nOutput: [\"901 mail.com\",\"50 yahoo.com\",\"900 google.mail.com\",\"5 wiki.org\",\"5 org\",\"1 intel.mail.com\",\"951 com\"]\n```\n\nExplanation: We will visit `\"google.mail.com\"` 900 times, `\"yahoo.com\"` 50 times, `\"intel.mail.com\"` once and `\"wiki.org\"` 5 times.\nFor the subdomains, we will visit `\"mail.com\"` 900 + 1 = 901 times, `\"com\"` 900 + 50 + 1 = 951 times, and `\"org\"` 5 times."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= cpdomains.length <= 100\n- 1 <= cpdomains[i].length <= 100\n- cpdomains[i] follows either the \"rep<sub>i</sub> d1<sub>i</sub>.d2<sub>i</sub>.d3<sub>i</sub>\" format or the \"rep<sub>i</sub> d1<sub>i</sub>.d2<sub>i</sub>\" format.\n- rep<sub>i</sub> is an integer in the range [1, 10<sup>4</sup>].\n- d1<sub>i</sub>, d2<sub>i</sub>, and d3<sub>i</sub> consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "subdomain_visits",
+    "helpers_run_signature": "(solution_class: type, cpdomains: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.subdomain_visits(cpdomains)",
+    "helpers_assert_name": "subdomain_visits",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    # Sort both result and expected for comparison since order doesn't matter\n    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_subdomain_visits, run_subdomain_visits\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SubdomainVisitCount",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "subdomain_visits",
+                "signature": "(self, cpdomains: list[str]) -> list[str]",
+                "body": "        # TODO: Implement subdomain_visits\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_subdomain_visits",
+                "signature": "(self, cpdomains: list[str], expected: list[str])",
+                "parametrize": "cpdomains, expected",
+                "test_cases": {
+                    "list": [
+                        "(['9001 d.leetcode.com'], ['9001 com', '9001 d.leetcode.com', '9001 leetcode.com'])",
+                        "(['900 g.mail.com'], ['900 com', '900 g.mail.com', '900 mail.com'])",
+                        "(['50 yahoo.com', '5 wiki.org'], ['5 org', '5 wiki.org', '50 com', '50 yahoo.com'])",
+                        "(['9 g.m.com', '1 i.m.com'], ['1 i.m.com', '10 com', '10 m.com', '9 g.m.com'])",
+                        "(['1 a.com'], ['1 a.com', '1 com'])",
+                        "(['10 mail.com'], ['10 com', '10 mail.com'])",
+                        "(['2 zz.com'], ['2 com', '2 zz.com'])",
+                        "(['3 a.b.c'], ['3 a.b.c', '3 b.c', '3 c'])",
+                        "(['2 x.com', '3 x.com'], ['5 com', '5 x.com'])",
+                        "(['1 a.b', '1 b.a'], ['1 a', '1 a.b', '1 b', '1 b.a'])",
+                        "(['10000 site.org'], ['10000 org', '10000 site.org'])",
+                        "(['1 a.b.c', '2 d.e.f'], ['1 a.b.c', '1 b.c', '1 c', '2 d.e.f', '2 e.f', '2 f'])",
+                        "(['9999 x.sub.tld'], ['9999 sub.tld', '9999 tld', '9999 x.sub.tld'])",
+                        "(['7 a.b'], ['7 a.b', '7 b'])",
+                        "(['2 mail.com', '3 mail.org'], ['2 com', '2 mail.com', '3 mail.org', '3 org'])",
+                        "(['1 q.r.s', '1 r.s'], ['1 q.r.s', '2 r.s', '2 s'])",
+                        "(['4 a.com', '6 b.org'], ['4 a.com', '4 com', '6 b.org', '6 org'])"
+                    ]
+                },
+                "body": "        result = run_subdomain_visits(Solution, cpdomains)\n        assert_subdomain_visits(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_subdomain_visits, run_subdomain_visits\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncpdomains = ['9001 discuss.leetcode.com']\nexpected = ['9001 com', '9001 discuss.leetcode.com', '9001 leetcode.com']",
+    "playground_run": "result = run_subdomain_visits(Solution, cpdomains)\nresult",
+    "playground_assert": "assert_subdomain_visits(result, expected)"
+}

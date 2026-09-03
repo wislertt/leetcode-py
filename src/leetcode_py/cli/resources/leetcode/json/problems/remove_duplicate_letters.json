@@ -12,10 +12,10 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: s = \"bcabc\"\nOutput: \"abc\"\nExplanation: The possible results are \"abc\", \"bac\", \"bca\", \"cab\", and \"cba\". The smallest is \"abc\"."
+                "content": "```\nInput: s = \"bcabc\"\nOutput: \"abc\"\nExplanation: The possible results are \"abc\", \"bac\", \"bca\", \"cab\", and \"cba\". The smallest is \"abc\".\n```"
             },
             {
-                "content": "```\nInput: s = \"cbacdcbc\"\nOutput: \"acdb\"\nExplanation: Removing duplicates while keeping the result smallest gives \"acdb\"."
+                "content": "```\nInput: s = \"cbacdcbc\"\nOutput: \"acdb\"\nExplanation: Removing duplicates while keeping the result smallest gives \"acdb\".\n```"
             }
         ]
     },

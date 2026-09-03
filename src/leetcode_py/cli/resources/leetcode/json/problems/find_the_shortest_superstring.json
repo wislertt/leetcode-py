@@ -1,0 +1,132 @@
+{
+    "problem_name": "find_the_shortest_superstring",
+    "solution_class_name": "Solution",
+    "problem_number": "943",
+    "problem_title": "Find the Shortest Superstring",
+    "difficulty": "Hard",
+    "topics": "Array, String, Dynamic Programming, Bit Manipulation, Bitmask, Hamiltonian Path",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of strings `words`, return *the smallest string that contains each string in* `words` *as a substring*. If there are multiple valid strings of the smallest length, return **any of them**.\n\nYou may assume that no string in `words` is a substring of another string in `words`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: words = [\"alex\",\"loves\",\"leetcode\"]\nOutput: \"alexlovesleetcode\"\nExplanation: All permutations of \"alex\",\"loves\",\"leetcode\" would also be accepted.\n```"
+            },
+            {
+                "content": "```\nInput: words = [\"catg\",\"ctaagt\",\"gcta\",\"ttca\",\"atgcatc\"]\nOutput: \"gctaagttcatgcatc\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 12`\n- `1 <= words[i].length <= 20`\n- `words[i]` consists of lowercase English letters.\n- All the strings of `words` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_superstring",
+    "helpers_run_signature": "(solution_class: type, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_superstring(words)",
+    "helpers_assert_name": "shortest_superstring",
+    "helpers_assert_signature": "(result: str, expected: int) -> bool",
+    "helpers_assert_body": "    # Any minimal-length superstring is accepted; every word is checked\n    # against `result` in the test body since the helper only sees the length\n    assert len(result) == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_superstring, run_shortest_superstring\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FindTheShortestSuperstring",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_superstring",
+                "signature": "(self, words: list[str]) -> str",
+                "body": "        # TODO: Implement shortest_superstring\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_superstring",
+                "signature": "(self, words: list[str], expected: int)",
+                "parametrize": "words, expected",
+                "test_cases": {
+                    "list": [
+                        "(['alex', 'loves', 'leetcode'], 17)",
+                        "(['catg', 'ctaagt', 'gcta', 'ttca', 'atgcatc'], 16)",
+                        "(['a'], 1)",
+                        "(['ab'], 2)",
+                        "(['abcdef'], 6)",
+                        "(['ab', 'ba'], 3)",
+                        "(['abc', 'cde'], 5)",
+                        "(['abab', 'baba'], 5)",
+                        "(['cata', 'tac'], 5)",
+                        "(['bbaba', 'ababab'], 8)",
+                        "(['aa', 'ab', 'ba'], 4)",
+                        "(['aaa', 'aab', 'baa', 'ccc'], 8)",
+                        "(['catg', 'gcta', 'ttca'], 9)",
+                        "(['ctaagt', 'gcta', 'atgcatc'], 14)",
+                        "(['al', 'exl', 'leva'], 7)",
+                        "(['xyxyx', 'yxyxy'], 6)",
+                        "(['bd', 'ca', 'cd', 'ac'], 6)",
+                        "(['bb', 'dc', 'bd', 'db'], 5)",
+                        "(['cb', 'ba', 'ac', 'bc'], 5)",
+                        "(['cc', 'bd'], 4)",
+                        "(['dc', 'cc'], 3)",
+                        "(['bc', 'db'], 3)",
+                        "(['dc', 'dd', 'bc'], 5)",
+                        "(['da', 'db', 'bc'], 5)",
+                        "(['ba', 'db'], 3)",
+                        "(['bc', 'cc', 'ba', 'ac'], 6)",
+                        "(['ab', 'cb'], 4)",
+                        "(['ac', 'cc', 'aa'], 4)",
+                        "(['bc', 'ab', 'db'], 5)",
+                        "(['ac', 'ca', 'dc', 'cc'], 5)",
+                        "(['cc', 'ac', 'da'], 4)",
+                        "(['bc', 'bd', 'cb', 'aa'], 6)",
+                        "(['ad', 'da', 'cb', 'cd'], 6)",
+                        "(['aa', 'ad', 'da', 'dc'], 5)",
+                        "(['ac', 'ad', 'ca', 'da'], 5)",
+                        "(['cb', 'ba', 'aa', 'bd'], 6)",
+                        "(['dd', 'ba', 'cb'], 5)",
+                        "(['cc', 'ad'], 4)",
+                        "(['cd', 'db', 'cc', 'ac'], 5)",
+                        "(['cb', 'cc', 'da', 'db'], 7)",
+                        "(['dd', 'dc', 'ad'], 4)",
+                        "(['dc', 'da', 'aa'], 5)",
+                        "(['dd', 'dc'], 3)",
+                        "(['ac', 'ab'], 4)",
+                        "(['bc', 'cb', 'dc', 'bd'], 5)",
+                        "(['aa', 'ba'], 3)",
+                        "(['aa', 'bc', 'bb'], 5)",
+                        "(['bd', 'dc'], 3)",
+                        "(['ca', 'cb', 'bb', 'ba'], 6)",
+                        "(['ac', 'dd', 'ba', 'db'], 5)",
+                        "(['ac', 'ca', 'bd'], 5)",
+                        "(['da', 'ba', 'bb'], 5)",
+                        "(['dd', 'ab'], 4)",
+                        "(['cb', 'da'], 4)",
+                        "(['ad', 'bc', 'ba', 'da'], 6)",
+                        "(['bd', 'da', 'cc', 'ad'], 6)",
+                        "(['aa', 'ab', 'ac', 'ad', 'ba', 'bb', 'bc', 'bd', 'ca', 'cb', 'cc', 'cd'], 15)"
+                    ]
+                },
+                "body": "        result = run_shortest_superstring(Solution, words)\n        assert all(w in result for w in words)\n        assert_shortest_superstring(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_superstring, assert_shortest_superstring\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwords = ['alex', 'loves', 'leetcode']\nexpected = 17",
+    "playground_run": "result = run_shortest_superstring(Solution, words)\nresult",
+    "playground_assert": "assert_shortest_superstring(result, expected)"
+}

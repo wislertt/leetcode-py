@@ -1,0 +1,98 @@
+{
+    "problem_name": "maximize_distance_to_closest_person",
+    "solution_class_name": "Solution",
+    "problem_number": "849",
+    "problem_title": "Maximize Distance to Closest Person",
+    "difficulty": "Medium",
+    "topics": "Array",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array representing a row of `seats` where `seats[i] = 1` represents a person sitting in the `i<sup>th</sup>` seat, and `seats[i] = 0` represents that the `i<sup>th</sup>` seat is empty **(0-indexed)**.\n\nThere is at least one empty seat, and at least one person sitting.\n\nAlex wants to sit in the seat such that the distance between him and the closest person to him is maximized.\n\nReturn *that maximum distance to the closest person*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/10/distance.jpg)\n\n```\nInput: seats = [1,0,0,0,1,0,1]\nOutput: 2\nExplanation:\nIf Alex sits in the second open seat (i.e. seats[2]), then the closest person has distance 2.\nIf Alex sits in any other open seat, the closest person has distance 1.\nThus, the maximum distance to the closest person is 2.\n```"
+            },
+            {
+                "content": "```\nInput: seats = [1,0,0,0]\nOutput: 3\nExplanation:\nIf Alex sits in the last seat (i.e. seats[3]), the closest person is 3 seats away.\nThis is the maximum distance possible, so the answer is 3.\n```"
+            },
+            {
+                "content": "```\nInput: seats = [0,1]\nOutput: 1\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= seats.length <= 2 * 10^4\n- seats[i] is 0 or 1.\n- At least one seat is empty.\n- At least one seat is occupied.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "max_dist_to_closest",
+    "helpers_run_signature": "(solution_class: type, seats: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.max_dist_to_closest(seats)",
+    "helpers_assert_name": "max_dist_to_closest",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_max_dist_to_closest, run_max_dist_to_closest\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MaximizeDistanceToClosestPerson",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "max_dist_to_closest",
+                "signature": "(self, seats: list[int]) -> int",
+                "body": "        # TODO: Implement max_dist_to_closest\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_max_dist_to_closest",
+                "signature": "(self, seats: list[int], expected: int)",
+                "parametrize": "seats, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 0, 0, 1, 0, 1], 2)",
+                        "([1, 0, 0, 0], 3)",
+                        "([0, 1], 1)",
+                        "([1, 0], 1)",
+                        "([0, 0, 1], 2)",
+                        "([1, 0, 0, 0, 0], 4)",
+                        "([1, 0, 1], 1)",
+                        "([1, 0, 0, 1], 1)",
+                        "([1, 0, 0, 0, 1], 2)",
+                        "([0, 1, 0, 0, 0, 1], 2)",
+                        "([1, 1, 1, 1, 0], 1)",
+                        "([0, 1, 1, 1, 1], 1)",
+                        "([1, 0, 1, 0, 1], 1)",
+                        "([0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 5)",
+                        "([1, 0, 0, 1, 0, 0, 0, 1], 2)",
+                        "([1, 1, 0, 0, 0, 0, 1, 0, 0], 2)",
+                        "([0, 0, 1, 1, 1, 0], 2)",
+                        "([1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0], 1)",
+                        "([0, 1, 1, 0, 0, 0, 1, 0], 2)",
+                        "([0, 1, 0, 0, 0, 0, 0, 1], 3)"
+                    ]
+                },
+                "body": "        result = run_max_dist_to_closest(Solution, seats)\n        assert_max_dist_to_closest(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_max_dist_to_closest, assert_max_dist_to_closest\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nseats = [1, 0, 0, 0, 1, 0, 1]\nexpected = 2",
+    "playground_run": "result = run_max_dist_to_closest(Solution, seats)\nresult",
+    "playground_assert": "assert_max_dist_to_closest(result, expected)"
+}

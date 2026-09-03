@@ -1,0 +1,97 @@
+{
+    "problem_name": "triples_with_bitwise_and_equal_to_zero",
+    "solution_class_name": "Solution",
+    "problem_number": "982",
+    "problem_title": "Triples with Bitwise AND Equal To Zero",
+    "difficulty": "Hard",
+    "topics": "Array, Hash Table, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `nums`, return *the number of **AND triples***.\n\nAn **AND triple** is a triple of indices `(i, j, k)` such that:\n\n- `0 <= i < nums.length`\n- `0 <= j < nums.length`\n- `0 <= k < nums.length`\n- `nums[i] & nums[j] & nums[k] == 0`, where `&` represents the bitwise-AND operator.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [2,1,3]\nOutput: 12\nExplanation: We could choose the following i, j, k triples:\n(i=0, j=0, k=1) : 2 & 2 & 1\n(i=0, j=1, k=0) : 2 & 1 & 2\n(i=0, j=1, k=1) : 2 & 1 & 1\n(i=0, j=1, k=2) : 2 & 1 & 3\n(i=0, j=2, k=1) : 2 & 3 & 1\n(i=1, j=0, k=0) : 1 & 2 & 2\n(i=1, j=0, k=1) : 1 & 2 & 1\n(i=1, j=0, k=2) : 1 & 2 & 3\n(i=1, j=1, k=0) : 1 & 1 & 2\n(i=1, j=2, k=0) : 1 & 3 & 2\n(i=2, j=0, k=1) : 3 & 2 & 1\n(i=2, j=1, k=0) : 3 & 1 & 2\n```"
+            },
+            {
+                "content": "```\nInput: nums = [0,0,0]\nOutput: 27\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 1000`\n- `0 <= nums[i] < 2^16`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "count_triplets",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.count_triplets(nums)",
+    "helpers_assert_name": "count_triplets",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_count_triplets, run_count_triplets\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TriplesWithBitwiseAndEqualToZero",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "count_triplets",
+                "signature": "(self, nums: list[int]) -> int",
+                "body": "        # TODO: Implement count_triplets\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_count_triplets",
+                "signature": "(self, nums: list[int], expected: int)",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 3], 12)",
+                        "([0, 0, 0], 27)",
+                        "([0], 1)",
+                        "([1], 0)",
+                        "([65535], 0)",
+                        "([1, 2], 6)",
+                        "([0, 1], 7)",
+                        "([65535, 65535, 65535], 0)",
+                        "([3, 5], 0)",
+                        "([1, 1, 1], 0)",
+                        "([2, 2, 2], 0)",
+                        "([1, 2, 4], 24)",
+                        "([7, 7, 0], 19)",
+                        "([1, 3, 7, 0], 37)",
+                        "([5, 10, 20, 40], 48)",
+                        "([15, 0, 15], 19)",
+                        "([81, 371, 553, 265, 864], 18)",
+                        "([529, 831, 305, 1012, 669, 183, 571, 117, 375], 0)",
+                        "([148, 550, 34, 181, 533, 171], 72)",
+                        "([455, 136, 541, 249, 929, 23, 694], 60)",
+                        "([855, 548, 264, 88, 488, 224, 330], 138)",
+                        "([103, 370, 413, 638, 624], 12)"
+                    ]
+                },
+                "body": "        result = run_count_triplets(Solution, nums)\n        assert_count_triplets(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_count_triplets, assert_count_triplets\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [2, 1, 3]\nexpected = 12",
+    "playground_run": "result = run_count_triplets(Solution, nums)\nresult",
+    "playground_assert": "assert_count_triplets(result, expected)"
+}

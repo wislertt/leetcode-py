@@ -1,0 +1,95 @@
+{
+    "problem_name": "advantage_shuffle",
+    "solution_class_name": "Solution",
+    "problem_number": "870",
+    "problem_title": "Advantage Shuffle",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Greedy, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given two integer arrays `nums1` and `nums2` both of the same length. The **advantage** of `nums1` with respect to `nums2` is the number of indices `i` for which `nums1[i] > nums2[i]`.\n\nReturn _any_ permutation of `nums1` that maximizes its **advantage** with respect to `nums2`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums1 = [2,7,11,15], nums2 = [1,10,4,11]\nOutput: [2,11,7,15]\n```"
+            },
+            {
+                "content": "```\nInput: nums1 = [12,24,8,32], nums2 = [13,25,32,11]\nOutput: [24,32,8,12]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums1.length <= 10^5`\n- `nums2.length == nums1.length`\n- `0 <= nums1[i], nums2[i] <= 10^9`",
+    "readme_additional": "**Note:** Multiple permutations can achieve the maximum advantage, so any valid one is accepted. The tests assert that the result is a permutation of `nums1` that reaches the maximum possible advantage count.",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "advantage_count",
+    "helpers_run_signature": "(solution_class: type, nums1: list[int], nums2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    permutation = implementation.advantage_count(nums1, nums2)\n    return permutation, nums1, nums2",
+    "helpers_assert_name": "advantage_count",
+    "helpers_assert_signature": "(result: tuple[list[int], list[int], list[int]], expected: int) -> bool",
+    "helpers_assert_body": "    permutation, nums1, nums2 = result\n    assert sorted(permutation) == sorted(nums1)\n    gained = sum(p > q for p, q in zip(permutation, nums2, strict=True))\n    assert gained == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_advantage_count, run_advantage_count\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AdvantageShuffle",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "advantage_count",
+                "signature": "(self, nums1: list[int], nums2: list[int]) -> list[int]",
+                "body": "        # TODO: Implement advantage_count\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_advantage_count",
+                "signature": "(self, nums1: list[int], nums2: list[int], expected: int)",
+                "parametrize": "nums1, nums2, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 7, 11, 15], [1, 10, 4, 11], 4)",
+                        "([12, 24, 8, 32], [13, 25, 32, 11], 3)",
+                        "([1, 2, 3, 4], [1, 2, 3, 4], 3)",
+                        "([1], [1], 0)",
+                        "([5], [1], 1)",
+                        "([0, 0, 0], [0, 0, 0], 0)",
+                        "([2, 0, 4, 1, 2], [1, 3, 0, 0, 2], 4)",
+                        "([9, 1, 6, 3], [2, 2, 2, 2], 3)",
+                        "([1, 3, 5, 7], [2, 4, 6, 8], 3)",
+                        "([1000000000, 0], [0, 1000000000], 1)",
+                        "([7, 7, 7, 7], [7, 7, 7, 7], 0)",
+                        "([4, 11, 10, 1], [1, 10, 11, 4], 3)",
+                        "([2, 7], [8, 9], 0)",
+                        "([5, 5, 5], [1, 2, 3], 3)",
+                        "([3, 1, 2], [4, 1, 1], 2)",
+                        "([14, 14], [1, 11], 2)",
+                        "([19, 10, 12], [7, 19, 14], 2)",
+                        "([15, 20], [12, 15], 2)",
+                        "([17], [11], 1)",
+                        "([14, 2, 3, 6, 16, 19], [6, 4, 12, 12, 20, 18], 4)"
+                    ]
+                },
+                "body": "        result = run_advantage_count(Solution, nums1, nums2)\n        assert_advantage_count(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_advantage_count, assert_advantage_count\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums1 = [2, 7, 11, 15]\nnums2 = [1, 10, 4, 11]\nexpected = 4",
+    "playground_run": "result = run_advantage_count(Solution, nums1, nums2)\nprint(result)\nresult",
+    "playground_assert": "assert_advantage_count(result, expected)"
+}

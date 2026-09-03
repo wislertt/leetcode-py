@@ -1,0 +1,98 @@
+{
+    "problem_name": "bulb_switcher_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "672",
+    "problem_title": "Bulb Switcher II",
+    "difficulty": "Medium",
+    "topics": "Math, Bit Manipulation, Depth-First Search, Breadth-First Search",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a room with `n` bulbs labeled from `1` to `n` that all are turned on initially, and **four buttons** on the wall. Each of the four buttons has a different functionality where:\n\n- **Button 1:** Flips the status of all the bulbs.\n- **Button 2:** Flips the status of all the bulbs with even labels (i.e., `2, 4, ...`).\n- **Button 3:** Flips the status of all the bulbs with odd labels (i.e., `1, 3, ...`).\n- **Button 4:** Flips the status of all the bulbs with a label `j = 3k + 1` where `k = 0, 1, 2, ...` (i.e., `1, 4, 7, 10, ...`).\n\nYou must make **exactly** `presses` button presses in total. For each press, you may pick **any** of the four buttons to press.\n\nGiven the two integers `n` and `presses`, return the number of different possible statuses after performing all `presses` button presses.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1, presses = 1\nOutput: 2\nExplanation: Status can be:\n- [off] by pressing button 1\n- [on] by pressing button 2\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, presses = 1\nOutput: 3\nExplanation: Status can be:\n- [off, off] by pressing button 1\n- [on, off] by pressing button 2\n- [off, on] by pressing button 3\n```"
+            },
+            {
+                "content": "```\nInput: n = 3, presses = 1\nOutput: 4\nExplanation: Status can be:\n- [off, off, off] by pressing button 1\n- [on, off, on] by pressing button 2\n- [off, on, off] by pressing button 3\n- [off, on, on] by pressing button 4\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 1000\n- 0 <= presses <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "flip_lights",
+    "helpers_run_signature": "(solution_class: type, n: int, presses: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.flip_lights(n, presses)",
+    "helpers_assert_name": "flip_lights",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flip_lights, run_flip_lights\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BulbSwitcherII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "flip_lights",
+                "signature": "(self, n: int, presses: int) -> int",
+                "body": "        # TODO: Implement flip_lights\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flip_lights",
+                "signature": "(self, n: int, presses: int, expected: int)",
+                "parametrize": "n, presses, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1, 2)",
+                        "(2, 1, 3)",
+                        "(3, 1, 4)",
+                        "(1, 0, 1)",
+                        "(1, 2, 2)",
+                        "(2, 2, 4)",
+                        "(2, 3, 4)",
+                        "(3, 2, 7)",
+                        "(3, 3, 8)",
+                        "(4, 0, 1)",
+                        "(4, 1, 4)",
+                        "(4, 2, 7)",
+                        "(6, 3, 8)",
+                        "(7, 4, 8)",
+                        "(10, 5, 8)",
+                        "(1, 1000, 2)",
+                        "(2, 1000, 4)",
+                        "(999, 999, 8)",
+                        "(1000, 0, 1)",
+                        "(1000, 1, 4)"
+                    ]
+                },
+                "body": "        result = run_flip_lights(Solution, n, presses)\n        assert_flip_lights(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flip_lights, assert_flip_lights\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 1\npresses = 1\nexpected = 2",
+    "playground_run": "result = run_flip_lights(Solution, n, presses)\nresult",
+    "playground_assert": "assert_flip_lights(result, expected)"
+}

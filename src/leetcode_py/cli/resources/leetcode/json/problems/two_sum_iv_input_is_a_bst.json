@@ -1,0 +1,103 @@
+{
+    "problem_name": "two_sum_iv_input_is_a_bst",
+    "solution_class_name": "Solution",
+    "problem_number": "653",
+    "problem_title": "Two Sum IV - Input is a BST",
+    "difficulty": "Easy",
+    "topics": "Hash Table, Two Pointers, Tree, Depth-First Search, Breadth-First Search, Binary Search Tree, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "<p>Given the <code>root</code> of a binary search tree and an integer <code>k</code>, return <code>true</code> <em>if there exist two elements in the BST such that their sum is equal to</em> <code>k</code>, <em>or</em> <code>false</code> <em>otherwise</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/09/21/sum_tree_1.jpg)\n\n```\nInput: root = [5,3,6,2,4,null,7], k = 9\nOutput: true\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/09/21/sum_tree_2.jpg)\n\n```\nInput: root = [5,3,6,2,4,null,7], k = 28\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 10^4]</code>.</li>\n\t<li><code>-10^4 &lt;= Node.val &lt;= 10^4</code></li>\n\t<li><code>root</code> is guaranteed to be a <strong>valid</strong> binary search tree.</li>\n\t<li><code>-10^5 &lt;= k &lt;= 10^5</code></li>\n</ul>",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "find_target",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None], k: int)",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.find_target(root, k)",
+    "helpers_assert_name": "find_target",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_target, run_find_target\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TwoSumIVInputIsABST",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_target",
+                "signature": "(self, root: TreeNode[int] | None, k: int) -> bool",
+                "body": "        # TODO: Implement find_target\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_target",
+                "signature": "(self, root_list: list[int | None], k: int, expected: bool)",
+                "parametrize": "root_list, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 3, 6, 2, 4, None, 7], 9, True)",
+                        "([5, 3, 6, 2, 4, None, 7], 28, False)",
+                        "([1], 2, False)",
+                        "([1], 1, False)",
+                        "([1], 100000, False)",
+                        "([1], -100000, False)",
+                        "([-5, -10, 3, None, None, -2, 4], -15, True)",
+                        "([-5, -10, 3, None, None, -2, 4], -12, True)",
+                        "([-5, -10, 3, None, None, -2, 4], 100, False)",
+                        "([2, 1, 3], 4, True)",
+                        "([2, 1, 3], 3, True)",
+                        "([2, 1, 3], 2, False)",
+                        "([1, None, 2, None, 3, None, 4, None, 5, None, 6, None, 7], 13, True)",
+                        "([1, None, 2, None, 3, None, 4, None, 5, None, 6, None, 7], 1, False)",
+                        "([0, -1, None, -2, None, -3, None, -4], -7, True)",
+                        "([0, -1, None, -2, None, -3, None, -4], 0, False)",
+                        "([34, -19, None, None, 23, -5, None, None, 16, 8, 18], 52, True)",
+                        "([17, -25, 24, None, -10, None, 26], 16, True)",
+                        "([-28, None, 24, -14, None, -26, 9], 34, False)",
+                        "([31, -6, None, -28, None, -32, -7, -38], 90, False)",
+                        "([31, -17, None, None, -12, None, 20, None, 28], 48, True)",
+                        "([-25, None, -11, None, 7, -2, 10], 6, False)",
+                        "([27, 24, None, -23, 26], 0, False)",
+                        "([-23, -38, 21, None, None, 19, 32, 16, None, None, None, 1], -7, True)",
+                        "([-24, -30, -13, None, None, -21, 36], 12, True)",
+                        "([9000, -10000, 10000, None, -5000, 9500], -15000, True)",
+                        "([9000, -10000, 10000, None, -5000, 9500], 19000, True)",
+                        "([9000, -10000, 10000, None, -5000, 9500], 0, True)"
+                    ]
+                },
+                "body": "        result = run_find_target(Solution, root_list, k)\n        assert_find_target(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_target, assert_find_target\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [5, 3, 6, 2, 4, None, 7]\nk = 9\nexpected = True",
+    "playground_run": "result = run_find_target(Solution, root_list, k)\nresult",
+    "playground_assert": "assert_find_target(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "guess_the_word",
+    "solution_class_name": "Solution",
+    "problem_number": "843",
+    "problem_title": "Guess the Word",
+    "difficulty": "Hard",
+    "topics": "Array, Math, String, Minimax, Interactive, Game Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of unique strings `words` where `words[i]` is six letters long. One word of `words` was chosen as a secret word.\n\nYou are also given the helper object `Master`. You may call `Master.guess(word)` where `word` is a six-letter-long string, and it must be from `words`. `Master.guess(word)` returns:\n\n- `-1` if `word` is not from `words`, or\n- an integer representing the number of exact matches (value and position) of your guess to the secret word.\n\nThere is a parameter `allowedGuesses` for each test case where `allowedGuesses` is the maximum number of times you can call `Master.guess(word)`.\n\nFor each test case, you should call `Master.guess` with the secret word without exceeding the maximum number of allowed guesses. You will get:\n\n- `\"Either you took too many guesses, or you did not find the secret word.\"` if you called `Master.guess` more than `allowedGuesses` times or if you did not call `Master.guess` with the secret word, or\n- `\"You guessed the secret word correctly.\"` if you called `Master.guess` with the secret word with the number of calls to `Master.guess` less than or equal to `allowedGuesses`.\n\nThe test cases are generated such that you can guess the secret word with a reasonable strategy (other than using the bruteforce method).",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: secret = \"acckzz\", words = [\"acckzz\",\"ccbazz\",\"eiowzz\",\"abcczz\"], allowedGuesses = 10\nOutput: You guessed the secret word correctly.\nExplanation:\nmaster.guess(\"aaaaaa\") returns -1, because \"aaaaaa\" is not in words.\nmaster.guess(\"acckzz\") returns 6, because \"acckzz\" is secret and has all 6 matches.\nmaster.guess(\"ccbazz\") returns 3, because \"ccbazz\" has 3 matches.\nmaster.guess(\"eiowzz\") returns 2, because \"eiowzz\" has 2 matches.\nmaster.guess(\"abcczz\") returns 4, because \"abcczz\" has 4 matches.\nWe made 5 calls to master.guess, and one of them was the secret, so we pass the test case.\n```"
+            },
+            {
+                "content": "```\nInput: secret = \"hamada\", words = [\"hamada\",\"khaled\"], allowedGuesses = 10\nOutput: You guessed the secret word correctly.\nExplanation: Since there are two words, you can guess both.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= words.length <= 100`\n- `words[i].length == 6`\n- `words[i]` consist of lowercase English letters.\n- All the strings of `words` are **unique**.\n- `secret` exists in `words`.\n- `10 <= allowedGuesses <= 30`",
+    "readme_additional": "**Follow up:** What is the minimum number of guesses needed to guarantee finding the secret word?",
+    "helpers_imports": "from .solution import Master",
+    "helpers_content": "",
+    "helpers_run_name": "find_secret_word",
+    "helpers_run_signature": "(solution_class: type, secret: str, words: list[str], allowed_guesses: int)",
+    "helpers_run_body": "    master = Master(secret, words, allowed_guesses)\n    solution_class().find_secret_word(words, master)\n    return master.outcome()",
+    "helpers_assert_name": "find_secret_word",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result is expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "class Master:\n    # Test-harness API: backs the guess interface with the hidden secret word\n    def __init__(self, secret: str, words: list[str], allowed_guesses: int) -> None:\n        self.secret = secret\n        self.wordset = set(words)\n        self.allowed_guesses = allowed_guesses\n        self.calls = 0\n        self.found = False\n\n    def guess(self, word: str) -> int:\n        self.calls += 1\n        if word not in self.wordset:\n            return -1\n        matches = sum(a == b for a, b in zip(word, self.secret, strict=True))\n        if matches == len(self.secret):\n            self.found = True\n        return matches\n\n    def outcome(self) -> bool:\n        return self.found and self.calls <= self.allowed_guesses\n",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_secret_word, run_find_secret_word\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "GuessTheWord",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_secret_word",
+                "signature": "(self, words: list[str], master: Master) -> None",
+                "body": "        # TODO: Implement find_secret_word\n        return None"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_secret_word",
+                "signature": "(self, secret: str, words: list[str], allowed_guesses: int, expected: bool)",
+                "parametrize": "secret, words, allowed_guesses, expected",
+                "test_cases": {
+                    "list": [
+                        "('acckzz', ['acckzz', 'ccbazz', 'eiowzz', 'abcczz'], 10, True)",
+                        "('hamada', ['hamada', 'khaled'], 10, True)",
+                        "('aabbaa', ['aabbaa', 'aabbab', 'abbaaa', 'baabaa', 'aaaaab'], 10, True)",
+                        "('zzzxxx', ['zzzxxx', 'xxxyyy', 'yyyzzz', 'zxyxzy', 'zxxyyz'], 10, True)",
+                        "('monkey', ['monkey', 'donkey', 'moneyy', 'honkey', 'monies'], 30, True)",
+                        "('banana', ['banana', 'bandan', 'banena', 'nanaba', 'ananab'], 15, True)",
+                        "('zzzzzz', ['zzzzzz', 'zzzzyz', 'zzzyzz', 'zzyzzz', 'zyzzzz', 'yzzzzz'], 10, True)",
+                        "('status', ['status', 'stains', 'straps', 'stairs', 'starts'], 12, True)",
+                        "('eaoeea', ['aouuie', 'oiioee', 'eaoeea', 'ioooiu', 'iuiaae', 'oaoiuu'], 30, True)",
+                        "('aaaabb', ['aaaabb', 'bbbaab', 'aaabab', 'aabbba', 'aaabaa', 'aaaaba'], 28, True)",
+                        "('oiiiau', ['eauiea', 'eouuii', 'oiiiau'], 13, True)",
+                        "('dcedbb', ['eccbea', 'cedbae', 'dcedbb', 'bcaadb', 'bcdbbd'], 19, True)",
+                        "('bbabbb', ['cbcada', 'bbabbb'], 28, True)",
+                        "('auoeeu', ['auoeeu', 'iuieia'], 11, True)",
+                        "('ddedec', ['cedgee', 'eefcfg', 'ccfggf', 'ddedec'], 18, True)",
+                        "('ecggdd', ['ggdgcg', 'gecccf', 'gdcggd', 'ddddgc', 'eegfcf', 'ecggdd'], 25, True)",
+                        "('baabba', ['bddaab', 'dbaadc', 'baabba', 'bdaacc'], 14, True)",
+                        "('dcdece', ['ecbeca', 'bdeacb', 'dcdece', 'bcbbca', 'becedc', 'ebacba'], 23, True)",
+                        "('dcbaaa', ['dcbaba', 'aaebdc', 'dcbaaa'], 28, True)",
+                        "('ioaeio', ['uauaai', 'ioaeio'], 24, True)"
+                    ]
+                },
+                "body": "        result = run_find_secret_word(Solution, secret, words, allowed_guesses)\n        assert_find_secret_word(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import assert_find_secret_word, run_find_secret_word\nfrom solution import Master, Solution",
+    "playground_setup": "# Example test case\nsecret = 'acckzz'\nwords = ['acckzz', 'ccbazz', 'eiowzz', 'abcczz']\nallowed_guesses = 10\nexpected = True",
+    "playground_run": "result = run_find_secret_word(Solution, secret, words, allowed_guesses)\nresult",
+    "playground_assert": "assert_find_secret_word(result, expected)"
+}

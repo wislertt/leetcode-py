@@ -1,0 +1,91 @@
+{
+    "problem_name": "string_without_aaa_or_bbb",
+    "solution_class_name": "Solution",
+    "problem_number": "984",
+    "problem_title": "String Without AAA or BBB",
+    "difficulty": "Medium",
+    "topics": "String, Greedy",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two integers `a` and `b`, return **any** string `s` such that:\n\n- `s` has length `a + b` and contains exactly `a` `'a'` letters, and exactly `b` `'b'` letters,\n- The substring `'aaa'` does not occur in `s`, and\n- The substring `'bbb'` does not occur in `s`.\n",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: a = 1, b = 2\nOutput: \"abb\"\nExplanation: \"abb\", \"bab\" and \"bba\" are all correct answers.\n```"
+            },
+            {
+                "content": "```\nInput: a = 4, b = 1\nOutput: \"aabaa\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `0 <= a, b <= 100`\n- It is guaranteed such an `s` exists for the given `a` and `b`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "str_without3a3b",
+    "helpers_run_signature": "(solution_class: type, a: int, b: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.str_without3a3b(a, b)",
+    "helpers_assert_name": "str_without3a3b",
+    "helpers_assert_signature": "(result: str, expected: int) -> bool",
+    "helpers_assert_body": "    # Any valid string is accepted; expected is the required length a + b\n    assert len(result) == expected\n    assert 'aaa' not in result\n    assert 'bbb' not in result\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_str_without3a3b, run_str_without3a3b\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "StringWithoutAAAOrBBB",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "str_without3a3b",
+                "signature": "(self, a: int, b: int) -> str",
+                "body": "        # TODO: Implement str_without3a3b\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_str_without3a3b",
+                "signature": "(self, a: int, b: int, expected: int)",
+                "parametrize": "a, b, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 2, 3)",
+                        "(4, 1, 5)",
+                        "(1, 1, 2)",
+                        "(0, 1, 1)",
+                        "(1, 0, 1)",
+                        "(0, 0, 0)",
+                        "(2, 2, 4)",
+                        "(3, 3, 6)",
+                        "(5, 3, 8)",
+                        "(7, 4, 11)",
+                        "(0, 2, 2)",
+                        "(2, 0, 2)",
+                        "(100, 100, 200)",
+                        "(100, 50, 150)",
+                        "(100, 51, 151)",
+                        "(99, 49, 148)"
+                    ]
+                },
+                "body": "        result = run_str_without3a3b(Solution, a, b)\n        assert_str_without3a3b(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_str_without3a3b, assert_str_without3a3b\nfrom solution import Solution",
+    "playground_setup": "# Example test case\na = 1\nb = 2\nexpected = 3",
+    "playground_run": "result = run_str_without3a3b(Solution, a, b)\nresult",
+    "playground_assert": "assert_str_without3a3b(result, expected)"
+}

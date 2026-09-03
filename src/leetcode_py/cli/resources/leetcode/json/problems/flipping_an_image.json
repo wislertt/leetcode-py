@@ -1,0 +1,92 @@
+{
+    "problem_name": "flipping_an_image",
+    "solution_class_name": "Solution",
+    "problem_number": "832",
+    "problem_title": "Flipping an Image",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Bit Manipulation, Matrix, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an `n x n` binary matrix `image`, flip the image **horizontally**, then invert it, and return *the resulting image*.\n\nTo flip an image horizontally means that each row of the image is reversed.\n\n- For example, flipping `[1,1,0]` horizontally results in `[0,1,1]`.\n\nTo invert an image means that each `0` is replaced by `1`, and each `1` is replaced by `0`.\n\n- For example, inverting `[0,1,1]` results in `[1,0,0]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: image = [[1,1,0],[1,0,1],[0,0,0]]\nOutput: [[1,0,0],[0,1,0],[1,1,1]]\nExplanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].\nThen, invert the image: [[1,0,0],[0,1,0],[1,1,1]]\n```"
+            },
+            {
+                "content": "```\nInput: image = [[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]\nOutput: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]\nExplanation: First reverse each row: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]].\nThen invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `n == image.length`\n- `n == image[i].length`\n- `1 <= n <= 20`\n- `images[i][j]` is either `0` or `1`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "flip_and_invert_image",
+    "helpers_run_signature": "(solution_class: type, image: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.flip_and_invert_image(image)",
+    "helpers_assert_name": "flip_and_invert_image",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_flip_and_invert_image, run_flip_and_invert_image\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FlippingAnImage",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "flip_and_invert_image",
+                "signature": "(self, image: list[list[int]]) -> list[list[int]]",
+                "body": "        # TODO: Implement flip_and_invert_image\n        return [[]]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_flip_and_invert_image",
+                "signature": "(self, image: list[list[int]], expected: list[list[int]])",
+                "parametrize": "image, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 1, 0], [1, 0, 1], [0, 0, 0]], [[1, 0, 0], [0, 1, 0], [1, 1, 1]])",
+                        "([[0]], [[1]])",
+                        "([[1]], [[0]])",
+                        "([[0, 0], [0, 0]], [[1, 1], [1, 1]])",
+                        "([[1, 1], [1, 1]], [[0, 0], [0, 0]])",
+                        "([[0, 1], [1, 0]], [[0, 1], [1, 0]])",
+                        "([[0, 1], [1, 1]], [[0, 1], [0, 0]])",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]])",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], [[0, 0, 0], [0, 0, 0], [0, 0, 0]])",
+                        "([[1, 0, 1], [0, 1, 0], [1, 0, 1]], [[0, 1, 0], [1, 0, 1], [0, 1, 0]])",
+                        "([[1, 1, 0], [0, 1, 1], [1, 0, 0]], [[1, 0, 0], [0, 0, 1], [1, 1, 0]])",
+                        "([[0, 1, 1], [1, 0, 0], [0, 1, 0]], [[0, 0, 1], [1, 1, 0], [1, 0, 1]])",
+                        "([[1, 0, 0], [0, 1, 0], [0, 0, 1]], [[1, 1, 0], [1, 0, 1], [0, 1, 1]])",
+                        "([[1, 0, 1], [1, 0, 0], [1, 1, 0]], [[0, 1, 0], [1, 1, 0], [1, 0, 0]])",
+                        "([[1, 0, 1], [0, 0, 1], [1, 0, 0]], [[0, 1, 0], [0, 1, 1], [1, 1, 0]])",
+                        "([[0, 1, 1], [0, 0, 0], [0, 1, 0]], [[0, 0, 1], [1, 1, 1], [1, 0, 1]])",
+                        "([[1, 1, 0], [1, 1, 0], [0, 1, 0]], [[1, 0, 0], [1, 0, 0], [1, 0, 1]])"
+                    ]
+                },
+                "body": "        result = run_flip_and_invert_image(Solution, image)\n        assert_flip_and_invert_image(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_flip_and_invert_image, assert_flip_and_invert_image\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nimage = [[1, 1, 0], [1, 0, 1], [0, 0, 0]]\nexpected = [[1, 0, 0], [0, 1, 0], [1, 1, 1]]",
+    "playground_run": "result = run_flip_and_invert_image(Solution, image)\nresult",
+    "playground_assert": "assert_flip_and_invert_image(result, expected)"
+}

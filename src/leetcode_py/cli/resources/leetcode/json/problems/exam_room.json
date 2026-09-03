@@ -1,0 +1,98 @@
+{
+    "problem_name": "exam_room",
+    "solution_class_name": "ExamRoom",
+    "problem_number": "855",
+    "problem_title": "Exam Room",
+    "difficulty": "Medium",
+    "topics": "Design, Heap (Priority Queue), Ordered Set",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is an exam room with `n` seats in a single row labeled from `0` to `n - 1`.\n\nWhen a student enters the room, they must sit in the seat that maximizes the distance to the closest person. If there are multiple such seats, they sit in the seat with the lowest number. If no one is in the room, then the student sits at seat number `0`.\n\nDesign a class that simulates the mentioned exam room.\n\nImplement the `ExamRoom` class:\n\n- `ExamRoom(int n)` Initializes the object of the exam room with the number of the seats `n`.\n- `int seat()` Returns the label of the seat at which the next student will sit.\n- `void leave(int p)` Indicates that the student sitting at seat `p` will leave the room. It is guaranteed that there will be a student sitting at seat `p`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput\n[\"ExamRoom\", \"seat\", \"seat\", \"seat\", \"seat\", \"leave\", \"seat\"]\n[[10], [], [], [], [], [4], []]\nOutput\n[null, 0, 9, 4, 2, null, 5]\n\nExplanation\nExamRoom examRoom = new ExamRoom(10);\nexamRoom.seat(); // return 0, no one is in the room, then the student sits at seat number 0.\nexamRoom.seat(); // return 9, the student sits at the last seat number 9.\nexamRoom.seat(); // return 4, the student sits at the last seat number 4.\nexamRoom.seat(); // return 2, the student sits at the last seat number 2.\nexamRoom.leave(4);\nexamRoom.seat(); // return 5, the student sits at the last seat number 5.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 10^9`\n- It is guaranteed that there is a student sitting at seat `p`.\n- At most `10^4` calls will be made to `seat` and `leave`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "exam_room",
+    "helpers_run_signature": "(solution_class: type, operations: list[str], inputs: list[list[int]])",
+    "helpers_run_body": "    room = None\n    results: list[int | None] = []\n    for i, op in enumerate(operations):\n        if op == 'ExamRoom':\n            room = solution_class(inputs[i][0])\n            results.append(None)\n        elif op == 'seat' and room is not None:\n            results.append(room.seat())\n        elif op == 'leave' and room is not None:\n            room.leave(inputs[i][0])\n            results.append(None)\n    return results, room",
+    "helpers_assert_name": "exam_room",
+    "helpers_assert_signature": "(result: list[int | None], expected: list[int | None]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_exam_room, run_exam_room\nfrom .solution import ExamRoom",
+    "test_content": "",
+    "test_class_name": "ExamRoom",
+    "test_class_content": "",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "__init__",
+                "signature": "(self, n: int) -> None",
+                "body": "        # TODO: Initialize exam room\n        pass"
+            },
+            {
+                "name": "seat",
+                "signature": "(self) -> int",
+                "body": "        # TODO: Implement seat\n        return 0"
+            },
+            {
+                "name": "leave",
+                "signature": "(self, p: int) -> None",
+                "body": "        # TODO: Implement leave\n        pass"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": []
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_exam_room",
+                "signature": "(self, operations: list[str], inputs: list[list[int]], expected: list[int | None])",
+                "parametrize": "operations, inputs, expected",
+                "test_cases": {
+                    "list": [
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'seat', 'leave', 'seat'], [[10], [], [], [], [], [4], []], [None, 0, 9, 4, 2, None, 5])",
+                        "(['ExamRoom', 'seat'], [[1], []], [None, 0])",
+                        "(['ExamRoom', 'seat', 'leave', 'seat'], [[1], [], [0], []], [None, 0, None, 0])",
+                        "(['ExamRoom', 'seat', 'seat', 'leave', 'seat'], [[2], [], [], [0], []], [None, 0, 1, None, 0])",
+                        "(['ExamRoom', 'seat', 'seat', 'leave', 'seat'], [[2], [], [], [1], []], [None, 0, 1, None, 1])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat'], [[3], [], [], []], [None, 0, 2, 1])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'seat'], [[4], [], [], [], []], [None, 0, 3, 1, 2])",
+                        "(['ExamRoom', 'seat', 'seat', 'leave', 'seat'], [[4], [], [], [0], []], [None, 0, 3, None, 0])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'seat'], [[5], [], [], [], [0], []], [None, 0, 4, 2, None, 0])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'seat'], [[5], [], [], [], [4], []], [None, 0, 4, 2, None, 4])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'seat', 'leave', 'seat'], [[10], [], [], [], [4], [], [0], []], [None, 0, 9, 4, None, 4, None, 0])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'seat', 'seat'], [[10], [], [], [], [9], [], []], [None, 0, 9, 4, None, 9, 2])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'leave', 'seat', 'seat'], [[6], [], [], [], [2], [5], [], []], [None, 0, 5, 2, None, None, 5, 2])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'seat', 'leave', 'leave', 'seat', 'seat'], [[8], [], [], [], [], [0], [7], [], []], [None, 0, 7, 3, 5, None, None, 0, 7])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'leave', 'seat'], [[1000000000], [], [], [], [499999999], []], [None, 0, 999999999, 499999999, None, 499999999])",
+                        "(['ExamRoom', 'seat', 'seat', 'leave', 'seat', 'seat', 'seat'], [[4], [], [], [0], [], [], []], [None, 0, 3, None, 0, 1, 2])",
+                        "(['ExamRoom', 'seat', 'leave', 'seat', 'seat', 'seat'], [[8], [], [0], [], [], []], [None, 0, None, 0, 7, 3])",
+                        "(['ExamRoom', 'seat', 'seat', 'leave', 'leave', 'seat'], [[12], [], [], [0], [11], []], [None, 0, 11, None, None, 0])",
+                        "(['ExamRoom', 'seat', 'leave', 'seat', 'leave', 'seat', 'leave'], [[1], [], [0], [], [0], [], [0]], [None, 0, None, 0, None, 0, None])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat', 'seat', 'leave', 'seat'], [[12], [], [], [], [], [11], []], [None, 0, 11, 5, 8, None, 11])",
+                        "(['ExamRoom', 'seat', 'seat', 'seat'], [[8], [], [], []], [None, 0, 7, 3])",
+                        "(['ExamRoom', 'seat', 'leave', 'seat', 'seat', 'seat', 'seat', 'leave'], [[7], [], [0], [], [], [], [], [1]], [None, 0, None, 0, 6, 3, 1, None])"
+                    ]
+                },
+                "body": "        result, _ = run_exam_room(ExamRoom, operations, inputs)\n        assert_exam_room(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_exam_room, assert_exam_room\nfrom solution import ExamRoom",
+    "playground_setup": "# Example test case\noperations = ['ExamRoom', 'seat', 'seat', 'seat', 'seat', 'leave', 'seat']\ninputs = [[10], [], [], [], [], [4], []]\nexpected = [None, 0, 9, 4, 2, None, 5]",
+    "playground_run": "result, room = run_exam_room(ExamRoom, operations, inputs)\nprint(result)\nroom",
+    "playground_assert": "assert_exam_room(result, expected)"
+}

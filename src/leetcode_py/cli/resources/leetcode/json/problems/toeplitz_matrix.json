@@ -1,0 +1,95 @@
+{
+    "problem_name": "toeplitz_matrix",
+    "solution_class_name": "Solution",
+    "problem_number": "766",
+    "problem_title": "Toeplitz Matrix",
+    "difficulty": "Easy",
+    "topics": "Array, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an `m x n` `matrix`, return `true` if the matrix is Toeplitz. Otherwise, return `false`.\n\nA matrix is **Toeplitz** if every diagonal from top-left to bottom-right has the same elements.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/11/04/ex1.jpg)\n\n```\nInput: matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]\nOutput: true\nExplanation:\nIn the above grid, the diagonals are:\n\"[9]\", \"[5, 5]\", \"[1, 1, 1]\", \"[2, 2, 2]\", \"[3, 3]\", \"[4]\".\nIn each diagonal all elements are the same, so the answer is True.\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/11/04/ex2.jpg)\n\n```\nInput: matrix = [[1,2],[2,2]]\nOutput: false\nExplanation:\nThe diagonal \"[1, 2]\" has different elements.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- m == matrix.length\n- n == matrix[i].length\n- 1 <= m, n <= 20\n- 0 <= matrix[i][j] <= 99",
+    "readme_additional": "**Follow up:**\n\n- What if the `matrix` is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?\n- What if the `matrix` is so large that you can only load up a partial row into the memory at once?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_toeplitz_matrix",
+    "helpers_run_signature": "(solution_class: type, matrix: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_toeplitz_matrix(matrix)",
+    "helpers_assert_name": "is_toeplitz_matrix",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_toeplitz_matrix, run_is_toeplitz_matrix\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ToeplitzMatrix",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_toeplitz_matrix",
+                "signature": "(self, matrix: list[list[int]]) -> bool",
+                "body": "        # TODO: Implement is_toeplitz_matrix\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_toeplitz_matrix",
+                "signature": "(self, matrix: list[list[int]], expected: bool)",
+                "parametrize": "matrix, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]], True)",
+                        "([[1, 2], [2, 2]], False)",
+                        "([[1]], True)",
+                        "([[0]], True)",
+                        "([[99]], True)",
+                        "([[1, 2]], True)",
+                        "([[1], [2]], True)",
+                        "([[1, 2], [1, 2]], False)",
+                        "([[1, 2], [2, 1]], True)",
+                        "([[1, 2, 3], [4, 5, 6], [7, 8, 9]], False)",
+                        "([[1, 2, 3], [4, 1, 2], [7, 4, 1]], True)",
+                        "([[1, 2, 3], [4, 1, 2], [7, 4, 2]], False)",
+                        "([[0, 0, 0], [0, 0, 0], [0, 0, 0]], True)",
+                        "([[18, 66], [84, 18]], True)",
+                        "([[90, 18], [88, 90], [42, 95]], False)",
+                        "([[36, 59, 76, 4], [26, 54, 8, 56], [54, 4, 33, 80]], False)",
+                        "([[37, 36, 11, 70], [65, 37, 43, 11], [18, 65, 37, 36]], False)",
+                        "([[31, 16], [25, 31], [60, 32], [42, 60]], False)",
+                        "([[1, 41], [9, 62], [46, 70]], False)",
+                        "([[79, 2], [15, 58], [33, 42], [94, 83]], False)"
+                    ]
+                },
+                "body": "        result = run_is_toeplitz_matrix(Solution, matrix)\n        assert_is_toeplitz_matrix(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_toeplitz_matrix, assert_is_toeplitz_matrix\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmatrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]\nexpected = True",
+    "playground_run": "result = run_is_toeplitz_matrix(Solution, matrix)\nresult",
+    "playground_assert": "assert_is_toeplitz_matrix(result, expected)"
+}

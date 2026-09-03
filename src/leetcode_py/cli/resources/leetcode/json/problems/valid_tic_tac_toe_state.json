@@ -1,0 +1,102 @@
+{
+    "problem_name": "valid_tic_tac_toe_state",
+    "solution_class_name": "Solution",
+    "problem_number": "794",
+    "problem_title": "Valid Tic-Tac-Toe State",
+    "difficulty": "Medium",
+    "topics": "Array, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a Tic-Tac-Toe board as a string array `board`, return `true` if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.\n\nThe board is a `3 x 3` array that consists of characters `' '`, `'X'`, and `'O'`. The `' '` character represents an empty square.\n\nHere are the rules of Tic-Tac-Toe:\n\n- Players take turns placing characters into empty squares `' '`.\n- The first player always places `'X'` characters, while the second player always places `'O'` characters.\n- `'X'` and `'O'` characters are always placed into empty squares, never filled ones.\n- The game ends when there are three of the same (non-empty) character filling any row, column, or diagonal.\n- The game also ends if all squares are non-empty.\n- No more moves can be played if the game is over.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/05/15/tictactoe1-grid.jpg)\n\n```\nInput: board = [\"O  \",\"   \",\"   \"]\nOutput: false\nExplanation: The first player always plays \"X\".\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/05/15/tictactoe2-grid.jpg)\n\n```\nInput: board = [\"XOX\",\" X \",\"   \"]\nOutput: false\nExplanation: Players take turns making moves.\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/05/15/tictactoe4-grid.jpg)\n\n```\nInput: board = [\"XOX\",\"O O\",\"XOX\"]\nOutput: true\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- board.length == 3\n- board[i].length == 3\n- `board[i][j]` is either `'X'`, `'O'`, or `' '`.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "valid_tic_tac_toe",
+    "helpers_run_signature": "(solution_class: type, board: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.valid_tic_tac_toe(board)",
+    "helpers_assert_name": "valid_tic_tac_toe",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_valid_tic_tac_toe, run_valid_tic_tac_toe\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ValidTicTacToeState",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "valid_tic_tac_toe",
+                "signature": "(self, board: list[str]) -> bool",
+                "body": "        # TODO: Implement valid_tic_tac_toe\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_valid_tic_tac_toe",
+                "signature": "(self, board: list[str], expected: bool)",
+                "parametrize": "board, expected",
+                "test_cases": {
+                    "list": [
+                        "(['   ', '   ', '   '], True)",
+                        "(['O  ', '   ', '   '], False)",
+                        "(['XOX', ' X ', '   '], False)",
+                        "(['XOX', 'O O', 'XOX'], True)",
+                        "(['XXX', 'OO ', '   '], True)",
+                        "(['X  ', 'X O', 'X O'], True)",
+                        "(['X  ', 'OX ', ' OX'], True)",
+                        "(['O X', ' X ', 'XO '], True)",
+                        "(['XX ', 'OOO', '  X'], True)",
+                        "(['OX ', 'OX ', 'O X'], True)",
+                        "(['OXX', 'XO ', '  O'], True)",
+                        "(['XOX', 'OXO', 'XOX'], True)",
+                        "(['XXX', 'OOO', '   '], False)",
+                        "(['XXX', 'OO ', 'O  '], False)",
+                        "(['OOO', 'XX ', 'XX '], False)",
+                        "(['XX ', 'XX ', '   '], False)",
+                        "(['XOX', 'XOX', 'X  '], False)",
+                        "(['O X', 'X O', '  X'], True)",
+                        "([' X ', '  O', 'XO '], True)",
+                        "(['X X', 'X O', 'OOX'], True)",
+                        "(['XO ', 'X X', 'XX '], False)",
+                        "(['O O', ' XX', 'O O'], False)",
+                        "(['OOO', 'X O', 'OX '], False)",
+                        "(['OOX', 'XXX', 'OX '], False)"
+                    ]
+                },
+                "body": "        result = run_valid_tic_tac_toe(Solution, board)\n        assert_valid_tic_tac_toe(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_valid_tic_tac_toe, assert_valid_tic_tac_toe\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nboard = ['XOX', 'O O', 'XOX']\nexpected = True",
+    "playground_run": "result = run_valid_tic_tac_toe(Solution, board)\nresult",
+    "playground_assert": "assert_valid_tic_tac_toe(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "projection_area_of_3d_shapes",
+    "solution_class_name": "Solution",
+    "problem_number": "883",
+    "problem_title": "Projection Area of 3D Shapes",
+    "difficulty": "Easy",
+    "topics": "Array, Math, Geometry, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an n x n grid where we place some 1 x 1 x 1 cubes that are axis-aligned with the x, y, and z axes.\n\nEach value v = grid[i][j] represents a tower of v cubes placed on top of the cell (i, j).\n\nWe view the projection of these cubes onto the xy, yz, and zx planes.\n\nA projection is like a shadow, that maps our 3-dimensional figure to a 2-dimensional plane. We are viewing the \"shadow\" when looking at the cubes from the top, the front, and the side.\n\nReturn the total area of all three projections.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/08/02/shadow.png)\n\n```\nInput: grid = [[1,2],[3,4]]\nOutput: 17\nExplanation: Here are the three projections (\"shadows\") of the shape made with each axis-aligned plane.\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[2]]\nOutput: 5\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0],[0,2]]\nOutput: 8\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- n == grid.length == grid[i].length\n- 1 <= n <= 50\n- 0 <= grid[i][j] <= 50",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "projection_area",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.projection_area(grid)",
+    "helpers_assert_name": "projection_area",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_projection_area, run_projection_area\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ProjectionAreaOf3DShapes",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "projection_area",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement projection_area\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_projection_area",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 2], [3, 4]], 17)",
+                        "([[2]], 5)",
+                        "([[1, 0], [0, 2]], 8)",
+                        "([[0]], 0)",
+                        "([[1]], 3)",
+                        "([[50]], 101)",
+                        "([[0, 0], [0, 0]], 0)",
+                        "([[1, 1, 1], [1, 1, 1], [1, 1, 1]], 15)",
+                        "([[2, 2, 2], [2, 1, 2], [2, 2, 2]], 21)",
+                        "([[1, 4, 7], [2, 5, 8], [3, 6, 9]], 51)",
+                        "([[0, 5, 3], [3, 0, 1], [0, 3, 2]], 28)",
+                        "([[5]], 11)",
+                        "([[5, 5], [1, 5]], 24)",
+                        "([[50, 0], [5, 5]], 113)",
+                        "([[5, 0], [50, 50]], 158)",
+                        "([[1, 5, 2, 2], [2, 7, 1, 50], [3, 50, 50, 5], [5, 7, 1, 0]], 282)"
+                    ]
+                },
+                "body": "        result = run_projection_area(Solution, grid)\n        assert_projection_area(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_projection_area, assert_projection_area\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 2], [3, 4]]\nexpected = 17",
+    "playground_run": "result = run_projection_area(Solution, grid)\nresult",
+    "playground_assert": "assert_projection_area(result, expected)"
+}

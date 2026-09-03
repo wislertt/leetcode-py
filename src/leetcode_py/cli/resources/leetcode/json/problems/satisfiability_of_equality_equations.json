@@ -1,0 +1,93 @@
+{
+    "problem_name": "satisfiability_of_equality_equations",
+    "solution_class_name": "Solution",
+    "problem_number": "990",
+    "problem_title": "Satisfiability of Equality Equations",
+    "difficulty": "Medium",
+    "topics": "Array, String, Union-Find, Graph Theory",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an array of strings `equations` that represent relationships between variables where each string `equations[i]` is of length `4` and takes one of two different forms: `x<sub>i</sub>==y<sub>i</sub>` or `x<sub>i</sub>!=y<sub>i</sub>`. Here, `x<sub>i</sub>` and `y<sub>i</sub>` are lowercase letters (not necessarily different) that represent one-letter variable names.\n\nReturn `true` if it is possible to assign integers to variable names so as to satisfy all the given equations, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: equations = [\"a==b\",\"b!=a\"]\nOutput: false\nExplanation: If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.\nThere is no way to assign the variables to satisfy both equations.\n```"
+            },
+            {
+                "content": "```\nInput: equations = [\"b==a\",\"a==b\"]\nOutput: true\nExplanation: We could assign a = 1 and b = 1 to satisfy both equations.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= equations.length <= 500\n- equations[i].length == 4\n- equations[i][0] is a lowercase letter.\n- equations[i][1] is either '=' or '!'.\n- equations[i][2] is '='.\n- equations[i][3] is a lowercase letter.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "equations_possible",
+    "helpers_run_signature": "(solution_class: type, equations: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.equations_possible(equations)",
+    "helpers_assert_name": "equations_possible",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_equations_possible, run_equations_possible\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SatisfiabilityOfEqualityEquations",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "equations_possible",
+                "signature": "(self, equations: list[str]) -> bool",
+                "body": "        # TODO: Implement equations_possible\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_equations_possible",
+                "signature": "(self, equations: list[str], expected: bool)",
+                "parametrize": "equations, expected",
+                "test_cases": {
+                    "list": [
+                        "(['a==b','b!=a'], False)",
+                        "(['b==a','a==b'], True)",
+                        "(['a==b','b==c','a==c'], True)",
+                        "(['a==b','b!=c','c==a'], False)",
+                        "(['a!=a'], False)",
+                        "(['a==a'], True)",
+                        "(['a!=b'], True)",
+                        "(['a==b','b==c','c!=a'], False)",
+                        "(['c==c','b==d','x!=z'], True)",
+                        "(['a==b','b==c','c==d','d!=a'], False)",
+                        "(['a!=b','b!=c','c!=a'], True)",
+                        "(['a==b','e==e','a!=e'], True)",
+                        "(['a==b','b==a','c==d','d!=c'], False)",
+                        "(['f==a','a==b','b==f','f!=a'], False)",
+                        "(['a==b','b==c','c==d','e!=f','f==e'], False)",
+                        "(['e==d','e==a','a!=d'], False)",
+                        "(['a==b','b==c','c==a','a!=b'], False)",
+                        "(['g!=e','c==c','e==g'], False)"
+                    ]
+                },
+                "body": "        result = run_equations_possible(Solution, equations)\n        assert_equations_possible(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_equations_possible, assert_equations_possible\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nequations = ['a==b', 'b!=a']\nexpected = False",
+    "playground_run": "result = run_equations_possible(Solution, equations)\nresult",
+    "playground_assert": "assert_equations_possible(result, expected)"
+}

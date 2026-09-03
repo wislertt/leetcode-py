@@ -1,0 +1,93 @@
+{
+    "problem_name": "longest_univalue_path",
+    "solution_class_name": "Solution",
+    "problem_number": "687",
+    "problem_title": "Longest Univalue Path",
+    "difficulty": "Medium",
+    "topics": "Tree, Depth-First Search, Binary Tree, Dynamic Programming",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, return *the length of the longest path, where each node in the path has the same value*. This path may or may not pass through the `root`.\n\nThe **length** of the path between two nodes is represented by the number of edges between them.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2020/10/13/ex1.jpg)\n\n```\nInput: root = [5,4,5,1,1,null,5]\nOutput: 2\n```\n**Explanation:** The shown image shows that the longest path of the same value (i.e. 5)."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2020/10/13/ex2.jpg)\n\n```\nInput: root = [1,4,5,4,4,null,5]\nOutput: 2\n```\n**Explanation:** The shown image shows that the longest path of the same value (i.e. 4)."
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [0, 10^4].\n- -1000 <= Node.val <= 1000\n- The depth of the tree will not exceed 1000.",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "longest_univalue_path",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.longest_univalue_path(root)",
+    "helpers_assert_name": "longest_univalue_path",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_univalue_path, run_longest_univalue_path\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestUnivaluePath",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_univalue_path",
+                "signature": "(self, root: TreeNode[int] | None) -> int",
+                "body": "        # TODO: Implement longest_univalue_path\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_univalue_path",
+                "signature": "(self, root_list: list[int | None], expected: int)",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([5, 4, 5, 1, 1, None, 5], 2)",
+                        "([1, 4, 5, 4, 4, None, 5], 2)",
+                        "([], 0)",
+                        "([1], 0)",
+                        "([1, 1, 1], 2)",
+                        "([1, 1, 2], 1)",
+                        "([2, 2, 2, 2, 2], 3)",
+                        "([1, 2, 2, 2, 2], 2)",
+                        "([5, 4, 5, 1, 1, 5], 2)",
+                        "([1, 1, None, 1, 1], 2)",
+                        "([4, -7, -3, -9, -3], 0)",
+                        "([1, 1, 1, 1, None, None, 1, 1], 5)",
+                        "([1000, 1000, -1000, 1000], 2)",
+                        "([0, 0, 0, None, 0, None, 0], 4)",
+                        "([1, 1, 1, None, 1, 1, 0], 4)",
+                        "([-2, 2, -2, None, 2, -2], 2)",
+                        "([1, 1], 1)",
+                        "([-1, 0, -1, -2, 0, 1, -1], 2)"
+                    ]
+                },
+                "body": "        result = run_longest_univalue_path(Solution, root_list)\n        assert_longest_univalue_path(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_univalue_path, assert_longest_univalue_path\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [5, 4, 5, 1, 1, None, 5]\nexpected = 2",
+    "playground_run": "result = run_longest_univalue_path(Solution, root_list)\nresult",
+    "playground_assert": "assert_longest_univalue_path(result, expected)"
+}

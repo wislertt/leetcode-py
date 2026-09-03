@@ -1,0 +1,92 @@
+{
+    "problem_name": "shortest_completing_word",
+    "solution_class_name": "Solution",
+    "problem_number": "748",
+    "problem_title": "Shortest Completing Word",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a string `licensePlate` and an array of strings `words`, find the **shortest completing** word in `words`.\n\nA **completing** word is a word that **contains all the letters** in `licensePlate`. **Ignore numbers and spaces** in `licensePlate`, and treat letters as **case insensitive**. If a letter appears more than once in `licensePlate`, then it must appear in the word the same number of times or more.\n\nFor example, if `licensePlate = \"aBc 12c\"`, then it contains letters `'a'`, `'b'` (ignoring case), and `'c'` twice. Possible **completing** words are `\"abccdef\"`, `\"caaacab\"`, and `\"cbca\"`.\n\nReturn *the shortest **completing** word in* `words`*. It is guaranteed an answer exists. If there are multiple shortest **completing** words, return the **first** one that occurs in `words`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: licensePlate = \"1s3 PSt\", words = [\"step\",\"steps\",\"stripe\",\"stepple\"]\nOutput: \"steps\"\nExplanation: licensePlate contains letters 's', 'p', 's' (ignoring case), and 't'.\n\"step\" contains 't' and 'p', but only contains 1 's'.\n\"steps\" contains 't', 'p', and both 's' characters.\n\"stripe\" is missing an 's'.\n\"stepple\" is missing an 's'.\nSince \"steps\" is the only word containing all the letters, that is the answer.\n```"
+            },
+            {
+                "content": "```\nInput: licensePlate = \"1s3 456\", words = [\"looks\",\"pest\",\"stew\",\"show\"]\nOutput: \"pest\"\nExplanation: licensePlate only contains the letter 's'. All the words contain 's', but among these \"pest\", \"stew\", and \"show\" are shortest. The answer is \"pest\" because it is the word that appears earliest of the 3.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= licensePlate.length <= 7\n- licensePlate contains digits, letters (uppercase or lowercase), or space ' '.\n- 1 <= words.length <= 1000\n- 1 <= words[i].length <= 15\n- words[i] consists of lower case English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "shortest_completing_word",
+    "helpers_run_signature": "(solution_class: type, license_plate: str, words: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.shortest_completing_word(license_plate, words)",
+    "helpers_assert_name": "shortest_completing_word",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_shortest_completing_word, run_shortest_completing_word\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ShortestCompletingWord",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "shortest_completing_word",
+                "signature": "(self, license_plate: str, words: list[str]) -> str",
+                "body": "        # TODO: Implement shortest_completing_word\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_shortest_completing_word",
+                "signature": "(self, license_plate: str, words: list[str], expected: str)",
+                "parametrize": "license_plate, words, expected",
+                "test_cases": {
+                    "list": [
+                        "('1s3 PSt', ['step', 'steps', 'stripe', 'stepple'], 'steps')",
+                        "('1s3 456', ['looks', 'pest', 'stew', 'show'], 'pest')",
+                        "('aBc 12c', ['abccdef', 'caaacab', 'cbca'], 'cbca')",
+                        "('3A', ['b', 'a', 'ca'], 'a')",
+                        "('A', ['banana', 'apple'], 'apple')",
+                        "('Pp', ['p', 'apple', 'pp'], 'pp')",
+                        "('AbC', ['cba', 'abc'], 'cba')",
+                        "('0W', ['ww', 'www'], 'ww')",
+                        "('Ss', ['s', 'sa', 'ssss'], 'ssss')",
+                        "('Zz', ['aaz', 'zzq'], 'zzq')",
+                        "('1Q2', ['queue', 'quit', 'quick'], 'quit')",
+                        "('B', ['a', 'bb', 'b'], 'b')",
+                        "('9l7', ['hello', 'world', 'level'], 'hello')",
+                        "('W1n', ['now', 'win', 'own'], 'now')",
+                        "('Gg', ['gag', 'egg', 'gig'], 'gag')",
+                        "('xY', ['xylophone', 'yax'], 'yax')",
+                        "('1M2', ['mum', 'mom'], 'mum')"
+                    ]
+                },
+                "body": "        result = run_shortest_completing_word(Solution, license_plate, words)\n        assert_shortest_completing_word(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_shortest_completing_word, assert_shortest_completing_word\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlicense_plate = '1s3 PSt'\nwords = ['step', 'steps', 'stripe', 'stepple']\nexpected = 'steps'",
+    "playground_run": "result = run_shortest_completing_word(Solution, license_plate, words)\nresult",
+    "playground_assert": "assert_shortest_completing_word(result, expected)"
+}

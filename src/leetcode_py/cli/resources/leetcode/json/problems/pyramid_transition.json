@@ -1,0 +1,96 @@
+{
+    "problem_name": "pyramid_transition",
+    "solution_class_name": "Solution",
+    "problem_number": "756",
+    "problem_title": "Pyramid Transition Matrix",
+    "difficulty": "Medium",
+    "topics": "Hash Table, String, Backtracking, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are stacking blocks to form a pyramid. Each block has a color, which is represented by a single letter. Each row of blocks contains **one less block** than the row beneath it and is centered on top.\n\nTo make the pyramid aesthetically pleasing, there are only specific **triangular patterns** that are allowed. A triangular pattern consists of a **single block** stacked on top of **two blocks**. The patterns are given as a list of three-letter strings `allowed`, where the first two characters of a pattern represent the left and right bottom blocks respectively, and the third character is the top block.\n\n- For example, `\"ABC\"` represents a triangular pattern with a `'C'` block stacked on top of an `'A'` (left) and `'B'` (right) block. Note that this is different from `\"BAC\"` where `'B'` is on the left bottom and `'A'` is on the right bottom.\n\nYou start with a bottom row of blocks `bottom`, given as a single string, that you **must** use as the base of the pyramid.\n\nGiven `bottom` and `allowed`, return `true` if you can build the pyramid all the way to the top such that **every triangular pattern** in the pyramid is in `allowed`, or `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/08/26/pyramid1-grid.jpg)\n\n```\nInput: bottom = \"BCD\", allowed = [\"BCC\",\"CDE\",\"CEA\",\"FFF\"]\nOutput: true\n```\n**Explanation:** The allowed triangular patterns are shown on the right.\nStarting from the bottom (level 3), we can build \"CE\" on level 2 and then build \"A\" on level 1.\nThere are three triangular patterns in the pyramid, which are \"BCC\", \"CDE\", and \"CEA\". All are allowed."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/08/26/pyramid2-grid.jpg)\n\n```\nInput: bottom = \"AAAA\", allowed = [\"AAB\",\"AAC\",\"BCD\",\"BBE\",\"DEF\"]\nOutput: false\n```\n**Explanation:** The allowed triangular patterns are shown on the right.\nStarting from the bottom (level 4), there are multiple ways to build level 3, but trying all the possibilites, you will get always stuck before building level 1."
+            }
+        ]
+    },
+    "readme_constraints": "- `2 <= bottom.length <= 6`\n- `0 <= allowed.length <= 216`\n- `allowed[i].length == 3`\n- The letters in all input strings are from the set `{'A', 'B', 'C', 'D', 'E', 'F'}`.\n- All the values of `allowed` are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "pyramid_transition",
+    "helpers_run_signature": "(solution_class: type, bottom: str, allowed: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.pyramid_transition(bottom, allowed)",
+    "helpers_assert_name": "pyramid_transition",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pyramid_transition, run_pyramid_transition\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PyramidTransition",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pyramid_transition",
+                "signature": "(self, bottom: str, allowed: list[str]) -> bool",
+                "body": "        # TODO: Implement pyramid_transition\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pyramid_transition",
+                "signature": "(self, bottom: str, allowed: list[str], expected: bool)",
+                "parametrize": "bottom, allowed, expected",
+                "test_cases": {
+                    "list": [
+                        "('BCD', ['BCC', 'CDE', 'CEA', 'FFF'], True)",
+                        "('AAAA', ['AAB', 'AAC', 'BCD', 'BBE', 'DEF'], False)",
+                        "('AB', ['ABB'], True)",
+                        "('AB', [], False)",
+                        "('ABC', [], False)",
+                        "('AB', ['AAC'], False)",
+                        "('AA', ['AAA'], True)",
+                        "('AAAA', ['AAB', 'ABA', 'BAA', 'BBB'], True)",
+                        "('ABCDEF', ['ABB', 'BCC', 'CDD', 'DEE', 'EFF', 'AAB'], True)",
+                        "('ABAB', ['AAB', 'BBA', 'ABB', 'BAA', 'AAC', 'CCA', 'ABC'], True)",
+                        "('AABB', ['AAB', 'BBB', 'AAC', 'BBC', 'ACA', 'BCA'], False)",
+                        "('ABC', ['AAB', 'BBC', 'ACA', 'AAC'], False)",
+                        "('AAB', ['AAA', 'BBB', 'AAC', 'BBC', 'CCA', 'CCB'], False)",
+                        "('ABC', ['ABB', 'BCA', 'ACC', 'AAC'], False)",
+                        "('ACB', ['ABB', 'ABC', 'ACC', 'CBA', 'CBB'], True)",
+                        "('DAAFB', ['BFC', 'CCD', 'FDF'], False)",
+                        "('BAB', ['BDA', 'CDD'], False)",
+                        "('FC', ['ACE', 'BEB', 'CBA', 'CCF', 'DFA', 'EBF'], False)",
+                        "('BC', ['ABF', 'BCF', 'DAC'], True)",
+                        "('DF', ['BCB', 'CBF'], False)",
+                        "('ED', ['AEF', 'AFB', 'CCE', 'DBF', 'EAD', 'EDA', 'FCB', 'FDF', 'FFF'], True)"
+                    ]
+                },
+                "body": "        result = run_pyramid_transition(Solution, bottom, allowed)\n        assert_pyramid_transition(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_pyramid_transition, assert_pyramid_transition\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbottom = 'BCD'\nallowed = ['BCC', 'CDE', 'CEA', 'FFF']\nexpected = True",
+    "playground_run": "result = run_pyramid_transition(Solution, bottom, allowed)\nresult",
+    "playground_assert": "assert_pyramid_transition(result, expected)"
+}

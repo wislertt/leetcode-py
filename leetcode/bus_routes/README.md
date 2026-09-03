@@ -35,9 +35,9 @@ Output: -1
 
 ## Constraints
 
-- 1 <= routes.length <= 500.
+- 1 <= routes.length <= 500
 - 1 <= routes[i].length <= 10^5
 - All the values of `routes[i]` are **unique**.
-- `sum(routes[i].length) <= 10^5`
+- sum(routes[i].length) <= 10^5
 - 0 <= routes[i][j] < 10^6
 - 0 <= source, target < 10^6

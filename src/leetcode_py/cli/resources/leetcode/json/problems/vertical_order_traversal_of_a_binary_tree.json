@@ -1,0 +1,97 @@
+{
+    "problem_name": "vertical_order_traversal_of_a_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "987",
+    "problem_title": "Vertical Order Traversal of a Binary Tree",
+    "difficulty": "Hard",
+    "topics": "Hash Table, Tree, Depth-First Search, Breadth-First Search, Sorting, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, calculate the vertical order traversal of the binary tree.\n\nFor each node at position `(row, col)`, its left and right children will be at positions `(row + 1, col - 1)` and `(row + 1, col + 1)` respectively. The root of the tree is at `(0, 0)`.\n\nThe vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values.\n\nReturn the vertical order traversal of the binary tree.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/01/29/vtree1.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: [[9],[3,15],[20],[7]]\n```\n\nColumn -1: Only node 9 is in this column. Column 0: Nodes 3 and 15 are in this column in that order from top to bottom. Column 1: Only node 20 is in this column. Column 2: Only node 7 is in this column."
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/01/29/vtree2.jpg)\n\n```\nInput: root = [1,2,3,4,5,6,7]\nOutput: [[4],[2],[1,5,6],[3],[7]]\n```\n\nColumn -2: Only node 4 is in this column. Column -1: Only node 2 is in this column. Column 0: Nodes 1, 5, and 6 are in this column. 1 is at the top, so it comes first. 5 and 6 are at the same position (2, 0), so we order them by their value, 5 before 6. Column 1: Only node 3 is in this column. Column 2: Only node 7 is in this column."
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/01/29/vtree3.jpg)\n\n```\nInput: root = [1,2,3,4,6,5,7]\nOutput: [[4],[2],[1,5,6],[3],[7]]\n```\n\nThis case is the exact same as example 2, but with nodes 5 and 6 swapped. Note that the solution remains the same since 5 and 6 are in the same location and should be ordered by their values."
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 1000]\n- 0 <= Node.val <= 1000",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "vertical_traversal",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list)\n    implementation = solution_class()\n    return implementation.vertical_traversal(root)",
+    "helpers_assert_name": "vertical_traversal",
+    "helpers_assert_signature": "(result: list[list[int]], expected_list: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected_list\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_vertical_traversal, run_vertical_traversal\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "VerticalOrderTraversalOfABinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "vertical_traversal",
+                "signature": "(self, root: TreeNode[int] | None) -> list[list[int]]",
+                "body": "        # TODO: Implement vertical_traversal\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_vertical_traversal",
+                "signature": "(self, root_list: list[int | None], expected_list: list[list[int]])",
+                "parametrize": "root_list, expected_list",
+                "test_cases": {
+                    "list": [
+                        "([3, 9, 20, None, None, 15, 7], [[9], [3, 15], [20], [7]])",
+                        "([1, 2, 3, 4, 5, 6, 7], [[4], [2], [1, 5, 6], [3], [7]])",
+                        "([1, 2, 3, 4, 6, 5, 7], [[4], [2], [1, 5, 6], [3], [7]])",
+                        "([1], [[1]])",
+                        "([1, 2], [[2], [1]])",
+                        "([1, None, 2], [[1], [2]])",
+                        "([1, 2, None, 3], [[3], [2], [1]])",
+                        "([1, None, 2, None, 3], [[1], [2], [3]])",
+                        "([0, 0, 0], [[0], [0], [0]])",
+                        "([1, 1, 1, 1, 1, 1, 1], [[1], [1], [1, 1, 1], [1], [1]])",
+                        "([3, 1, 4, None, 2, 1, 5], [[1], [3, 1, 2], [4], [5]])",
+                        "([7, 4, 9, 2, 5, 8, 10, 1], [[1], [2], [4], [7, 5, 8], [9], [10]])",
+                        "([3, 7, 0, 6, 4, 2, 2, 2, 7, 2], [[2], [6], [7, 2, 7], [3, 2, 4], [0], [2]])",
+                        "([8, 7, 1, 6, 4, None, 4, 2, 4], [[2], [6], [7, 4], [8, 4], [1], [4]])",
+                        "([2], [[2]])",
+                        "([3, 9, None, 7, 9, 5, 9], [[5], [7], [9, 9], [3, 9]])",
+                        "([6, 7, None, 6], [[6], [7], [6]])",
+                        "([9, 1, 3, 3, 3, 7, 4], [[3], [1], [9, 3, 7], [3], [4]])",
+                        "([4, 9, None, 1, 5, 7, 7, 2], [[7], [1], [9, 2, 7], [4, 5]])"
+                    ]
+                },
+                "body": "        result = run_vertical_traversal(Solution, root_list)\n        assert_vertical_traversal(result, expected_list)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_vertical_traversal, assert_vertical_traversal\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3, 9, 20, None, None, 15, 7]\nexpected_list: list[list[int]] = [[9], [3, 15], [20], [7]]",
+    "playground_run": "result = run_vertical_traversal(Solution, root_list)\nresult",
+    "playground_assert": "assert_vertical_traversal(result, expected_list)"
+}

@@ -1,0 +1,98 @@
+{
+    "problem_name": "positions_of_large_groups",
+    "solution_class_name": "Solution",
+    "problem_number": "830",
+    "problem_title": "Positions of Large Groups",
+    "difficulty": "Easy",
+    "topics": "String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "In a string `s` of lowercase letters, these letters form consecutive groups of the same character.\n\nFor example, a string like `s = \"abbxxxxzyy\"` has the groups `\"a\"`, `\"bb\"`, `\"xxxx\"`, `\"z\"`, and `\"yy\"`.\n\nA group is identified by an interval `[start, end]`, where `start` and `end` denote the start and end indices (inclusive) of the group. In the above example, `\"xxxx\"` has the interval `[3,6]`.\n\nA group is considered **large** if it has 3 or more characters.\n\nReturn the intervals of every large group sorted in increasing order by start index.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"abbxxxxzzy\"\nOutput: [[3,6]]\nExplanation: \"xxxx\" is the only large group with start index 3 and end index 6.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abc\"\nOutput: []\nExplanation: We have groups \"a\", \"b\", and \"c\", none of which are large groups.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"abcdddeeeeaabbbcd\"\nOutput: [[3,5],[6,9],[12,14]]\nExplanation: The large groups are \"ddd\", \"eeee\", and \"bbb\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length <= 1000\n- s contains lowercase English letters only.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "large_group_positions",
+    "helpers_run_signature": "(solution_class: type, s: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.large_group_positions(s)",
+    "helpers_assert_name": "large_group_positions",
+    "helpers_assert_signature": "(result: list[list[int]], expected: list[list[int]]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_large_group_positions, run_large_group_positions\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PositionsOfLargeGroups",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "large_group_positions",
+                "signature": "(self, s: str) -> list[list[int]]",
+                "body": "        # TODO: Implement large_group_positions\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_large_group_positions",
+                "signature": "(self, s: str, expected: list[list[int]])",
+                "parametrize": "s, expected",
+                "test_cases": {
+                    "list": [
+                        "('abbxxxxzzy', [[3, 6]])",
+                        "('abc', [])",
+                        "('abcdddeeeeaabbbcd', [[3, 5], [6, 9], [12, 14]])",
+                        "('aaa', [[0, 2]])",
+                        "('a', [])",
+                        "('aa', [])",
+                        "('ab', [])",
+                        "('aaabbb', [[0, 2], [3, 5]])",
+                        "('aaaabbbb', [[0, 3], [4, 7]])",
+                        "('abccc', [[2, 4]])",
+                        "('cccab', [[0, 2]])",
+                        "('aaabbbaaa', [[0, 2], [3, 5], [6, 8]])",
+                        "('aabbccdd', [])",
+                        "('abbbbc', [[1, 4]])",
+                        "('aaaaa', [[0, 4]])",
+                        "('aabaaabbb', [[3, 5], [6, 8]])",
+                        "('bccd', [])",
+                        "('b', [])",
+                        "('aecdcadcccdecd', [[7, 9]])",
+                        "('edeeaab', [])"
+                    ]
+                },
+                "body": "        result = run_large_group_positions(Solution, s)\n        assert_large_group_positions(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_large_group_positions, assert_large_group_positions\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'abbxxxxzzy'\nexpected = [[3, 6]]",
+    "playground_run": "result = run_large_group_positions(Solution, s)\nresult",
+    "playground_assert": "assert_large_group_positions(result, expected)"
+}

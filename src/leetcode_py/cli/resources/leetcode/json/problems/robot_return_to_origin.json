@@ -1,0 +1,107 @@
+{
+    "problem_name": "robot_return_to_origin",
+    "solution_class_name": "Solution",
+    "problem_number": "657",
+    "problem_title": "Robot Return to Origin",
+    "difficulty": "Easy",
+    "topics": "String, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "There is a robot starting at the position `(0, 0)`, the origin, on a 2D plane. Given a sequence of its moves, judge if this robot **ends up at** `(0, 0)` after it completes its moves.\n\nYou are given a string `moves` that represents the move sequence of the robot where `moves[i]` represents its `i<sup>th</sup>` move. Valid moves are `'R'` (right), `'L'` (left), `'U'` (up), and `'D'` (down).\n\nReturn `true` *if the robot returns to the origin after it finishes all of its moves, or* `false` *otherwise*.\n\n**Note**: The way that the robot is \"facing\" is irrelevant. `'R'` will always make the robot move to the right once, `'L'` will always make it move left, etc. Also, assume that the magnitude of the robot's movement is the same for each move.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: moves = \"UD\"\nOutput: true\nExplanation: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.\n```"
+            },
+            {
+                "content": "```\nInput: moves = \"LL\"\nOutput: false\nExplanation: The robot moves left twice. It ends up two \"moves\" to the left of the origin. We return false because it is not at the origin at the end of its moves.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= moves.length <= 2 * 10^4\n- moves only contains the characters 'U', 'D', 'L' and 'R'.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "judge_circle",
+    "helpers_run_signature": "(solution_class: type, moves: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.judge_circle(moves)",
+    "helpers_assert_name": "judge_circle",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_judge_circle, run_judge_circle\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RobotReturnToOrigin",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "judge_circle",
+                "signature": "(self, moves: str) -> bool",
+                "body": "        # TODO: Implement judge_circle\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_judge_circle",
+                "signature": "(self, moves: str, expected: bool)",
+                "parametrize": "moves, expected",
+                "test_cases": {
+                    "list": [
+                        "('UD', True)",
+                        "('LL', False)",
+                        "('RRDD', False)",
+                        "('LDRRLRUULR', False)",
+                        "('UDLR', True)",
+                        "('RL', True)",
+                        "('UUDDLRLR', True)",
+                        "('L', False)",
+                        "('R', False)",
+                        "('U', False)",
+                        "('D', False)",
+                        "('UUDDLLRR', True)",
+                        "('UUDDLRR', False)",
+                        "('LDRRLRUULRUDLR', False)",
+                        "('RRUULLDD', True)",
+                        "('RRDDLLUU', True)",
+                        "('DR', False)",
+                        "('UL', False)",
+                        "('LLLLLRURRRRU', False)",
+                        "('U', False)",
+                        "('UUURL', False)",
+                        "('LRULDLRDLLDU', False)",
+                        "('L', False)",
+                        "('LDDURRD', False)",
+                        "('LURL', False)",
+                        "('RURRDUDRLDDUDLDRLDDR', False)",
+                        "('ULULDLUDLUDL', False)",
+                        "('LRURRD', False)",
+                        "('LLU', False)",
+                        "('URLRUUUULDUDDDUDRRRL', False)",
+                        "('URLULR', False)",
+                        "('DURLUDRLRLDL', False)"
+                    ]
+                },
+                "body": "        result = run_judge_circle(Solution, moves)\n        assert_judge_circle(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_judge_circle, assert_judge_circle\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nmoves = 'UD'\nexpected = True",
+    "playground_run": "result = run_judge_circle(Solution, moves)\nresult",
+    "playground_assert": "assert_judge_circle(result, expected)"
+}

@@ -1,0 +1,100 @@
+{
+    "problem_name": "unique_paths_iii",
+    "solution_class_name": "Solution",
+    "problem_number": "980",
+    "problem_title": "Unique Paths III",
+    "difficulty": "Hard",
+    "topics": "Array, Backtracking, Bit Manipulation, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `m x n` integer array `grid` where `grid[i][j]` could be:\n\n- `1` representing the starting square. There is exactly one starting square.\n- `2` representing the ending square. There is exactly one ending square.\n- `0` representing empty squares we can walk over.\n- `-1` representing obstacles that we cannot walk over.\n\nReturn *the number of 4-directional walks from the starting square to the ending square, that walk over every non-obstacle square exactly once*.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/08/02/lc-unique1.jpg)\n\n```\nInput: grid = [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]\nOutput: 2\nExplanation: We have the following two paths:\n1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)\n2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/08/02/lc-unique2.jpg)\n\n```\nInput: grid = [[1,0,0,0],[0,0,0,0],[0,0,0,2]]\nOutput: 4\nExplanation: We have the following four paths:\n1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)\n2. (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)\n3. (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)\n4. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)\n```"
+            },
+            {
+                "content": "![Example 3](https://assets.leetcode.com/uploads/2021/08/02/lc-unique3-.jpg)\n\n```\nInput: grid = [[0,1],[2,0]]\nOutput: 0\nExplanation: There is no path that walks over every empty square exactly once.\nNote that the starting and ending square can be anywhere in the grid.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 20`\n- `1 <= m * n <= 20`\n- `-1 <= grid[i][j] <= 2`\n- There is exactly one starting cell and one ending cell.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "unique_paths_iii",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.unique_paths_iii(grid)",
+    "helpers_assert_name": "unique_paths_iii",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_unique_paths_iii, run_unique_paths_iii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "TestUniquePathsIII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "unique_paths_iii",
+                "signature": "(self, grid: list[list[int]]) -> int",
+                "body": "        # TODO: Implement unique_paths_iii\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_unique_paths_iii, assert_unique_paths_iii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]\nexpected = 2",
+    "playground_run": "result = run_unique_paths_iii(Solution, grid)\nresult",
+    "playground_assert": "assert_unique_paths_iii(result, expected)",
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_unique_paths_iii",
+                "signature": "(self, grid: list[list[int]], expected: int)",
+                "parametrize": "grid, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]], 2)",
+                        "([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]], 4)",
+                        "([[0, 1], [2, 0]], 0)",
+                        "([[1, 2]], 1)",
+                        "([[2, 1]], 1)",
+                        "([[1, -1, 2]], 0)",
+                        "([[1, 0, 2, 0]], 0)",
+                        "([[1, 0, 0, 0, 2]], 1)",
+                        "([[1, 0], [0, 2]], 0)",
+                        "([[2, -1], [0, 1]], 1)",
+                        "([[1, 0, 0], [0, 0, 2]], 1)",
+                        "([[1, 0, 0, 0], [0, -1, -1, 0], [0, -1, -1, 0], [0, 0, 0, 2]], 0)",
+                        "([[0, 2], [1, 0]], 0)",
+                        "([[1, 0, 0], [-1, 0, 0], [0, 0, 2]], 0)",
+                        "([[0, 1, 0], [0, 0, 2]], 0)",
+                        "([[0, 2], [1, -1], [-1, 0]], 0)",
+                        "([[0, 2, 1], [0, 0, 0]], 1)",
+                        "([[-1], [1], [2]], 1)",
+                        "([[1], [2]], 1)",
+                        "([[-1, -1], [0, 2], [1, 0]], 0)",
+                        "([[2, 0, 0, 0], [0, 0, 0, 1]], 0)",
+                        "([[0, 0, 0, -1], [1, 2, 0, -1]], 1)"
+                    ]
+                },
+                "body": "        result = run_unique_paths_iii(Solution, grid)\n        assert_unique_paths_iii(result, expected)"
+            }
+        ]
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "problem_name": "bitwise_ors_of_subarrays",
+    "solution_class_name": "Solution",
+    "problem_number": "898",
+    "problem_title": "Bitwise ORs of Subarrays",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Bit Manipulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an integer array `arr`, return *the number of distinct bitwise ORs of all the non-empty subarrays of* `arr`.\n\nThe bitwise OR of a subarray is the bitwise OR of each integer in the subarray. The bitwise OR of a subarray of one integer is that integer.\n\nA **subarray** is a contiguous non-empty sequence of elements within an array.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [0]\nOutput: 1\nExplanation: There is only one possible result: 0.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,1,2]\nOutput: 3\nExplanation: The possible subarrays are [1], [1], [2], [1, 1], [1, 2], [1, 1, 2].\nThese yield the results 1, 1, 2, 1, 3, 3.\nThere are 3 unique values, so the answer is 3.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,2,4]\nOutput: 6\nExplanation: The possible results are 1, 2, 3, 4, 6, and 7.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 5 * 10^4`\n- `0 <= arr[i] <= 10^9`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "subarray_bitwise_ors",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.subarray_bitwise_ors(arr)",
+    "helpers_assert_name": "subarray_bitwise_ors",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_subarray_bitwise_ors, run_subarray_bitwise_ors\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BitwiseOrsOfSubarrays",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "subarray_bitwise_ors",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement subarray_bitwise_ors\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_subarray_bitwise_ors",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([0], 1)",
+                        "([1, 1, 2], 3)",
+                        "([1, 2, 4], 6)",
+                        "([1], 1)",
+                        "([7], 1)",
+                        "([0, 0, 0], 1)",
+                        "([5, 5, 5], 1)",
+                        "([1, 2, 4, 8], 10)",
+                        "([1, 3, 7, 15], 4)",
+                        "([2, 2, 2, 3], 2)",
+                        "([1000000000, 1], 3)",
+                        "([6, 5, 3, 12], 6)",
+                        "([14, 7, 1, 8], 6)",
+                        "([3, 5, 6, 7], 4)",
+                        "([10, 11, 12, 13], 5)",
+                        "([5, 18, 50, 41, 42, 63, 38, 24, 54], 14)",
+                        "([283887967, 355316119, 637561638, 696862146, 85276808, 595906915], 19)",
+                        "([1, 0, 1, 0, 1], 2)",
+                        "([8, 4, 2, 1, 3, 5, 9], 13)"
+                    ]
+                },
+                "body": "        result = run_subarray_bitwise_ors(Solution, arr)\n        assert_subarray_bitwise_ors(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_subarray_bitwise_ors, assert_subarray_bitwise_ors\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 1, 2]\nexpected = 3",
+    "playground_run": "result = run_subarray_bitwise_ors(Solution, arr)\nresult",
+    "playground_assert": "assert_subarray_bitwise_ors(result, expected)",
+    "playground_test_case": "arr = [1, 1, 2]",
+    "playground_execution": "result = run_subarray_bitwise_ors(Solution, arr)",
+    "playground_assertion": "assert_subarray_bitwise_ors(result, 3)"
+}

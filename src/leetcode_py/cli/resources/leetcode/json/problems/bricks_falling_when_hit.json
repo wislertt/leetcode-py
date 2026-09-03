@@ -1,0 +1,95 @@
+{
+    "problem_name": "bricks_falling_when_hit",
+    "solution_class_name": "Solution",
+    "problem_number": "803",
+    "problem_title": "Bricks Falling When Hit",
+    "difficulty": "Hard",
+    "topics": "Array, Union-Find, Matrix",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an `m x n` binary grid, where each `1` represents a brick and `0` represents an empty space. A brick is **stable** if:\n\n- It is directly connected to the top of the grid, or\n- At least one other brick in its four adjacent cells is **stable**.\n\nYou are also given an array `hits`, which is a sequence of erasures we want to apply. Each time we want to erase the brick at the location `hits[i] = (row<sub>i</sub>, col<sub>i</sub>)`. The brick on that location (if it exists) will disappear. Some other bricks may no longer be stable because of that erasure and will **fall**. Once a brick falls, it is immediately erased from the grid (i.e., it does not land on other stable bricks).\n\nReturn an array `result`, where each `result[i]` is the number of bricks that will fall after the `i<sup>th</sup>` erasure is applied.\n\n**Note** that an erasure may refer to a location with no brick, and if it does, no bricks drop.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: grid = [[1,0,0,0],[1,1,1,0]], hits = [[1,0]]\nOutput: [2]\nExplanation: Starting with the grid:\n[[1,0,0,0],\n [1,1,1,0]]\nWe erase the brick at (1,0), resulting in the grid:\n[[1,0,0,0],\n [0,1,1,0]]\nThe two bricks are no longer stable as they are no longer connected to the top nor adjacent to another stable brick, so they will fall. The resulting grid is:\n[[1,0,0,0],\n [0,0,0,0]]\nHence the result is [2].\n```"
+            },
+            {
+                "content": "```\nInput: grid = [[1,0,0,0],[1,1,0,0]], hits = [[1,1],[1,0]]\nOutput: [0,0]\nExplanation: Starting with the grid:\n[[1,0,0,0],\n [1,1,0,0]]\nWe erase the brick at (1,1), resulting in the grid:\n[[1,0,0,0],\n [1,0,0,0]]\nAll remaining bricks are still stable, so no bricks fall. Next, we erase the brick at (1,0), resulting in the grid:\n[[1,0,0,0],\n [0,0,0,0]]\nOnce again, all remaining bricks are still stable, so no bricks fall.\nHence the result is [0,0].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `m == grid.length`\n- `n == grid[i].length`\n- `1 <= m, n <= 200`\n- `grid[i][j]` is `0` or `1`.\n- `1 <= hits.length <= 4 * 10^4`\n- `hits[i].length == 2`\n- `0 <= x_i <= m - 1`\n- `0 <= y_i <= n - 1`\n- All `(x_i, y_i)` are unique.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "hit_bricks",
+    "helpers_run_signature": "(solution_class: type, grid: list[list[int]], hits: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.hit_bricks(grid, hits)",
+    "helpers_assert_name": "hit_bricks",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_hit_bricks, run_hit_bricks\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BricksFallingWhenHit",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "hit_bricks",
+                "signature": "(self, grid: list[list[int]], hits: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement hit_bricks\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_hit_bricks",
+                "signature": "(self, grid: list[list[int]], hits: list[list[int]], expected: list[int])",
+                "parametrize": "grid, hits, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1, 0, 0, 0], [1, 1, 1, 0]], [[1, 0]], [2])",
+                        "([[1, 0, 0, 0], [1, 1, 0, 0]], [[1, 1], [1, 0]], [0, 0])",
+                        "([[1, 1], [1, 1]], [[0, 0]], [0])",
+                        "([[1, 1], [1, 1]], [[0, 0], [0, 1], [1, 0]], [0, 2, 0])",
+                        "([[0, 1], [0, 1]], [[0, 0]], [0])",
+                        "([[1, 0], [0, 1]], [[1, 1]], [0])",
+                        "([[1, 0], [1, 0]], [[0, 0]], [1])",
+                        "([[1, 0, 1], [1, 0, 1]], [[1, 2]], [0])",
+                        "([[1, 1], [1, 1]], [[0, 1]], [0])",
+                        "([[0, 0], [0, 0]], [[0, 0], [1, 1]], [0, 0])",
+                        "([[0, 1], [0, 1], [0, 1]], [[0, 1]], [2])",
+                        "([[1, 0], [1, 0], [1, 0]], [[1, 0]], [1])",
+                        "([[1, 0, 0], [1, 1, 0], [1, 1, 1]], [[0, 0]], [5])",
+                        "([[1, 1]], [[0, 1]], [0])",
+                        "([[1, 0], [1, 0]], [[0, 1], [1, 1]], [0, 0])",
+                        "([[1, 1, 0], [1, 1, 0], [0, 1, 1], [1, 1, 1]], [[1, 0], [2, 0], [3, 0]], [0, 0, 0])",
+                        "([[0, 1], [0, 1], [1, 1]], [[0, 0]], [0])",
+                        "([[1, 1, 0], [1, 1, 0], [1, 0, 1]], [[2, 2]], [0])",
+                        "([[1], [0]], [[1, 0]], [0])",
+                        "([[1, 0], [1, 0], [1, 0]], [[0, 0], [0, 1], [1, 0], [1, 1]], [2, 0, 0, 0])"
+                    ]
+                },
+                "body": "        result = run_hit_bricks(Solution, grid, hits)\n        assert_hit_bricks(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_hit_bricks, assert_hit_bricks\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ngrid = [[1, 0, 0, 0], [1, 1, 1, 0]]\nhits = [[1, 0]]\nexpected = [2]",
+    "playground_run": "result = run_hit_bricks(Solution, grid, hits)\nresult",
+    "playground_assert": "assert_hit_bricks(result, expected)"
+}

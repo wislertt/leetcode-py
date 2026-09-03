@@ -1,0 +1,95 @@
+{
+    "problem_name": "replace_words",
+    "solution_class_name": "Solution",
+    "problem_number": "648",
+    "problem_title": "Replace Words",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String, Trie",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "In English, we have a concept called root, which can be followed by some other word to form another longer word - let's call this word derivative. For example, when the root \"help\" is followed by the word \"ful\", we can form a derivative \"helpful\".\n\nGiven a dictionary consisting of many roots and a sentence consisting of words separated by spaces, replace all the derivatives in the sentence with the root forming it. If a derivative can be replaced by more than one root, replace it with the root that has the shortest length.\n\nReturn the sentence after the replacement.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: dictionary = [\"cat\",\"bat\",\"rat\"], sentence = \"the cattle was rattled by the battery\"\nOutput: \"the cat was rat by the bat\"\n```"
+            },
+            {
+                "content": "```\nInput: dictionary = [\"a\",\"b\",\"c\"], sentence = \"aadsfasf absbs bbab cadsfafs\"\nOutput: \"a a b c\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= dictionary.length <= 1000\n- 1 <= dictionary[i].length <= 100\n- dictionary[i] consists of only lower-case letters.\n- 1 <= sentence.length <= 10^6\n- sentence consists of only lower-case letters and spaces.\n- The number of words in sentence is in the range [1, 1000]\n- The length of each word in sentence is in the range [1, 1000]\n- Every two consecutive words in sentence will be separated by exactly one space.\n- sentence does not have leading or trailing spaces.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "replace_words",
+    "helpers_run_signature": "(solution_class: type, dictionary: list[str], sentence: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.replace_words(dictionary, sentence)",
+    "helpers_assert_name": "replace_words",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_replace_words, run_replace_words\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReplaceWords",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "replace_words",
+                "signature": "(self, dictionary: list[str], sentence: str) -> str",
+                "body": "        # TODO: Implement replace_words\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_replace_words",
+                "signature": "(self, dictionary: list[str], sentence: str, expected: str)",
+                "parametrize": "dictionary, sentence, expected",
+                "test_cases": {
+                    "list": [
+                        "(['cat', 'bat', 'rat'], 'the cattle was rattled by the battery', 'the cat was rat by the bat')",
+                        "(['a', 'b', 'c'], 'aadsfasf absbs bbab cadsfafs', 'a a b c')",
+                        "(['cattle'], 'cattle', 'cattle')",
+                        "(['cattle'], 'cat dog', 'cat dog')",
+                        "(['cat', 'cattle'], 'cattle dog', 'cat dog')",
+                        "(['ca', 'cat'], 'cat cattle', 'ca ca')",
+                        "(['a'], 'apple banana', 'a banana')",
+                        "(['an', 'b'], 'ant banana cat', 'an b cat')",
+                        "(['rat', 'ra'], 'rat rattly ratatat', 'ra ra ra')",
+                        "(['help'], 'help helpful helping', 'help help help')",
+                        "(['s'], 'cats and dogs', 'cats and dogs')",
+                        "(['x'], 'abc def ghi', 'abc def ghi')",
+                        "(['ab', 'abc'], 'abcabc abc ab', 'ab ab ab')",
+                        "(['z'], 'zoo z', 'z z')",
+                        "(['sk', 'dn', 'pzs', 'ysdc'], 'ysdc ysdcki i', 'ysdc ysdc i')",
+                        "(['j', 'f', 'iyg', 'dup'], 'iyg cg jpltiy dup', 'iyg cg j dup')",
+                        "(['zzb', 'qc', 'wl', 'gvs'], 'rp wllhx', 'rp wl')",
+                        "(['udyl', 'vad', 'y', 'uv'], 'vadvanbd udylw udyl', 'vad udyl udyl')",
+                        "(['lqn', 'lf', 'cb', 'zq'], 'zqxajla lf lfcxrkst wrqkcogn', 'zq lf lf wrqkcogn')",
+                        "(['g', 'nrnm', 'scmf', 'w'], 'ooqg z dzy scmff scmfko xg', 'ooqg z dzy scmf scmf xg')"
+                    ]
+                },
+                "body": "        result = run_replace_words(Solution, dictionary, sentence)\n        assert_replace_words(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_replace_words, assert_replace_words\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ndictionary = ['cat', 'bat', 'rat']\nsentence = 'the cattle was rattled by the battery'\nexpected = 'the cat was rat by the bat'",
+    "playground_run": "result = run_replace_words(Solution, dictionary, sentence)\nresult",
+    "playground_assert": "assert_replace_words(result, expected)"
+}

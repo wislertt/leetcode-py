@@ -1,0 +1,96 @@
+{
+    "problem_name": "minimum_index_sum_of_two_lists",
+    "solution_class_name": "Solution",
+    "problem_number": "599",
+    "problem_title": "Minimum Index Sum of Two Lists",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two arrays of strings `list1` and `list2`, find the **common strings with the least index sum**.\n\nA **common string** is a string that appeared in both `list1` and `list2`.\n\nA **common string with the least index sum** is a common string such that if it appeared at `list1[i]` and `list2[j]` then `i + j` should be the minimum value among all the other **common strings**.\n\nReturn *all the **common strings with the least index sum***. Return the answer in **any order**.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: list1 = [\"Shogun\",\"Tapioca Express\",\"Burger King\",\"KFC\"], list2 = [\"Piatti\",\"The Grill at Torrey Pines\",\"Hungry Hunter Steakhouse\",\"Shogun\"]\nOutput: [\"Shogun\"]\nExplanation: The only common string is \"Shogun\".\n```"
+            },
+            {
+                "content": "```\nInput: list1 = [\"Shogun\",\"Tapioca Express\",\"Burger King\",\"KFC\"], list2 = [\"KFC\",\"Shogun\",\"Burger King\"]\nOutput: [\"Shogun\"]\nExplanation: The common string with the least index sum is \"Shogun\" with index sum = (0 + 1) = 1.\n```"
+            },
+            {
+                "content": "```\nInput: list1 = [\"happy\",\"sad\",\"good\"], list2 = [\"sad\",\"happy\",\"good\"]\nOutput: [\"sad\",\"happy\"]\nExplanation: There are three common strings:\n\"happy\" with index sum = (0 + 1) = 1.\n\"sad\" with index sum = (1 + 0) = 1.\n\"good\" with index sum = (2 + 2) = 4.\nThe strings with the least index sum are \"sad\" and \"happy\".\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= list1.length, list2.length <= 1000\n- 1 <= list1[i].length, list2[i].length <= 30\n- list1[i] and list2[i] consist of spaces ' ' and English letters.\n- All the strings of list1 are unique.\n- All the strings of list2 are unique.\n- There is at least a common string between list1 and list2.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "find_restaurant",
+    "helpers_run_signature": "(solution_class: type, list1: list[str], list2: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.find_restaurant(list1, list2)",
+    "helpers_assert_name": "find_restaurant",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert sorted(result) == sorted(expected)\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_find_restaurant, run_find_restaurant\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumIndexSumOfTwoLists",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "find_restaurant",
+                "signature": "(self, list1: list[str], list2: list[str]) -> list[str]",
+                "body": "        # TODO: Implement find_restaurant\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_find_restaurant",
+                "signature": "(self, list1: list[str], list2: list[str], expected: list[str])",
+                "parametrize": "list1, list2, expected",
+                "test_cases": {
+                    "list": [
+                        "(['a'], ['a'], ['a'])",
+                        "(['a', 'b'], ['b', 'a'], ['a', 'b'])",
+                        "(['a', 'b'], ['a', 'b'], ['a'])",
+                        "(['x', 'y', 'z'], ['z', 'y', 'x'], ['x', 'y', 'z'])",
+                        "(['happy', 'sad', 'good'], ['sad', 'happy', 'good'], ['happy', 'sad'])",
+                        "(['Shogun', 'KFC'], ['KFC', 'Shogun'], ['KFC', 'Shogun'])",
+                        "(['Shogun', 'Tapioca', 'KFC'], ['Piatti', 'Shogun', 'KFC'], ['Shogun'])",
+                        "(['b', 'a', 'c'], ['a', 'b', 'c'], ['a', 'b'])",
+                        "(['w'], ['w', 'v'], ['w'])",
+                        "(['p', 'q', 'r'], ['s', 'p', 't'], ['p'])",
+                        "(['aa', 'bb', 'cc', 'dd'], ['dd', 'cc', 'bb', 'aa'], ['aa', 'bb', 'cc', 'dd'])",
+                        "(['alpha', 'beta'], ['beta', 'gamma', 'alpha'], ['beta'])",
+                        "(['ice cream', 'hot dog'], ['hot dog', 'tea'], ['hot dog'])",
+                        "(['milk tea', 'coffee', 'juice'], ['juice', 'coffee'], ['coffee', 'juice'])",
+                        "(['k', 'l'], ['m', 'n', 'o', 'k'], ['k'])",
+                        "(['ab', 'cd', 'ef'], ['xy', 'ef'], ['ef'])",
+                        "(['tea', 'coke', 'water'], ['water', 'coke', 'tea'], ['coke', 'tea', 'water'])",
+                        "(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], ['h', 'g', 'f', 'e'], ['e', 'f', 'g', 'h'])"
+                    ]
+                },
+                "body": "        result = run_find_restaurant(Solution, list1, list2)\n        assert_find_restaurant(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_find_restaurant, assert_find_restaurant\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nlist1 = ['happy', 'sad', 'good']\nlist2 = ['sad', 'happy', 'good']\nexpected = ['sad', 'happy']",
+    "playground_run": "result = run_find_restaurant(Solution, list1, list2)\nresult",
+    "playground_assert": "assert_find_restaurant(result, expected)"
+}

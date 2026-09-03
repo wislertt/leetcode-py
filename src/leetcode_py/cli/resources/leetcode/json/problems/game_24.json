@@ -1,0 +1,95 @@
+{
+    "problem_name": "game_24",
+    "solution_class_name": "Solution",
+    "problem_number": "679",
+    "problem_title": "24 Game",
+    "difficulty": "Hard",
+    "topics": "Array, Math, Backtracking",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `cards` of length `4`. You have four cards, each containing a number in the range `[1, 9]`. You should arrange the numbers on these cards in a mathematical expression using the operators `['+', '-', '*', '/']` and the parentheses `'('` and `')'` to get the value 24.\n\nYou are restricted with the following rules:\n\n- The division operator `'/'` represents real division, not integer division.\n    - For example, `4 / (1 - 2 / 3) = 4 / (1 / 3) = 12`.\n- Every operation done is between two numbers. In particular, we cannot use `'-'` as a unary operator.\n    - For example, if `cards = [1, 1, 1, 1]`, the expression `\"-1 - 1 - 1 - 1\"` is **not allowed**.\n- You cannot concatenate numbers together\n    - For example, if `cards = [1, 2, 1, 2]`, the expression `\"12 + 12\"` is not valid.\n\nReturn `true` if you can get such expression that evaluates to 24, and `false` otherwise.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: cards = [4,1,8,7]\nOutput: true\nExplanation: (8-4) * (7-1) = 24\n```"
+            },
+            {
+                "content": "```\nInput: cards = [1,2,1,2]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- cards.length == 4\n- 1 <= cards[i] <= 9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "judge_point24",
+    "helpers_run_signature": "(solution_class: type, cards: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.judge_point24(cards)",
+    "helpers_assert_name": "judge_point24",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_judge_point24, run_judge_point24\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "Game24",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "judge_point24",
+                "signature": "(self, cards: list[int]) -> bool",
+                "body": "        # TODO: Implement judge_point24\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_judge_point24",
+                "signature": "(self, cards: list[int], expected: bool)",
+                "parametrize": "cards, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 1, 8, 7], True)",
+                        "([1, 2, 1, 2], False)",
+                        "([1, 1, 1, 1], False)",
+                        "([3, 3, 8, 8], True)",
+                        "([1, 5, 5, 5], True)",
+                        "([1, 3, 4, 6], True)",
+                        "([1, 1, 2, 7], True)",
+                        "([2, 2, 2, 2], False)",
+                        "([1, 1, 1, 8], True)",
+                        "([4, 6, 7, 8], True)",
+                        "([3, 4, 5, 6], True)",
+                        "([2, 3, 5, 7], True)",
+                        "([1, 9, 9, 9], False)",
+                        "([8, 8, 8, 8], False)",
+                        "([9, 9, 9, 1], False)",
+                        "([2, 4, 6, 8], True)",
+                        "([5, 7, 7, 8], False)",
+                        "([1, 2, 3, 4], True)",
+                        "([6, 6, 6, 6], True)",
+                        "([3, 7, 8, 9], True)"
+                    ]
+                },
+                "body": "        result = run_judge_point24(Solution, cards)\n        assert_judge_point24(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_judge_point24, assert_judge_point24\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ncards = [4, 1, 8, 7]\nexpected = True",
+    "playground_run": "result = run_judge_point24(Solution, cards)\nresult",
+    "playground_assert": "assert_judge_point24(result, expected)"
+}

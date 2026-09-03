@@ -1,0 +1,94 @@
+{
+    "problem_name": "exclusive_time_of_functions",
+    "solution_class_name": "Solution",
+    "problem_number": "636",
+    "problem_title": "Exclusive Time of Functions",
+    "difficulty": "Medium",
+    "topics": "Array, Stack",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "On a single-threaded CPU, we execute a program containing `n` functions. Each function has a unique ID between `0` and `n - 1`.\n\nFunction calls are stored in a call stack: when a function call starts, its ID is pushed onto the stack, and when a function call ends, its ID is popped off the stack. The function whose ID is at the top of the stack is the current function being executed. Each time a function starts or ends, we write a log with the ID, whether it started or ended, and the timestamp.\n\nYou are given a list `logs`, where `logs[i]` represents the `i-th` log message formatted as a string `\"{function_id}:\\\"start\\\" | \\\"end\\\":{timestamp}\"`. For example, `\"0:start:3\"` means a function call with function ID 0 started at the beginning of timestamp 3, and `\"1:end:2\"` means a function call with function ID 1 ended at the end of timestamp 2. Note that a function can be called multiple times, possibly recursively.\n\nA function's exclusive time is the sum of execution times for all function calls in the program. For example, if a function is called twice, one call executing for 2 time units and another call executing for 1 time unit, the exclusive time is `2 + 1 = 3`.\n\nReturn the exclusive time of each function in an array, where the value at the `i-th` index represents the exclusive time for the function with ID `i`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2019/04/05/diag1b.png)\n\n```\nInput: n = 2, logs = [\"0:start:0\",\"1:start:2\",\"1:end:5\",\"0:end:6\"]\nOutput: [3,4]\nExplanation:\nFunction 0 starts at the beginning of time 0, then it executes 2 for units of time and reaches the end of time 1.\nFunction 1 starts at the beginning of time 2, executes for 4 units of time, and ends at the end of time 5.\nFunction 0 resumes execution at the beginning of time 6 and executes for 1 unit of time.\nSo function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.\n```"
+            },
+            {
+                "content": "```\nInput: n = 1, logs = [\"0:start:0\",\"0:start:2\",\"0:end:5\",\"0:start:6\",\"0:end:6\",\"0:end:7\"]\nOutput: [8]\nExplanation:\nFunction 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.\nFunction 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.\nFunction 0 (initial call) resumes execution then immediately calls itself again.\nFunction 0 (2nd recursive call) starts at the beginning of time 6 and executes for 1 unit of time.\nFunction 0 (initial call) resumes execution at the beginning of time 7 and executes for 1 unit of time.\nSo function 0 spends 2 + 4 + 1 + 1 = 8 units of total time executing.\n```"
+            },
+            {
+                "content": "```\nInput: n = 2, logs = [\"0:start:0\",\"0:start:2\",\"0:end:5\",\"1:start:6\",\"1:end:6\",\"0:end:7\"]\nOutput: [7,1]\nExplanation:\nFunction 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.\nFunction 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.\nFunction 0 (initial call) resumes execution then immediately calls function 1.\nFunction 1 starts at the beginning of time 6, executes 1 unit of time, and ends at the end of time 6.\nFunction 0 resumes execution at the beginning of time 7 and executes for 1 unit of time.\nSo function 0 spends 2 + 4 + 1 = 7 units of total time executing, and function 1 spends 1 unit of total time executing.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 100\n- 2 <= logs.length <= 500\n- 0 <= function_id < n\n- 0 <= timestamp <= 10^9\n- No two start events will happen at the same timestamp.\n- No two end events will happen at the same timestamp.\n- Each function has an \"end\" log for each \"start\" log.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "exclusive_time",
+    "helpers_run_signature": "(solution_class: type, n: int, logs: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.exclusive_time(n, logs)",
+    "helpers_assert_name": "exclusive_time",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_exclusive_time, run_exclusive_time\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ExclusiveTimeOfFunctions",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "exclusive_time",
+                "signature": "(self, n: int, logs: list[str]) -> list[int]",
+                "body": "        # TODO: Implement exclusive_time\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_exclusive_time",
+                "signature": "(self, n: int, logs: list[str], expected: list[int])",
+                "parametrize": "n, logs, expected",
+                "test_cases": {
+                    "list": [
+                        "(2, ['0:start:0', '1:start:2', '1:end:5', '0:end:6'], [3, 4])",
+                        "(1, ['0:start:0', '0:start:2', '0:end:5', '0:start:6', '0:end:6', '0:end:7'], [8])",
+                        "(2, ['0:start:0', '0:start:2', '0:end:5', '1:start:6', '1:end:6', '0:end:7'], [7, 1])",
+                        "(1, ['0:start:0', '0:end:1'], [2])",
+                        "(2, ['0:start:0', '0:end:0', '1:start:1', '1:end:1'], [1, 1])",
+                        "(3, ['0:start:0', '1:start:3', '1:end:3', '2:start:5', '2:end:6', '0:end:8'], [6, 1, 2])",
+                        "(2, ['0:start:0', '0:start:1', '0:start:2', '0:end:3', '0:end:4', '0:end:5'], [6, 0])",
+                        "(2, ['0:start:0', '1:start:1', '0:start:2', '0:end:2', '1:end:4', '0:end:5'], [3, 3])",
+                        "(1, ['0:start:0', '0:start:1', '0:end:1', '0:end:2', '0:start:3', '0:end:3'], [4])",
+                        "(4, ['3:start:0', '3:end:0', '0:start:2', '0:end:4'], [3, 0, 0, 1])",
+                        "(3, ['2:start:999999995', '2:end:999999998', '0:start:1000000000', '0:end:1000000000'], [1, 0, 4])",
+                        "(2, ['1:start:2', '1:start:4', '1:start:11', '1:end:12', '1:end:13', '1:end:20'], [0, 19])",
+                        "(8, ['5:start:2', '5:end:4'], [0, 0, 0, 0, 0, 3, 0, 0])",
+                        "(2, ['1:start:1', '0:start:2', '0:end:3', '1:end:6'], [2, 4])",
+                        "(8, ['6:start:6', '6:end:7'], [0, 0, 0, 0, 0, 0, 2, 0])",
+                        "(2, ['1:start:101', '1:end:108'], [0, 8])"
+                    ]
+                },
+                "body": "        result = run_exclusive_time(Solution, n, logs)\n        assert_exclusive_time(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_exclusive_time, assert_exclusive_time\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 2\nlogs = ['0:start:0', '1:start:2', '1:end:5', '0:end:6']\nexpected = [3, 4]",
+    "playground_run": "result = run_exclusive_time(Solution, n, logs)\nresult",
+    "playground_assert": "assert_exclusive_time(result, expected)"
+}

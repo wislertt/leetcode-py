@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: code = \"<DIV>This is the first line <![CDATA[<div>]]></DIV>\"\nOutput: true\nExplanation: \nThe code is wrapped in a closed tag : <DIV> and </DIV>. \nThe TAG_NAME is valid, the TAG_CONTENT consists of some characters and cdata. \nAlthough CDATA_CONTENT has an unmatched start tag with invalid TAG_NAME, it should be considered as plain text, not parsed as a tag.\nSo TAG_CONTENT is valid, and then the code is valid. Thus return true.\n```"
+                "content": "```\nInput: code = \"<DIV>This is the first line <![CDATA[<div>]]></DIV>\"\nOutput: true\nExplanation:\nThe code is wrapped in a closed tag : <DIV> and </DIV>.\nThe TAG_NAME is valid, the TAG_CONTENT consists of some characters and cdata.\nAlthough CDATA_CONTENT has an unmatched start tag with invalid TAG_NAME, it should be considered as plain text, not parsed as a tag.\nSo TAG_CONTENT is valid, and then the code is valid. Thus return true.\n```"
             },
             {
                 "content": "```\nInput: code = \"<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>\"\nOutput: true\nExplanation:\nWe first separate the code into : start_tag|tag_content|end_tag.\nstart_tag -> \"<DIV>\"\nend_tag -> \"</DIV>\"\ntag_content could also be separated into : text1|cdata|text2.\ntext1 -> \">>  ![cdata[]] \"\ncdata -> \"<![CDATA[<div>]>]]>\", where the CDATA_CONTENT is \"<div>]>\"\ntext2 -> \"]]>>]\"\nThe reason why start_tag is NOT \"<DIV>>>\" is because of the rule 6.\nThe reason why cdata is NOT \"<![CDATA[<div>]>]]>]]>\" is because of the rule 7.\n```"

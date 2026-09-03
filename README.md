@@ -53,7 +53,7 @@ See the [Quickstart](https://leetcode-py.wisl.dev/getting-started/quickstart) fo
 
 ## 🗂️ Collections
 
-<!-- problem-count:start -->1164<!-- problem-count:end --> problems, ready to generate, across seven complete collections. Browse them all in the [catalog](https://leetcode-py.wisl.dev/catalog):
+<!-- problem-count:start -->1404<!-- problem-count:end --> problems, ready to generate, across seven complete collections. Browse them all in the [catalog](https://leetcode-py.wisl.dev/catalog):
 
 | Collection                                                           | What it is                                                  |
 | -------------------------------------------------------------------- | ----------------------------------------------------------- |

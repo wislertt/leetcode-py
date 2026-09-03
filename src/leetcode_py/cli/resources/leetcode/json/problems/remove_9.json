@@ -1,0 +1,95 @@
+{
+    "problem_name": "remove_9",
+    "solution_class_name": "Solution",
+    "problem_number": "660",
+    "problem_title": "Remove 9",
+    "difficulty": "Hard",
+    "topics": "Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Start from integer `1`, remove any integer that contains `9` such as `9`, `19`, `29`...\n\nNow, you will have a new integer sequence `[1, 2, 3, 4, 5, 6, 7, 8, 10, 11, ...]`.\n\nGiven an integer `n`, return *the* `n^th` (**1-indexed**) integer in the new sequence.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 9\nOutput: 10\n```"
+            },
+            {
+                "content": "```\nInput: n = 10\nOutput: 11\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 8 * 10^8",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "new_integer",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.new_integer(n)",
+    "helpers_assert_name": "new_integer",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_new_integer, run_new_integer\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "Remove9",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "new_integer",
+                "signature": "(self, n: int) -> int",
+                "body": "        # TODO: Implement new_integer\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_new_integer",
+                "signature": "(self, n: int, expected: int)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, 1)",
+                        "(2, 2)",
+                        "(3, 3)",
+                        "(4, 4)",
+                        "(5, 5)",
+                        "(6, 6)",
+                        "(7, 7)",
+                        "(8, 8)",
+                        "(9, 10)",
+                        "(10, 11)",
+                        "(11, 12)",
+                        "(80, 88)",
+                        "(81, 100)",
+                        "(89, 108)",
+                        "(100, 121)",
+                        "(889, 1187)",
+                        "(1000, 1331)",
+                        "(98765, 160428)",
+                        "(100000, 162151)",
+                        "(800000000, 2052305618)"
+                    ]
+                },
+                "body": "        result = run_new_integer(Solution, n)\n        assert_new_integer(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_new_integer, assert_new_integer\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 9\nexpected = 10",
+    "playground_run": "result = run_new_integer(Solution, n)\nresult",
+    "playground_assert": "assert_new_integer(result, expected)"
+}

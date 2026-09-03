@@ -1,0 +1,97 @@
+{
+    "problem_name": "k_th_smallest_prime_fraction",
+    "solution_class_name": "Solution",
+    "problem_number": "786",
+    "problem_title": "K-th Smallest Prime Fraction",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Binary Search, Sorting, Heap (Priority Queue)",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a sorted integer array `arr` containing `1` and **prime** numbers, where all the integers of `arr` are unique. You are also given an integer `k`.\n\nFor every `i` and `j` where `0 <= i < j < arr.length`, we consider the fraction `arr[i] / arr[j]`.\n\nReturn *the* `kth` *smallest fraction considered*. Return your answer as an array of integers of size `2`, where `answer[0] == arr[i]` and `answer[1] == arr[j]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [1,2,3,5], k = 3\nOutput: [2,5]\nExplanation: The fractions to be considered in sorted order are:\n1/5, 1/3, 2/5, 1/2, 3/5, and 2/3.\nThe third fraction is 2/5.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,7], k = 1\nOutput: [1,7]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= arr.length <= 1000\n- 1 <= arr[i] <= 3 * 10^4\n- arr[0] == 1\n- arr[i] is a prime number for i > 0.\n- All the numbers of arr are unique and sorted in strictly increasing order.\n- 1 <= k <= arr.length * (arr.length - 1) / 2",
+    "readme_additional": "**Follow up:** Can you solve the problem with better than O(n^2) complexity?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "kth_smallest_prime_fraction",
+    "helpers_run_signature": "(solution_class: type, arr: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.kth_smallest_prime_fraction(arr, k)",
+    "helpers_assert_name": "kth_smallest_prime_fraction",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "from fractions import Fraction",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_kth_smallest_prime_fraction, run_kth_smallest_prime_fraction\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "KThSmallestPrimeFraction",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "kth_smallest_prime_fraction",
+                "signature": "(self, arr: list[int], k: int) -> list[int]",
+                "body": "        # TODO: Implement kth_smallest_prime_fraction\n        return [0, 0]"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_kth_smallest_prime_fraction",
+                "signature": "(self, arr: list[int], k: int, expected: list[int])",
+                "parametrize": "arr, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 5], 3, [2, 5])",
+                        "([1, 7], 1, [1, 7])",
+                        "([1, 2], 1, [1, 2])",
+                        "([1, 2, 3, 5], 1, [1, 5])",
+                        "([1, 2, 3, 5], 6, [2, 3])",
+                        "([1, 2, 3], 2, [1, 2])",
+                        "([1, 2, 3], 1, [1, 3])",
+                        "([1, 2, 3, 5, 7], 1, [1, 7])",
+                        "([1, 2, 3, 5, 7], 10, [5, 7])",
+                        "([1, 3, 5, 7, 11], 4, [3, 11])",
+                        "([1, 5, 13, 17], 3, [1, 5])",
+                        "([1, 2, 5, 11, 13, 17], 8, [5, 17])",
+                        "([1, 2, 3, 5, 7, 11, 13], 15, [1, 2])",
+                        "([1, 2, 3, 5, 7, 11, 13, 17], 20, [1, 2])",
+                        "([1, 7, 11], 3, [7, 11])",
+                        "([1, 11, 13, 17, 19], 7, [13, 19])",
+                        "([1, 7, 31, 43, 61, 89, 163, 181], 24, [89, 163])",
+                        "([1, 13, 17, 19, 31, 73, 151], 5, [1, 17])",
+                        "([1, 3, 23, 71, 149, 193], 14, [71, 149])",
+                        "([1, 89, 101, 149], 2, [1, 101])",
+                        "([1, 2, 127], 3, [1, 2])",
+                        "([1, 47, 127], 2, [1, 47])"
+                    ]
+                },
+                "body": "        result = run_kth_smallest_prime_fraction(Solution, arr, k)\n        assert_kth_smallest_prime_fraction(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_kth_smallest_prime_fraction, assert_kth_smallest_prime_fraction\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [1, 2, 3, 5]\nk = 3\nexpected = [2, 5]",
+    "playground_run": "result = run_kth_smallest_prime_fraction(Solution, arr, k)\nresult",
+    "playground_assert": "assert_kth_smallest_prime_fraction(result, expected)"
+}

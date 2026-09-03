@@ -1,0 +1,102 @@
+{
+    "problem_name": "escape_the_ghosts",
+    "solution_class_name": "Solution",
+    "problem_number": "789",
+    "problem_title": "Escape The Ghosts",
+    "difficulty": "Medium",
+    "topics": "Array, Math",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are playing a simplified PAC-MAN game on an infinite 2-D grid. You start at the point `[0, 0]`, and you are given a destination point `target = [xtarget, ytarget]` that you are trying to get to. There are several ghosts on the map with their starting positions given as a 2D array `ghosts`, where `ghosts[i] = [xi, yi]` represents the starting position of the ith ghost. All inputs are **integral coordinates**.\n\nEach turn, you and all the ghosts may independently choose to either **move 1 unit** in any of the four cardinal directions: north, east, south, or west, or **stay still**. All actions happen **simultaneously**.\n\nYou escape if and only if you can reach the target **before** any ghost reaches you. If you reach any square (including the target) at the **same time** as a ghost, it **does not** count as an escape.\n\nReturn `true` if it is possible to escape regardless of how the ghosts move, otherwise return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: ghosts = [[1,0],[0,3]], target = [0,1]\nOutput: true\n```\n**Explanation:** You can reach the destination (0, 1) after 1 turn, while the ghosts located at (1, 0) and (0, 3) cannot catch up with you."
+            },
+            {
+                "content": "```\nInput: ghosts = [[1,0]], target = [2,0]\nOutput: false\n```\n**Explanation:** You need to reach the destination (2, 0), but the ghost at (1, 0) lies between you and the destination."
+            },
+            {
+                "content": "```\nInput: ghosts = [[2,0]], target = [1,0]\nOutput: false\n```\n**Explanation:** The ghost can reach the target at the same time as you."
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= ghosts.length <= 100\n- ghosts[i].length == 2\n- -10^4 <= xi, yi <= 10^4\n- There can be multiple ghosts in the same location.\n- target.length == 2\n- -10^4 <= xtarget, ytarget <= 10^4",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "escape_ghosts",
+    "helpers_run_signature": "(solution_class: type, ghosts: list[list[int]], target: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.escape_ghosts(ghosts, target)",
+    "helpers_assert_name": "escape_ghosts",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_escape_ghosts, run_escape_ghosts\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "EscapeTheGhosts",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "escape_ghosts",
+                "signature": "(self, ghosts: list[list[int]], target: list[int]) -> bool",
+                "body": "        # TODO: Implement escape_ghosts\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_escape_ghosts",
+                "signature": "(self, ghosts: list[list[int]], target: list[int], expected: bool)",
+                "parametrize": "ghosts, target, expected",
+                "test_cases": {
+                    "list": [
+                        "([[1,0],[0,3]], [0,1], True)",
+                        "([[1,0]], [2,0], False)",
+                        "([[2,0]], [1,0], False)",
+                        "([[0,0]], [1,0], False)",
+                        "([[0,0]], [0,1], False)",
+                        "([[0,0]], [1,1], False)",
+                        "([[5,5]], [1,1], True)",
+                        "([[-3,-3]], [1,1], True)",
+                        "([[1,1]], [1,1], False)",
+                        "([[0,1]], [0,2], False)",
+                        "([[0,3]], [0,1], True)",
+                        "([[100,100]], [50,50], False)",
+                        "([[100,100]], [49,49], True)",
+                        "([[-1,0],[0,-1]], [1,1], True)",
+                        "([[1,0],[0,1]], [0,1], False)",
+                        "([[0,0],[0,0]], [1,1], False)",
+                        "([[3,4]], [0,5], False)",
+                        "([[-10000,-10000]], [10000,10000], True)",
+                        "([[10000,10000]], [10000,10000], False)",
+                        "([[10000,10000]], [9999,9999], False)",
+                        "([[10,-9],[5,-6],[2,7],[-1,6]], [-1,8], False)",
+                        "([[9,0],[-1,1]], [-1,-1], False)",
+                        "([[10,-4],[-2,7],[-3,2]], [4,9], False)",
+                        "([[1,6],[-5,3]], [-8,8], False)"
+                    ]
+                },
+                "body": "        result = run_escape_ghosts(Solution, ghosts, target)\n        assert_escape_ghosts(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_escape_ghosts, assert_escape_ghosts\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nghosts: list[list[int]] = [[1, 0], [0, 3]]\ntarget: list[int] = [0, 1]\nexpected = True",
+    "playground_run": "result = run_escape_ghosts(Solution, ghosts, target)\nresult",
+    "playground_assert": "assert_escape_ghosts(result, expected)"
+}

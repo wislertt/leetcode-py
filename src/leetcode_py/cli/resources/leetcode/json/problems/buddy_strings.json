@@ -1,0 +1,100 @@
+{
+    "problem_name": "buddy_strings",
+    "solution_class_name": "Solution",
+    "problem_number": "859",
+    "problem_title": "Buddy Strings",
+    "difficulty": "Easy",
+    "topics": "Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given two strings `s` and `goal`, return `true` if you can swap two letters in `s` so the result is equal to `goal`, otherwise, return `false`.\n\nSwapping letters is defined as taking two indices `i` and `j` (0-indexed) such that `i != j` and swapping the characters at `s[i]` and `s[j]`.\n\n- For example, swapping at indices `0` and `2` in `\"abcd\"` results in `\"cbad\"`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s = \"ab\", goal = \"ba\"\nOutput: true\nExplanation: You can swap s[0] = 'a' and s[1] = 'b' to get \"ba\", which is equal to goal.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"ab\", goal = \"ab\"\nOutput: false\nExplanation: The only letters you can swap are s[0] = 'a' and s[1] = 'b', which results in \"ba\" != goal.\n```"
+            },
+            {
+                "content": "```\nInput: s = \"aa\", goal = \"aa\"\nOutput: true\nExplanation: You can swap s[0] = 'a' and s[1] = 'a' to get \"aa\", which is equal to goal.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s.length, goal.length <= 2 * 10^4\n- s and goal consist of lowercase letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "buddy_strings",
+    "helpers_run_signature": "(solution_class: type, s: str, goal: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.buddy_strings(s, goal)",
+    "helpers_assert_name": "buddy_strings",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_buddy_strings, run_buddy_strings\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "BuddyStrings",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "buddy_strings",
+                "signature": "(self, s: str, goal: str) -> bool",
+                "body": "        # TODO: Implement buddy_strings\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_buddy_strings",
+                "signature": "(self, s: str, goal: str, expected: bool)",
+                "parametrize": "s, goal, expected",
+                "test_cases": {
+                    "list": [
+                        "('ab', 'ba', True)",
+                        "('ab', 'ab', False)",
+                        "('aa', 'aa', True)",
+                        "('abcd', 'cbad', True)",
+                        "('a', 'a', False)",
+                        "('a', 'b', False)",
+                        "('ab', 'abc', False)",
+                        "('abc', 'acb', True)",
+                        "('abc', 'bac', True)",
+                        "('abc', 'abc', False)",
+                        "('aab', 'aab', True)",
+                        "('abc', 'abd', False)",
+                        "('ab', 'cd', False)",
+                        "('abcd', 'badc', False)",
+                        "('aa', 'ab', False)",
+                        "('abcabc', 'abcabc', True)",
+                        "('abc', 'abcd', False)",
+                        "('abab', 'abab', True)",
+                        "('aabb', 'bbaa', False)",
+                        "('abc', 'cba', True)",
+                        "('abcde', 'abced', True)",
+                        "('ab', 'aa', False)"
+                    ]
+                },
+                "body": "        result = run_buddy_strings(Solution, s, goal)\n        assert_buddy_strings(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_buddy_strings, assert_buddy_strings\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns = 'ab'\ngoal = 'ba'\nexpected = True",
+    "playground_run": "result = run_buddy_strings(Solution, s, goal)\nresult",
+    "playground_assert": "assert_buddy_strings(result, expected)"
+}

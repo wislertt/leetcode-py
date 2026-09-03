@@ -1,0 +1,96 @@
+{
+    "problem_name": "rectangle_overlap",
+    "solution_class_name": "Solution",
+    "problem_number": "836",
+    "problem_title": "Rectangle Overlap",
+    "difficulty": "Easy",
+    "topics": "Math, Geometry",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "An axis-aligned rectangle is represented as a list `[x1, y1, x2, y2]`, where `(x1, y1)` is the coordinate of its bottom-left corner, and `(x2, y2)` is the coordinate of its top-right corner. Its top and bottom edges are parallel to the X-axis, and its left and right edges are parallel to the Y-axis.\n\nTwo rectangles overlap if the area of their intersection is **positive**. To be clear, two rectangles that only touch at the corner or edges do not overlap.\n\nGiven two axis-aligned rectangles `rec1` and `rec2`, return `true` if they overlap, otherwise return `false`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: rec1 = [0,0,2,2], rec2 = [1,1,3,3]\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: rec1 = [0,0,1,1], rec2 = [1,0,2,1]\nOutput: false\n```"
+            },
+            {
+                "content": "```\nInput: rec1 = [0,0,1,1], rec2 = [2,2,3,3]\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `rec1.length == 4`\n- `rec2.length == 4`\n- `-10^9 <= rec1[i], rec2[i] <= 10^9`\n- `rec1` and `rec2` represent a valid rectangle with a non-zero area.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_rectangle_overlap",
+    "helpers_run_signature": "(solution_class: type, rec1: list[int], rec2: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_rectangle_overlap(rec1, rec2)",
+    "helpers_assert_name": "is_rectangle_overlap",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_rectangle_overlap, run_is_rectangle_overlap\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RectangleOverlap",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_rectangle_overlap",
+                "signature": "(self, rec1: list[int], rec2: list[int]) -> bool",
+                "body": "        # TODO: Implement is_rectangle_overlap\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_rectangle_overlap",
+                "signature": "(self, rec1: list[int], rec2: list[int], expected: bool)",
+                "parametrize": "rec1, rec2, expected",
+                "test_cases": {
+                    "list": [
+                        "([0, 0, 2, 2], [1, 1, 3, 3], True)",
+                        "([0, 0, 1, 1], [1, 0, 2, 1], False)",
+                        "([0, 0, 1, 1], [2, 2, 3, 3], False)",
+                        "([0, 0, 1, 1], [1, 1, 2, 2], False)",
+                        "([0, 0, 1, 1], [-1, -1, 0, 0], False)",
+                        "([0, 0, 1, 1], [0, 1, 1, 2], False)",
+                        "([0, 0, 2, 3], [1, -1, 3, 0], False)",
+                        "([0, 0, 1, 1], [0, 2, 1, 3], False)",
+                        "([0, 0, 1, 1], [5, 0, 6, 1], False)",
+                        "([0, 0, 5, 5], [1, 1, 2, 2], True)",
+                        "([0, 0, 3, 3], [0, 0, 3, 3], True)",
+                        "([0, 0, 10, 10], [0, 0, 5, 5], True)",
+                        "([-5, -5, -1, -1], [-2, -2, 1, 1], True)",
+                        "([-3, -3, 0, 0], [-1, -1, 2, 2], True)",
+                        "([0, 0, 4, 1], [-1, -1, 1, 3], True)",
+                        "([1, 1, 3, 3], [2, 2, 4, 4], True)",
+                        "([0, 0, 100000000, 100000000], [-100000000, 0, 0, 1], False)",
+                        "([-100000000, -100000000, 100000000, 100000000], [-1, -1, 0, 0], True)"
+                    ]
+                },
+                "body": "        result = run_is_rectangle_overlap(Solution, rec1, rec2)\n        assert_is_rectangle_overlap(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_rectangle_overlap, assert_is_rectangle_overlap\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrec1 = [0, 0, 2, 2]\nrec2 = [1, 1, 3, 3]\nexpected = True",
+    "playground_run": "result = run_is_rectangle_overlap(Solution, rec1, rec2)\nresult",
+    "playground_assert": "assert_is_rectangle_overlap(result, expected)"
+}

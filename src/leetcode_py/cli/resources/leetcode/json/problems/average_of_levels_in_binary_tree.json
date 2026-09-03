@@ -1,0 +1,93 @@
+{
+    "problem_name": "average_of_levels_in_binary_tree",
+    "solution_class_name": "Solution",
+    "problem_number": "637",
+    "problem_title": "Average of Levels in Binary Tree",
+    "difficulty": "Easy",
+    "topics": "Tree, Depth-First Search, Breadth-First Search, Binary Tree",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given the `root` of a binary tree, return <em>the average value of the nodes on each level in the form of an array</em>. Answers within <code>10<sup>-5</sup></code> of the actual answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://assets.leetcode.com/uploads/2021/03/09/avg1-tree.jpg)\n\n```\nInput: root = [3,9,20,null,null,15,7]\nOutput: [3.00000,14.50000,11.00000]\nExplanation: The average value of nodes on level 0 is 3, on level 1 is 14.5, and on level 2 is 11.\nHence return [3, 14.5, 11].\n```"
+            },
+            {
+                "content": "![Example 2](https://assets.leetcode.com/uploads/2021/03/09/avg2-tree.jpg)\n\n```\nInput: root = [3,9,20,15,7]\nOutput: [3.00000,14.50000,11.00000]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- The number of nodes in the tree is in the range [1, 10<sup>4</sup>]\n- -2<sup>31</sup> <= Node.val <= 2<sup>31</sup> - 1",
+    "readme_additional": "",
+    "helpers_imports": "from leetcode_py import TreeNode",
+    "helpers_content": "",
+    "helpers_run_name": "average_of_levels",
+    "helpers_run_signature": "(solution_class: type, root_list: list[int | None])",
+    "helpers_run_body": "    root = TreeNode[int].from_list(root_list) if root_list else None\n    implementation = solution_class()\n    return implementation.average_of_levels(root)",
+    "helpers_assert_name": "average_of_levels",
+    "helpers_assert_signature": "(result: list[float], expected: list[float]) -> bool",
+    "helpers_assert_body": "    assert len(result) == len(expected)\n    assert all(abs(a - b) < 10 ** -5 for a, b in zip(result, expected, strict=True))\n    return True",
+    "solution_imports": "from leetcode_py import TreeNode",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_average_of_levels, run_average_of_levels\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "AverageOfLevelsInBinaryTree",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "average_of_levels",
+                "signature": "(self, root: TreeNode[int] | None) -> list[float]",
+                "body": "        # TODO: Implement average_of_levels\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_average_of_levels",
+                "signature": "(self, root_list: list[int | None], expected: list[float])",
+                "parametrize": "root_list, expected",
+                "test_cases": {
+                    "list": [
+                        "([3,9,20,None,None,15,7],[3.0,14.5,11.0])",
+                        "([3,9,20,15,7],[3.0,14.5,11.0])",
+                        "([1],[1.0])",
+                        "([1,2,3],[1.0,2.5])",
+                        "([0],[0.0])",
+                        "([-1,-2,-3],[-1.0,-2.5])",
+                        "([2147483647,2147483647,2147483647],[2147483647.0,2147483647.0])",
+                        "([-2147483648],[-2147483648.0])",
+                        "([1,None,2,None,3],[1.0,2.0,3.0])",
+                        "([5,4,8,11,None,13,4,7,2,None,None,None,1],[5.0,6.0,9.3333333333,3.3333333333])",
+                        "([1,2,2,3,3,3,3],[1.0,2.0,3.0])",
+                        "([10,5,15,None,6,12,20],[10.0,10.0,12.6666666667])",
+                        "([100,50,150,25,75,125,175],[100.0,100.0,100.0])",
+                        "([7,-8,9,None,10,None,-11],[7.0,0.5,-0.5])",
+                        "([9,-62,2147483647,-63,None,None,0,None,-80],[9.0,1073741792.5,-31.5,-80.0])",
+                        "([-5,-42,91,-2147483648,31,-8,-2147483648],[-5.0,24.5,-1073741818.25])",
+                        "([3,-59,-2147483648],[3.0,-1073741853.5])",
+                        "([9,-47,-49,None,-40],[9.0,-48.0,-40.0])"
+                    ]
+                },
+                "body": "        result = run_average_of_levels(Solution, root_list)\n        assert_average_of_levels(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_average_of_levels, assert_average_of_levels\nfrom solution import Solution\nfrom leetcode_py import TreeNode",
+    "playground_setup": "# Example test case\nroot_list: list[int | None] = [3, 9, 20, None, None, 15, 7]\nexpected = [3.0, 14.5, 11.0]",
+    "playground_run": "result = run_average_of_levels(Solution, root_list)\nresult",
+    "playground_assert": "assert_average_of_levels(result, expected)"
+}

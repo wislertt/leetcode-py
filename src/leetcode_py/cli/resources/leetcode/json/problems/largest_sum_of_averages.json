@@ -1,0 +1,91 @@
+{
+    "problem_name": "largest_sum_of_averages",
+    "solution_class_name": "Solution",
+    "problem_number": "813",
+    "problem_title": "Largest Sum of Averages",
+    "difficulty": "Medium",
+    "topics": "Array, Dynamic Programming, Prefix Sum",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums` and an integer `k`. You can partition the array into at most `k` non-empty adjacent subarrays. The **score** of a partition is the sum of the averages of each subarray.\n\nNote that the partition must use every integer in `nums`, and that the score is not necessarily an integer.\n\nReturn the maximum **score** you can achieve of all the possible partitions. Answers within `10^-6` of the actual answer will be accepted.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [9,1,2,3,9], k = 3\nOutput: 20.00000\nExplanation: The best choice is to partition nums into [9], [1, 2, 3], [9]. The answer is 9 + (1 + 2 + 3) / 3 + 9 = 20.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1,2,3,4,5,6,7], k = 4\nOutput: 20.50000\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= nums.length <= 100`\n- `1 <= nums[i] <= 10^4`\n- `1 <= k <= nums.length`",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "largest_sum_of_averages",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], k: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.largest_sum_of_averages(nums, k)",
+    "helpers_assert_name": "largest_sum_of_averages",
+    "helpers_assert_signature": "(result: float, expected: float) -> bool",
+    "helpers_assert_body": "    assert abs(result - expected) <= 10 ** -6\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_largest_sum_of_averages, run_largest_sum_of_averages\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LargestSumOfAverages",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "largest_sum_of_averages",
+                "signature": "(self, nums: list[int], k: int) -> float",
+                "body": "        # TODO: Implement largest_sum_of_averages\n        return 0.0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_largest_sum_of_averages",
+                "signature": "(self, nums: list[int], k: int, expected: float)",
+                "parametrize": "nums, k, expected",
+                "test_cases": {
+                    "list": [
+                        "([9, 1, 2, 3, 9], 3, 20.0)",
+                        "([1, 2, 3, 4, 5, 6, 7], 4, 20.5)",
+                        "([1], 1, 1.0)",
+                        "([9], 1, 9.0)",
+                        "([1, 2], 1, 1.5)",
+                        "([1, 2], 2, 3.0)",
+                        "([1, 2, 3], 3, 6.0)",
+                        "([10, 10, 10, 10], 2, 20.0)",
+                        "([3, 1, 4, 1, 5], 3, 10.0)",
+                        "([100, 1, 100, 1, 100], 2, 150.5)",
+                        "([7, 7, 7, 7, 7], 5, 35.0)",
+                        "([1, 4, 2, 3], 1, 2.5)",
+                        "([9, 1, 2, 3, 9], 1, 4.8)",
+                        "([4, 1, 7, 5, 6, 2, 3], 4, 18.166666666666664)",
+                        "([2, 8, 3, 6, 5, 7], 3, 16.833333333333332)",
+                        "([5, 2, 1], 2, 6.5)"
+                    ]
+                },
+                "body": "        result = run_largest_sum_of_averages(Solution, nums, k)\n        assert_largest_sum_of_averages(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_largest_sum_of_averages, assert_largest_sum_of_averages\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [9, 1, 2, 3, 9]\nk = 3\nexpected = 20.0",
+    "playground_run": "result = run_largest_sum_of_averages(Solution, nums, k)\nresult",
+    "playground_assert": "assert_largest_sum_of_averages(result, expected)"
+}

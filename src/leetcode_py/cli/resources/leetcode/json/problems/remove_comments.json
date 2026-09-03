@@ -1,0 +1,95 @@
+{
+    "problem_name": "remove_comments",
+    "solution_class_name": "Solution",
+    "problem_number": "722",
+    "problem_title": "Remove Comments",
+    "difficulty": "Medium",
+    "topics": "Array, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a C++ program, remove comments from it. The program source is an array of strings `source` where `source[i]` is the `i<sup>th</sup>` line of the source code. This represents the result of splitting the original source code string by the newline character `'\\n'`.\n\nIn C++, there are two types of comments, line comments, and block comments.\n\n- The string `\"//\"` denotes a line comment, which represents that it and the rest of the characters to the right of it in the same line should be ignored.\n- The string `\"/*\"` denotes a block comment, which represents that all characters until the next (non-overlapping) occurrence of `\"*/\"` should be ignored. (Here, occurrences happen in reading order: line by line from left to right.) To be clear, the string `\"/*/\"` does not yet end the block comment, as the ending would be overlapping the beginning.\n\nThe first effective comment takes precedence over others.\n\n- For example, if the string `\"//\"` occurs in a block comment, it is ignored.\n- Similarly, if the string `\"/*\"` occurs in a line or block comment, it is also ignored.\n\nIf a certain line of code is empty after removing comments, you must not output that line: each string in the answer list will be non-empty.\n\nThere will be no control characters, single quote, or double quote characters.\n\n- For example, `source = \"string s = \"/* Not a comment. */\";\"` will not be a test case.\n\nAlso, nothing else such as defines or macros will interfere with the comments.\n\nIt is guaranteed that every open block comment will eventually be closed, so `\"/*\"` outside of a line or block comment always starts a new comment.\n\nFinally, implicit newline characters can be deleted by block comments. Please see the examples below for details.\n\nAfter removing the comments from the source code, return <em>the source code in the same format</em>.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: source = [\"/*Test program */\", \"int main()\", \"{ \", \"  // variable declaration \", \"int a, b, c;\", \"/* This is a test\", \"   multiline  \", \"   comment for \", \"   testing */\", \"a = b + c;\", \"}\"]\nOutput: [\"int main()\",\"{ \",\"  \",\"int a, b, c;\",\"a = b + c;\",\"}\"]\nExplanation: The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments. The line by line output code is visualized as below:\nint main()\n{\n\nint a, b, c;\na = b + c;\n}\n```"
+            },
+            {
+                "content": "```\nInput: source = [\"a/*comment\", \"line\", \"more_comment*/b\"]\nOutput: [\"ab\"]\nExplanation: The original source string is \"a/*comment\\nline\\nmore_comment*/b\". After deletion, the implicit newline characters are deleted, leaving the string \"ab\", which when delimited by newline characters becomes [\"ab\"].\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= source.length <= 100\n- 0 <= source[i].length <= 80\n- source[i] consists of printable ASCII characters.\n- Every open block comment is eventually closed.\n- There are no single-quote or double-quote in the input.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "remove_comments",
+    "helpers_run_signature": "(solution_class: type, source: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.remove_comments(source)",
+    "helpers_assert_name": "remove_comments",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_remove_comments, run_remove_comments\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RemoveComments",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "remove_comments",
+                "signature": "(self, source: list[str]) -> list[str]",
+                "body": "        # TODO: Implement remove_comments\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_remove_comments",
+                "signature": "(self, source: list[str], expected: list[str])",
+                "parametrize": "source, expected",
+                "test_cases": {
+                    "list": [
+                        "(['g'], ['g'])",
+                        "(['//x'], [])",
+                        "(['a//x'], ['a'])",
+                        "(['/*c*/'], [])",
+                        "(['a/*c*/b'], ['ab'])",
+                        "(['/*c', '*/'], [])",
+                        "(['a/*c', 'd*/b'], ['ab'])",
+                        "(['a/*comment', 'line', 'more_comment*/b'], ['ab'])",
+                        "(['a/*/', 'b*/c'], ['ac'])",
+                        "(['x/*a*/y/*b*/z'], ['xyz'])",
+                        "(['/*//*/k'], ['k'])",
+                        "(['a//b/*c*/d'], ['a'])",
+                        "(['/*', 'a', '*/x', 'y'], ['x', 'y'])",
+                        "(['a//*b*/c'], ['a'])",
+                        "(['/*a//*/b'], ['b'])",
+                        "(['/*a*/', '/*b*/x'], ['x'])",
+                        "(['a/*b*/', 'c'], ['a', 'c'])",
+                        "(['{ ', '  // v ', 'int a;'], ['{ ', '  ', 'int a;'])",
+                        "(['/*Test program */', 'int main()'], ['int main()'])",
+                        "(['/* t', '   m */x', '}'], ['x', '}'])"
+                    ]
+                },
+                "body": "        result = run_remove_comments(Solution, source)\n        assert_remove_comments(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_remove_comments, assert_remove_comments\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nsource = ['a/*comment', 'line', 'more_comment*/b']\nexpected = ['ab']",
+    "playground_run": "result = run_remove_comments(Solution, source, expected)\nresult",
+    "playground_assert": "assert_remove_comments(result, expected)"
+}

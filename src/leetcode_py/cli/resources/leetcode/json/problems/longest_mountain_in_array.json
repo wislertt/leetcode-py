@@ -1,0 +1,96 @@
+{
+    "problem_name": "longest_mountain_in_array",
+    "solution_class_name": "Solution",
+    "problem_number": "845",
+    "problem_title": "Longest Mountain in Array",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Dynamic Programming, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You may recall that an array `arr` is a **mountain array** if and only if:\n\n- `arr.length >= 3`\n- There exists some index `i` (**0-indexed**) with `0 < i < arr.length - 1` such that:\n  - `arr[0] < arr[1] < ... < arr[i - 1] < arr[i]`\n  - `arr[i] > arr[i + 1] > ... > arr[arr.length - 1]`\n\nGiven an integer array `arr`, return *the length of the longest subarray, which is a mountain*. Return `0` if there is no mountain subarray.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [2,1,4,7,3,2,5]\nOutput: 5\nExplanation: The largest mountain is [1,4,7,3,2] which has length 5.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [2,2,2]\nOutput: 0\nExplanation: There is no mountain.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= arr.length <= 10^4\n- 0 <= arr[i] <= 10^4",
+    "readme_additional": "**Follow up:**\n\n- Can you solve it using only one pass?\n- Can you solve it in `O(1)` space?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "longest_mountain",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.longest_mountain(arr)",
+    "helpers_assert_name": "longest_mountain",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_longest_mountain, run_longest_mountain\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "LongestMountainInArray",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "longest_mountain",
+                "signature": "(self, arr: list[int]) -> int",
+                "body": "        # TODO: Implement longest_mountain\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_longest_mountain",
+                "signature": "(self, arr: list[int], expected: int)",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([2, 1, 4, 7, 3, 2, 5], 5)",
+                        "([2, 2, 2], 0)",
+                        "([0, 1, 0, 0, 1, 0, 0, 1, 2, 2, 3], 3)",
+                        "([1], 0)",
+                        "([1, 2], 0)",
+                        "([1, 2, 3], 0)",
+                        "([3, 2, 1], 0)",
+                        "([1, 2, 1], 3)",
+                        "([1, 2, 2, 1], 0)",
+                        "([1, 2, 3, 2, 1], 5)",
+                        "([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0], 11)",
+                        "([1, 1, 1, 1], 0)",
+                        "([5, 6, 1, 2, 3, 2, 1, 0, 4], 6)",
+                        "([2, 1, 4, 7, 3, 2, 5, 6, 6, 8], 5)",
+                        "([3, 3, 4, 5, 2, 1], 5)",
+                        "([2, 0, 4], 0)",
+                        "([4, 1, 0, 1, 3], 0)",
+                        "([1, 2, 2, 3, 0, 3, 2, 3, 3, 0], 3)",
+                        "([3, 3, 3, 1, 1, 3, 0, 1, 1, 1, 3], 3)",
+                        "([1, 4, 1, 1, 1, 3, 1, 3, 1, 0, 1], 4)",
+                        "([4, 2, 1, 1, 4], 0)"
+                    ]
+                },
+                "body": "        result = run_longest_mountain(Solution, arr)\n        assert_longest_mountain(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_longest_mountain, assert_longest_mountain\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr: list[int] = [2, 1, 4, 7, 3, 2, 5]\nexpected: int = 5",
+    "playground_run": "result = run_longest_mountain(Solution, arr)\nresult",
+    "playground_assert": "assert_longest_mountain(result, expected)"
+}

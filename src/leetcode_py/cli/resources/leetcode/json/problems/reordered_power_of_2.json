@@ -1,0 +1,111 @@
+{
+    "problem_name": "reordered_power_of_2",
+    "solution_class_name": "Solution",
+    "problem_number": "869",
+    "problem_title": "Reordered Power of 2",
+    "difficulty": "Medium",
+    "topics": "Hash Table, Math, Sorting, Counting, Enumeration",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer `n`. We reorder the digits in any order (including the original order) such that the leading digit is not zero.\n\nReturn `true` if and only if we can do this so that the resulting number is a power of two.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 1\nOutput: true\n```"
+            },
+            {
+                "content": "```\nInput: n = 10\nOutput: false\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= n <= 10^9",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "reordered_power_of_2",
+    "helpers_run_signature": "(solution_class: type, n: int)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.reordered_power_of_2(n)",
+    "helpers_assert_name": "reordered_power_of_2",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_reordered_power_of_2, run_reordered_power_of_2\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "ReorderedPowerOf2",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "reordered_power_of_2",
+                "signature": "(self, n: int) -> bool",
+                "body": "        # TODO: Implement reordered_power_of_2\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_reordered_power_of_2",
+                "signature": "(self, n: int, expected: bool)",
+                "parametrize": "n, expected",
+                "test_cases": {
+                    "list": [
+                        "(1, True)",
+                        "(10, False)",
+                        "(2, True)",
+                        "(4, True)",
+                        "(8, True)",
+                        "(16, True)",
+                        "(24, False)",
+                        "(32, True)",
+                        "(46, True)",
+                        "(64, True)",
+                        "(125, True)",
+                        "(128, True)",
+                        "(152, True)",
+                        "(218, True)",
+                        "(512, True)",
+                        "(1024, True)",
+                        "(4096, True)",
+                        "(6094, True)",
+                        "(8210, False)",
+                        "(1000, False)",
+                        "(9999, False)",
+                        "(65536, True)",
+                        "(131072, True)",
+                        "(102400, False)",
+                        "(1048576, True)",
+                        "(1234567, False)",
+                        "(536870912, True)",
+                        "(999999999, False)",
+                        "(123456789, False)",
+                        "(987654321, False)",
+                        "(444094478, False)",
+                        "(725927240, False)",
+                        "(427242187, False)",
+                        "(254604626, False)",
+                        "(661569692, False)",
+                        "(246871001, False)"
+                    ]
+                },
+                "body": "        result = run_reordered_power_of_2(Solution, n)\n        assert_reordered_power_of_2(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_reordered_power_of_2, assert_reordered_power_of_2\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 1\nexpected = True",
+    "playground_run": "result = run_reordered_power_of_2(Solution, n)\nresult",
+    "playground_assert": "assert_reordered_power_of_2(result, expected)"
+}

@@ -1,0 +1,93 @@
+{
+    "problem_name": "sum_even_after_queries",
+    "solution_class_name": "Solution",
+    "problem_number": "985",
+    "problem_title": "Sum of Even Numbers After Queries",
+    "difficulty": "Medium",
+    "topics": "Array, Simulation",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given an integer array `nums` and an array `queries` where `queries[i] = [val_i, index_i]`.\n\nFor each query `i`, first, apply `nums[index_i] = nums[index_i] + val_i`, then print the sum of the even values of `nums`.\n\nReturn an integer array `answer` where `answer[i]` is the answer to the `i-th` query.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]\nOutput: [8,6,2,4]\nExplanation: At the beginning, the array is [1,2,3,4].\nAfter adding 1 to nums[0], the array is [2,2,3,4], and the sum of even values is 2 + 2 + 4 = 8.\nAfter adding -3 to nums[1], the array is [2,-1,3,4], and the sum of even values is 2 + 4 = 6.\nAfter adding -4 to nums[0], the array is [-2,-1,3,4], and the sum of even values is -2 + 4 = 2.\nAfter adding 2 to nums[3], the array is [-2,-1,3,6], and the sum of even values is -2 + 6 = 4.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [1], queries = [[4,0]]\nOutput: [0]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= nums.length <= 10^4\n- -10^4 <= nums[i] <= 10^4\n- 1 <= queries.length <= 10^4\n- -10^4 <= val_i <= 10^4\n- 0 <= index_i < nums.length",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sum_even_after_queries",
+    "helpers_run_signature": "(solution_class: type, nums: list[int], queries: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sum_even_after_queries(nums, queries)",
+    "helpers_assert_name": "sum_even_after_queries",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sum_even_after_queries, run_sum_even_after_queries\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SumEvenAfterQueries",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sum_even_after_queries",
+                "signature": "(self, nums: list[int], queries: list[list[int]]) -> list[int]",
+                "body": "        # TODO: Implement sum_even_after_queries\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sum_even_after_queries",
+                "signature": "(self, nums: list[int], queries: list[list[int]], expected: list[int])",
+                "parametrize": "nums, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 2, 3, 4], [[1, 0], [-3, 1], [-4, 0], [2, 3]], [8, 6, 2, 4])",
+                        "([1], [[4, 0]], [0])",
+                        "([1, 2, 3, 4], [[2, 0], [2, 1], [2, 2], [2, 3]], [6, 8, 8, 10])",
+                        "([0, 0, 0], [[1, 0], [1, 1], [1, 2]], [0, 0, 0])",
+                        "([5], [[-5, 0]], [0])",
+                        "([2, 4, 6], [[-2, 0], [-4, 1], [-6, 2]], [10, 6, 0])",
+                        "([1, 1, 1, 1], [[1, 0], [1, 1], [1, 2], [1, 3]], [2, 4, 6, 8])",
+                        "([-2, -4], [[1, 0], [3, 1]], [-4, 0])",
+                        "([3, 5, 7], [[-3, 0], [-5, 1], [-7, 2]], [0, 0, 0])",
+                        "([10, -10], [[-10, 0], [10, 1]], [-10, 0])",
+                        "([-4, 1, -10], [[3, 2], [-5, 1]], [-4, -8])",
+                        "([-6], [[-1, 0], [6, 0]], [0, 0])",
+                        "([-6, -8, 5, 6, -2], [[3, 0], [4, 2]], [-4, -4])",
+                        "([2], [[2, 0], [-5, 0], [6, 0]], [4, 0, 0])",
+                        "([10, 3, -10, 6], [[9, 0]], [-4])",
+                        "([-6], [[4, 0]], [-2])",
+                        "([-3], [[10, 0]], [0])",
+                        "([-9], [[-5, 0]], [-14])"
+                    ]
+                },
+                "body": "        result = run_sum_even_after_queries(Solution, nums, queries)\n        assert_sum_even_after_queries(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sum_even_after_queries, assert_sum_even_after_queries\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [1, 2, 3, 4]\nqueries = [[1, 0], [-3, 1], [-4, 0], [2, 3]]\nexpected = [8, 6, 2, 4]",
+    "playground_run": "result = run_sum_even_after_queries(Solution, nums, queries)\nresult",
+    "playground_assert": "assert_sum_even_after_queries(result, expected)"
+}

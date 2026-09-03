@@ -1,0 +1,95 @@
+{
+    "problem_name": "one_bit_and_two_bit_characters",
+    "solution_class_name": "Solution",
+    "problem_number": "717",
+    "problem_title": "1-bit and 2-bit Characters",
+    "difficulty": "Easy",
+    "topics": "Array",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "We have two special characters:\n\n- The first character can be represented by one bit `0`.\n- The second character can be represented by two bits (`10` or `11`).\n\nGiven a binary array `bits` that ends with `0`, return `true` if the last character must be a one-bit character.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: bits = [1,0,0]\nOutput: true\nExplanation: The only way to decode it is two-bit character and one-bit character.\nSo the last character is one-bit character.\n```"
+            },
+            {
+                "content": "```\nInput: bits = [1,1,1,0]\nOutput: false\nExplanation: The only way to decode it is two-bit character and two-bit character.\nSo the last character is not one-bit character.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= bits.length <= 1000\n- bits[i] is either 0 or 1.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "is_one_bit_character",
+    "helpers_run_signature": "(solution_class: type, bits: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.is_one_bit_character(bits)",
+    "helpers_assert_name": "is_one_bit_character",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_is_one_bit_character, run_is_one_bit_character\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "OneBitAndTwoBitCharacters",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "is_one_bit_character",
+                "signature": "(self, bits: list[int]) -> bool",
+                "body": "        # TODO: Implement is_one_bit_character\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_is_one_bit_character",
+                "signature": "(self, bits: list[int], expected: bool)",
+                "parametrize": "bits, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 0, 0], True)",
+                        "([1, 1, 1, 0], False)",
+                        "([0], True)",
+                        "([1, 0], False)",
+                        "([0, 0], True)",
+                        "([1, 1, 0], True)",
+                        "([0, 1, 0], False)",
+                        "([1, 0, 1, 0], False)",
+                        "([1, 1, 0, 0], True)",
+                        "([0, 0, 0, 0], True)",
+                        "([1, 1, 1, 1, 0], True)",
+                        "([1, 0, 1, 1, 0], True)",
+                        "([1, 1, 0, 1, 0], False)",
+                        "([0, 1, 1, 1, 0], False)",
+                        "([1, 1, 1, 0, 1, 0], False)",
+                        "([0, 1, 0, 1, 1, 0], True)",
+                        "([0, 0, 1, 0], False)",
+                        "([1, 1, 0, 1, 1, 0, 1, 1, 1, 0], False)",
+                        "([0, 0, 1, 0, 0, 0, 0, 0, 0], True)",
+                        "([1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0], True)"
+                    ]
+                },
+                "body": "        result = run_is_one_bit_character(Solution, bits)\n        assert_is_one_bit_character(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_is_one_bit_character, assert_is_one_bit_character\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nbits = [1, 0, 0]\nexpected = True",
+    "playground_run": "result = run_is_one_bit_character(Solution, bits)\nresult",
+    "playground_assert": "assert_is_one_bit_character(result, expected)"
+}

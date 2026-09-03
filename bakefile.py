@@ -1,7 +1,8 @@
 import difflib
 import re
 import shutil
-import tempfile
+import subprocess
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Annotated
 
@@ -12,18 +13,32 @@ from rich.panel import Panel
 from rich.syntax import Syntax
 from rich.text import Text
 
+from leetcode_py.tools.generator import batch_format_and_check
+
 problem_option = Annotated[str | None, typer.Option("-p", "--problem")]
 force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
     ci: bool = False
-    problem: str = "distribute_candies"
+    problem: str = "available_captures_for_rook"
 
-    def lint(self) -> None:
+    def lint(
+        self,
+        skip_docs: Annotated[
+            bool,
+            typer.Option(
+                "--skip-docs",
+                help="Skip docs generation (check-consistency regenerates docs "
+                "from the restored tree after the run)",
+            ),
+        ] = False,
+    ) -> None:
         self.ctx.run("uv run python scripts/sort_tags.py")
         self.ctx.run("uv run python scripts/check_tag_problems.py")
-        self.ctx.run("uv run python scripts/gen_catalog.py")
+        if not skip_docs:
+            self.ctx.run("uv run python scripts/gen_catalog.py")
+            self.ctx.run("uv run python scripts/gen_problems.py")
         super().lint()
 
     def test(self) -> None:
@@ -61,7 +76,15 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         console.echo(f"Deleted: {problem_path}")
 
     def _convert_notebooks_to_python(self, base_dir: Path = Path("leetcode")) -> None:
-        self.ctx.run(f"uv run jupytext --to py:percent {base_dir}/**/*.ipynb")
+        notebooks = list(base_dir.rglob("*.ipynb"))
+        if not notebooks:
+            return
+        # Batched xargs: one jupytext process per 20 notebooks, 8 at a time
+        # (a single invocation converts thousands of notebooks serially).
+        self.ctx.run(
+            f"find {base_dir} -name '*.ipynb' -print0 | "
+            "xargs -0 -n 20 -P 8 uv run jupytext --to py:percent"
+        )
         for notebook in base_dir.rglob("*.ipynb"):
             notebook.unlink()
 
@@ -96,18 +119,6 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
     @command("docs-check", help="Check docs site for broken links")
     def docs_check(self):
         self.ctx.run("mintlify broken-links", cwd=Path("docs"))
-
-    @command("docs-catalog", help="Regenerate docs/catalog/ pages from JSON templates")
-    def docs_catalog(self):
-        console.echo("Regenerating docs/catalog/ pages...")
-        self.ctx.run("uv run python scripts/gen_catalog.py")
-        console.success("Catalog pages regenerated into docs/catalog/")
-
-    @command("docs-problems", help="Regenerate docs/problems/ pages from JSON templates")
-    def docs_problems(self):
-        console.echo("Regenerating docs/problems/ pages...")
-        self.ctx.run("uv run python scripts/gen_problems.py")
-        console.success("Problem pages regenerated into docs/problems/")
 
     @command("check-test-cases", help="Find problems with few test cases")
     def check_test_cases(
@@ -165,32 +176,83 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
             console.error("leetcode/ directory not found")
             raise typer.Exit(1)
 
-        auto_mode = backup_dir is None
-        if auto_mode:
-            with tempfile.TemporaryDirectory() as tmp:
-                backup_path = Path(tmp) / "leetcode"
-                console.echo("Auto-backing up leetcode/...")
-                shutil.copytree(leetcode_path, backup_path)
-                console.echo("Deleting leetcode/...")
-                shutil.rmtree(leetcode_path)
-                console.echo("Regenerating all problems...")
-                self.ctx.run("uv run lcpy gen --all -o leetcode --force")
-                console.echo("Converting notebooks to .py...")
-                self._convert_notebooks_to_python(leetcode_path)
-                console.echo("Linting generated files...")
-                self.lint()
-                try:
-                    self._run_consistency_check(leetcode_path, backup_path)
-                finally:
-                    console.echo("Restoring original leetcode/...")
-                    shutil.rmtree(leetcode_path)
-                    shutil.copytree(backup_path, leetcode_path)
-        else:
+        if backup_dir is not None:
             backup_path = Path(backup_dir)
             if not backup_path.exists():
                 console.error(f"Backup directory not found: {backup_dir}")
                 raise typer.Exit(1)
             self._run_consistency_check(leetcode_path, backup_path)
+            return
+
+        # Fixed workdir: cleaned before use and removed after, so it never grows.
+        # The working tree is swapped out by RENAME (no copytree) and restored the
+        # same way; only the diff window ever holds the regenerated tree.
+        workdir = Path(".cache/check-consistency")
+        backup_path = workdir / "backup"
+        gen_path = workdir / "generated"
+
+        if backup_path.exists():
+            console.error(
+                ".cache/check-consistency/backup exists from an earlier interrupted run. "
+                "Restore it with `mv .cache/check-consistency/backup leetcode` "
+                "(after removing the stub leetcode/), or delete it, then re-run."
+            )
+            raise typer.Exit(1)
+
+        shutil.rmtree(workdir, ignore_errors=True)
+        workdir.mkdir(parents=True)
+
+        problems_json_dir = Path("src/leetcode_py/cli/resources/leetcode/json/problems")
+        problems = sorted(p.stem for p in problems_json_dir.glob("*.json"))
+        self._parallel_gen(problems, gen_path)
+
+        leetcode_path.rename(backup_path)
+        gen_path.rename(leetcode_path)
+        try:
+            console.echo("Converting notebooks to .py...")
+            self._convert_notebooks_to_python(leetcode_path)
+            console.echo("Formatting generated files...")
+            # lint() runs `ruff format --exit-non-zero-on-format`, so the fresh
+            # tree must already be ruff-clean before lint starts. ty is skipped
+            # here because lint's own ty pass covers it (was 2 passes before).
+            batch_format_and_check([leetcode_path], run_ty=False)
+            console.echo("Linting generated files...")
+            self.lint(skip_docs=True)
+            self._run_consistency_check(leetcode_path, backup_path)
+        finally:
+            console.echo("Restoring original leetcode/...")
+            shutil.rmtree(leetcode_path)
+            backup_path.rename(leetcode_path)
+            shutil.rmtree(workdir)
+            # lint() skipped docs gen mid-check (LCPY_CONSISTENCY): the tree held
+            # stubs, so regenerating docs then would bake the stubs in. Generate
+            # once here, from the restored real tree.
+            self.ctx.run("uv run python scripts/gen_problems.py")
+
+    def _parallel_gen(self, problems: list[str], output_dir: Path, workers: int = 8) -> None:
+        """Generate problems in concurrent `lcpy gen` chunks. cookiecutter is not
+        thread-safe, so the parallelism comes from subprocesses, not threads."""
+        chunk_size = -(-len(problems) // workers)
+        chunks = [problems[i : i + chunk_size] for i in range(0, len(problems), chunk_size)]
+        console.echo(f"Generating {len(problems)} problems in {len(chunks)} parallel chunks...")
+
+        def run_chunk(chunk: list[str]) -> subprocess.CompletedProcess[str]:
+            cmd = ["uv", "run", "lcpy", "gen"]
+            for slug in chunk:
+                cmd += ["-s", slug]
+            cmd += ["-o", str(output_dir), "--force", "--no-check"]
+            return subprocess.run(cmd, capture_output=True, text=True)
+
+        with ThreadPoolExecutor(max_workers=len(chunks)) as pool:
+            results = list(pool.map(run_chunk, chunks))
+
+        failed = [r for r in results if r.returncode != 0]
+        for r in failed:
+            output = r.stderr.strip() or r.stdout.strip()
+            console.error(f"gen chunk failed:\n{output[-2000:]}")
+        if failed:
+            # Abort BEFORE the swap so the working tree is never touched.
+            raise typer.Exit(1)
 
     def _run_consistency_check(self, leetcode_path: Path, backup_path: Path) -> None:
         files_to_check = [

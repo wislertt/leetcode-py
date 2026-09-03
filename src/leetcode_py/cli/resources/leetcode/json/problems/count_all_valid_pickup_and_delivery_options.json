@@ -15,7 +15,7 @@
                 "content": "```\nInput: n = 1\nOutput: 1\nExplanation: Unique order (P1, D1), Delivery 1 always is after of Pickup 1.\n```"
             },
             {
-                "content": "```\nInput: n = 2\nOutput: 6\nExplanation: All possible orders: \n(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).\nThis is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.\n```"
+                "content": "```\nInput: n = 2\nOutput: 6\nExplanation: All possible orders:\n(P1,P2,D1,D2), (P1,P2,D2,D1), (P1,D1,P2,D2), (P2,P1,D1,D2), (P2,P1,D2,D1) and (P2,D2,P1,D1).\nThis is an invalid order (P1,D2,P2,D1) because Pickup 2 is after of Delivery 2.\n```"
             },
             {
                 "content": "```\nInput: n = 3\nOutput: 90\n```"

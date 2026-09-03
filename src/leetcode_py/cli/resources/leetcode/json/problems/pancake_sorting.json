@@ -1,0 +1,99 @@
+{
+    "problem_name": "pancake_sorting",
+    "solution_class_name": "Solution",
+    "problem_number": "969",
+    "problem_title": "Pancake Sorting",
+    "difficulty": "Medium",
+    "topics": "Array, Two Pointers, Greedy, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given an array of integers `arr`, sort the array by performing a series of **pancake flips**.\n\nIn one pancake flip we do the following steps:\n\n- Choose an integer `k` where `1 <= k <= arr.length`.\n- Reverse the sub-array `arr[0...k-1]` (0-indexed).\n\nFor example, if `arr = [3,2,1,4]` and we performed a pancake flip choosing `k = 3`, we reverse the sub-array `[3,2,1]`, so `arr = [1,2,3,4]` after the pancake flip at `k = 3`.\n\nReturn an array of the `k`-values corresponding to a sequence of pancake flips that sort `arr`. Any valid answer that sorts the array within `10 * arr.length` flips will be judged as correct.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: arr = [3,2,4,1]\nOutput: [4,2,4,3]\nExplanation:\nWe perform 4 pancake flips, with k values 4, 2, 4, and 3.\nStarting state: arr = [3, 2, 4, 1]\nAfter 1st flip (k = 4): arr = [1, 4, 2, 3]\nAfter 2nd flip (k = 2): arr = [4, 1, 2, 3]\nAfter 3rd flip (k = 4): arr = [3, 2, 1, 4]\nAfter 4th flip (k = 3): arr = [1, 2, 3, 4], which is sorted.\n```"
+            },
+            {
+                "content": "```\nInput: arr = [1,2,3]\nOutput: []\nExplanation: The input is already sorted, so there is no need to flip anything.\nNote that other answers, such as [3, 3], would also be accepted.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= arr.length <= 100`\n- `1 <= arr[i] <= arr.length`\n- All integers in `arr` are **unique** (i.e. `arr` is a permutation of the integers from `1` to `arr.length`).",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "pancake_sort",
+    "helpers_run_signature": "(solution_class: type, arr: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.pancake_sort(arr)",
+    "helpers_assert_name": "pancake_sort",
+    "helpers_assert_signature": "(result: list[int], arr: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Multiple valid flip sequences exist; simulate the flips and\n    # verify the array ends up sorted within the flip budget\n    n = len(arr)\n    assert len(result) <= 10 * n\n    state = list(arr)\n    for k in result:\n        assert 1 <= k <= n\n        for i in range(k // 2):\n            state[i], state[k - 1 - i] = state[k - 1 - i], state[i]\n    assert state == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_pancake_sort, run_pancake_sort\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PancakeSorting",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "pancake_sort",
+                "signature": "(self, arr: list[int]) -> list[int]",
+                "body": "        # TODO: Implement pancake_sort\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_pancake_sort",
+                "signature": "(self, arr: list[int], expected: list[int])",
+                "parametrize": "arr, expected",
+                "test_cases": {
+                    "list": [
+                        "([1], [1])",
+                        "([1, 2], [1, 2])",
+                        "([2, 1], [1, 2])",
+                        "([1, 2, 3], [1, 2, 3])",
+                        "([2, 3, 1], [1, 2, 3])",
+                        "([3, 1, 2], [1, 2, 3])",
+                        "([3, 2, 1], [1, 2, 3])",
+                        "([3, 2, 4, 1], [1, 2, 3, 4])",
+                        "([4, 3, 2, 1], [1, 2, 3, 4])",
+                        "([1, 4, 2, 3], [1, 2, 3, 4])",
+                        "([2, 1, 4, 3], [1, 2, 3, 4])",
+                        "([4, 1, 3, 2], [1, 2, 3, 4])",
+                        "([5, 1, 2, 3, 4], [1, 2, 3, 4, 5])",
+                        "([2, 4, 1, 5, 3], [1, 2, 3, 4, 5])",
+                        "([5, 4, 3, 2, 1], [1, 2, 3, 4, 5])",
+                        "([3, 1, 2, 5, 4], [1, 2, 3, 4, 5])",
+                        "([3, 1, 2, 6, 4, 5], [1, 2, 3, 4, 5, 6])",
+                        "([6, 2, 4, 1, 5, 3], [1, 2, 3, 4, 5, 6])",
+                        "([7, 1, 5, 3, 6, 4, 2], [1, 2, 3, 4, 5, 6, 7])",
+                        "([4, 6, 2, 7, 1, 5, 3], [1, 2, 3, 4, 5, 6, 7])",
+                        "([4, 2, 7, 3, 1, 5, 6], [1, 2, 3, 4, 5, 6, 7])",
+                        "([1, 4, 3, 2], [1, 2, 3, 4])",
+                        "([1, 3, 4, 2, 6, 7, 5], [1, 2, 3, 4, 5, 6, 7])",
+                        "([6, 3, 5, 1, 7, 4, 2, 8], [1, 2, 3, 4, 5, 6, 7, 8])"
+                    ]
+                },
+                "body": "        result = run_pancake_sort(Solution, arr)\n        assert_pancake_sort(result, arr, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_pancake_sort, assert_pancake_sort\nfrom solution import Solution",
+    "playground_setup": "# Example test case\narr = [3, 2, 4, 1]\nexpected = [1, 2, 3, 4]",
+    "playground_run": "result = run_pancake_sort(Solution, arr)\nresult",
+    "playground_assert": "assert_pancake_sort(result, arr, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "possible_bipartition",
+    "solution_class_name": "Solution",
+    "problem_number": "886",
+    "problem_title": "Possible Bipartition",
+    "difficulty": "Medium",
+    "topics": "Depth-First Search, Breadth-First Search, Union-Find, Graph Theory, Graph Coloring, Bipartite Graph",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "We want to split a group of `n` people (labeled from `1` to `n`) into two groups of **any size**. Each person may dislike some other people, and they should not go into the same group.\n\nGiven the integer `n` and the array `dislikes` where `dislikes[i] = [ai, bi]` indicates that the person labeled `ai` does not like the person labeled `bi`, return `true` if it is possible to split everyone into two groups in this way.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: n = 4, dislikes = [[1,2],[1,3],[2,4]]\nOutput: true\n```\n**Explanation:** The first group has [1,4], and the second group has [2,3]."
+            },
+            {
+                "content": "```\nInput: n = 3, dislikes = [[1,2],[1,3],[2,3]]\nOutput: false\n```\n**Explanation:** We need at least 3 groups to divide them. We cannot put them in two groups."
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= n <= 2000`\n- `0 <= dislikes.length <= 10^4`\n- `dislikes[i].length == 2`\n- `1 <= ai < bi <= n`\n- All the pairs of dislikes are **unique**.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "possible_bipartition",
+    "helpers_run_signature": "(solution_class: type, n: int, dislikes: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.possible_bipartition(n, dislikes)",
+    "helpers_assert_name": "possible_bipartition",
+    "helpers_assert_signature": "(result: bool, expected: bool) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_possible_bipartition, run_possible_bipartition\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "PossibleBipartition",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "possible_bipartition",
+                "signature": "(self, n: int, dislikes: list[list[int]]) -> bool",
+                "body": "        # TODO: Implement possible_bipartition\n        return False"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_possible_bipartition",
+                "signature": "(self, n: int, dislikes: list[list[int]], expected: bool)",
+                "parametrize": "n, dislikes, expected",
+                "test_cases": {
+                    "list": [
+                        "(4, [[1, 2], [1, 3], [2, 4]], True)",
+                        "(3, [[1, 2], [1, 3], [2, 3]], False)",
+                        "(1, [], True)",
+                        "(2, [], True)",
+                        "(2, [[1, 2]], True)",
+                        "(3, [], True)",
+                        "(5, [[1, 2], [2, 3], [3, 4], [4, 5]], True)",
+                        "(4, [[1, 2], [2, 3], [3, 4], [1, 4]], True)",
+                        "(5, [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]], False)",
+                        "(6, [[1, 2], [3, 4], [5, 6]], True)",
+                        "(6, [[1, 2], [3, 4], [4, 5], [3, 5]], False)",
+                        "(6, [[1, 2], [2, 3], [1, 3], [4, 5], [5, 6], [4, 6]], False)",
+                        "(8, [[1, 2], [1, 3], [3, 4], [2, 5], [5, 6], [6, 7], [7, 8]], True)",
+                        "(7, [[1, 3], [3, 5], [1, 5], [2, 4], [4, 6]], False)",
+                        "(6, [[1, 2], [1, 4], [1, 6], [3, 6]], True)",
+                        "(8, [[1, 2], [3, 8], [7, 8]], True)",
+                        "(6, [[1, 6], [2, 5], [3, 6], [5, 6]], True)",
+                        "(6, [[3, 5], [4, 5], [3, 4]], False)",
+                        "(6, [[1, 5], [1, 4], [4, 5]], False)",
+                        "(8, [[5, 8], [5, 6], [6, 8]], False)"
+                    ]
+                },
+                "body": "        result = run_possible_bipartition(Solution, n, dislikes)\n        assert_possible_bipartition(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_possible_bipartition, assert_possible_bipartition\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nn = 4\ndislikes = [[1, 2], [1, 3], [2, 4]]\nexpected = True",
+    "playground_run": "result = run_possible_bipartition(Solution, n, dislikes)\nresult",
+    "playground_assert": "assert_possible_bipartition(result, expected)"
+}

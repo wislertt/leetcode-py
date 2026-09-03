@@ -12,7 +12,7 @@
     "_readme_examples": {
         "list": [
             {
-                "content": "```\nInput: low = 3, high = 3, zero = 1, one = 1\nOutput: 8\nExplanation: One possible valid good string is \"011\". \nIt can be constructed as follows: \"\" -> \"0\" -> \"01\" -> \"011\". \nAll binary strings from \"000\" to \"111\" are good strings in this example.\n```"
+                "content": "```\nInput: low = 3, high = 3, zero = 1, one = 1\nOutput: 8\nExplanation: One possible valid good string is \"011\".\nIt can be constructed as follows: \"\" -> \"0\" -> \"01\" -> \"011\".\nAll binary strings from \"000\" to \"111\" are good strings in this example.\n```"
             },
             {
                 "content": "```\nInput: low = 2, high = 3, zero = 1, one = 2\nOutput: 5\nExplanation: The good strings are \"00\", \"11\", \"000\", \"110\", and \"011\".\n```"

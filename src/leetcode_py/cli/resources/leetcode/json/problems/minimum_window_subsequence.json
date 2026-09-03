@@ -1,0 +1,95 @@
+{
+    "problem_name": "minimum_window_subsequence",
+    "solution_class_name": "Solution",
+    "problem_number": "727",
+    "problem_title": "Minimum Window Subsequence",
+    "difficulty": "Hard",
+    "topics": "String, Dynamic Programming, Sliding Window",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given strings `s1` and `s2`, return the minimum contiguous substring part of `s1`, so that `s2` is a subsequence of the part.\n\nIf there is no such window in `s1` that covers all characters in `s2`, return the empty string `\"\"`. If there are multiple such minimum-length windows, return the one with the **left-most starting index**.\n\nA subsequence of a string is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: s1 = \"abcdebdde\", s2 = \"bde\"\nOutput: \"bcde\"\nExplanation: \"bcde\" is the answer because it occurs before \"bdde\" which has the same length.\n\"deb\" is not a smaller window because the elements of s2 in the window must occur in order.\n```"
+            },
+            {
+                "content": "```\nInput: s1 = \"jmeqksfrsdcmsiwvaovztaqenprpvnbstl\", s2 = \"u\"\nOutput: \"\"\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= s1.length <= 2 * 10^4\n- 1 <= s2.length <= 100\n- s1 and s2 consist of lowercase English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "min_window",
+    "helpers_run_signature": "(solution_class: type, s1: str, s2: str)",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.min_window(s1, s2)",
+    "helpers_assert_name": "min_window",
+    "helpers_assert_signature": "(result: str, expected: str) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_min_window, run_min_window\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "MinimumWindowSubsequence",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "min_window",
+                "signature": "(self, s1: str, s2: str) -> str",
+                "body": "        # TODO: Implement min_window\n        return ''"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_min_window",
+                "signature": "(self, s1: str, s2: str, expected: str)",
+                "parametrize": "s1, s2, expected",
+                "test_cases": {
+                    "list": [
+                        "('abcdebdde', 'bde', 'bcde')",
+                        "('jmeqksfrsdcmsiwvaovztaqenprpvnbstl', 'u', '')",
+                        "('a', 'a', 'a')",
+                        "('a', 'b', '')",
+                        "('ab', 'b', 'b')",
+                        "('abc', 'ac', 'abc')",
+                        "('abc', 'cb', '')",
+                        "('ab', 'abc', '')",
+                        "('aa', 'aa', 'aa')",
+                        "('abcbc', 'bc', 'bc')",
+                        "('axbxcx', 'abc', 'axbxc')",
+                        "('babb', 'ab', 'ab')",
+                        "('abacbc', 'abc', 'abac')",
+                        "('zzzz', 'z', 'z')",
+                        "('abab', 'ba', 'ba')",
+                        "('xcyzstuv', 'xyz', 'xcyz')",
+                        "('abcde', 'abcde', 'abcde')",
+                        "('abcabc', 'cba', '')",
+                        "('abcbcb', 'bb', 'bcb')",
+                        "('pqpqrpq', 'pqr', 'pqr')"
+                    ]
+                },
+                "body": "        result = run_min_window(Solution, s1, s2)\n        assert_min_window(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_min_window, assert_min_window\nfrom solution import Solution",
+    "playground_setup": "# Example test case\ns1 = 'abcdebdde'\ns2 = 'bde'\nexpected = 'bcde'",
+    "playground_run": "result = run_min_window(Solution, s1, s2)\nresult",
+    "playground_assert": "assert_min_window(result, expected)"
+}

@@ -1,0 +1,94 @@
+{
+    "problem_name": "rectangle_area_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "850",
+    "problem_title": "Rectangle Area II",
+    "difficulty": "Hard",
+    "topics": "Array, Segment Tree, Sweep Line, Ordered Set",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "You are given a 2D array of axis-aligned rectangles. Each `rectangle[i] = [xi1, yi1, xi2, yi2]` denotes the ith rectangle where `(xi1, yi1)` are the coordinates of the bottom-left corner, and `(xi2, yi2)` are the coordinates of the top-right corner.\n\nCalculate the total area covered by all rectangles in the plane. Any area covered by two or more rectangles should only be counted once.\n\nReturn the total area. Since the answer may be too large, return it modulo `10^9 + 7`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "![Example 1](https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/06/rectangle_area_ii_pic.png)\n\n```\nInput: rectangles = [[0,0,2,2],[1,0,2,3],[1,0,3,1]]\nOutput: 6\nExplanation: A total area of 6 is covered by all three rectangles, as illustrated in the picture.\nFrom (1,1) to (2,2), the green and red rectangles overlap.\nFrom (1,0) to (2,3), all three rectangles overlap.\n```"
+            },
+            {
+                "content": "```\nInput: rectangles = [[0,0,1000000000,1000000000]]\nOutput: 49\nExplanation: The answer is 10^18 modulo (10^9 + 7), which is 49.\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= rectangles.length <= 200\n- rectangles[i].length == 4\n- 0 <= xi1, yi1, xi2, yi2 <= 10^9\n- xi1 <= xi2\n- yi1 <= yi2\n- All rectangles have non zero area.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "rectangle_area",
+    "helpers_run_signature": "(solution_class: type, rectangles: list[list[int]])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.rectangle_area(rectangles)",
+    "helpers_assert_name": "rectangle_area",
+    "helpers_assert_signature": "(result: int, expected: int) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_rectangle_area, run_rectangle_area\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "RectangleAreaII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "rectangle_area",
+                "signature": "(self, rectangles: list[list[int]]) -> int",
+                "body": "        # TODO: Implement rectangle_area\n        return 0"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_rectangle_area",
+                "signature": "(self, rectangles: list[list[int]], expected: int)",
+                "parametrize": "rectangles, expected",
+                "test_cases": {
+                    "list": [
+                        "([[0, 0, 2, 2], [1, 0, 2, 3], [1, 0, 3, 1]], 6)",
+                        "([[0, 0, 1000000000, 1000000000]], 49)",
+                        "([[0, 0, 1, 1]], 1)",
+                        "([[0, 0, 1, 1], [2, 2, 3, 3]], 2)",
+                        "([[0, 0, 1, 1], [0, 0, 1, 1], [0, 0, 1, 1]], 1)",
+                        "([[0, 0, 10, 10], [2, 2, 5, 5]], 100)",
+                        "([[0, 0, 1, 1], [1, 0, 2, 1]], 2)",
+                        "([[0, 0, 3, 3], [1, 1, 2, 2]], 9)",
+                        "([[0, 0, 5, 5], [5, 5, 10, 10]], 50)",
+                        "([[0, 0, 2, 2], [2, 0, 4, 2], [4, 0, 6, 2]], 12)",
+                        "([[7, 1, 11, 3], [4, 1, 11, 2], [5, 4, 10, 6], [6, 9, 9, 11]], 27)",
+                        "([[9, 1, 10, 4], [5, 2, 10, 10], [1, 4, 5, 8], [6, 9, 9, 10]], 57)",
+                        "([[5, 3, 10, 6], [1, 3, 11, 6], [2, 6, 6, 11]], 50)",
+                        "([[5, 3, 9, 6], [1, 8, 3, 10], [9, 2, 11, 6]], 24)",
+                        "([[1, 8, 6, 9], [0, 5, 3, 10]], 18)",
+                        "([[10, 6, 11, 9], [6, 4, 8, 11]], 17)",
+                        "([[8, 0, 9, 11], [8, 9, 11, 10], [5, 8, 9, 9], [9, 7, 11, 8]], 18)",
+                        "([[2, 3, 8, 5], [5, 8, 8, 11], [6, 9, 9, 10]], 22)",
+                        "([[0, 0, 1000000000, 1000000000], [0, 0, 1000000000, 500000000]], 49)"
+                    ]
+                },
+                "body": "        result = run_rectangle_area(Solution, rectangles)\n        assert_rectangle_area(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_rectangle_area, assert_rectangle_area\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nrectangles = [[0, 0, 2, 2], [1, 0, 2, 3], [1, 0, 3, 1]]\nexpected = 6",
+    "playground_run": "result = run_rectangle_area(Solution, rectangles)\nresult",
+    "playground_assert": "assert_rectangle_area(result, expected)"
+}

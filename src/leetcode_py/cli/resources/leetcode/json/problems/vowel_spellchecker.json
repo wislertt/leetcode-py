@@ -1,0 +1,93 @@
+{
+    "problem_name": "vowel_spellchecker",
+    "solution_class_name": "Solution",
+    "problem_number": "966",
+    "problem_title": "Vowel Spellchecker",
+    "difficulty": "Medium",
+    "topics": "Array, Hash Table, String",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Given a `wordlist`, we want to implement a spellchecker that converts a query word into a correct word.\n\nFor a given query word, the spell checker handles two categories of spelling mistakes:\n\n- Capitalization: If the query matches a word in the wordlist (case-insensitive), then the query word is returned with the same case as the case in the wordlist.\n- Vowel Errors: If after replacing the vowels (`'a'`, `'e'`, `'i'`, `'o'`, `'u'`) of the query word with any vowel individually, it matches a word in the wordlist (case-insensitive), then the query word is returned with the same case as the match in the wordlist.\n\nIn addition, the spell checker operates under the following precedence rules:\n\n- When the query exactly matches a word in the wordlist (case-sensitive), you should return the same word back.\n- When the query matches a word up to capitalization, you should return the first such match in the wordlist.\n- When the query matches a word up to vowel errors, you should return the first such match in the wordlist.\n- If the query has no matches in the wordlist, you should return the empty string.\n\nGiven some queries, return a list of words `answer`, where `answer[i]` is the correct word for `query = queries[i]`.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: wordlist = [\"KiTe\",\"kite\",\"hare\",\"Hare\"], queries = [\"kite\",\"Kite\",\"KiTe\",\"Hare\",\"HARE\",\"Hear\",\"hear\",\"keti\",\"keet\",\"keto\"]\nOutput: [\"kite\",\"KiTe\",\"KiTe\",\"Hare\",\"hare\",\"\",\"\",\"KiTe\",\"\",\"KiTe\"]\n```"
+            },
+            {
+                "content": "```\nInput: wordlist = [\"yellow\"], queries = [\"YellOw\"]\nOutput: [\"yellow\"]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 1 <= wordlist.length, queries.length <= 5000\n- 1 <= wordlist[i].length, queries[i].length <= 7\n- wordlist[i] and queries[i] consist only of English letters.",
+    "readme_additional": "",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "spellchecker",
+    "helpers_run_signature": "(solution_class: type, wordlist: list[str], queries: list[str])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.spellchecker(wordlist, queries)",
+    "helpers_assert_name": "spellchecker",
+    "helpers_assert_signature": "(result: list[str], expected: list[str]) -> bool",
+    "helpers_assert_body": "    assert result == expected\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_spellchecker, run_spellchecker\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "VowelSpellchecker",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "spellchecker",
+                "signature": "(self, wordlist: list[str], queries: list[str]) -> list[str]",
+                "body": "        # TODO: Implement spellchecker\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_spellchecker",
+                "signature": "(self, wordlist: list[str], queries: list[str], expected: list[str])",
+                "parametrize": "wordlist, queries, expected",
+                "test_cases": {
+                    "list": [
+                        "(['KiTe','kite','hare','Hare'], ['kite','Kite'], ['kite','KiTe'])",
+                        "(['KiTe','kite','hare','Hare'], ['KiTe','Hare','HARE'], ['KiTe','Hare','hare'])",
+                        "(['KiTe','kite','hare','Hare'], ['Hear','hear'], ['',''])",
+                        "(['KiTe','kite','hare','Hare'], ['keti','keet','keto'], ['KiTe','','KiTe'])",
+                        "(['yellow'], ['YellOw'], ['yellow'])",
+                        "(['YellOw'], ['yollow'], ['YellOw'])",
+                        "(['YellOw'], ['yeellow'], [''])",
+                        "(['YellOw'], ['yllw'], [''])",
+                        "(['Yellow'], ['yellow'], ['Yellow'])",
+                        "(['yellow'], ['yellow'], ['yellow'])",
+                        "(['abc','Abc'], ['ABC'], ['abc'])",
+                        "(['man','men'], ['mAn'], ['man'])",
+                        "(['KiTe'], ['KETI'], ['KiTe'])",
+                        "(['a'], ['A','a','e'], ['a','a','a'])",
+                        "(['kgdb'], ['bkgua','eusica','bgs'], ['','',''])",
+                        "(['gup','bec'], ['ror','bd','kirb','ru'], ['','','',''])",
+                        "(['kp','ebekd','iggpec'], ['db','df','biaai','bdiud'], ['','','',''])",
+                        "(['uprs','ko','akdb'], ['ki','oa'], ['ko',''])"
+                    ]
+                },
+                "body": "        result = run_spellchecker(Solution, wordlist, queries)\n        assert_spellchecker(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_spellchecker, assert_spellchecker\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nwordlist = ['KiTe', 'kite', 'hare', 'Hare']\nqueries = ['kite', 'Kite']\nexpected = ['kite', 'KiTe']",
+    "playground_run": "result = run_spellchecker(Solution, wordlist, queries)\nresult",
+    "playground_assert": "assert_spellchecker(result, expected)"
+}

@@ -1,0 +1,95 @@
+{
+    "problem_name": "sort_array_by_parity_ii",
+    "solution_class_name": "Solution",
+    "problem_number": "922",
+    "problem_title": "Sort Array By Parity II",
+    "difficulty": "Easy",
+    "topics": "Array, Two Pointers, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "<p>Given an array of integers <code>nums</code>, half of the integers in <code>nums</code> are <strong>odd</strong>, and the other half are <strong>even</strong>.</p>\n\n<p>Sort the array so that whenever <code>nums[i]</code> is odd, <code>i</code> is <strong>odd</strong>, and whenever <code>nums[i]</code> is even, <code>i</code> is <strong>even</strong>.</p>\n\n<p>Return <em>any answer array that satisfies this condition</em>.</p>",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: nums = [4,2,5,7]\nOutput: [4,5,2,7]\nExplanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.\n```"
+            },
+            {
+                "content": "```\nInput: nums = [2,3]\nOutput: [2,3]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- 2 <= nums.length <= 2 * 10^4\n- nums.length is even.\n- Half of the integers in nums are even.\n- 0 <= nums[i] <= 1000",
+    "readme_additional": "**Follow up:** Could you solve it in-place?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "sort_array_by_parity_ii",
+    "helpers_run_signature": "(solution_class: type, nums: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.sort_array_by_parity_ii(nums)",
+    "helpers_assert_name": "sort_array_by_parity_ii",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Any arrangement with the same multiset and parity matching each index is valid\n    assert sorted(result) == sorted(expected)\n    assert all(value % 2 == index % 2 for index, value in enumerate(result))\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_sort_array_by_parity_ii, run_sort_array_by_parity_ii\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "SortArrayByParityII",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "sort_array_by_parity_ii",
+                "signature": "(self, nums: list[int]) -> list[int]",
+                "body": "        # TODO: Implement sort_array_by_parity_ii\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_sort_array_by_parity_ii",
+                "signature": "(self, nums: list[int], expected: list[int])",
+                "parametrize": "nums, expected",
+                "test_cases": {
+                    "list": [
+                        "([4, 2, 5, 7], [4, 5, 2, 7])",
+                        "([2, 3], [2, 3])",
+                        "([1, 2], [2, 1])",
+                        "([0, 1], [0, 1])",
+                        "([1, 0], [0, 1])",
+                        "([2, 3], [2, 3])",
+                        "([6, 7], [6, 7])",
+                        "([9, 4], [4, 9])",
+                        "([0, 5], [0, 5])",
+                        "([1000, 999], [1000, 999])",
+                        "([0, 999], [0, 999])",
+                        "([999, 1000], [1000, 999])",
+                        "([2, 3, 4, 5, 6, 7], [2, 3, 4, 5, 6, 7])",
+                        "([4, 2, 5, 7, 8, 9, 10, 3], [4, 5, 2, 7, 8, 9, 10, 3])",
+                        "([2, 3, 2, 3], [2, 3, 2, 3])",
+                        "([0, 1, 2, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 6, 7])",
+                        "([5, 4, 3, 2, 1, 0], [4, 5, 2, 3, 0, 1])",
+                        "([1000, 1000, 999, 999], [1000, 999, 1000, 999])",
+                        "([0, 3, 2, 1, 6, 7, 4, 5], [0, 3, 2, 1, 6, 7, 4, 5])",
+                        "([2, 1, 4, 3, 6, 5, 8, 7, 10, 9], [2, 1, 4, 3, 6, 5, 8, 7, 10, 9])"
+                    ]
+                },
+                "body": "        result = run_sort_array_by_parity_ii(Solution, nums)\n        assert_sort_array_by_parity_ii(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_sort_array_by_parity_ii, assert_sort_array_by_parity_ii\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nnums = [4, 2, 5, 7]\nexpected = [4, 5, 2, 7]",
+    "playground_run": "result = run_sort_array_by_parity_ii(Solution, nums)\nresult",
+    "playground_assert": "assert_sort_array_by_parity_ii(result, expected)"
+}

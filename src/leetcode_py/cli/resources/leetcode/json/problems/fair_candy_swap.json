@@ -1,0 +1,96 @@
+{
+    "problem_name": "fair_candy_swap",
+    "solution_class_name": "Solution",
+    "problem_number": "888",
+    "problem_title": "Fair Candy Swap",
+    "difficulty": "Easy",
+    "topics": "Array, Hash Table, Binary Search, Sorting",
+    "_tags": {
+        "list": []
+    },
+    "readme_description": "Alice and Bob have a different total number of candies. You are given two integer arrays `aliceSizes` and `bobSizes` where `aliceSizes[i]` is the number of candies of the `i`th box of candy that Alice has and `bobSizes[j]` is the number of candies of the `j`th box of candy that Bob has.\n\nSince they are friends, they would like to exchange one candy box each so that after the exchange, they both have the same total amount of candy. The total amount of candy a person has is the sum of the number of candies in each box they have.\n\nReturn an integer array `answer` where `answer[0]` is the number of candies in the box that Alice must exchange, and `answer[1]` is the number of candies in the box that Bob must exchange. If there are multiple answers, you may return any one of them. It is guaranteed that at least one answer exists.",
+    "_readme_examples": {
+        "list": [
+            {
+                "content": "```\nInput: aliceSizes = [1,1], bobSizes = [2,2]\nOutput: [1,2]\n```"
+            },
+            {
+                "content": "```\nInput: aliceSizes = [1,2], bobSizes = [2,3]\nOutput: [1,2]\n```"
+            },
+            {
+                "content": "```\nInput: aliceSizes = [2], bobSizes = [1,3]\nOutput: [2,3]\n```"
+            }
+        ]
+    },
+    "readme_constraints": "- `1 <= aliceSizes.length, bobSizes.length <= 10^4`\n- `1 <= aliceSizes[i], bobSizes[j] <= 10^5`\n- Alice and Bob have a different total number of candies.\n- There will be at least one valid answer for the given input.",
+    "readme_additional": "**Follow up:** Can you solve it in `O(n)` time complexity?",
+    "helpers_imports": "",
+    "helpers_content": "",
+    "helpers_run_name": "fair_candy_swap",
+    "helpers_run_signature": "(solution_class: type, alice_sizes: list[int], bob_sizes: list[int])",
+    "helpers_run_body": "    implementation = solution_class()\n    return implementation.fair_candy_swap(alice_sizes, bob_sizes)",
+    "helpers_assert_name": "fair_candy_swap",
+    "helpers_assert_signature": "(result: list[int], expected: list[int]) -> bool",
+    "helpers_assert_body": "    # Multiple valid swaps may exist; verify the exchange equalizes the\n    # totals rather than matching one exact answer\n    assert len(result) == 2\n    assert result[0] - result[1] == expected[0] - expected[1]\n    return True",
+    "solution_imports": "",
+    "solution_contents": "",
+    "solution_class_content": "",
+    "test_imports": "import pytest\nfrom leetcode_py import logged_test\nfrom .helpers import assert_fair_candy_swap, run_fair_candy_swap\nfrom .solution import Solution",
+    "test_content": "",
+    "test_class_name": "FairCandySwap",
+    "test_class_content": "    def setup_method(self):\n        self.solution = Solution()",
+    "_solution_methods": {
+        "list": [
+            {
+                "name": "fair_candy_swap",
+                "signature": "(self, alice_sizes: list[int], bob_sizes: list[int]) -> list[int]",
+                "body": "        # TODO: Implement fair_candy_swap\n        return []"
+            }
+        ]
+    },
+    "_test_helper_methods": {
+        "list": [
+            {
+                "name": "setup_method",
+                "parameters": "",
+                "body": "self.solution = Solution()"
+            }
+        ]
+    },
+    "_test_methods": {
+        "list": [
+            {
+                "name": "test_fair_candy_swap",
+                "signature": "(self, alice_sizes: list[int], bob_sizes: list[int], expected: list[int])",
+                "parametrize": "alice_sizes, bob_sizes, expected",
+                "test_cases": {
+                    "list": [
+                        "([1, 1], [2, 2], [1, 2])",
+                        "([1, 2], [2, 3], [1, 2])",
+                        "([2], [1, 3], [2, 3])",
+                        "([1, 3], [2], [3, 2])",
+                        "([2, 4, 6, 8], [1, 3, 7, 11], [2, 3])",
+                        "([5, 5], [4, 4], [5, 4])",
+                        "([1, 2, 3], [4, 5, 7], [2, 7])",
+                        "([10, 20, 30], [5, 25, 40], [20, 25])",
+                        "([100], [25, 125], [100, 125])",
+                        "([99998, 1], [99997], [99998, 99997])",
+                        "([1, 1, 1, 1], [2, 4], [1, 2])",
+                        "([8, 12], [5, 13, 14], [8, 14])",
+                        "([4, 5, 6, 7, 8], [3, 25], [4, 3])",
+                        "([20], [5, 25], [20, 25])",
+                        "([70, 30, 50], [10, 100], [30, 10])",
+                        "([3, 3, 3, 9], [2, 14], [3, 2])",
+                        "([2, 2], [1, 2, 3], [2, 3])",
+                        "([7, 14, 21], [3, 17], [14, 3])"
+                    ]
+                },
+                "body": "        result = run_fair_candy_swap(Solution, alice_sizes, bob_sizes)\n        assert_fair_candy_swap(result, expected)"
+            }
+        ]
+    },
+    "playground_imports": "from helpers import run_fair_candy_swap, assert_fair_candy_swap\nfrom solution import Solution",
+    "playground_setup": "# Example test case\nalice_sizes = [1, 1]\nbob_sizes = [2, 2]\nexpected = [1, 2]",
+    "playground_run": "result = run_fair_candy_swap(Solution, alice_sizes, bob_sizes)\nresult",
+    "playground_assert": "assert_fair_candy_swap(result, expected)"
+}
