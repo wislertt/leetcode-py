@@ -216,50 +216,62 @@ def render_collection_page(
     names: list[str],
     problems: dict[str, dict],
     tags: dict[str, list],
-) -> str:
+) -> dict[Path, str]:
+    """Collection pages, paginated in CHUNK_SIZE chunks like the difficulty pages."""
     display = COLLECTION_META[tag]["label"]
     title = COLLECTION_META[tag]["title"]
     split = difficulty_split(names, problems)
     includes = tag_includes(tags, tag)
     rows = sorted(names, key=lambda n: problems[n]["number"])
+    parts = chunked(rows)
 
     include_line = ""
     if includes:
-        parts = [f"[{COLLECTION_META[ref]['label']}](/catalog/{ref})" for ref in includes]
-        include_line = f"\nThis collection includes every problem in {', '.join(parts)}.\n"
+        refs = [f"[{COLLECTION_META[ref]['label']}](/catalog/{ref})" for ref in includes]
+        include_line = f"\nThis collection includes every problem in {', '.join(refs)}.\n"
 
-    description = (
-        f"All {len(names)} problems in the {display} list: each generates a "
-        "tested Python practice environment with a pytest suite and reference solutions."
-    )
+    pages: dict[Path, str] = {}
+    for i, chunk in enumerate(parts, start=1):
+        start = sum(len(c) for c in parts[: i - 1]) + 1
+        end = start + len(chunk) - 1
+        page_title = title if i == 1 else f"{display} in Python, Part {i}"
+        description = (
+            f"All {len(names)} problems in the {display} list: each generates a "
+            "tested Python practice environment with a pytest suite and reference solutions."
+        )
+        if len(parts) > 1:
+            description += f" Part {i} of {len(parts)}: problems {start}-{end}."
+        slug = tag if i == 1 else f"{tag}-{i}"
 
-    lines = [
-        "---",
-        f'title: "{title}"',
-        f"sidebarTitle: {display}",
-        f'description: "{description}"',
-        "---",
-        "",
-        GENERATED_HEADER,
-        "",
-        f"{display} holds {len(names)} problems ({split_phrase(split)}).",
-        COLLECTION_INTRO[tag],
-        include_line,
-        "Generate the whole collection into the current directory:",
-        "",
-        "```bash",
-        f"lcpy gen -t {tag}",
-        "```",
-        "",
-    ]
-    table_rows = [
-        f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
-        f"| {problems[name]['difficulty']} | [solution.py]({solution_url(name)}) |"
-        for name in rows
-    ]
-    lines += table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)
-    lines.append("")
-    return "\n".join(lines)
+        lines = [
+            "---",
+            f'title: "{page_title}"',
+            f"sidebarTitle: {display if i == 1 else f'{display} ({start}-{end})'}",
+            f'description: "{description}"',
+            "---",
+            "",
+            GENERATED_HEADER,
+            "",
+            f"{display} holds {len(names)} problems ({split_phrase(split)}).",
+            COLLECTION_INTRO[tag],
+            include_line,
+            "Generate the whole collection into the current directory:",
+            "",
+            "```bash",
+            f"lcpy gen -t {tag}",
+            "```",
+            "",
+        ]
+        table_rows = [
+            f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
+            f"| {problems[name]['difficulty']} | [solution.py]({solution_url(name)}) |"
+            for name in chunk
+        ]
+        lines += table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)
+        if len(parts) > 1:
+            lines += pagination_lines(tag, len(parts), i)
+        pages[CATALOG_DIR / f"{slug}.mdx"] = "\n".join(lines)
+    return pages
 
 
 def difficulty_slug(difficulty: str, part: int) -> str:
@@ -374,6 +386,9 @@ def render_index_page(
     problems: dict[str, dict],
 ) -> str:
     total_split = difficulty_split(list(problems), problems)
+    intro_links = ", ".join(
+        f"[{difficulty}](/catalog/{difficulty_slug(difficulty, 1)})" for difficulty in DIFFICULTIES
+    )
 
     lines = [
         "---",
@@ -388,6 +403,8 @@ def render_index_page(
         f"All {len(problems)} problems across {len(collections)} collections, "
         "generated straight from the templates so counts never go stale. "
         "See [Collections](/cli/collections) for what each list is.",
+        "",
+        f"Browse by difficulty: {intro_links}.",
         "",
     ]
     index_rows = [
@@ -456,7 +473,7 @@ def render_all() -> dict[Path, str]:
     pages.update(render_all_pages(problems))
     pages.update(render_difficulty_pages(problems))
     for tag, names in collections.items():
-        pages[CATALOG_DIR / f"{tag}.mdx"] = render_collection_page(tag, names, problems, tags)
+        pages.update(render_collection_page(tag, names, problems, tags))
     pages.update(render_count_patches(len(problems)))
     # End every file at exactly one newline so pre-commit's end-of-file-fixer
     # agrees with regeneration (JSX-wrapped tables otherwise end in a blank
