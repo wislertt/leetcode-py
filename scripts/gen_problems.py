@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 import json5
-from gen_catalog import COLLECTION_META
+from gen_catalog import COLLECTION_META, topic_names, topic_page_slugs, topic_slug
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TAGS_FILE = REPO_ROOT / "src/leetcode_py/cli/resources/leetcode/json/tags.json5"
@@ -166,10 +166,20 @@ def render_problem_page(
     tags: dict[str, list],
     solution_src: str,
     title: str,
+    topic_links: set[str],
 ) -> str:
     slug = kebab(name)
     difficulty = data["difficulty"]
-    topics = data["topics"]
+
+    def topic_ref(topic: str) -> str:
+        # Only topics with their own catalog page get links; thinner topics
+        # would 404.
+        topic_slug_value = topic_slug(topic)
+        if topic_slug_value in topic_links:
+            return f"[{topic}](/catalog/topics/{topic_slug_value})"
+        return topic
+
+    topics_line = ", ".join(topic_ref(topic) for topic in topic_names(data))
     complexity = parse_complexity(solution_src)
     collections = collections_for(name, tags)
 
@@ -181,7 +191,8 @@ def render_problem_page(
         "",
         GENERATED_HEADER,
         "",
-        f"LeetCode {data['problem_number']}, {difficulty}. Topics: {topics}. "
+        f"LeetCode {data['problem_number']}, "
+        f"[{difficulty}](/catalog/{difficulty.lower()}). Topics: {topics_line}. "
         f"[View on LeetCode]({LEETCODE_BASE}/{slug}/description/).",
         "",
         "Generate this problem as a practice environment: tested reference "
@@ -254,11 +265,12 @@ def render_pages(names: list[str]) -> dict[Path, str]:
     )
 
     pages: dict[Path, str] = {}
+    topic_links = topic_page_slugs(problems)
     for name in names:
         data = problems[name]
         solution_src = (REPO_ROOT / "leetcode" / name / "solution.py").read_text()
         pages[PROBLEMS_DOCS_DIR / f"{kebab(name)}.mdx"] = render_problem_page(
-            name, data, tags, solution_src, titles[name]
+            name, data, tags, solution_src, titles[name], topic_links
         )
     for content in pages.values():
         validate_mdx(content)

@@ -58,6 +58,7 @@ COLLECTION_META: dict[str, dict[str, str]] = {
 }
 
 INDEX_PAGE_TITLE = "LeetCode Problem Catalog: All Collections"
+TOPICS_INDEX_TITLE = "LeetCode Problem Catalog: All Topics"
 ALL_PAGE_TITLE = "All LeetCode Problems in Python with Tests"
 
 # Two-sentence keyword intro per collection: what the list is, that every
@@ -115,6 +116,13 @@ DIFFICULTIES = ["Easy", "Medium", "Hard"]
 # worth of table (1164 rows on one page made the DOM enormous).
 CHUNK_SIZE = 200
 
+# Only topics with at least this many problems get their own page; thinner
+# topics stay as plain text in the index and on problem pages (a 1-problem
+# topic page would near-duplicate that problem's page). 10 keeps real study
+# categories (Segment Tree, Shortest Path, Bitmask) while skipping the
+# long tail of single-problem algorithm tags.
+TOPIC_MIN_PROBLEMS = 10
+
 # SEO title per difficulty: part 1 gets the full query-shaped title, later
 # parts append ", Part N" (Mintlify appends " - leetcode-py" on top).
 DIFFICULTY_TITLES = {
@@ -150,8 +158,70 @@ def load_problems() -> dict[str, dict]:
             "number": int(data["problem_number"]),
             "title": data["problem_title"],
             "difficulty": data["difficulty"],
+            "topics": data["topics"],
         }
     return problems
+
+
+def topic_slug(topic: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", topic.lower()).strip("-")
+
+
+def topic_names(problem: dict) -> list[str]:
+    """Comma-separated topic strings, split and stripped."""
+    return [t.strip() for t in problem["topics"].split(",") if t.strip()]
+
+
+def problem_number(problem: dict) -> int:
+    """Works for both the reduced gen_catalog dict ("number") and the raw
+    JSON template gen_problems loads ("problem_number")."""
+    return int(problem.get("number") or problem["problem_number"])
+
+
+def topics_index(problems: dict[str, dict]) -> dict[str, dict]:
+    """Group problems by topic slug. LeetCode spells some topics two ways
+    ('Union-Find' vs 'Union Find'), so spellings merge under one slug and the
+    most common spelling wins as the display name (ties: alphabetical)."""
+    by_slug: dict[str, dict[str, list[str]]] = {}
+    for name, problem in problems.items():
+        for topic in topic_names(problem):
+            by_slug.setdefault(topic_slug(topic), {}).setdefault(topic, []).append(name)
+
+    index: dict[str, dict] = {}
+    for slug, spellings in by_slug.items():
+        display = sorted(spellings, key=lambda t: (-len(spellings[t]), t))[0]
+        names = sorted(
+            {n for spelling_names in spellings.values() for n in spelling_names},
+            key=lambda n: problem_number(problems[n]),
+        )
+        index[slug] = {"display": display, "names": names}
+    return index
+
+
+def topic_url(slug: str, part: int = 1) -> str:
+    return f"/catalog/topics/{slug}" if part == 1 else f"/catalog/topics/{slug}-{part}"
+
+
+def topic_page_slugs(problems: dict[str, dict]) -> set[str]:
+    """Slugs with enough problems to earn their own page (TOPIC_MIN_PROBLEMS).
+    gen_problems links only these; other topics stay plain text."""
+    return {
+        slug
+        for slug, entry in topics_index(problems).items()
+        if len(entry["names"]) >= TOPIC_MIN_PROBLEMS
+    }
+
+
+def topic_page_title(topic: str) -> str:
+    """Long topic names overflow the 46-char cap, so fall back tier by tier
+    like gen_problems.page_title. Uniqueness is asserted in render_all."""
+    for suffix in (" in Python with Tests", " in Python"):
+        if len(topic) + len(suffix) <= 46:
+            return f"{topic}{suffix}"
+    if len(topic) <= 46:
+        return topic
+    cut = topic[:46]
+    return cut[: cut.rfind(" ")].rstrip(" ,-")
 
 
 def resolve_tag(tags: dict[str, list], tag: str) -> list[str]:
@@ -278,10 +348,13 @@ def difficulty_slug(difficulty: str, part: int) -> str:
     return difficulty.lower() if part == 1 else f"{difficulty.lower()}-{part}"
 
 
-def pagination_lines(base: str, part_count: int, current: int) -> list[str]:
+def difficulty_url(slug: str, part: int) -> str:
+    return f"/catalog/{difficulty_slug(slug, part)}"
+
+
+def pagination_lines(base: str, part_count: int, current: int, url_fn=difficulty_url) -> list[str]:
     links = [
-        f"[{j}](/catalog/{difficulty_slug(base, j)})" if j != current else str(j)
-        for j in range(1, part_count + 1)
+        f"[{j}]({url_fn(base, j)})" if j != current else str(j) for j in range(1, part_count + 1)
     ]
     return ["", "Pages: " + ", ".join(links), ""]
 
@@ -381,6 +454,92 @@ def render_difficulty_pages(problems: dict[str, dict]) -> dict[Path, str]:
     return pages
 
 
+def render_topic_pages(problems: dict[str, dict], topics: dict[str, dict]) -> dict[Path, str]:
+    """Topic index (the only page in the nav) plus one page per topic,
+    paginated in CHUNK_SIZE chunks. Per-topic pages live out of the nav on
+    purpose: docs.json sets seo.indexing "all", so they stay sitemapped and
+    linkable from problem pages without flooding the sidebar."""
+    pages: dict[Path, str] = {}
+
+    def index_row(slug: str, entry: dict, split: dict[str, int]) -> str:
+        count = len(entry["names"])
+        return (
+            f"| [{entry['display']}]({topic_url(slug)}) | {count} "
+            f"| {split['Easy']} | {split['Medium']} | {split['Hard']} |"
+        )
+
+    listed = {
+        slug: entry for slug, entry in topics.items() if len(entry["names"]) >= TOPIC_MIN_PROBLEMS
+    }
+    niche_count = len(topics) - len(listed)
+    index_rows = [
+        index_row(slug, topics[slug], difficulty_split(topics[slug]["names"], problems))
+        for slug in sorted(
+            listed,
+            key=lambda s: (-len(topics[s]["names"]), topics[s]["display"].lower()),
+        )
+    ]
+    lines = [
+        "---",
+        f'title: "{TOPICS_INDEX_TITLE}"',
+        "sidebarTitle: Topics",
+        'description: "The largest LeetCode topics in the catalog, generated '
+        'from the JSON templates so counts never go stale."',
+        "---",
+        "",
+        GENERATED_HEADER,
+        "",
+        f"The {len(listed)} largest topics across {len(problems)} problems, generated "
+        "straight from the templates so counts never go stale. Niche topics "
+        f"with fewer than {TOPIC_MIN_PROBLEMS} problems ({niche_count} of them) "
+        "are left off this list; you will see them named on the problem pages "
+        "they belong to.",
+    ]
+    lines += table_div(["Topic", "Problems", "Easy", "Medium", "Hard"], index_rows)
+    pages[CATALOG_DIR / "topics" / "index.mdx"] = "\n".join(lines)
+
+    for slug, entry in topics.items():
+        if len(entry["names"]) < TOPIC_MIN_PROBLEMS:
+            continue
+        display = entry["display"]
+        rows = entry["names"]
+        split = difficulty_split(rows, problems)
+        parts = chunked(rows)
+        for i, chunk in enumerate(parts, start=1):
+            title = topic_page_title(display) if i == 1 else f"{display} in Python, Part {i}"
+            start = sum(len(c) for c in parts[: i - 1]) + 1
+            end = start + len(chunk) - 1
+            description = (
+                f"All {len(rows)} {display} LeetCode problems with tested Python "
+                f"solutions. Part {i} of {len(parts)}: problems {start}-{end}."
+                if len(parts) > 1
+                else f"All {len(rows)} {display} LeetCode problems with tested Python solutions."
+            )
+            lines = [
+                "---",
+                f'title: "{title}"',
+                f"sidebarTitle: {display if i == 1 else f'{display} ({start}-{end})'}",
+                f'description: "{description}"',
+                "---",
+                "",
+                GENERATED_HEADER,
+                "",
+                f"{display} holds {len(rows)} problems ({split_phrase(split)}).",
+                "Generate any of them into the current directory with `lcpy gen -n <number>`.",
+            ]
+            table_rows = [
+                f"| {problems[name]['number']} | [{problems[name]['title']}]({problem_url(name)}) "
+                f"| {problems[name]['difficulty']} | [solution.py]({solution_url(name)}) |"
+                for name in chunk
+            ]
+            lines += table_div(["#", "Problem", "Difficulty", "Solution"], table_rows)
+            if len(parts) > 1:
+                lines += pagination_lines(slug, len(parts), i, topic_url)
+            part_slug = slug if i == 1 else f"{slug}-{i}"
+            pages[CATALOG_DIR / "topics" / f"{part_slug}.mdx"] = "\n".join(lines)
+    return pages
+
+
 def render_index_page(
     collections: dict[str, list[str]],
     problems: dict[str, dict],
@@ -404,7 +563,7 @@ def render_index_page(
         "generated straight from the templates so counts never go stale. "
         "See [Collections](/cli/collections) for what each list is.",
         "",
-        f"Browse by difficulty: {intro_links}.",
+        f"Browse by difficulty: {intro_links}. Browse by topic: [Topics](/catalog/topics).",
         "",
     ]
     index_rows = [
@@ -443,12 +602,17 @@ def render_count_patches(total: int) -> dict[Path, str]:
 def render_all() -> dict[Path, str]:
     tags = load_tags()
     problems = load_problems()
+    topics = topics_index(problems)
 
     seo_titles = [meta["title"] for meta in COLLECTION_META.values()] + [
         ALL_PAGE_TITLE,
         INDEX_PAGE_TITLE,
+        TOPICS_INDEX_TITLE,
         *DIFFICULTY_TITLES.values(),
     ]
+    topic_titles = [topic_page_title(entry["display"]) for entry in topics.values()]
+    dupes = {t for t in topic_titles if topic_titles.count(t) > 1}
+    assert not dupes, f"topic page titles must be unique: {sorted(dupes)}"
     assert len(set(seo_titles)) == len(seo_titles), "collection titles must be unique"
     assert all(len(t) <= 46 for t in seo_titles), (
         f"SEO titles must stay <= 46 chars (Mintlify appends ' - leetcode-py'): "
@@ -456,10 +620,7 @@ def render_all() -> dict[Path, str]:
     )
 
     missing = [
-        (tag, name)
-        for tag, names in tags.items()
-        for name in resolve_tag(tags, tag)
-        if name not in problems
+        (tag, name) for tag in tags for name in resolve_tag(tags, tag) if name not in problems
     ]
     if missing:
         print(f"❌ Collection tags reference unknown problems: {missing}")
@@ -472,6 +633,7 @@ def render_all() -> dict[Path, str]:
     }
     pages.update(render_all_pages(problems))
     pages.update(render_difficulty_pages(problems))
+    pages.update(render_topic_pages(problems, topics))
     for tag, names in collections.items():
         pages.update(render_collection_page(tag, names, problems, tags))
     pages.update(render_count_patches(len(problems)))
@@ -493,7 +655,7 @@ def main() -> None:
     pages = render_all()
     expected = set(pages)
 
-    stale = {p for p in CATALOG_DIR.glob("*.mdx") if p not in expected}
+    stale = {p for p in CATALOG_DIR.rglob("*.mdx") if p not in expected}
 
     if args.check:
         drift: list[Path] = sorted(stale)
@@ -509,6 +671,7 @@ def main() -> None:
         return
 
     CATALOG_DIR.mkdir(parents=True, exist_ok=True)
+    (CATALOG_DIR / "topics").mkdir(exist_ok=True)
     for path, content in sorted(pages.items()):
         path.write_text(content)
     for path in stale:
