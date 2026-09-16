@@ -17,7 +17,7 @@ jobs:
     # ====================================================
     semantic-release:
         name: semantic-release
-        uses: wislertt/zerv/.github/workflows/shared-semantic-release.yml@9d4743e3a3dade2898341dbd3baaf1762e53afbf # v0.8.29
+        uses: wislertt/zerv/.github/workflows/shared-semantic-release.yml@fa1f7946911a5194e1086b7445d16d75f90a6e4c # v0.8.32
         with:
             allowed_workflow_dispatch_branches: '["main"]'
             fail_on_invalid_workflow_dispatch_ref: true
@@ -25,11 +25,11 @@ jobs:
     zerv-versioning:
         needs: semantic-release
         if: needs.semantic-release.outputs.is_valid_semantic_release == 'true'
-        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@9d4743e3a3dade2898341dbd3baaf1762e53afbf # v0.8.29
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@fa1f7946911a5194e1086b7445d16d75f90a6e4c # v0.8.32
 
     create-version-prefix-tags:
         needs: zerv-versioning
-        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@9d4743e3a3dade2898341dbd3baaf1762e53afbf # v0.8.29
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@fa1f7946911a5194e1086b7445d16d75f90a6e4c # v0.8.32
         with:
             tags: >-
                 [
