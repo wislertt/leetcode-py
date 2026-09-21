@@ -3,9 +3,9 @@ name = "leetcode-py-sdk"
 version = "0.0.0" # use git tag instead
 description = "Modern Python LeetCode practice environment with automated problem generation, beautiful data structure visualizations, and comprehensive testing"
 authors = [
-  {name = "Wisaroot Lertthaweedech", email = "l.wisaroot@gmail.com"}
+  { name = "Wisaroot Lertthaweedech", email = "l.wisaroot@gmail.com" }
 ]
-license = {text = "Apache-2.0"}
+license = { text = "Apache-2.0" }
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["algorithms", "coding-practice", "data-structures", "interview-prep", "leetcode"]
@@ -79,7 +79,7 @@ extend_exclude = [
   "scripts",
   "src/leetcode_py/cli/resources"
 ]
-per_rule_ignores = {DEP002 = ["chardet"]}
+per_rule_ignores = { DEP002 = ["chardet"] }
 
 [tool.pytest.ini_options]
 testpaths = ["leetcode", "tests"]
