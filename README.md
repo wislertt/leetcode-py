@@ -21,6 +21,10 @@
 
 A Python package to generate professional LeetCode practice environments: a problem README, a typed solution stub, a parametrized pytest suite with 10+ cases, helpers, and a playground notebook, all from JSON templates. Full documentation lives at [leetcode-py.wisl.dev](https://leetcode-py.wisl.dev).
 
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/preview/lcpy-preview.gif" width="720" alt="lcpy gen, pytest red to green, and an ASCII tree in the terminal">
+</p>
+
 **What makes this different:**
 
 - 🤖 **[LLM-Assisted Workflow](https://leetcode-py.wisl.dev/contributing/problem-creation)**: Generate new problems instantly with AI assistance

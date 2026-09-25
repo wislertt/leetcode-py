@@ -53,3 +53,11 @@ html:not(.dark) .sd-hero-dark {
     display: block;
     margin: 0 !important;
 }
+
+/* terminal preview GIF: its dark background is close to the dark-mode page
+   background, so give it an edge in both themes. Border uses the Python
+   blue from the brand lockup (docs/img/brand). */
+.sd-preview {
+    border: 1px solid #387eb8;
+    border-radius: 10px;
+}
