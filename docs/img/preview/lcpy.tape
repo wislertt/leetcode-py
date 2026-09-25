@@ -29,12 +29,18 @@ Sleep 5s
 Type "rm -rf two_sum"
 Enter
 Sleep 1s
+Type "export FORCE_COLOR=1"
+Enter
+Sleep 500ms
 Type "clear"
 Enter
 Sleep 1s
 Show
 
-# beat 1: generate the environment
+# beat 1: browse the catalog, then generate the environment
+Type "lcpy list -t blind-75 -d Easy | head -14"
+Enter
+Sleep 3s
 Type "lcpy gen -n 1 --no-check"
 Enter
 Sleep 8s

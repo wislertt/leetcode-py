@@ -6,12 +6,20 @@ writes no output).
 
 `lcpy-preview.gif` shows the practice loop in five beats:
 
-1. `lcpy gen -n 1` generates the environment: README, typed stub,
-   parametrized tests, helpers, playground notebook
+1. `lcpy list` previews the catalog, then `lcpy gen -n 1` generates the
+   environment: README, typed stub, parametrized tests, helpers,
+   playground notebook
 2. `pytest` fails first: 15 cases, zero code
 3. the stub gets filled in
 4. `pytest` goes green
 5. `TreeNode` prints as an ASCII tree in a plain REPL, no Jupyter
+
+## Still PNG
+
+`lcpy-preview.png` is a separate single-beat render (`list.tape` in this
+directory, same theme as the GIF): `lcpy list --tag blind-75 --difficulty
+Easy` in a 1560x900 terminal, cropped to the table. It is not part of the
+tape that renders the GIF, so re-render it separately after changes.
 
 ## Rendering
 
@@ -41,5 +49,8 @@ reset is needed.
   reintroduce the cold-start race (uv can stall on the network for tens of
   seconds).
 - zsh has no interactive comments, so captions use `echo 'text'`.
+- Beat 1 pipes `lcpy list` through `head` for a quick catalog flash. A pipe
+  strips colors, so the hidden warm-up exports `FORCE_COLOR=1`; the visible
+  command stays clean.
 - The tape parser does not support `\"` escapes; use single quotes inside
   double-quoted `Type` strings.
