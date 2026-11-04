@@ -37,6 +37,41 @@ class TestHTMLParser:
         assert len(result["constraints"]) == 2
         assert "nums.length" in result["constraints"][0]
 
+    def test_parse_content_new_example_format(self):
+        """Test parsing paragraphs-based example format (no <pre> block)."""
+        html_content = """<p>You are given an array of integers <code>nums</code>.</p>
+
+<p><strong>Example 1:</strong></p>
+
+<p><strong>Input:</strong> <code>nums = [2,7,11,15], target = 9</code></p>
+
+<p><strong>Output:</strong> <code>[0,1]</code></p>
+
+<p><strong>Example 2:</strong></p>
+
+<p><strong>Input:</strong> <code>nums = [3,2,4], target = 6</code></p>
+
+<p><strong>Output:</strong> <code>[1,2]</code></p>
+
+<p><strong>Constraints:</strong></p>
+
+<ul>
+\t<li><code>2 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>
+</ul>
+"""
+
+        result = HTMLParser.parse_content(html_content)
+
+        assert "You are given an array of integers nums." in result["description"]
+        assert len(result["examples"]) == 2
+        assert result["examples"][0]["number"] == 1
+        assert "nums = [2,7,11,15], target = 9" in result["examples"][0]["text"]
+        assert "[0,1]" in result["examples"][0]["text"]
+        assert result["examples"][1]["number"] == 2
+        assert "nums = [3,2,4], target = 6" in result["examples"][1]["text"]
+        assert len(result["constraints"]) == 1
+        assert "nums.length" in result["constraints"][0]
+
     def test_parse_test_cases(self):
         """Test parsing test cases."""
         test_cases_str = """[2,7,11,15]

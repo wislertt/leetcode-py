@@ -12,26 +12,37 @@ class HTMLParser:
         """Remove HTML tags for clean text."""
         return re.sub(r"<[^>]+>", "", text).strip()
 
+    EXAMPLE_HEADER_PATTERN = r'<p><strong(?:\s+class="example")?>Example (\d+):</strong></p>'
+
     @staticmethod
     def parse_content(html_content: str) -> dict[str, Any]:
         """Parse HTML content to extract description, examples, and constraints."""
-        # Extract description (everything before first example)
+        # Extract description (everything before first example or constraints)
         desc_match = re.search(
-            r'<p>(.*)(?=<p><strong class="example">|<p><strong>Constraints:|$)',
+            r"<p>(.*?)"
+            r"(?=<p><strong(?:\s+class=\"example\")?>Example \d+:|<p><strong>Constraints:|$)",
             html_content,
             re.DOTALL,
         )
         description = HTMLParser.clean_html(desc_match.group(1)) if desc_match else ""
 
-        # Extract examples
+        # Extract examples. Two known formats:
+        # Old: <p><strong class="example">Example 1:</strong></p><pre>...</pre>
+        # New: <p><strong>Example 1:</strong></p> followed by
+        #      <p><strong>Input:</strong> ...</p> / <p><strong>Output:</strong> ...</p>
+        headers = list(re.finditer(HTMLParser.EXAMPLE_HEADER_PATTERN, html_content))
         examples = []
-        example_pattern = (
-            r'<p><strong class="example">Example (\d+):</strong></p>\s*<pre>\s*(.*)\s*</pre>'
-        )
-        for match in re.finditer(example_pattern, html_content, re.DOTALL):
-            example_num = match.group(1)
-            example_text = HTMLParser.clean_html(match.group(2))
-            examples.append({"number": int(example_num), "text": example_text})
+        for i, match in enumerate(headers):
+            section_end = headers[i + 1].start() if i + 1 < len(headers) else len(html_content)
+            constraints_pos = html_content.find("<p><strong>Constraints:", match.end())
+            if constraints_pos != -1:
+                section_end = min(section_end, constraints_pos)
+
+            section = html_content[match.end() : section_end]
+            lines = [
+                line.strip() for line in HTMLParser.clean_html(section).splitlines() if line.strip()
+            ]
+            examples.append({"number": int(match.group(1)), "text": "\n".join(lines)})
 
         # Extract constraints
         constraints_match = re.search(
