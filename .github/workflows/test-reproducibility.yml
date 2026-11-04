@@ -59,7 +59,7 @@ jobs:
                       sudo dot -c
                   else
                       sudo apt-get update
-                      sudo apt-get install -y graphviz
+                      sudo apt-get install -y graphviz libgvplugin-neato-layout8
                       mkdir -p ~/graphviz-cache/{bin,lib,share}
                       cp /usr/bin/{dot,neato,twopi,circo,fdp,sfdp,patchwork,osage} ~/graphviz-cache/bin/ 2>/dev/null || true
                       cp /usr/lib/x86_64-linux-gnu/lib{gvc,cgraph,cdt,pathplan,gvpr,lab-gamut,ann,gts}* ~/graphviz-cache/lib/ 2>/dev/null || true
