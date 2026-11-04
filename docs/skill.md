@@ -2,7 +2,7 @@
 name: leetcode-py
 description: Generates Python LeetCode practice environments and manages a 307-problem catalog with the lcpy CLI. Use when a repository needs coding interview practice scaffolding: generating problem directories (README, solution stub, parametrized pytest suite, helpers, notebook); setting up collections like Blind 75, Grind 75, Grind 169, NeetCode 150, NeetCode 250, or Algo Master 75; testing LeetCode solutions with loguru-logged, parametrized suites; visualizing TreeNode, ListNode, or GraphNode structures; or scraping LeetCode problem data as JSON. Use even if leetcode-py is not named: "set up interview prep repo", "add leetcode problem", "practice grind 75 in python". Do NOT use for submitting to leetcode.com, fetching judge results or contest rankings, or non-LeetCode competitive programming.
 license: Apache-2.0
-compatibility: Requires Python 3.10+. The lcpy CLI runs in any repo; bake tasks need this repo cloned.
+compatibility: Requires Python 3.11+. The lcpy CLI runs in any repo; bake tasks need this repo cloned.
 metadata:
   version: "1.0"
   docs: https://leetcode-py.wisl.dev

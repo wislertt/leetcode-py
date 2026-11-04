@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/wislertt/leetcode-py/graph/badge.svg?token=TI97VUIA4Z)](https://codecov.io/gh/wislertt/leetcode-py)
 [![pypi](https://img.shields.io/pypi/v/leetcode-py-sdk.svg?color=blue)](https://pypi.python.org/pypi/leetcode-py-sdk)
 [![downloads](https://static.pepy.tech/personalized-badge/leetcode-py-sdk?period=total&units=international_system&left_color=grey&right_color=blue&left_text=pypi%20downloads)](https://pepy.tech/projects/leetcode-py-sdk)
-[![python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20%7C%203.15-blue?logo=python)](https://github.com/wislertt/leetcode-py/)
+[![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20%7C%203.15-blue?logo=python)](https://github.com/wislertt/leetcode-py/)
 [![Star ⭐](https://img.shields.io/github/stars/wislertt/leetcode-py?style=flat&logo=github&color=ffcc00)](https://github.com/wislertt/leetcode-py)
 [![Sponsor 💖](https://img.shields.io/badge/Sponsor-💖-pink?style=flat)](https://github.com/sponsors/wislertt)
 
@@ -36,7 +36,7 @@ A Python package to generate professional LeetCode practice environments: a prob
 
 ## 🚀 Quick Start
 
-Requires **Python 3.10+** and **Graphviz** for visualizations ([install guide](https://graphviz.org/download/)).
+Requires **Python 3.11+** and **Graphviz** for visualizations ([install guide](https://graphviz.org/download/)).
 
 ```bash
 # Install the package
