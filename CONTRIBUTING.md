@@ -39,7 +39,7 @@ I'm also open to feedback and suggestions for improving the project!
 
 ### Prerequisites
 
-- **Python 3.10+** - Modern Python runtime
+- **Python 3.11+** - Modern Python runtime
 - **uv** - Fast Python package manager ([install guide](https://docs.astral.sh/uv/getting-started/installation/))
 - **Bake** - Modern task runner
 - **Git** - Version control
