@@ -1,11 +1,15 @@
+# managed by bakefile; edit only the parts marked "editable"
 name: security
 on:
+    # (editable)
     push:
     workflow_dispatch:
     schedule:
-        - cron: "0 4 * * *" # run once a day at 4 AM
+        - cron: "0 4 * * *"
 
-permissions: {}
+# (editable)
+permissions:
+    contents: read
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,35 +17,39 @@ concurrency:
 
 jobs:
     trivy-scan:
-        runs-on: ubuntu-latest
-        timeout-minutes: 10
-        permissions:
-            contents: read
-
+        runs-on: ubuntu-latest # (editable)
+        timeout-minutes: 10 # (editable)
         steps:
-            - name: Checkout repository
+            - name: checkout
+              # (editable) pin
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-            - name: Run Trivy dependency scan
+            - name: run-trivy-scan
+              # (editable) pin
               uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
               with:
                   scan-type: fs
                   format: table
                   exit-code: "1"
                   vuln-type: "os,library"
+                  # (editable) more trivy-action inputs
 
     gitleaks:
         name: gitleaks
-        runs-on: ubuntu-latest
-        timeout-minutes: 10
-        permissions:
-            contents: read
-
+        runs-on: ubuntu-latest # (editable)
+        timeout-minutes: 10 # (editable)
         steps:
-            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+            - name: checkout
+              # (editable) pin
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
                   fetch-depth: 0
 
-            - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+            - name: run-gitleaks
+              # (editable) pin
+              uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  # (editable) more gitleaks-action env
+
+    # (editable) more jobs below

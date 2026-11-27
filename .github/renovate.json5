@@ -1,4 +1,6 @@
+// managed by bakefile; edit only the parts marked "editable"
 {
     $schema: "https://docs.renovatebot.com/renovate-schema.json",
     extends: ["config:recommended"],
+    // (editable)
 }

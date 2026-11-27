@@ -1,0 +1,18 @@
+version = 1
+revision = 1
+
+[managed-content.".github/renovate.json5"]
+template = "bakelib.space:renovate.json5"
+hash = "sha256:1cc1d771707519e5a866b9286b300a48d951c4dc3d589e0e1e29aa17bb2b97d7"
+
+[managed-content.".github/workflows/security.yml"]
+template = "bakelib.space:security.yml"
+hash = "sha256:db2a54d5856fc9c8bc9c08541ad3f096d7e90c733f9d47f78ef7fc489477d114"
+
+[managed-content.".gitignore"]
+template = "bakelib.space:gitignore"
+hash = "sha256:42254da940e19a66013deadd76042e21edcd9379e171effd524696f67aca7099"
+
+[managed-content."oxfmt.config.ts"]
+template = "bakelib.space:oxfmt-config.ts"
+hash = "sha256:0d588fb50209dba05c805111bc1750eca893117307af7b7a87589d49252b35f6"
