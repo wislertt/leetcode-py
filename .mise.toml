@@ -1,8 +1,12 @@
 [settings]
+# conda backend (graphviz) is experimental
+experimental = true
 pipx.uvx = true
 
 [tools]
 bun = "latest"
+# conda build registers its plugins only after `dot -c`
+"conda:graphviz" = { version = "latest", postinstall = "dot -c" }
 jactionlint = "latest"
 "npm:actions-up" = "latest"
 "npm:mintlify" = "latest"

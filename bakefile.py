@@ -43,6 +43,9 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
             self.ctx.run("uv run python scripts/gen_problems.py")
         super().lint(slow=slow)
 
+    def _get_required_cli_tools(self) -> dict[str, set[Path] | None]:
+        return super()._get_required_cli_tools() | {"dot": None}
+
     def test(self, durations: DurationsOption = None) -> None:
         tests_paths: list[str] = ["tests/", "leetcode/"]
         self._test(tests_paths=tests_paths, durations=durations)

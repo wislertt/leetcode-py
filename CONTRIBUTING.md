@@ -43,7 +43,7 @@ I'm also open to feedback and suggestions for improving the project!
 - **uv** - Fast Python package manager ([install guide](https://docs.astral.sh/uv/getting-started/installation/))
 - **Bake** - Modern task runner
 - **Git** - Version control
-- **Graphviz** - Graph visualization ([install guide](https://graphviz.org/download/))
+- **Graphviz** - Graph visualization, installed by `mise install` from `.mise.toml` ([manual install guide](https://graphviz.org/download/))
 
 ## Development Workflow
 
