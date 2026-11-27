@@ -6,10 +6,12 @@ on:
             - main
     workflow_dispatch:
 
-permissions:
-    contents: write
-    issues: write
-    pull-requests: write
+permissions: {}
+
+concurrency:
+    group: ${{ github.workflow }}-caller-${{ github.ref }}
+    # queue, never cancel: a cancelled run could stop a release halfway
+    cancel-in-progress: false
 
 jobs:
     # ====================================================
@@ -18,6 +20,10 @@ jobs:
     semantic-release:
         name: semantic-release
         uses: wislertt/zerv/.github/workflows/shared-semantic-release.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: write
+            issues: write
+            pull-requests: write
         with:
             allowed_workflow_dispatch_branches: '["main"]'
             fail_on_invalid_workflow_dispatch_ref: true
@@ -26,10 +32,14 @@ jobs:
         needs: semantic-release
         if: needs.semantic-release.outputs.is_valid_semantic_release == 'true'
         uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: read
 
     create-version-prefix-tags:
         needs: zerv-versioning
         uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: write
         with:
             tags: >-
                 [
@@ -42,6 +52,8 @@ jobs:
     # ====================================================
     test:
         uses: ./.github/workflows/test.yml
+        permissions:
+            contents: read
         secrets:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -49,10 +61,14 @@ jobs:
     test-reproducibility:
         name: test-reproducibility
         uses: ./.github/workflows/test-reproducibility.yml
+        permissions:
+            contents: read
 
     pre-commit:
         name: pre-commit
         uses: ./.github/workflows/pre-commit.yml
+        permissions:
+            contents: read
 
     # ====================================================
     # Deployment
@@ -60,6 +76,8 @@ jobs:
     publish-pypi:
         needs: zerv-versioning
         uses: ./.github/workflows/publish.yml
+        permissions:
+            contents: read
         with:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
             registry: "pypi"
@@ -70,6 +88,8 @@ jobs:
     publish-test-pypi:
         needs: zerv-versioning
         uses: ./.github/workflows/publish.yml
+        permissions:
+            contents: read
         with:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
             registry: "test-pypi"

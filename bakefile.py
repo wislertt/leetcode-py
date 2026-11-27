@@ -9,7 +9,7 @@ from typing import Annotated
 import typer
 from bake import command, console
 from bakelib import GitHubActionsTools, PythonLibSpace
-from bakelib._params import DurationsOption
+from bakelib._params import DurationsOption, slow_option
 from rich.panel import Panel
 from rich.syntax import Syntax
 from rich.text import Text
@@ -26,6 +26,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
 
     def lint(
         self,
+        slow: Annotated[int, slow_option(help="Add slow steps: -s runs every check")] = 0,
         skip_docs: Annotated[
             bool,
             typer.Option(
@@ -40,7 +41,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         if not skip_docs:
             self.ctx.run("uv run python scripts/gen_catalog.py")
             self.ctx.run("uv run python scripts/gen_problems.py")
-        super().lint()
+        super().lint(slow=slow)
 
     def test(self, durations: DurationsOption = None) -> None:
         tests_paths: list[str] = ["tests/", "leetcode/"]

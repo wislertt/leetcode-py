@@ -2,12 +2,14 @@
 pipx.uvx = true
 
 [tools]
-actionlint = "latest"
 bun = "latest"
+jactionlint = "latest"
 "npm:actions-up" = "latest"
 "npm:mintlify" = "latest"
+"npm:oxfmt" = "latest"
 "pipx:bakefile" = { version = "latest", extras = "locked" }
 "pipx:pre-commit" = "latest"
 "pipx:toml-sort" = "latest"
 "pipx:zerv-version" = "latest"
+shellcheck = "latest"
 uv = "latest"

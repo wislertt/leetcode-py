@@ -18,6 +18,7 @@ jobs:
     test:
         # TODO: Consider adding macOS and Windows to matrix for cross-platform testing
         runs-on: ubuntu-latest
+        timeout-minutes: 20
         strategy:
             fail-fast: false
             matrix:
@@ -33,7 +34,7 @@ jobs:
               run: echo "${{ matrix.python-version }}" > .python-version
 
             - name: setup-mise
-              uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+              uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
 
             - name: cache-venv
               env:
@@ -101,6 +102,6 @@ jobs:
 
             - name: sonarqube-scan
               if: matrix.python-version == inputs.target_python_version && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
-              uses: SonarSource/sonarqube-scan-action@4d1dc0c91ee400dcf8a6dddf2f705ac36542e304 # v8.4.0
+              uses: SonarSource/sonarqube-scan-action@70bad232163b09d998ea0707ee80c0ec80798c16 # v8.5.1
               env:
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

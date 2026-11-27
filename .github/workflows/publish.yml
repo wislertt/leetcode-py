@@ -23,16 +23,19 @@ on:
 jobs:
     publish:
         runs-on: ubuntu-latest
+        timeout-minutes: 10
 
         steps:
             - name: checkout
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
             - name: set-python-version
-              run: echo "${{ inputs.python_version }}" > .python-version
+              env:
+                  PYTHON_VERSION: ${{ inputs.python_version }}
+              run: echo "$PYTHON_VERSION" > .python-version
 
             - name: setup-mise
-              uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+              uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
 
             - name: install-dependencies
               run: uv sync --all-extras --all-groups --frozen
@@ -41,8 +44,8 @@ jobs:
               run: echo "${{ github.workspace }}/.venv/bin" >> "$GITHUB_PATH"
 
             - name: publish
-              run: |
-                  BAKE_PUBLISH_TOKEN=${{ secrets.PYPI_API_TOKEN }} \
-                  bake publish \
-                      --registry "${{ inputs.registry }}" \
-                      --version "${{ inputs.version }}"
+              env:
+                  BAKE_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+                  REGISTRY: ${{ inputs.registry }}
+                  VERSION: ${{ inputs.version }}
+              run: bake publish --registry "$REGISTRY" --version "$VERSION"
