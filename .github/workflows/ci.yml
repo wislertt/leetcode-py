@@ -4,9 +4,11 @@ on:
     pull_request:
         types: [opened, synchronize, reopened]
 
-permissions:
-    contents: write
-    id-token: write
+permissions: {}
+
+concurrency:
+    group: ${{ github.workflow }}-caller-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
 
 jobs:
     # ====================================================
@@ -14,7 +16,10 @@ jobs:
     # ====================================================
     check-pre-release:
         name: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@5895ed0254adf33ed1a40de45fde61a8d2498116 # v0.8.39
+        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: read
+            pull-requests: read
         with:
             target_label: "pre-release"
             branch_prefixes: '["release/"]'
@@ -23,7 +28,9 @@ jobs:
     zerv-versioning:
         name: zerv-versioning
         needs: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@5895ed0254adf33ed1a40de45fde61a8d2498116 # v0.8.39
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: read
         with:
             schema: >-
                 ${{ (needs.check-pre-release.outputs.is_valid == 'true'
@@ -34,7 +41,9 @@ jobs:
         name: tag-pre-release
         needs: [zerv-versioning, check-pre-release]
         if: needs.check-pre-release.outputs.is_valid == 'true'
-        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@5895ed0254adf33ed1a40de45fde61a8d2498116 # v0.8.39
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        permissions:
+            contents: write
         with:
             tags: '["${{ fromJson(needs.zerv-versioning.outputs.versions).v_semver }}"]'
 
@@ -44,6 +53,8 @@ jobs:
     test:
         name: test
         uses: ./.github/workflows/test.yml
+        permissions:
+            contents: read
         secrets:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
             CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
@@ -51,10 +62,14 @@ jobs:
     test-reproducibility:
         name: test-reproducibility
         uses: ./.github/workflows/test-reproducibility.yml
+        permissions:
+            contents: read
 
     pre-commit:
         name: pre-commit
         uses: ./.github/workflows/pre-commit.yml
+        permissions:
+            contents: read
 
     # ====================================================
     # Deployment
@@ -63,6 +78,8 @@ jobs:
         if: needs.check-pre-release.outputs.has_label == 'true'
         needs: [zerv-versioning, check-pre-release]
         uses: ./.github/workflows/publish.yml
+        permissions:
+            contents: read
         with:
             version: ${{ fromJson(needs.zerv-versioning.outputs.versions).pep440 }}
             registry: "test-pypi"

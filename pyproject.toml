@@ -122,7 +122,7 @@ root = [
 include = ["leetcode/*/playground.ipynb", "leetcode/*/playground.py"]
 
 [tool.ty.overrides.rules]
-unresolved-import = "ignore"
+import-not-found = "ignore"
 
 [tool.ty.src]
 exclude = [

@@ -5,9 +5,18 @@ on:
     schedule:
         - cron: "0 4 * * *" # run once a day at 4 AM
 
+permissions: {}
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
 jobs:
     trivy-scan:
         runs-on: ubuntu-latest
+        timeout-minutes: 10
+        permissions:
+            contents: read
 
         steps:
             - name: Checkout repository
@@ -24,6 +33,9 @@ jobs:
     gitleaks:
         name: gitleaks
         runs-on: ubuntu-latest
+        timeout-minutes: 10
+        permissions:
+            contents: read
 
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
