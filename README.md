@@ -12,8 +12,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/brand/leetcode-py-lockup-dark.svg">
-    <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/brand/leetcode-py-lockup.svg" width="360" alt="leetcode-py logo">
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/site/img/brand/leetcode-py-lockup-dark.svg">
+    <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/site/img/brand/leetcode-py-lockup.svg" width="360" alt="leetcode-py logo">
   </picture>
 </p>
 
@@ -22,7 +22,7 @@
 A Python package to generate professional LeetCode practice environments: a problem README, a typed solution stub, a parametrized pytest suite with 10+ cases, helpers, and a playground notebook, all from JSON templates. Full documentation lives at [leetcode-py.wisl.dev](https://leetcode-py.wisl.dev).
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/img/preview/lcpy-preview.gif" width="720" alt="lcpy gen, pytest red to green, and an ASCII tree in the terminal">
+  <img src="https://cdn.jsdelivr.net/gh/wislertt/leetcode-py@main/docs/site/img/preview/lcpy-preview.gif" width="720" alt="lcpy gen, pytest red to green, and an ASCII tree in the terminal">
 </p>
 
 **What makes this different:**

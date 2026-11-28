@@ -2,7 +2,7 @@
 
 Tooling that generates the brand assets (snake mark, wordmark, lockup,
 favicons, OG card). Design decisions — colors, tagline, constants — live in
-[`BRAND.md`](./BRAND.md). Outputs are committed to `docs/img/brand/`.
+[`BRAND.md`](./BRAND.md). Outputs are committed to `docs/site/img/brand/`.
 Regenerate with `bake brand` (or the manual steps below) only when a design
 constant changes, then review `preview.html`.
 
@@ -29,9 +29,9 @@ uv run --with fonttools python3 gen_wordmark.py
 uv run --with fonttools python3 gen_lockup.py
 uv run --with pillow python3 gen_pngs.py
 uv run --with fonttools --with pillow python3 gen_og.py
-mkdir -p ../../docs/img/brand
+mkdir -p ../../docs/site/img/brand
 cp .cache/leetcode-py-*.svg .cache/leetcode-py-mark-*.png .cache/favicon* \
-  .cache/apple-touch-icon.png .cache/og-card-*.png ../../docs/img/brand/
+  .cache/apple-touch-icon.png .cache/og-card-*.png ../../docs/site/img/brand/
 ```
 
 Generated files land in `.cache/` (gitignored). Dependency chain: lockup

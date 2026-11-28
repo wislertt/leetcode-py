@@ -36,7 +36,7 @@ description: Batch creation workflow for multiple LeetCode problems - loops thro
 Run the lookups + scrapes in ONE bash call. Scrape output goes to files — NEVER print it to main context (it is the single largest context cost; the agent reads the file instead). Print only number, tag, slug, title:
 
 ```bash
-uv run python .claude/.dev/next_problem.py --take {count} | while read -r line; do
+uv run python scripts/problem_creation/next_problem.py --take {count} | while read -r line; do
   N=${line%% *}          # first token
   SOURCE=${line##* }     # LAST token — never `read -r N TAG NAME SOURCE`: zsh does NOT
   case "$SOURCE" in      # join the remainder into the last var, so a multi-word NAME
@@ -182,7 +182,7 @@ Agents run concurrently and don't touch tags.json5; insert all batch tags here. 
 grep '^QUEUE' /tmp/batch_manifest.txt | while read -r _ N TAG _; do
   NAME=$(cat "/tmp/batch_name_${N}.txt")
   if [ "$TAG" != "none" ]; then
-    uv run python .claude/.dev/insert_tag.py "$TAG" "$NAME"
+    uv run python scripts/problem_creation/insert_tag.py "$TAG" "$NAME"
   fi
 done
 ```
@@ -214,11 +214,11 @@ pre-commit run -a
 ### 2.2: Tag Sync Check
 
 ```bash
-uv run python .claude/.dev/update_tags.py
+uv run python scripts/problem_creation/update_tags.py
 ```
 
 - Expect `No changes found in any of the specified tags.` — that IS the pass state (tags were synced per-problem during creation). `Missing`/`Removed` lines only appear on a dirty run
-- A clean run creates NO `.claude/.dev/update_tags.json` — the `rm` no-ops. Remove the temp file if it exists after a dirty run
+- A clean run creates NO `.cache/update_tags.json` — the `rm` no-ops. Remove the temp file if it exists after a dirty run
 - **Gate semantics**: the gate counts only **Missing** lines. Pre-existing `Removed` lines do NOT block it — surface them to the user instead of silently resolving them
 - **Warning**: do not resolve `Removed` lines on curated lists (neetcode-150, neetcode-250, blind-75, etc.) without the user's call — the `_tags.list` membership check is circular for batch-created problems and following it once cemented bogus tuples into curated lists. Ground truth = source-list membership by problem number
 - If any `Missing`/`Removed` lines appear: **read and follow @.claude/skills/update-tags.md**
@@ -267,10 +267,10 @@ cp /tmp/solution_backup.py leetcode/{problem_name}/solution.py
 ### 2.5: Docs Stub-Poisoning Check
 
 ```bash
-grep -rl "TODO: Implement" docs/problems/ | wc -l   # must be 0
+grep -rl "TODO: Implement" docs/site/problems/ | wc -l   # must be 0
 ```
 
-- **Why**: `check-consistency` (gate 2.3) regenerates `leetcode/` as stubs, lints (which regenerates `docs/problems/` from those stubs), then restores `leetcode/` — docs were the blind spot until 2026-09-03, when all 1404 pages shipped with `# TODO: Implement` + `O(?)` embedded despite clean git status. The bakefile now re-runs `gen_problems.py` after the restore, but any future clobber-window variant re-opens the hole; git status CANNOT detect this class of damage — the poisoned file looks legitimately generated
+- **Why**: `check-consistency` (gate 2.3) regenerates `leetcode/` as stubs, lints (which regenerates `docs/site/problems/` from those stubs), then restores `leetcode/` — docs were the blind spot until 2026-09-03, when all 1404 pages shipped with `# TODO: Implement` + `O(?)` embedded despite clean git status. The bakefile now re-runs `gen_problems.py` after the restore, but any future clobber-window variant re-opens the hole; git status CANNOT detect this class of damage — the poisoned file looks legitimately generated
 - On a nonzero count: `uv run python scripts/gen_problems.py` regenerates from the real tree, then re-grep. If solutions themselves are stubbed (`grep -rl "TODO: Implement" leetcode/*/solution.py`), restore from the gate 2.4 safety snapshot FIRST, regen docs second
 - Runs in seconds — cheap sixth gate
 
@@ -314,7 +314,7 @@ After the summary, review the run and **suggest** candidate updates to any skill
 
 Each problem: all files generated, optimal solution implemented (single class), 12+ test cases, lint clean, `bake p-test` passes, QA chain run with solution preserved.
 
-The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, `bake check-test-cases` exits 0, zero `TODO: Implement` hits in `docs/problems/`, all problems still pass `bake p-test` after finalization.
+The batch: `pre-commit run -a` passes, tag sync clean, `bake check-consistency` PASSED, `bake check-test-cases` exits 0, zero `TODO: Implement` hits in `docs/site/problems/`, all problems still pass `bake p-test` after finalization.
 
 ## Unscrapable Problems Management
 
@@ -341,7 +341,7 @@ When triggered via the `unscrapable` keyword, or any explicit request to work th
 
 0. **Fetch ALL problem statements upfront, via `curl` — no Playwright needed.** `raw.githubusercontent.com` serves plain static text; `curl -s '<doocs-url>'` returns the full markdown faster than a browser and keeps the shared Playwright MCP free for other agents (Playwright cannot run parallel sessions). Do NOT use the `web_reader` MCP tool — user rule. Playwright is FALLBACK ONLY, for sources needing a real browser (or if curl is blocked) — when needed, request it as the flow's first tool call so the permission prompt lands before any file work. With either method: fetch every statement back to back at the start, then build the batch offline — no web dependency mid-loop
 1. **Find not-yet-done entries**: `UNSCRAPABLE_QUEUE` is the todo queue; `UNSCRAPABLE_HANDLED` entries are done. Still verify against `leetcode/` dirs, `src/.../json/problems/`, and `tags.json5` — the split may be stale
-2. **Determine tags from source lists**: grep the problem number in `.claude/.dev/problem_lists/*.py` (Python lists, not `.list` files). The matching list gives the tag — usually `neetcode` for the NeetCode All queue. Never stamp roadmap tags the number does not belong to. Verify membership with an unambiguous per-file check (`grep -c "($n," .claude/.dev/problem_lists/neetcode.py`) — a multi-file `grep -lE "\($n," .claude/.dev/problem_lists/*.py | sed ...` one-liner truncated the filename column in one batch and 7 in-neetcode problems were misread as unscrapable-only (`_tags: []`), surfacing only as 7 Missing lines at the tag-sync gate
+2. **Determine tags from source lists**: grep the problem number in `scripts/problem_creation/problem_lists/*.py` (Python lists, not `.list` files). The matching list gives the tag — usually `neetcode` for the NeetCode All queue. Never stamp roadmap tags the number does not belong to. Verify membership with an unambiguous per-file check (`grep -c "($n," scripts/problem_creation/problem_lists/neetcode.py`) — a multi-file `grep -lE "\($n," scripts/problem_creation/problem_lists/*.py | sed ...` one-liner truncated the filename column in one batch and 7 in-neetcode problems were misread as unscrapable-only (`_tags: []`), surfacing only as 7 Missing lines at the tag-sync gate
 3. **Fetch problem data** (see step 0 — fetch upfront via curl):
     - Primary: doocs/leetcode raw markdown mirror — carries the CURRENT official wording, examples, constraints, and topics (front matter `tags:`). URL pattern: `https://raw.githubusercontent.com/doocs/leetcode/main/solution/0100-0199/0156.Binary%20Tree%20Upside%20Down/README_EN.md` (century folder `0100-0199`, zero-padded number, URL-encoded title). `curl -s '<url>' | head -c 4000` — description + first solution. Title-guess 404? List the exact folder via GitHub API: `curl -s https://api.github.com/repos/doocs/leetcode/contents/solution/0200-0299 | grep '"name"'`
     - Fallback: `https://leetcode.ca/all/{N}.html` (older wording, usually no constraints) — curl first; Playwright only if it needs JS

@@ -115,7 +115,7 @@ select = [
 [tool.ty.environment]
 root = [
   ".",
-  "./.claude/.dev"
+  "./scripts/problem_creation"
 ]
 
 [[tool.ty.overrides]]

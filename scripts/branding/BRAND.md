@@ -83,6 +83,6 @@ Locked 2026-08-22, eyeball-tuned on the skeleton geometry:
 
 ## Asset usage
 
-Assets are committed to `docs/img/brand/` and regenerated with `bake brand`.
+Assets are committed to `docs/site/img/brand/` and regenerated with `bake brand`.
 README logo URLs point at `cdn.jsdelivr.net` (raw GitHub SVGs are blocked in
 `<img>` on PyPI).

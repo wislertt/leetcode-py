@@ -81,11 +81,11 @@ verifies expected values, and so should you before trusting a suite.
 the next problems in the roadmap lists:
 
 ```bash
-uv run python .claude/.dev/next_problem.py   # picks the next problem
+uv run python scripts/problem_creation/next_problem.py   # picks the next problem
 ```
 
 The picker skips known unscrapable problems (premium, API issues), which
-live in `.claude/.dev/problem_lists/unscrapable.py`. Failed problems are
+live in `scripts/problem_creation/problem_lists/unscrapable.py`. Failed problems are
 logged and the batch continues; you get a summary with success rate and
 retry candidates at the end.
 

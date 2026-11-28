@@ -27,7 +27,7 @@ When user requests a problem by **number** or **name/slug**, the assistant will:
 **If user does not specify a problem number or name/slug**, run:
 
 ```bash
-uv run python .claude/.dev/next_problem.py
+uv run python scripts/problem_creation/next_problem.py
 ```
 
 This will suggest the next problem to work on from the available problem lists based on completion status.
@@ -444,22 +444,22 @@ bake lint
 
 Common tags: `["grind-75", "grind", "blind-75", "neetcode-150", "algo-master-75"]`
 
-**GOTCHA — `_tags` must match the queue tag, not a roadmap guess.** When the problem comes from `next_problem.py`, the JSON `_tags.list` must be exactly the tag the script reported (e.g. `Tag: neetcode` → `_tags: { "list": ["neetcode"] }`). NEVER assign roadmap tags (`neetcode-150`, `neetcode-250`, `blind-75`, `grind-75`, `algo-master-75`) unless that roadmap's source file in `.claude/.dev/problem_lists/` actually contains the problem number. A wrong stamp cascades: `update_tags.py` fires Missing on the roadmap → the name gets added to tags.json5 → the source list never had it → permanent Removed noise, and "fixing" it by adding source tuples pollutes the curated lists.
+**GOTCHA — `_tags` must match the queue tag, not a roadmap guess.** When the problem comes from `next_problem.py`, the JSON `_tags.list` must be exactly the tag the script reported (e.g. `Tag: neetcode` → `_tags: { "list": ["neetcode"] }`). NEVER assign roadmap tags (`neetcode-150`, `neetcode-250`, `blind-75`, `grind-75`, `algo-master-75`) unless that roadmap's source file in `scripts/problem_creation/problem_lists/` actually contains the problem number. A wrong stamp cascades: `update_tags.py` fires Missing on the roadmap → the name gets added to tags.json5 → the source list never had it → permanent Removed noise, and "fixing" it by adding source tuples pollutes the curated lists.
 
 ### Adding a problem to tags.json5
 
-`tags.json5` (`src/leetcode_py/cli/resources/leetcode/json/tags.json5`) is synced from the source lists in `.claude/.dev/problem_lists/`. Workflow:
+`tags.json5` (`src/leetcode_py/cli/resources/leetcode/json/tags.json5`) is synced from the source lists in `scripts/problem_creation/problem_lists/`. Workflow:
 
 ```bash
-uv run python .claude/.dev/update_tags.py   # reports Missing/Removed per tag
+uv run python scripts/problem_creation/update_tags.py   # reports Missing/Removed per tag
 # add the problem name to the flagged tag's array (alphabetical order)
-uv run python .claude/.dev/update_tags.py   # re-run until "Total tags with missing problems: 0"
+uv run python scripts/problem_creation/update_tags.py   # re-run until "Total tags with missing problems: 0"
 ```
 
 **GOTCHA — wrong-block insertion.** Many tag arrays share identical entries, and blocks span 60+ lines; a `grep -n` hit does not prove the line lives in the block you think. Even 2–3 consecutive anchor lines can appear in multiple blocks (e.g. `design_in_memory_file_system` + `employee_free_time` sits in two blocks), and a hardcoded neighbor may simply be absent from the target block (StopIteration). **Use the committed helper script** (inserts by line index with an alphabetical scan, quoted-string entries only so metadata objects are skipped):
 
 ```bash
-uv run python .claude/.dev/insert_tag.py <tag_name> <problem_name>
+uv run python scripts/problem_creation/insert_tag.py <tag_name> <problem_name>
 ```
 
 It refuses a tag block it cannot find and a name that sorts after every entry (append those manually). Quote the problem name argument in zsh (`"$name"` — zsh does not word-split unquoted variables, so a `"tag name"` pair passed as one word prints the usage doc instead of inserting). Verify with `git diff` + `bake lint` (sort_tags) after every insert. Full decision rules for `Missing`/`Removed` lines: @.claude/skills/update-tags.md.
@@ -472,7 +472,7 @@ Apply only when creating problems via `/batch-problem-creation`; the single-prob
 
 ### Premium/unscrapable handling
 
-- **Premium signature**: plain text `Error fetching problem: 'NoneType' object is not iterable` (not JSON) → append `(N, "kebab-name")` to the BOTTOM of `UNSCRAPABLE_QUEUE` in `.claude/.dev/problem_lists/unscrapable.py`, re-run `next_problem.py` — do NOT retry the scrape (queue placement rules: Unscrapable Problems Management in the batch skill)
+- **Premium signature**: plain text `Error fetching problem: 'NoneType' object is not iterable` (not JSON) → append `(N, "kebab-name")` to the BOTTOM of `UNSCRAPABLE_QUEUE` in `scripts/problem_creation/problem_lists/unscrapable.py`, re-run `next_problem.py` — do NOT retry the scrape (queue placement rules: Unscrapable Problems Management in the batch skill)
 - **SQL/non-Python signature**: `Error: Problem number N not found` → `NON_PYTHON_PROBLEMS` in the same file, never the queue
 - When two neighbors fail premium in a row, probe the whole range with a loop before adding exclusions one-by-one; sanity-check a known-scrapable number first (every number failing = broken session, not a premium cluster)
 
