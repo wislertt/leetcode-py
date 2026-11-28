@@ -16,7 +16,7 @@ jobs:
     # ====================================================
     check-pre-release:
         name: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        uses: wislertt/zerv/.github/workflows/shared-check-pr-label-and-branch.yml@036c1339c52b67601fa9c6ddc1b2086eda01e150 # v0.8.46
         permissions:
             contents: read
             pull-requests: read
@@ -28,7 +28,7 @@ jobs:
     zerv-versioning:
         name: zerv-versioning
         needs: check-pre-release
-        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        uses: wislertt/zerv/.github/workflows/shared-zerv-versioning.yml@036c1339c52b67601fa9c6ddc1b2086eda01e150 # v0.8.46
         permissions:
             contents: read
         with:
@@ -41,7 +41,7 @@ jobs:
         name: tag-pre-release
         needs: [zerv-versioning, check-pre-release]
         if: needs.check-pre-release.outputs.is_valid == 'true'
-        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@348c40b7e38f9ac640b85919de2d45c7077f6507 # v0.8.42
+        uses: wislertt/zerv/.github/workflows/shared-create-tags.yml@036c1339c52b67601fa9c6ddc1b2086eda01e150 # v0.8.46
         permissions:
             contents: write
         with:
