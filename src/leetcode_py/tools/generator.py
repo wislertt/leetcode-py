@@ -1,4 +1,5 @@
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -8,6 +9,8 @@ from ruff.__main__ import find_ruff_bin
 from ty.__main__ import find_ty_bin
 
 from leetcode_py.cli.utils.problem_finder import get_tags_for_problem
+
+_PROBLEM_NAME_RE = re.compile(r"[a-z][a-z0-9_]*")
 
 
 def load_json_data(json_path: Path) -> dict:
@@ -23,9 +26,19 @@ def load_json_data(json_path: Path) -> dict:
         raise typer.Exit(1) from None
 
 
+def validate_problem_name(problem_name: str) -> None:
+    if not _PROBLEM_NAME_RE.fullmatch(problem_name):
+        typer.echo(f"Error: Invalid problem name '{problem_name}'", err=True)
+        raise typer.Exit(1)
+
+
 def check_problem_exists(problem_name: str, output_dir: Path, force: bool) -> None:
     if not force:
-        problem_dir = output_dir / problem_name
+        base_dir = output_dir.resolve()
+        problem_dir = (base_dir / problem_name).resolve()
+        if not problem_dir.is_relative_to(base_dir):
+            typer.echo(f"Error: Invalid problem name '{problem_name}'", err=True)
+            raise typer.Exit(1)
         if problem_dir.exists():
             typer.echo(
                 f"Error: Problem '{problem_name}' already exists. Use --force to overwrite.",
@@ -158,5 +171,6 @@ def generate_problem(
 ) -> None:
     data = load_json_data(json_path)
     problem_name = data.get("problem_name", "unknown")
+    validate_problem_name(problem_name)
     check_problem_exists(problem_name, output_dir, force)
     generate_from_template(data, template_dir, output_dir)
