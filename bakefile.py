@@ -100,7 +100,7 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
         self._convert_notebooks_to_python()
         console.success("Conversion complete. All .ipynb files converted to .py and deleted.")
 
-    @command("brand", help="Regenerate brand assets into docs/img/brand/")
+    @command("brand", help="Regenerate brand assets into docs/site/img/brand/")
     def brand(self):
         console.echo("Regenerating brand assets...")
 
@@ -111,20 +111,20 @@ class MyBakebook(GitHubActionsTools, PythonLibSpace):
             "uv run --with fonttools python3 gen_lockup.py && "
             "uv run --with pillow python3 gen_pngs.py && "
             "uv run --with fonttools --with pillow python3 gen_og.py && "
-            "mkdir -p ../../docs/img/brand && "
+            "mkdir -p ../../docs/site/img/brand && "
             "cp .cache/leetcode-py-*.svg .cache/leetcode-py-mark-*.png .cache/favicon* "
-            ".cache/apple-touch-icon.png .cache/og-card-*.png ../../docs/img/brand/"
+            ".cache/apple-touch-icon.png .cache/og-card-*.png ../../docs/site/img/brand/"
         )
 
-        console.success("Brand assets regenerated into docs/img/brand/")
+        console.success("Brand assets regenerated into docs/site/img/brand/")
 
     @command("docs", help="Run Mintlify docs dev server")
     def docs(self):
-        self.ctx.run("mintlify dev", cwd=Path("docs"))
+        self.ctx.run("mintlify dev", cwd=Path("docs/site"))
 
     @command("docs-check", help="Check docs site for broken links")
     def docs_check(self):
-        self.ctx.run("mintlify broken-links", cwd=Path("docs"))
+        self.ctx.run("mintlify broken-links", cwd=Path("docs/site"))
 
     @command("check-test-cases", help="Find problems with few test cases")
     def check_test_cases(

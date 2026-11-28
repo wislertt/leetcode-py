@@ -1,6 +1,6 @@
 """Insert a problem name into a tags.json5 block in alphabetical order.
 
-Usage: uv run python .claude/.dev/insert_tag.py <tag_name> <problem_name>
+Usage: uv run python scripts/problem_creation/insert_tag.py <tag_name> <problem_name>
 
 Inserts by line index with an alphabetical scan (quoted-string entries only,
 so leading metadata objects are skipped), then verifies nothing shifted out of

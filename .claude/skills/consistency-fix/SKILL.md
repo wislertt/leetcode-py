@@ -15,11 +15,11 @@ Resolve drift between committed `leetcode/` files and their JSON template source
 
 ## How check-consistency Works
 
-Renames `leetcode/` to `.cache/check-consistency/backup` (rename, not copy) → parallel-generates ALL problems into `.cache/check-consistency/generated` and renames it in as `leetcode/` → runs notebook-to-py conversion **+ lint** → diffs fresh generation against backup → finally restores the original by rename, removes the workdir, and regenerates `docs/problems/` once from the restored tree.
+Renames `leetcode/` to `.cache/check-consistency/backup` (rename, not copy) → parallel-generates ALL problems into `.cache/check-consistency/generated` and renames it in as `leetcode/` → runs notebook-to-py conversion **+ lint** → diffs fresh generation against backup → finally restores the original by rename, removes the workdir, and regenerates `docs/site/problems/` once from the restored tree.
 
 **Interrupted-run recovery:** a run killed mid-window leaves `leetcode/` as freshly generated stubs; the real tree is still at `.cache/check-consistency/backup`. Restore with `rm -rf leetcode && mv .cache/check-consistency/backup leetcode`. The next run refuses to start while that backup exists, so it can never be silently cleaned.
 
-**Docs skip during the check:** the check calls `lint(skip_docs=True)` (also exposed as `bake lint --skip-docs`) because the tree holds stubs then; the finally block regenerates docs once from the restored tree. If stub text still reaches `docs/problems/` with clean git status, some other path generated docs against a stub tree — fix is a plain `uv run python scripts/gen_problems.py`, never a hand-edit (see Class 3).
+**Docs skip during the check:** the check calls `lint(skip_docs=True)` (also exposed as `bake lint --skip-docs`) because the tree holds stubs then; the finally block regenerates docs once from the restored tree. If stub text still reaches `docs/site/problems/` with clean git status, some other path generated docs against a stub tree — fix is a plain `uv run python scripts/gen_problems.py`, never a hand-edit (see Class 3).
 
 - `-` lines = backup (committed working tree)
 - `+` lines = fresh generated (source of truth)
@@ -113,7 +113,7 @@ For non-markdown files, match the linter that owns the format: `toml-sort` for `
 **Symptom:** generated files contain `# TODO: Implement <method>` and `# Time: O(?)` while git status is clean and `solution.py` on disk holds the real implementation. Check instantly with:
 
 ```bash
-grep -rl "TODO: Implement" docs/problems/ | wc -l      # docs poisoned
+grep -rl "TODO: Implement" docs/site/problems/ | wc -l      # docs poisoned
 grep -rl "TODO: Implement" leetcode/*/solution.py | wc -l  # leetcode/ still clobbered
 ```
 
@@ -153,7 +153,7 @@ rm -f leetcode/{problem}/playground.ipynb   # legacy trees: p-gen -f regenerates
 | Run prettier on fence-internal drift and expect a fix      | Prettier never normalizes inside code fences — reports "unchanged". Fence drift (comment alignment) needs the regen route above. |
 | Assume "All checks passed" from p-gen means drift resolved | p-gen success ≠ check-consistency success. Only `bake check-consistency` passing is real.                                        |
 | Fix one drift class, stop                                  | Tag + formatting drift coexist. After any fix, re-run check-consistency until PASSED.                                            |
-| Trust clean git status = clean generated files             | Stub poisoning looks like a normal generated file. Grep for `TODO: Implement` in docs/problems/ when anything smells off.        |
+| Trust clean git status = clean generated files             | Stub poisoning looks like a normal generated file. Grep for `TODO: Implement` in docs/site/problems/ when anything smells off.   |
 | Hand-strip `# TODO: Implement` out of docs pages           | The page is stale, not wrong. Regen from the real tree (`uv run python scripts/gen_problems.py`); hand edits get overwritten.    |
 
 ## Verify

@@ -84,7 +84,8 @@ def update_tags(tag_names=None):
         return
 
     # Generate update_tags.json content with only missing problems
-    output_file = Path(__file__).parent / "update_tags.json"
+    output_file = Path(__file__).parent.parent.parent / ".cache/update_tags.json"
+    output_file.parent.mkdir(exist_ok=True)
     with open(output_file, "w") as f:
         json.dump(update_tags, f, indent=4)
 

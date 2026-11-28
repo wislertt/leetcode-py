@@ -1,6 +1,6 @@
 ---
 name: update-tags
-description: Use ONLY when user explicitly requests "update tags" or "/update-tags", or after running .claude/.dev/update_tags.py and seeing "Missing" or "Removed" discrepancy lines. Reconciles the tag sync between source lists and tags.json5.
+description: Use ONLY when user explicitly requests "update tags" or "/update-tags", or after running scripts/problem_creation/update_tags.py and seeing "Missing" or "Removed" discrepancy lines. Reconciles the tag sync between source lists and tags.json5.
 ---
 
 # Update Tags
@@ -9,7 +9,7 @@ description: Use ONLY when user explicitly requests "update tags" or "/update-ta
 
 Two layers, one direction of truth:
 
-- **Source (input)** — `.claude/.dev/problem_lists/*.py`. Each defines `tag_name` + `problems_list` of `(problem_number, "Title")` tuples. These are the canonical membership lists. `__init__.py` exposes them via `available_lists`.
+- **Source (input)** — `scripts/problem_creation/problem_lists/*.py`. Each defines `tag_name` + `problems_list` of `(problem_number, "Title")` tuples. These are the canonical membership lists. `__init__.py` exposes them via `available_lists`.
 - **Output (sink)** — `src/leetcode_py/cli/resources/leetcode/json/tags.json5`. JSON5 with comments. Lists problem-name strings per tag, plus sub-tag references like `{ tag: "neetcode-150" }`. Consumed by the CLI at runtime.
 
 `update_tags.py` diffs the two and prints discrepancies. It **never edits files** — a human resolves each line at the correct layer.
@@ -39,7 +39,7 @@ A "Removed" line means tags.json5 lists a problem the source list doesn't. **Do 
 - flagged tag ∈ `_tags.list` → the problem considers itself a member; the source list just hasn't caught up. Add the tuple to source.
 - flagged tag ∉ `_tags.list` → the tags.json5 entry was likely added by mistake. Do **not** propagate it to source. Confirm with the user, then delete the entry from that tag's array in tags.json5.
 
-**GOTCHA — `_tags.list` is circular for batch-created problems.** The `_tags.list` field is written at creation time by whoever created the problem. If the stamp was wrong there, this check "confirms" the wrong membership and directs you to pollute the source list — which permanently cements the mistake (a later sync commit did exactly this and bogus tuples had to be reverted by hand). For problems created via the batch/problem-creation flow, ground truth is **source-list membership by problem number**, not `_tags.list`: grep `(number,` across `.claude/.dev/problem_lists/*.py`. Number present in that list's file → member; absent → not a member, regardless of what `_tags.list` claims. If the number is in NO source file except `neetcode.py` (the 943 all-queue), the problem is queue-only: `_tags.list` should be `["neetcode"]` and the tags.json5 roadmap entries are the bug.
+**GOTCHA — `_tags.list` is circular for batch-created problems.** The `_tags.list` field is written at creation time by whoever created the problem. If the stamp was wrong there, this check "confirms" the wrong membership and directs you to pollute the source list — which permanently cements the mistake (a later sync commit did exactly this and bogus tuples had to be reverted by hand). For problems created via the batch/problem-creation flow, ground truth is **source-list membership by problem number**, not `_tags.list`: grep `(number,` across `scripts/problem_creation/problem_lists/*.py`. Number present in that list's file → member; absent → not a member, regardless of what `_tags.list` claims. If the number is in NO source file except `neetcode.py` (the 943 all-queue), the problem is queue-only: `_tags.list` should be `["neetcode"]` and the tags.json5 roadmap entries are the bug.
 
 The script deliberately refuses to auto-delete ("not included in update") so a human makes this call. Both wrong directions are permanent: deleting a real entry hides it (source lacks it, so `Missing` never fires to restore); adding a bogus tuple to source cements a mistake the script can no longer flag. The `_tags.list` check is what tells you which direction is safe.
 
@@ -55,13 +55,13 @@ Fix is still source-side: add the tuple to the source list(s) that should contai
 
 ## Workflow
 
-1. **Run:** `uv run python .claude/.dev/update_tags.py`
-2. **If `No changes found`** → done. Delete `.claude/.dev/update_tags.json` if it exists. Stop.
+1. **Run:** `uv run python scripts/problem_creation/update_tags.py`
+2. **If `No changes found`** → done. Delete `.cache/update_tags.json` if it exists. Stop.
 3. **For each `Missing` line:** add the listed problem-name strings to that tag's array in `tags.json5`, in **alphabetical order**. Use `Edit`, not a full rewrite — preserve the `// comment` above each tag block and the JSON5 formatting (quoted keys for hyphenated names like `"neetcode-250"`, bare keys for `grind`; strings as `"snake_case"`).
     - **Find the right block first.** Many tag arrays share identical entries (`maximum_subarray` appears in 4+ blocks; `majority_element`, `minimum_path_sum`, etc. repeat across roadmaps). A `grep -n` hit + the nearest `"tag": [` header above it do **not** prove the line lives in that block — arrays can stretch 60+ lines and the header above may belong to a different tag. Before `Edit`, `Read` the target block's full `[ ... ]` span and copy 2–3 consecutive anchor lines **from inside that block** as `old_string`. Verify the anchor is unique to the target block by eyeballing the span, not by assumption.
 4. **For each `Removed` line:** run the `_tags.list` decision from the trap above — **before** any edit. Add the tuple to source only if membership is confirmed (`_tags.list` contains the flagged tag). Otherwise delete the entry from that tag's array in tags.json5, after confirming with the user. Keep the source file's existing ordering convention (neetcode_150.py is sorted by number; neetcode_250.py and grind.py are topical — append if unsure).
 5. **Re-run** the script. Expect `No changes found`. Loop until clean. This is not cosmetic — a re-run that **surfaces a new** `Removed`/`Missing` on a tag you did _not_ intend to touch is the tell-tale sign of a wrong-block edit (step 3 trap). If that happens, your last edit landed in the wrong array: revert it and re-apply in the correct block.
-6. **Cleanup:** `rm .claude/.dev/update_tags.json`
+6. **Cleanup:** `rm .cache/update_tags.json`
 
 ## Common Mistakes
 
@@ -75,8 +75,8 @@ Fix is still source-side: add the tuple to the source list(s) that should contai
 
 ## Files
 
-- Script: `.claude/.dev/update_tags.py`
-- Source lists: `.claude/.dev/problem_lists/*.py` (+ `__init__.py` → `available_lists`)
+- Script: `scripts/problem_creation/update_tags.py`
+- Source lists: `scripts/problem_creation/problem_lists/*.py` (+ `__init__.py` → `available_lists`)
 - Output: `src/leetcode_py/cli/resources/leetcode/json/tags.json5`
 - Problem metadata (number/title lookup): `src/leetcode_py/cli/resources/leetcode/json/problems/<name>.json`
-- Temp file (delete after): `.claude/.dev/update_tags.json`
+- Temp file (delete after): `.cache/update_tags.json`
