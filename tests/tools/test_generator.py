@@ -7,7 +7,12 @@ import pytest
 import typer
 
 from leetcode_py.cli.utils.resources import get_problems_json_path, get_template_path
-from leetcode_py.tools.generator import check_problem_exists, generate_problem, load_json_data
+from leetcode_py.tools.generator import (
+    check_problem_exists,
+    generate_problem,
+    load_json_data,
+    validate_problem_name,
+)
 
 
 class TestGenerator:
@@ -67,6 +72,38 @@ class TestGenerator:
 
             with pytest.raises(typer.Exit):
                 check_problem_exists("test_problem", output_dir, force=False)
+
+    @pytest.mark.parametrize("problem_name", ["two_sum", "unknown", "lru_cache2"])
+    def test_validate_problem_name_valid(self, problem_name: str):
+        validate_problem_name(problem_name)
+
+    @pytest.mark.parametrize(
+        "problem_name", ["", "../x", "a/b", "/etc", "Two_Sum", "1_two_sum", "two-sum", "a\\b"]
+    )
+    def test_validate_problem_name_invalid(self, problem_name: str):
+        with pytest.raises(typer.Exit):
+            validate_problem_name(problem_name)
+
+    @pytest.mark.parametrize("problem_name", ["../outside", "a/../../outside"])
+    def test_check_problem_exists_rejects_path_escape(self, problem_name: str):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_dir = Path(temp_dir) / "output"
+            output_dir.mkdir()
+
+            with pytest.raises(typer.Exit):
+                check_problem_exists(problem_name, output_dir, force=False)
+
+    def test_generate_problem_rejects_invalid_name(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_json = Path(temp_dir) / "bad.json"
+            temp_json.write_text(json.dumps({"problem_name": "../escape"}))
+            output_dir = Path(temp_dir) / "output"
+            output_dir.mkdir()
+
+            with pytest.raises(typer.Exit):
+                generate_problem(temp_json, get_template_path(), output_dir)
+
+            assert not (Path(temp_dir) / "escape").exists()
 
     def test_generate_problem_real_integration(self):
         # Use real paths from the project
