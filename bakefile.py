@@ -21,6 +21,7 @@ force_option = Annotated[bool, typer.Option("-f", "--force")]
 
 
 class MyBakebook(GitHubActionsTools, PythonLibSpace):
+    bake_manage_content: bool = True
     ci: bool = False
     problem: str = "available_captures_for_rook"
 

@@ -44,4 +44,7 @@ jobs:
               run: echo "${{ github.workspace }}/.venv/bin" >> "$GITHUB_PATH"
 
             - name: run-pre-commit
-              run: uv run pre-commit run --all-files
+              run: SKIP=lint uv run pre-commit run --all-files
+
+            - name: run-lint-slow
+              run: bake lint --slow
